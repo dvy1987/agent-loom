@@ -53,7 +53,7 @@ Must answer before writing:
 5. Hard constraints — tech stack, deadline, compliance?
 
 ### Step 4 — Inversion + Adversarial Hat (optional but recommended)
-Before writing, offer: "Shall I run inversion and adversarial hat on the requirements?"
+Before writing, offer: "Shall I run deep-thinking on the requirements?"
 - `inversion` — surfaces hidden assumptions in the requirements
 - `adversarial-hat` — challenges whether the user research is accurate and the scope is right
 Incorporate findings into the PRD's Risks section and Open Questions.
