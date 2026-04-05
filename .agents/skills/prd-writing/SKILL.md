@@ -33,8 +33,11 @@ Never hallucinate a tech stack — if unspecified, write `TBD`.
 ## Workflow
 
 ### Step 1 — Check for Existing Context
-Look for a design doc from `brainstorming` skill (`docs/specs/`), existing brief, or AGENTS.md.
-If found: import as foundation, ask only about what's missing.
+Look for, in priority order:
+1. `docs/product-soul.md` — read first if it exists. Use the User, Business, and Strategy sections to ground the PRD.
+2. A design doc from `brainstorming` (`docs/specs/`) — import as foundation.
+3. An existing brief or AGENTS.md.
+Ask only about what's missing after reading available context.
 
 ### Step 2 — Format Selection
 Ask or infer: Full PRD · Lean PRD · One-Pager · Technical PRD. Default: Full PRD.

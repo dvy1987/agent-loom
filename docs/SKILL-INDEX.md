@@ -130,6 +130,18 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 **Impact report:** Format, sections written, open questions remaining, success metrics defined
 **References:** `prd-schemas.md`, `metrics-frameworks.md` in `.agents/skills/prd-writing/references/`
 
+### `product-soul`
+**Triggers:** "write the product soul", "product strategy doc", "product north star", "why we exist document", "product positioning", "what is this product really about", "capture the product vision"
+**What it does:** Writes `docs/product-soul.md` — a living strategic document covering five lenses: User (who specifically, what pain), Business (model, year 1/3 conditions, biggest risk), Strategy (named competitors, moat, strategic bet), Product-Market Fit (status, signal, threshold, falsification condition), GTM (wedge channel, acquisition→activation→retention loop, first 100 users tactic). Runs inversion to stress-test assumptions. Referenced by brainstorming and prd-writing for strategic grounding.
+**Output file:** `docs/product-soul.md` (living document, versioned)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Terminal notification:** "Product Soul saved to `docs/product-soul.md`. Referenced by brainstorming, prd-writing, and inversion."
+**Called by:** Standalone; brainstorming and prd-writing read its output
+**Impact report:** Sections written, PMF status, inversion run yes/no, open hypotheses count
+**References:** `references/product-soul-schema.md` (full template), `references/discovery-questions.md` (question bank per lens)
+
+---
+
 ### `inversion`
 **Triggers:** "invert this", "what could go wrong", "pre-mortem", "stress test this plan", "flip this problem", "think about this differently", "steelman the failure" — or called by brainstorming/prd-writing
 **What it does:** Applies inversion thinking to any problem, goal, or decision. Flips the question 180 degrees — asks what would guarantee failure, what the opposite looks like, what hidden assumptions haven't been examined — then translates findings back to forward actions. Uses the minimum questions needed (max 2 before inverting). Draws on five frames: Failure Inversion (Munger), Opposite Goal, Pre-mortem (Klein), Assumption Inversion, Socratic Decomposition.

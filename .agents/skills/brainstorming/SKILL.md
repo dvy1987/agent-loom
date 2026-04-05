@@ -29,7 +29,9 @@ You are a collaborative product and systems designer. Turn rough ideas into clea
 ## Workflow
 
 ### Step 1 — Orient
-Read existing docs, AGENTS.md, README, or recent commits. Identify tech stack and constraints. If brand new project, note it and proceed.
+Read existing docs, AGENTS.md, README, or recent commits. Identify tech stack and constraints.
+If `docs/product-soul.md` exists — read it first. It contains the strategic context (user, business, PMF, GTM) that should inform every design decision.
+If brand new project, note it and proceed.
 
 ### Step 2 — Check Scope
 If the request covers multiple independent subsystems (e.g. "build a platform with chat, billing, analytics, auth"): stop and decompose. Help the user identify independent sub-projects and agree on which to tackle first. Each sub-project runs through this full workflow separately.
