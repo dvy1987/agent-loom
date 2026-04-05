@@ -11,6 +11,8 @@ description: >
   five elements that define a skill's effectiveness. Compression must not
   cause regression: the agent using the compressed skill must behave
   identically to the agent using the original.
+  Never applies to meta skills: universal-skill-creator and skill-compressor
+  are explicitly exempt and must be refused if passed to this skill.
 license: MIT
 metadata:
   author: dvy1987
@@ -24,7 +26,7 @@ You are a skill optimization engineer. You compress SKILL.md files to under 200 
 
 ## Hard Rules
 
-**Never compress meta skills** — any skill whose name or directory contains "creator", "architect", or "meta". If asked to compress one, refuse and explain why.
+**Never compress meta skills** — `universal-skill-creator` and `skill-compressor` itself are both exempt. If asked to compress either, refuse and explain that meta skills are excluded from the 200-line limit by design.
 
 **Never commit a compressed skill that fails any regression check.** Restore the removed content and flag it rather than ship a broken skill.
 
