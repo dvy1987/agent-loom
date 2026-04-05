@@ -60,17 +60,19 @@ For each skill, score against the rubric (full details in `references/validation
 
 ### Step 4 — Flag Structural Issues
 
+These flags feed directly into `improve-skills` Step 2b — every flag is a concrete fix, not just an observation.
+
 Check every skill for:
-- **Over limit**: SKILL.md > 200 lines → flag with exact count
-- **Missing category**: `metadata.category` not set to `meta`, `project-specific`, or `domain`
-- **Stale version**: `metadata.version` unchanged after known edits
-- **Missing Impact Report**: no `## Impact Report` section at end of SKILL.md
-- **Missing file-output logging**: skill generates files but has no `docs/skill-outputs/SKILL-OUTPUTS.md` append instruction
-- **Missing Prune Log**: skill has been around >30 days with no prune record
-- **Broken caller references**: skill references another skill that doesn't exist
-- **Orphaned reference files**: files in `references/` not mentioned in SKILL.md
-- **Missing load triggers**: `references/` files mentioned without a specific load condition
-- **Duplicate triggers**: two skills whose descriptions overlap significantly — agents may misroute
+- **Over limit**: SKILL.md > 200 lines → flag with exact count (fix: split-skill or skill-compressor)
+- **Missing category**: `metadata.category` not set to `meta`, `project-specific`, or `domain` (fix: add field, see `docs/SKILL-INDEX.md`)
+- **Missing Impact Report**: no `## Impact Report` section at end of SKILL.md (fix: add section specific to what the skill produces)
+- **Missing file-output logging**: skill generates project files but no `docs/skill-outputs/SKILL-OUTPUTS.md` append instruction (fix: add logging + terminal notification)
+- **Stale version**: `metadata.version` unchanged after known edits (fix: bump version)
+- **Missing Prune Log**: skill has no prune record (fix: invoke prune-skill)
+- **Broken caller reference**: skill references a skill that doesn't exist in `.agents/skills/` (fix: remove or update reference)
+- **Orphaned reference file**: file in `references/` not mentioned in SKILL.md (fix: add specific load trigger or delete file)
+- **Missing load trigger**: `references/` file mentioned without a specific condition (fix: add explicit trigger)
+- **Duplicate triggers**: two skills with significantly overlapping descriptions (fix: link check in improve-skills Step 2d)
 
 ### Step 5 — Check Call Graph Integrity
 

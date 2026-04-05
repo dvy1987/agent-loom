@@ -1,106 +1,120 @@
 ---
 name: improve-skills
 description: >
-  Audit, improve, and compress every non-meta skill in the repo using live
-  research. Load when the user asks to improve skills, audit the skill library,
-  upgrade existing skills, refresh with new research, do a skill health check,
-  or says "improve all skills", "update the skill library", "skill audit",
-  or "run an improvement pass". Applies the same live domain research as
-  universal-skill-creator — academic papers, practitioner blogs, GitHub repos —
-  then rewrites and compresses each skill. Never modifies meta skills.
+  Audit, improve, and compress every skill in the repo using live research.
+  Load when the user asks to improve skills, audit the skill library, upgrade
+  existing skills, refresh with new research, do a skill health check, or says
+  "improve all skills", "update the skill library", "skill audit", or "run an
+  improvement pass". Applies live domain research, fixes structural gaps, checks
+  for skill linking opportunities, then rewrites and resizes each skill.
+  All skills are in scope including meta skills.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, agentskills.io best practices
 ---
 
 # Improve Skills
 
-You are a Senior AI Skill Engineer running a systematic improvement pass over a skill library. For each skill: audit, research, rewrite, compress — in that order. Compression without improved quality is failure. All skills are in scope, including meta skills.
+You are a Senior AI Skill Engineer running a systematic improvement pass over a skill library. For each skill: prune → fix gaps → link → research → rewrite → resize. Compression without improved quality is failure. All skills are in scope including meta skills.
 
 ## Hard Rules
 
-**All skills are in scope including meta skills.** Meta skills follow the same quality bar, the same 200-line limit, and benefit from the same research-backed improvements as domain skills.
-
 **Improve before compressing.** Compressing a weak skill produces a smaller weak skill.
 
-**Split before compressing.** When a skill is over 200 lines, check for a natural seam or duplication before compressing. Splitting preserves nuance that compression discards.
+**Split before compressing.** Check for seams and duplication before trimming prose.
+
+**Fix structural gaps before rewriting.** Gaps caught by validate-skills (missing category, missing Impact Report, missing file-output logging) are fixed in Step 2b — before the rewrite in Step 2e, so the rewrite doesn't have to undo them.
 
 ---
 
 ## Workflow
 
 ### Step 1 — Pre-flight via validate-skills
-Invoke `validate-skills` across the full library first. Use the report to:
-- Identify any P0 failures (agentskills validate fails) — fix these before anything else
+Invoke `validate-skills` across the full library. Use the report to:
+- Fix any P0 failures (agentskills validate fails) before anything else
 - Build the work queue ordered by score: lowest scores first
-- Flag any skills that score 0–5/14 as candidates for `deprecate-skill` (present to user, don't auto-deprecate)
+- Note all structural flags (missing category, Impact Report, file-output logging) — these are fixed in Step 2b for each skill
+- Flag any skills scoring 0–5/14 as `deprecate-skill` candidates (present to user, don't auto-deprecate)
 
-Report the queue with scores, ask for confirmation before starting.
+Report the queue with scores and structural flags. Ask for confirmation before starting.
 
 ### Step 2 — Per-Skill Improvement Cycle
 
 Repeat for each skill in the queue:
 
 **2a — Prune first**
-Invoke `prune-skill` on the skill. Wait for the prune report.
-Pruning removes wrong or outdated content before anything else touches the skill.
-Do not proceed to 2b until the prune report is complete and changes are applied.
+Invoke `prune-skill`. Wait for prune report. Do not proceed until applied.
 
-**2b — Baseline Score** (read `validate-skills/references/validation-rubric.md` for 0–2 per criterion)
-Score against: Routing · Role Definition · Workflow · Gotchas · Output Format · Examples · Token Efficiency
-Report score before touching anything else: `[skill]: X/14`
+**2b — Fix Structural Gaps**
+From the validate-skills report, fix any structural flags for this skill:
+- Missing `metadata.category` → add `meta`, `project-specific`, or `domain` (see `docs/SKILL-INDEX.md`)
+- Missing `## Impact Report` section → add it (specific to what this skill produces)
+- Skill generates files but no `docs/skill-outputs/SKILL-OUTPUTS.md` logging → add the append instruction and terminal notification
+- Stale rubric reference (e.g., `improve-skills/references/scoring-rubric.md`) → update to `validate-skills/references/validation-rubric.md`
+- Orphaned `references/` file (not mentioned in SKILL.md) → add a specific load trigger or delete the file
+- Missing load trigger on a `references/` file → add a specific trigger condition
 
-**2c — Research via research-skill**
-Invoke `research-skill` on the skill's domain. Wait for the findings report.
-Use GOTCHAS → Gotchas section, WORKFLOW PATTERNS → workflow steps, FAILURE MODES → hard rules.
-Do not proceed to 2d until the findings report is complete.
+**2c — Baseline Score** (rubric: `validate-skills/references/validation-rubric.md`)
+Score: Routing · Role Definition · Workflow · Gotchas · Output Format · Examples · Token Efficiency
+Report: `[skill]: X/14`
 
-**2d — Classify with SkillReducer Taxonomy**
+**2d — Link Check** (new — scan before researching)
+Read all other skills in `.agents/skills/`. Ask for each:
+1. Does this skill duplicate a sub-workflow that another skill already does well?
+   → If yes and the other skill's output format is compatible: replace the inline section with a delegation call. Update AGENTS.md call graph.
+2. Does this skill do something that another skill could benefit from calling?
+   → If yes and the interface is clean: add a caller note to the other skill.
+3. Could a marginal improvement to an existing child skill serve this skill better than adding a new section?
+   → If yes: improve the child skill in its own cycle instead of expanding this one.
+
+Link only when: (a) the called skill's output is directly consumable, (b) the delegation saves tokens overall, (c) the relationship is stable. If any condition fails — keep inline.
+Document new links in AGENTS.md Skill Relationships.
+
+**2e — Research via research-skill**
+Invoke `research-skill`. Use GOTCHAS → Gotchas, WORKFLOW PATTERNS → steps, FAILURE MODES → hard rules.
+
+**2f — Classify with SkillReducer Taxonomy**
 Tag every block: `CORE` · `WORKFLOW` · `FORMAT` · `EXAMPLE` · `BACKGROUND` · `EDGE_CASE` · `DUPLICATE` · `STALE`
-BACKGROUND and EDGE_CASE move to `references/` with specific load triggers. Everything else stays.
+BACKGROUND and EDGE_CASE move to `references/` with specific load triggers.
 
-**2e — Rewrite in priority order**
-1. Fix routing — add missing trigger phrases, test against 5 real prompts mentally
-2. Add gotchas from research — specific, non-obvious facts only
-3. Sharpen workflow — imperative one-liners, MUST/NEVER over soft suggestions
-4. Replace synthetic examples with domain-specific realistic ones
-5. Add/tighten output format schema or template
-6. Move BACKGROUND to `references/background.md` with specific load trigger
+**2g — Rewrite in priority order**
+1. Fix routing — add missing trigger phrases
+2. Add gotchas from research
+3. Sharpen workflow — imperative one-liners, MUST/NEVER
+4. Replace synthetic examples with realistic ones
+5. Tighten output format schema
+6. Move BACKGROUND to `references/background.md`
 7. Bump `metadata.version`
 
-**2f — Post-Rewrite Score** — re-score all 7 criteria, report delta: `X/14 → Y/14`
+**2h — Post-Rewrite Score** — report delta: `X/14 → Y/14`
 
-**2g — Size Check, Split, then Compress**
+**2i — Size Check: Split then Compress**
 ```bash
 wc -l .agents/skills/<skill>/SKILL.md
 ```
-Under 200 → proceed to 2h.
+Under 200 → proceed to 2j.
+Over 200: duplication across skills → `split-skill` (Type B); natural seam → `split-skill` (Type A); no seam → `skill-compressor`.
 
-Over 200 — apply in this order (split before compress — splitting preserves nuance, compressing can lose it):
-1. **Duplication check** — does this sub-workflow also appear in another skill? → invoke `split-skill` (Type B)
-2. **Seam check** — is there a self-contained extractable phase? → invoke `split-skill` (Type A)
-3. **No seam** — excess is only BACKGROUND/EDGE_CASE → invoke `skill-compressor`
-
-`split-skill` calls `skill-compressor` on the output automatically.
-
-**2h — Validate and Commit**
+**2j — Validate and Commit**
 ```bash
 agentskills validate .agents/skills/<skill>/
-git commit -m "improve: <skill> — <before>/14 → <after>/14\n\n- [change 1]\nSources: [source]"
+git commit -m "improve: <skill> — <before>/14 → <after>/14\n\n- [change]\nSources: [source]"
 ```
 
 ### Step 3 — Library Summary
-After all skills processed, report scores, line counts, sources used, and top patterns found across the library.
+Report scores, structural gaps fixed, new links created, sources used, files modified.
 
 ---
 
 ## Gotchas
 
-- Never move gotchas to `references/` — agent reads them before encountering the situation, not after deciding to look.
+- Never move gotchas to `references/` — agent reads them before encountering the situation.
 - Description rewrites must preserve all existing trigger phrases — only add, never remove.
+- Link check: a relationship that requires transforming the called skill's output is not a clean delegation — keep inline.
+- Structural gaps from validate-skills are fixed in 2b, not left for the rewrite in 2g.
 
 ---
 
@@ -110,22 +124,29 @@ After all skills processed, report scores, line counts, sources used, and top pa
   <example>
     <input>Improve all skills in the repo</input>
     <output>
-Queue: brainstorming, prd-writing (skipping meta skills)
-Confirm? → yes
+Pre-flight validate-skills report:
+  brainstorming: 10/14 | structural: missing Prune Log (>30 days)
+  prd-writing: 9/14 | structural: none
+  research-skill: 12/14 | structural: none
+Queue confirmed (all skills, lowest score first).
 
-brainstorming (1/2): 10/14 baseline
-Research: obra/superpowers — agents skip scope check for "simple" requests (new gotcha)
-HN 2025 — agents merge approach selection with design presentation (new gotcha)
-Rewrote 3 workflow steps as one-liners, added 2 gotchas, moved 1 background section
-Post-rewrite: 13/14 | 148 lines ✓ | validated ✓ | committed
+prd-writing (1):
+  2a Prune: 1 stale CoT instruction removed (Wharton GAIL 2025)
+  2b Gaps: none
+  2c Score: 9/14
+  2d Link check: prd-writing Step 3 (discovery) overlaps with brainstorming output
+    → brainstorming already produces docs/specs/ — prd-writing should read that first
+    → Already wired: "reads brainstorming design docs as foundation when available" ✓
+    → No new link needed
+  2e Research: 2 new gotchas, 1 workflow improvement
+  2g Rewrite: +3 pts → 12/14 | 139 lines ✓ | committed
 
-prd-writing (2/2): 9/14 baseline
-Research: awesome-copilot prd — discovery interview must precede writing (reinforced)
-agentskills.io — vague language ("fast", "intuitive") is the top PRD failure mode
-Added 2 gotchas, tightened output schema, moved tips section to references/background.md
-Post-rewrite: 12/14 | 176 lines ✓ | validated ✓ | committed
+brainstorming (2):
+  2b Gaps: Prune Log missing → added empty Prune Log section
+  2d Link check: brainstorming Step 9 offers prd-writing — already wired ✓
+  Post-rewrite: 13/14 | 170 lines ✓ | committed
 
-Summary: 2 skills improved, avg +3 pts, sources: obra/superpowers, awesome-copilot, agentskills.io
+Summary: 2 skills improved, avg +3 pts, 1 structural gap fixed, 0 new links
     </output>
   </example>
 </examples>
@@ -134,27 +155,23 @@ Summary: 2 skills improved, avg +3 pts, sources: obra/superpowers, awesome-copil
 
 ## Reference Files
 
-- **`validate-skills/references/validation-rubric.md`**: Single source of truth for the 7-criterion scoring rubric. Read when a score is ambiguous during Step 2b.
+- **`validate-skills/references/validation-rubric.md`**: Scoring rubric (single source of truth). Read during Step 2c.
 
 ---
 
 ## Impact Report
 
-After completing all skills, always deliver the library summary:
+After completing, deliver:
 ```
 Improvement cycle complete: YYYY-MM-DD
 Skills processed: N
 Skills improved: N (avg score delta: +N pts)
-Skills deprecated: N
-Skills split: N
-Skills compressed: N
+Structural gaps fixed: N (list by skill)
+New skill links created: N (list relationships)
+Skills deprecated: N | split: N | compressed: N
 
-Per-skill results:
-  [skill]: [before]/14 → [after]/14 | [lines] lines | [key change]
-
-Sources used across library:
-  [source]: applied to [skill]
-
-Files modified: [list all SKILL.md files touched]
-Files created: [list any new references/ or child skills]
+Per-skill: [skill]: X/14 → Y/14 | [lines] lines | [key change]
+Sources: [source] → [skill]
+Files modified: [list]
+Files created: [list]
 ```

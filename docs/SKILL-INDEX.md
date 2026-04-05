@@ -36,10 +36,12 @@ Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` 
 
 ### `improve-skills`
 **Triggers:** "improve all skills", "skill audit", "upgrade skills with latest research", "run improvement pass"
-**What it does:** Full improvement cycle for every skill (or a named subset). Sequence per skill: validate → prune → research → rewrite → split/compress → commit.
-**Calls:** `validate-skills` → `deprecate-skill` (if 0–5/14) → `prune-skill` → `research-skill` → `split-skill`/`skill-compressor` → validate + commit
+**What it does:** Full improvement cycle for every skill (or a named subset). Per-skill sequence: prune → fix structural gaps → link check → research → rewrite → resize.
+**Calls:** `validate-skills` (pre-flight) → `deprecate-skill` (if 0–5/14) → `prune-skill` → [fix gaps] → [link check] → `research-skill` → [rewrite] → `split-skill`/`skill-compressor` → validate + commit
+**Structural gap fixing (Step 2b):** Automatically fixes every flag from validate-skills — missing category, missing Impact Report, missing file-output logging, stale rubric references, orphaned reference files, missing load triggers.
+**Link check (Step 2d):** Scans the full library to find skills that could delegate to each other. Links only when: output format is directly consumable, delegation saves tokens overall, relationship is stable. Documents new links in AGENTS.md.
 **Output:** Modified SKILL.md files for every improved skill
-**Impact report:** Per-skill score deltas (before/after), sources used, all files modified
+**Impact report:** Per-skill score deltas, structural gaps fixed, new links created, sources used, all files modified
 
 ---
 
