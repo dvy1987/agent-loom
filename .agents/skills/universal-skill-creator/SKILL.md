@@ -151,15 +151,21 @@ For **Warp** — Support parameterized invocation:
 
 Read `references/platform-matrix.md` for the full platform directory paths and platform-specific guidance.
 
-### Step 6 — Ground Skills in GitHub Repo Patterns
+### Step 6 — Ground Skills in Research + GitHub Repo Patterns
 
-Before finalizing, check if similar skills exist in top public repos. These repos are authoritative references:
+Before finalizing, consult both current research and top community repos.
+
+**Research (read `references/research-papers.md` for full details):**
+- **arXiv:2602.12430** (Feb 2026) — Definitive skills survey. Validates progressive disclosure architecture; 26.1% of community skills have security vulnerabilities; skills and MCP are complementary layers.
+- **arXiv:2603.29919** (Mar 2026, SkillReducer) — Study of 55,315 real skills. Over 60% of body content is non-actionable. Use its taxonomy to classify every block: Core Rules / Workflow Steps / Output Format / Examples / Background / Edge Cases. Move non-Core content to references/.
+- **NeurIPS 2025** — Self-generated examples from real task outputs outperform hand-crafted ones. Prefer real outputs in the Examples section.
+- **arXiv:2509.00482** — Rule-based role prompting (explicit MUST/NEVER) beats automated optimization.
+
+**Community repos (read `references/github-repo-research.md`):**
 - `anthropics/skills` — Claude-optimized skills, XML structure patterns
 - `openai/skills` — Codex-native skills, `agents/openai.yaml` patterns
 - `warpdotdev/oz-skills` — Parameterized skills, CLI-first workflows
 - `github/awesome-copilot` — Copilot community skills
-
-Read `references/github-repo-research.md` for synthesized patterns from these repos.
 
 ### Step 7 — Write Resource Files (if Standard/Advanced/System tier)
 
@@ -451,5 +457,6 @@ if __name__ == "__main__":
 - **`references/platform-matrix.md`**: Full table of every platform's skill directory paths, invocation methods, and compatibility notes. Read when targeting a specific platform or when the user asks "where do I put this skill?".
 - **`references/github-repo-research.md`**: Synthesized patterns from anthropics/skills, openai/skills, warpdotdev/oz-skills, and github/awesome-copilot. Read when grounding a new skill in community best practices or when the user asks to learn from top public skills.
 - **`references/advanced-patterns.md`**: Parameterized skills, plan-validate-execute, gotchas sections, validation loops, XML Claude tags, Codex openai.yaml, Factory frontmatter, and skill stacking. Read for any Advanced or System tier skill.
+- **`references/research-papers.md`**: State-of-the-art research on agent skill design. Read when making architectural decisions, evaluating skill quality, or determining what belongs in body vs references/. Key papers: arXiv:2602.12430 (2026 skills survey), arXiv:2603.29919 (SkillReducer — 55,315 skills study), NeurIPS 2025 (self-generated examples), arXiv:2509.00482 (rule-based prompting).
 - **`scripts/skill_scaffold.py`**: CLI tool that generates a new skill directory with all boilerplate files for any target platform. Run with `python scripts/skill_scaffold.py --name <skill-name> --tier <atomic|standard|advanced|system> --platform <platform>`.
 - **`templates/SKILL.md`**: Production-ready cross-platform SKILL.md scaffold. Use as the starting point for all new skills.
