@@ -135,3 +135,18 @@ DISCARD:
 ## Reference Files
 
 - **`references/domain-search-queries.md`**: Pre-built search query templates for 20 common skill domains. Read when the domain is well-known to get a head start on query formulation.
+
+---
+
+## Impact Report
+
+After completing, always deliver the structured findings report (Step 4 format) and then summarise:
+```
+Research complete: [domain]
+Sources consulted: N
+Gotchas found: N (listed above)
+Workflow patterns found: N
+Existing skills found: [names or "none"]
+Discarded as background: N items
+Ready for: universal-skill-creator Step 3 / improve-skills Step 2c
+```

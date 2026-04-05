@@ -158,3 +158,21 @@ Proceed? (yes/no)
 ## Reference Files
 
 - **`references/deprecation-log.md`**: Running log of all deprecated skills with dates, reasons, and migration paths. Updated after every deprecation. Read when the user asks "what skills have been deprecated and why?"
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Deprecation complete: [skill-name]
+Reason: [trigger condition]
+Evidence: [source]
+Archive path: .agents/skills/.deprecated/[skill-name]-deprecated-YYYY-MM-DD/
+DEPRECATION.md written: yes
+Callers updated: [list or "none"]
+AGENTS.md updated: yes
+README updated: yes
+Deprecation log updated: yes
+Recovery command: mv .agents/skills/.deprecated/[skill-name]-deprecated-YYYY-MM-DD/ .agents/skills/[skill-name]/
+```

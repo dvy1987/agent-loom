@@ -112,3 +112,18 @@ Read `references/metrics-frameworks.md` when the user needs help choosing succes
 
 - **`references/prd-schemas.md`**: Complete schemas for Full PRD, Lean PRD, One-Pager, Technical PRD. Read when writing any PRD.
 - **`references/metrics-frameworks.md`**: AARRR, HEART, OKRs, North Star with examples. Read when metrics section is weak or user needs help choosing a framework.
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+PRD complete: [feature/product name]
+Format: [Full PRD / Lean PRD / One-Pager / Technical PRD]
+Status: Draft
+Sections written: [N]
+Open questions remaining: [N — must be 0 before Approved]
+Success metrics defined: [N metrics with baselines and targets]
+Ready for: stakeholder review / engineering handoff
+```

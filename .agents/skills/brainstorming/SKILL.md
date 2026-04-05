@@ -145,3 +145,17 @@ Read `references/examples.md` if the user asks to see a full completed brainstor
 - Always write and commit the design doc before handing off to implementation
 - Always get explicit user approval on the written spec
 - Propose at least 2 approaches — never present a single option as the only way
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Brainstorming complete for: [topic]
+Design doc saved: docs/specs/YYYY-MM-DD-<topic>-design.md
+Approach chosen: [name] — [one-line rationale]
+Key decisions: [2-3 bullet points]
+Open questions resolved: N
+Ready for: prd-writing / implementation
+```

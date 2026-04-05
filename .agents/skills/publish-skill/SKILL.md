@@ -167,3 +167,18 @@ Test install dry-run: ✓
 ## Reference Files
 
 - **`references/publish-checklist.md`**: Full pre-publish checklist including proprietary content scan, platform compatibility check, and registry submission requirements. Read for any System-tier skill before publishing.
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Published: [skill-name]
+Registry URL: https://skills.sh/[skill-name]
+Install command: npx skills [skill-name]
+Package format: [.md / .zip]
+validate-skills score at publish: [N]/14
+Proprietary content scan: clean
+GitHub push: [yes — commit hash / no]
+```

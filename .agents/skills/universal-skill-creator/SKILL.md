@@ -139,3 +139,21 @@ Read `references/examples.md` for complete worked examples of Atomic and Advance
 - **`references/examples.md`**: Complete worked examples (Atomic: conventional-commits, Advanced: db-migrate). Read when the user wants to see a full skill output.
 - **`scripts/skill_scaffold.py`**: CLI scaffolder. Run with `--name`, `--tier`, `--platform` flags.
 - **`templates/SKILL-template.md`**: Production-ready cross-platform template. Starting point for all new skills.
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Skill created: [skill-name]
+Tier: [Atomic / Standard / Advanced / System]
+Location: .agents/skills/[skill-name]/
+validate-skills score: [N]/14
+agentskills validate: ✓
+Files created: [list all files]
+Research sources used: [list]
+Published to skills.sh: [yes — URL / no]
+Install command: cp -r .agents/skills/[skill-name]/ ~/.agents/skills/
+Test trigger: "[example phrase that activates this skill]"
+```

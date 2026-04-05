@@ -134,3 +134,26 @@ Summary: 2 skills improved, avg +3 pts, sources: obra/superpowers, awesome-copil
 ## Reference Files
 
 - **`validate-skills/references/validation-rubric.md`**: Single source of truth for the 7-criterion scoring rubric. Read when a score is ambiguous during Step 2b.
+
+---
+
+## Impact Report
+
+After completing all skills, always deliver the library summary:
+```
+Improvement cycle complete: YYYY-MM-DD
+Skills processed: N
+Skills improved: N (avg score delta: +N pts)
+Skills deprecated: N
+Skills split: N
+Skills compressed: N
+
+Per-skill results:
+  [skill]: [before]/14 → [after]/14 | [lines] lines | [key change]
+
+Sources used across library:
+  [source]: applied to [skill]
+
+Files modified: [list all SKILL.md files touched]
+Files created: [list any new references/ or child skills]
+```

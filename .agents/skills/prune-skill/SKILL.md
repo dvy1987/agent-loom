@@ -166,3 +166,20 @@ agentskills validate: ✓
 
 - **`references/citation-standards.md`**: Trust tiers for sources (peer-reviewed journals, arXiv, practitioner blogs, social media). Read before accepting any source as grounds for pruning.
 - **`references/obsolete-techniques.md`**: Running list of prompting techniques proven ineffective on current models, with citations and model version specifics. Read during Step 3 obsolescence check. Update this file whenever a prune reveals a new obsolete technique.
+
+---
+
+## Impact Report
+
+After completing, always summarise:
+```
+Prune complete: [skill-name]
+Citations audited: N
+Items pruned: N
+  - Removed: [item] ([source])
+Items corrected: N
+  - Corrected: [item] ([source])
+Flagged for author review: N
+Prune Log added to SKILL.md: yes
+Files modified: .agents/skills/[skill-name]/SKILL.md
+```

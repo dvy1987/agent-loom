@@ -67,25 +67,25 @@ A symlink means `git pull` is all you ever need — platforms see the updated sk
 ### Domain Skills
 These are the skills you use directly in your daily work:
 
-| Skill | What it does | Trigger phrases |
-|-------|-------------|-----------------|
-| [`brainstorming`](.agents/skills/brainstorming/) | Design before code — turns ideas into approved design docs, hard gate prevents any implementation until you sign off | "brainstorm", "design this feature", "what's the best approach for" |
-| [`prd-writing`](.agents/skills/prd-writing/) | Discovery interview → structured PRD (Full, Lean, One-Pager, or Technical format) | "write a PRD", "document requirements", "create a spec" |
+| Skill | What it does | Output / Outcome | Trigger phrases |
+|-------|-------------|-----------------|----------------|
+| [`brainstorming`](.agents/skills/brainstorming/) | Turns ideas into approved design docs through structured dialogue — hard gate prevents any code until you sign off | **File created:** `docs/specs/YYYY-MM-DD-<topic>-design.md` committed to git. Impact report: approach chosen, key decisions, open questions resolved. | "brainstorm", "design this feature", "what's the best approach for" |
+| [`prd-writing`](.agents/skills/prd-writing/) | Discovery interview followed by a structured PRD in your chosen format | **Document produced:** Full PRD, Lean PRD, One-Pager, or Technical PRD presented in chat. Impact report: format used, sections written, open questions remaining, success metrics defined. | "write a PRD", "document requirements", "create a spec" |
 
 ### Meta Skills
 This repo is self-managing. These skills maintain, improve, and grow the skill library itself. You can invoke them directly but they mostly call each other automatically:
 
-| Skill | What it does | When to call it |
-|-------|-------------|-----------------|
-| [`universal-skill-creator`](.agents/skills/universal-skill-creator/) | Creates new cross-platform skills from scratch — runs live research, writes, validates, splits/compresses if needed | "create a skill for X", "build a skill that does Y" |
-| [`improve-skills`](.agents/skills/improve-skills/) | Audits every skill in the repo, researches the domain, rewrites for quality, then splits/compresses to stay under 200 lines | "improve all skills", "skill audit", "upgrade skills with latest research" |
-| [`research-skill`](.agents/skills/research-skill/) | Searches academic papers, practitioner blogs, and GitHub skill repos for a domain — returns structured findings | Called automatically by `universal-skill-creator` and `improve-skills` |
-| [`prune-skill`](.agents/skills/prune-skill/) | Removes content that is wrong, outdated, disproven, or based on poorly-cited sources — audits every citation for journal quality and recency before anything else runs | Called automatically at the start of every improve-skills cycle |
-| [`skill-compressor`](.agents/skills/skill-compressor/) | Compresses any skill to under 200 lines by moving non-core content to `references/` — never degrades quality | Called automatically after split-skill, or directly when only background content needs trimming |
-| [`split-skill`](.agents/skills/split-skill/) | Extracts a coherent sub-capability into a child skill when a skill is too large to compress without losing nuance | Called automatically before compression when duplication or a natural seam exists |
-| [`validate-skills`](.agents/skills/validate-skills/) | Read-only health check — scores every skill, flags P0 failures, size violations, and duplicate triggers | Pre-flight for `improve-skills`; quality gate for `universal-skill-creator` |
-| [`deprecate-skill`](.agents/skills/deprecate-skill/) | Retires redundant or superseded skills gracefully — archives to `.deprecated/`, updates all callers | Offered by `improve-skills` when a skill scores 0-5/14 |
-| [`publish-skill`](.agents/skills/publish-skill/) | Validates quality, packages, writes README, publishes to skills.sh | Optional final step after `universal-skill-creator` creates a skill |
+| Skill | What it does | Output / Outcome | When to call it |
+|-------|-------------|-----------------|-----------------|
+| [`universal-skill-creator`](.agents/skills/universal-skill-creator/) | Creates new cross-platform skills — live research, write, validate, split/compress | **Files created:** `.agents/skills/<name>/SKILL.md` + optional references/, scripts/. Impact report: tier, score, install path, test trigger, files created | "create a skill for X", "build a skill that does Y" |
+| [`improve-skills`](.agents/skills/improve-skills/) | Full improvement cycle — validate, prune, research, rewrite, resize every skill | **Files modified:** every improved SKILL.md. Impact report: per-skill score deltas, sources used, all files touched | "improve all skills", "skill audit", "upgrade with latest research" |
+| [`validate-skills`](.agents/skills/validate-skills/) | Read-only health check — scores every skill, flags failures, size violations, duplicate triggers | **No files modified.** Structured quality report with P0/P1/P2/P3 actions | Pre-flight for `improve-skills`; quality gate after creation |
+| [`prune-skill`](.agents/skills/prune-skill/) | Removes wrong, outdated, or poorly-cited content — every removal cites a source | **Files modified:** target SKILL.md pruned + Prune Log appended. Impact report: items pruned, corrected, flagged | First step of every `improve-skills` per-skill cycle |
+| [`research-skill`](.agents/skills/research-skill/) | Searches papers, practitioner blogs, and GitHub skill repos — returns structured findings | **No files modified.** Returns findings report (GOTCHAS, WORKFLOW PATTERNS, FAILURE MODES) | Called by `universal-skill-creator` and `improve-skills` before writing |
+| [`skill-compressor`](.agents/skills/skill-compressor/) | Moves non-core content to `references/` to bring SKILL.md under 200 lines | **Files modified:** SKILL.md trimmed + new references/ files created. Impact report: line reduction, files created | After `split-skill`, or directly when only background needs trimming |
+| [`split-skill`](.agents/skills/split-skill/) | Extracts a reusable sub-capability into a new child skill | **Files created:** child SKILL.md. **Files modified:** parent SKILL.md, AGENTS.md. Impact report: line counts, callers updated | Before compression when a natural seam or duplication exists |
+| [`deprecate-skill`](.agents/skills/deprecate-skill/) | Retires redundant or superseded skills — archives, updates callers, logs reason | **Files moved:** to `.agents/skills/.deprecated/`. **Files modified:** AGENTS.md, README, callers. Impact report: archive path, recovery command | When a skill scores 0-5/14 or is fully subsumed |
+| [`publish-skill`](.agents/skills/publish-skill/) | Validates, packages, writes README if missing, publishes to skills.sh | **External action:** skill live on skills.sh. Impact report: registry URL, install command, score at publish | Optional after `universal-skill-creator` creates a skill |
 
 ### How the Meta Skills Work Together
 

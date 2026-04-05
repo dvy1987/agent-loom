@@ -125,3 +125,17 @@ Result: 354 → 115 lines (67% reduction)
 ## Reference Files
 
 - **`references/compression-theory.md`**: SkillReducer research and Vercel compressed-index findings. Read if user asks why compression improves quality.
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Compression complete: [skill-name]
+Lines: [before] → [after] ([N]% reduction)
+Moved to references/: [list of files created]
+Regression check: [all 5 passed / N failed — restored]
+agentskills validate: ✓
+Files modified: SKILL.md[, references/background.md, references/examples.md]
+```

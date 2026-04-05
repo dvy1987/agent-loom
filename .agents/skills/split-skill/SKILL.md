@@ -144,10 +144,10 @@ Functionality: 100% preserved
 
 ## Gotchas
 
-- **Never split a workflow step that needs context from adjacent steps.** If step 3 uses output from step 2 and feeds into step 4, it's not an independent sub-capability — it's a pipeline stage. Keep pipelines in one skill.
-- **Child description must work standalone.** Other skills or users may invoke the child directly. The description must reflect both use cases.
-- **Type B splits have higher impact.** Changing 3 parent skills to call one child means 3 skills need regression checks. Don't rush.
-- **Shared sub-capabilities should be general, not parent-specific.** If the child's description only makes sense when called from one parent, it's not a good candidate for extraction.
+- Never split a workflow step that needs context from adjacent steps — it's a pipeline stage, not an independent sub-capability.
+- Child description must work standalone — other skills or users may invoke it directly.
+- Type B splits have higher impact: changing 3 parents means 3 regression checks. Don't rush.
+- If the child's description only makes sense from one parent, move to references/ instead.
 
 ---
 
@@ -163,20 +163,11 @@ Natural seam: domain research is a self-contained capability with clear input (d
 Proposed child skill: research-skill
 Parent skills that would call it: universal-skill-creator, improve-skills
 
-Contract:
-Parent: universal-skill-creator
-  Delegates: domain research to research-skill
-  Calls when: Step 2 of skill creation workflow
-  Receives: structured findings report (GOTCHAS, WORKFLOW, FAILURE_MODES)
-
-Child: research-skill
-  Core job: search 3 sources, return findings report for a skill domain
-  Input: domain name
-  Output: findings report with GOTCHAS, WORKFLOW PATTERNS, FAILURE MODES, EXISTING SKILLS
-  Standalone: yes — users can call it directly to research any skill domain
+Contract: parent delegates Step 2 domain research to child, receives findings report.
+Child standalone: yes — users can call research-skill directly.
 
 Result: universal-skill-creator 503 → 127 lines, improve-skills 259 → 121 lines
-Regression check: all original research capability preserved in research-skill
+Regression check: all capabilities preserved in research-skill
     </output>
   </example>
 </examples>
@@ -186,3 +177,20 @@ Regression check: all original research capability preserved in research-skill
 ## Reference Files
 
 - **`references/split-patterns.md`**: Common split patterns with examples — pipeline extraction, shared capability extraction, format/schema extraction. Read when the natural seam is unclear.
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Split complete: [parent-skill] → [parent-skill] + [child-skill]
+Parent: [before] → [after] lines
+Child: [child-skill] — [lines] lines (new)
+Other callers updated: [list or "none"]
+AGENTS.md updated: yes
+Regression check: all capabilities preserved
+agentskills validate: ✓ (parent), ✓ (child)
+Files created: .agents/skills/[child-skill]/SKILL.md
+Files modified: .agents/skills/[parent-skill]/SKILL.md, AGENTS.md
+```
