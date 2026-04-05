@@ -80,7 +80,8 @@ This repo is self-managing. These skills maintain, improve, and grow the skill l
 | [`universal-skill-creator`](.agents/skills/universal-skill-creator/) | Creates new cross-platform skills from scratch — runs live research, writes, validates, splits/compresses if needed | "create a skill for X", "build a skill that does Y" |
 | [`improve-skills`](.agents/skills/improve-skills/) | Audits every skill in the repo, researches the domain, rewrites for quality, then splits/compresses to stay under 200 lines | "improve all skills", "skill audit", "upgrade skills with latest research" |
 | [`research-skill`](.agents/skills/research-skill/) | Searches academic papers, practitioner blogs, and GitHub skill repos for a domain — returns structured findings | Called automatically by `universal-skill-creator` and `improve-skills` |
-| [`skill-compressor`](.agents/skills/skill-compressor/) | Compresses any skill to under 200 lines by moving non-core content to `references/` — never degrades quality | Called automatically when a skill has only background content to trim |
+| [`prune-skill`](.agents/skills/prune-skill/) | Removes content that is wrong, outdated, disproven, or based on poorly-cited sources — audits every citation for journal quality and recency before anything else runs | Called automatically at the start of every improve-skills cycle |
+| [`skill-compressor`](.agents/skills/skill-compressor/) | Compresses any skill to under 200 lines by moving non-core content to `references/` — never degrades quality | Called automatically after split-skill, or directly when only background content needs trimming |
 | [`split-skill`](.agents/skills/split-skill/) | Extracts a coherent sub-capability into a child skill when a skill is too large to compress without losing nuance | Called automatically before compression when duplication or a natural seam exists |
 
 ### How the Meta Skills Work Together
@@ -88,14 +89,20 @@ This repo is self-managing. These skills maintain, improve, and grow the skill l
 ```
 User: "create a skill for X"          User: "improve all skills"
          ↓                                      ↓
-universal-skill-creator            improve-skills
-  → research-skill (research)         → research-skill (per skill)
-  → split-skill (if >200, seam)       → split-skill (if >200, seam)
-      → skill-compressor (cleanup)        → skill-compressor (cleanup)
-  → skill-compressor (if no seam)     → skill-compressor (if no seam)
+universal-skill-creator            improve-skills (per skill):
+  → research-skill                    1. prune-skill   ← remove wrong/outdated first
+  → split-skill (if >200, seam)       2. score         ← baseline audit
+      → skill-compressor                 3. research-skill ← add what's missing
+  → skill-compressor (if no seam)     4. rewrite
+                                       5. split-skill (if >200, seam)
+                                           → skill-compressor
+                                       OR skill-compressor (if no seam)
 ```
 
-**Ordering rule:** Split before compress. Splitting preserves nuance by extracting to a child skill. Compression discards content. Wrong order = permanent loss of detail.
+**Full ordering rationale:**
+- **Prune first** — remove what is wrong before adding anything new
+- **Research second** — add current best practices to what remains
+- **Split before compress** — splitting preserves nuance; compression discards content permanently
 
 ---
 

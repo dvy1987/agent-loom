@@ -42,20 +42,25 @@ If the user wants to exclude specific skills, they'll say so. Otherwise include 
 
 Repeat for each skill in the queue:
 
-**2a — Baseline Score** (read `references/scoring-rubric.md` for 0–2 per criterion)
-Score against: Routing · Role Definition · Workflow · Gotchas · Output Format · Examples · Token Efficiency
-Report score before touching anything: `[skill]: X/14`
+**2a — Prune first**
+Invoke `prune-skill` on the skill. Wait for the prune report.
+Pruning removes wrong or outdated content before anything else touches the skill.
+Do not proceed to 2b until the prune report is complete and changes are applied.
 
-**2b — Research via research-skill**
+**2b — Baseline Score** (read `references/scoring-rubric.md` for 0–2 per criterion)
+Score against: Routing · Role Definition · Workflow · Gotchas · Output Format · Examples · Token Efficiency
+Report score before touching anything else: `[skill]: X/14`
+
+**2c — Research via research-skill**
 Invoke `research-skill` on the skill's domain. Wait for the findings report.
 Use GOTCHAS → Gotchas section, WORKFLOW PATTERNS → workflow steps, FAILURE MODES → hard rules.
-Do not proceed to 2c until the findings report is complete.
+Do not proceed to 2d until the findings report is complete.
 
-**2c — Classify with SkillReducer Taxonomy**
+**2d — Classify with SkillReducer Taxonomy**
 Tag every block: `CORE` · `WORKFLOW` · `FORMAT` · `EXAMPLE` · `BACKGROUND` · `EDGE_CASE` · `DUPLICATE` · `STALE`
 BACKGROUND and EDGE_CASE move to `references/` with specific load triggers. Everything else stays.
 
-**2d — Rewrite in priority order**
+**2e — Rewrite in priority order**
 1. Fix routing — add missing trigger phrases, test against 5 real prompts mentally
 2. Add gotchas from research — specific, non-obvious facts only
 3. Sharpen workflow — imperative one-liners, MUST/NEVER over soft suggestions
@@ -64,13 +69,13 @@ BACKGROUND and EDGE_CASE move to `references/` with specific load triggers. Ever
 6. Move BACKGROUND to `references/background.md` with specific load trigger
 7. Bump `metadata.version`
 
-**2e — Post-Rewrite Score** — re-score all 7 criteria, report delta: `X/14 → Y/14`
+**2f — Post-Rewrite Score** — re-score all 7 criteria, report delta: `X/14 → Y/14`
 
-**2f — Size Check, Split, then Compress**
+**2g — Size Check, Split, then Compress**
 ```bash
 wc -l .agents/skills/<skill>/SKILL.md
 ```
-Under 200 → proceed to 2g.
+Under 200 → proceed to 2h.
 
 Over 200 — apply in this order (split before compress — splitting preserves nuance, compressing can lose it):
 1. **Duplication check** — does this sub-workflow also appear in another skill? → invoke `split-skill` (Type B)
@@ -79,7 +84,7 @@ Over 200 — apply in this order (split before compress — splitting preserves 
 
 `split-skill` calls `skill-compressor` on the output automatically.
 
-**2g — Validate and Commit**
+**2h — Validate and Commit**
 ```bash
 agentskills validate .agents/skills/<skill>/
 git commit -m "improve: <skill> — <before>/14 → <after>/14\n\n- [change 1]\nSources: [source]"

@@ -106,41 +106,55 @@ improve-skills            ← user: "improve skills" / "skill audit"
 ```
 universal-skill-creator
   ├── Step 2  → research-skill       (always — domain research before writing)
-  └── Step 7  → split-skill          (if >200 AND duplication or natural seam exists)
-              └── skill-compressor  (split-skill calls this on parent + child after every split)
+  └── Step 7  → split-skill          (if >200 AND duplication or seam exists)
+              └── skill-compressor  (split-skill always calls this after splitting)
               └── skill-compressor  (if >200 AND no seam — only BACKGROUND to trim)
 
 improve-skills
-  ├── Step 2b → research-skill       (per skill — domain research before rewriting)
-  └── Step 2f → split-skill          (if >200 AND duplication or natural seam exists)
-              └── skill-compressor  (split-skill calls this on parent + child after every split)
-              └── skill-compressor  (if >200 AND no seam — only BACKGROUND to trim)
+  ├── Step 2a → prune-skill         (always — remove wrong/outdated content first)
+  ├── Step 2c → research-skill       (domain research before rewriting)
+  └── Step 2g → split-skill          (if >200 AND duplication or seam exists)
+              └── skill-compressor  (split-skill always calls this after splitting)
+              └── skill-compressor  (if >200 AND no seam)
 
 skill-compressor
-  └── Step 3  → split-skill          (if CORE content still >200 after moving BACKGROUND)
+  └── Step 3  → split-skill          (if CORE content still >200 after classify)
 
 split-skill
   └── Step 5  → skill-compressor     (always — compress parent + child after every split)
 
+prune-skill               (leaf node — calls nothing, returns prune report)
 research-skill            (leaf node — calls nothing, returns findings report)
 ```
 
-**Ordering rule — split before compress:**
-Split first because splitting preserves nuance by extracting to a child skill.
-Compress only after splitting (or when no seam exists) because compression
-discards content. Wrong order = loss of valuable detail.
+**Per-skill sequence inside improve-skills (the full order):**
+```
+1. prune-skill    — remove what is wrong or outdated
+2. score          — baseline audit (7 criteria, /14)
+3. research-skill — add what is missing or improved
+4. classify       — SkillReducer taxonomy
+5. rewrite        — apply improvements
+6. re-score       — measure delta
+7. split-skill    — extract if >200 and seam exists
+   └ skill-compressor  — always runs after split
+   OR skill-compressor  — directly, if no seam
+8. validate + commit
+```
+Ordering rationale: prune first (remove bad), then add (research), then resize (split/compress).
+Never compress before pruning — you would be trimming content you haven't yet determined is correct.
 
 **Decision logic when a skill exceeds 200 lines:**
 ```
-1. Does a sub-workflow appear in 2+ skills?  → split-skill (Type B: shared extraction)
-2. Is there a self-contained extractable phase? → split-skill (Type A: phase extraction)
-3. No seam — excess is only BACKGROUND/EDGE_CASE? → skill-compressor
+1. Does a sub-workflow appear in 2+ skills?    → split-skill (Type B)
+2. Is there a self-contained extractable phase? → split-skill (Type A)
+3. No seam — only BACKGROUND/EDGE_CASE excess? → skill-compressor
 ```
 
 **Skill roles:**
 - `universal-skill-creator`: creates new skills from scratch
-- `improve-skills`: audits and improves all skills (including meta skills)
-- `research-skill`: shared leaf — researches any domain, returns findings report
+- `improve-skills`: orchestrates the full improvement cycle for all skills
+- `prune-skill`: removes wrong, outdated, or poorly-cited content
+- `research-skill`: researches any domain, returns structured findings report
 - `skill-compressor`: moves non-core content to references/, trims prose
 - `split-skill`: extracts coherent sub-capabilities into child skills
 - `brainstorming`: design before code for any new feature
