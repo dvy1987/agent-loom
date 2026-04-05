@@ -96,31 +96,52 @@ bash install.sh --update
 
 ## Skill Relationships
 
+**User entry points** (everything else is called by these):
 ```
-brainstorming  →  prd-writing  →  [implementation skill]
-
-universal-skill-creator  →  research-skill    (Step 2: domain research)
-universal-skill-creator  →  skill-compressor  (Step 7: if >200, excess is background)
-universal-skill-creator  →  split-skill       (Step 7: if >200, excess is core)
-
-improve-skills           →  research-skill    (Step 2b: domain research per skill)
-improve-skills           →  skill-compressor  (Step 2f: if >200, excess is background)
-improve-skills           →  split-skill       (Step 2f: if >200, excess is core)
-
-skill-compressor         →  split-skill       (Step 3b: if core content still >200 after compress)
+universal-skill-creator   ← user: "create a skill"
+improve-skills            ← user: "improve skills" / "skill audit"
 ```
 
-**Decision logic for oversized skills:**
+**Full call graph:**
 ```
-Skill >200 lines?
-  ├── Excess is BACKGROUND/EDGE_CASE → skill-compressor (move to references/)
-  └── Excess is genuinely CORE       → split-skill (extract child skill)
+universal-skill-creator
+  ├── Step 2  → research-skill       (always — domain research before writing)
+  └── Step 7  → split-skill          (if >200 AND duplication or natural seam exists)
+              └── skill-compressor  (split-skill calls this on parent + child after every split)
+              └── skill-compressor  (if >200 AND no seam — only BACKGROUND to trim)
+
+improve-skills
+  ├── Step 2b → research-skill       (per skill — domain research before rewriting)
+  └── Step 2f → split-skill          (if >200 AND duplication or natural seam exists)
+              └── skill-compressor  (split-skill calls this on parent + child after every split)
+              └── skill-compressor  (if >200 AND no seam — only BACKGROUND to trim)
+
+skill-compressor
+  └── Step 3  → split-skill          (if CORE content still >200 after moving BACKGROUND)
+
+split-skill
+  └── Step 5  → skill-compressor     (always — compress parent + child after every split)
+
+research-skill            (leaf node — calls nothing, returns findings report)
 ```
 
-- `brainstorming`: design before code — always runs first for new features
-- `prd-writing`: formalises a design doc into a structured PRD
-- `universal-skill-creator`: meta-skill — creates new skills
-- `improve-skills`: meta-skill — audits and improves existing skills
-- `skill-compressor`: meta-skill — compresses when excess content is non-core
-- `split-skill`: meta-skill — extracts child skills when excess content is genuinely core
-- `research-skill`: shared capability — called by creator and improver for live domain research
+**Ordering rule — split before compress:**
+Split first because splitting preserves nuance by extracting to a child skill.
+Compress only after splitting (or when no seam exists) because compression
+discards content. Wrong order = loss of valuable detail.
+
+**Decision logic when a skill exceeds 200 lines:**
+```
+1. Does a sub-workflow appear in 2+ skills?  → split-skill (Type B: shared extraction)
+2. Is there a self-contained extractable phase? → split-skill (Type A: phase extraction)
+3. No seam — excess is only BACKGROUND/EDGE_CASE? → skill-compressor
+```
+
+**Skill roles:**
+- `universal-skill-creator`: creates new skills from scratch
+- `improve-skills`: audits and improves all skills (including meta skills)
+- `research-skill`: shared leaf — researches any domain, returns findings report
+- `skill-compressor`: moves non-core content to references/, trims prose
+- `split-skill`: extracts coherent sub-capabilities into child skills
+- `brainstorming`: design before code for any new feature
+- `prd-writing`: turns a design or brief into a structured PRD

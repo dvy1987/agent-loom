@@ -80,13 +80,18 @@ Classify every block before finalising. Over 60% of skill bodies in the wild are
 | Numbered workflow steps | Edge cases (<20% of invocations) | Duplicate content |
 | Output format / schema | Extra examples beyond 2 | — |
 
-### Step 7 — Size Check and Split if Needed
+### Step 7 — Size Check, Split, then Compress
 ```bash
 wc -l .agents/skills/<skill-name>/SKILL.md
 ```
-- Under 200 lines → proceed to Step 8
-- Over 200 lines, excess is BACKGROUND/EDGE_CASE → invoke `skill-compressor`
-- Over 200 lines, excess is genuinely CORE → invoke `split-skill` to extract a child skill
+If under 200 lines → proceed to Step 8.
+
+If over 200 lines, apply in this order:
+1. **Check for duplication first** — does any sub-workflow in this skill also appear in another skill? If yes, invoke `split-skill` (Type B extraction). Split preserves nuance; compress can lose it.
+2. **Check for a natural seam** — is there a self-contained phase that could be a child skill? If yes, invoke `split-skill` (Type A extraction).
+3. **If no seam exists** — all excess is BACKGROUND/EDGE_CASE → invoke `skill-compressor` to move it to references/.
+
+`split-skill` will call `skill-compressor` on the resulting parent and child automatically.
 
 ### Step 8 — Validate and Package
 ```bash

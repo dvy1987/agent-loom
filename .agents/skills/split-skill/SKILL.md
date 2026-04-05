@@ -97,20 +97,26 @@ Invoke `<child-skill-name>` with [input]. Wait for the [output type] before proc
 
 Verify parent is now under 200 lines.
 
-### Step 5 — Update All Other Callers
+### Step 5 — Compress Parent and Child
+
+After the split, invoke `skill-compressor` on both the parent and the child skill.
+Even if each is under 200 lines, compression removes any BACKGROUND or prose that crept in during the rewrite.
+This ensures the split doesn't just redistribute bloat between two files.
+
+### Step 6 — Update All Other Callers
 
 If Type B (duplicated sub-workflow): identify every other skill with the same pattern and update them to call the child skill instead of running the workflow inline.
 
 For each updated skill: verify it's still under 200 lines and passes `agentskills validate`.
 
-### Step 6 — Update AGENTS.md Relationships
+### Step 7 — Update AGENTS.md Relationships
 
 Add the new call relationship to the Skill Relationships section:
 ```
 [parent-skill]  →  [child-skill]  (calls for [reason])
 ```
 
-### Step 7 — Regression Check
+### Step 8 — Regression Check
 
 Before committing, verify for every affected skill:
 - [ ] All original capabilities still present (parent + child together)
@@ -121,7 +127,7 @@ Before committing, verify for every affected skill:
 - [ ] `agentskills validate` passes for parent and child
 - [ ] AGENTS.md relationships map is updated
 
-### Step 8 — Commit
+### Step 9 — Commit
 
 ```bash
 git add .agents/skills/<parent>/ .agents/skills/<child>/ AGENTS.md

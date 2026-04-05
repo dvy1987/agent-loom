@@ -21,10 +21,11 @@ You are a Senior AI Skill Engineer running a systematic improvement pass over a 
 
 ## Hard Rules
 
-**Never modify:** `universal-skill-creator`, `skill-compressor`, `improve-skills`.
-All other skills are in scope. If asked to improve a meta skill, refuse and skip it.
+**All skills are in scope including meta skills.** Meta skills follow the same quality bar, the same 200-line limit, and benefit from the same research-backed improvements as domain skills.
 
 **Improve before compressing.** Compressing a weak skill produces a smaller weak skill.
+
+**Split before compressing.** When a skill is over 200 lines, check for a natural seam or duplication before compressing. Splitting preserves nuance that compression discards.
 
 ---
 
@@ -34,7 +35,8 @@ All other skills are in scope. If asked to improve a meta skill, refuse and skip
 ```bash
 ls .agents/skills/
 ```
-Build queue: every skill except the three meta skills above. Report it, ask for confirmation.
+Build queue: every skill in the repo. Report it with line counts, ask for confirmation.
+If the user wants to exclude specific skills, they'll say so. Otherwise include all.
 
 ### Step 2 — Per-Skill Improvement Cycle
 
@@ -64,13 +66,18 @@ BACKGROUND and EDGE_CASE move to `references/` with specific load triggers. Ever
 
 **2e — Post-Rewrite Score** — re-score all 7 criteria, report delta: `X/14 → Y/14`
 
-**2f — Size Check**
+**2f — Size Check, Split, then Compress**
 ```bash
 wc -l .agents/skills/<skill>/SKILL.md
 ```
-- Under 200 lines → proceed to 2g
-- Over 200 lines, excess is BACKGROUND/EDGE_CASE → invoke `skill-compressor`
-- Over 200 lines, excess is genuinely CORE → invoke `split-skill` to extract a child skill
+Under 200 → proceed to 2g.
+
+Over 200 — apply in this order (split before compress — splitting preserves nuance, compressing can lose it):
+1. **Duplication check** — does this sub-workflow also appear in another skill? → invoke `split-skill` (Type B)
+2. **Seam check** — is there a self-contained extractable phase? → invoke `split-skill` (Type A)
+3. **No seam** — excess is only BACKGROUND/EDGE_CASE → invoke `skill-compressor`
+
+`split-skill` calls `skill-compressor` on the output automatically.
 
 **2g — Validate and Commit**
 ```bash

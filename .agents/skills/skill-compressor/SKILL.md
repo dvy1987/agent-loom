@@ -2,33 +2,30 @@
 name: skill-compressor
 description: >
   Compress an oversized SKILL.md to under 200 lines without losing effectiveness.
-  Load when a skill file exceeds 200 lines or ~1,500 tokens, when AGENTS.md
-  triggers compression after a skill edit, or when the user asks to compress,
-  shrink, slim down, or optimize a skill file. Meta skills (universal-skill-creator,
-  any skill whose name contains "creator", "architect", or "meta") are exempt
-  and must never be passed to this skill. This skill preserves hard gates,
-  gotchas, output format, routing triggers, and at least one example — the
-  five elements that define a skill's effectiveness. Compression must not
-  cause regression: the agent using the compressed skill must behave
-  identically to the agent using the original.
-  Never applies to meta skills: universal-skill-creator and skill-compressor
-  are explicitly exempt and must be refused if passed to this skill.
+  Load when a skill exceeds 200 lines, when AGENTS.md triggers compression after
+  a skill edit, or when the user asks to compress, shrink, slim down, or optimize
+  a skill. Applies to all skills including meta skills — the 200-line rule has
+  no exceptions. Preserves hard gates, gotchas, output format, routing triggers,
+  and at least one example. When genuinely CORE content cannot be compressed
+  away, invokes split-skill instead of degrading the skill.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   sources: SkillReducer arXiv:2603.29919, agentskills.io best practices, Vercel AGENTS.md research
 ---
 
 # Skill Compressor
 
-You are a skill optimization engineer. You compress SKILL.md files to under 200 lines while preserving 100% of their functional effectiveness. You apply the SkillReducer two-stage method: routing layer optimization first, body restructuring second. Research shows compression improves agent performance by 2.8% on average — removing noise reduces distraction.
+You are a skill optimization engineer. You compress SKILL.md files to under 200 lines while preserving 100% of functional effectiveness. Research shows compression improves agent performance by 2.8% on average — removing noise reduces distraction (arXiv:2603.29919).
 
 ## Hard Rules
 
-**Never compress meta skills** — `universal-skill-creator` and `skill-compressor` itself are both exempt. If asked to compress either, refuse and explain that meta skills are excluded from the 200-line limit by design.
+**All skills are in scope, including meta skills.** The 200-line rule has no exceptions.
 
-**Never commit a compressed skill that fails any regression check.** If content is genuinely CORE but the skill is still >200 lines after moving all BACKGROUND and EDGE_CASE to references/ — stop compression and invoke `split-skill` instead. Compression and splitting are complementary: compress first, split only when compression alone cannot preserve all functionality within 200 lines.
+**Split before compress when CORE content is the problem.** If after classifying content the skill still has >200 lines of genuinely CORE content, invoke `split-skill` before attempting further compression. Splitting preserves nuance; compression discards it.
+
+**Never commit a compressed skill that fails any regression check.** Restore content and invoke `split-skill` rather than ship a degraded skill.
 
 ---
 
@@ -38,115 +35,64 @@ You are a skill optimization engineer. You compress SKILL.md files to under 200 
 ```bash
 wc -l .agents/skills/<skill-name>/SKILL.md
 ```
-If under 200 lines, stop — no compression needed. Report the count and exit.
+Under 200 lines → stop, report count, exit.
 
-### Step 2 — Classify every block of content
+### Step 2 — Classify Every Block
 
-Read the full SKILL.md and tag each section as one of:
+Tag each section:
 
 | Tag | Definition | Destination |
 |-----|-----------|-------------|
-| `CORE` | Hard gates, MUST/NEVER rules, gotchas the agent will get wrong without being told | Stay in SKILL.md, untouched |
-| `WORKFLOW` | Numbered procedural steps the agent follows every run | Stay in SKILL.md, compress prose to imperative one-liners |
-| `FORMAT` | Output schema, template, or structure the agent must produce | Stay in SKILL.md, keep template, cut surrounding explanation |
-| `EXAMPLE` | Input → output pairs | Keep the single shortest one in SKILL.md; move rest to `references/examples.md` |
-| `BACKGROUND` | Rationale, "why", verbose context, anything the LLM already knows from training | Move to `references/background.md` with a specific load trigger |
-| `EDGE_CASE` | Scenarios applying to <20% of invocations | Move to `references/edge-cases.md` with a specific load trigger |
-| `DUPLICATE` | Content already stated elsewhere in the same file | Delete entirely |
+| `CORE` | Hard gates, MUST/NEVER rules, gotchas agent needs every run | Stay in body |
+| `WORKFLOW` | Numbered procedural steps | Stay, compress to one-liners |
+| `FORMAT` | Output schema or template | Stay, cut surrounding prose |
+| `EXAMPLE` | Input → output pairs | Keep 1 shortest inline; rest → `references/examples.md` |
+| `BACKGROUND` | Rationale, "why", verbose context, LLM already knows | → `references/background.md` + load trigger |
+| `EDGE_CASE` | Applies to <20% of invocations | → `references/edge-cases.md` + load trigger |
+| `DUPLICATE` | Already stated elsewhere in the file | Delete |
 
-### Step 3 — Apply compression transforms in order
+### Step 3 — Split Decision Gate
 
-**Transform 1 — Delete what the LLM already knows.**
-Test each line: "Would a capable LLM get this wrong without being told?"
-If no → delete. If unsure → keep.
-
-Examples of deletable lines:
-- "A PRD should have clear, measurable requirements"
-- "Make sure to be thorough and cover all aspects"
-- "This is important because stakeholders need alignment"
-
-**Transform 2 — Convert prose to imperative one-liners.**
-```
-Before: "You should make sure to ask the user at least a couple of
-         clarifying questions before you begin writing, as this will
-         help ensure the output is relevant to their needs."
-After:  "Ask at least 2 clarifying questions before writing."
-```
-Target: every workflow step fits on one line.
-
-**Transform 3 — Move BACKGROUND and EDGE_CASE to references/.**
-For each moved block, add an explicit load trigger in SKILL.md:
-```
-Read `references/edge-cases.md` if the user mentions [specific condition].
-```
-Generic triggers like "see references/ for more detail" are not acceptable — the condition must be specific enough that the agent only loads the file when actually needed.
-
-**Transform 4 — Collapse redundant sections.**
-If Scope + Constraints + Never + Hard Rules all say similar things, merge into one `## Constraints` section. Keep the most specific version of each rule.
-
-**Transform 5 — Compress the description field.**
-The description is loaded on every session startup — it is the most expensive field.
-Keep only: primary capability + top 3 trigger phrases + 1–2 domain keywords.
-Target: under 400 characters while preserving all routing triggers.
-Test: mentally check 3 real user prompts — would they still activate this skill?
-
-### Step 3b — Split Decision Gate
-
-After classifying all content (Step 3), check:
+After classifying, check before compressing:
 - Have you moved all BACKGROUND and EDGE_CASE to references/?
 - Is the remaining body still >200 lines?
-- Is the excess content genuinely CORE — hard gates, gotchas, workflow steps the agent needs every run?
+- Is the excess genuinely CORE content?
 
-If all three are true: **stop compression. Invoke `split-skill`.** Pass it the classification results from Step 3.
-If not all three are true: continue to Step 4.
+If all three are true → **invoke `split-skill`** with the classification results. Do not attempt further compression.
+Otherwise → proceed to Step 4.
 
-### Step 4 — Regression Check
+### Step 4 — Apply Compression Transforms
 
-Before writing the compressed file, verify all five preservation criteria:
+1. **Delete what LLM already knows** — if any line could appear in generic training data, delete it
+2. **Convert prose to imperative one-liners** — "Ask at least 2 clarifying questions before writing"
+3. **Move BACKGROUND/EDGE_CASE to references/** — with specific load triggers, not generic "see references/"
+4. **Collapse redundant sections** — merge Scope + Constraints + Never into one `## Constraints` section
+5. **Compress description** — keep primary capability + top 3 triggers + key synonyms, target under 400 chars
 
-- [ ] **Routing preserved** — all original trigger phrases still present in description. Test mentally against 3 sample user prompts.
-- [ ] **Hard gates present** — every MUST/NEVER/do NOT statement still in SKILL.md body, not in references.
-- [ ] **Gotchas present** — every non-obvious domain-specific fact still in SKILL.md body.
-- [ ] **Output format intact** — agent can produce correctly structured output from SKILL.md alone without loading any reference.
-- [ ] **At least one example** — shortest, most representative example remains inline.
+### Step 5 — Regression Check
 
-If any check fails: restore the affected content to SKILL.md before proceeding.
+- [ ] All original trigger phrases still in description — test against 3 sample prompts
+- [ ] All hard gates (MUST/NEVER) still in body, not references
+- [ ] All gotchas still in body
+- [ ] Output format intact — agent can produce correct output from body alone
+- [ ] At least one complete example inline
 
-### Step 5 — Write and Validate
+If any check fails → restore content and invoke `split-skill`.
 
-Write the compressed SKILL.md. Then:
+### Step 6 — Validate and Commit
 ```bash
 agentskills validate .agents/skills/<skill-name>/
-```
-Must exit 0. If it fails, fix the frontmatter issue before proceeding.
-
-### Step 6 — Report and Commit
-
-Report the result:
-```
-skill-name: 347 lines → 156 lines (55% reduction)
-Moved to references/: background.md, examples.md
-Regression check: all 5 criteria passed
-agentskills validate: ✓
-```
-
-Then commit:
-```bash
-git add .agents/skills/<skill-name>/
 git commit -m "compress: <skill-name> — <before> → <after> lines, no regression"
 ```
 
 ---
 
 ## What Must Never Be Compressed Away
-
-Regardless of line count, these survive every compression:
 - Hard gate statements (MUST / NEVER / do NOT)
-- Gotchas — non-obvious facts specific to this skill's domain
-- The output format template or schema
+- Gotchas — non-obvious domain-specific facts
+- Output format template or schema
 - At least one concrete input → output example
 - All trigger phrases in the description field
-- The verification checklist (if the skill has one)
 
 ---
 
@@ -156,24 +102,20 @@ Regardless of line count, these survive every compression:
   <example>
     <input>Compress .agents/skills/prd-writing/SKILL.md — it's 354 lines</input>
     <output>
-Reading prd-writing/SKILL.md (354 lines)...
+prd-writing: 354 lines
 
 Classification:
-- CORE: Hard gates (never write before discovery), gotchas (never hallucinate tech stack) — 12 lines
-- WORKFLOW: 9 steps — keeping all, compressing prose — 45 lines
-- FORMAT: Full PRD schema, Lean PRD schema, One-Pager schema — keeping all 3, removing surrounding explanation — 60 lines
-- EXAMPLE: 2 examples — keeping the shorter one inline, moving second to references/examples.md
-- BACKGROUND: "Why PRDs matter", "Tips for product managers", troubleshooting section — moving to references/background.md
-- DUPLICATE: "Quality standards" section repeats content already in workflow steps — deleting
+- CORE: hard gates, gotchas — 12 lines — stay
+- WORKFLOW: 9 steps — stay, compress prose — 45 lines
+- FORMAT: 3 schemas — stay, remove surrounding explanation — 60 lines
+- EXAMPLE: 2 examples — keep shorter inline, move second to references/examples.md
+- BACKGROUND: "Why PRDs matter", tips section — move to references/background.md
+- DUPLICATE: quality standards repeats workflow — delete
 
-Regression check:
-- [ ] Routing: "write a PRD", "document requirements", "create a spec" all still in description ✓
-- [ ] Hard gates: "never write before discovery", "never hallucinate constraints" still in body ✓
-- [ ] Gotchas: "never use vague language", "never mark Approved with open questions" still in body ✓
-- [ ] Output format: all 3 schemas intact ✓
-- [ ] Example: 1 example inline ✓
+Split gate: BACKGROUND moved, remaining = 117 lines — under 200, no split needed.
 
-Result: 354 lines → 178 lines (50% reduction)
+Regression check: all 5 criteria passed ✓
+Result: 354 → 115 lines (67% reduction)
     </output>
   </example>
 </examples>
@@ -182,4 +124,4 @@ Result: 354 lines → 178 lines (50% reduction)
 
 ## Reference Files
 
-- **`references/compression-theory.md`**: The SkillReducer research findings and Vercel compressed-index research — read if the user asks why compression improves quality or wants to understand the theory.
+- **`references/compression-theory.md`**: SkillReducer research and Vercel compressed-index findings. Read if user asks why compression improves quality.
