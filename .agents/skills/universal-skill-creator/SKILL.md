@@ -80,7 +80,15 @@ Classify every block before finalising. Over 60% of skill bodies in the wild are
 | Numbered workflow steps | Edge cases (<20% of invocations) | Duplicate content |
 | Output format / schema | Extra examples beyond 2 | — |
 
-### Step 7 — Validate and Package
+### Step 7 — Size Check and Split if Needed
+```bash
+wc -l .agents/skills/<skill-name>/SKILL.md
+```
+- Under 200 lines → proceed to Step 8
+- Over 200 lines, excess is BACKGROUND/EDGE_CASE → invoke `skill-compressor`
+- Over 200 lines, excess is genuinely CORE → invoke `split-skill` to extract a child skill
+
+### Step 8 — Validate and Package
 ```bash
 agentskills validate .agents/skills/<skill-name>/
 # Package: zip -r skill-name.zip skill-name/

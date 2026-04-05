@@ -64,11 +64,13 @@ BACKGROUND and EDGE_CASE move to `references/` with specific load triggers. Ever
 
 **2e — Post-Rewrite Score** — re-score all 7 criteria, report delta: `X/14 → Y/14`
 
-**2f — Compression Check**
+**2f — Size Check**
 ```bash
 wc -l .agents/skills/<skill>/SKILL.md
 ```
-Over 200 lines → invoke `skill-compressor`. Under 200 → proceed directly.
+- Under 200 lines → proceed to 2g
+- Over 200 lines, excess is BACKGROUND/EDGE_CASE → invoke `skill-compressor`
+- Over 200 lines, excess is genuinely CORE → invoke `split-skill` to extract a child skill
 
 **2g — Validate and Commit**
 ```bash

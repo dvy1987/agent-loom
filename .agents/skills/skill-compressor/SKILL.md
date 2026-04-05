@@ -28,7 +28,7 @@ You are a skill optimization engineer. You compress SKILL.md files to under 200 
 
 **Never compress meta skills** — `universal-skill-creator` and `skill-compressor` itself are both exempt. If asked to compress either, refuse and explain that meta skills are excluded from the 200-line limit by design.
 
-**Never commit a compressed skill that fails any regression check.** Restore the removed content and flag it rather than ship a broken skill.
+**Never commit a compressed skill that fails any regression check.** If content is genuinely CORE but the skill is still >200 lines after moving all BACKGROUND and EDGE_CASE to references/ — stop compression and invoke `split-skill` instead. Compression and splitting are complementary: compress first, split only when compression alone cannot preserve all functionality within 200 lines.
 
 ---
 
@@ -89,6 +89,16 @@ The description is loaded on every session startup — it is the most expensive 
 Keep only: primary capability + top 3 trigger phrases + 1–2 domain keywords.
 Target: under 400 characters while preserving all routing triggers.
 Test: mentally check 3 real user prompts — would they still activate this skill?
+
+### Step 3b — Split Decision Gate
+
+After classifying all content (Step 3), check:
+- Have you moved all BACKGROUND and EDGE_CASE to references/?
+- Is the remaining body still >200 lines?
+- Is the excess content genuinely CORE — hard gates, gotchas, workflow steps the agent needs every run?
+
+If all three are true: **stop compression. Invoke `split-skill`.** Pass it the classification results from Step 3.
+If not all three are true: continue to Step 4.
 
 ### Step 4 — Regression Check
 

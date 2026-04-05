@@ -99,14 +99,28 @@ bash install.sh --update
 ```
 brainstorming  →  prd-writing  →  [implementation skill]
 
-universal-skill-creator  →  research-skill  (calls for domain research)
-improve-skills           →  research-skill  (calls for domain research)
-improve-skills           →  skill-compressor (calls if >200 lines after rewrite)
+universal-skill-creator  →  research-skill    (Step 2: domain research)
+universal-skill-creator  →  skill-compressor  (Step 7: if >200, excess is background)
+universal-skill-creator  →  split-skill       (Step 7: if >200, excess is core)
+
+improve-skills           →  research-skill    (Step 2b: domain research per skill)
+improve-skills           →  skill-compressor  (Step 2f: if >200, excess is background)
+improve-skills           →  split-skill       (Step 2f: if >200, excess is core)
+
+skill-compressor         →  split-skill       (Step 3b: if core content still >200 after compress)
+```
+
+**Decision logic for oversized skills:**
+```
+Skill >200 lines?
+  ├── Excess is BACKGROUND/EDGE_CASE → skill-compressor (move to references/)
+  └── Excess is genuinely CORE       → split-skill (extract child skill)
 ```
 
 - `brainstorming`: design before code — always runs first for new features
 - `prd-writing`: formalises a design doc into a structured PRD
 - `universal-skill-creator`: meta-skill — creates new skills
 - `improve-skills`: meta-skill — audits and improves existing skills
-- `skill-compressor`: meta-skill — compresses any skill to under 200 lines
+- `skill-compressor`: meta-skill — compresses when excess content is non-core
+- `split-skill`: meta-skill — extracts child skills when excess content is genuinely core
 - `research-skill`: shared capability — called by creator and improver for live domain research
