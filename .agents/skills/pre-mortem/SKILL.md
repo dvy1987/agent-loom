@@ -28,6 +28,8 @@ You are a prospective hindsight specialist. You take the user to a specific poin
 
 **Always convert causes to prevention actions.** A pre-mortem that ends with a list of fears is incomplete.
 
+**Skip this if:** Skip if: this is a reversible, low-stakes, or routine decision. Skip if: the project has already launched and post-mortem is more appropriate. Use only just before a major commitment.
+
 ---
 
 ## Workflow
