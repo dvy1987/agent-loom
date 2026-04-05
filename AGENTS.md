@@ -53,9 +53,9 @@ If >200 lines → check `docs/SKILL-INDEX.md` for split vs compress decision:
 ## Skill Types (see docs/SKILL-INDEX.md for full details)
 
 ```
-meta            | manage the skill library | install globally (~/.agents/skills/)
-domain          | reusable workflows       | install globally
-project-specific| one project's conventions| stay in this repo's .agents/skills/
+meta            | manage the skill library itself     | install globally
+project-specific| workflows that recur across projects| install globally, output lands in current project
+domain          | specialized, not universally needed | install only when needed (currently empty)
 ```
 
 ---

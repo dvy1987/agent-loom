@@ -1,165 +1,145 @@
 # Skill Index
 
-Complete reference for all skills in this repo. Referenced by AGENTS.md.
-Read this when deciding which skill to invoke or when checking what a skill produces.
+Complete reference for all skills in this repo.
+Agents: read this when deciding which skill to invoke or checking what a skill produces.
+Humans: read this for a full picture of what's available and what each skill outputs.
 
 Last updated: 2026-04-05
 
 ---
 
-## Skill Categories
+## Skill Categories — Definitions
 
-| Category | Description |
-|----------|-------------|
-| **Meta** | Skills that manage the skill library itself. Available globally via `~/.agents/skills/`. |
-| **Domain** | Reusable workflow skills for common product/engineering tasks. Available globally. |
-| **Project-specific** | Skills scoped to one project's conventions, stack, or codebase. Live in `.agents/skills/` of that repo only. |
+### Meta Skills
+Skills that manage the skill library itself. They create, improve, validate, compress, split, deprecate, and publish other skills. Meta skills are always installed globally (`~/.agents/skills/`) and are available across every project automatically. They call each other — see the Call Graph below. Users interact with only two: `universal-skill-creator` and `improve-skills`. The rest are called automatically.
+
+### Project-Specific Skills
+Skills built for workflows that recur across most or all projects — things like designing features before coding, writing product requirements, planning implementation, writing changelogs, or documenting decisions. These skills are installed globally and work in any project, but the files they generate land inside the current project's directory structure (e.g., `docs/specs/`, `docs/prd/`). They are "project-specific" not because they are scoped to one codebase, but because their output is always tied to the project you are currently working in.
+
+### Domain Skills
+Skills built for specialized workflows that are useful in some projects but not all. Examples: story writing, dramatization, screenplay formatting, academic paper structuring, legal document drafting, marketing copy generation. Domain skills are not universally applicable — they are built and installed only when a project or user explicitly needs them. **This category is currently empty.** Add skills here when you build something specialized.
 
 ---
 
 ## Meta Skills
 
-Skills that create, improve, validate, and manage other skills. Install globally — they work across all projects.
+Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` and `universal-skill-creator`.
 
 ### `universal-skill-creator`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "create a skill", "build a skill that does X", "skill creator", "write a SKILL.md"
-**What it does:** Creates new cross-platform skills. Runs live domain research (papers + blogs + GitHub repos), writes the skill, validates quality (≥10/14), splits/compresses if needed, optionally publishes to skills.sh.
-**Output:** `.agents/skills/<name>/SKILL.md` + optional references/, scripts/, templates/
-**Impact report delivered:** Yes — tier, score, install path, test trigger, files created
-**File logged to:** Not logged (skill files go to `.agents/skills/`, not `docs/skill-outputs/`)
+**Triggers:** "create a skill", "build a skill that does X", "skill creator", "write a SKILL.md", "skill architect", "skill engineer"
+**What it does:** Creates new cross-platform skills from scratch. Runs live domain research (papers + practitioner blogs + GitHub skill repos), writes the skill body, validates quality (≥10/14 score), splits or compresses if over 200 lines, optionally publishes to skills.sh.
+**Mandatory in every skill it creates:** `## Impact Report` section + file-output logging to `docs/skill-outputs/SKILL-OUTPUTS.md` for any skill that generates project files.
+**Output:** `.agents/skills/<name>/SKILL.md` + optional `references/`, `scripts/`, `templates/`
+**Impact report:** Tier, validate-skills score, install path, test trigger, all files created, research sources used, publish status
 
 ---
 
 ### `improve-skills`
-**Type:** Meta | **Scope:** Global
 **Triggers:** "improve all skills", "skill audit", "upgrade skills with latest research", "run improvement pass"
-**What it does:** Orchestrates the full improvement cycle for every skill. Runs validate → prune → research → rewrite → split/compress → commit. Processes all skills or a user-specified subset.
-**Sequence:** validate-skills → (deprecate-skill if score 0–5) → prune-skill → research-skill → rewrite → split-skill/skill-compressor → validate + commit
-**Output:** Modified SKILL.md files (every skill improved)
-**Impact report delivered:** Yes — per-skill score deltas, sources used, all files modified
+**What it does:** Full improvement cycle for every skill (or a named subset). Sequence per skill: validate → prune → research → rewrite → split/compress → commit.
+**Calls:** `validate-skills` → `deprecate-skill` (if 0–5/14) → `prune-skill` → `research-skill` → `split-skill`/`skill-compressor` → validate + commit
+**Output:** Modified SKILL.md files for every improved skill
+**Impact report:** Per-skill score deltas (before/after), sources used, all files modified
 
 ---
 
 ### `validate-skills`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "validate skills", "skill health check", "check all skills", "pre-flight check"
-**What it does:** Read-only health audit. Scores every skill on 7 criteria (0–2 each, max 14/14). Flags P0 failures, >200-line violations, broken caller references, orphaned reference files, duplicate triggers.
-**Output:** No files modified. Structured quality report in chat.
-**Impact report delivered:** Yes — skills checked, P0 failures, average score, recommended actions
-**Scoring rubric:** `.agents/skills/validate-skills/references/validation-rubric.md`
+**Triggers:** "validate skills", "skill health check", "check all skills", "are my skills ok"
+**What it does:** Read-only audit. Scores every skill on 7 criteria (max 14/14). Flags P0 failures, >200-line violations, broken caller references, orphaned reference files, duplicate trigger phrases.
+**Output:** No files modified. Structured quality report in chat with P0/P1/P2/P3 actions.
+**Impact report:** Skills checked, P0 failures, average score, recommended actions
+**Rubric:** `.agents/skills/validate-skills/references/validation-rubric.md`
 
 ---
 
 ### `prune-skill`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "prune skills", "check for outdated techniques", "verify skill citations", "update for new model"
-**What it does:** Evidence-only removal of wrong, outdated, or poorly-cited content. Audits every citation (trust tier: High=NeurIPS/ICML, Medium=arXiv 50+ citations, Low=blogs, Zero=unverifiable). Checks obsolete techniques list. Never prunes without a citable source.
-**Output:** Target SKILL.md pruned + Prune Log section appended
-**Impact report delivered:** Yes — items pruned, corrected, flagged, source for each
-**Citation standards:** `.agents/skills/prune-skill/references/citation-standards.md`
-**Obsolete techniques list:** `.agents/skills/prune-skill/references/obsolete-techniques.md`
+**Triggers:** "prune skills", "check for outdated techniques", "verify citations", "update for new model"
+**What it does:** Evidence-only removal of wrong, outdated, or poorly-cited content. Audits every citation for trust tier (High=NeurIPS/ICML/ICLR, Medium=arXiv 50+ citations, Low=blogs, Zero=unverifiable). Checks the obsolete techniques list. Never prunes without a citable source. Appends a Prune Log to every skill it touches.
+**Output:** Target SKILL.md pruned + Prune Log appended
+**Impact report:** Items pruned, corrected, flagged; source cited for each removal
+**References:** `citation-standards.md`, `obsolete-techniques.md` in `.agents/skills/prune-skill/references/`
 
 ---
 
 ### `research-skill`
-**Type:** Meta | **Scope:** Global (leaf node — called by other skills)
-**Triggers:** "research the domain for a skill", "find existing skills on X", "what research exists for Y"
-**What it does:** Searches academic papers (arXiv, NeurIPS, ICML), practitioner blogs (Vercel, Stripe, Linear eng, HN, Substack), and GitHub skill repos (anthropics/skills, openai/skills, warpdotdev/oz-skills, VoltAgent/awesome-agent-skills) in parallel. Returns structured findings report.
-**Output:** No files modified. Returns findings report: GOTCHAS, WORKFLOW PATTERNS, FAILURE MODES, EXISTING SKILLS.
-**Impact report delivered:** Yes — sources consulted, gotchas found, existing skills found
+**Triggers:** "research domain for a skill", "find existing skills on X", "what research exists for Y" — or called by `universal-skill-creator`/`improve-skills`
+**What it does:** Searches academic papers (arXiv, NeurIPS, ICML), practitioner blogs (Vercel, Stripe, Linear eng, HN, Substack), and GitHub skill repos (anthropics/skills, openai/skills, warpdotdev/oz-skills) in parallel. Returns a structured findings report — GOTCHAS, WORKFLOW PATTERNS, FAILURE MODES, EXISTING SKILLS.
+**Output:** No files modified. Returns findings report to the calling skill or user.
+**Impact report:** Sources consulted, gotchas found, existing skills found, discarded background items
 
 ---
 
 ### `skill-compressor`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "compress this skill", "skill is over 200 lines", called by split-skill and improve-skills
-**What it does:** Brings a SKILL.md under 200 lines by classifying content (CORE/WORKFLOW/FORMAT/EXAMPLE/BACKGROUND/EDGE_CASE/DUPLICATE) and moving non-core content to references/ with specific load triggers. Invokes split-skill if CORE content alone exceeds 200 lines.
-**Output:** SKILL.md trimmed + new references/background.md or references/examples.md created
-**Impact report delivered:** Yes — lines before/after, files created, regression check result
-**Theory:** `.agents/skills/skill-compressor/references/compression-theory.md`
+**Triggers:** "compress this skill", called by `split-skill` and `improve-skills` when skill >200 lines and no natural seam exists
+**What it does:** Classifies every content block (CORE/WORKFLOW/FORMAT/EXAMPLE/BACKGROUND/EDGE_CASE/DUPLICATE) then moves non-core content to `references/` with specific load triggers. Calls `split-skill` if CORE content alone still exceeds 200 lines after classification.
+**Output:** SKILL.md trimmed + new `references/` files created as needed
+**Impact report:** Lines before/after, reduction %, files created, regression check result
 
 ---
 
 ### `split-skill`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "split this skill", "extract a sub-skill", "skill is doing too much"
-**What it does:** Extracts a coherent sub-capability from a parent skill into a new child skill. Handles Type A (natural phase seam) and Type B (duplicated across 2+ skills). Always calls skill-compressor on both parent and child after splitting. Updates AGENTS.md and all callers.
-**Output:** New `.agents/skills/<child>/SKILL.md` created. Parent SKILL.md and AGENTS.md modified.
-**Impact report delivered:** Yes — parent/child line counts, callers updated, regression check
-**Split patterns:** `.agents/skills/split-skill/references/split-patterns.md`
+**Triggers:** "split this skill", "extract a sub-skill", "this skill is doing too much" — or called automatically
+**What it does:** Extracts a self-contained sub-capability from a parent into a new child skill. Handles Type A (natural phase in one skill) and Type B (same sub-workflow duplicated across 2+ skills). Always calls `skill-compressor` on both parent and child after splitting. Updates AGENTS.md and all callers.
+**Output:** New `.agents/skills/<child>/SKILL.md` + parent SKILL.md and AGENTS.md modified
+**Impact report:** Parent/child line counts, callers updated, regression check result
+**Patterns:** `.agents/skills/split-skill/references/split-patterns.md`
 
 ---
 
 ### `deprecate-skill`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "deprecate this skill", "retire this skill", called by improve-skills when score 0–5/14
-**What it does:** Gracefully retires a skill — requires evidence (not age alone), gets user confirmation, moves to `.agents/skills/.deprecated/`, writes DEPRECATION.md, updates all callers, AGENTS.md, README, and deprecation log.
+**Triggers:** "deprecate this skill", "retire this skill" — or offered by `improve-skills` when score is 0–5/14
+**What it does:** Gracefully retires a skill that is redundant, superseded, or no longer earning its context window cost. Requires evidence (never age alone), requires user confirmation, archives to `.agents/skills/.deprecated/`, writes `DEPRECATION.md`, updates all callers, AGENTS.md, README, and deprecation log.
 **Output:** Skill moved to `.agents/skills/.deprecated/<name>-deprecated-YYYY-MM-DD/`. AGENTS.md, README, callers modified.
-**Impact report delivered:** Yes — archive path, recovery command, callers updated
-**Deprecation log:** `.agents/skills/deprecate-skill/references/deprecation-log.md`
+**Impact report:** Archive path, recovery command, callers updated, deprecation log entry
+**Log:** `.agents/skills/deprecate-skill/references/deprecation-log.md`
 
 ---
 
 ### `publish-skill`
-**Type:** Meta | **Scope:** Global
-**Triggers:** "publish this skill", "share this skill publicly", "submit to skills.sh"
-**What it does:** Validates quality (≥10/14 score required), scans for proprietary content, packages correctly (.md for Atomic, .zip for Standard+), writes README if missing, publishes to skills.sh via `npx skills publish`.
+**Triggers:** "publish this skill", "share this skill publicly", "submit to skills.sh" — or offered by `universal-skill-creator` as optional final step
+**What it does:** Validates quality (≥10/14 required), scans for proprietary content (no internal URLs, paths, or credentials), packages correctly (.md for Atomic tier, .zip for Standard+), writes README if missing, publishes to skills.sh via `npx skills publish`.
 **Output:** Skill live on skills.sh registry. Optional git commit if pushing to GitHub.
-**Impact report delivered:** Yes — registry URL, install command, score at publish
-**Pre-publish checklist:** `.agents/skills/publish-skill/references/publish-checklist.md`
-
----
-
-## Domain Skills
-
-Reusable workflow skills for common product/engineering tasks. Install globally.
-
-### `brainstorming`
-**Type:** Domain | **Scope:** Global
-**Triggers:** "brainstorm", "design this feature", "what's the best approach for", "let's think through", "before we build"
-**What it does:** Turns a rough idea into an approved design through structured dialogue. One question at a time. Hard gate: no code or implementation until the user has reviewed and approved a written design doc.
-**Output file:** `docs/specs/YYYY-MM-DD-<topic>-design.md` (committed to git)
-**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**Terminal notification:** "Design doc saved to `docs/specs/...`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
-**Impact report delivered:** Yes — approach chosen, key decisions, open questions resolved, ready for next step
-
----
-
-### `prd-writing`
-**Type:** Domain | **Scope:** Global
-**Triggers:** "write a PRD", "document requirements", "create a spec", "I need a PRD for", "turn this into a spec"
-**What it does:** Runs a discovery interview (minimum 2 questions) then produces a structured PRD. Supports Full PRD, Lean PRD, One-Pager, and Technical PRD formats. Reads brainstorming design docs as foundation if present.
-**Output file:** `docs/prd/YYYY-MM-DD-<feature>-prd.md`
-**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**Terminal notification:** "PRD saved to `docs/prd/...`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
-**Impact report delivered:** Yes — format, sections written, open questions remaining, success metrics defined
-**PRD schemas:** `.agents/skills/prd-writing/references/prd-schemas.md`
-**Metrics frameworks:** `.agents/skills/prd-writing/references/metrics-frameworks.md`
+**Impact report:** Registry URL, install command, score at publish, package format, proprietary scan result
+**Checklist:** `.agents/skills/publish-skill/references/publish-checklist.md`
 
 ---
 
 ## Project-Specific Skills
 
-Skills scoped to a single project's conventions, stack, or domain. These live in `.agents/skills/` inside the project repo — not installed globally. They reference project-specific paths, APIs, database schemas, naming conventions, or tooling that would be meaningless outside that project.
+Install globally: `~/.agents/skills/`. Output files land inside the current project.
 
-**When to create a project-specific skill:**
-- The skill references your project's specific file paths, API endpoints, or database schema
-- The skill encodes your team's naming conventions or branching strategy
-- The skill would produce wrong output if run in a different project without modification
-- The output files land in project-specific directories
+### `brainstorming`
+**Triggers:** "brainstorm", "design this feature", "what's the best approach for", "let's think through", "before we build", "I have an idea for", "explore options"
+**What it does:** Turns a rough idea into an approved design through structured dialogue. One question at a time. Hard gate — no code or implementation until the user reviews and approves a written design doc. Decomposes oversized requests into sub-projects.
+**Output file:** `docs/specs/YYYY-MM-DD-<topic>-design.md` (committed to git)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Terminal notification:** "Design doc saved to `docs/specs/YYYY-MM-DD-<topic>-design.md`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
+**Impact report:** Approach chosen, key decisions, open questions resolved, next step (prd-writing or implementation)
 
-**Examples of project-specific skills** (not yet built — add as needed):
-- `write-impl-plan` — generates `docs/plans/YYYY-MM-DD-<feature>-plan.md` with task breakdown from a PRD, following your project's ticket format
-- `write-changelog` — generates `CHANGELOG.md` entries from git log, following your project's changelog conventions
-- `write-adr` — generates Architecture Decision Records in `docs/adr/NNNN-<title>.md`
-- `run-retro` — generates `docs/retros/YYYY-MM-DD-sprint-N-retro.md` from the sprint's git history and tickets
+---
 
-**How to create one:**
-```
-"create a project-specific skill for writing implementation plans"
-```
-`universal-skill-creator` will ask clarifying questions about your project's conventions, then build and save the skill to `.agents/skills/` in the current project.
+### `prd-writing`
+**Triggers:** "write a PRD", "document requirements", "create a spec", "I need a PRD for", "turn this into requirements", "define acceptance criteria"
+**What it does:** Discovery interview (minimum 2 questions, even with a detailed brief) then produces a structured PRD in the chosen format. Reads brainstorming design docs from `docs/specs/` as foundation when available. Never writes before discovering.
+**Formats:** Full PRD | Lean PRD | One-Pager | Technical PRD
+**Output file:** `docs/prd/YYYY-MM-DD-<feature>-prd.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Terminal notification:** "PRD saved to `docs/prd/YYYY-MM-DD-<feature>-prd.md`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
+**Impact report:** Format, sections written, open questions remaining, success metrics defined
+**References:** `prd-schemas.md`, `metrics-frameworks.md` in `.agents/skills/prd-writing/references/`
+
+---
+
+## Domain Skills
+
+Specialized skills for specific types of projects — not universally applicable.
+**Currently empty.** Add entries here as domain skills are built.
+
+Examples of what belongs here when built:
+- Story writing, dramatization, screenplay formatting
+- Academic paper structuring, literature review workflows
+- Legal document drafting, contract review workflows
+- Marketing copy generation, campaign brief writing
 
 ---
 
@@ -184,14 +164,28 @@ cp .agents/skills/universal-skill-creator/templates/SKILL-OUTPUTS-template.md \
 ## Call Graph (quick reference)
 
 ```
-universal-skill-creator → research-skill, validate-skills, publish-skill (opt)
-improve-skills          → validate-skills, prune-skill, research-skill,
-                          split-skill, skill-compressor, deprecate-skill
-skill-compressor        → split-skill (if CORE still >200)
-split-skill             → skill-compressor (always after split)
-validate-skills         leaf — read only
-prune-skill             leaf — modifies target skill only
-research-skill          leaf — returns findings report
-deprecate-skill         leaf — archives skill
-publish-skill           leaf — external action (skills.sh)
+User entry points:
+  universal-skill-creator  ← "create a skill"
+  improve-skills           ← "improve skills"
+
+universal-skill-creator → research-skill (Step 2, always)
+                        → split-skill (Step 7, if >200 + seam)
+                            → skill-compressor (always after split)
+                        → skill-compressor (Step 7, if >200, no seam)
+                        → validate-skills (Step 8, quality gate)
+                        → publish-skill (Step 9, optional)
+
+improve-skills → validate-skills (Step 1, pre-flight)
+                   → deprecate-skill (if score 0–5/14, user decides)
+               → prune-skill (Step 2a, per skill)
+               → research-skill (Step 2c, per skill)
+               → split-skill (Step 2g, if >200 + seam)
+                   → skill-compressor
+               → skill-compressor (Step 2g, if >200, no seam)
+
+skill-compressor → split-skill (if CORE still >200 after classify)
+split-skill      → skill-compressor (always, after split)
+
+Leaf nodes (call nothing):
+  validate-skills  research-skill  prune-skill  deprecate-skill  publish-skill
 ```

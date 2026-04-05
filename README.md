@@ -64,13 +64,31 @@ A symlink means `git pull` is all you ever need — platforms see the updated sk
 
 ## Skills in This Repo
 
-### Domain Skills
-These are the skills you use directly in your daily work:
+Three categories of skills — read `docs/SKILL-INDEX.md` for the full reference.
+
+### What Each Category Means
+
+**Meta skills** manage the skill library itself — creating, improving, validating, compressing, and publishing other skills. Always installed globally, always available. You interact with two directly; the rest are called automatically.
+
+**Project-specific skills** are workflows that recur across most or all projects. Installed globally, but the files they generate always land inside the current project (e.g., `docs/specs/`, `docs/prd/`). Brainstorming and PRD writing are project-specific: they're universally useful but their output belongs to the project you're working in.
+
+**Domain skills** are specialized workflows useful for some projects but not all — story writing, dramatization, screenplay formatting, academic paper structuring, etc. Currently empty. Built and installed only when a specific project needs them.
+
+---
+
+### Project-Specific Skills
 
 | Skill | What it does | Output / Outcome | Trigger phrases |
 |-------|-------------|-----------------|----------------|
-| [`brainstorming`](.agents/skills/brainstorming/) | Turns ideas into approved design docs through structured dialogue — hard gate prevents any code until you sign off | **File created:** `docs/specs/YYYY-MM-DD-<topic>-design.md` committed to git. Impact report: approach chosen, key decisions, open questions resolved. | "brainstorm", "design this feature", "what's the best approach for" |
-| [`prd-writing`](.agents/skills/prd-writing/) | Discovery interview followed by a structured PRD in your chosen format | **Document produced:** Full PRD, Lean PRD, One-Pager, or Technical PRD presented in chat. Impact report: format used, sections written, open questions remaining, success metrics defined. | "write a PRD", "document requirements", "create a spec" |
+| [`brainstorming`](.agents/skills/brainstorming/) | Turns ideas into approved design docs through structured dialogue — hard gate prevents any code until you sign off | **File created:** `docs/specs/YYYY-MM-DD-<topic>-design.md` committed to git + logged to `docs/skill-outputs/SKILL-OUTPUTS.md` | "brainstorm", "design this feature", "what's the best approach for" |
+| [`prd-writing`](.agents/skills/prd-writing/) | Discovery interview then structured PRD in your chosen format | **File created:** `docs/prd/YYYY-MM-DD-<feature>-prd.md` + logged to `docs/skill-outputs/SKILL-OUTPUTS.md` | "write a PRD", "document requirements", "create a spec" |
+
+---
+
+### Domain Skills
+
+Specialized skills for specific types of projects — not universally applicable. **Currently empty.**
+Build a domain skill when you need it: "create a skill for story writing" → `universal-skill-creator` handles it.
 
 ### Meta Skills
 This repo is self-managing. These skills maintain, improve, and grow the skill library itself. You can invoke them directly but they mostly call each other automatically:
@@ -111,7 +129,7 @@ universal-skill-creator            improve-skills
 
 ---
 
-## Using Domain Skills
+## Using Skills
 
 ### Codex CLI
 

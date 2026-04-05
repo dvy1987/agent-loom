@@ -11,7 +11,8 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
+  category: project-specific
   sources: obra/superpowers brainstorming, agentskills.io best practices
 ---
 

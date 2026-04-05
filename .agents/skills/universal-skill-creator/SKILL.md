@@ -63,9 +63,15 @@ license: MIT
 metadata:
   author: your-name
   version: "1.0"
+  category: meta | project-specific | domain   # pick one — see docs/SKILL-INDEX.md
 ---
 ```
 Description formula: `[Domain verb phrase] + [trigger conditions] + [synonyms]`
+
+Category rules:
+- `meta` — manages other skills; always global
+- `project-specific` — recurs across most projects; global install, project-scoped output
+- `domain` — specialized, not universally needed; install only when required
 
 ### Step 5 — Write the Body
 Required sections: Role definition · Numbered workflow (imperative one-liners) · Output format schema · 1–2 examples · Constraints.
