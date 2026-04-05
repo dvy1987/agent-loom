@@ -58,7 +58,7 @@ install.sh               ← one-time global setup script
 - Every skill must have at least one example (input → output)
 - Every requirement must be specific and testable — no vague language
 - SKILL.md must stay under ~200 lines / ~1,500 tokens for non-meta skills
-- Meta skills are exempt: `universal-skill-creator`, `skill-compressor`
+- Meta skills are exempt: `universal-skill-creator`, `skill-compressor`, `improve-skills`
 - See `CONTRIBUTING.md` for the full checklist
 
 ### Never
