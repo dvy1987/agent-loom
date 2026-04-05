@@ -346,3 +346,9 @@ The design covers the architecture and approach well. Before I write the PRD I n
 - Always run discovery before writing — minimum 2 clarifying questions even with a detailed brief
 - Every requirement must be specific and testable before the PRD is marked Approved
 - Never mark a PRD Approved if the Open Questions section is non-empty
+
+---
+
+## Reference Files
+
+- **`references/metrics-frameworks.md`**: AARRR, HEART, OKRs, North Star — read this when the user needs help choosing or defining success metrics, or when the PRD's metrics section is weak.
