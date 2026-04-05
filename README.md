@@ -64,7 +64,7 @@ A symlink means `git pull` is all you ever need — platforms see the updated sk
 
 ## Skills in This Repo
 
-Three categories of skills — read `docs/SKILL-INDEX.md` for the full reference.
+Three categories of skills — **[`docs/SKILL-INDEX.md`](docs/SKILL-INDEX.md)** is the complete reference: triggers, outputs, file paths, terminal notifications, call graph, and category definitions for every skill.
 
 ### What Each Category Means
 

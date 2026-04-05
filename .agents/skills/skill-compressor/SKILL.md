@@ -12,6 +12,7 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.1"
+  category: meta
   sources: SkillReducer arXiv:2603.29919, agentskills.io best practices, Vercel AGENTS.md research
 ---
 

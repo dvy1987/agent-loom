@@ -12,6 +12,7 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.0"
+  category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025
 ---
 
@@ -135,6 +136,7 @@ DISCARD:
 ## Reference Files
 
 - **`references/domain-search-queries.md`**: Pre-built search query templates for 20 common skill domains. Read when the domain is well-known to get a head start on query formulation.
+- **`universal-skill-creator/references/research-papers.md`**: Canonical research papers on agent skill design (arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025, etc.). Read when the domain being researched overlaps with skill architecture, prompting techniques, or context window management — these papers contain authoritative findings that should inform what gets added to a skill body vs. references/.
 
 ---
 

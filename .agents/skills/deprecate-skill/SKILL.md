@@ -14,6 +14,7 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.0"
+  category: meta
 ---
 
 # Deprecate Skill

@@ -14,6 +14,7 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.0"
+  category: meta
 ---
 
 # Validate Skills
@@ -61,7 +62,10 @@ For each skill, score against the rubric (full details in `references/validation
 
 Check every skill for:
 - **Over limit**: SKILL.md > 200 lines → flag with exact count
+- **Missing category**: `metadata.category` not set to `meta`, `project-specific`, or `domain`
 - **Stale version**: `metadata.version` unchanged after known edits
+- **Missing Impact Report**: no `## Impact Report` section at end of SKILL.md
+- **Missing file-output logging**: skill generates files but has no `docs/skill-outputs/SKILL-OUTPUTS.md` append instruction
 - **Missing Prune Log**: skill has been around >30 days with no prune record
 - **Broken caller references**: skill references another skill that doesn't exist
 - **Orphaned reference files**: files in `references/` not mentioned in SKILL.md

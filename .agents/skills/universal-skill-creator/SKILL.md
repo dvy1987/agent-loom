@@ -63,7 +63,7 @@ license: MIT
 metadata:
   author: your-name
   version: "1.0"
-  category: meta | project-specific | domain   # pick one — see docs/SKILL-INDEX.md
+  category: meta
 ---
 ```
 Description formula: `[Domain verb phrase] + [trigger conditions] + [synonyms]`

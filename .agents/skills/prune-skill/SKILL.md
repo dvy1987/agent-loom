@@ -14,6 +14,7 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.0"
+  category: meta
   sources: arXiv:2411.02093, arXiv:2409.13979, arXiv:2509.13196, arXiv:2510.22251, Wharton-GAIL-2025, arXiv:2402.07927
 ---
 

@@ -32,11 +32,13 @@ cp .agents/skills/universal-skill-creator/templates/SKILL-template.md \
 Open `.agents/skills/your-skill-name/SKILL.md` and fill in:
 
 - **`description`** — the most important field. Write it to answer: "When should an agent load this?" Include trigger phrases, domain keywords, and synonyms. Use the full 1024 characters for public skills.
+- **`metadata.category`** — must be one of `meta`, `project-specific`, or `domain`. See `docs/SKILL-INDEX.md` for definitions.
 - **Role definition** — "You are a [specific expert] specializing in [narrow domain]"
 - **Numbered workflow** — one action per step, action verbs only
 - **Gotchas** — non-obvious facts the agent will get wrong without being told
 - **2+ examples** — realistic input → complete (non-truncated) output
-- **Verification checklist** — what the agent checks before presenting output
+- **`## Impact Report` section** — at the end of SKILL.md. States exactly what files are created, modified, or moved, and what the agent delivers in chat after the skill runs. Required for every skill.
+- **File-output logging** — if the skill generates any project files, it must append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user the file path. See `universal-skill-creator/templates/SKILL-OUTPUTS-template.md`.
 
 **Quality standards (enforced):**
 - No vague language: "fast", "easy", "intuitive", "modern", "robust" → replace with specific, testable criteria
@@ -102,6 +104,7 @@ Before every commit:
 - [ ] File starts with `---` on line 1 (no blank lines before it)
 - [ ] `name` is lowercase, hyphens-only, matches directory name exactly
 - [ ] `description` has trigger keywords, action verbs, synonyms
+- [ ] `metadata.category` is set to `meta`, `project-specific`, or `domain`
 - [ ] No unknown top-level fields (custom fields go under `metadata:`)
 
 **Body**
@@ -113,6 +116,8 @@ Before every commit:
 - [ ] Verification checklist included
 - [ ] All constraints phrased positively
 - [ ] Under 200 lines — invoke `split-skill` or `skill-compressor` if over
+- [ ] `## Impact Report` section present at end of SKILL.md
+- [ ] If skill generates files: `docs/skill-outputs/SKILL-OUTPUTS.md` logging instruction included
 
 **Cross-platform**
 - [ ] Installs in `.agents/skills/` (universal location)
@@ -122,6 +127,8 @@ Before every commit:
 ---
 
 ## Skill Relationships
+
+Full skill reference: `docs/SKILL-INDEX.md` — definitions, triggers, outputs, call graph.
 
 When adding a skill, consider how it chains with existing ones:
 

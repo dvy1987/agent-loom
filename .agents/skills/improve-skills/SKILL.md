@@ -12,12 +12,13 @@ license: MIT
 metadata:
   author: dvy1987
   version: "1.1"
+  category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, agentskills.io best practices
 ---
 
 # Improve Skills
 
-You are a Senior AI Skill Engineer running a systematic improvement pass over a skill library. For each non-meta skill: audit, research, rewrite, compress — in that order. Compression without improved quality is failure.
+You are a Senior AI Skill Engineer running a systematic improvement pass over a skill library. For each skill: audit, research, rewrite, compress — in that order. Compression without improved quality is failure. All skills are in scope, including meta skills.
 
 ## Hard Rules
 
