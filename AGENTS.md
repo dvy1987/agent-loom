@@ -32,6 +32,7 @@ name:    lowercase, hyphens only, 1–64 chars, matches directory
 quality: agentskills validate must pass | score ≥10/14 | ≤200 lines
 commit:  feat: add <name> | fix: <name> — <what> | compress: <name> | improve: <name>
 never:   API keys in skill files | placeholder text | failing validate
+doc-policy: never mention security findings, fixes, or implementation details in user-facing docs (README.md, CONTRIBUTING.md, changelogs, release notes) | functional files (SKILL.md, SKILL-INDEX.md, AGENTS.md, SKILL-OUTPUTS.md) are fully exempt
 ```
 
 ---
