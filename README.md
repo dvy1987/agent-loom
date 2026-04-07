@@ -11,7 +11,7 @@ Skills follow the [agentskills.io](https://agentskills.io/specification) open st
 
 ## What is this?
 
-AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" — reusable instruction files that teach agents how to do specific tasks (write a PRD, run a pre-mortem, create an ADR). You piece together advice from Substack, Medium, Reddit, blogs — and a few months later, your "best practices" are already outdated. Models have moved on. Better techniques exist. Your skill library hasn't.
+AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" — reusable instruction files that teach agents how to do specific tasks (write a PRD, run a pre-mortem, create an ADR). So, agent skills form a crucial part of agent infra. However, best practices are rapidly evolving.  Models have moved on. Better techniques exist. Your skill library hasn't.
 
 **cross-plat-skills fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
