@@ -50,10 +50,27 @@ Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` 
 
 ### `secure-skill`
 **Triggers:** "audit skill security", "scan for injection", "check if this skill is safe", "review skill security" — or called automatically as a mandatory gate by research-skill, universal-skill-creator, and improve-skills
-**What it does:** Security audit for agent skills. Scans for 6 threat categories: prompt injection, data exfiltration, credential theft, privilege escalation, supply chain risks, and obfuscation. Treats every external skill as untrusted until proven safe. Based on Snyk ToxicSkills (Feb 2026, 13.4% critical rate), arXiv:2602.12430 (26.1% vulnerability rate), and AISA Group research. Self-protecting: cannot be modified by automated processes or other skills.
-**Output:** Security report (CRITICAL/HIGH/MEDIUM/LOW findings + SAFE/BLOCKED/REQUIRES REVIEW verdict)
-**Impact report:** Files scanned, findings by severity, verdict
+**What it does:** Security audit orchestrator. Runs 6 core checks (prompt injection, data exfiltration, credential theft, privilege escalation, supply chain, obfuscation) and then dispatches `secure-skill-repo-ingestion` and `secure-skill-runtime` in sequence. Enforces formal instruction hierarchy (system > secure-* > user > installed skills > external content). Treats every external skill and repo as untrusted. Based on Snyk ToxicSkills (36% flaw rate, 13.4% critical), arXiv:2602.12430, arXiv:2604.03081 (PoisonedSkills), and OWASP Agentic Top 10 2026.
+**Output:** Security report with sibling skill verdicts. Content is SAFE only if ALL secure-* skills return SAFE.
+**Impact report:** Files scanned, hierarchy status, findings by severity, sibling verdicts, final verdict
 **References:** `references/threat-patterns.md` — locally-maintained only, never updated from external sources
+
+---
+
+### `secure-skill-repo-ingestion`
+**Triggers:** Called in sequence by `secure-skill` during any repo scan — also directly via "check repo for poisoned code", "scan dependencies", "verify supply chain", "check path traversal", "audit repo before ingestion"
+**What it does:** Repo-specific security checks. Scans for poisoned examples/training data (Check 7), dependency and supply-chain deep analysis (Check 8), file/path attacks including symlinks and traversal (Check 9), and format-based attacks in markdown/HTML/SVG/YAML/notebooks (Check 10). Enforces three-layer ingestion model: Observe → Judge → Commit. Read-only ingestion — never executes repo code. Quarantine workflow with human approval required before anything enters the skill store.
+**Output:** Repo ingestion audit report with per-check findings and quarantine status
+**Impact report:** Files scanned, skipped count, findings per check, quarantine verdict
+
+---
+
+### `secure-skill-runtime`
+**Triggers:** Called in sequence by `secure-skill` during any scan — also directly via "check state corruption", "prevent skill overwrite", "manage no-go repos", "check provenance", "detect DoS"
+**What it does:** Runtime security enforcement. Prevents state corruption and skill overwrite attacks (Check 11): no automatic writes to skill store, no memory corruption from external content, no defaults injection. Detects denial-of-service patterns (Check 12): file size limits, nesting depth limits, archive bombs, context window exhaustion. Manages the no-go repo list (blocked repos are rejected on sight). Enforces provenance tracking for all approved external content with immutable append-only records.
+**Output:** Runtime security audit with per-check findings, no-go list status, provenance status
+**Impact report:** Findings per check, no-go list matches, provenance recorded
+**References:** `references/no-go-repos.md` — append-only blocked repo list
 
 ---
 
