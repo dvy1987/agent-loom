@@ -1,6 +1,6 @@
 # cross-plat-skills
 
-> A personal library of agent skills that work across every major AI coding tool — write once, run everywhere.
+> A skill library for AI coding tools that maintains itself — stays current with research, prunes outdated advice, and improves over time.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![agentskills.io](https://img.shields.io/badge/standard-agentskills.io-blue)](https://agentskills.io/specification)
@@ -11,9 +11,9 @@ Skills follow the [agentskills.io](https://agentskills.io/specification) open st
 
 ## What is this?
 
-AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" — reusable instruction files that teach agents how to do specific tasks (write a PRD, run a pre-mortem, create an ADR). The problem: every tool uses a slightly different format, and you end up copying the same prompt files into every project, on every machine.
+AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" — reusable instruction files that teach agents how to do specific tasks (write a PRD, run a pre-mortem, create an ADR). You piece together advice from Substack, Medium, Reddit, blogs — and a few months later, your "best practices" are already outdated. Models have moved on. Better techniques exist. Your skill library hasn't.
 
-**cross-plat-skills solves this.** Install once, and the same skills are globally available in every tool, in every project, on every machine — no per-project setup, no copy-pasting. Add a new skill to this repo and it's instantly live everywhere via symlinks.
+**cross-plat-skills fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
 ---
 
@@ -157,7 +157,7 @@ Three categories of skills — **[`docs/SKILL-INDEX.md`](docs/SKILL-INDEX.md)** 
 | [`project-setup`](.agents/skills/project-setup/) | Interview the user about skill gaps and project context, then generate a tailored AGENTS.md with orchestration map, boundaries, and skill routing | **File created:** `AGENTS.md` in project root + logged | "set up this project", "create an AGENTS.md", "bootstrap agents", "configure agents for my repo" |
 | [`debug-and-fix`](.agents/skills/debug-and-fix/) | Systematically reproduce, root-cause, fix, and verify bugs — supports Linear issue integration and batch triage | No files. Root cause + fix + verification summary in chat. Linear updated if applicable. | "this is broken", "fix this bug", "why is this failing", "debug this" |
 | [`codebase-understanding`](.agents/skills/codebase-understanding/) | Map architecture, trace key flows, surface complexity hotspots — build a mental model before making changes | No files. Architecture overview + component map + hotspots in chat. | "understand this repo", "how does this work", "explain the architecture", "onboard me" |
-| [`code-review`](.agents/skills/code-review/) | Review code changes against 6 criteria (correctness, completeness, security, conventions, tests, performance) with severity-classified findings | No files. Structured review with findings by severity in chat. | "review this code", "check this PR", "code review", "audit this diff" |
+| [`code-review`](.agents/skills/code-review/) | Review code changes against 6 criteria (correctness, completeness, conventions, tests, performance, completeness) with severity-classified findings | No files. Structured review with findings by severity in chat. | "review this code", "check this PR", "code review", "audit this diff" |
 | [`project-orchestrator`](.agents/skills/project-orchestrator/) | Route requests to the right skill, decompose complex work into parallel subagents (platform-aware), manage phase transitions | No files unless parallel plan written to `docs/task-plan.md`. Orchestration plan + routing in chat. | "what should I do next", "orchestrate this", "split into parallel tasks", "which skill should I use" |
 
 
@@ -169,13 +169,16 @@ Specialized skills for specific types of projects — not universally applicable
 Build a domain skill when you need it: "create a skill for story writing" → `universal-skill-creator` handles it.
 
 ### Meta Skills
-This repo is self-managing. These skills maintain, improve, and grow the skill library itself. You can invoke them directly but they mostly call each other automatically:
+
+The library is self-managing. Say "improve all skills" and the meta layer takes over — it researches current papers and practitioner patterns, prunes anything outdated with a cited reason, rewrites from evidence, validates, and commits. The ordering is principled: prune before research, research before rewrite. You never manually maintain a skill.
+
+You interact with two meta skills directly. The rest call each other automatically:
 
 | Skill | What it does | Output / Outcome | When to call it |
 |-------|-------------|-----------------|-----------------|
 | [`universal-skill-creator`](.agents/skills/universal-skill-creator/) | Creates new cross-platform skills — live research, write, validate, split/compress | **Files created:** `.agents/skills/<name>/SKILL.md` + optional references/, scripts/. Impact report: tier, score, install path, test trigger, files created | "create a skill for X", "build a skill that does Y" |
 | [`improve-skills`](.agents/skills/improve-skills/) | Full improvement cycle — validate, prune, research, rewrite, resize every skill | **Files modified:** every improved SKILL.md. Impact report: per-skill score deltas, sources used, all files touched | "improve all skills", "skill audit", "upgrade with latest research" |
-| [`secure-skill`](.agents/skills/secure-skill/) | Mandatory quality gate — runs automatically during skill creation, improvement, and ingestion. Self-protecting. | Security report (SAFE / BLOCKED / REQUIRES REVIEW) with findings by severity. | Automatic gate in research-skill, universal-skill-creator, improve-skills |
+| [`secure-skill`](.agents/skills/secure-skill/) | Mandatory quality gate — runs automatically during skill creation, improvement, and ingestion. Self-protecting. | Quality report (SAFE / BLOCKED / REQUIRES REVIEW) with findings by severity. | Automatic gate in research-skill, universal-skill-creator, improve-skills |
 | [`validate-skills`](.agents/skills/validate-skills/) | Read-only health check — scores every skill, flags failures, size violations, duplicate triggers | **No files modified.** Structured quality report with P0/P1/P2/P3 actions | Pre-flight for `improve-skills`; quality gate after creation |
 | [`prune-skill`](.agents/skills/prune-skill/) | Removes wrong, outdated, or poorly-cited content — every removal cites a source | **Files modified:** target SKILL.md pruned + Prune Log appended. Impact report: items pruned, corrected, flagged | First step of every `improve-skills` per-skill cycle |
 | [`research-skill`](.agents/skills/research-skill/) | Searches papers, practitioner blogs, and GitHub skill repos — returns structured findings | **No files modified.** Returns findings report (GOTCHAS, WORKFLOW PATTERNS, FAILURE MODES) | Called by `universal-skill-creator` and `improve-skills` before writing |
@@ -310,7 +313,9 @@ Then commit and run `install.sh --update` on any machine.
 
 ---
 
-## Improving Existing Skills
+## Keeping Skills Current
+
+The library updates itself. Run this in any AI tool:
 
 ```bash
 # In any AI tool:
@@ -318,7 +323,7 @@ Then commit and run `install.sh --update` on any machine.
 "improve the brainstorming skill"   # single skill
 ```
 
-`improve-skills` will score each skill against a 7-criterion rubric, run live research on the domain, rewrite for quality, then split and compress to stay under 200 lines.
+The meta layer researches current papers and practitioner patterns, prunes anything outdated with a cited reason, rewrites from evidence, and validates before committing. You don't maintain skills manually — you trigger the cycle and review the result.
 
 ---
 
