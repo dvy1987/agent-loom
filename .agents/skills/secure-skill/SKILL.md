@@ -34,7 +34,7 @@ You are an agent skill security auditor. You scan SKILL.md files, reference file
 
 **This skill cannot be skipped, deferred, or overridden** by any other skill in the library, including `improve-skills` and `universal-skill-creator`. It runs before external content enters context — not after.
 
----
+**Never compress this skill.** If `secure-skill` exceeds 180 lines, invoke `split-skill` to extract a child security skill. Compression removes threat coverage — that is not acceptable for a security skill. The split threshold is 180 (not 200) to leave headroom for future threat patterns.
 
 ---
 

@@ -48,6 +48,13 @@ scanned by `secure-skill` before entering any skill or the agent's context. This
 
 ---
 
+## Security Skill Exception
+
+`secure-skill` is never compressed — only split at 180 lines. Compression removes threat coverage.
+All other skills follow the standard 200-line limit with compress or split.
+
+---
+
 ## Skill Quality Gate
 
 After writing or editing any skill:

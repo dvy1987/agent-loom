@@ -95,7 +95,8 @@ BACKGROUND and EDGE_CASE move to `references/` with specific load triggers.
 wc -l .agents/skills/<skill>/SKILL.md
 ```
 Under 200 → proceed to 2j.
-Over 200 → invoke `split-skill`. It will: first check existing skills for a link opportunity, then extract a new child only if no existing skill fits, then compress. Never call `skill-compressor` directly on an oversized skill without going through `split-skill` first.
+Over 200 → invoke `split-skill`. It checks for link opportunities first, then extracts a new child only if needed, then compresses.
+**Exception:** `secure-skill` — never compress, only split. Threshold is 180 lines (not 200). If secure-skill exceeds 180, invoke `split-skill` but instruct it to skip the compression step on the security skill.
 
 **2j — Validate and Commit**
 ```bash
