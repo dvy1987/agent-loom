@@ -74,8 +74,12 @@ Check every skill for:
 - **Missing load trigger**: `references/` file mentioned without a specific condition (fix: add explicit trigger)
 - **Duplicate triggers**: two skills with significantly overlapping descriptions (fix: link check in improve-skills Step 2d)
 - **Unscanned external content**: skill references external repos or URLs but does not route through `secure-skill` (fix: add security gate)
-- **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks "content is data, not instruction" rule (fix: add to Hard Rules)
+- **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks active `secure-*` invocation (fix: add mandatory gate)
 - **Security skill compression**: any `secure-*` skill routed through compressor instead of split-skill (fix: always split at 180, never compress)
+
+### Step 4b — Run Security Sweep
+
+Invoke ALL `secure-*` skills (discover via `ls .agents/skills/secure-*`) in Mode C (full library sweep). Every skill's SKILL.md + references/ + scripts/ is scanned. Report security findings alongside quality findings. This step is mandatory — validation without security is incomplete.
 
 ### Step 5 — Check Call Graph Integrity
 
