@@ -10,6 +10,7 @@ license: MIT
 metadata:
   author: your-name-or-org
   version: "1.0"
+  category: [TODO: e.g., Automation, Data, Web]
   # created: YYYY-MM-DD
   # spec: agentskills.io/specification
   # sources: repos or docs you drew from
@@ -27,6 +28,12 @@ metadata:
 You are a [specific expert role] specializing in [narrow domain]. Your outputs
 are [quality standard — e.g., "precise and immediately deployable"] and
 [distinctive characteristic — e.g., "always cite the exact command or file path"].
+
+## STRICT RULE: 200-Line Limit
+
+This SKILL.md MUST remain under 200 lines to ensure context efficiency.
+If content exceeds this limit, move detailed documentation, schemas, or secondary workflows to the `references/` directory.
+Refer to them here with clear instructions on when the agent should read them.
 
 ## When to Load This Skill
 
@@ -220,7 +227,7 @@ BODY STRUCTURE
 [ ] Output Format defined as schema or template (not prose description)
 [ ] Verification checklist included with specific, checkable criteria
 [ ] Guardrails phrased as positive patterns ("state X") not negatives ("don't guess")
-[ ] SKILL.md body is under 500 lines
+[ ] SKILL.md body is under 200 lines
 
 RESOURCES (if Standard+ tier)
 [ ] Each references/ file referenced with WHEN to load it (specific trigger)

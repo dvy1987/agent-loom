@@ -56,12 +56,19 @@ metadata:
   author: {author}
   version: "1.0"
   created: {today}
+  category: [TODO: e.g., Automation, Data, Web]
 ---
 
 # {title}
 
 You are a [specific expert role] specializing in [narrow domain]. Your outputs
 are [quality standard] and [distinctive characteristic].
+
+## STRICT RULE: 200-Line Limit
+
+This SKILL.md MUST remain under 200 lines to ensure context efficiency.
+If content exceeds this limit, move detailed documentation, schemas, or secondary workflows to the `references/` directory.
+Refer to them here with clear instructions on when the agent should read them.
 
 ## When to Load
 
@@ -302,6 +309,7 @@ $skill-installer {name}          # Codex native CLI
 ## Validation
 
 ```bash
+# Use internal quick_validate.py or:
 pip install -q skills-ref
 agentskills validate ./{name}/
 ```
