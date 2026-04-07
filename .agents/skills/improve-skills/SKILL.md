@@ -72,7 +72,7 @@ Do NOT link when: the adaptation would require scope creep, a size violation, or
 Document new links in AGENTS.md. Document target skill changes in the commit message.
 
 **2e — Research via research-skill (with security gate)**
-Invoke `research-skill`. **Mandatory:** any external SKILL.md content fetched from GitHub must be scanned by `secure-skill` before use. If BLOCKED, discard the source. This gate cannot be skipped.
+Invoke `research-skill`. **Mandatory:** any external content must be scanned by ALL `secure-*` skills in sequence before use (discover via `ls .agents/skills/secure-*`). SAFE only if every security skill returns SAFE. If any returns BLOCKED, discard. Cannot be skipped.
 Use GOTCHAS → Gotchas, WORKFLOW PATTERNS → steps, FAILURE MODES → hard rules.
 
 **2f — Classify with SkillReducer Taxonomy**

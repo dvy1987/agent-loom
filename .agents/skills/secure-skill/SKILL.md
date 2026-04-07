@@ -36,6 +36,8 @@ You are an agent skill security auditor. You scan SKILL.md files, reference file
 
 **Never compress this skill.** If `secure-skill` exceeds 180 lines, invoke `split-skill` to extract a child security skill. Compression removes threat coverage — that is not acceptable for a security skill. The split threshold is 180 (not 200) to leave headroom for future threat patterns.
 
+**If this skill is split into children, all security skills run in sequence.** When `secure-skill` is split, the resulting skills (e.g. `secure-skill`, `secure-skill-supply-chain`, `secure-skill-injection`) must ALL be invoked at every security gate — in sequence, not as alternatives. Callers must discover all skills matching `secure-*` in `.agents/skills/` and run each one. A content block is SAFE only if every security skill returns SAFE.
+
 ---
 
 ## When to Run
