@@ -1,8 +1,8 @@
-# install.ps1 — Windows global setup for cross-plat-skills
+# install.ps1 -- Windows global setup for cross-plat-skills
 #
 # Run this once on any Windows machine. Skills become available in Codex CLI,
 # Ampcode, Claude Code, Warp, Gemini CLI, GitHub Copilot, and any other
-# agentskills.io-compatible tool — no per-project setup needed.
+# agentskills.io-compatible tool -- no per-project setup needed.
 #
 # Usage (in PowerShell, run as Administrator for symlinks):
 #   .\install.ps1              # junction-link all skills globally
@@ -10,7 +10,7 @@
 #   .\install.ps1 -Update      # pull latest from git and refresh links
 #
 # NOTE: Junction links (default) work without Developer Mode on Windows.
-# They behave like symlinks for directories — tools see live files.
+# They behave like symlinks for directories -- tools see live files.
 
 param(
     [switch]$Copy,
@@ -22,7 +22,7 @@ $ErrorActionPreference = "Stop"
 $RepoDir    = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $SkillsSrc  = Join-Path $RepoDir ".agents\skills"
 
-# ── Target directories (all platforms read at least one of these) ──────────
+# -- Target directories (all platforms read at least one of these) --
 $Targets = @(
     "$env:USERPROFILE\.agents\skills",    # Codex, Warp, Gemini, Replit, Bolt.new
     "$env:USERPROFILE\.claude\skills"     # Claude Code, Ampcode
@@ -72,7 +72,7 @@ function Install-Skill {
     }
 }
 
-# ── Install each skill ──────────────────────────────────────────────────────
+# -- Install each skill --
 $SkillCount = 0
 Get-ChildItem -Path $SkillsSrc -Directory | ForEach-Object {
     $SkillMd = Join-Path $_.FullName "SKILL.md"
@@ -82,21 +82,24 @@ Get-ChildItem -Path $SkillsSrc -Directory | ForEach-Object {
     }
 }
 
-# ── Summary ─────────────────────────────────────────────────────────────────
+# -- Summary --
 Write-Host ""
-Write-Host "✓ $SkillCount skill(s) installed globally"
+Write-Host "Done: $SkillCount skill(s) installed globally"
 Write-Host ""
 Write-Host "Works immediately in:"
-Write-Host "  • Codex CLI    — run 'codex' in any project, type /skills to verify"
-Write-Host "  • Ampcode      — skills auto-load on next session"
-Write-Host "  • Claude Code  — run 'claude' in any project"
-Write-Host "  • Warp         — type / in agent chat to see skill list"
-Write-Host "  • Gemini CLI   — skills auto-load on next session"
-Write-Host "  • GitHub Copilot CLI — skills auto-load on next session"
+Write-Host "  * Codex CLI    -- run 'codex' in any project, type /skills to verify"
+Write-Host "  * Ampcode      -- skills auto-load on next session"
+Write-Host "  * Claude Code  -- run 'claude' in any project"
+Write-Host "  * Warp         -- type / in agent chat to see skill list"
+Write-Host "  * Gemini CLI   -- skills auto-load on next session"
+Write-Host "  * GitHub Copilot CLI -- skills auto-load on next session"
 Write-Host ""
 Write-Host "To update skills later:"
 Write-Host "  .\install.ps1 -Update"
 Write-Host ""
+Write-Host "To uninstall:"
+Write-Host "  .\uninstall.ps1"
+Write-Host ""
 Write-Host "To add skills to a specific project (for teammates):"
-Write-Host "  Copy-Item -Recurse `$env:USERPROFILE\.agents\skills\<skill-name> your-project\.agents\skills\"
+Write-Host '  Copy-Item -Recurse $env:USERPROFILE\.agents\skills\<skill-name> your-project\.agents\skills'
 Write-Host ""

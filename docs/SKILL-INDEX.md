@@ -302,6 +302,30 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `debug-and-fix`
+**Triggers:** "this is broken", "fix this bug", "why is this failing", "debug this", "resolve this error", "what went wrong"
+**What it does:** Systematically reproduces issues, isolates root causes, applies minimal fixes, and verifies the result. Supports Linear issue integration — fetches issues, cross-references against actual codebase, and updates status with user approval. Handles batch triage for multiple bugs (one at a time, full cycle each).
+**Output:** No files generated. Root cause + fix + verification summary in chat. Linear issue updated if applicable.
+**Impact report:** Bug fixed, root cause, files changed, tests run, Linear updated, next bug in queue
+
+---
+
+### `codebase-understanding`
+**Triggers:** "understand this repo", "how does this project work", "explain the architecture", "what does this repo do", "show me the structure", "onboard me", "walk me through this codebase"
+**What it does:** Maps project architecture, identifies major layers and components, traces 2-3 key data flows through the codebase, and surfaces complexity hotspots (high complexity, missing tests, convention deviations). Reads actual source files to verify every claim. Platform-agnostic — works without builtin walkthrough tools.
+**Output:** No files generated. Architecture overview + key flows + component map + hotspots + recommendations in chat.
+**Impact report:** Scope, tech stack, layers identified, flows traced, hotspots flagged, recommended next step
+
+---
+
+### `code-review`
+**Triggers:** "review this code", "check this PR", "review my changes", "code review", "did this implement correctly", "audit this diff"
+**What it does:** Reviews code changes against 6 criteria (correctness, completeness, security, conventions, tests, performance). Reads full diff + surrounding context + PRD/spec if available. Presents findings as a numbered list grouped by severity (critical → low) with file paths and line numbers. Offers to fix issues with user approval — one at a time, verified after each.
+**Output:** No files generated. Structured review with severity-classified findings in chat.
+**Impact report:** Review scope, files reviewed, issues by severity, PRD alignment, fixes applied, tests run
+
+---
+
 ### `project-orchestrator`
 **Triggers:** "what should I do next", "which skill should I use", "orchestrate this", "run the full workflow", "split into parallel tasks", "coordinate agents", "parallel execution", "task decomposition", "what phase am I in"
 **What it does:** Reads project state (which artefacts exist), classifies the user's request (single-skill / sequential chain / parallel decomposition / phase recommendation), builds an orchestration plan, and executes platform-aware. On Tier 1 platforms (Codex, Claude Code, Cursor, Gemini+Maestro, Replit 4) it spawns parallel subagents with scoped prompts and file boundaries. On Tier 2 platforms (Warp, Copilot Mission Control, Factory.ai) it writes a task plan file for the user to dispatch. On Tier 3 platforms (Bolt.new, VS Code) it executes sequentially. Contains a full skill routing table mapping user intent to the right skill.
