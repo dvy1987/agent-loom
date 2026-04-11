@@ -67,7 +67,10 @@ Read:
 
 ### Step 5 — Verdict
 
-**PASS:** All checks pass. Hand off to `project-orchestrator`.
+**PASS:** All checks pass. Record PASS against the architecture spec ID, then
+hand off to `agent-creator` with the architecture spec path. agent-creator
+will handle platform detection, spawn instructions, monitoring, and final
+hand-off to project-orchestrator.
 
 **FAIL:** Return all issues to `agent-architect` for revision. Format:
 
@@ -77,6 +80,8 @@ Issues found: [N]
 1. [CHECK]: [specific issue] — [how to fix]
 2. [CHECK]: [specific issue] — [how to fix]
 ```
+
+If the same setup fails 3 times: stop looping, escalate to the user.
 
 ---
 
@@ -108,7 +113,8 @@ All other checks: PASS (decomposition quality, tool availability, outcome defini
     <output>
 SETUP EVALUATION: PASS
 All checks passed (5 decomposition, 5 architecture, 3 cross-validation).
-Handing off to project-orchestrator.
+PASS recorded for: docs/architecture/2026-04-10-015-arch.md
+Handing off to agent-creator.
     </output>
   </example>
 </examples>
@@ -124,5 +130,5 @@ Issues found: [N]
 Decomposition checks: [passed/total]
 Architecture checks: [passed/total]
 Cross-validation checks: [passed/total]
-Next: project-orchestrator (if PASS) | agent-architect revision (if FAIL)
+Next: agent-creator (if PASS) | agent-architect revision (if FAIL)
 ```
