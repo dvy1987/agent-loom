@@ -163,21 +163,28 @@ Three categories of skills — **[`docs/SKILL-INDEX.md`](docs/SKILL-INDEX.md)** 
 | [`project-orchestrator`](.agents/skills/project-orchestrator/) | Route requests to the right skill, decompose complex work into parallel subagents (platform-aware), manage phase transitions | No files unless parallel plan written to `docs/task-plan.md`. Orchestration plan + routing in chat. | "what should I do next", "orchestrate this", "split into parallel tasks", "which skill should I use" |
 
 #### Agent & Process Design
+
 | Skill | What it does |
 |-------|-------------|
 | [`process-decomposer`](.agents/skills/process-decomposer/) | Complexity triage + task decomposition into reusable process entries in `docs/processes/` |
 | [`agent-architect`](.agents/skills/agent-architect/) | Designs single-agent or multi-agent execution structures from decomposed processes |
-| [`setup-evaluation`](.agents/skills/setup-evaluation/) | Validates decomposition + architecture before execution for agent-chain workflows |
+| [`setup-evaluation`](.agents/skills/setup-evaluation/) | Validates decomposition + architecture before execution — on PASS, hands off to `agent-creator` |
+| [`agent-creator`](.agents/skills/agent-creator/) | Launches agents from a validated architecture spec using native platform parallelism (Task tool). **Claude Code and Ampcode only** — see platform note below. |
 | [`skill-finder`](.agents/skills/skill-finder/) | Maps capabilities to existing skills and prevents unnecessary skill creation |
 | [`tool-finder`](.agents/skills/tool-finder/) | Tool discovery, availability checking, and MCP setup guidance |
 | [`create-agent-prompt`](.agents/skills/create-agent-prompt/) | Creates focused role prompts for agents in multi-agent topologies |
 
 This design layer sits above execution. The current flow is:
 
-`process-decomposer` → `agent-architect` (if needed) → `setup-evaluation` (for agent-chain) → `project-orchestrator` → execution → execution feedback
+```
+process-decomposer → agent-architect (if needed) → setup-evaluation
+  └── PASS → agent-creator → [agents run] → project-orchestrator
+  └── FAIL → agent-architect (revise)
+```
 
 That gives the repo a reusable process-memory layer instead of treating every complex request as a one-off.
 
+> **Platform note — `agent-creator`:** This skill uses the built-in **Task tool** for native parallel subagent spawning. It works on **Claude Code and Ampcode** (Tier 1 — Task tool available). It is installed globally on all platforms but will halt gracefully on unsupported ones with a clear message. For Warp, Factory.ai, and Gemini without Maestro (Tier 2), `project-orchestrator` handles orchestration via a file-based task plan instead.
 
 ---
 
