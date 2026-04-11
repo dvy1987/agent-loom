@@ -186,6 +186,82 @@ That gives the repo a reusable process-memory layer instead of treating every co
 
 > **Platform note — `agent-creator`:** This skill uses the built-in **Task tool** for native parallel subagent spawning. It works on **Claude Code and Ampcode** (Tier 1 — Task tool available). It is installed globally on all platforms but will halt gracefully on unsupported ones with a clear message. For Warp, Factory.ai, and Gemini without Maestro (Tier 2), `project-orchestrator` handles orchestration via a file-based task plan instead.
 
+#### Full Execution Flow — Example: Annual Compliance Audit
+
+This shows what actually happens from user prompt to output. Everything below the first line runs invisibly — the user only ever talks to `project-orchestrator`.
+
+```
+User: "run the annual compliance audit"
+        ↓
+project-orchestrator
+  reads project state → no prior process entry found
+  classifies: complex, parallel tracks, live system access needed → agent-chain
+  routes to: process-decomposer
+        ↓
+process-decomposer
+  outcome defined: "findings report per domain, risk-ranked remediation plan"
+  decomposes into 4 parallel tracks (all independent, no shared file writes):
+    - privacy-agent    (GDPR / SOC2 — scans data handling, retention policies)
+    - access-agent     (IAM — queries access control systems, flags stale permissions)
+    - security-agent   (vulnerability scan, dependency audit, secrets check)
+    - vendor-agent     (third-party risk — reviews vendor contracts, certifications)
+  complexity_class: agent-chain
+  writes: docs/processes/2026-04-11-compliance-audit.md
+        ↓
+agent-architect
+  topology: parallel (all 4 tracks independent)
+  merge strategy: project-orchestrator collates into executive summary
+  failure handling: non-blocking — failed domain flagged, others continue
+  writes: docs/architecture/2026-04-11-compliance-audit-arch.md
+        ↓
+setup-evaluation
+  checks: no shared file writes ✓  prompts complete ✓  handoffs defined ✓
+  → PASS
+        ↓
+agent-creator  [Claude Code / Ampcode only]
+  writes launch manifest: docs/agents/runs/2026-04-11-compliance-manifest.md
+  spawns 4 agents concurrently via Task tool:
+    privacy-agent  → docs/handoffs/privacy-output.md
+    access-agent   → docs/handoffs/access-output.md
+    security-agent → docs/handoffs/security-output.md
+    vendor-agent   → docs/handoffs/vendor-output.md
+  monitors docs/handoffs/ for completion
+        ↓
+[agents work independently — each queries real systems, discovers findings,
+ writes structured output. access-agent finds 3 stale admin accounts and
+ flags them; security-agent finds 2 exposed secrets in CI config.]
+        ↓
+project-orchestrator
+  all 4 outputs present
+  synthesises into: docs/reports/2026-04-11-compliance-report.md
+  risk-ranks findings across all domains
+  updates docs/skill-outputs/SKILL-OUTPUTS.md
+  updates process entry with execution feedback (learning loop)
+  recommends next phase: remediation planning
+```
+
+#### When Agents Are Actually Needed
+
+Not every task requires this pipeline. A single well-prompted LLM call is faster, simpler, and cheaper for most work. Agents justify themselves only when:
+
+- **The task requires live system access** — querying real databases, IAM systems, APIs, or filesystems, and reacting to what's found. You can't pre-load the answer because the answer depends on what's actually there.
+- **There are feedback loops** — the agent does something, observes the result, decides the next action. The sequence can't be written in advance because step N's input depends on step N-1's output.
+- **Parallelism saves meaningful time** — 4 independent tracks × 20 min each = 80 min sequential vs 20 min parallel. Worth the overhead.
+- **Context is too large for one call** — scanning a large codebase or 200 support tickets requires selective navigation, not a single context window.
+
+If none of those apply, use a skill directly. The orchestrator will tell you.
+
+#### Current Limitations
+
+The pipeline handles well-scoped, parallel, statically-defined work where the task shape is known before execution starts. It does not yet support:
+
+- **Dynamic branching** — if an agent discovers something unexpected mid-run, it cannot signal back to change the plan. Topology is fixed at architecture time.
+- **Conditional spawning** — no support for "if Agent A finds X, spawn Agent B, otherwise skip."
+- **Replanning on failure** — `agent-creator` retries once then halts. It does not replan around a failed agent or find an alternative path.
+- **Chunking large contexts** — no built-in strategy for when the artefact being analysed exceeds one agent's context window.
+
+These are on the roadmap. The current system covers the majority of real parallel agent use cases cleanly.
+
 ---
 
 ### Domain Skills
