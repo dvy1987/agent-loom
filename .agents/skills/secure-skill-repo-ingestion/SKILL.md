@@ -164,3 +164,17 @@ Check 10 (Format): [N findings]
 Quarantine status: [CLEAR / HELD — requires human review]
 VERDICT: [SAFE / BLOCKED / REQUIRES REVIEW]
 ```
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Repo ingestion audit: [repo URL or name]
+Files scanned: [N] | Skipped: [N]
+Checks run: 7 (Poisoned Examples), 8 (Dependencies), 9 (File/Path), 10 (Format)
+Findings: [N critical, N high, N medium]
+Quarantine status: [CLEAR / HELD]
+Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
+```

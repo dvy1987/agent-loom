@@ -70,9 +70,58 @@ Tell the user:
 
 ## Gotchas
 
-- A plan is not a PRD. Focus on *how*, not *what*.
-- Don't over-engineer Phase 1. Keep it focused on the "Happy Path."
-- Always include a "Rollback Plan" or "Feature Flag" task for high-risk changes.
+- A plan is not a PRD — if you catch yourself writing user stories or success metrics, stop. Plans define tasks, dependencies, and verification steps, not product requirements.
+- Phase 1 must be demoable. If the MVP phase cannot produce a working demo (even ugly), the scope is wrong. Cut until it is demoable, then move cuts to Phase 2.
+- Agents underestimate integration tasks. "Connect to API X" is not one task — it is auth setup + client creation + error handling + retry logic + testing. Decompose integration work into at least 3 subtasks.
+- Every task needs a concrete Definition of Done, not "it works." Bad: "Implement auth." Good: "User can log in with email/password, receives JWT, invalid credentials return 401."
+
+---
+
+## Example
+
+<examples>
+  <example>
+    <input>Create an implementation plan for adding voice narration to our video generation pipeline. We have scripts as markdown, need to convert to audio using ElevenLabs API.</input>
+    <output>
+**Implementation Plan: Voice Narration Pipeline**
+
+**Technical Stack:** Python, ElevenLabs API, FFmpeg (format conversion), local file storage
+
+**Architecture:** New NarrationAgent extending BaseAgent. Input: script markdown. Output: MP3 audio file + metadata JSON.
+
+**Phase 0 — Prerequisites (2 tasks)**
+- [ ] Obtain ElevenLabs API key, add to `.env`, verify quota limits. **DoD:** API key works in a standalone curl test.
+- [ ] Add `elevenlabs` Python package to `requirements.txt`, install. **DoD:** `import elevenlabs` succeeds.
+
+**Phase 1 — Core MVP (3 tasks)**
+- [ ] Create `agents/narration/agent.py` extending BaseAgent with `chat()` and `generate()`. **DoD:** Agent loads via AgentRegistry, responds to basic chat.
+- [ ] Implement `generate()`: parse script markdown -> extract narration text -> call ElevenLabs API -> save MP3 to `storage/narration/<video-id>/`. **DoD:** Given a test script, produces a playable MP3 file.
+- [ ] Create narration API endpoint `POST /api/narration/generate`. **DoD:** Curl request with script ID returns 200, audio file exists on disk.
+
+**Phase 2 — Refinement (3 tasks)**
+- [ ] Add voice selection (voice ID parameter). **DoD:** Different voice IDs produce audibly different output.
+- [ ] Add error handling: API rate limits (retry with backoff), invalid scripts (return 422), network failures (timeout after 30s). **DoD:** Each error case returns appropriate error message.
+- [ ] Add progress tracking: emit status updates during long generation. **DoD:** Frontend can poll for generation status.
+
+**Phase 3 — Testing (2 tasks)**
+- [ ] Unit tests for script parsing and API response handling (mock ElevenLabs). **DoD:** `pytest tests/narration/` passes, >=80% coverage.
+- [ ] Integration test: end-to-end script -> audio with real API call. **DoD:** Test produces valid MP3, runs in <30s.
+
+**Risks:**
+1. ElevenLabs API latency (10-30s per generation) — Mitigation: async generation with status polling, not synchronous request.
+2. API quota exhaustion during batch generation — Mitigation: implement queue with rate limiting, show quota usage in UI.
+
+**Estimated effort:** M (3-5 days)
+
+Plan complete: Voice Narration Pipeline
+Phases defined: 4
+Total tasks: 10
+Critical risks identified: 2
+Estimated effort: M
+Ready for: engineering execution
+    </output>
+  </example>
+</examples>
 
 ---
 

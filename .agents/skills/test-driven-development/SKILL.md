@@ -66,9 +66,68 @@ Tell the user:
 
 ## Gotchas
 
-- Don't test the framework or language. Test the business logic.
-- Keep tests isolated. One test should not depend on the state of another.
-- If a test is hard to write, the code is likely too coupled. Use this as a signal to refactor the architecture.
+- Agents skip Red — they jump straight to writing code and tests together. Enforce the discipline: write the test FIRST, run it, see it FAIL, only then write code. The failure message confirms you are testing the right thing.
+- "Test the framework" is the #1 agent mistake. Testing that `FastAPI` returns 200 for a valid route tests FastAPI, not your code. Test the business logic the route calls, not the HTTP plumbing.
+- Agents write one giant test per feature instead of many small tests. Each test should verify exactly one behavior. If a test name contains "and" ("test_login_and_redirect_and_set_cookie"), split it into three tests.
+- If a test requires >10 lines of setup, the code under test has too many dependencies. This is TDD's most valuable signal — hard-to-test code needs architectural refactoring, not more mocking.
+
+---
+
+## Example
+
+<examples>
+  <example>
+    <input>TDD a function that calculates the "interest rate" of a technical debt item based on its blast radius and frequency of encounters.</input>
+    <output>
+**Target Feature:** `calculate_debt_interest(blast_radius: int, encounter_frequency: int) -> str`
+
+**Red Phase — Test 1: Basic classification**
+```python
+def test_high_interest_when_high_blast_and_frequent():
+    assert calculate_debt_interest(blast_radius=8, encounter_frequency=5) == "high"
+```
+Run: `NameError: name 'calculate_debt_interest' is not defined` — correct failure.
+
+**Green Phase — Minimal implementation**
+```python
+def calculate_debt_interest(blast_radius: int, encounter_frequency: int) -> str:
+    score = blast_radius * encounter_frequency
+    if score >= 20:
+        return "high"
+    return "low"
+```
+Run: ✓ Test passes.
+
+**Red Phase — Test 2: Medium classification**
+```python
+def test_medium_interest_when_moderate_score():
+    assert calculate_debt_interest(blast_radius=3, encounter_frequency=3) == "medium"
+```
+Run: `AssertionError: 'low' != 'medium'` — correct failure.
+
+**Green Phase — Add medium tier**
+```python
+def calculate_debt_interest(blast_radius: int, encounter_frequency: int) -> str:
+    score = blast_radius * encounter_frequency
+    if score >= 20:
+        return "high"
+    if score >= 8:
+        return "medium"
+    return "low"
+```
+Run: ✓ Both tests pass.
+
+**Refactor Phase:** Extracted threshold constants, added docstring. All tests still green.
+
+TDD session complete: calculate_debt_interest
+Tests written: 2 (+ 1 edge case for score=0)
+Code coverage achieved: 100%
+Refactorings performed: 1 (extract constants)
+Status: Green (All tests passing)
+Ready for: code review
+    </output>
+  </example>
+</examples>
 
 ---
 

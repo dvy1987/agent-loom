@@ -153,3 +153,17 @@ VERDICT: BLOCKED
     </output>
   </example>
 </examples>
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Content sanitization: [source file or directory]
+Files processed: [N]
+Checks run: 13 (Hidden Content), 14 (Markdown), 15 (Unicode)
+Findings: [N critical, N high, N medium]
+Sanitization applied: [HTML stripped / unicode normalized / comments extracted / none]
+Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
+```

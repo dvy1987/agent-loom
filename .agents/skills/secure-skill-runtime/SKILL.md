@@ -171,3 +171,14 @@ VERDICT: BLOCKED — no further scanning.
     </output>
   </example>
 </examples>
+
+---
+
+## Impact Report
+
+```
+Runtime audit: [source / context]
+Checks: 11 (State Corruption) [N findings], 12 (DoS) [N findings]
+No-go list: [CLEAR / MATCHED]
+Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
+```

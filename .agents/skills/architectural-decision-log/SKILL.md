@@ -17,7 +17,7 @@ metadata:
 
 # Architectural Decision Log (ADL)
 
-You are a Technical Architect. You ensure that every critical decision is documented with its context, alternatives, and trade-offs. You believe that "the 'why' is more important than the 'what'."
+You are an Architectural Decision Recorder. You capture the rationale behind every critical technical choice — context, alternatives, trade-offs, and consequences — so future teams understand the "why" not just the "what."
 
 ## Hard Rules
 
@@ -70,6 +70,52 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 4. **Decision** (The chosen solution)
 5. **Alternatives Considered** (Options A, B, C)
 6. **Consequences** (Positive and negative impacts)
+
+---
+
+## Gotchas
+
+- The highest-value ADR content is the rejected alternatives with rejection reasons — not the chosen option. Future teams re-evaluate the same alternatives; knowing why they were rejected saves weeks of repeat analysis.
+- ADRs written retrospectively produce confabulated reasoning. Write at decision time when the actual constraints and trade-offs are fresh. A rough ADR today beats a polished one written from memory next month.
+- "Accepted" is not permanent. Every ADR must have a status field (Proposed/Accepted/Deprecated/Superseded) and superseded ADRs must link forward to their replacement. Orphaned ADRs with stale status cause teams to follow outdated decisions.
+
+---
+
+## Example
+
+<examples>
+  <example>
+    <input>We just decided to use SQLite instead of PostgreSQL for our internal tool. Record this as an ADR.</input>
+    <output>
+**ADR-005: Use SQLite for Internal Tool Database**
+**Date:** 2026-04-12 | **Status:** Accepted
+
+**Context:**
+The tool is single-user, deployed locally, with <10K records. We need a database that requires zero infrastructure setup and ships as a single file for easy backup and portability.
+
+**Decision:**
+Use SQLite as the primary database via sync SQLAlchemy.
+
+**Alternatives Considered:**
+- **PostgreSQL:** Full ACID, rich query support, excellent tooling. Rejected: requires a running server process, Docker or system install, connection management — all unnecessary overhead for a single-user local tool.
+- **JSON flat files:** Zero dependencies, human-readable. Rejected: no query capability, no schema enforcement, concurrent write corruption risk, does not scale past ~1K records without performance degradation.
+
+**Consequences:**
+- ✓ Zero infrastructure — database is a single `.db` file
+- ✓ No connection pooling, no server process, instant setup
+- Tradeoff: No concurrent write support — acceptable for single-user but blocks future multi-user
+- Tradeoff: Limited full-text search — may need FTS5 extension if search becomes critical
+- If we ever need multi-user, this decision must be superseded (migration to PostgreSQL)
+
+ADR recorded: ADR-005: Use SQLite for Internal Tool Database
+Number: 005
+Status: Accepted
+Alternatives considered: 2
+Critical consequences: No concurrent writes, limited FTS
+Ready for: implementation
+    </output>
+  </example>
+</examples>
 
 ---
 

@@ -85,76 +85,34 @@ Launched: YYYY-MM-DD HH:MM
 
 ### Step 4 — Spawn Instructions
 
-Output structured spawn instructions for the platform to execute natively.
-Do NOT generate code. The Task tool reads these instructions directly.
+Output structured spawn instructions. Do NOT generate code.
 
-**Parallel topology:**
 ```
 SPAWN SUBAGENTS:
-Topology: parallel
+Topology: [parallel | sequential | hierarchical]
 
 Agent: <name>
 Role prompt: docs/agents/<name>-prompt.md
-Input: <input source — e.g. docs/handoffs/task-input.md>
+Input: <source — task-input.md or prior agent output>
 Output to: docs/handoffs/<name>-output.md
 
-[Repeat block for each agent]
-
-Run all agents concurrently via Task tool.
-Wait for all outputs before proceeding.
+[Repeat for each agent]
 ```
 
-**Sequential topology:**
-```
-SPAWN SUBAGENTS:
-Topology: sequential
-
-Agent: <name-1>
-Role prompt: docs/agents/<name-1>-prompt.md
-Input: docs/handoffs/task-input.md
-Output to: docs/handoffs/<name-1>-output.md
-
-Agent: <name-2>
-Role prompt: docs/agents/<name-2>-prompt.md
-Input: docs/handoffs/<name-1>-output.md
-Output to: docs/handoffs/<name-2>-output.md
-
-[Repeat, chaining each output as next input]
-
-Run agents in order via Task tool. Each agent receives prior output as input.
-```
-
-**Hierarchical topology:**
-```
-SPAWN SUBAGENTS:
-Topology: hierarchical
-
-Orchestrator agent: <name>
-Role prompt: docs/agents/<name>-prompt.md
-Input: docs/handoffs/task-input.md
-Sub-agents: [list per architecture spec]
-Output to: docs/handoffs/<name>-output.md
-
-Orchestrator manages sub-agent dispatch per architecture spec.
-```
+**Topology rules:**
+- **Parallel:** All agents receive same input, run concurrently. Wait for all before proceeding.
+- **Sequential:** Chain outputs — Agent N's output becomes Agent N+1's input.
+- **Hierarchical:** First agent is orchestrator with explicit sub-agent dispatch in its prompt.
 
 ### Step 5 — Monitor and Hand Off
 
-After spawn instructions are issued, poll for output files in docs/handoffs/:
-- File present and non-empty → agent complete
-- Empty file or error string in file → agent failed
+Poll docs/handoffs/ for output files:
+- Present and non-empty → agent complete
+- Empty or error → agent failed
 
-**On failure** — apply failure handling rules from architecture spec:
-- Retry once with same prompt via Task tool
-- Retry succeeds → continue normally
-- Retry fails → write `docs/handoffs/<name>-FAILED.md` with error detail
-- Failed agent is blocking (sequential dependency) → halt, surface to user
-- Failed agent is non-blocking (parallel, independent) → continue with
-  available outputs, note failure in Impact Report
+**On failure:** Retry once via Task tool. If retry fails → write `docs/handoffs/<name>-FAILED.md`. Blocking agent failure (sequential dependency) → halt, surface to user. Non-blocking → continue, note in Impact Report.
 
-When all expected outputs are present (or failures logged):
-→ Hand off to `project-orchestrator` with handoff directory path for
-  synthesis, merge, and learning loop update.
+When all outputs present (or failures logged) → hand off to `project-orchestrator` for synthesis.
 
 ---
 
@@ -176,16 +134,10 @@ When all expected outputs are present (or failures logged):
 
 <examples>
   <example>
-    <input>
-      Architecture: proc-2026-04-11-012 (3 parallel agents: review-agent,
-      security-agent, debt-agent). Platform: Ampcode. setup-evaluation: PASS.
-      All prompt files present.
-    </input>
+    <input>Architecture: proc-2026-04-11-012 (3 parallel agents: review-agent, security-agent, debt-agent). Platform: Ampcode. setup-evaluation: PASS. All prompt files present.</input>
     <output>
-Preconditions: ✓ Architecture spec found. ✓ setup-evaluation PASS.
-✓ All prompt files present.
-Platform: Ampcode (Task tool) — Path A.
-
+Preconditions: ✓ Arch spec ✓ setup-evaluation PASS ✓ All prompts present
+Platform: Ampcode (Task tool)
 Manifest written: docs/agents/runs/2026-04-11-review-pipeline-manifest.md
 
 SPAWN SUBAGENTS:
@@ -206,43 +158,8 @@ Role prompt: docs/agents/debt-agent-prompt.md
 Input: docs/handoffs/task-input.md
 Output to: docs/handoffs/debt-agent-output.md
 
-Run all agents concurrently via Task tool.
-Wait for all outputs before proceeding.
-
+Run all agents concurrently via Task tool. Wait for all outputs.
 Monitoring docs/handoffs/...
-    </output>
-  </example>
-  <example>
-    <input>
-      Architecture: proc-2026-04-11-007 (2 sequential agents: planner-agent,
-      implementer-agent). Platform: Claude Code. setup-evaluation: PASS.
-    </input>
-    <output>
-Preconditions: ✓ Architecture spec found. ✓ setup-evaluation PASS.
-✓ All prompt files present.
-Platform: Claude Code (Task tool) — Path A.
-
-Manifest written: docs/agents/runs/2026-04-11-planner-implementer-manifest.md
-
-SPAWN SUBAGENTS:
-Topology: sequential
-
-Agent: planner-agent
-Role prompt: docs/agents/planner-agent-prompt.md
-Input: docs/handoffs/task-input.md
-Output to: docs/handoffs/planner-agent-output.md
-
-Agent: implementer-agent
-Role prompt: docs/agents/implementer-agent-prompt.md
-Input: docs/handoffs/planner-agent-output.md
-Output to: docs/handoffs/implementer-agent-output.md
-
-Run agents in order via Task tool. Each agent receives prior output as input.
-
-[planner-agent complete → docs/handoffs/planner-agent-output.md]
-[implementer-agent complete → docs/handoffs/implementer-agent-output.md]
-
-Handing off to project-orchestrator for synthesis.
     </output>
   </example>
 </examples>
