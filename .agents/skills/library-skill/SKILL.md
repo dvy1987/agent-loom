@@ -31,6 +31,8 @@ You are the skill library's consistency engine. When any structural change occur
 
 **Invoke `generate-changelog`** after all updates are complete — never before.
 
+**Conditional calls:** Steps 6-7 may invoke `codebase-understanding` or `prd-writing` to create missing docs. These are conditional — they only fire when the target file does not exist.
+
 ---
 
 ## Workflow
@@ -103,11 +105,13 @@ Update when structural changes affect the execution flow or layer structure:
 
 ### 7. Update `docs/PRD.md`
 
-If `docs/PRD.md` does not exist, invoke `prd-writing` to create it. Provide `prd-writing` with:
+If `docs/PRD.md` does not exist, invoke `prd-writing` in **non-interactive mode** — do NOT ask the user clarifying questions. Instead, infer all answers from:
 - `docs/architecture.md` (from step 6) as architectural context
 - Any existing point-in-time PRDs (`docs/prd/YYYY-MM-DD-*.md`) as historical context — **caution:** these may be outdated; treat as directional input, not ground truth
 - The skill registry (from step 1) as the current skill inventory
-- Allow `prd-writing` to ask the user clarifying questions as needed before writing.
+- Session context, README, AGENTS.md, and any other project documentation available
+
+Make best-guess decisions where information is missing. The user can refine the PRD later — a reasonable first draft is better than blocking the pipeline.
 
 Then continue.
 

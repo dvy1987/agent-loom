@@ -67,7 +67,7 @@ This expansion adds three new reasoning layers above the existing skill executio
      │       │              ▼                │
      │       │  ┌────────────────────────────▼───────┐
      │       │  │ LAYER 3 — ARCHITECTURE DESIGN      │
-     │       │  │ Skill: agent-builder (NEW)        │
+     │       │  │ Skill: agent-builder (NEW)          │
      │       │  │ • Single agent / multi-agent?       │
      │       │  │ • Topology + orchestration rules    │
      │       │  │ • Per agent: skills[], tools[],     │
