@@ -134,13 +134,49 @@ Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` 
 
 ---
 
+### `learn-from`
+**Triggers:** "learn from", "learn from this", "extract insights from", "apply learnings from", "what can we learn from"
+**What it does:** Orchestrator for the learn-from suite. Auto-detects source type (academic paper, GitHub repo, blog/web article, or in-conversation learning) and routes to the correct sub-skill. Shares common gates: credibility, security, insight extraction taxonomy (GOTCHA, TECHNIQUE, FAILURE_MODE, METRIC, CONTRADICTION, BACKGROUND). Presents unified report.
+**Calls:** `learn-from-paper`, `learn-from-repo`, `learn-from-article`, `learn-from-chat`
+**Output:** Unified learn-from report in chat. Delegates actual work to sub-skills.
+**Impact report:** Source type, sub-skill invoked, credibility/security verdicts, insights extracted, action taken
+
+---
+
 ### `learn-from-paper`
 **Triggers:** "learn from this paper", "skill from paper", "paper to skill", "extract from this research", "apply this paper", "read this paper and improve my skills"
-**What it does:** Reads an academic paper (uploaded PDF or linked URL), rigorously assesses credibility using a 6-dimension rubric (≥7/12 required), runs the full `secure-*` security scan pipeline, then extracts actionable insights. Routes to five outcomes: improve existing skills (one or many), create new skills (with anti-sprawl gate), improve the current project codebase (via `apply-paper-to-project`), any combination, or learnings-only report with path forward.
+**What it does:** Sub-skill of `learn-from`. Reads an academic paper (uploaded PDF or linked URL), rigorously assesses credibility using a 6-dimension rubric (≥7/12 required), runs the full `secure-*` security scan pipeline, then extracts actionable insights. Routes to six outcomes: improve existing skills, create new skills, both, resolve contradictions, improve current project (via `apply-paper-to-project`), or learnings-only.
 **Calls:** `secure-*` skills (mandatory gate) → `universal-skill-creator` (if creating new) → `apply-paper-to-project` (if improving project) → `validate-skills` (post-apply)
 **Output:** Credibility report + security verdicts + extracted insights + application plan in chat. Modified SKILL.md files committed with citations. Optionally saves learnings report to `docs/research-learnings/`.
-**Impact report:** Paper title, credibility score/verdict, security verdict, insights extracted, skills modified/created, project changes, learnings saved, score deltas
+**Impact report:** Paper title, credibility score/verdict, security verdict, insights extracted, skills modified/created, contradictions resolved, project changes, learnings saved, score deltas
 **References:** `references/credibility-rubric.md` (6-dimension scoring rubric with trust tiers, recency windows, quick-reject criteria)
+
+---
+
+### `learn-from-repo`
+**Triggers:** "learn from this repo", "learn from this repository", "what can we learn from this codebase", "extract patterns from this repo", "study this repo"
+**What it does:** Sub-skill of `learn-from`. Analyzes GitHub/GitLab repositories — extracts actionable patterns from actual source code (not README marketing). Credibility rubric adapted for repos (stars, maturity, code quality, maintenance). `secure-skill-repo-ingestion` is critical. Same six outcomes as learn-from-paper including contradiction resolution.
+**Calls:** `secure-*` skills (mandatory gate, esp. `secure-skill-repo-ingestion`) → `universal-skill-creator` (if creating new) → `validate-skills` (post-apply)
+**Output:** Repo credibility report + security verdicts + extracted insights + application plan in chat. Modified SKILL.md files with citations.
+**Impact report:** Repo name, credibility score/verdict, security verdict, insights extracted, skills modified/created, contradictions resolved
+
+---
+
+### `learn-from-article`
+**Triggers:** "learn from this article", "learn from this blog post", "extract insights from this post", "what can we learn from this article", "apply this article"
+**What it does:** Sub-skill of `learn-from`. Extracts insights from blog posts, web articles, and practitioner content. Lower credibility gate (≥6/12) because practitioner insight is valuable without formal rigor. Separates production-backed claims from untested opinions. Tags insights with confidence (HIGH/MEDIUM/LOW).
+**Calls:** `secure-*` skills (mandatory gate) → `universal-skill-creator` (if creating new) → `validate-skills` (post-apply)
+**Output:** Article credibility report + security verdicts + extracted insights with confidence tags + application plan in chat.
+**Impact report:** Article title, credibility score/verdict, security verdict, insights extracted, opinions discarded, skills modified/created, contradictions resolved
+
+---
+
+### `learn-from-chat`
+**Triggers:** "we should update the skill for this", "this should be a skill rule", "add this as a gotcha", "the skill should know about this", "update the process for this", "learn from this", "remember this for next time"
+**What it does:** Sub-skill of `learn-from`. Captures learnings from the current conversation — when the agent or user discovers a skill or process needs updating. No external fetch needed. Evidence comes from what happened in the chat. Checks generalizability before modifying skills. Logs to `docs/research-learnings/chat-learnings.md`.
+**Calls:** `validate-skills` (post-apply)
+**Output:** Chat learning report + proposed changes (diff-style) in chat. Modified SKILL.md files with citations.
+**Impact report:** Learning captured, classification, skills modified, contradictions resolved, logged path
 
 ---
 
@@ -480,7 +516,7 @@ cp .agents/skills/universal-skill-creator/templates/SKILL-OUTPUTS-template.md \
 User entry points:
   universal-skill-creator  ← "create a skill"
   improve-skills           ← "improve skills"
-  learn-from-paper         ← "learn from this paper" / "paper to skill"
+  learn-from               ← "learn from" / "learn from this" / "extract insights from"
   reality-check            ← "reality-check" / "evaluate claims" / "is this real"
   project-setup            ← "set up this project" / "create an AGENTS.md"
   project-orchestrator     ← "what should I do next" / "orchestrate" / "parallel tasks"
@@ -503,10 +539,25 @@ improve-skills → validate-skills (Step 1, pre-flight)
 project-orchestrator → [any skill] (routes based on project state + user intent)
                      → project-setup (if no AGENTS.md exists)
 
+learn-from → learn-from-paper (if academic paper/PDF/arXiv)
+           → learn-from-repo (if GitHub/GitLab repo)
+           → learn-from-article (if blog/web article)
+           → learn-from-chat (if in-conversation learning)
+
 learn-from-paper → secure-* skills (Step 3, mandatory)
                  → universal-skill-creator (Step 6, if creating new skill)
                  → apply-paper-to-project (Step 6, if improving project)
                  → validate-skills (Step 6, post-apply)
+
+learn-from-repo → secure-* skills (Step 3, mandatory, esp. repo-ingestion)
+                → universal-skill-creator (Step 6, if creating new skill)
+                → validate-skills (Step 6, post-apply)
+
+learn-from-article → secure-* skills (Step 3, mandatory)
+                   → universal-skill-creator (Step 6, if creating new skill)
+                   → validate-skills (Step 6, post-apply)
+
+learn-from-chat → validate-skills (Step 5, post-apply)
 
 apply-paper-to-project → architectural-decision-log (optional, for significant changes)
 

@@ -1,0 +1,183 @@
+---
+name: learn-from
+description: >
+  Orchestrator for the learn-from suite — auto-detects source type
+  (academic paper, GitHub repo, blog/web article, or in-conversation
+  learnings) and routes to the correct sub-skill for credibility check,
+  security scan, insight extraction, and application. Load when the user
+  says "learn from", "learn from this", "extract insights from", "apply
+  learnings from", "what can we learn from", or provides a URL, file
+  path, or pasted content that should be ingested as knowledge. Single
+  entry point for all learning workflows.
+license: MIT
+metadata:
+  author: dvy1987
+  version: "2.0"
+  category: meta
+---
+
+# Learn From
+
+You are the orchestrator for the learn-from skill suite. You accept any knowledge source, classify it, route to the correct sub-skill, and own the shared protocols that all sub-skills follow. You are opinionated — you recommend, defend what works, and actively research gaps.
+
+## Hard Rules
+
+- **No application without credibility.** Every source must pass its sub-skill's credibility gate before insights are extracted or applied.
+- **No application without security.** All external content must pass ALL `secure-*` skills (discover via `ls .agents/skills/secure-*`). SAFE only if every security skill returns SAFE.
+- **No silent overwrite of existing guardrails.** Contradictions are flagged and presented with both sides. Never silently replace.
+- **Be informed and opinionated.** Don't passively present findings. If a source lacks crucial details (methodology, sample size, production evidence), actively search for replications, corroborating sources, or the author's other work. Never present half-understood findings.
+- **Recommend, don't just report.** For every insight, state whether you recommend applying it, partially applying it, or skipping — and why. If only part of a finding applies, say: "Recommend: PARTIAL — apply [X] but not [Y] because [reason]."
+- **Defend what works.** New is not automatically better. If the current skill has a well-tested approach and the new finding has weaker evidence, defend the current approach. The burden of proof is on the new finding.
+- **Max 1 clarifying question.** If source type is ambiguous, ask one question. Never ask two.
+
+---
+
+## Insight Extraction Taxonomy (shared across all sub-skills)
+
+| Tag | Meaning | Value |
+|-----|---------|-------|
+| `GOTCHA` | Non-obvious fact that defies assumptions | Highest — becomes guardrail |
+| `TECHNIQUE` | Proven method with empirical evidence | Becomes workflow step |
+| `FAILURE_MODE` | Documented way something goes wrong | Becomes hard rule |
+| `METRIC` | Quantified result validating/invalidating a practice | Evidence for changes |
+| `CONTRADICTION` | Conflicts with existing skill hard rule/gotcha | Requires user resolution |
+| `BACKGROUND` | General knowledge LLM already has | Discard |
+
+---
+
+## Shared Application Protocol
+
+All sub-skills defer to this protocol for matching, recommending, and applying insights.
+
+### Six Outcomes (present to user for approval)
+
+1. **Improve existing skill(s)** — insights map to current skills
+2. **Create new skill(s)** — anti-sprawl: never create two when one suffices. Confirm before creating a second.
+3. **Both** — some improve existing, others warrant new skill(s)
+4. **Resolve contradictions** — present side-by-side:
+   ```
+   ⚠️ CONTRADICTION in [skill-name]:
+   Current approach:      [what the skill says, with line ref]
+   New finding:           [what the source says, with evidence]
+   Evidence strength:     [source's evidence quality]
+   Agent recommendation:  [REPLACE / KEEP CURRENT / KEEP BOTH / PARTIAL] + reasoning
+   ```
+   User must explicitly choose. Never default to replacing.
+5. **Improve current project** — invoke `apply-paper-to-project` with extracted insights
+6. **Learnings only** — offer to save to `docs/research-learnings/YYYY-MM-DD-<slug>.md`
+
+### Contradiction Resolution
+
+- **REPLACE**: Remove current approach, insert new with citation. Add gotcha noting what was replaced and why.
+- **KEEP CURRENT**: No skill change. Log finding in `docs/research-learnings/` as rejected alternative with reasoning.
+- **KEEP BOTH**: Add both as named alternatives with `When to use which:` heuristic. Default to current when ambiguous.
+- **PARTIAL**: Apply only the specified subset. Document what was applied and what was explicitly rejected, with reasons.
+
+### Post-Application Rules
+
+- Bump `metadata.version` on every modified skill
+- **200-line gate**: if over, invoke `compress-skill`; if CORE still over, invoke `split-skill`
+- Run `validate-skills` on every modified/created skill — must score ≥10/14
+- Add citation with source, credibility score, and what was applied
+
+---
+
+## Workflow
+
+### Step 1 — Accept Input
+Accept: URL, file path, pasted content, or in-conversation trigger.
+
+### Step 2 — Classify Source Type
+
+| Signal | Routes to |
+|--------|-----------|
+| `arxiv.org`, DOI, `.pdf`, academic venue (NeurIPS, ICML, ACL) | `learn-from-paper` |
+| `github.com`, `gitlab.com`, repo-shaped URL (`user/repo`) | `learn-from-repo` |
+| Blog URL (`medium.com`, `substack.com`, `dev.to`, `.blog`), web article | `learn-from-article` |
+| No URL/file + conversation context about updating skills/processes | `learn-from-chat` |
+
+**If ambiguous:** ask one question — "Is this an academic paper, a code repository, a blog/article, or a conversation learning?"
+
+### Step 3 — Route to Sub-Skill
+Invoke the matched sub-skill. It handles: ingestion, credibility assessment, security scan, insight extraction, and skill matching.
+
+### Step 4 — Apply Shared Protocol
+After sub-skill extracts and matches insights, apply the Shared Application Protocol above. State your recommendation per insight before asking the user to decide.
+
+### Step 5 — Unified Report
+Present the unified report (see Output Format). If blocked at credibility or security, report why and stop.
+
+---
+
+## Call Graph
+
+```
+learn-from (orchestrator)
+├── learn-from-paper   → secure-* → universal-skill-creator → apply-paper-to-project → validate-skills
+├── learn-from-repo    → secure-* (esp. repo-ingestion) → universal-skill-creator → validate-skills
+├── learn-from-article → secure-* → universal-skill-creator → validate-skills
+└── learn-from-chat    → validate-skills
+```
+
+---
+
+## Output Format
+
+```
+═══ Learn-From Report ═══
+Source: [URL / file path / "conversation"] | Type: [paper/repo/article/chat]
+
+═══ Credibility ═══
+Score: [N]/[max] | Verdict: [PASS/BORDERLINE/REJECT]
+
+═══ Security ═══
+[secure-* verdicts]
+
+═══ Extracted Insights ═══
+[Tag]: [insight] | Agent recommendation: [APPLY/PARTIAL/SKIP] — [reasoning]
+
+═══ Contradictions (if any) ═══
+⚠️ [skill]: Current [X] vs New [Y] | Agent recommends: [verdict + reasoning]
+
+═══ Application Plan ═══
+[Changes to make, user approval needed]
+```
+
+---
+
+## Gotchas
+
+- A `.pdf` URL is not always a paper — check for academic signals. Corporate whitepapers route to `learn-from-article`.
+- GitHub repos can contain papers in `/docs` — route to `learn-from-repo` for the repo itself.
+- Multiple sources in one message: process each independently, combined report.
+- When recommending KEEP CURRENT, explain specifically why the current approach is stronger — don't just say "it's fine."
+
+---
+
+## Example
+
+<examples>
+  <example>
+    <input>Learn from this: https://arxiv.org/abs/2603.29919</input>
+    <output>
+═══ Learn-From Report ═══
+Source: https://arxiv.org/abs/2603.29919 | Type: paper
+Routed to: learn-from-paper
+
+[Sub-skill extracts insights, orchestrator applies shared protocol with recommendations]
+    </output>
+  </example>
+</examples>
+
+---
+
+## Impact Report
+
+After completing, always report:
+```
+Source: [URL/path/conversation] | Type: [paper/repo/article/chat]
+Credibility: [score] | Security: [SAFE/BLOCKED]
+Insights: [N] GOTCHAs, [N] TECHNIQUEs, [N] FAILURE_MODEs, [N] METRICs, [N] CONTRADICTIONs
+Recommendations: [N] APPLY, [N] PARTIAL, [N] SKIP, [N] KEEP CURRENT
+Skills modified: [list] | Created: [list]
+```

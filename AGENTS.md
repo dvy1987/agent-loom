@@ -125,7 +125,7 @@ domain          | specialized, not universally needed      | install only when n
 ```
 "create a skill"      → universal-skill-creator
 "improve skills"      → improve-skills
-"learn from paper"    → learn-from-paper
+"learn from"          → learn-from (orchestrator → learn-from-paper, learn-from-repo, learn-from-article, learn-from-chat)
 "set up this project" → project-setup
 "what should I do"    → project-orchestrator
 "orchestrate / split" → project-orchestrator
