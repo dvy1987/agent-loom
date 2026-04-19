@@ -55,10 +55,10 @@ Also read: `AGENTS.md` Orchestration Map (if present), `docs/skill-outputs/SKILL
 Invoke `skill-routing` with the user's request and the project state from Step 1. It returns the matched skill, ambiguity score, and how it resolved.
 
 **Then classify:**
-- **Single-skill:** `skill-routing` returned one skill → proceed to Step 3.
-- **Process-backed:** Process entry exists in `docs/processes/` → read complexity_class, follow the process.
+- **Process-backed wins first:** If a matching process entry already exists in `docs/processes/`, read `complexity_class` and resume that process before taking any fresh single-skill path.
+- **Single-skill:** No matching process entry exists and `skill-routing` returned one concrete skill → proceed to Step 3.
 - **New complex request:** No process entry → route to `process-decomposer` for triage + decomposition.
-- **Phase recommendation:** User asks "what next?" → recommend based on Step 1.
+- **Phase recommendation:** `skill-routing` returned `project-orchestrator` for a "what next?" request → recommend based on Step 1.
 
 If `process-decomposer` returns `agent-chain`: wait for `agent-builder` and `setup-evaluator` to complete before proceeding to execution.
 

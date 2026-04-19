@@ -6,8 +6,8 @@ description: >
   updated based on what's happening in the current chat. Sub-skill of the
   learn-from orchestrator. Load when the user says "we should update the skill
   for this", "this should be a skill rule", "add this as a gotcha", "the skill
-  should know about this", "update the process for this", "learn from this",
-  "remember this for next time", "this is important for the skill". Also triggers
+  should know about this", "update the process for this", "remember this for
+  next time", "this is important for the skill". Also triggers
   when the agent notices a skill's guidance was wrong or incomplete, a process
   step failed or was unnecessary, a new pattern emerged, a guardrail was missing,
   a workaround became a pattern, or a debugging session reveals a gap.
@@ -101,16 +101,17 @@ With explicit user approval:
 
 ### Step 6 — Log
 
-Append to `docs/research-learnings/chat-learnings.md`:
+Ensure `docs/learnings/` exists, then append to `docs/learnings/chat-learnings.md`:
 ```markdown
 ## [YYYY-MM-DD] — [one-line summary]
 - **Classification:** [tag]
 - **Evidence:** [what happened]
 - **Skills modified:** [list]
+- **Skills created from this learning:** [none yet / skill-name(s)]
 - **Changes:** [brief description of what was added/changed]
 ```
 
-Create the file if it doesn't exist. Tell user: "Logged in `docs/research-learnings/chat-learnings.md`."
+Create the file if it doesn't exist. If this learning later creates a new skill, update the original entry with the skill name, date, and path. Tell user: "Logged in `docs/learnings/chat-learnings.md`."
 
 ---
 
@@ -158,5 +159,5 @@ Discovered: [one-sentence insight]
 Classification: [tag] | Generalizable: [yes/no]
 Skills modified: [list] | Contradictions resolved: [N]
 validate-skills: [skill]: [before] → [after]
-Logged: docs/research-learnings/chat-learnings.md
+Logged: docs/learnings/chat-learnings.md
 ```

@@ -28,7 +28,7 @@ You are a Skill Naming & Intent Deconfliction Auditor. You catch three classes o
 
 **Never merge skills.** That is `deprecate-skill`'s job. Flag and recommend — do not restructure.
 
-**Minimum 5 trigger phrases per skill.** A description with fewer than 5 distinct trigger phrases or trigger conditions is under-specified for routing.
+**Minimum 5 trigger phrases per externally-invoked skill.** Skills marked `metadata.internal: true` are caller-only and are exempt from the public trigger-count gate.
 
 ---
 
@@ -38,11 +38,12 @@ You are a Skill Naming & Intent Deconfliction Auditor. You catch three classes o
 
 Read every `.agents/skills/*/SKILL.md`. For each skill, extract:
 - `name` (from frontmatter)
+- `metadata.internal` (default false)
 - All trigger phrases from `description` (quoted phrases after "Load when", "Also triggers on", "triggers on")
 - The core purpose (one-sentence summary of what the skill does)
 - Category (`meta`, `project-specific`, `domain`, `thinking`)
 
-Store as `{name, triggers[], purpose, category}`.
+Store as `{name, internal, triggers[], purpose, category}`.
 
 ### Step 2 — Name Collision Check
 
@@ -71,11 +72,12 @@ For each flagged pair, state: which phrases overlap, which skill should own each
 ### Step 4 — Intent Diversity Check
 
 For each skill, evaluate its trigger phrases:
-1. **Count** — fewer than 5 distinct triggers → flag as UNDER-SPECIFIED
-2. **Variety** — are triggers just rewordings of the same phrase? Group by semantic meaning. If all triggers map to ≤2 semantic clusters → flag as LOW-VARIETY
-3. **Coverage** — does the trigger set cover the realistic ways a user would ask for this capability? If obvious phrasings are missing → flag as GAPS with suggested additions
+1. **Internal gate first** — if `metadata.internal: true`, skip trigger-count and variety failure checks. Report `INTERNAL` and only flag overlap or naming problems.
+2. **Count** — fewer than 5 distinct triggers → flag as UNDER-SPECIFIED
+3. **Variety** — are triggers just rewordings of the same phrase? Group by semantic meaning. If all triggers map to ≤2 semantic clusters → flag as LOW-VARIETY
+4. **Coverage** — does the trigger set cover the realistic ways a user would ask for this capability? If obvious phrasings are missing → flag as GAPS with suggested additions
 
-Score each skill: `PASS` (≥5 triggers, ≥3 semantic clusters, no obvious gaps) | `WARN` (minor gaps) | `FAIL` (under-specified or low-variety).
+Score each skill: `PASS` (≥5 triggers, ≥3 semantic clusters, no obvious gaps) | `WARN` (minor gaps) | `FAIL` (under-specified or low-variety). Internal caller-only skills may instead score `INTERNAL`.
 
 ### Step 5 — Produce Report
 
@@ -95,13 +97,13 @@ TRIGGER OVERLAP
   Action: [none | remove/reword phrases: list]
 
 INTENT DIVERSITY
-  Trigger count: N
-  Semantic clusters: N
-  Score: PASS | WARN | FAIL
+  Trigger count: N | exempt (internal)
+  Semantic clusters: N | exempt (internal)
+  Score: PASS | WARN | FAIL | INTERNAL
   Missing triggers: [none | suggested additions]
 ```
 
-Verdict logic: RENAME if name collision found. REVISE if trigger overlap > 40% or intent diversity FAIL. PASS otherwise.
+Verdict logic: RENAME if name collision found. REVISE if trigger overlap > 40% or intent diversity FAIL. PASS otherwise. `INTERNAL` counts as PASS unless another issue forces RENAME/REVISE.
 
 #### Library-Wide Mode (called by improve-skills or user)
 
@@ -125,6 +127,7 @@ OVER-USED TRIGGERS (in 3+ skills)
     → [which skill should own it]
 
 INTENT DIVERSITY
+  INTERNAL: [skill] — caller-only; trigger-count gate skipped
   FAIL: [skill] — N triggers, N clusters — [suggested additions]
   WARN: [skill] — [issue] — [suggested additions]
   PASS: [list of passing skills]
@@ -133,6 +136,7 @@ SUMMARY
   Name collisions: N
   Trigger overlaps: N pairs
   Over-used triggers: N phrases
+  Internal skills skipped: N
   Diversity failures: N skills
   Diversity warnings: N skills
 ```

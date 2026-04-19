@@ -157,7 +157,7 @@ Then tell the user:
 This applies to all project-level output files — PRDs, design docs, reports, changelogs, generated configs, exported data. It does NOT apply to skill files themselves (those go to `.agents/skills/`, not `docs/skill-outputs/`).
 
 ---
-
+**3. Learnings provenance tracking** - if the new skill is created from `docs/learnings/research-learnings.md` or `docs/learnings/chat-learnings.md`, update the source learning entry with the created skill name, skill path, and creation date. Then append that learnings-file update to `docs/skill-outputs/SKILL-OUTPUTS.md` so the provenance is visible in the project log.
 ## Verification Checklist
 - [ ] Starts with `---` on line 1, name matches directory
 - [ ] Description has trigger keywords and action verbs
@@ -167,7 +167,7 @@ This applies to all project-level output files — PRDs, design docs, reports, c
 - [ ] Under 200 lines, `agentskills validate` passes
 - [ ] `## Impact Report` section present at end of SKILL.md
 - [ ] If skill generates files: file-output logging to `docs/skill-outputs/SKILL-OUTPUTS.md` included
-
+- [ ] If sourced from `docs/learnings/*.md`: source learning entry updated with created skill provenance
 ---
 
 ## Reference Files
