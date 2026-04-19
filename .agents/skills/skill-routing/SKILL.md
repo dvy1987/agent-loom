@@ -43,7 +43,7 @@ Compare the user's request against trigger phrases. Find all candidate skills:
 | "write a PRD" | `prd-writing` | Design spec |
 | "plan implementation" | `implementation-plan` | PRD |
 | "plan this change" / "spec this out" / "create TODO" | `problem-to-plan` | — |
-| "build this" / "implement" | Implementation + `test-driven-development` | Plan |
+| "build this" / "implement" | `test-driven-development` | Plan |
 | "technical debt" / "code health" | `technical-debt-audit` | Code exists |
 | "changelog" / "release notes" | `generate-changelog` | Commits exist |
 | "think through this" / "I'm stuck" | `deep-thinking` | — |
@@ -53,7 +53,7 @@ Compare the user's request against trigger phrases. Find all candidate skills:
 | "record this decision" | `architectural-decision-log` | Decision made |
 | "set up this project" | `project-setup` | — |
 | "create a skill" | `universal-skill-creator` | — |
-| "what should I do next" | Phase recommendation | — |
+| "what should I do next" | `project-orchestrator` | — |
 | "decompose" / "break this down" / "what steps" | `process-decomposer` | — |
 | "design agent" / "architect this" / "multi-agent" | `agent-builder` | Process entry |
 | "find a skill for" / "which skill handles" | `skill-finder` | — |
@@ -64,6 +64,8 @@ Compare the user's request against trigger phrases. Find all candidate skills:
 | "understand this repo" / "explain architecture" | `codebase-understanding` | — |
 | "learn from" / "extract insights" | `learn-from` | — |
 | "fix this bug" / "debug this" | `debug-and-fix` | — |
+| "evaluate output" / "score response" / "run eval" / "LLM as judge" | `eval-output` | LLM/agent output |
+| "design rubric" / "eval criteria" | `eval-rubric-design` | — |
 | "reality-check" / "evaluate claims" | `reality-check` | — |
 | "deconflict skills" / "check naming" | `skill-deconflict` | — |
 
@@ -125,6 +127,7 @@ Pre-req: [met | missing — need X first]
 
 - "Review" is the most ambiguous word — "review this code" → `code-review-crsp`, "review changes for context" → not a review skill, "review the plan" → `adversarial-hat`. Always check the object being reviewed.
 - "Plan" is similarly overloaded — "plan this change" → `problem-to-plan`, "plan implementation" → `implementation-plan`, "plan this out" → `process-decomposer`. The verb before "plan" disambiguates.
+- Return only concrete, invokable skill names. Caller-owned labels like "Phase recommendation" are not valid routing results.
 - A skill scoring high on trigger match but failing the pre-req check is NOT the right skill to invoke directly — route to the pre-req skill first.
 - When `project-orchestrator` calls you, return fast. Routing should add seconds, not minutes.
 

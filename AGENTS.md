@@ -132,6 +132,9 @@ domain          | specialized, not universally needed      | install only when n
 "break this down"     → process-decomposer (triage + decompose)
 "design an agent"     → agent-builder
 "find a skill for"    → skill-finder
+"evaluate output"     → eval-output (orchestrator → eval-rubric-design, eval-judge, eval-pipeline)
+"score this response" → eval-output
+"run an eval"         → eval-output
 "reality-check"       → reality-check
 "evaluate claims"     → reality-check
 "deconflict skills"   → skill-deconflict

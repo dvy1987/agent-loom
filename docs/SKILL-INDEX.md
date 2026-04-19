@@ -165,7 +165,7 @@ Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` 
 **Triggers:** "learn from this paper", "skill from paper", "paper to skill", "extract from this research", "apply this paper", "read this paper and improve my skills"
 **What it does:** Sub-skill of `learn-from`. Reads an academic paper (uploaded PDF or linked URL), rigorously assesses credibility using a 6-dimension rubric (≥7/12 required), runs the full `secure-*` security scan pipeline, then extracts actionable insights. Routes to six outcomes: improve existing skills, create new skills, both, resolve contradictions, improve current project (via `apply-paper-to-project`), or learnings-only.
 **Calls:** `secure-*` skills (mandatory gate) → `universal-skill-creator` (if creating new) → `apply-paper-to-project` (if improving project) → `validate-skills` (post-apply)
-**Output:** Credibility report + security verdicts + extracted insights + application plan in chat. Modified SKILL.md files committed with citations. Optionally saves learnings report to `docs/research-learnings/`.
+**Output:** Credibility report + security verdicts + extracted insights + application plan in chat. Modified SKILL.md files committed with citations. Optionally saves learnings report to `docs/learnings/research-learnings.md`.
 **Impact report:** Paper title, credibility score/verdict, security verdict, insights extracted, skills modified/created, contradictions resolved, project changes, learnings saved, score deltas
 **References:** `references/credibility-rubric.md` (6-dimension scoring rubric with trust tiers, recency windows, quick-reject criteria)
 
@@ -191,7 +191,7 @@ Install globally: `~/.agents/skills/`. Called automatically by `improve-skills` 
 
 ### `learn-from-chat`
 **Triggers:** "we should update the skill for this", "this should be a skill rule", "add this as a gotcha", "the skill should know about this", "update the process for this", "learn from this", "remember this for next time"
-**What it does:** Sub-skill of `learn-from`. Captures learnings from the current conversation — when the agent or user discovers a skill or process needs updating. No external fetch needed. Evidence comes from what happened in the chat. Checks generalizability before modifying skills. Logs to `docs/research-learnings/chat-learnings.md`.
+**What it does:** Sub-skill of `learn-from`. Captures learnings from the current conversation — when the agent or user discovers a skill or process needs updating. No external fetch needed. Evidence comes from what happened in the chat. Checks generalizability before modifying skills. Logs to `docs/learnings/chat-learnings.md`.
 **Calls:** `validate-skills` (post-apply)
 **Output:** Chat learning report + proposed changes (diff-style) in chat. Modified SKILL.md files with citations.
 **Impact report:** Learning captured, classification, skills modified, contradictions resolved, logged path
@@ -412,6 +412,44 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `eval-output`
+**Triggers:** "evaluate this output", "score this response", "run an eval", "LLM as judge", "evaluate agent output", "how good is this response", "rate this answer", "eval this"
+**What it does:** Orchestrator for the eval-output skill suite. Accepts any LLM or agent output, classifies the evaluation need (rubric design, direct scoring, pairwise comparison, or pipeline design), and routes to the correct sub-skill. Presents unified evaluation reports.
+**Calls:** `eval-rubric-design`, `eval-judge`, `eval-pipeline`
+**Output:** Unified eval report in chat. Delegates actual work to sub-skills.
+**Impact report:** Eval type, sub-skill invoked, dimensions scored, hard gates status, key finding
+
+---
+
+### `eval-rubric-design`
+**Triggers:** "create an eval rubric", "define evaluation criteria", "design scoring dimensions", "what should I evaluate", "design a rubric", "evaluation rubric for", "how do I measure quality of"
+**What it does:** Sub-skill of `eval-output`. Designs structured evaluation rubrics with quality dimensions, scoring scales, hard gates, score descriptions, and edge cases. Every criterion is observable and every score level has concrete descriptions. Supports 3-6 dimensions with mixed scales (pass/fail for gates, ordinal for quality).
+**Called by:** `eval-output` (when rubric is needed before scoring)
+**Output file:** `docs/evals/YYYY-MM-DD-<task>-rubric.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Impact report:** Dimensions, hard gates, scales used, applicable to (human/LLM/both), file path
+
+---
+
+### `eval-judge`
+**Triggers:** "score this output", "judge this response", "evaluate against rubric", "rate this", "which response is better", "score this against the rubric", "LLM as judge this", "direct scoring", "pairwise comparison"
+**What it does:** Sub-skill of `eval-output`. Scores outputs using LLM-as-judge — direct scoring against rubrics or pairwise comparison between two outputs. Built-in bias mitigation: position swap for pairwise, justification-before-score (15-25% reliability improvement), length bias awareness. Reports confidence per dimension.
+**Called by:** `eval-output` (when scoring is needed)
+**Output:** Structured eval report in chat. Optionally saves to `docs/evals/`.
+**Impact report:** Mode (direct/pairwise), rubric used, dimensions scored, hard gates, confidence, verdict
+
+---
+
+### `eval-pipeline`
+**Triggers:** "set up automated evals", "design an eval pipeline", "CI eval integration", "evaluation pipeline", "automate my evals", "continuous evaluation", "monitoring eval quality", "eval-driven development", "set up regression testing for my agent"
+**What it does:** Sub-skill of `eval-output`. Designs automated multi-layer evaluation pipelines combining deterministic checks, statistical metrics, and LLM-as-judge scoring. Covers CI/CD integration, dataset design (happy path + edge cases + adversarial + known-bad), baseline establishment, alerting, and cost budgeting.
+**Called by:** `eval-output` (when pipeline design is needed)
+**Output file:** `docs/evals/YYYY-MM-DD-<system>-eval-pipeline.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Impact report:** Maturity stage, evaluator layers, dataset splits, CI integration, cost estimate, file path
+
+---
+
 ### `project-orchestrator`
 **Triggers:** "what should I do next", "which skill should I use", "orchestrate this", "run the full workflow", "split into parallel tasks", "coordinate agents", "parallel execution", "task decomposition", "what phase am I in"
 **What it does:** Reads project state (which artefacts exist), classifies the user's request (single-skill / sequential chain / parallel decomposition / phase recommendation), builds an orchestration plan, and executes platform-aware. On Tier 1 platforms (Codex, Claude Code, Cursor, Gemini+Maestro, Replit 4) it spawns parallel subagents with scoped prompts and file boundaries. On Tier 2 platforms (Warp, Copilot Mission Control, Factory.ai) it writes a task plan file for the user to dispatch. On Tier 3 platforms (Bolt.new, VS Code) it executes sequentially. Contains a full skill routing table mapping user intent to the right skill.
@@ -535,6 +573,7 @@ User entry points:
   universal-skill-creator  ← "create a skill"
   improve-skills           ← "improve skills"
   learn-from               ← "learn from" / "learn from this" / "extract insights from"
+  eval-output              ← "evaluate output" / "score this response" / "run an eval" / "LLM as judge"
   reality-check            ← "reality-check" / "evaluate claims" / "is this real"
   project-setup            ← "set up this project" / "create an AGENTS.md"
   project-orchestrator     ← "what should I do next" / "orchestrate" / "parallel tasks"
@@ -589,6 +628,10 @@ split-skill      → library-skill (after extracting child skill)
 deprecate-skill  → library-skill (after retiring skill)
 library-skill        → generate-changelog (final step, always)
 
+eval-output → eval-rubric-design (if rubric needed)
+           → eval-judge (if scoring/comparison needed)
+           → eval-pipeline (if automated eval system needed)
+
 reality-check → adversarial-hat (Step 7, pressure-test claims)
               → assumption-mapping (Step 4, surface hidden beliefs)
               → codebase-understanding (Step 1, map architecture)
@@ -596,4 +639,5 @@ reality-check → adversarial-hat (Step 7, pressure-test claims)
 
 Leaf nodes (call nothing):
   validate-skills  research-skill  prune-skill  publish-skill  generate-changelog  skill-routing  skill-deconflict
+  eval-rubric-design  eval-judge  eval-pipeline
 ```
