@@ -143,6 +143,18 @@ domain          | specialized, not universally needed      | install only when n
 "design tokens for"   → design-tokens-craft
 "design icons"        → icon-craft
 "review this UI"      → design-review
+"design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
+"A/B test this"       → experimentation
+"what should we test next" → experiment-backlog
+"spec this experiment" → experiment-spec
+"set up the experiment" → experiment-runbook
+"read out this experiment" → experiment-readout
+"spec-driven development" → spec-driven-development (orchestrator → project-constitution, feature-spec, implementation-plan, spec-crosscheck)
+"SDD" / "specs-first" → spec-driven-development
+"/specify" / "write a feature spec" → feature-spec
+"/clarify" / "resolve clarifications" → feature-spec (clarify mode)
+"/constitution" / "project rules" → project-constitution
+"/analyze" / "cross-check spec vs plan" → spec-crosscheck
 ```
 
 All other meta and supporting skills are called automatically. See `docs/SKILL-INDEX.md` → Call Graph.

@@ -58,6 +58,12 @@ Present extracted commands to the user for confirmation in Step 2 instead of ask
 - **If greenfield (no code yet):** ask — "Will this project have separate frontend/backend directories? If yes, I'll create scoped AGENTS.md files for each."
 Store the decision as `agents_md_mode: single | multi` for Steps 4–6.
 
+**1d. Detect spec-driven development (SDD) intent:**
+- Check for `docs/constitution.md`, `docs/specs/*-feature-spec.md`, or `docs/reviews/*-spec-crosscheck.md`.
+- **If any exist:** treat the project as specs-first. Skip the question.
+- **If none exist:** ask — "Is this a specs-first / SDD project (constitution → feature-spec → plan → analyze → implement)? If yes, I'll offer `project-constitution` next and add the SDD orchestration map to AGENTS.md."
+Store the decision as `sdd_mode: on | off` for Steps 5–6. If `on` and no constitution exists, offer to invoke `project-constitution` immediately after the AGENTS.md is saved.
+
 ### Step 2 — User Interview (Two Axes)
 
 One question at a time. Stop each axis when you have enough.
@@ -119,6 +125,15 @@ Structure as phase-based flow. Customise based on user's skill gaps:
 - **Engineer with no product sense:** product-soul → brainstorming chain; agents push for problem framing
 - **Solo founder:** all phases; emphasise pre-mortem and assumption-mapping
 - **Team:** tune boundaries per role if multiple AGENTS.md files needed
+
+If `sdd_mode: on`, add the SDD chain to the Orchestration Map:
+```
+project-constitution → brainstorming (optional design exploration)
+→ feature-spec /specify → feature-spec /clarify → implementation-plan /plan
+→ implementation-plan /tasks → spec-crosscheck /analyze
+→ test-driven-development /implement
+```
+Also add a rule to AGENTS.md: "When behavior changes, update the feature-spec first; the plan and tasks regenerate from it. Never edit code that violates the latest crosscheck PASS."
 
 ### Step 6 — Present, Iterate, Save
 

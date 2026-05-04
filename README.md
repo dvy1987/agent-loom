@@ -163,6 +163,35 @@ Three categories of skills — **[`docs/SKILL-INDEX.md`](docs/SKILL-INDEX.md)** 
 | [`code-review-crsp`](.agents/skills/code-review-crsp/) | Review code changes against 6 criteria (correctness, completeness, conventions, tests, performance, completeness) with severity-classified findings | No files. Structured review with findings by severity in chat. | "review this code", "check this PR", "code review", "audit this diff" |
 | [`project-orchestrator`](.agents/skills/project-orchestrator/) | Route requests to the right skill, decompose complex work into parallel subagents (platform-aware), manage phase transitions | No files unless parallel plan written to `docs/task-plan.md`. Orchestration plan + routing in chat. | "what should I do next", "orchestrate this", "split into parallel tasks", "which skill should I use" |
 
+#### Frontend Design Suite
+
+| Skill | What it does | Output / Outcome | Trigger phrases |
+|-------|-------------|-----------------|----------------|
+| [`frontend-design`](.agents/skills/frontend-design/) | Orchestrator — routes through archetype, tokens, icons, build, review with anti-vibecoded hard gates (no Inter-on-purple, no Lucide-everywhere, no centered-hero+2-CTA) | **Files created:** `.design/<feature>/ARCHETYPE.md`, `TOKENS.md`, `ICONS.md`, `REVIEW.md` + tokens/icons in `src/` + logged | "build a frontend", "design a UI", "make this not look AI-generated" |
+| [`design-archetype`](.agents/skills/design-archetype/) | Picks one of 12 curated product archetypes (Linear, Stripe, Apple, Duolingo, Posthog, Substack, Warp, ChatGPT, Leonardo, FigJam, Reddit, Vercel marketing) — the single biggest lever against vibecoded UI | **File created:** `.design/<feature>/ARCHETYPE.md` + logged | "pick a design direction", "make this feel like Linear", "what aesthetic fits this" |
+| [`design-tokens-craft`](.agents/skills/design-tokens-craft/) | Generates archetype-driven semantic oklch tokens with hand-tuned dark mode; bans Tailwind-default palettes, Inter-only typography, purple→pink gradients | **Files created:** `src/styles/tokens.css` + `.design/<feature>/TOKENS.md` + logged | "design tokens for X", "create a design system", "set up CSS variables" |
+| [`icon-craft`](.agents/skills/icon-craft/) | Solves the "Lucide everywhere" problem — 5 strategies (tuned-phosphor, custom-svg, hand-drawn, mixed-metaphor, system-native) plus SVG craft rules | **Files created:** `src/icons/index.tsx` + `.design/<feature>/ICONS.md` + logged | "design icons", "icons for this product", "make icons feel custom" |
+| [`design-review`](.agents/skills/design-review/) | 10-dimension rubric review against the archetype's "feels like X" promise; max 2 review loops; Playwright MCP optional for auto-capture | **File created:** `.design/<feature>/REVIEW.md` + logged | "review this UI", "audit my frontend", "does this feel like Linear" |
+
+#### LLM Output Evaluation Suite
+
+| Skill | What it does | Output / Outcome | Trigger phrases |
+|-------|-------------|-----------------|----------------|
+| [`eval-output`](.agents/skills/eval-output/) | Orchestrator — evaluates LLM/agent outputs with structured rubrics + LLM-as-judge techniques. Routes to rubric design, judging, or pipeline design | Routes to child skills; outputs go under `docs/evals/` | "evaluate this output", "score this response", "run an eval", "LLM as judge" |
+| [`eval-rubric-design`](.agents/skills/eval-rubric-design/) | Designs structured rubrics — quality dimensions, scoring scales, hard gates, score descriptions, edge cases. Includes value-weighting and internal consistency dimensions (AlphaEval) | **File created:** `docs/evals/<name>-rubric.md` + logged | "design a rubric", "create eval criteria", "define quality dimensions" |
+| [`eval-judge`](.agents/skills/eval-judge/) | Direct scoring + pairwise comparison with bias mitigation (position, length, self-enhancement). Long-form internal-consistency check baked in | No files. Score / verdict / rationale in chat. | "rate this", "judge this output", "which response is better", "pairwise compare" |
+| [`eval-pipeline`](.agents/skills/eval-pipeline/) | Designs automated eval pipelines — deterministic checks + statistical metrics + LLM-as-judge into CI-integrated suites with per-step intermediate validation | **Files created:** `docs/evals/<name>-pipeline.md` + CI config + logged | "automate my evals", "CI eval integration", "evaluation pipeline", "regression-test my agent" |
+
+#### Experimentation Suite
+
+| Skill | What it does | Output / Outcome | Trigger phrases |
+|-------|-------------|-----------------|----------------|
+| [`experimentation`](.agents/skills/experimentation/) | Orchestrator — routes lifecycle (backlog → spec → runbook → readout). Platform-agnostic with PostHog as primary binding. Labels every artefact with a Decision Class (Causal / Directional / Instrumentation) | Routes to child skills; outputs go under `docs/experiments/` | "design an experiment", "A/B test this", "run a holdout", "validate with an experiment" |
+| [`experiment-backlog`](.agents/skills/experiment-backlog/) | ICE + feasibility-gated experiment backlog; filters by traffic reality, metric latency, method fit, and population stability — not just ICE alone | **File created/updated:** `docs/experiments/backlog.md` + logged | "what should we test next", "build an experiment backlog", "prioritise our tests" |
+| [`experiment-spec`](.agents/skills/experiment-spec/) | Decision-grade spec — falsifiable hypothesis, primary + guardrail metrics, randomisation unit, exposure definition, MDE/duration plan, peek policy, validity threats, pre-committed decision rule | **File created:** `docs/experiments/specs/YYYY-MM-DD-<name>-spec.md` + logged | "spec this experiment", "design this A/B test", "what's the hypothesis", "how big a sample" |
+| [`experiment-runbook`](.agents/skills/experiment-runbook/) | Translates spec into launch runbook — feature flags, exposure events, instrumentation QA, ramp plan, rollback. PostHog primary; mapping table for GrowthBook / Statsig / LaunchDarkly / Optimizely / Eppo | **File created:** `docs/experiments/runbooks/YYYY-MM-DD-<name>-runbook.md` + logged | "set up the experiment", "wire this up in PostHog", "implement the test", "launch checklist" |
+| [`experiment-readout`](.agents/skills/experiment-readout/) | SRM-blocked readout — validity checks (SRM, exposure parity, novelty/primacy), causal interpretation, decision against pre-declared rule, learnings appended cumulatively. Strips significance claims from underpowered or peek-violating tests | **Files created:** `docs/experiments/analyses/YYYY-MM-DD-<name>-readout.md` + appends to `docs/experiments/learnings.md` + logged | "read out this experiment", "did the test win", "interpret the results", "ship or kill" |
+
 #### Agent & Process Design
 
 | Skill | What it does |

@@ -4,7 +4,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-04-30
+Last updated: 2026-05-02
 
 ---
 
@@ -305,11 +305,56 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 ---
 
 ### `implementation-plan`
-**Triggers:** "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy"
-**What it does:** Create a detailed, step-by-step implementation plan for a feature or project
-**Output file:** `docs/plans/YYYY-MM-DD-<feature>-plan.md`
+**Triggers:** "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy", "/plan", "/tasks"
+**What it does:** Create a detailed, step-by-step implementation plan for a feature or project. Reads `docs/specs/<slug>-feature-spec.md` first when present (refuses to proceed if status≠Approved). Builds a Requirement Traceability table mapping every FR/NFR/C-N to tasks. Tags each task with the IDs it satisfies — read by `spec-crosscheck`. Supports tasks-only mode (called by `spec-driven-development /tasks`).
+**Output files:** `docs/plans/YYYY-MM-DD-<slug>-plan.md` (always); `docs/plans/YYYY-MM-DD-<slug>-tasks.md` (when invoked in tasks mode)
 **Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Called by:** `spec-driven-development` (`/plan`, `/tasks`)
 **Impact report:** Plan complete, phases defined, total tasks, critical risks identified, estimated effort, ready for
+
+---
+
+### `spec-driven-development`
+**Triggers:** "spec-driven development", "SDD", "specs-first workflow", "run the spec loop", "/specify a feature", "/plan from this spec", "do spec-driven for this", "GitHub Spec Kit workflow", "Kiro workflow", any SDD-style slash command
+**What it does:** Orchestrator for spec-driven development. Routes the seven SDD slash commands to leaf skills, enforces phase order (constitution → specify → clarify → plan → tasks → analyze → implement), and refuses later phases when earlier ones are missing. Detects current SDD state by reading existing artifacts. Thin router — never writes content directly.
+**Phase Map:** `/constitution → project-constitution`, `/specify → feature-spec`, `/clarify → feature-spec` (clarify mode), `/plan → implementation-plan`, `/tasks → implementation-plan` (tasks mode), `/analyze → spec-crosscheck`, `/implement → test-driven-development`
+**Output:** No files directly — delegates to leaf skills.
+**Calls:** `project-constitution`, `feature-spec`, `implementation-plan`, `spec-crosscheck`, `test-driven-development`
+**Impact report:** Phases run this turn, artifact state (constitution version, spec status, plan/tasks/crosscheck presence), next phase
+
+---
+
+### `project-constitution`
+**Triggers:** "write a constitution", "define project rules", "set engineering invariants", "non-negotiable rules", "project policy", "set our standards", "/constitution"
+**What it does:** Writes the project's irreducible engineering invariants — testing, security, performance, accessibility, dependencies, observability, migration, documentation. Each rule has a stable ID (`C-N.M`), is normative (MUST/MUST NOT/SHOULD), and is enforceable in review or CI. Versioned with an Amendments log. The third strategic artifact alongside AGENTS.md (agent behavior) and product-soul (strategy).
+**Output file:** `docs/constitution.md` (versioned, ≤120 lines)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Called by:** `spec-driven-development` (`/constitution`), `project-setup` (when sdd_mode: on)
+**Cited by:** `feature-spec`, `implementation-plan`, `spec-crosscheck`
+**Impact report:** Version, categories populated, rules total, lines used (out of 120)
+
+---
+
+### `feature-spec`
+**Triggers:** "write a feature spec", "executable spec", "/specify", "/clarify", "write the spec for this feature", "specification for", "spec-driven", "machine-readable spec"
+**What it does:** Writes the executable feature specification — the WHAT and WHY artifact agents and reviewers treat as source of truth. Owns both `/specify` and `/clarify` modes. Sections: Summary, Problem, User Scenarios (US-N), Functional Requirements (FR-N), Non-Functional Requirements (NFR-N), Acceptance Criteria as Given/When/Then (AC-FR-N.M), Edge Cases, Out of Scope, Constitution Waivers, Needs Clarification (CL-N), Review Checklist. Hard gate: cannot mark `Approved` while any `[NEEDS CLARIFICATION]` markers remain.
+**Modes:** `specify` (default — write new spec), `clarify` (resolve CL markers in existing spec)
+**Output file:** `docs/specs/YYYY-MM-DD-<slug>-feature-spec.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Called by:** `spec-driven-development` (`/specify`, `/clarify`)
+**References:** `references/feature-spec-schema.md` — full template, status lifecycle, cross-reference contract
+**Impact report:** Status (Draft/Clarifying/Approved), constitution version, counts (US/FR/NFR/AC/Edge/CL), next phase
+
+---
+
+### `spec-crosscheck`
+**Triggers:** "cross-check spec vs plan", "audit traceability", "verify spec readiness", "gate-check before implementation", "is this spec implementation-ready", "trace requirements to tasks", "/analyze", "spec sanity check", "spec readiness gate", "spec consistency check"
+**What it does:** Hard readiness gate before implementation. Cross-checks constitution + feature-spec + plan + tasks for consistency, traceability, and unresolved ambiguity. Returns PASS or FAIL with `file:line` evidence. Six checks: (A) Spec readiness, (B) Constitution coverage, (C) Spec→Plan traceability, (D) Plan→Spec traceability (no scope creep), (E) Task quality (DoD + target), (F) Out-of-Scope adherence. Read-only — never modifies artifacts.
+**Output file:** `docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**Called by:** `spec-driven-development` (`/analyze`)
+**Reads:** `docs/constitution.md`, `docs/specs/<slug>-feature-spec.md`, `docs/plans/<slug>-plan.md`, `docs/plans/<slug>-tasks.md` (or `-TODO.md`)
+**Impact report:** Verdict (PASS/FAIL), per-check verdicts, finding count by severity, implementation gated/unblocked
 
 ---
 
@@ -503,6 +548,64 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `experimentation`
+**Triggers:** "design an experiment", "A/B test this", "should we A/B test", "what should we test next", "analyse experiment results", "read out this experiment", "run a holdout test", "experiment on the landing page", "test this hypothesis", "is this lift real", "ship or kill this test"
+**What it does:** Orchestrator for the experimentation skill suite. Diagnoses lifecycle stage (no idea yet → backlog; have idea → spec; have spec → runbook; have results → readout) and routes to the right child. Enforces decision-class labelling (`Causal | Directional | Instrumentation`), SRM hard gate before any readout, and pre-committed decision rules. Platform-agnostic with PostHog as the primary binding. Lifecycle-decomposed (not method-decomposed) — A/B / holdout / switchback / MAB are method choices inside `experiment-spec`.
+**Calls:** `experiment-backlog`, `experiment-spec`, `experiment-runbook`, `experiment-readout`. Pre-route hooks: `assumption-mapping`, `brainstorming`, `inversion`, `fermi`, `eval-output`. Downstream: `prd-writing`, `architectural-decision-log`, `reality-check`.
+**Output:** No files directly — children produce all artefacts under `docs/experiments/`. Returns lifecycle stage, decision class, child invoked, next step.
+**References:** `references/method-selector.md` (A/B vs holdout vs switchback vs MAB vs quasi-experiment), `references/funnel-surface-map.md` (highest-ROI surfaces by funnel stage), `references/decision-class-rules.md` (gates per decision class)
+**Impact report:** Lifecycle stage, child skill invoked, decision class, upstream/downstream skills called, output paths, next recommended step
+
+---
+
+### `experiment-backlog`
+**Triggers:** "what should we test next", "build an experiment backlog", "prioritise our tests", "where should we experiment", "what's worth testing" — or called by `experimentation`
+**What it does:** Sub-skill of `experimentation`. Turns assumptions, funnel observations, and product questions into a prioritised, feasibility-checked experiment backlog. Filters by traffic reality, metric latency, method fit, and population stability — not just ICE/RICE scoring. Maintains a living portfolio with status (idea → designed → running → readout → archived). Pulls upstream from `assumption-mapping` and `brainstorming` outputs when available.
+**Called by:** `experimentation` (backlog path)
+**Calls:** `assumption-mapping` (upstream), `fermi` (traffic estimates)
+**Output file:** `docs/experiments/backlog.md` (living, updated)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/prioritization-rubric.md` (ICE anchors + binary feasibility gate)
+**Impact report:** Candidates added, candidates rejected with reason, top 3 ready, funnel coverage by stage, next recommended item
+
+---
+
+### `experiment-spec`
+**Triggers:** "spec this experiment", "write the test plan", "design this A/B test", "what's the hypothesis", "how big a sample do we need", "how long should we run this", "define the metrics for this test" — or called by `experimentation`
+**What it does:** Sub-skill of `experimentation`. Writes a rigorous, decision-grade experiment spec — falsifiable hypothesis, primary metric, guardrails, randomisation unit, exposure event, method (A/B / holdout / switchback / quasi / MAB), MDE/sample/duration plan, peek policy, validity threats, pre-committed decision rule. Platform-agnostic. Hard gates: decision class declared, falsifiable hypothesis, primary + ≥1 guardrail, MDE plan or Directional label, decision rule pre-committed, peek policy declared. Optionally calls `inversion` for failure-mode pre-mortem and `fermi` for sample sizing when traffic is unknown.
+**Called by:** `experimentation` (spec path)
+**Calls:** `inversion` (pre-mortem on validity threats), `fermi` (MDE/sample estimates)
+**Output file:** `docs/experiments/specs/YYYY-MM-DD-<slug>-spec.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/mde-heuristics.md` (sample-size table by baseline + relative MDE), `references/validity-threats.md` (catalogue: SRM, novelty, primacy, interference, contamination, channel-mix, instrumentation drift, multiple comparisons, selection bias, long-term lag), `references/spec-template.md` (the spec doc structure)
+**Impact report:** Spec path, decision class, method, primary + MDE, guardrails count, sample plan, validity threats listed, status (READY / DOWNGRADED / BLOCKED), next step
+
+---
+
+### `experiment-runbook`
+**Triggers:** "set up the experiment", "wire this up in PostHog", "implement the test", "create the runbook", "launch checklist for this test" — or called by `experimentation`
+**What it does:** Sub-skill of `experimentation`. Translates an approved spec into a launch runbook — feature flag setup, variant allocation, assignment unit, exposure event, instrumentation QA checklist, dashboard wiring, ramp plan (1% → 5% → 50% with SRM and guardrail gates), monitoring, and rollback procedure. Platform-agnostic body with one strong PostHog mapping shipped; GrowthBook / Statsig / LaunchDarkly / Optimizely / Eppo documented as a single mapping table the user adapts. Hard gates: no runbook without approved spec, exposure event verified firing in QA before any ramp, SRM dry-run at 1% and 5%, rollback documented.
+**Called by:** `experimentation` (runbook path)
+**Calls:** `problem-to-plan` (optional, if implementation tasks need breaking down)
+**Output file:** `docs/experiments/runbooks/YYYY-MM-DD-<slug>-runbook.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/posthog-binding.md` (flags, exposures, cohorts, group analytics, dashboards, holdout pattern, common pitfalls), `references/vendor-mapping.md` (single mapping table covering 5 other platforms), `references/launch-qa-checklist.md` (pre-launch verification list, blocking)
+**Impact report:** Runbook path, platform, flag key, allocation, ramp plan, QA pass count, rollback documented, status (READY / BLOCKED), next step
+
+---
+
+### `experiment-readout`
+**Triggers:** "read out this experiment", "analyse the test", "did the test win", "interpret the results", "what did we learn", "ship or kill" — or called by `experimentation`
+**What it does:** Sub-skill of `experimentation`. Analyses experiment results — runs validity checks (SRM, exposure parity, event-rate stability, novelty/primacy, segment sanity, multiple-comparisons hygiene, channel-mix stability), interprets causally, applies the pre-declared decision rule literally, and appends to cumulative learnings. Forces honest readouts: SRM-fail returns `INCONCLUSIVE` not a result; Directional tests cannot use the words "significant", "winner", "lift", or "ship". Hard gates: SRM check first and blocking; data integrity confirmed; decision matches pre-declared rule; learnings appended for every readout including failures.
+**Called by:** `experimentation` (readout path)
+**Calls:** `prd-writing` (when winner graduates to a permanent feature), `architectural-decision-log` (architecturally significant changes)
+**Output files:** `docs/experiments/analyses/YYYY-MM-DD-<slug>-analysis.md` + appends to `docs/experiments/learnings.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/validity-checks.md` (SRM blocking gate, exposure parity, event stability, novelty windows, segment sanity, channel-mix), `references/readout-template.md` (full analysis doc structure), `references/learnings-format.md` (cumulative log entry format with confidence tagging)
+**Impact report:** Analysis path, validity status (SRM/exposure/event), decision (SHIP/ITERATE/KILL/INCONCLUSIVE/SRM-FAIL), primary effect with CI, guardrails breached, learnings appended, downstream routes, next step
+
+---
+
 ### `project-orchestrator`
 **Triggers:** "what should I do next", "which skill should I use", "orchestrate this", "run the full workflow", "split into parallel tasks", "coordinate agents", "parallel execution", "task decomposition", "what phase am I in"
 **What it does:** Reads project state (which artefacts exist), classifies the user's request (single-skill / sequential chain / parallel decomposition / phase recommendation), builds an orchestration plan, and executes platform-aware. On Tier 1 platforms (Codex, Claude Code, Cursor, Gemini+Maestro, Replit 4) it spawns parallel subagents with scoped prompts and file boundaries. On Tier 2 platforms (Warp, Copilot Mission Control, Factory.ai) it writes a task plan file for the user to dispatch. On Tier 3 platforms (Bolt.new, VS Code) it executes sequentially. Contains a full skill routing table mapping user intent to the right skill.
@@ -630,6 +733,7 @@ User entry points:
   reality-check            ← "reality-check" / "evaluate claims" / "is this real"
   project-setup            ← "set up this project" / "create an AGENTS.md"
   project-orchestrator     ← "what should I do next" / "orchestrate" / "parallel tasks"
+  spec-driven-development  ← "spec-driven development" / "SDD" / "specs-first" / "/specify" / "/plan" / "/analyze"
 
 universal-skill-creator → research-skill (Step 2, always)
                         → split-skill (Step 7, if >200 + seam)
@@ -675,6 +779,24 @@ learn-from-chat → validate-skills (Step 5, post-apply)
 apply-paper-to-project → architectural-decision-log (optional, for significant changes)
 
 project-setup → generates AGENTS.md with Orchestration Map (references project-orchestrator)
+              → project-constitution (when sdd_mode: on and no constitution exists)
+
+spec-driven-development → project-constitution (/constitution)
+                        → feature-spec (/specify, /clarify)
+                        → implementation-plan (/plan, /tasks)
+                        → spec-crosscheck (/analyze)
+                        → test-driven-development (/implement, default)
+
+feature-spec → project-constitution (offers if no docs/constitution.md)
+
+implementation-plan → feature-spec (gates on Approved status if present)
+                    → project-constitution (reads C-N rules for traceability)
+
+spec-crosscheck → reads only (constitution + feature-spec + plan + tasks); modifies nothing
+
+brainstorming → feature-spec (Step 10 handoff for SDD projects)
+              → prd-writing (Step 10 handoff for product framing)
+              → implementation-plan (Step 10 handoff for direct execution)
 
 compress-skill → split-skill (if CORE still >200 after classify)
 split-skill      → library-skill (after extracting child skill)
@@ -690,7 +812,23 @@ reality-check → adversarial-hat (Step 7, pressure-test claims)
               → codebase-understanding (Step 1, map architecture)
               → implementation-plan (Step 8, structure roadmap)
 
+experimentation → experiment-backlog (if user has no candidate)
+                → experiment-spec (if user has hypothesis or candidate)
+                → experiment-runbook (if spec approved)
+                → experiment-readout (if results exist)
+   pre-route hooks: assumption-mapping, brainstorming, inversion, fermi, eval-output
+   downstream: prd-writing, architectural-decision-log, reality-check
+
+experiment-spec → inversion (pre-mortem on validity threats)
+                → fermi (sample-size estimation when traffic unknown)
+
+experiment-runbook → problem-to-plan (optional, for implementation tasks)
+
+experiment-readout → prd-writing (winner graduates to feature)
+                   → architectural-decision-log (significant changes)
+
 Leaf nodes (call nothing):
   validate-skills  research-skill  prune-skill  publish-skill  generate-changelog  skill-routing  skill-deconflict
   eval-rubric-design  eval-judge  eval-pipeline
+  project-constitution  spec-crosscheck
 ```

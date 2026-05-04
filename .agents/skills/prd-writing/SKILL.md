@@ -3,12 +3,15 @@ name: prd-writing
 description: >
   Run a structured discovery interview and produce a complete, developer-ready
   Product Requirements Document. Load when the user asks to write a PRD, create
-  product requirements, document a feature, write a spec, define acceptance
-  criteria, capture user stories, or turn a rough idea into a formal requirements
-  document. Also triggers on "document this feature", "write requirements for",
-  "create a one-pager", "turn this into a spec", "I need a PRD for", or any
+  product requirements, document a feature, define user stories with acceptance
+  criteria, or turn a rough idea into a formal product requirements document.
+  Also triggers on "document this feature", "write requirements for",
+  "create a one-pager", "turn this into a PRD", "I need a PRD for", or any
   request to produce a structured product document for stakeholder alignment or
   engineering handoff. Supports Full PRD, Lean PRD, and One-Pager formats.
+  Note: for executable feature specifications (FRs, NFRs, ACs as Given/When/Then
+  consumable by AI coding agents), route to `feature-spec` instead — PRDs frame
+  the product, feature-specs encode the implementable contract.
 license: MIT
 metadata:
   author: dvy1987

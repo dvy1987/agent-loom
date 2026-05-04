@@ -6,8 +6,11 @@ description: >
   think through approaches, plan a new capability, or figure out what to build.
   Also triggers on "let's think through", "help me design", "explore options",
   "what's the best approach for", "I have an idea for", "before we build",
-  or any request to plan or spec something before implementation.
+  or any request to design something before implementation.
   Enforces a hard gate: no code, no implementation until user approves a design.
+  For executable feature specs (FRs, NFRs, ACs as Given/When/Then), route to
+  `feature-spec` instead — brainstorming owns approach and architecture, not
+  machine-readable requirements.
 license: MIT
 metadata:
   author: dvy1987
@@ -84,7 +87,10 @@ Fix inline before showing the user:
 Wait. Make requested changes. Re-run Step 7 if changes are significant.
 
 ### Step 10 — Hand Off
-After explicit approval: summarize decisions, list first 3 implementation steps. If `prd-writing` skill is available, offer to run it.
+After explicit approval: summarize decisions, list first 3 implementation steps. Offer next-skill routing:
+- If the project follows spec-driven development → offer `feature-spec` (or `spec-driven-development /specify`) to convert this design into an executable feature spec.
+- If product framing is missing → offer `prd-writing`.
+- If the user wants to start work directly → offer `implementation-plan`.
 
 **Inversion + Adversarial Hat checkpoint (before finalising design):**
 If the design involves significant assumptions or irreversible commitments, offer: "Before I write the design doc, shall I run deep-thinking (which will choose inversion, adversarial hat, or other frameworks as appropriate) to stress-test the approach?"

@@ -1,16 +1,19 @@
 ---
 name: problem-to-plan
 description: >
-  Turn a problem, edit request, bug report, or feature idea into three
-  deliverables: a mini-spec (docs/specs/), a detailed implementation-ready
-  plan (docs/plans/), and a TODO.md with agent-pickable tasks and milestones.
-  Load when the user describes a problem and wants planning artifacts, says
-  "plan this change", "spec this out", "create a TODO", "write a plan for
-  this", "problem to plan", "break this into tasks for agents", "I want to
-  change X — plan it", or when process-decomposer routes here after
-  determining the user needs planning deliverables. Also triggers on
+  Tactical fast path: turn a small problem, bug report, edit request, or
+  narrow refactor into three deliverables — a brief change-spec
+  (docs/specs/), a detailed implementation-ready plan (docs/plans/), and a
+  TODO.md with agent-pickable tasks and milestones. Load when the user
+  describes a tactical problem and wants quick planning artifacts, says
+  "plan this change", "create a TODO", "write a plan for this",
+  "problem to plan", "break this into tasks for agents", "I want to change X
+  — plan it", or when process-decomposer routes here after determining the
+  user needs lightweight planning deliverables. Also triggers on
   "create tasks from this problem", "make this actionable", or
-  "turn this into a plan agents can execute".
+  "turn this into a plan agents can execute". For feature-sized work that
+  needs an executable spec + constitution + cross-check gate, route to
+  `spec-driven-development` (or `feature-spec`) instead.
 license: MIT
 metadata:
   author: dvy1987
@@ -122,7 +125,9 @@ Tell the user:
 ## Gotchas
 
 - TODO tasks must be self-contained — an agent reading only the TODO and the linked files should be able to execute without asking questions. If a task requires context not in the code, add it as a note on the task.
-- Mini-specs are NOT PRDs. They are scoped to one problem. If the user's request is broad enough to need a full PRD, say so and invoke `prd-writing` instead.
+- Change-specs are NOT PRDs. They are scoped to one tactical problem. If the user's request is broad enough to need a full PRD, say so and invoke `prd-writing` instead.
+- Change-specs are also NOT feature-specs. Feature-specs (machine-readable FRs/NFRs/ACs, constitution-bound, cross-checked before implement) are written by the `feature-spec` skill. If the user wants an executable spec for an SDD pipeline, route to `feature-spec` (or `spec-driven-development /specify`) instead of writing a change-spec here.
+- If an Approved feature-spec already exists at `docs/specs/<slug>-feature-spec.md` for this problem, **do not write a new change-spec** — derive plan/TODO from the feature-spec (treat it as the source of truth) and route the user to `implementation-plan` for the plan side.
 - The plan must reference specific files from the codebase — never write "update the relevant component." Name the file. Scan the codebase to find it.
 - TODO.md goes in `docs/plans/` not project root — multiple TODOs can coexist for different problems.
 - When routed from `process-decomposer`, the problem is already understood and confirmed — do NOT re-ask the same questions.

@@ -22,10 +22,12 @@ You are a Senior Technical Lead. You turn product requirements into precise, exe
 
 ## Hard Rules
 
-Never create a plan without reading the PRD or design doc first. If missing, invoke `prd-writing` or `brainstorming`.
+Never create a plan without reading the upstream artifact first. Priority order: feature-spec (if SDD) → PRD → design doc. If none exists, invoke `feature-spec`, `prd-writing`, or `brainstorming`.
+If a `docs/specs/<slug>-feature-spec.md` exists, refuse to proceed unless its `status: Approved` and the `Needs Clarification` list is empty.
 Never create a "big bang" plan — always break work into logical phases (e.g., Phase 1: Core, Phase 2: Enhancements).
 Never skip the "Verification" or "Definition of Done" for each task.
 Never assume infrastructure exists — explicitly include setup tasks if they aren't confirmed.
+Every task MUST reference at least one upstream FR/NFR (from feature-spec) or constitution rule C-N — required for `spec-crosscheck` traceability.
 
 ---
 
@@ -33,10 +35,12 @@ Never assume infrastructure exists — explicitly include setup tasks if they ar
 
 ### Step 1 — Gather Context
 Read, in priority order:
-1. `docs/prd/` (latest PRD) or `docs/specs/` (latest design doc).
-2. `docs/product-soul.md` (for strategic alignment).
-3. Current codebase structure (if applicable).
-Identify the technical stack, core dependencies, and biggest risks.
+1. `docs/specs/<slug>-feature-spec.md` (if SDD is in use — this is the source of truth; gate on `status: Approved`).
+2. `docs/constitution.md` (read all C-N rules — every task must respect them).
+3. `docs/prd/` (latest PRD) or `docs/specs/` (latest design doc).
+4. `docs/product-soul.md` (for strategic alignment).
+5. Current codebase structure (if applicable).
+Identify the technical stack, core dependencies, and biggest risks. Build a list of FR-N / NFR-N / C-N IDs that every task must trace back to.
 
 ### Step 2 — Discovery Questions
 Ask 1–2 targeted questions to clarify technical constraints:
@@ -55,16 +59,35 @@ Ensure the plan includes:
 ### Step 4 — Risk Assessment
 Identify at least 2 technical risks (e.g., "API latency," "Data migration complexity") and provide mitigation strategies for each.
 
+### Step 4b — Requirement Traceability (required when feature-spec exists)
+Build a traceability table mapping every FR/NFR/C-N to the tasks that satisfy it:
+
+```markdown
+## Requirement Traceability
+| Requirement | Tasks                | Verification        |
+|-------------|----------------------|---------------------|
+| FR-1        | T1, T3               | AC-FR-1.1           |
+| FR-2        | T2                   | AC-FR-2.1           |
+| NFR-1       | T4                   | k6 load test (T4.D) |
+| C-2.4       | T5 (token TTL guard) | unit test           |
+```
+
+Tag each task in the plan with the IDs it satisfies (e.g., `T2 [FR-2, C-2.1]`). This is what `spec-crosscheck` reads.
+
 ### Step 5 — Present and Save
 Present the plan in chat for review.
 
-Save to file: `docs/plans/YYYY-MM-DD-<feature>-plan.md`
+Save plan to: `docs/plans/YYYY-MM-DD-<slug>-plan.md`
+If invoked in tasks-only mode (orchestrator passes `mode=tasks`), also derive `docs/plans/YYYY-MM-DD-<slug>-tasks.md` — a flat agent-pickable list (each task with its requirement IDs and DoD).
+
 Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```markdown
-| YYYY-MM-DD HH:MM | implementation-plan | docs/plans/YYYY-MM-DD-<feature>-plan.md | Plan: <feature> |
+| YYYY-MM-DD HH:MM | implementation-plan | docs/plans/YYYY-MM-DD-<slug>-plan.md | Plan: <feature> |
 ```
+(Add a second log line for the tasks file when produced.)
+
 Tell the user:
-> "Implementation plan saved to `docs/plans/YYYY-MM-DD-<feature>-plan.md`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
+> "Implementation plan saved to `docs/plans/YYYY-MM-DD-<slug>-plan.md`. Next: run `spec-driven-development /analyze` (or `spec-crosscheck` directly) to gate-check before implementation."
 
 ---
 
