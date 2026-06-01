@@ -155,3 +155,9 @@ Files modified:
 No skill files modified. No application code written. Read-only ingestion only.
 
 Next-session work plan (3 phases) recorded in the handoff.
+
+## 2026-06-01 - External-agent handoff for addyosmani/agent-skills ingestion project
+
+File created: docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md (~600 lines, self-contained)
+Audience: Non-Amp agent starting from zero. Sections cover repo orientation, AGENTS.md rules, glossary, source repo summary, 16 insights with status, Phase 1 completion gaps, Phase 3 comparison protocol, Phase 2 build plan with batch ordering, verification scripts, must-not-do list.
+No skills modified. No checkpoints invoked (this is a docs artefact, not a producer event).
