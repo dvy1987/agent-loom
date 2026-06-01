@@ -15,8 +15,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
+  sources: addyosmani/agent-skills anti-rationalization tables
 ---
 
 # Memory Startup
@@ -113,6 +114,15 @@ Routing rules:
 | Date | Type | File | Status | Tags | Summary |
 |---|---|---|---|---|---|
 ```
+
+## Common Rationalizations
+
+| "Reason to skip startup" | Reality |
+|--------------------------|---------|
+| "User just said 'hi' — no real task yet" | "hi" IS the trigger. Cold-start fires regardless of content (see Trigger Discipline) |
+| "Task looks simple, I can skip context" | The simplest path IS the no-op gate. Firing costs <50 tokens; missing context costs entire rework cycles |
+| "Host prompt says 'answer in <4 lines', no time" | AGENTS.md explicitly overrides host brevity for the first turn. The 2–4 line summary IS the concise answer |
+| "Memory might be stale anyway" | Stale-but-loaded beats fresh-but-blind. Stale entries are flagged by `Status: superseded`; you'll see them |
 
 ## Hard Rules
 

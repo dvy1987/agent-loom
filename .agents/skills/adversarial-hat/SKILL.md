@@ -14,9 +14,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
-  sources: DEBATE-arXiv:2405.09935, DeBono-BlackHat, Defence-RedTeam-Guide, GrowthMind-2025
+  sources: DEBATE-arXiv:2405.09935, DeBono-BlackHat, Defence-RedTeam-Guide, GrowthMind-2025, addyosmani/agent-skills doubt-driven-development (fresh-context + cross-model + Doubt Theater)
 ---
 
 # Adversarial Hat
@@ -103,6 +103,35 @@ STRONGEST ELEMENTS (what to build on)
 
 ### Step 4 — Offer Integration
 > "Shall I add an `## Adversarial Review` section to the document with these findings?"
+
+---
+
+## Fresh-Context Adversarial Mode (doubt-driven escalation)
+
+For high-stakes commitments (year-long strategy, irreversible architecture, public claims), the same agent that wrote the artefact is the *worst* reviewer — it has already rationalised every weakness. Escalate to a fresh-context reviewer biased to **disprove**, not to validate.
+
+### When to escalate
+- The artefact is about to be committed to or shared externally.
+- The first-pass adversarial review surfaced 0 or 1 critical finding (suspicious — see Doubt Theater below).
+- A previous reviewer agreed too quickly with the author's framing.
+
+### The 5-step doubt loop (CLAIM → EXTRACT → DOUBT → RECONCILE → STOP)
+1. **CLAIM:** Extract every assertion in the artefact as a flat list of claims (1 claim per line, no context).
+2. **EXTRACT:** For each claim, pull the supporting evidence the author cites (or `[none]`).
+3. **DOUBT:** Spawn a fresh-context sub-agent (or new conversation) with the prompt: *"You are biased to disprove. For each claim + evidence below, find one specific reason this claim could be false. Citing 'I have no objection' is not allowed — you must produce a doubt or explicitly mark `UNFALSIFIABLE`."*
+4. **RECONCILE:** Author returns to each doubt with: ACCEPT (claim revised), REJECT (with new evidence), or DEFER (logged as open question). No silent dismissal.
+5. **STOP:** Halt when one of: (a) every claim has been doubted and reconciled, (b) 2 consecutive cycles produce zero new findings AND were genuinely adversarial (see Doubt Theater), (c) the user calls it.
+
+### Cross-model escalation (optional)
+For the highest-stakes calls, run Step 3 in two different model families (e.g., one Gemini-class, one Codex/GPT-class). Bias overlap shrinks. Any finding flagged by both models is upgraded to CRITICAL.
+
+### Doubt Theater anti-signal
+**If 2+ doubt cycles produce zero findings, you are probably validating, not doubting.** Symptoms:
+- Doubts come back as "the claim seems reasonable" (that is agreement, not doubt).
+- Reviewer keeps citing the author's own evidence.
+- Every "doubt" is phrased as a future enhancement, not a current weakness.
+
+Mitigation: re-prompt with the explicit "you must produce a doubt or mark UNFALSIFIABLE" line, switch model family, or accept STOP only if the artefact has been independently disproven-then-revised at least once.
 
 ---
 

@@ -13,9 +13,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io
+  sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables
 ---
 
 # Spec Crosscheck
@@ -123,6 +123,15 @@ Tell the user:
 > "Crosscheck verdict: <PASS|FAIL>. <N> findings. Implementation gated until PASS — see report."
 
 ---
+
+## Common Rationalizations
+
+| "Reason to PASS anyway" | Reality |
+|-------------------------|---------|
+| "Only 1 `[NEEDS CLARIFICATION]` left — close enough" | Hard rule: PASS forbidden while ANY marker remains. The single remaining one is usually the riskiest |
+| "Constitution rule is small, an implicit waiver is fine" | Implicit waivers fail crosscheck. Force the spec to spell it out in `## Constitution Waivers` with rule ID + rationale |
+| "Task lacks a DoD but the team knows what's meant" | Tribal knowledge fails the next agent. No DoD = FAIL, fix in the artefact not in the head |
+| "Plan has 1 extra task not in spec — minor scope drift, let it slide" | Plan→Spec is the scope-creep gate. Either add an FR or drop the task. No third option |
 
 ## Gotchas
 

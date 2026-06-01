@@ -14,9 +14,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io
+  sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
   resources:
     references:
       - feature-spec-schema.md
@@ -120,10 +120,16 @@ For each `CL-N`:
 3. Update the relevant FR/NFR/AC. Replace the `[NEEDS CLARIFICATION]` marker with the answer.
 4. Remove `CL-N` from Needs Clarification list.
 
-### Step C3 — Update status
+### Step C3 — Update status (HYPOTHESIS + CONFIDENCE %)
 
-When CL list is empty, set status to `Clarifying-Complete` and ask:
-> "All clarifications resolved. Approve as final? (yes → status: Approved)"
+After every answered CL, record internally:
+- **HYPOTHESIS:** one sentence — what the spec now says about this CL.
+- **CONFIDENCE:** integer % (0–100) the resolved FR/NFR/AC is unambiguous enough for `spec-crosscheck` PASS and an implementing agent to plan from with zero follow-up.
+
+Promote to `Clarifying-Complete` only when every resolved CL has CONFIDENCE ≥ 70%. Any CL <70% gets a one-line `REASON` and is re-opened as `CL-N (revisit)` rather than silently closed.
+
+When CL list is empty AND all resolutions ≥70%, ask:
+> "All clarifications resolved (avg confidence: N%). Approve as final? (yes → status: Approved)"
 
 Only set `Approved` after explicit user confirmation.
 

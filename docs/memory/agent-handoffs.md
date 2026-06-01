@@ -296,3 +296,222 @@ All 4 layers landed. Per the new checkpoint registry, this very entry is the `me
 - Dirty after this handoff: 4 modified files (memory/agent-handoffs.md, memory/current-state.md, memory/project-index.md, skill-outputs/SKILL-OUTPUTS.md) staged for the handoff commit but not committed yet (user said "end of session" — handoff written but commit decision deferred to user).
 - Last committed: `56b4c03 improve: extend AlphaEval synergy-blindness coverage to process-decomposer, setup-evaluation, eval-pipeline`.
 - Not pushed to remote.
+
+---
+
+## 2026-05-29 — Handoff: addyosmani/agent-skills ingestion (read-only — application deferred to next session)
+
+### Why this entry is unusually long
+
+User explicitly requested "this entire conversation listed in its fullness so that I don't waste tokens retreading the same ground." The default 80-line cap from `memory-handoff` is overridden by direct user instruction. Next agent: do not re-research the addyosmani repo; do not re-run the credibility/security gates; do not re-derive the gap matrix. Everything you need to act is below.
+
+### Context — What this session was
+
+Cold-start session. User opened with "hi" → `memory-startup` fired and loaded the 2026-05-17 state (synergy-blindness coverage extension landed in `56b4c03`, working tree was clean, no forced next step). User then issued one substantive instruction: **"learn from repo https://github.com/addyosmani/agent-skills."**
+
+`learn-from-repo` was loaded and run end-to-end through Step 4 (extract + recommend). Steps 5–6 (apply + log) were **deliberately not executed** — the user wanted findings documented for review across multiple future sessions before any application.
+
+### Source
+
+- **Repo:** `github.com/addyosmani/agent-skills` (MIT, Addy Osmani)
+- **Snapshot date:** 2026-05-29 (commits through ~May 28 2026 visible)
+- **Headline metrics:** 46.7k stars, 5.2k forks, 23 skills, 12+ contributors, ~50 commits in ~1 month, daily merges, all 3 CI jobs pass (skill validator → `claude plugin validate` → live `claude plugin install`)
+- **Tool used:** `librarian` for full structural tour (the librarian output is the canonical source — re-fetch if assumptions need verification, but the summary in the conversation was thorough)
+
+### Credibility — 11/12 PASS
+
+| Dimension | Score | Note |
+|---|---|---|
+| Author/Org | 2/2 | Addy Osmani — Google Chrome eng lead |
+| Maturity | 1/2 | ~1 month old but very high cadence |
+| Adoption | 2/2 | 46.7k stars / 5.2k forks |
+| Code Quality | 2/2 | Custom Node validator + hooks tests + plugin install CI |
+| Maintenance | 2/2 | Daily merges, active external contributor pipeline |
+| Docs Quality | 2/2 | `skill-anatomy.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `AGENTS.md`, `references/orchestration-patterns.md` |
+
+### Security — SAFE across all four `secure-*` skills
+
+All four returned SAFE: `secure-skill`, `secure-skill-content-sanitization`, `secure-skill-repo-ingestion`, `secure-skill-runtime`. Instruction hierarchy INTACT. Content ingested was paraphrased/structural (librarian summary), no raw code, no commands, no instructions copied verbatim. No `secure-*` re-run needed for next session as long as the same librarian output is the basis for application work.
+
+### The 16 Extracted Insights — full table for next-session pick-and-choose
+
+Format: # | Tag | Insight | Agent Recommendation | Notes
+
+| # | Tag | Insight | Rec | Notes |
+|---|---|---|---|---|
+| 1 | TECHNIQUE | **"Common Rationalizations" tables** in every skill — two-column excuse → factual rebuttal, makes skill self-defending against being skipped | PARTIAL APPLY | Retrofit to 6 high-stakes gate skills: `memory-startup`, `secure-skill`, `validate-skills`, `learn-from`, `universal-skill-creator`, `spec-crosscheck`. Bulk retrofit to 89 skills = too invasive. Most distinctive structural pattern in their library. |
+| 2 | TECHNIQUE | Five required body sections enforced by CI (`Overview`, `When to Use`, `Common Rationalizations`, `Red Flags`, `Verification`) | KEEP CURRENT | Our 7-criteria rubric is different and arguably stronger. Covered indirectly by #1. |
+| 3 | TECHNIQUE | **Hardcoded exemption allowlist in validator script** — not in skill frontmatter — so contributors can't bypass by editing their own file | APPLY | Move `secure-*` no-compress rule from AGENTS.md prose into `validate-skills` Step 4 as a hardcoded allowlist. Closes a governance loophole. |
+| 4 | GOTCHA | **Description hard limit 1024 chars** — system-prompt injection budget. CI error in their repo | APPLY | Promote from `validation-rubric.md` reference into `validate-skills` Step 2a as a P0 flag. Currently only memory-startup carries this constraint informally. |
+| 5 | GOTCHA | **Description must NOT contain process steps** — agents follow the summary instead of reading the body | APPLY | Add warning-level check in `validate-skills` (regex for numbered lists / "Step 1" / "first… then" in descriptions). |
+| 6 | TECHNIQUE | **HYPOTHESIS + CONFIDENCE %** mechanic (`interview-me`) — explicit numeric confidence as a quantified stop condition; <70% requires attached reason | PARTIAL APPLY | Add to `brainstorming` and `feature-spec` (clarify mode). Currently both stop on vague "user seems satisfied." |
+| 7 | TECHNIQUE | **Fresh-context adversarial review** (`doubt-driven-development`) — 5-step CLAIM→EXTRACT→DOUBT→RECONCILE→STOP, cross-model escalation (Gemini/Codex), "Doubt Theater" anti-signal (2+ cycles, zero findings = validating not doubting) | APPLY | Extend `adversarial-hat` with: (a) fresh-context spawn, (b) cross-model escalation, (c) Doubt Theater anti-signal. Real additions, not duplicates of current 3 phases. `adversarial-hat` is 162 lines so room within 200-line cap. |
+| 8 | TECHNIQUE | **Session-start hook auto-injecting routing meta-skill** — `using-agent-skills` SKILL.md emitted as IMPORTANT JSON at every session start | KEEP CURRENT | Our `memory-startup` occupies the cold-start gate. Routing already done by skill registry in system prompt. Cost > benefit. |
+| 9 | TECHNIQUE | Three-layer taxonomy: Skills (HOW) / Personas (WHO, 1-hop max) / Commands (WHEN); personas cannot invoke personas | SKIP | Claude Code subagent-specific. Clashes with our orchestrator-skill pattern. |
+| 10 | TECHNIQUE | **Multi-harness parity** — same command set in `.claude/commands/*.md` + `.gemini/commands/*.toml` + `AGENTS.md` (OpenCode) + per-tool docs (Cursor/Windsurf/Copilot) | DEFERRED APPLY | We cross-platform via `install.sh`/`install.ps1` but lack native command adapters. Log as enhancement for installer work. |
+| 11 | TECHNIQUE | **Annotation-based code hiding** (`hooks/simplify-ignore.sh`) — `/* simplify-ignore-start */…end */` blocks hashed before model reads file, re-expanded after edits | SKIP for skill library | We have no `code-simplification` skill and this is application-code refactoring, not skill-library work. Log to `deferred.md` for future `apply-paper-to-project` use. |
+| 12 | TECHNIQUE | **HTTP ETag/Last-Modified revalidation cache** for doc fetches (`hooks/sdd-cache-{pre,post}.sh`) — even cached docs freshness-verified on every use | DEFERRED APPLY | High value for `research-skill` + `learn-from-*`. Requires hook infrastructure we don't have. Log as enhancement. |
+| 13 | TECHNIQUE | Supporting files only if >100 lines; principles inline if <50 | KEEP CURRENT | `split-skill` has its own logic; retrofitting churns existing skills. |
+| 14 | CONTRADICTION | **500-line soft SKILL.md limit** vs our **200-line hard limit** | KEEP CURRENT | Defend our 200-line limit. Their 500 is consequence of fewer-bigger-skills philosophy; we deliberately favour denser/focused. Log as rejected alternative in `learnings.md`. |
+| 15 | TECHNIQUE | **Plugin install integration test in CI** (`claude plugin install` as third CI job) | SKIP | We are not a Claude marketplace plugin. `install.sh`/`install.ps1` dry-run analogous, low ROI given no `.github/workflows/` exists yet. |
+| 16 | METRIC | 23 skills @ 46.7k stars vs our ~89 skills | BACKGROUND | Philosophical difference, not actionable. |
+
+### The Coding/Dev Skill Gap Matrix — verified observation, not yet acted on
+
+Side-by-side mapping of addyosmani's 23 skills to agent-loom equivalents:
+
+| addyosmani skill | agent-loom equivalent | Status |
+|---|---|---|
+| `interview-me` | partial: `brainstorming` + `feature-spec` clarify mode | PARTIAL GAP — no quantified-confidence interview loop |
+| `idea-refine` | `brainstorming` + `venture-exploration` suite | OVERLAP (we're richer) |
+| `spec-driven-development` | `spec-driven-development` orchestrator | ALIGNED (structural) |
+| `planning-and-task-breakdown` | `implementation-plan` + `problem-to-plan` + `process-decomposer` | OVERLAP (we have 3 here) |
+| `incremental-implementation` | — | **GAP** |
+| `context-engineering` | — (memory suite adjacent but distinct) | **GAP** |
+| `source-driven-development` | — (`research-skill` is for skill-domain research) | **GAP** |
+| `doubt-driven-development` | `adversarial-hat` | OVERLAP — missing fresh-context spawn (covered by insight #7) |
+| `frontend-ui-engineering` | `frontend-design` suite (5 skills) | OVERLAP (we're more granular) |
+| `api-and-interface-design` | — (partial: `feature-spec` ACs) | **GAP** |
+| `test-driven-development` | `test-driven-development` | ALIGNED (structural) |
+| `browser-testing-with-devtools` | — | **GAP** (Chrome DevTools MCP integration) |
+| `debugging-and-error-recovery` | `debug-and-fix` + `fixing-bugs` | ALIGNED (structural) |
+| `code-review-and-quality` | `code-review-crsp` | ALIGNED (structural) |
+| `code-simplification` | — (`compress/split/prune-skill` are for skill files, not app code) | **GAP** |
+| `security-and-hardening` | — (`secure-skill` suite secures skill files only) | **DIVERGENT GAP** (naming collision risk) |
+| `performance-optimization` | — | **GAP** |
+| `git-workflow-and-versioning` | — | **GAP** |
+| `ci-cd-and-automation` | — (and we have no CI ourselves) | **GAP** |
+| `deprecation-and-migration` | — (`deprecate-skill` retires skills, not app APIs) | **DIVERGENT GAP** (naming collision risk) |
+| `documentation-and-adrs` | `architectural-decision-log` for ADRs; no general docs skill | PARTIAL |
+| `shipping-and-launch` | — | **GAP** |
+
+**Tally: 4 aligned (structural) + 4 overlap (we're often stronger) + 11 gaps (3 of them divergent — name-similar but scoped to skills not app code) + 4 partial.**
+
+### CRITICAL CAVEAT — what "ALIGNED" actually means in the matrix above
+
+User explicitly flagged this in conversation. "ALIGNED" in the matrix means **only** "both libraries have a skill targeting the same problem with the same canonical method, structurally comparable" — based on skill name + librarian's one-line summary + agent-loom's loaded skill description. It does **NOT** mean:
+- ❌ The SKILL.md content is identical or near-identical
+- ❌ They are equally effective
+- ❌ I read and compared both files
+
+For the 4 aligned + 4 overlap = 8 pairs, no content-level comparison has been done yet. Phase 3 of the next-session plan addresses this.
+
+### Asymmetry Diagnosis
+
+- **addyosmani:** coding-deep, meta-shallow. 23 skills, heavy on the dev lifecycle.
+- **agent-loom:** meta-deep, coding-shallow. ~89 skills with strong coverage of memory, skill-library mgmt, learn-from, thinking frameworks, venture exploration, eval-output, experimentation, multi-agent design, reality-check. Coding lifecycle has known gaps.
+
+### Agent-loom strengths NOT present in addyosmani (do not lose these)
+
+Memory suite (~9 skills) · Skill library mgmt (~12 skills) · `learn-from` suite (5 skills) · Thinking frameworks (~9 skills: deep-thinking, inversion, pre-mortem, socratic, first-principles, second-order, fermi, ooda, assumption-mapping) · `venture-exploration` suite (5 skills) · `eval-output` suite (4 skills) · `experimentation` suite (5 skills) · Multi-agent design (`agent-builder`, `agent-system-architecture`, `setup-evaluation`, `agent-launcher`, `create-agent-prompt`) · `reality-check` · `retroactive-project-setup` · `project-orchestrator` + `skill-routing`.
+
+### Coding Gap List (ranked by leverage)
+
+Order recommended for Phase 2 work (option C — fill all gaps):
+
+1. `incremental-implementation` — thin vertical slice loop (daily driver)
+2. `source-driven-development` — DETECT→FETCH→IMPLEMENT→CITE official docs (prevents hallucinated APIs)
+3. `git-workflow-and-versioning` — atomic commits + conventional messages
+4. `api-and-interface-design` — contracts before implementation (complements `feature-spec` at the layer below)
+5. `performance-optimization` — measure-first profiling
+6. **`app-security-hardening`** (renamed from `security-and-hardening` to avoid collision with `secure-skill`) — OWASP / input validation / least privilege for app code
+7. `shipping-and-launch` — pre-launch checklist + rollback (complements `generate-changelog`)
+8. `context-engineering` — 5-level context hierarchy for AI-coding sessions (distinct from cross-session memory)
+9. `code-simplification` — app-code refactoring; companion to `technical-debt-audit`
+10. `ci-cd-and-automation` — and add actual `.github/workflows/` to agent-loom while we're there
+11. **`api-deprecation-and-migration`** (renamed from `deprecation-and-migration` to avoid collision with `deprecate-skill`) — graduated API retirement
+12. `browser-testing-with-devtools` — Chrome DevTools MCP integration (niche, lower priority)
+
+### Three-Phase Next-Session Work Plan (USER-CONFIRMED)
+
+**Phase 1 — Pick-and-Choose from the 16 Insights**
+User will personally select which of the 16 to apply. Suggested starter set if user wants a default: items **3, 4, 5** (validator hardening — lowest risk, highest leverage) and **7** (`adversarial-hat` fresh-context extension). Items 1 and 6 next. Items 10 and 12 logged to `deferred.md`. Items 2, 8, 9, 13, 15 logged as rejected alternatives in `learnings.md` per shared `learn-from` protocol.
+
+For every applied insight, run the **Post-Application Hardening Cycle** per `learn-from`:
+1. `secure-*` sweep on modified skill
+2. Version bump + citation (cite `addyosmani/agent-skills`, 11/12 credibility, 2026-05-29 snapshot)
+3. 200-line gate (`compress-skill` or `split-skill` if over)
+4. `validate-skills` ≥10/14
+
+**Phase 2 — Fill ALL coding gaps (option C, full mirror minus skips)**
+Build the 12 gap skills in the order listed above via `universal-skill-creator` (mandatory — never write SKILL.md directly per AGENTS.md skill-creation invariant). Each creator run auto-chains validate-skills → skill-deconflict → library-skill per Step 8. Pay attention to:
+- Naming collisions: `app-security-hardening` and `api-deprecation-and-migration` MUST use renamed forms to avoid colliding with existing `secure-skill` / `deprecate-skill`. Run `skill-deconflict` early.
+- Anti-sprawl: confirm each gap is genuinely uncovered before creating. `skill-finder` runs at Step 1 of `universal-skill-creator` for this.
+- Scope: ~6-8 hours of work, library grows from ~89 to ~101 skills. After each batch of 3-4, run `library-skill` to update `SKILL-INDEX.md`, AGENTS.md call graph, README, etc.
+- Some skills (e.g. `source-driven-development`) can borrow patterns directly from addyosmani's SKILL.md once we re-fetch and re-scan it through `secure-*`. Others (`browser-testing-with-devtools`) need an MCP availability check first via `tool-finder`.
+
+**Phase 3 — Full content-level comparison for all 8 common skills**
+For each of the 4 aligned + 4 overlap pairs, read both SKILL.md files in full and score along 6 axes:
+1. Workflow specificity (imperative one-liners vs vague prose)
+2. Hard rules (explicit gates vs soft guidance)
+3. Gotchas (domain-specific failure modes vs generic advice)
+4. Examples (realistic I/O vs stubs)
+5. Verification (observable exit criteria vs wishful checkpoints)
+6. Anti-rationalization (does the skill defend itself against being skipped — addyosmani likely wins this axis everywhere via insight #1)
+
+Per-pair output: scorecard + verdict (KEEP OURS / ADOPT THEIRS / MERGE BEST-OF-BOTH / SPLIT INTO TWO SKILLS). Estimate 20–30 min per pair = 3–4 hours total for all 8.
+
+Pairs to compare:
+- `spec-driven-development` × `spec-driven-development`
+- `test-driven-development` × `test-driven-development`
+- `debug-and-fix` (+ `fixing-bugs`) × `debugging-and-error-recovery`
+- `code-review-crsp` × `code-review-and-quality`
+- `brainstorming` / `venture-exploration` × `idea-refine`
+- `implementation-plan` / `problem-to-plan` / `process-decomposer` × `planning-and-task-breakdown`
+- `adversarial-hat` × `doubt-driven-development` (mostly already covered by insight #7 — note the overlap)
+- `frontend-design` suite × `frontend-ui-engineering`
+
+Suggested order: do **Phase 1 first** (small focused validator/adversarial hardening), then **Phase 3 in parallel batches** (read-only, can spawn Task subagents), then **Phase 2 last** (heavy writing work) — because Phase 3 outputs may reveal that some "gap" skills actually exist under different names or that some "overlap" skills should be merged before any new skills are added.
+
+### Decisions Made This Session
+
+- Defer ALL application work to next session per user instruction.
+- Override `memory-handoff` 80-line cap to capture full conversation context per user explicit instruction.
+- Use renamed forms `app-security-hardening` and `api-deprecation-and-migration` for the two divergent gaps to avoid colliding with existing `secure-skill` / `deprecate-skill`. (Decision made in this handoff, not in conversation — user may overrule.)
+- Run security gates fully even though content was paraphrased/structural (all four `secure-*` returned SAFE).
+- Did NOT update `current-state.md` or `project-index.md` mid-session because no skills/code were modified — only the handoff itself. Will be updated alongside this handoff.
+
+### Verification
+
+- Credibility: 11/12 — calculation shown above, dimensions justified.
+- Security: SAFE — all 4 `secure-*` skills scanned the librarian output, no findings.
+- Gap matrix: verified by checking `ls .agents/skills/` against addyosmani's 23-skill list one-by-one (confirmed no `code-simplification`, no `incremental-implementation`, no `git-workflow-and-versioning`, no `source-driven-development`, no `performance-optimization`, no `shipping-and-launch`, no `ci-cd-and-automation`, no `context-engineering`, no `api-and-interface-design`, no `browser-testing-with-devtools`).
+- No `.github/workflows/` exists (confirmed — `ls .github` returned PathNotFound).
+- `adversarial-hat` confirmed at 162 lines (read first 60 lines, frontmatter intact, 3-phase structure verified).
+- `validate-skills` v1.1 confirmed at 196 lines with Step 4c producer audit (read in full).
+- `agentskills validate` CLI **still unavailable** in this environment — same long-standing limitation per prior handoffs. Any structural verification next session also manual.
+
+### Working Tree at End of Session
+
+Modified (uncommitted):
+- `docs/memory/agent-handoffs.md` (this entry)
+- `docs/memory/current-state.md` (will be updated as part of this handoff write)
+- `docs/memory/project-index.md` (will be updated as part of this handoff write)
+- `docs/skill-outputs/SKILL-OUTPUTS.md` (will be appended as part of this handoff write)
+
+Last committed: `42a67df maintainence`.
+
+**No skill files modified, no application code written.** Pure intake + recommendations + handoff.
+
+Suggested commit message: `docs: capture addyosmani/agent-skills ingestion handoff (read-only — application deferred to next session)`.
+
+### Revisit Triggers
+
+- If user picks Phase 2 first (skipping Phase 1 + Phase 3): warn that the gap skills will be created without the insights applied, meaning new skills won't have Common Rationalizations tables, may have descriptions >1024 chars, etc. Better to do Phase 1 (validator hardening) before Phase 2 so new skills are born compliant with the new rules.
+- If `agentskills validate` CLI becomes available: re-run full library sweep including Step 4c producer audit.
+- If addyosmani repo moves significantly (new skills added, validator changes): re-fetch via librarian before Phase 3 comparisons; the snapshot date here is **2026-05-29**.
+- If the 16 insights list gets stale (we apply some, retire others): update this handoff's table or supersede with a new one in `project-index.md`.
+- If a future agent invokes `learn-from-repo` on the same URL again: deduplicate against this handoff before re-running credibility/security (waste of cycles).
+
+### Drift From Prior Handoff (2026-05-17 12:30)
+
+None. Prior handoff said working tree was dirty with handoff files; current `git status` shows clean working tree at session start (committed since in `d0b7b88 further updates` or `42a67df maintainence`). All 2026-05-17 follow-ups (a) validate-skills cold-start trigger flag, (b) AlphaEval cascade-dependency audit, (c) learn-from-paper multi-stage-distribution heuristic — still queued as optional, not actioned this session. They remain valid and unchanged.
+
+### What Next Agent Should NOT Do
+
+- Do not re-fetch the addyosmani repo via librarian unless verifying a specific claim — the 16 insights + gap matrix are sufficient for Phases 1–3.
+- Do not re-run credibility/security gates unless ingesting NEW content from the repo (e.g., a specific SKILL.md not yet read).
+- Do not bulk-retrofit Common Rationalizations to all 89 skills — insight #1 was explicitly scoped to 6 gate skills.
+- Do not create `security-and-hardening` or `deprecation-and-migration` with their original addyosmani names — use the renamed forms in Phase 2.
+- Do not write any SKILL.md directly — route every new skill in Phase 2 through `universal-skill-creator` per the skill-creation invariant in AGENTS.md.
+- Do not let Phase 2 grow the library past ~101 skills without invoking `skill-deconflict` between batches.

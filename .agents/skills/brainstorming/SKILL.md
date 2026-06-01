@@ -14,9 +14,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: thinking
-  sources: obra/superpowers brainstorming, agentskills.io best practices
+  sources: obra/superpowers brainstorming, agentskills.io best practices, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
 ---
 
 # Brainstorming
@@ -48,6 +48,12 @@ One question per message. Wait for the answer before asking the next. Focus on:
 - **Non-goals** — what is explicitly out of scope?
 
 Prefer multiple-choice when options are known. Stop when you have enough to design.
+
+**Quantified stop condition (HYPOTHESIS + CONFIDENCE %).** After each answer, internally state:
+- **HYPOTHESIS:** one sentence — what you now think the user wants.
+- **CONFIDENCE:** integer % (0–100) you can write a defensible design from this.
+
+Proceed to Step 5 only when CONFIDENCE ≥ 70%. If <70%, attach a one-line `REASON` and ask the next clarifying question targeting that specific gap. Never proceed on "user seems satisfied" alone.
 
 ### Step 5 — Propose 2–3 Approaches
 Present distinct approaches with tradeoffs. Lead with your recommendation and explain why.

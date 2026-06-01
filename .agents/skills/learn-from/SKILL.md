@@ -12,8 +12,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.1"
+  version: "2.2"
   category: meta
+  sources: addyosmani/agent-skills anti-rationalization tables
 ---
 
 # Learn From
@@ -148,6 +149,15 @@ Score: [N]/[max] | Verdict: [PASS/BORDERLINE/REJECT]
 ```
 
 ---
+
+## Common Rationalizations
+
+| "Reason to skip a gate" | Reality |
+|-------------------------|---------|
+| "Source is obviously credible — skip the credibility check" | Credibility scoring catches the non-obvious gaps (sample size, replication, vendor bias). Skipping is how marketing copy gets adopted as method |
+| "I'll apply this directly — skip the contradiction check" | Silent overwrites delete the prior reasoning. CONTRADICTION presentation is the only way the user can choose REPLACE / KEEP / BOTH / PARTIAL with eyes open |
+| "Insight is small, skip the hardening cycle" | Post-Application Hardening is the only audit trail that the skill still validates, still passes security, and still fits the 200-line gate after the edit |
+| "User already approved — skip writing back to the source learning entry" | Provenance is how future agents discover which skill came from which source. Missing it makes audit and rollback impossible |
 
 ## Gotchas
 

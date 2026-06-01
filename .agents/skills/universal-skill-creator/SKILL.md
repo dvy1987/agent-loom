@@ -8,9 +8,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.2"
+  version: "2.3"
   spec: agentskills.io/specification
-  sources: anthropics/skills, openai/skills, warpdotdev/oz-skills, agentskills.io, arXiv:2602.12430, arXiv:2603.29919, NeurIPS-2025
+  sources: anthropics/skills, openai/skills, warpdotdev/oz-skills, agentskills.io, arXiv:2602.12430, arXiv:2603.29919, NeurIPS-2025, addyosmani/agent-skills anti-rationalization tables
   resources:
     references:
       - platform-matrix.md
@@ -117,7 +117,7 @@ agentskills validate .agents/skills/<skill-name>/
 Invoke `cross-link-skills` with trigger `created — <skill-name>` to repair missing or stale cross-references involving the new skill.
 
 ### Step 11 — Library Sync (Mandatory)
-Invoke `library-skill` with trigger `new skill added — <skill-name>`. This syncs `docs/SKILL-INDEX.md`, `AGENTS.md` (User Entry Points + Security Enforcement), `README.md` skill tables, `docs/skill-graph.md`, `docs/architecture.md`, and `docs/prd/PRD.md`, then auto-invokes `generate-changelog`. Skipping this step rots the library — the new skill is undiscoverable from the index, graph, README, and PRD even though its SKILL.md is on disk.
+Invoke `library-skill` with trigger `new skill added — <skill-name>`. Syncs `docs/SKILL-INDEX.md`, `AGENTS.md`, `README.md`, `docs/skill-graph.md`, `docs/architecture.md`, `docs/prd/PRD.md`, then auto-invokes `generate-changelog`. Skipping rots the library — see Common Rationalizations.
 
 ### Step 12 — Publish (Optional)
 If user opts in, invoke `publish-skill` (handles packaging, README, registry submission).
@@ -127,58 +127,56 @@ Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: skill creat
 
 ---
 
-## Output Format
+## Output Format & Mandatory Requirements
 
-After generating, always state:
-- Complexity tier used and why
-- Compatible platforms
-- Install path: `.agents/skills/<skill-name>/`
-- Test prompt to verify activation
-
-## Mandatory Requirements for Every Skill You Create
+After generating, always state: tier + why · compatible platforms · install path `.agents/skills/<skill-name>/` · test trigger phrase.
 
 Every skill MUST include:
-1. **`## Impact Report`** section — skill-specific format, delivered in-chat after run. See `references/examples.md`.
-2. **File-output logging** — if the skill generates files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user. Applies to project files only, not skill files.
-3. **Learnings provenance** — if created from `docs/learnings/*.md`, update source entry with skill name, path, date.
+1. **`## Impact Report`** — skill-specific format, in-chat after every run.
+2. **File-output logging** — if skill writes project files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and notify user.
+3. **Learnings provenance** — if from `docs/learnings/*.md`, update source entry with skill name + path + date.
 
 ---
 
 ## Gotchas
 
-- **NEVER write `.agents/skills/<name>/SKILL.md` directly outside this skill.** Bypassing this entry point skips the Step 8–11 quality chain (deconflict → validate → cross-link → library-sync). Even after planning, even for "obvious" skills, even for batch builds — re-route through here.
-- **`secure-*` gating is NOT optional and runs twice.** Step 2 scans research INPUTS; Step 9 scans the GENERATED skill. Skipping either gate is a security incident.
-- **`library-skill` is the index-and-graph fixer, not optional.** Skipping Step 11 means the new skill is invisible in SKILL-INDEX, README, the skill graph, and PRD — discoverability dies on the vine.
-- **Description triggers must be additive, never replace.** When iterating, only add trigger phrases — removing them silently breaks routing for users whose phrasing matched the deleted trigger.
-- **Frontmatter is loader-critical.** UTF-8 without BOM, `---` at byte 0, closing `---`, description <1024 chars. A single Windows-1252 byte or BOM makes the skill unloadable.
-- **`metadata.category` must be `meta | thinking | project-specific | domain`.** Custom values fail validation. Check existing thinking skills before forcing a category.
-- **`resources` field must list every reference / script / template** under the skill directory. Missing resources = the orchestrator can't find them.
-- **Atomic tier first; promote on demand.** Bloat from "I might need this" hurts routing and token efficiency.
-- **Skill name must match the directory exactly** (lowercase, hyphens, 1–64 chars). Mismatch silently breaks every cross-link.
+- **NEVER write `.agents/skills/<name>/SKILL.md` directly outside this skill.** Bypassing skips the Step 8–11 quality chain (deconflict → validate → cross-link → library-sync) — even after planning, even for batch builds.
+- **`secure-*` gates run twice (Steps 2 and 9).** Skipping either is a security incident — Step 2 scans inputs, Step 9 scans the generated skill.
+- **Description triggers are additive.** Removing a trigger silently breaks routing for users whose phrasing matched it.
+- **Frontmatter is loader-critical.** UTF-8 no BOM, `---` at byte 0, closing `---`, description <1024 chars, `metadata.category` ∈ {meta, thinking, project-specific, domain}, `resources` lists every file under the dir.
+- **Atomic tier first; promote on demand.** Bloat hurts routing and tokens.
+- **Skill name must match directory exactly** (lowercase, hyphens, 1–64 chars). Mismatch breaks every cross-link silently.
 
 ---
 
 ## Verification Checklist
-- [ ] Starts with `---` on line 1 (UTF-8, no BOM, byte 0 is `-`); name matches directory; frontmatter has opening and closing `---`
-- [ ] Description has trigger keywords + action verbs, <1024 characters; expert role in first paragraph; workflow steps are imperative one-liners
-- [ ] At least 1 complete (non-truncated) example; output format is a schema/template, not prose
-- [ ] Under 200 lines; `agentskills validate` passes; `## Impact Report` section present
-- [ ] If skill generates files: file-output logging to `docs/skill-outputs/SKILL-OUTPUTS.md` included
-- [ ] If skill has references/scripts/templates: `resources` field in frontmatter metadata
-- [ ] If sourced from `docs/learnings/*.md`: source entry updated with created skill provenance
-- [ ] Step 11 (library-skill) has been invoked — skill is registered in SKILL-INDEX, README, skill-graph, PRD
+- [ ] Loader-safe: starts with `---` line 1 (no BOM), name matches dir, closing `---`, description <1024 chars
+- [ ] Role + workflow + complete example + schema-format output + `## Impact Report` all present
+- [ ] Under 200 lines; `agentskills validate` passes; `validate-skills` ≥10/14
+- [ ] `resources` lists every reference/script/template; file-output logging present if skill writes project files
+- [ ] If from `docs/learnings/*.md`: source entry updated; Step 11 (`library-skill`) invoked
 ---
 
 ## Reference Files
 
-- `references/platform-matrix.md` — read when asked "where do I install this?" or when targeting a specific agent platform.
-- `references/advanced-patterns.md` — read for Advanced/System tier (XML tags, openai.yaml, Factory frontmatter, Warp arguments, skill stacking).
-- `references/github-repo-research.md` — read when surveying community SKILL patterns or building from open-source skill libraries.
-- `references/research-papers.md` — read when architectural decisions need grounding in published research.
-- `references/examples.md` — read when the user wants a complete worked Atomic or Advanced skill example.
-- `scripts/skill_scaffold.py` — execute as the CLI scaffolder (`--name`, `--tier`, `--platform`) when bootstrapping a new skill directory.
-- `templates/SKILL-template.md` — copy as the starting point for every new `SKILL.md`.
-- `templates/SKILL-OUTPUTS-template.md` — copy to `docs/skill-outputs/SKILL-OUTPUTS.md` when bootstrapping a project's output log.
+Load only on matching trigger:
+- `references/platform-matrix.md` — install-target / platform.
+- `references/advanced-patterns.md` — Advanced/System tier (XML, openai.yaml, Factory, Warp, stacking).
+- `references/github-repo-research.md`, `references/research-papers.md` — community survey / paper grounding.
+- `references/examples.md` — full worked example.
+- `scripts/skill_scaffold.py` — CLI scaffolder.
+- `templates/SKILL-template.md`, `templates/SKILL-OUTPUTS-template.md` — copy on new skill / new outputs log.
+
+---
+
+## Common Rationalizations
+
+| "Reason to bypass the workflow" | Reality |
+|---------------------------------|---------|
+| "User said 'go ahead build' after planning — skip Steps 8–11" | Bypassing skips deconflict/validate/cross-link/library-sync. Re-route through here even for batch builds (AGENTS.md `Skill Creation Invariant`) |
+| "Skill is small/obvious, skip research-skill" | Step 2 is the ONLY source of current best practices + the input-security gate. Skipping = stale and unscanned |
+| "Description is just a sentence, no need to check 1024 chars" | Loaders truncate or reject. Validator P0 (validate-skills Step 2a) |
+| "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD — discoverability dies on the vine |
 
 ---
 
