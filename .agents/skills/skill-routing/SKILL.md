@@ -8,7 +8,7 @@ description: >
   could match and the right one is unclear. Also triggers on "which skill
   should handle this", "route this request", "I'm not sure which skill to
   use", "disambiguate this", "skill routing". Called by project-orchestrator
-  at Step 2. For finding whether a skill exists for a capability, use
+  for request routing. For finding whether a skill exists for a capability, use
   skill-finder instead.
 license: MIT
 metadata:

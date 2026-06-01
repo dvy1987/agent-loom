@@ -515,3 +515,33 @@ None. Prior handoff said working tree was dirty with handoff files; current `git
 - Do not create `security-and-hardening` or `deprecation-and-migration` with their original addyosmani names — use the renamed forms in Phase 2.
 - Do not write any SKILL.md directly — route every new skill in Phase 2 through `universal-skill-creator` per the skill-creation invariant in AGENTS.md.
 - Do not let Phase 2 grow the library past ~101 skills without invoking `skill-deconflict` between batches.
+
+---
+
+## 2026-06-01 — Handoff: Insight #5 description cleanup (Step 2b backlog cleared)
+
+### Done
+- Cleared all **9** `validate-skills` Step 2b (description process-step) warnings from the addyosmani Insight #5 fallout scan.
+- **Description-only** edits — no workflow, routing triggers, or orchestrator step numbers in parent skills changed.
+- Skills touched: `design-archetype`, `design-tokens-craft`, `icon-craft`, `design-review` (frontend-design phase names vs `Step N`); `skill-routing`, `improve-skills`, `process-decomposer`, `split-skill`, `second-order` (cross-skill refs and false-positive `first…then`).
+- Verification: library-wide Step 2b scan → **0** warnings; all nine ≤200 lines; loader-safe (byte 0 `---`, frontmatter intact).
+
+### Decisions
+- Keep numeric orchestrator steps in **parent** SKILL bodies (`frontend-design` Steps 2–7, etc.); only remove `Step \d` / `first…then` patterns from **descriptions** so agents load the body for workflow.
+- `second-order` body example may still say "and then what?" — trigger phrase in description is now `"what comes after that"`.
+
+### Deferred
+- Unchanged from 2026-05-29 addyosmani plan: Phase 1 remainder (cold-start structural flag merge with #4/#5), Phase 3 content comparisons, Phase 2 gap fills.
+- Optional: add `universal-skill-creator` description checklist + Step 2b false-positive allowlist in `validate-skills` (not done this session).
+
+### Next Agent Should Know
+- **Insight #5 fallout for descriptions is resolved** — do not re-audit the same nine skills unless descriptions change again.
+- **Phase 1 default set (insights 3–7, 1, 6)** was largely landed in `015a180 learn from AO-skills`; this session closed the remaining #5 warning backlog only.
+- Continue addyosmani plan: Phase 1 → Phase 3 → Phase 2 per 2026-05-29 handoff unless user redirects.
+
+### Revisit Triggers
+- New skill descriptions introduce `Step N` or `first…then` in `description:` again.
+- `agentskills validate` CLI becomes available — run full library sweep including Step 4c.
+
+### Working Tree at End of Session
+Clean after commit (9 SKILL.md + memory files).

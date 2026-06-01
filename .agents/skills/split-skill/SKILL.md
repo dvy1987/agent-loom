@@ -1,9 +1,9 @@
 ---
 name: split-skill
 description: >
-  Reduce an oversized SKILL.md by first checking if an existing skill already
-  covers the excess sub-workflow (link rather than create), then splitting into
-  a new child skill only if no existing skill fits. Load when a skill exceeds
+  Reduce an oversized SKILL.md by checking whether an existing skill already
+  covers the excess sub-workflow before creating a new child skill only when
+  none fits. Load when a skill exceeds
   200 lines and compress-skill determines excess content is genuinely CORE,
   when the same sub-workflow appears in multiple skills, or when universal-skill-creator
   or improve-skills identifies a coherent sub-capability. Also triggers on

@@ -8,7 +8,7 @@ description: >
   improvement pass". Applies live domain research, fixes structural gaps, checks
   for skill linking opportunities, then rewrites and resizes each skill.
   Supports TARGETED mode (`TARGET=<skill> [SKIP_RESEARCH=true]`) for single-skill
-  fixes — used by `learn-from-chat` Step 5 escalation. All skills are in scope
+  fixes, including learn-from-chat restructure escalations. All skills are in scope
   including meta skills.
 license: MIT
 metadata:

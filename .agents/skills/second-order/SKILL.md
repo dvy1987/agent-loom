@@ -3,12 +3,12 @@ name: second-order
 description: >
   Think through the consequences of consequences — not just what happens
   immediately, but what happens next, and next after that, across time.
-  Load when a decision looks obviously good or obviously bad at first glance,
+  Load when a decision looks obviously good or obviously bad on initial read,
   when the user is optimising for a short-term outcome that might create a
   long-term problem, when unintended consequences are a concern, or when
   deep-thinking diagnoses a second-order frame. Triggers on "what are the
   downstream effects", "what happens after that", "unintended consequences",
-  "think ahead on this", "long-term vs short-term", or "and then what".
+  "think ahead on this", "long-term vs short-term", or "what comes after that".
   Based on Howard Marks second-level thinking and Farnam Street mental models.
   Most powerful for decisions with delayed consequences or systemic effects.
 license: MIT

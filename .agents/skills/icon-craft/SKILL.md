@@ -10,7 +10,7 @@ description: >
   pick icons, design an icon set, customize Lucide / Phosphor / Heroicons,
   generate SVG icons, make icons feel custom, says "the icons look generic",
   "design a custom icon system", "icons for this product", or when frontend-design
-  routes here at Step 5. Sub-skill of frontend-design.
+  routes here during icon craft. Sub-skill of frontend-design.
 license: MIT
 metadata:
   author: dvy1987

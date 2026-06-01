@@ -5,7 +5,7 @@ description: >
   complexity triage. Load when user says "decompose this", "break this down",
   "what steps do I need", "plan this out", "what's the process for", "how do I
   approach this", or when any complex task needs structured execution planning.
-  Includes conversational problem understanding (Step 0) before triage.
+  Includes a problem-understanding pass before complexity triage.
   Routes to `problem-to-plan` when the user needs planning deliverables
   (spec + plan + TODO). Does NOT replace brainstorming — brainstorming is
   design approval (upstream), this is execution planning (downstream).

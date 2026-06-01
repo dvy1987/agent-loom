@@ -1,36 +1,32 @@
 # Current State
 
-Last updated: 2026-05-29
+Last updated: 2026-06-01
 
-Six entries across 2026-05-13 → 2026-05-29. Entries 1-5 are landed code/skill changes; entry 6 is a read-only ingestion handoff with a multi-session work plan attached.
+Seven landed items across 2026-05-13 → 2026-06-01. Item 6 is the addyosmani read-only ingestion handoff; item 7 closes Insight #5 description fallout.
 
-1. **Retroactive Project Setup** (2026-05-13). New skill `retroactive-project-setup` (Atomic, 188 lines) bootstraps the full agent layer (AGENTS.md + architecture + soul + ADR-0001 + memory seed) over an existing codebase via a strict write-allowlist — never modifies source code. Composes `codebase-understanding`, `product-soul` (inference mode), `architectural-decision-log` (now in `SYNTHESIS=true` mode), and `project-setup` (`RETROACTIVE=true` mode). The AGENTS.md template ships with a symmetric `Session Lifecycle — Mandatory` block (Session Start + During & End).
+1. **Retroactive Project Setup** (2026-05-13). `retroactive-project-setup` bootstraps agent layer over existing codebases via write-allowlist.
 
-2. **Chat-Learnings Feedback Loop** (2026-05-13). `learn-from-chat` v1.2 and `improve-skills` v1.3 are two ends of one closed loop. Canonical targeted-improvement entry point: `improve-skills TARGET=<skill> [SKIP_RESEARCH=true]`. Restructure-class edits discovered mid-session escalate from `learn-from-chat` Step 5 to that path. Chat learnings carry a mandatory `Status` field; `improve-skills` Step 1b ingests OPEN entries and Step 2l writes terminal statuses back.
+2. **Chat-Learnings Feedback Loop** (2026-05-13). `learn-from-chat` ↔ `improve-skills TARGET=<skill>` closed loop with mandatory chat-learning `Status` field.
 
-3. **Three Library-Health Improvements** (2026-05-14, via the new TARGETED path). `reality-check` compressed 255 → 189 lines by extracting Step 8 deliverable templates to a reference file (v1.2). `architectural-decision-log` v1.1 gained an explicit `SYNTHESIS=true` mode parallel to `project-setup`'s `RETROACTIVE=true`; `retroactive-project-setup` Step 5.3 now invokes it by name. `validate-skills` v1.1 gained Step 4c Producer-Skill Checkpoint Audit + a new structural flag, making the `memory/SKILL.md` Mandatory Auto-Trigger Checkpoint rules self-enforcing rather than a written prayer. All 6 current producer skills pass the new check.
+3. **Three Library-Health Improvements** (2026-05-14). `reality-check` compress, `architectural-decision-log` SYNTHESIS mode, `validate-skills` Step 4c producer checkpoint audit.
 
-4. **Memory-Startup Cold-Start Trigger Hardening** (2026-05-16, local commit `0590e10`). `memory-startup`'s description was rewritten to fire on EVERY first user message regardless of content — bare greetings, task-only openers, pasted error logs all count. A No-Op Gate makes over-invocation cheap. `AGENTS.md` §Session Lifecycle and the `project-setup` template carry the same contract verbatim so every project bootstrapped by `project-setup` or `retroactive-project-setup` inherits the fix. Closes a routing gap discovered in a sister project.
+4. **Memory-Startup Cold-Start Trigger Hardening** (2026-05-16). Every first user message triggers `memory-startup`; No-Op Gate; propagated via AGENTS.md + project-setup template.
 
-5. **AlphaEval Synergy-Blindness Coverage Extension** (2026-05-17, commit `56b4c03`). Synergy blindness (AlphaEval 2026 FAILURE_MODE — 26% cost overruns in production procurement) was wired only into `agent-builder` during the original 2026-04-21 ingestion; now extended via `learn-from-chat` append-only path to three additional lifecycle skills: `process-decomposer` v1.2 (prevention), `setup-evaluation` v1.1 (pre-execution gate), `eval-pipeline` v1.2 (post-hoc detection). All three Post-Application Hardening Cycle checks passed (200-line gate, security sweep SAFE, validate criteria intact). First end-to-end exercise of the full `learn-from-chat` → security → validate → log → memory-capture → generate-changelog discipline path on substantive content — the commit hash `56b4c03` is the auditable proof that the repo follows its own rules. Surfaced a meta-pattern (recorded in `docs/memory/learnings.md` 2026-05-17): multi-stage failure modes from research papers should distribute across prevention / gate / detection / remediation skills, not concentrate in one.
+5. **AlphaEval Synergy-Blindness Coverage** (2026-05-17, `56b4c03`). Extended to `process-decomposer`, `setup-evaluation`, `eval-pipeline`.
 
-6. **`addyosmani/agent-skills` Ingestion Handoff** (2026-05-29, read-only — no commits yet). Full `learn-from-repo` execution through Step 4 only. Repo scored 11/12 credibility, SAFE across all four `secure-*` checks. **16 insights extracted** with per-insight APPLY/PARTIAL/SKIP/KEEP-CURRENT/DEFERRED recommendations. **Coding/dev skill gap matrix** built: 4 aligned (structural only — content not verified) + 4 overlap (we are usually richer) + 11 gaps + 4 partial. Asymmetry diagnosed: addyosmani is coding-deep / meta-shallow; agent-loom is meta-deep / coding-shallow. **Three-phase next-session plan recorded in handoff:** (Phase 1) user picks from 16 insights → apply each via Post-Application Hardening Cycle; (Phase 2) fill all 12 coding gaps via `universal-skill-creator` (option C, grows library ~89 → ~101) — two skills MUST use renamed forms `app-security-hardening` and `api-deprecation-and-migration` to avoid colliding with existing `secure-skill` / `deprecate-skill`; (Phase 3) full content-level comparison of 8 common skill pairs across 6 axes. Suggested order: 1 → 3 → 2 (Phase 3 may reveal gaps that don't need filling). No source code or skill files modified this session — pure intake.
+6. **`addyosmani/agent-skills` Ingestion Handoff** (2026-05-29). 16 insights + gap matrix + 3-phase plan in `docs/memory/agent-handoffs.md` (2026-05-29 entry). Phase 1 core items largely in `015a180`; application of gaps/phases still open.
 
-Earlier wins still in place: `universal-skill-creator` Step 11 (library-skill auto-chain); loader-safety check in `validate-skills` Step 2a (2026-05-11); checkpoint registry + 4-layer producer enforcement (2026-05-11).
+7. **Insight #5 Description Cleanup** (2026-06-01). Cleared 9 Step 2b warnings (frontend-design subs, `skill-routing`, `improve-skills`, `process-decomposer`, `split-skill`, `second-order`). Description-only; library scan 0 process-step warnings.
+
+Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11); `validate-skills` v1.2 addyosmani validator hardening (`015a180`).
 
 ## Active Risks
-- `agentskills validate` CLI remains unavailable in this environment; structural checks are manual.
-- The 2026-05-14 work modified `validate-skills` itself — next agent should rerun the full validate-skills sweep in a clean environment to confirm Step 4c behaves correctly across the whole library, not just the 6 producer skills spot-checked here.
-- `architectural-decision-log` SKILL still references `references/adr-template.md` in earlier git history; with v1.1 the schema is now spelled inline. Latent stale reference path is gone but worth a grep on next library sync.
-- Some documentation files contain mojibake from prior encoding history; avoid broad rewrites.
-- PowerShell `Set-Content -Encoding UTF8` may introduce a BOM in this environment. Prefer `edit_file` / `create_file` (the agent-loom tools) which write no-BOM UTF-8.
-- Producer-skill checkpoint enforcement gained Step 4c on 2026-05-14, but the parallel "missing cold-start trigger" / "missing AGENTS.md Session Lifecycle reference" structural flag is still deferred — only one of the two related gaps is closed.
-- `docs/memory/MEMORY-ROUTING.md` does not yet exist in this repo. The skeleton was never created; current sessions read `project-index.md` directly. Low priority — works fine — but `memory-startup` Step 1 will create it on the next run.
+- `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
+- Deferred: missing cold-start trigger structural flag in `validate-skills` Step 4 (merge with #4/#5 per 2026-05-29 plan).
+- `docs/memory/MEMORY-ROUTING.md` still absent — low priority.
 
 ## Immediate Next Step
 
-Next session: execute the **three-phase addyosmani ingestion plan** documented in the 2026-05-29 handoff (`docs/memory/agent-handoffs.md` last entry). The user has confirmed the plan; user will personally pick which of the 16 insights to apply in Phase 1. Suggested order is Phase 1 → Phase 3 → Phase 2 (validator/adversarial hardening first, then read-only content comparison, then heavy skill-creation work). All findings, the gap matrix, and the verification trail are inline in the handoff — do not re-fetch the addyosmani repo unless verifying a specific claim.
+Continue **addyosmani 3-phase plan** (2026-05-29 handoff): Phase 1 remainder (cold-start flag if desired) → Phase 3 (8-pair content comparison) → Phase 2 (12 gap skills via `universal-skill-creator`). Insight #5 description backlog is **done** — skip re-auditing the nine skills unless descriptions change.
 
-Working tree at start of next session: dirty with the 2026-05-29 handoff files (`docs/memory/agent-handoffs.md`, `docs/memory/current-state.md`, `docs/memory/project-index.md`, `docs/skill-outputs/SKILL-OUTPUTS.md`). User has not yet committed — handoff captured but commit decision deferred. Suggested commit message if user opts to stage: `docs: capture addyosmani/agent-skills ingestion handoff (read-only — application deferred to next session)`.
-
-Carried-over optional follow-ups from 2026-05-17 (still queued, not actioned): (a) add the deferred "missing cold-start trigger" structural flag to `validate-skills` Step 4 alongside Step 4c — note this overlaps with addyosmani insight #4 (description ≤1024 chars) and #5 (no process steps in description); consider merging both into one validator pass; (b) audit AlphaEval Application Map for cascade-dependency and constraint-misinterpretation coverage gaps; (c) add the multi-stage-distribution heuristic to `learn-from-paper` via `improve-skills TARGET=learn-from-paper SKIP_RESEARCH=true`.
+Optional carry-over: AlphaEval cascade-dependency audit; `learn-from-paper` multi-stage-distribution heuristic via `improve-skills TARGET=learn-from-paper`.

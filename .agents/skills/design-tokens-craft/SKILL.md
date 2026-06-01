@@ -7,7 +7,7 @@ description: >
   archetype explicitly demands them. Load when the user asks to generate design
   tokens, create a design system, set up CSS custom properties, build a token
   scale, design a color system, set up typography scale, or when frontend-design
-  routes here at Step 4. Also triggers on "design tokens for", "token system",
+  routes here during token generation. Also triggers on "design tokens for", "token system",
   "CSS variables for design", "set up a theme", "build a design system foundation".
   Sub-skill of frontend-design. Always reads ARCHETYPE.md first.
 license: MIT

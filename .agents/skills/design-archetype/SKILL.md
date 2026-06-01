@@ -11,7 +11,7 @@ description: >
   a UI should feel like, classify a product visually, says "what should this
   look like", "make this feel like [Linear/Stripe/Apple/Duolingo/...]", "give
   me a design direction", "what's the right aesthetic for this", or when
-  frontend-design routes here at Step 2. Sub-skill of frontend-design.
+  frontend-design routes here during archetype selection. Sub-skill of frontend-design.
 license: MIT
 metadata:
   author: dvy1987

@@ -161,3 +161,13 @@ Next-session work plan (3 phases) recorded in the handoff.
 File created: docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md (~600 lines, self-contained)
 Audience: Non-Amp agent starting from zero. Sections cover repo orientation, AGENTS.md rules, glossary, source repo summary, 16 insights with status, Phase 1 completion gaps, Phase 3 comparison protocol, Phase 2 build plan with batch ordering, verification scripts, must-not-do list.
 No skills modified. No checkpoints invoked (this is a docs artefact, not a producer event).
+
+| 2026-06-01 | improve-skills (session) | .agents/skills/design-archetype/SKILL.md | Description: frontend-design phase name vs Step 2 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/design-tokens-craft/SKILL.md | Description: phase name vs Step 4 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/icon-craft/SKILL.md | Description: phase name vs Step 5 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/design-review/SKILL.md | Description: phase name vs Step 7 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/skill-routing/SKILL.md | Description: project-orchestrator routing vs Step 2 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/improve-skills/SKILL.md | Description: learn-from-chat escalation wording (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/process-decomposer/SKILL.md | Description: problem-understanding pass vs Step 0 (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/split-skill/SKILL.md | Description: remove first/then sequencing (Insight #5) |
+| 2026-06-01 | improve-skills (session) | .agents/skills/second-order/SKILL.md | Description: decouple first/then false positive (Insight #5) |

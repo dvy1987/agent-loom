@@ -8,7 +8,7 @@ description: >
   to review a UI, audit a design, check if a frontend looks vibecoded,
   evaluate visual quality, says "review this UI", "is this design good",
   "audit my frontend", "does this feel like Linear", "design QA", or when
-  frontend-design routes here at Step 7. Sub-skill of frontend-design.
+  frontend-design routes here during design review. Sub-skill of frontend-design.
 license: MIT
 metadata:
   author: dvy1987
