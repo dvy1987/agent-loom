@@ -4,7 +4,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-05-05
+Last updated: 2026-06-02
 
 ---
 
@@ -442,6 +442,30 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 **What it does:** Contract-first API and module boundary design — consistent errors, boundary-only validation, additive changes, pagination on lists, Hyrum's Law awareness. Complements `feature-spec` at the product layer.
 **Called by:** New endpoints or public module surfaces; before implementation under SDD
 **Impact report:** Contract summary, breaking risks, schema path
+
+---
+
+### `context-engineering`
+**Triggers:** "context engineering", "gather context", "what do you need from me", "before you start"
+**What it does:** Builds a minimal, high-signal context bundle for AI coding tasks — goal, constraints, repo facts (with evidence), key files, assumptions, and a verification plan. Distinct from cross-session continuity (memory suite).
+**Called by:** `project-orchestrator`, any implementation skill when constraints are missing
+**Impact report:** Tier chosen, key files, assumptions, verification items, open questions
+
+---
+
+### `app-security-hardening`
+**Triggers:** "security hardening", "OWASP hardening", "secure this feature", "harden this"
+**What it does:** Hardens application code against common security risks — boundary validation, least privilege, safer authZ checks, secrets/logging hygiene, and dependency hygiene. Not a replacement for `secure-skill` (skill-library security).
+**Called by:** Feature implementation and review flows for security-relevant changes
+**Impact report:** Surfaces reviewed, hardening changes, verification run, open risks
+
+---
+
+### `ci-cd-and-automation`
+**Triggers:** "add CI", "CI/CD", "GitHub Actions", "set up workflows", "automate checks"
+**What it does:** Designs CI/CD pipelines and automation — fast PR gates, deterministic checks, caching and concurrency, secrets/permissions discipline, and verification of enforcement via branch protections.
+**Called by:** Repo setup and release discipline work; complements `generate-changelog`
+**Impact report:** Workflows/jobs added, gates, runtime pinning, caching, protections status
 
 ---
 

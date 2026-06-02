@@ -1,8 +1,8 @@
 # Current State
 
-Last updated: 2026-06-01 (Phase 2 batch 1)
+Last updated: 2026-06-02 (Phase 2 batch 2)
 
-Ten landed items across 2026-05-13 → 2026-06-01. Items 6–10 cover addyosmani/agent-skills ingestion.
+Eleven landed items across 2026-05-13 → 2026-06-02. Items 6–11 cover addyosmani/agent-skills ingestion.
 
 1. **Retroactive Project Setup** (2026-05-13). `retroactive-project-setup` bootstraps agent layer over existing codebases via write-allowlist.
 
@@ -24,6 +24,8 @@ Ten landed items across 2026-05-13 → 2026-06-01. Items 6–10 cover addyosmani
 
 10. **Phase 2 Batch 1** (2026-06-01). Added `source-driven-development`, `code-simplification`, `api-and-interface-design` (addyosmani gaps). Library ~95 skills.
 
+11. **Phase 2 Batch 2** (2026-06-02). Added `context-engineering`, `app-security-hardening`, `ci-cd-and-automation` (addyosmani gaps). Library ~98 skills.
+
 Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11).
 
 ## Active Risks
@@ -31,10 +33,10 @@ Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2
 - `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
 - `secure-skill` / `secure-skill-runtime` slightly over 180-line split threshold (185/187) — pre-existing; split when touched.
 - `project-setup` at 201 lines — pre-existing; compress or split when touched.
-- Phase 2 addyosmani gaps (~7 skills) remain after batch 1.
+- Phase 2 addyosmani gaps (~4 skills) remain after batch 2.
 - Legacy `project-specific` skills may lack Common Rationalizations / Verification — P2 flags now enforced on new work; library sweep pending.
-- `main` 3 commits ahead of `origin/main` — not pushed.
+- `main` synced with `origin/main` — Phase 2 batch 2 changes pending commit.
 
 ## Immediate Next Step
 
-**Phase 2 batch 2** — `context-engineering`, `app-security-hardening`, `ci-cd-and-automation` via `universal-skill-creator`. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`. Alternative: `validate-skills` library sweep for P2 craft flags.
+**Phase 2 batch 3** — `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration` via `universal-skill-creator`. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`. Alternative: `validate-skills` library sweep for P2 craft flags.

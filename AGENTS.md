@@ -215,6 +215,9 @@ domain          | specialized, not universally needed      | install only when n
 "source driven" / "cite the docs" / "official documentation" → source-driven-development
 "simplify this code" / "refactor for clarity" → code-simplification
 "API design" / "design the API" / "module boundary" → api-and-interface-design
+"context engineering" / "gather context" / "what do you need from me" → context-engineering
+"security hardening" / "OWASP hardening" / "secure this feature" → app-security-hardening
+"CI/CD" / "add CI" / "GitHub Actions" / "set up workflows" → ci-cd-and-automation
 "SDD" / "specs-first" → spec-driven-development
 "/specify" / "write a feature spec" → feature-spec
 "/clarify" / "resolve clarifications" → feature-spec (clarify mode)

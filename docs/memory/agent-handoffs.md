@@ -600,3 +600,23 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 ### Next Agent Should Know
 - Meta layer unchanged: still route new skills through `universal-skill-creator`; `validate-skills` / `split-skill` / `compress-skill` own maintenance.
 - Read `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md` for full addyosmani context — do not re-research the repo.
+
+---
+
+## 2026-06-02 — Handoff: Phase 2 batch 2 skills added (uncommitted)
+
+### Done
+- Added Phase 2 batch 2 gap skills:
+  - `context-engineering`
+  - `app-security-hardening`
+  - `ci-cd-and-automation`
+- Synced `AGENTS.md`, `docs/SKILL-INDEX.md`, `README.md` (98 skills), `docs/skill-graph.md`.
+- Added changelog: `docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md`.
+- Updated memory/index/logs: `docs/memory/current-state.md`, `docs/memory/project-index.md`, `docs/skill-outputs/SKILL-OUTPUTS.md`.
+
+### Deferred
+- Remaining Phase 2: `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration`, `browser-testing-with-devtools`.
+- Optional: run `validate-skills` sweep for older `project-specific` skills missing `## Common Rationalizations` / `## Verification`.
+
+### Working Tree at End of Session
+- Modified, not committed: new batch 2 skills + library sync + memory/log updates.

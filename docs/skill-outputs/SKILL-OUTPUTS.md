@@ -189,3 +189,8 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-01 | universal-skill-creator | .agents/skills/api-and-interface-design/SKILL.md | Phase 2 batch 1 — contract-first API/module design |
 | 2026-06-01 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md, docs/skill-graph.md | Sync after Phase 2 batch 1 (95 skills) |
 | 2026-06-01 | generate-changelog | docs/changelogs/2026-06-01-addyosmani-phase2-batch1.md | Phase 2 batch 1 changelog |
+| 2026-06-02 | universal-skill-creator | .agents/skills/context-engineering/SKILL.md | Phase 2 batch 2 — minimal, high-signal context bundles |
+| 2026-06-02 | universal-skill-creator | .agents/skills/app-security-hardening/SKILL.md | Phase 2 batch 2 — application security hardening checklist |
+| 2026-06-02 | universal-skill-creator | .agents/skills/ci-cd-and-automation/SKILL.md | Phase 2 batch 2 — CI/CD and automation workflow |
+| 2026-06-02 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md, docs/skill-graph.md | Sync after Phase 2 batch 2 (98 skills) |
+| 2026-06-02 | generate-changelog | docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md | Phase 2 batch 2 changelog |

@@ -32,4 +32,6 @@
 | 2026-06-01 | handoff | `docs/memory/agent-handoffs.md` | active | addyosmani, phase-3-complete, session-end | Phase 3 comparisons + application landed (`5c4e443`); Phase 2 open; main 3 commits ahead origin. |
 | 2026-06-01 | state | `docs/memory/current-state.md` | superseded | addyosmani, phase-3, craft-merge | 9th deliverable: Phase 3 complete; immediate next = Phase 2 batch 1. Superseded by Phase 2 batch 1 state. |
 | 2026-06-01 | changelog | `docs/changelogs/2026-06-01-addyosmani-phase2-batch1.md` | active | addyosmani, phase-2, source-driven, code-simplification, api-design | MINOR: 3 coding gap skills (batch 1). |
-| 2026-06-01 | state | `docs/memory/current-state.md` | active | addyosmani, phase-2-batch-1 | 10th deliverable: 3 gap skills; 95 skills; batch 2 next. |
+| 2026-06-01 | state | `docs/memory/current-state.md` | superseded | addyosmani, phase-2-batch-1 | 10th deliverable: 3 gap skills; 95 skills; batch 2 next. Superseded by 2026-06-02 Phase 2 batch 2 state. |
+| 2026-06-02 | changelog | `docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md` | active | addyosmani, phase-2, context-engineering, security-hardening, ci-cd | MINOR: 3 coding gap skills (batch 2). |
+| 2026-06-02 | state | `docs/memory/current-state.md` | active | addyosmani, phase-2-batch-2 | 11th deliverable: 3 gap skills; 98 skills; batch 3 next. |
