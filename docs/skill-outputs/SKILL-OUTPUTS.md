@@ -184,3 +184,8 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-01 | addyosmani Phase 3 | docs/comparisons/2026-06-01-SUMMARY.md | Aggregated scoreboard + evolution recommendations (B1-B5 meta, Batch 1-3 application) |
 | 2026-06-01 | Phase 3 application | 10 SKILL.md + 3 references + build-conventions | Merged addyosmani craft: rationalizations, verify checklists, TDD/debug/review/plan/brainstorm/SDD/adversarial/frontend; validate-skills P2 craft flags; creator requires rationalizations for project-specific |
 | 2026-06-01 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Session-end handoff: Phase 3 complete; Phase 2 next; 5c4e443 on main |
+| 2026-06-01 | universal-skill-creator | .agents/skills/source-driven-development/SKILL.md | Phase 2 batch 1 — DETECT→FETCH→IMPLEMENT→CITE |
+| 2026-06-01 | universal-skill-creator | .agents/skills/code-simplification/SKILL.md | Phase 2 batch 1 — behavior-preserving app-code simplification |
+| 2026-06-01 | universal-skill-creator | .agents/skills/api-and-interface-design/SKILL.md | Phase 2 batch 1 — contract-first API/module design |
+| 2026-06-01 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md, docs/skill-graph.md | Sync after Phase 2 batch 1 (95 skills) |
+| 2026-06-01 | generate-changelog | docs/changelogs/2026-06-01-addyosmani-phase2-batch1.md | Phase 2 batch 1 changelog |

@@ -421,6 +421,30 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `source-driven-development`
+**Triggers:** "source driven development", "cite the docs", "check official documentation", "verify against docs", "don't hallucinate APIs"
+**What it does:** Grounds framework-specific implementation in official documentation — detect stack versions from manifests, fetch authoritative doc pages, implement cited patterns, cite sources or flag UNVERIFIED. Not for pure logic or skill-library files.
+**Called by:** Agents before framework-specific implementation; pairs with `test-driven-development`, `feature-spec`
+**Impact report:** Stack detected, docs fetched, UNVERIFIED count, conflicts surfaced
+
+---
+
+### `code-simplification`
+**Triggers:** "simplify this code", "code simplification", "make this easier to read", "reduce complexity", "refactor for clarity"
+**What it does:** Simplifies application code for clarity without changing behavior — incremental refactors after tests pass, Chesterton's Fence before edits, separate refactor commits. Not for `compress-skill`/`split-skill` (skill-library files).
+**Called by:** Post-feature cleanup, code review follow-ups; pairs with `technical-debt-audit`
+**Impact report:** Simplifications applied, test status, scope
+
+---
+
+### `api-and-interface-design`
+**Triggers:** "API design", "interface design", "design the API", "module boundary", "API contract", "define the interface"
+**What it does:** Contract-first API and module boundary design — consistent errors, boundary-only validation, additive changes, pagination on lists, Hyrum's Law awareness. Complements `feature-spec` at the product layer.
+**Called by:** New endpoints or public module surfaces; before implementation under SDD
+**Impact report:** Contract summary, breaking risks, schema path
+
+---
+
 ### `implementation-plan`
 **Triggers:** "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy", "/plan", "/tasks"
 **What it does:** Create a detailed, step-by-step implementation plan for a feature or project. Reads `docs/specs/<slug>-feature-spec.md` first when present (refuses to proceed if status≠Approved). Builds a Requirement Traceability table mapping every FR/NFR/C-N to tasks. Tags each task with the IDs it satisfies — read by `spec-crosscheck`. Supports tasks-only mode (called by `spec-driven-development /tasks`).

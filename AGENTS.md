@@ -212,6 +212,9 @@ domain          | specialized, not universally needed      | install only when n
 "spec-driven development" → spec-driven-development (orchestrator → project-constitution, feature-spec, implementation-plan, spec-crosscheck)
 "incremental implementation" / "vertical slice" / "thin slice" → incremental-implementation
 "git workflow" / "conventional commits" / "atomic commit" → git-workflow-and-versioning
+"source driven" / "cite the docs" / "official documentation" → source-driven-development
+"simplify this code" / "refactor for clarity" → code-simplification
+"API design" / "design the API" / "module boundary" → api-and-interface-design
 "SDD" / "specs-first" → spec-driven-development
 "/specify" / "write a feature spec" → feature-spec
 "/clarify" / "resolve clarifications" → feature-spec (clarify mode)
