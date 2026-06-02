@@ -27,10 +27,9 @@ Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2
 - `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
 - `secure-skill` / `secure-skill-runtime` slightly over 180-line split threshold (185/187) — pre-existing; split when touched.
 - `project-setup` at 201 lines — pre-existing; compress or split when touched.
-- Phase 2 addyosmani gaps (10 skills) and Phase 3 comparisons (8 pairs) still open.
+- Phase 2 addyosmani gaps (10 skills) still open.
+- Phase 3 comparisons complete; **Phase 3 Application Batch 1–3 + meta B1–B3 landed** (2026-06-01 session).
 
 ## Immediate Next Step
 
-Continue addyosmani plan via `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md`: remaining Phase 2 gap skills through `universal-skill-creator` (batch of 3–4 + `skill-deconflict` + `library-skill` per batch), then Phase 3 comparisons. Do not re-fetch the addyosmani repo unless verifying a claim.
-
-Optional: `source-driven-development`, `api-and-interface-design` as next high-leverage gaps.
+Continue **Phase 2 gap skills** (`source-driven-development`, `code-simplification`, `api-and-interface-design`) via `universal-skill-creator`, or run `validate-skills` library sweep for new P2 craft flags. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`.

@@ -15,8 +15,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
+  sources: addyosmani/agent-skills frontend-ui-engineering (Phase 3 merge — patterns in references only)
   resources:
     references:
       - anti-vibecoded-checklist.md
@@ -36,6 +37,14 @@ You are the Lead Frontend Designer & Engineer for the frontend-design skill suit
 - **Icons are intentional.** No skill in this suite is allowed to drop in stock Lucide/Heroicons without going through `icon-craft` first.
 - **Mobile-first, dark-mode-first.** All builds ship both modes. Dark mode is not an afterthought.
 - **Real working code only.** No `// component goes here` placeholders, no TODOs in deliverables, no Lorem Ipsum where real copy is needed.
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Accessibility later" | Retrofit costs 3×; bake in from tokens + build. |
+| "Prototype styling is fine" | Prototypes become production; use archetype defaults now. |
+| "Skip archetype, I know what I want" | Unnamed aesthetic → AI defaults. Archetype first. |
 
 ---
 

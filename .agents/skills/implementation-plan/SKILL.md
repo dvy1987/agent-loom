@@ -11,9 +11,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: agentskills.io, github/awesome-copilot implementation-plan
+  sources: agentskills.io, github/awesome-copilot implementation-plan, addyosmani/agent-skills planning-and-task-breakdown (Phase 3 merge)
+  resources:
+    references:
+      - plan-schemas.md
 ---
 
 # Implementation Plan
@@ -49,7 +52,8 @@ Ask 1–2 targeted questions to clarify technical constraints:
 - "Are there any existing services or APIs this must integrate with?"
 
 ### Step 3 — Draft the Plan
-Follow the schema in `references/plan-schemas.md`.
+Read `references/plan-schemas.md` for task template, sizing (XS–XL), vertical slices, and checkpoint blocks.
+**Slice vertically** — each task delivers a testable user-visible path; never "build entire schema then entire API."
 Ensure the plan includes:
 - **Phase 0: Prerequisites & Setup** (Environment, dependencies, boilerplate).
 - **Phase 1: Core Functionality (MVP)** (The smallest set of tasks to deliver value).
@@ -98,6 +102,8 @@ Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: plan writte
 
 - A plan is not a PRD — if you catch yourself writing user stories or success metrics, stop. Plans define tasks, dependencies, and verification steps, not product requirements.
 - Phase 1 must be demoable. If the MVP phase cannot produce a working demo (even ugly), the scope is wrong. Cut until it is demoable, then move cuts to Phase 2.
+- Horizontal slicing ("all DB, then all API") produces integration risk — use vertical slices per `plan-schemas.md`.
+- Task title contains "and" → likely two tasks; XL scope → decompose further.
 - Agents underestimate integration tasks. "Connect to API X" is not one task — it is auth setup + client creation + error handling + retry logic + testing. Decompose integration work into at least 3 subtasks.
 - Every task needs a concrete Definition of Done, not "it works." Bad: "Implement auth." Good: "User can log in with email/password, receives JWT, invalid credentials return 401."
 
@@ -160,6 +166,23 @@ Ready for: engineering execution
 4. **Phased Breakdown** (Tasks with descriptions and "Definition of Done").
 5. **Risk & Mitigation** (Technical hurdles and how to clear them).
 6. **Timeline Estimate** (Rough T-shirt sizing: S/M/L).
+
+---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "I'll figure it out while coding" | Planning surfaces dependencies and forgotten edge cases. |
+| "Tasks are obvious" | Write them — explicit tasks survive session boundaries. |
+| "Planning is overhead" | Implementation without a plan is typing. |
+
+## Verification
+
+- [ ] Every task has acceptance criteria and a verification step
+- [ ] Dependencies ordered; checkpoints every 2–3 tasks
+- [ ] No task >~5 files (XL tasks split)
+- [ ] Traceability table complete when feature-spec exists
 
 ---
 

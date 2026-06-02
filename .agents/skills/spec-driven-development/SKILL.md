@@ -13,9 +13,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: GitHub Spec Kit, AWS Kiro, agentskills.io
+  sources: GitHub Spec Kit, AWS Kiro, agentskills.io, addyosmani/agent-skills spec-driven-development (Phase 3 merge)
 ---
 
 # Spec-Driven Development
@@ -90,6 +90,7 @@ After the leaf returns, summarize what was produced and offer the next slash com
 
 - This is a router, not a worker. Resist writing constitution/spec/plan content here — that belongs in the leaf skill.
 - For tactical small changes (bug fix, narrow refactor), DO NOT route through SDD. Route to `problem-to-plan`. SDD overhead is for feature-sized work.
+- **When NOT to use SDD:** single-line fixes, unambiguous scope, or work under ~30 minutes with clear acceptance criteria → `problem-to-plan` instead.
 - A repo can have many feature-specs in flight. Use the slug to tie spec ↔ plan ↔ tasks ↔ crosscheck. Don't mix slugs across phases.
 - `/implement` defaults to `test-driven-development` for test-first work; route to `incremental-implementation` when the plan spans multiple files and the user needs slice discipline (often invoke both: slices + TDD per slice).
 - Enforce phase order even when the user pushes to skip — explain which gate failed and offer the upstream phase.
@@ -114,6 +115,22 @@ Starting at `/specify`. Routing to `feature-spec` (mode=specify).
     </output>
   </example>
 </examples>
+
+---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Too simple for a spec" | Even two-line acceptance criteria beat guessing. |
+| "I'll spec after coding" | That's documentation, not specification. |
+| "Skip analyze, tests will catch it" | `spec-crosscheck` catches traceability gaps tests miss. |
+| "Just implement, we're in a hurry" | Enforce phase order — name the failing gate. |
+
+## Verification
+
+- [ ] Phase order respected (no implement without PASS analyze)
+- [ ] Correct leaf skill invoked; slug consistent across artifacts
 
 ---
 

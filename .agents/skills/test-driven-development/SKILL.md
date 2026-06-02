@@ -12,9 +12,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: agentskills.io, github/awesome-copilot tdd-guide
+  sources: agentskills.io, github/awesome-copilot tdd-guide, addyosmani/agent-skills test-driven-development (Phase 3 merge)
+  resources:
+    references:
+      - tdd-patterns.md
 ---
 
 # Test-Driven Development (TDD)
@@ -37,7 +40,7 @@ Read the PRD (`docs/prd/`) or implementation plan (`docs/plans/`).
 Identify the smallest, testable unit of functionality.
 
 ### Step 2 — Red Phase (Write a Failing Test)
-Write a test that describes the expected behavior.
+Write a test that describes the expected behavior. For **bug fixes**, use the **Prove-It Pattern**: reproduce the bug in a test first — it must fail before you touch production code (see `references/tdd-patterns.md`).
 Run the test and confirm it fails for the right reason (e.g., `ReferenceError` or `AssertionError`).
 Stop. Do not write any production code yet.
 
@@ -138,6 +141,31 @@ Ready for: code review
 2. **Test Case(s)** (Description of the tests written).
 3. **Pass/Fail Status** (Final result of the suite).
 4. **Refactorings Applied** (What was cleaned up).
+
+---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "I'll write tests after it works" | Tests written after code test implementation, not behavior. |
+| "Too simple to test" | Simple code grows; tests document expected behavior. |
+| "I tested it manually" | Manual checks don't guard the next change. |
+| "Let me run tests again to be sure" | Re-run only after code changes — identical re-runs add nothing. |
+
+## Red Flags
+
+- Production code with no corresponding test
+- Test passes on first run (may not test what you think)
+- Bug fix without a reproduction test
+- Test names that don't describe behavior
+
+## Verification
+
+- [ ] Every new behavior has a test; bug fixes include a failing-then-passing repro test
+- [ ] Full suite passes: `[project test command]`
+- [ ] Test names read as specifications
+- [ ] No tests skipped or disabled to green the suite
 
 ---
 

@@ -13,9 +13,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: meta
-  sources: addyosmani/agent-skills (validator hardening — exemption allowlist, 1024-char P0, no-process-steps warning)
+  sources: addyosmani/agent-skills (validator hardening + Phase 3 craft conventions)
   resources:
     references:
       - validation-rubric.md
@@ -101,6 +101,8 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Unscanned external content**: references external repos/URLs without `secure-skill`
 - **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks `secure-*` invocation
 - **Missing cold-start contract**: `memory-startup` exists but `AGENTS.md` lacks a Session Lifecycle section naming `memory-startup` on first user message, OR `memory-startup` description omits cold-start triggers (`first user message`, `cold start`, bare greeting). Fix: align with `project-setup` template.
+- **Missing anti-skip table** (P2): `metadata.category: project-specific` but no `## Common Rationalizations` (or equivalent anti-rationalization section). Fix: add 5–8 row Excuse→Reality table.
+- **Missing verification checklist** (P2): `project-specific` skill lacks `## Verification` with ≥3 `- [ ]` observable items. Fix: add checklist tied to project commands where possible.
 
 ### Step 4b — Security Sweep
 Invoke ALL `secure-*` (discover via `ls .agents/skills/secure-*`) in Mode C. Mandatory — validation without security is incomplete.
@@ -123,6 +125,7 @@ DESCRIPTION (P1):   ⚠ [skill]: contains "Step 1… Step 2…" — agent may sk
 SIZE:               ⚠ [skill]: 203 lines (fix: split-skill; secure-* → split-only)
 SCORES:             [skill]: 13/14 — [weak criterion]; [skill]: 5/14 — consider deprecate-skill
 STRUCTURAL:         [skill]: producer missing memory-checkpoint → memory-decision
+CRAFT (P2):         [skill]: missing Common Rationalizations | missing Verification checklist
 DUPLICATE TRIGGERS: [skill-A] + [skill-B]: overlap on [phrases]
 ACTIONS:
   P0 [skill]: fails agentskills validate

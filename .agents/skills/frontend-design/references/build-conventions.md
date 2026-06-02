@@ -61,6 +61,29 @@ Practical conventions for the build phase. Framework-agnostic where possible; fr
 - Single `tokens.css` with custom properties + a `style.css` that consumes them. No inline styles.
 - Use `:has()`, container queries, `@scope`, modern CSS features. Don't write 2018 CSS.
 
+## Component patterns (from external craft benchmarks)
+
+### Container / presentation split
+
+- **Container:** data fetching, loading/error/empty states.
+- **Presentation:** pure render from props — testable, reusable.
+
+### State management ladder (simplest first)
+
+1. `useState` — local UI state  
+2. Lifted state — 2–3 siblings  
+3. Context — theme, auth, locale (read-heavy)  
+4. URL / search params — filters, pagination (shareable)  
+5. Server cache (React Query, SWR, etc.)  
+6. Global client store — only when truly shared and complex  
+
+Avoid prop drilling past ~3 levels — restructure or use context.
+
+### Loading UX
+
+- Prefer skeleton placeholders over spinners for content areas (`aria-busy="true"`).
+- Optimistic updates for toggles/edits where rollback on error is feasible.
+
 ## File Structure
 
 ```

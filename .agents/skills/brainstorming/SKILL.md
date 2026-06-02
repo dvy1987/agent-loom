@@ -14,9 +14,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: thinking
-  sources: obra/superpowers brainstorming, agentskills.io best practices, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
+  sources: obra/superpowers brainstorming, agentskills.io best practices, addyosmani/agent-skills interview-me + idea-refine (Phase 3 merge)
 ---
 
 # Brainstorming
@@ -34,6 +34,7 @@ You are a collaborative product and systems designer. Turn rough ideas into clea
 ### Step 1 — Orient
 Read existing docs, AGENTS.md, README, or recent commits. Identify tech stack and constraints.
 If `docs/product-soul.md` exists — read it first. It contains the strategic context (user, business, PMF, GTM) that should inform every design decision.
+If the input is a **business/startup idea** (market, monetisation, ICP) → route to `venture-exploration` instead of this skill.
 
 **Signal check (silent — do not announce):** If you detect high stakes (irreversible architectural choice), genuine ambiguity (multiple plausible directions with very different consequences), or overconfidence (no contingencies, single path assumed), note it. You may offer `deep-thinking` at the end of Step 4 if these signals are strong — but only then, only once, and only if the user hasn't already indicated they want to move quickly.
 
@@ -55,8 +56,11 @@ Prefer multiple-choice when options are known. Stop when you have enough to desi
 
 Proceed to Step 5 only when CONFIDENCE ≥ 70%. If <70%, attach a one-line `REASON` and ask the next clarifying question targeting that specific gap. Never proceed on "user seems satisfied" alone.
 
+### Step 4b — Restate (How Might We)
+Before options, restate the problem as one crisp **How Might We** sentence. Confirm with the user if ambiguous.
+
 ### Step 5 — Propose 2–3 Approaches
-Present distinct approaches with tradeoffs. Lead with your recommendation and explain why.
+Present distinct approaches with tradeoffs (5–8 variations max — quality over quantity). Lead with your recommendation and explain why.
 
 ### Step 6 — Present Design in Sections
 Once the user picks an approach, present the design one section at a time. Ask for approval after each section.
@@ -111,6 +115,8 @@ Apply findings before writing the doc.
 - Never combine the approach question with a design section — agree on direction first, then design.
 - Never ask more than one question per message.
 - Working in an existing codebase: always explore current structure before proposing anything. Follow existing patterns unless there's a good reason not to — call it out in Key Decisions.
+- Don't yes-machine weak ideas — push back with specificity.
+- Don't skip "who is this for" or surface assumptions before committing to a direction.
 
 ---
 
@@ -144,6 +150,12 @@ Date: YYYY-MM-DD  |  Status: Approved
 ## Non-Goals
 [What this explicitly does not cover]
 
+## Not Doing (and Why)
+[Explicit trade-offs — what you are refusing and why]
+
+## Key Assumptions to Validate
+- [ ] [Assumption] — how to test
+
 ## Open Questions
 [Must be empty before implementation starts]
 ```
@@ -163,29 +175,23 @@ Do you have an existing design system or component library (Tailwind, MUI, style
   </example>
 </examples>
 
-Read `references/examples.md` if the user asks to see a full completed brainstorming session.
+Read `references/examples.md` for a full session walkthrough.
 
 ---
 
-## Constraints
+## Verification
 
-**In scope:** Any feature, product, or system that needs designing before building — greenfield or existing codebase.
-
-**Hard rules:**
-- Always write and commit the design doc before handing off to implementation
-- Always get explicit user approval on the written spec
-- Propose at least 2 approaches — never present a single option as the only way
+- [ ] How Might We statement is clear
+- [ ] Target user and success criteria defined
+- [ ] Not Doing list makes trade-offs explicit
+- [ ] Key assumptions listed with validation approach
+- [ ] User approved design before implementation handoff
 
 ---
 
 ## Impact Report
 
-After completing, always report:
 ```
-Brainstorming complete for: [topic]
-Design doc saved: docs/specs/YYYY-MM-DD-<topic>-design.md
-Approach chosen: [name] — [one-line rationale]
-Key decisions: [2-3 bullet points]
-Open questions resolved: N
-Ready for: prd-writing / implementation
+Brainstorming: [topic] | doc: docs/specs/YYYY-MM-DD-<topic>-design.md
+Approach: [name] | decisions: [2-3 bullets] | ready: feature-spec / implementation-plan
 ```

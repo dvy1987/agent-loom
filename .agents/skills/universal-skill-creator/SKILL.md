@@ -88,7 +88,8 @@ Category rules:
 
 ### Step 5 — Write the Body
 Required sections: Role definition · Numbered workflow (imperative one-liners) · Output format schema · 1–2 examples · Constraints.
-Optional: Gotchas (from research-skill findings) · Verification checklist · Parameterization (`$ARGUMENTS[1]`).
+**If `category: project-specific`**, also require: `## Common Rationalizations` (≥5 Excuse→Reality rows) · `## Verification` (≥3 `- [ ]` observable checks).
+Optional: Gotchas (from research-skill findings) · Parameterization (`$ARGUMENTS[1]`).
 If resources exist, state exactly when to read or execute each one. Avoid nested references; link direct children from SKILL.md.
 Read `references/advanced-patterns.md` for XML tags (Claude), openai.yaml (Codex), Factory frontmatter, Warp arguments.
 If the draft starts getting bloated while writing, stop and classify the excess immediately instead of finishing a 250-line first draft.

@@ -12,9 +12,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: code-review-skill-builtin
+  sources: code-review-skill-builtin, addyosmani/agent-skills code-review-and-quality (Phase 3 merge)
 ---
 
 # Code Review
@@ -47,31 +47,37 @@ Ask ONE clarifying question if scope is ambiguous: "Which changes should I revie
 ### Step 2 — Read the Changes and Context
 
 1. Read the full diff to understand what changed.
-2. Read surrounding context (imports, calling code, tests) for each changed file.
-3. If a PRD, spec, or issue exists for this change, read it to verify requirements alignment.
+2. **Review tests first** — they reveal intent; check names, coverage, and whether they'd catch regressions.
+3. Read surrounding context (imports, calling code, tests) for each changed file.
+4. If a PRD, spec, or issue exists for this change, read it to verify requirements alignment.
 
-### Step 3 — Evaluate Against Criteria
+### Step 3 — Evaluate Against Five Axes
 
-Check each change against:
+| Axis | What to look for |
+|------|-----------------|
+| **Correctness** | Logic errors, edge cases, error paths, spec alignment |
+| **Readability** | Clear names, straightforward control flow, no unearned cleverness |
+| **Architecture** | Fits existing patterns; appropriate abstraction; no hidden coupling |
+| **Security** | Input validation, secrets, authz, injection, untrusted external data |
+| **Performance** | N+1, unbounded fetches, sync-in-hot-path, missing pagination |
 
-| Criterion | What to look for |
-|-----------|-----------------|
-| Correctness | Logic errors, off-by-one, null/undefined paths, race conditions |
-| Completeness | Missing error handling at system boundaries, unhandled edge cases, incomplete migrations |
-| Security | Injection vectors, exposed secrets, missing auth checks, unvalidated input |
-| Conventions | Style deviations from the project's own patterns, unused imports, inconsistent naming |
-| Tests | Missing test coverage for new behaviour, tests that pass for wrong reasons |
-| Performance | Unnecessary allocations in hot paths, N+1 queries, missing indexes |
+Also flag: missing tests for new behaviour; tests that pass for wrong reasons; dead code after refactor.
 
 ### Step 4 — Compile and Present Findings
 
-Present findings as a numbered list, one line per issue:
+Label each comment so the author knows what is mandatory:
 
-```
-N. category (severity) — [file-basename](path#LN-LN): one-sentence summary
-```
+| Prefix | Meaning |
+|--------|---------|
+| **Critical:** | Blocks merge — security, data loss, broken behaviour |
+| *(none)* | Required change |
+| **Optional:** / **Consider:** | Suggestion only |
+| **Nit:** | Style — author may ignore |
+| **FYI** | Context only — no action |
 
-Group by severity: critical first, then high, medium, low.
+Present as numbered list: `N. axis (severity) — [file](path#LN): summary`. Group: critical → high → medium → low.
+
+**Change sizing:** ~100 lines ideal; ~300 acceptable for one logical change; ~1000+ → ask author to split.
 
 If no issues found, state that explicitly.
 
@@ -143,33 +149,24 @@ Checks run: npm test — 31 passed, 0 failed
 Want me to fix any of these? Reply with the numbers.
     </output>
   </example>
-  <example>
-    <input>Check if my auth changes match the PRD requirements.</input>
-    <output>
-[Read docs/prd/2026-04-01-auth-prd.md — requires: email+password login, rate limiting, session expiry]
-[Ran git diff main..HEAD — 5 files changed in src/auth/]
-
-## Code Review — auth branch vs main (5 files, checked against PRD)
-
-### Critical
-1. security (critical) — [login.ts](src/auth/login.ts#L55): Rate limiting not implemented — PRD requires max 5 attempts per minute.
-
-### High
-2. completeness (high) — [session.ts](src/auth/session.ts#L12): Session expiry set to 30 days — PRD specifies 24 hours.
-
-### Low
-3. style (low) — [types.ts](src/auth/types.ts#L4): `AuthResult` type exported but unused outside this module.
+</examples>
 
 ---
-Files reviewed: 5
-Issues found: critical: 1, high: 1, medium: 0, low: 1
-PRD alignment: 2 of 3 requirements implemented (rate limiting missing, session expiry misconfigured)
-Checks run: npm test — 45 passed, 0 failed
 
-Want me to fix any of these? Reply with the numbers.
-    </output>
-  </example>
-</examples>
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Tests pass, ship it" | Tests don't catch architecture, security, or readability debt. |
+| "LGTM" without reading | Rubber-stamping helps no one. |
+| "AI wrote it, probably fine" | AI code needs **more** scrutiny, not less. |
+| "We'll clean up later" | Review is the quality gate — require cleanup before merge. |
+
+## Verification
+
+- [ ] All Critical and High issues resolved or explicitly deferred
+- [ ] Tests and build pass (or author documented verification)
+- [ ] Review covered all five axes, not only correctness
 
 ---
 

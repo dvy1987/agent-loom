@@ -63,6 +63,10 @@ Ask only what cannot be inferred:
 
 If the request is too vague to draft FRs, mark them `[NEEDS CLARIFICATION]` and continue — don't loop in interview.
 
+### Step 2b — Reframe vague requirements
+
+Adjectives ("fast", "intuitive") → measurable criteria (latency, error rate, completion %) — confirm targets with user before drafting FRs.
+
 ### Step 3 — Write the spec
 
 Before drafting, if any requirement is inferred (stack, auth model, deployment target), list up to 5 bullets under `## Assumptions I'm Making` and ask the user to confirm or correct — do not silently fill gaps.
@@ -149,9 +153,8 @@ Re-save to the same path. Append:
 - "WHAT not HOW" is the bright line. If you catch yourself writing "use Postgres" or "in `services/auth.ts`" — stop. That belongs in `implementation-plan`.
 - Acceptance criteria must be testable as written. "Login works" fails. "Given valid credentials, When user submits, Then JWT is returned within 500ms" passes.
 - Edge cases are not nice-to-have — they're how `spec-crosscheck` detects missing tasks. Brainstorm at least 3.
-- The `Out of Scope` section is the strongest tool against scope creep — keep it specific, not generic.
-- A spec with no `[NEEDS CLARIFICATION]` markers in Draft state probably has hidden assumptions — push back.
-- Constitution waivers MUST be explicit in a `## Constitution Waivers` section with rule ID + rationale. Implicit waivers fail crosscheck.
+- `Out of Scope` must be specific — strongest anti-scope-creep tool.
+- Constitution waivers need explicit `## Constitution Waivers` with rule ID + rationale.
 
 ---
 

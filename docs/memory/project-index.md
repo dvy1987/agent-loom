@@ -27,3 +27,4 @@
 | 2026-06-01 | state | `docs/memory/current-state.md` | active | addyosmani, coding-gaps, incremental-implementation, git-workflow | 8th deliverable: Phase 1 complete + 2 gap skills; 92 skills; Phase 2/3 remain. |
 | 2026-06-01 | changelog | `docs/changelogs/2026-06-01-addyosmani-phase1-and-coding-gaps.md` | active | addyosmani, incremental-implementation, git-workflow | MINOR: first coding gaps + Phase 1 completion. |
 | 2026-06-01 | handoff | `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md` | active | external-agent, addyosmani, zero-context | Self-contained handoff for non-Amp agents. |
+| 2026-06-01 | comparison | `docs/comparisons/2026-06-01-SUMMARY.md` | active | addyosmani, phase-3, evolution | 8-pair scoreboard (72 vs 86/96); MERGE craft / KEEP architecture; skip 4 duplicate gap skills; Batch 1-3 application plan + meta B1-B5. |

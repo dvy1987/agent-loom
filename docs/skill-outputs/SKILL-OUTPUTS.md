@@ -180,3 +180,6 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-01 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md | Sync after incremental-implementation + git-workflow-and-versioning |
 | 2026-06-01 | generate-changelog | docs/changelogs/2026-06-01-addyosmani-phase1-and-coding-gaps.md | Phase 1 completion + first coding gaps |
 | 2026-06-01 | memory-handoff | docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md | Zero-context external agent handoff (~460 lines) |
+| 2026-06-01 | addyosmani Phase 3 | docs/comparisons/2026-06-01-*-vs-addyosmani-*.md (8 pairs) | Content-level comparison; 0-2 axis scores; MERGE/KEEP verdicts |
+| 2026-06-01 | addyosmani Phase 3 | docs/comparisons/2026-06-01-SUMMARY.md | Aggregated scoreboard + evolution recommendations (B1-B5 meta, Batch 1-3 application) |
+| 2026-06-01 | Phase 3 application | 10 SKILL.md + 3 references + build-conventions | Merged addyosmani craft: rationalizations, verify checklists, TDD/debug/review/plan/brainstorm/SDD/adversarial/frontend; validate-skills P2 craft flags; creator requires rationalizations for project-specific |

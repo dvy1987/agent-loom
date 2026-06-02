@@ -14,9 +14,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: thinking
-  sources: DEBATE-arXiv:2405.09935, DeBono-BlackHat, Defence-RedTeam-Guide, GrowthMind-2025, addyosmani/agent-skills doubt-driven-development (fresh-context + cross-model + Doubt Theater)
+  sources: DEBATE-arXiv:2405.09935, DeBono-BlackHat, Defence-RedTeam-Guide, GrowthMind-2025, addyosmani/agent-skills doubt-driven-development (Phase 3 merge)
+  resources:
+    references:
+      - adversarial-prompt.md
 ---
 
 # Adversarial Hat
@@ -106,32 +109,28 @@ STRONGEST ELEMENTS (what to build on)
 
 ---
 
-## Fresh-Context Adversarial Mode (doubt-driven escalation)
+## In-Flight Doubt (code and architecture decisions)
 
-For high-stakes commitments (year-long strategy, irreversible architecture, public claims), the same agent that wrote the artefact is the *worst* reviewer — it has already rationalised every weakness. Escalate to a fresh-context reviewer biased to **disprove**, not to validate.
+Use when a **non-trivial** decision is about to stand (branching logic, cross-module change, unverified invariant, irreversible deploy). Skip for formatting, obvious one-liners, or pure reads.
 
-### When to escalate
-- The artefact is about to be committed to or shared externally.
-- The first-pass adversarial review surfaced 0 or 1 critical finding (suspicious — see Doubt Theater below).
-- A previous reviewer agreed too quickly with the author's framing.
+Copy the checklist from `references/adversarial-prompt.md`:
+1. **CLAIM** — decision + why it matters (2–3 lines)
+2. **EXTRACT** — smallest artifact + contract only (no your reasoning)
+3. **DOUBT** — fresh-context reviewer with adversarial prompt (never pass CLAIM)
+4. **RECONCILE** — classify each finding (see prompt file)
+5. **STOP** — trivial findings, 3 cycles, or user override
 
-### The 5-step doubt loop (CLAIM → EXTRACT → DOUBT → RECONCILE → STOP)
-1. **CLAIM:** Extract every assertion in the artefact as a flat list of claims (1 claim per line, no context).
-2. **EXTRACT:** For each claim, pull the supporting evidence the author cites (or `[none]`).
-3. **DOUBT:** Spawn a fresh-context sub-agent (or new conversation) with the prompt: *"You are biased to disprove. For each claim + evidence below, find one specific reason this claim could be false. Citing 'I have no objection' is not allowed — you must produce a doubt or explicitly mark `UNFALSIFIABLE`."*
-4. **RECONCILE:** Author returns to each doubt with: ACCEPT (claim revised), REJECT (with new evidence), or DEFER (logged as open question). No silent dismissal.
-5. **STOP:** Halt when one of: (a) every claim has been doubted and reconciled, (b) 2 consecutive cycles produce zero new findings AND were genuinely adversarial (see Doubt Theater), (c) the user calls it.
+**TDD note:** a failing repro test from `test-driven-development` satisfies DOUBT for behavioral claims.
 
-### Cross-model escalation (optional)
-For the highest-stakes calls, run Step 3 in two different model families (e.g., one Gemini-class, one Codex/GPT-class). Bias overlap shrinks. Any finding flagged by both models is upgraded to CRITICAL.
+**Interactive sessions:** after single-model doubt, offer cross-model second opinion; announce skip in CI/non-interactive runs.
 
-### Doubt Theater anti-signal
-**If 2+ doubt cycles produce zero findings, you are probably validating, not doubting.** Symptoms:
-- Doubts come back as "the claim seems reasonable" (that is agreement, not doubt).
-- Reviewer keeps citing the author's own evidence.
-- Every "doubt" is phrased as a future enhancement, not a current weakness.
+---
 
-Mitigation: re-prompt with the explicit "you must produce a doubt or mark UNFALSIFIABLE" line, switch model family, or accept STOP only if the artefact has been independently disproven-then-revised at least once.
+## Fresh-Context Adversarial Mode (documents / strategy)
+
+For high-stakes **documents** (product-soul, PRD, design doc), run the three phases above, then escalate with `references/adversarial-prompt.md` (CLAIM list → EXTRACT evidence → DOUBT with fresh context → RECONCILE → STOP).
+
+Escalate when: external commit imminent; 0–1 critical findings on first pass; reviewer agreed too fast. Optional cross-model DOUBT for highest stakes. **Doubt Theater:** 2+ cycles, zero actionable findings → stop and escalate (you are validating).
 
 ---
 
