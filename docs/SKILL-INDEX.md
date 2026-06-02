@@ -405,6 +405,22 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `incremental-implementation`
+**Triggers:** "incremental implementation", "vertical slice", "thin slice", "one slice at a time", "implement in slices", "don't do it all at once"
+**What it does:** Delivers multi-file changes in thin vertical slices — implement, test, verify, commit, repeat. Enforces scope discipline and ~100-line verify cadence. Pairs with `test-driven-development` and `git-workflow-and-versioning`.
+**Called by:** `implementation-plan` (execution guidance), agents after `/plan` or `/tasks`
+**Impact report:** Slices completed, verification status, commits advised
+
+---
+
+### `git-workflow-and-versioning`
+**Triggers:** "git workflow", "commit message", "conventional commits", "atomic commit", "branch strategy", "git worktree"
+**What it does:** Atomic commits, conventional messages, short-lived branches, pre-commit hygiene, change summaries for review. Complements host git safety rules; does not replace project hooks.
+**Called by:** `incremental-implementation`, any implementation skill before commit
+**Impact report:** Commits advised/committed, concerns flagged
+
+---
+
 ### `implementation-plan`
 **Triggers:** "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy", "/plan", "/tasks"
 **What it does:** Create a detailed, step-by-step implementation plan for a feature or project. Reads `docs/specs/<slug>-feature-spec.md` first when present (refuses to proceed if status≠Approved). Builds a Requirement Traceability table mapping every FR/NFR/C-N to tasks. Tags each task with the IDs it satisfies — read by `spec-crosscheck`. Supports tasks-only mode (called by `spec-driven-development /tasks`).

@@ -91,7 +91,7 @@ After the leaf returns, summarize what was produced and offer the next slash com
 - This is a router, not a worker. Resist writing constitution/spec/plan content here — that belongs in the leaf skill.
 - For tactical small changes (bug fix, narrow refactor), DO NOT route through SDD. Route to `problem-to-plan`. SDD overhead is for feature-sized work.
 - A repo can have many feature-specs in flight. Use the slug to tie spec ↔ plan ↔ tasks ↔ crosscheck. Don't mix slugs across phases.
-- `/implement` does not have a dedicated leaf skill — by default route to `test-driven-development`, or to direct execution if the project already has a TDD/CI flow.
+- `/implement` defaults to `test-driven-development` for test-first work; route to `incremental-implementation` when the plan spans multiple files and the user needs slice discipline (often invoke both: slices + TDD per slice).
 - Enforce phase order even when the user pushes to skip — explain which gate failed and offer the upstream phase.
 
 ---

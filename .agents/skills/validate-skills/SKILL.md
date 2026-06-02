@@ -100,6 +100,7 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Duplicate triggers**: significantly overlapping descriptions
 - **Unscanned external content**: references external repos/URLs without `secure-skill`
 - **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks `secure-*` invocation
+- **Missing cold-start contract**: `memory-startup` exists but `AGENTS.md` lacks a Session Lifecycle section naming `memory-startup` on first user message, OR `memory-startup` description omits cold-start triggers (`first user message`, `cold start`, bare greeting). Fix: align with `project-setup` template.
 
 ### Step 4b — Security Sweep
 Invoke ALL `secure-*` (discover via `ls .agents/skills/secure-*`) in Mode C. Mandatory — validation without security is incomplete.

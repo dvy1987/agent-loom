@@ -65,6 +65,8 @@ If the request is too vague to draft FRs, mark them `[NEEDS CLARIFICATION]` and 
 
 ### Step 3 — Write the spec
 
+Before drafting, if any requirement is inferred (stack, auth model, deployment target), list up to 5 bullets under `## Assumptions I'm Making` and ask the user to confirm or correct — do not silently fill gaps.
+
 Read `references/feature-spec-schema.md` for the full template. Required sections:
 - Frontmatter (artifact, status, constitution version, sources, slug)
 - Summary (1–2 sentences)

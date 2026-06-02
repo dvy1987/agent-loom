@@ -545,3 +545,23 @@ None. Prior handoff said working tree was dirty with handoff files; current `git
 
 ### Working Tree at End of Session
 Clean after commit (9 SKILL.md + memory files).
+
+---
+
+## 2026-06-01 — Handoff: addyosmani automatic apply (Phase 1 finish + 2 coding gaps)
+
+### Done
+- Finished Phase 1 remainder: `validate-skills` cold-start contract flag; rejected alternatives in `learnings.md`; `feature-spec` assumptions block; `spec-driven-development` routes `/implement` to incremental slices when multi-file.
+- Added **`incremental-implementation`** and **`git-workflow-and-versioning`** (addyosmani gaps #1 and #3 in leverage order) via creator workflow — ≤200 lines, rationalization tables, AO citation in metadata.
+- Synced `AGENTS.md`, `docs/SKILL-INDEX.md`, `README.md` (92 skills). Changelog `docs/changelogs/2026-06-01-addyosmani-phase1-and-coding-gaps.md`.
+- External handoff for zero-context agents: `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md`.
+
+### Not done (still open)
+- Phase 2: 10 remaining gap skills (`source-driven-development`, `api-and-interface-design`, `app-security-hardening`, etc.) — use `universal-skill-creator` in batches of 3–4.
+- Phase 3: 8 pairwise SKILL.md comparisons → `docs/comparisons/`.
+- Full `library-skill` graph regen, `skill-deconflict` formal run, `cross-link-skills` for new skills.
+- `.github/workflows/` CI.
+
+### Next Agent Should Know
+- Meta layer unchanged: still route new skills through `universal-skill-creator`; `validate-skills` / `split-skill` / `compress-skill` own maintenance.
+- Read `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md` for full addyosmani context — do not re-research the repo.

@@ -210,6 +210,8 @@ domain          | specialized, not universally needed      | install only when n
 "set up the experiment" → experiment-runbook
 "read out this experiment" → experiment-readout
 "spec-driven development" → spec-driven-development (orchestrator → project-constitution, feature-spec, implementation-plan, spec-crosscheck)
+"incremental implementation" / "vertical slice" / "thin slice" → incremental-implementation
+"git workflow" / "conventional commits" / "atomic commit" → git-workflow-and-versioning
 "SDD" / "specs-first" → spec-driven-development
 "/specify" / "write a feature spec" → feature-spec
 "/clarify" / "resolve clarifications" → feature-spec (clarify mode)

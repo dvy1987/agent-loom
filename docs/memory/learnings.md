@@ -103,6 +103,21 @@ Created `retroactive-project-setup` (Atomic, 188 lines) to bootstrap full agent 
 - **Library sync:** SKILL-INDEX entries + call graph; README rows; skill-graph (caption on `rps` edges + 2 new "Reading the Graph" bullets); SKILL-OUTPUTS (10 rows); changelog `2026-05-14-three-improvements.md`.
 - **Files at end:** reality-check 189, ADL 148, retroactive-project-setup 188, validate-skills 196 — all ≤200.
 
+## 2026-06-01 — From `addyosmani/agent-skills` ingestion (rejected alternatives)
+
+Patterns from `addyosmani/agent-skills` (11/12, 2026-05-29) explicitly **not** adopted — do not re-propose without new evidence:
+
+- **#2 Five required body sections in CI** — our `validate-skills` 7-criterion rubric is stronger; we adopted rationalization tables selectively (#1) instead.
+- **#8 Session-start JSON hook for routing meta-skill** — `memory-startup` already owns cold-start; skill registry covers routing.
+- **#9 Skills / Personas / Commands taxonomy** — Claude Code-specific; clashes with orchestrator-skill pattern.
+- **#13 Supporting files only if >100 lines** — `split-skill` already owns sizing logic.
+- **#15 Plugin install CI job** — we are not a Claude marketplace plugin; low ROI until `.github/workflows/` exists.
+- **#14 500-line soft limit** — we keep the **200-line hard limit** (denser, focused skills).
+
+Deferred (not rejected): #10 native command adapters, #11 simplify-ignore, #12 HTTP revalidation cache — see `docs/memory/deferred.md`.
+
+---
+
 ## 2026-05-17 — Research-paper failure modes need to be distributed across prevention / gate / detection skills, not concentrated in one
 
 - **What:** Synergy blindness (AlphaEval 2026 FAILURE_MODE — 26% cost overruns in production procurement) had been wired only into `agent-builder` during the original 2026-04-21 ingestion. Coverage verification surfaced the gap during an in-session question about whether the AlphaEval integration was complete. Same failure pattern was also relevant to (1) `process-decomposer` (prevent it at decomposition time), (2) `setup-evaluation` (catch it at the pre-execution QA gate), and (3) `eval-pipeline` (detect it post-hoc on existing multi-agent systems). All three are now wired in via `learn-from-chat`.

@@ -2,7 +2,7 @@
 
 Last updated: 2026-06-01
 
-Seven landed items across 2026-05-13 → 2026-06-01. Item 6 is the addyosmani read-only ingestion handoff; item 7 closes Insight #5 description fallout.
+Eight landed items across 2026-05-13 → 2026-06-01. Items 6–8 cover addyosmani/agent-skills ingestion.
 
 1. **Retroactive Project Setup** (2026-05-13). `retroactive-project-setup` bootstraps agent layer over existing codebases via write-allowlist.
 
@@ -14,19 +14,23 @@ Seven landed items across 2026-05-13 → 2026-06-01. Item 6 is the addyosmani re
 
 5. **AlphaEval Synergy-Blindness Coverage** (2026-05-17, `56b4c03`). Extended to `process-decomposer`, `setup-evaluation`, `eval-pipeline`.
 
-6. **`addyosmani/agent-skills` Ingestion Handoff** (2026-05-29). 16 insights + gap matrix + 3-phase plan in `docs/memory/agent-handoffs.md` (2026-05-29 entry). Phase 1 core items largely in `015a180`; application of gaps/phases still open.
+6. **`addyosmani/agent-skills` Ingestion** (2026-05-29 handoff + `015a180` Phase 1). 16 insights + gap matrix; validator hardening, rationalization tables, adversarial-hat fresh-context, HYPOTHESIS+CONFIDENCE% in brainstorming/feature-spec.
 
-7. **Insight #5 Description Cleanup** (2026-06-01). Cleared 9 Step 2b warnings (frontend-design subs, `skill-routing`, `improve-skills`, `process-decomposer`, `split-skill`, `second-order`). Description-only; library scan 0 process-step warnings.
+7. **Insight #5 Description Cleanup** (2026-06-01, `0652967`). Cleared 9 Step 2b warnings; library scan 0 process-step description warnings.
 
-Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11); `validate-skills` v1.2 addyosmani validator hardening (`015a180`).
+8. **First Coding Gaps Closed** (2026-06-01). Added `incremental-implementation` and `git-workflow-and-versioning`; validate-skills cold-start flag; feature-spec assumptions block; rejected alternatives logged in `learnings.md`. Library ~92 skills.
+
+Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11).
 
 ## Active Risks
+
 - `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
-- Deferred: missing cold-start trigger structural flag in `validate-skills` Step 4 (merge with #4/#5 per 2026-05-29 plan).
-- `docs/memory/MEMORY-ROUTING.md` still absent — low priority.
+- `secure-skill` / `secure-skill-runtime` slightly over 180-line split threshold (185/187) — pre-existing; split when touched.
+- `project-setup` at 201 lines — pre-existing; compress or split when touched.
+- Phase 2 addyosmani gaps (10 skills) and Phase 3 comparisons (8 pairs) still open.
 
 ## Immediate Next Step
 
-Continue **addyosmani 3-phase plan** (2026-05-29 handoff): Phase 1 remainder (cold-start flag if desired) → Phase 3 (8-pair content comparison) → Phase 2 (12 gap skills via `universal-skill-creator`). Insight #5 description backlog is **done** — skip re-auditing the nine skills unless descriptions change.
+Continue addyosmani plan via `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md`: remaining Phase 2 gap skills through `universal-skill-creator` (batch of 3–4 + `skill-deconflict` + `library-skill` per batch), then Phase 3 comparisons. Do not re-fetch the addyosmani repo unless verifying a claim.
 
-Optional carry-over: AlphaEval cascade-dependency audit; `learn-from-paper` multi-stage-distribution heuristic via `improve-skills TARGET=learn-from-paper`.
+Optional: `source-driven-development`, `api-and-interface-design` as next high-leverage gaps.

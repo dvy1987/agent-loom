@@ -171,3 +171,12 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-01 | improve-skills (session) | .agents/skills/process-decomposer/SKILL.md | Description: problem-understanding pass vs Step 0 (Insight #5) |
 | 2026-06-01 | improve-skills (session) | .agents/skills/split-skill/SKILL.md | Description: remove first/then sequencing (Insight #5) |
 | 2026-06-01 | improve-skills (session) | .agents/skills/second-order/SKILL.md | Description: decouple first/then false positive (Insight #5) |
+| 2026-06-01 | addyosmani Phase 3 | docs/reviews/2026-06-01-spec-driven-development-addyosmani-comparison.md | Pair 1/8: SDD scorecard — verdict MERGE BEST-OF-BOTH; P1–P3 adoption list |
+| 2026-06-01 | universal-skill-creator | .agents/skills/incremental-implementation/SKILL.md | New skill from addyosmani gap #1 (vertical slice loop) |
+| 2026-06-01 | universal-skill-creator | .agents/skills/git-workflow-and-versioning/SKILL.md | New skill from addyosmani gap #3 (atomic commits, conventional messages) |
+| 2026-06-01 | improve-skills (addyosmani) | .agents/skills/validate-skills/SKILL.md | Cold-start contract structural flag in Step 4 |
+| 2026-06-01 | improve-skills (addyosmani) | .agents/skills/feature-spec/SKILL.md | Assumptions I'm Making block before spec draft |
+| 2026-06-01 | improve-skills (addyosmani) | .agents/skills/spec-driven-development/SKILL.md | /implement may pair TDD + incremental-implementation |
+| 2026-06-01 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md | Sync after incremental-implementation + git-workflow-and-versioning |
+| 2026-06-01 | generate-changelog | docs/changelogs/2026-06-01-addyosmani-phase1-and-coding-gaps.md | Phase 1 completion + first coding gaps |
+| 2026-06-01 | memory-handoff | docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md | Zero-context external agent handoff (~460 lines) |
