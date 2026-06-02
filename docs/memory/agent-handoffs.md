@@ -548,6 +548,41 @@ Clean after commit (9 SKILL.md + memory files).
 
 ---
 
+## 2026-06-01 — Handoff: Phase 3 complete + craft merge applied (session end)
+
+### Done
+- **Phase 3 comparisons** — 8 pairwise docs + `docs/comparisons/2026-06-01-SUMMARY.md` (scoreboard, MERGE/KEEP verdicts, Batch 1–3 + meta B1–B5 plan).
+- **Phase 3 application** — Landed Batch 1–3 + meta B1–B3: 10 SKILL.md upgrades, 3 `references/` files, `frontend-design/references/build-conventions.md`; `validate-skills` P2 craft flags; `universal-skill-creator` requires Common Rationalizations + Verification for `project-specific` skills.
+- **Committed** `5c4e443` — `docs: addyosmani Phase 3 comparisons and apply craft merge`. Changelog: `docs/changelogs/2026-06-01-phase3-application-addyosmani-merge.md`.
+- Clarified **"skip" gap skills** (idea-refine, planning-and-task-breakdown, doubt-driven-development, frontend-ui-engineering) = merge craft into existing orchestrators, not ignore addyosmani — agent-loom wins on architecture/meta; addyosmani wins on depth within topics.
+
+### Decisions
+- **Do not add** 4 duplicate addyosmani gap skills — patterns live in `brainstorming`, `implementation-plan`/`problem-to-plan`, `adversarial-hat`, `frontend-design` suite.
+- **Evolution model** — ingest via `learn-from-repo` → compare → merge craft → enforce via `validate-skills` + `universal-skill-creator` (self-maintaining meta layer unchanged).
+- **Line limit** — overflow to `references/*.md`; compress examples in SKILL.md (brainstorming 197, adversarial-hat 190 lines).
+
+### Deferred
+- **Phase 2** — 10 remaining gap skills (`source-driven-development`, `code-simplification`, `api-and-interface-design`, `app-security-hardening`, etc.) via `universal-skill-creator` in batches of 3–4.
+- **Library hygiene** — `validate-skills` full sweep for new P2 flags on older `project-specific` skills; `skill-deconflict`, `cross-link-skills`, `skill-graph.md` regen after Phase 2 batches.
+- **CI** — `.github/workflows/` not started.
+- **Optional carry-over** (unchanged): AlphaEval cascade-dependency audit; `learn-from-paper` multi-stage-distribution heuristic via `improve-skills TARGET=learn-from-paper`.
+- **Push** — `main` is **3 commits ahead** of `origin/main` (`0652967`, `286fcba`, `5c4e443`); not pushed this session.
+
+### Next Agent Should Know
+- **addyosmani Phases 1 + 3 are done**; Phase 2 is the main remaining ingestion work. Start from `docs/comparisons/2026-06-01-SUMMARY.md` and `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md` — do not re-research the repo.
+- **Default next action** (user-approved prior): **continue Phase 2** — next batch `source-driven-development`, `code-simplification`, `api-and-interface-design` through `universal-skill-creator`.
+- New `project-specific` skills must include `## Common Rationalizations` + `## Verification` or validate-skills will flag P2.
+
+### Revisit Triggers
+- User says "library sweep" → run `validate-skills`, fix P2 rationalization/verification gaps across legacy skills.
+- Phase 2 batch adds ≥3 skills → invoke `skill-deconflict` + `library-skill` before next batch.
+- `agentskills validate` CLI available → full library sweep including Step 4c producer audit.
+
+### Working Tree at End of Session
+Clean after `5c4e443`. Memory handoff files from this write may be uncommitted until user commits.
+
+---
+
 ## 2026-06-01 — Handoff: addyosmani automatic apply (Phase 1 finish + 2 coding gaps)
 
 ### Done

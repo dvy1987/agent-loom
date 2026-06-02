@@ -1,8 +1,8 @@
 # Current State
 
-Last updated: 2026-06-01
+Last updated: 2026-06-01 (session end)
 
-Eight landed items across 2026-05-13 → 2026-06-01. Items 6–8 cover addyosmani/agent-skills ingestion.
+Nine landed items across 2026-05-13 → 2026-06-01. Items 6–9 cover addyosmani/agent-skills ingestion.
 
 1. **Retroactive Project Setup** (2026-05-13). `retroactive-project-setup` bootstraps agent layer over existing codebases via write-allowlist.
 
@@ -18,7 +18,9 @@ Eight landed items across 2026-05-13 → 2026-06-01. Items 6–8 cover addyosman
 
 7. **Insight #5 Description Cleanup** (2026-06-01, `0652967`). Cleared 9 Step 2b warnings; library scan 0 process-step description warnings.
 
-8. **First Coding Gaps Closed** (2026-06-01). Added `incremental-implementation` and `git-workflow-and-versioning`; validate-skills cold-start flag; feature-spec assumptions block; rejected alternatives logged in `learnings.md`. Library ~92 skills.
+8. **First Coding Gaps Closed** (2026-06-01, `286fcba`). Added `incremental-implementation` and `git-workflow-and-versioning`; Phase 1 complete. Library ~92 skills.
+
+9. **Phase 3 Comparisons + Craft Merge** (2026-06-01, `5c4e443`). 8 pairwise comparisons + SUMMARY; 10 skills upgraded + 3 references; validate-skills P2 craft flags; creator requires rationalizations/verification for project-specific. Meta layer intact.
 
 Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11).
 
@@ -27,9 +29,10 @@ Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2
 - `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
 - `secure-skill` / `secure-skill-runtime` slightly over 180-line split threshold (185/187) — pre-existing; split when touched.
 - `project-setup` at 201 lines — pre-existing; compress or split when touched.
-- Phase 2 addyosmani gaps (10 skills) still open.
-- Phase 3 comparisons complete; **Phase 3 Application Batch 1–3 + meta B1–B3 landed** (2026-06-01 session).
+- Phase 2 addyosmani gaps (~10 skills) still open.
+- Legacy `project-specific` skills may lack Common Rationalizations / Verification — P2 flags now enforced on new work; library sweep pending.
+- `main` 3 commits ahead of `origin/main` — not pushed.
 
 ## Immediate Next Step
 
-Continue **Phase 2 gap skills** (`source-driven-development`, `code-simplification`, `api-and-interface-design`) via `universal-skill-creator`, or run `validate-skills` library sweep for new P2 craft flags. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`.
+**Phase 2 gap skills** — batch 1: `source-driven-development`, `code-simplification`, `api-and-interface-design` via `universal-skill-creator`. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`. Alternative: `validate-skills` library sweep for P2 craft flags.

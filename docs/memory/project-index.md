@@ -28,3 +28,6 @@
 | 2026-06-01 | changelog | `docs/changelogs/2026-06-01-addyosmani-phase1-and-coding-gaps.md` | active | addyosmani, incremental-implementation, git-workflow | MINOR: first coding gaps + Phase 1 completion. |
 | 2026-06-01 | handoff | `docs/handoffs/2026-06-01-external-agent-addyosmani-handoff.md` | active | external-agent, addyosmani, zero-context | Self-contained handoff for non-Amp agents. |
 | 2026-06-01 | comparison | `docs/comparisons/2026-06-01-SUMMARY.md` | active | addyosmani, phase-3, evolution | 8-pair scoreboard (72 vs 86/96); MERGE craft / KEEP architecture; skip 4 duplicate gap skills; Batch 1-3 application plan + meta B1-B5. |
+| 2026-06-01 | changelog | `docs/changelogs/2026-06-01-phase3-application-addyosmani-merge.md` | active | addyosmani, phase-3, craft-merge | MINOR: Phase 3 craft merge into 10 skills + meta B1-B3; no new skills. |
+| 2026-06-01 | handoff | `docs/memory/agent-handoffs.md` | active | addyosmani, phase-3-complete, session-end | Phase 3 comparisons + application landed (`5c4e443`); Phase 2 open; main 3 commits ahead origin. |
+| 2026-06-01 | state | `docs/memory/current-state.md` | active | addyosmani, phase-3, craft-merge | 9th deliverable: Phase 3 complete; immediate next = Phase 2 batch 1. |
