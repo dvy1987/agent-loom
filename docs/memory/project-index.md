@@ -35,3 +35,4 @@
 | 2026-06-01 | state | `docs/memory/current-state.md` | superseded | addyosmani, phase-2-batch-1 | 10th deliverable: 3 gap skills; 95 skills; batch 2 next. Superseded by 2026-06-02 Phase 2 batch 2 state. |
 | 2026-06-02 | changelog | `docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md` | active | addyosmani, phase-2, context-engineering, security-hardening, ci-cd | MINOR: 3 coding gap skills (batch 2). |
 | 2026-06-02 | state | `docs/memory/current-state.md` | active | addyosmani, phase-2-batch-2 | 11th deliverable: 3 gap skills; 98 skills; batch 3 next. |
+| 2026-06-02 | handoff | `docs/memory/agent-handoffs.md` | active | session-end, phase-2-batch-2, push-pending | Session end: batch 2 committed (`b25bdae`); `main` ahead origin by 1; push pending. |

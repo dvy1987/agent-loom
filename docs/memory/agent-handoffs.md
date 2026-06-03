@@ -620,3 +620,27 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Working Tree at End of Session
 - Modified, not committed: new batch 2 skills + library sync + memory/log updates.
+
+---
+
+## 2026-06-02 12:40 — Handoff (session end)
+
+### Done
+- Confirmed Phase 2 batch 2 is committed on `main` (`b25bdae`).
+- Added missing memory routing file: `docs/memory/MEMORY-ROUTING.md`.
+
+### Deferred
+- Push `main` (ahead of `origin/main` by 1 commit).
+- Phase 2 batch 3: `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration`, `browser-testing-with-devtools`.
+- Optional: `validate-skills` sweep to address legacy P2 craft flags (Common Rationalizations / Verification) in older `project-specific` skills.
+
+### Next Agent Should Know
+- Repo is clean; the only immediate operational step is pushing `main`.
+- Continue Phase 2 batch 3 via `universal-skill-creator` (see `docs/comparisons/2026-06-01-SUMMARY.md`).
+
+### Revisit Triggers
+- If `origin/main` advances: rebase before pushing.
+- If Phase 2 batch 3 adds multiple skills: run `skill-deconflict` before the next batch.
+
+### Working Tree
+- Clean (no uncommitted changes).

@@ -35,7 +35,7 @@ Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2
 - `project-setup` at 201 lines — pre-existing; compress or split when touched.
 - Phase 2 addyosmani gaps (~4 skills) remain after batch 2.
 - Legacy `project-specific` skills may lack Common Rationalizations / Verification — P2 flags now enforced on new work; library sweep pending.
-- `main` synced with `origin/main` — Phase 2 batch 2 changes pending commit.
+- `main` ahead of `origin/main` by 1 commit (`b25bdae`) — push pending.
 
 ## Immediate Next Step
 
