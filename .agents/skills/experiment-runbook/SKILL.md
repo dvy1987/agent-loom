@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: PostHog experiments docs 2026, Statsig SDK docs, Booking.com launch QA practices, KDnuggets 2026 SRM tooling
   resources:
@@ -153,30 +153,29 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 
 ## Example
 
-**User:** "Set up the LP headline test in PostHog."
-
-**Runbook excerpt:**
-- **Spec source:** `docs/experiments/specs/2026-05-01-lp-headline-spec.md`
-- **Platform:** PostHog
-- **Flag key:** `exp_lp_headline_2026q2`
-- **Variants:** `control`, `benefit_led` (50/50)
-- **Assignment:** person-property (anonymous_id hash)
-- **Exposure event:** `landing_page_viewed` with `$feature_flag_response`
-- **Cohort filter:** organic + direct (paid excluded)
-- **Ramp:** 1% (24h, SRM check) → 5% (24h, guardrail check) → 50% (14 days)
-- **Dashboards:** signup-rate by variant, bounce by variant, Day-7 activation by variant, SRM p-value monitor
-- **Rollback:** flip flag to `control` for 100% of traffic; oncall PM authorised
-- **QA:** 6/6 pre-launch checks pass
+PostHog runbook for LP headline test: flag `exp_lp_headline_2026q2`, 50/50 variants, 1%→5%→50% ramp, 6/6 QA pass. Saved to `docs/experiments/runbooks/`.
 
 ---
 
-## Reference Files
+## Common Rationalizations
 
-- **`references/posthog-binding.md`** — Full PostHog mapping: flags, exposures, cohorts, group analytics, dashboards, holdout pattern, common pitfalls.
-- **`references/vendor-mapping.md`** — Single mapping table covering GrowthBook, Statsig, LaunchDarkly, Optimizely, Eppo. User adapts.
-- **`references/launch-qa-checklist.md`** — Pre-launch verification list. Block launch on any fail.
+| Excuse | Reality |
+|--------|---------|
+| "Runbook is overhead" | Runbook prevents operational mistakes during live experiment |
+| "Same as spec" | Spec defines what; runbook defines how to execute and monitor |
+| "Owner will remember steps" | Rollback, alerts, and data collection must be written |
+| "Pilot needs no runbook" | Even small pilots benefit from launch checklist |
 
----
+## Verification
+
+- [ ] Launch steps, owners, and timing documented
+- [ ] Monitoring, alerts, and data collection procedures defined
+- [ ] Rollback or stop conditions specified
+- [ ] Runbook saved and linked from experiment spec
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

@@ -167,8 +167,6 @@ Ready for: engineering execution
 5. **Risk & Mitigation** (Technical hurdles and how to clear them).
 6. **Timeline Estimate** (Rough T-shirt sizing: S/M/L).
 
----
-
 ## Common Rationalizations
 
 | Excuse | Reality |
@@ -184,7 +182,9 @@ Ready for: engineering execution
 - [ ] No task >~5 files (XL tasks split)
 - [ ] Traceability table complete when feature-spec exists
 
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

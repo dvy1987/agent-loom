@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), arXiv:2306.05685 (MT-Bench/LLM-as-Judge),
@@ -125,6 +125,26 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Quick eyeball score" | Orchestrates rubric → judge → pipeline; do not skip sub-skills |
+| "Eval for evals sake" | Tie evaluation to a stated decision (ship, revise, compare) |
+| "No baseline needed" | Baseline or gold reference required for meaningful comparison |
+| "Verdict in chat only" | Persist eval report to docs/evals/ |
+
+## Verification
+
+- [ ] Decision question stated before invoking sub-skills
+- [ ] eval-rubric-design and eval-judge invoked when scoring needed
+- [ ] Report includes verdict, evidence, and recommended next action
+- [ ] Output saved under docs/evals/ and logged in SKILL-OUTPUTS.md
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

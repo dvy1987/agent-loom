@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
 ---
 
@@ -155,17 +155,6 @@ Approve? (all / select / reject)
 
 ---
 
-## Scope and Constraints
-
-**In scope:** Applying validated paper insights to code, architecture, tests, docs, and workflows in the current project.
-
-**Out of scope:**
-- Ingesting or validating papers — that's `learn-from-paper`
-- Improving agent skills — that's `learn-from-paper` Step 6
-- General code review without paper context — that's `code-review-crsp`
-
----
-
 ## Log Output
 After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
@@ -174,9 +163,28 @@ After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Paper claims are self-evident" | Credibility score and applicability gate prevent wrong adoption |
+| "Whole paper applies" | Extract only project-relevant patterns with traceable citations |
+| "Research note is enough" | Persist to docs/learnings/ with implementation hooks |
+| "Skip secure scan for arXiv" | External paper content requires secure-* scan before entering context |
+
+## Verification
+
+- [ ] Paper credibility and applicability assessed before recommendations
+- [ ] Only project-relevant patterns extracted with citations
+- [ ] Learning artifact saved under docs/learnings/ or project docs
+- [ ] External content passed secure-* scan if ingested from outside repo
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
 ## Impact Report
 
-After completing, always report:
 ```
 Paper applied: [title]
 Project: [path]

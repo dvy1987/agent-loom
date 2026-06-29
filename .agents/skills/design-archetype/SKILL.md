@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -94,22 +94,9 @@ Return the archetype name + the path to ARCHETYPE.md. `frontend-design` reads it
 
 ---
 
-## The Catalog (12 archetypes)
+## The Catalog
 
-| Archetype | Use when | Feels like |
-|---|---|---|
-| **b2b-productivity** | Internal tools, dashboards, dense workflow apps for power users | Linear, Stripe Dashboard, Vercel |
-| **enterprise-trust** | Regulated, finance, healthcare, ops where credibility > delight | Notion (formal), Atlassian, Datadog, Ramp |
-| **premium-consumer** | Consumer products charging premium, focused on craft and calm | Apple, Arc, Things 3, Bear, Linear marketing |
-| **playful-consumer** | Consumer products optimizing for delight, retention through emotion | Duolingo, early Notion, Figma, Tumblr 2014, Calm |
-| **editorial** | Content-heavy, reading-first, story-led products | Substack, Medium 2014, NYT, Stripe Press, Are.na |
-| **brutalist-distinctive** | Products that win by being unapologetically themselves | Gumroad, Are.na, Vercel labs, Posthog, Cron 2022 |
-| **dev-tool** | CLIs, terminals, dev infrastructure, IDE-adjacent | Warp, Raycast, Fly.io, Railway, Anthropic Console |
-| **marketing-landing** | One-shot marketing site for an existing product | Vercel, Resend, Linear marketing, Stripe marketing |
-| **creative-tool** | AI media studios, generative art tools, prosumer creative apps | Leonardo.ai, Midjourney, Runway, Krea, Suno, Luma |
-| **social-feed** | Networked-attention products, feed-first consumer/prosumer | X, Threads, Bluesky, Reddit, Mastodon, BeReal |
-| **conversational-ai** | Chat-first AI products where prompt + response is the canvas | ChatGPT, Claude, Perplexity, Gemini, Poe |
-| **spatial-canvas** | Infinite-canvas thinking/diagramming/workshop tools | FigJam, Miro, tldraw, Whimsical, Excalidraw |
+12 archetypes in `references/archetypes/` — score with `references/selection-rubric.md` (Step 2).
 
 ---
 
@@ -174,12 +161,25 @@ Return the archetype name + the path to ARCHETYPE.md. `frontend-design` reads it
 
 ---
 
-## Reference Files
+## Common Rationalizations
 
-- **`references/selection-rubric.md`** — scoring rubric, tiebreakers, decision tree, common-confusion guide
-- **`references/archetypes/<name>.md`** — one file per archetype in the catalog above. Open the file matching your selection in Step 3. Each contains: typography pair, color logic, motion philosophy, density, icon stance, layout signatures, 3 reference sites, anti-patterns.
+| Excuse | Reality |
+|--------|---------|
+| "I know the aesthetic" | Named archetype prevents default AI styling (Inter, purple gradient) |
+| "Reference product IS the archetype" | Must name typography, density, motion, icon stance |
+| "Pick during build" | Archetype before code is a hard gate in frontend-design suite |
+| "Generic B2B is fine" | Justify catalog choice against audience and product type |
 
----
+## Verification
+
+- [ ] Archetype name chosen from catalog with one-line justification
+- [ ] Typography pair, color logic, motion, density, and icon stance recorded
+- [ ] Feels-like claim and 2–3 reference sites documented
+- [ ] Output written to .design/<feature>/ARCHETYPE.md or equivalent
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

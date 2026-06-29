@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
 ---
@@ -104,6 +104,26 @@ Setup: Configure `mcp__postgres` in your MCP settings with connection string. Se
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Web search any tool" | Map task to project tools and MCP capabilities first |
+| "Install new tool first" | Prefer existing stack; document gap if new tool required |
+| "Any CLI works" | Match platform and project conventions |
+| "Tool list in chat" | Output ranked options with tradeoffs and setup notes |
+
+## Verification
+
+- [ ] Requirement parsed into capability categories
+- [ ] Existing project/MCP tools checked before external search
+- [ ] Recommendation includes status: available, needs-setup, unavailable
+- [ ] Platform constraints noted for Windows vs Unix
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

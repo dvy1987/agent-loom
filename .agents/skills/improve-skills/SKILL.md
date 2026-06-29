@@ -176,7 +176,9 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 
 - **`validate-skills/references/validation-rubric.md`**: Scoring rubric (single source of truth). Read during Step 2c.
 
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes � content verified current
 
 ## Impact Report
 

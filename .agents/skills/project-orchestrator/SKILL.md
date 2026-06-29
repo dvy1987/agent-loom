@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: arXiv:2601.02577, Addy-Osmani-Code-Agent-Orchestra, Augment-Intent-orchestration, Cursor-2.4-subagents, Codex-subagent-docs
   resources:
@@ -161,6 +161,26 @@ Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Start coding immediately" | Read project state, handoff, complexity before executing |
+| "User said build, skip routing" | Select path: skills, agents, or SDD pipeline deliberately |
+| "One skill fits all" | Decompose or route when scope exceeds single skill |
+| "Orchestrator executes work" | Coordinate and delegate; do not absorb all implementation |
+
+## Verification
+
+- [ ] Project state and latest handoff consulted
+- [ ] Execution path chosen and stated (skill stack, agent chain, SDD)
+- [ ] Delegated skills invoked with required inputs
+- [ ] Handoff or next step documented for following agent
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

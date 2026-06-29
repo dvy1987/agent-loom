@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -138,6 +138,26 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Decompose in my head" | Process entry in docs/processes/ feeds agent-builder loop |
+| "Steps list is enough" | Must tag skills, tools, parallelism, complexity_class |
+| "Always multi-agent" | complexity_class drives routing; do not over-classify |
+| "Ephemeral breakdown" | Persist entry and link architecture_spec_ref when built |
+
+## Verification
+
+- [ ] Process saved to docs/processes/YYYY-MM-DD-<task>.md
+- [ ] Each step lists skills, tools, and parallelism markers
+- [ ] complexity_class assigned with justification
+- [ ] Ready for agent-builder or direct skill routing
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

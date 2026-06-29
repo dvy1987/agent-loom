@@ -132,6 +132,10 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 
 ---
 
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

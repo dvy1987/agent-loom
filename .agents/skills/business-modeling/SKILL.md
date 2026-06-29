@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Strategyzer-Osterwalder-Pigneur, Lean-Canvas-Maurya, Value-Proposition-Design-Strategyzer, Testing-Business-Ideas-Bland-Osterwalder
   resources:
@@ -68,11 +68,7 @@ Pick one. Name it. State why in one line.
 ### Step 3 — Fill the canvas
 Use the template from `references/canvas-templates.md` for the chosen canvas.
 
-**Lean Canvas (1-page, 9 boxes):** Problem · Customer Segments · Unique Value Proposition · Solution · Channels · Revenue Streams · Cost Structure · Key Metrics · Unfair Advantage.
-
-**BMC (1-page, 9 boxes):** Customer Segments · Value Propositions · Channels · Customer Relationships · Revenue Streams · Key Resources · Key Activities · Key Partnerships · Cost Structure.
-
-**VPC (2 sides):** Customer Profile (Jobs · Pains · Gains) ↔ Value Map (Products & Services · Pain Relievers · Gain Creators).
+**Lean Canvas / BMC / VPC:** Use the template from `references/canvas-templates.md` for box structure.
 
 Rules:
 - Every entry is **specific and falsifiable**. "Increase user engagement" → "Reduce time to first invoice from 6h to 30min".
@@ -154,33 +150,28 @@ entry or [HYPOTHESIS — needs validation]>
 
 ---
 
-## Example
+## Common Rationalizations
 
-<examples>
-  <example>
-    <input>Model the business for the freelance-designer invoicing tool we generated yesterday</input>
-    <output>
-Two questions before I pick the canvas:
+| Excuse | Reality |
+|--------|---------|
+| "Canvas first, validate later" | Business model surfaces assumptions to test before building |
+| "One canvas fits all" | Match canvas to stage (Lean vs BMC vs VPC) |
+| "Placeholder numbers OK" | Key metrics and revenue streams stated, even as hypotheses |
+| "Saved in Notion is fine" | Persist to docs/venture/ or project docs per output convention |
 
-1. What stage are you at — pre-launch (no users), pre-revenue (some users, no payment), or pre-PMF (paying users but unclear retention)?
-2. Is the dominant uncertainty (a) whether designers actually want this, (b) how the unit economics work, or (c) the value-proposition specifics?
+## Verification
 
-(a) → Lean Canvas. (b) → BMC. (c) → VPC.
-    </output>
-  </example>
-</examples>
+- [ ] Canvas type chosen and justified for venture stage
+- [ ] Assumptions and key metrics explicitly listed
+- [ ] Artifact saved to docs/venture/ or agreed project path
+- [ ] Open assumptions flagged for customer-discovery or idea-evaluation
 
----
-
-## Calling This Skill From Other Skills
-
-`venture-exploration` calls this in the model stage. Output feeds `idea-evaluation` (top-3 assumptions become kill-test inputs) and `customer-discovery` (segment + JTBD become interview targets).
-
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
-After completing, always report:
 ```
 Business modeling complete: <idea>
 File saved: docs/ventures/models/YYYY-MM-DD-<slug>-canvas.md

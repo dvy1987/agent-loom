@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: adolfi.dev (AI generated ADR), salesforce.com (Architectural Decisions), Nygard ADR template
 ---
@@ -134,6 +134,26 @@ Ready for: implementation
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Slack captured the decision" | ADR in docs/decisions/ is the durable record agents read |
+| "Reversible, no need to log" | Reversibility and rationale matter for future reconsideration |
+| "Title is enough context" | Status, consequences, and alternatives must be explicit |
+| "ADR after shipping" | Decision without ADR becomes tribal knowledge immediately |
+
+## Verification
+
+- [ ] ADR saved with date, status, context, decision, and consequences
+- [ ] Alternatives considered documented with rejection rationale
+- [ ] Cross-linked from related specs, plans, or memory if applicable
+- [ ] Entry appended to docs/skill-outputs/SKILL-OUTPUTS.md when files created
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

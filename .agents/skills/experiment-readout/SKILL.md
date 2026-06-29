@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Microsoft ExP postmortem practice, Booking.com 2026 readouts, Kohavi/Tang/Xu trustworthy experiments, Airbnb guardrail discoveries, KDnuggets 2026
   resources:
@@ -151,6 +151,26 @@ Downstream: [prd-writing | architectural-decision-log | reality-check | none]
 - **`references/learnings-format.md`** — Learnings log entry format. Use in Step 8.
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Results speak for themselves" | Readout must state ship, iterate, or kill with evidence |
+| "p-value optional for product" | Document sample size, duration, and confounders honestly |
+| "Skip negative results" | Failed experiments belong in readout for learning loop |
+| "Slack summary sufficient" | Save readout to docs/experiments/readouts/ |
+
+## Verification
+
+- [ ] Primary metric result compared to success criteria from spec
+- [ ] Decision recorded: ship, iterate, or kill with rationale
+- [ ] Confounders and limitations documented
+- [ ] Readout saved to docs/experiments/readouts/
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

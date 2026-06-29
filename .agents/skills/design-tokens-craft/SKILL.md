@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -152,6 +152,26 @@ Recipe basis: [recipe name from token-recipes.md]
 - **`references/banned-palettes.md`** — explicit list of vibecoded color/type/spacing patterns to refuse
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Tailwind defaults are tokens" | Semantic tokens from archetype ban undocumented hex |
+| "Dark mode later" | Both modes ship from token set; dark is not an afterthought |
+| "Copy from another project" | Tokens must trace to current archetype in TOKENS.md |
+| "Inline rem values OK" | Spacing and typography via token variables only |
+
+## Verification
+
+- [ ] tokens.css (or equivalent) generated from archetype input
+- [ ] Light and dark semantic color roles defined
+- [ ] TOKENS.md rationale links each choice to archetype
+- [ ] No banned default colors without explicit archetype justification
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

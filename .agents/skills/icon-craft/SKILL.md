@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -160,6 +160,26 @@ Corner radius: [0 / 1 / 2 / 4 px]
 - **`references/svg-craft.md`** — drawing rules for custom SVG sets (grid, stroke, optical sizing, terminal style, corner radius, exporting clean SVG)
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Lucide everywhere is fine" | Strategy must align to archetype, not stock defaults |
+| "Stock icons save time" | Document stroke, radius, and sourcing rules even for tuned sets |
+| "Icons need no tokens" | Icon color and size must use semantic tokens |
+| "One hero icon is enough" | Define set coverage for nav, actions, empty states |
+
+## Verification
+
+- [ ] Icon strategy chosen (custom-svg, tuned-set, hand-drawn, etc.)
+- [ ] Stroke, optical size, and radius rules documented
+- [ ] Set covers primary UI surfaces (nav, actions, states)
+- [ ] ICONS.md or equivalent saved linked to archetype
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

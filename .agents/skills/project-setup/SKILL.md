@@ -13,12 +13,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agentskills.io, OpenAI-Codex-AGENTS.md, arXiv:2601.20404, GitHub-blog-2500-repos-analysis, Augment-Code-AGENTS.md-guide
   resources:
     references:
       - interview-questions.md
+      - update-mode.md
     templates:
       - agents-md-template.md
 ---
@@ -139,31 +140,9 @@ Show the AGENTS.md (all files if multi-file mode). Ask: "Are the boundaries righ
 
 If updating existing: show diff, get approval.
 
-Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Every agent tool reads it automatically. Re-run `project-setup` after writing a PRD or changing the stack."
+Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Re-run after PRD or stack changes."
 
----
-
-## Update Mode (called by project-orchestrator)
-
-**Sibling skill — Retroactive Bootstrap:** For an existing, already-coded project with no AGENTS.md, route to `retroactive-project-setup` (surveys repo, infers from manifests/README/git, asks only about gaps, never modifies code). When invoked by that skill, run in `RETROACTIVE=true` mode: skip interview, accept inferred matrix + gap answers, emit AGENTS.md only.
-
-When invoked with `UPDATE_ONLY=true`, skip the full interview. Only update sections of AGENTS.md that are actually affected. The orchestrator calls this only when it detects a change that affects agent behaviour — not for every new artefact.
-
-**What to update (only the sections that changed):**
-- **Key Commands** — if `package.json` / `Cargo.toml` / `pyproject.toml` / `go.mod` changed and build/test/lint commands are different
-- **Non-Obvious Patterns** — if a spec, ADR, or architecture doc introduced a new counterintuitive convention agents must follow
-- **Orchestration Map parallel hints** — if an implementation plan revealed independent tracks that can be parallelised
-- **Boundaries** — if new protected dirs, "never touch" files, or permission gates emerged from architectural decisions
-
-**What to preserve (never touch in update mode):**
-User Context, Code Style, Project Overview, Boundaries (unless explicitly affected), Session Lifecycle.
-
-**Process:** Read existing AGENTS.md → update only affected sections → show brief diff → commit.
-
-**Full re-run triggers** (bypass update mode, run the full interview):
-- New team member joins (changes User Context)
-- User says "redo the setup" or "re-interview me"
-- Major pivot (product-soul rewritten from scratch)
+**Update / retroactive modes:** See `references/update-mode.md` when `UPDATE_ONLY=true` or `retroactive-project-setup` delegates here.
 
 ---
 
@@ -172,9 +151,27 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 - **The interview is the highest-leverage step.** 3 minutes of interview → 10x better AGENTS.md. Never skip it (except in `RETROACTIVE=true` mode).
 - **Skill gaps are the secret sauce.** A PM's AGENTS.md looks completely different from an engineer's.
 - **150-line limit is non-negotiable.** Longer files increase inference costs 20%+ and reduce success rates.
-- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones. LLM-generated context without human input reduces task success ~3%.
+- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones.
 
----
+## Common Rationalizations
+
+| "Reason to skip setup" | Reality |
+|------------------------|---------|
+| "Copy AGENTS.md from another project" | Interview tailors autonomy boundaries and skill gaps — generic files misroute |
+| "Skip interview, I know my stack" | Role and gap answers drive Orchestration Map — 3 minutes saves hours of misfires |
+| "AGENTS.md can be 250 lines" | 150-line cap is a loader/cost gate — trim or move detail to docs/ |
+| "Session Lifecycle is optional" | Cold-start without memory-startup loses continuity every new chat |
+
+## Verification
+
+- [ ] Interview completed (or RETROACTIVE mode documented)
+- [ ] AGENTS.md ≤150 lines with Session Lifecycle naming memory-startup
+- [ ] Orchestration Map lists skills with phase triggers
+- [ ] Outputs logged to docs/skill-outputs/SKILL-OUTPUTS.md
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — trimmed orchestration gotcha for line budget
 
 ## Example
 

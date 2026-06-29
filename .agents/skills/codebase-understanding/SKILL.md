@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: walkthrough-skill-builtin
 ---
@@ -143,31 +143,29 @@ Layers: UI (src/app/), API (src/app/api/), Services (src/lib/), DB (prisma/)
 Want me to deep-dive into any of these components?
     </output>
   </example>
-  <example>
-    <input>How does the payment flow work in this codebase?</input>
-    <output>
-[Searched for payment/billing/stripe across the codebase]
-
-## Key Flow: Payment Processing
-`app/billing/page.tsx` → `api/billing/checkout/route.ts` → `lib/stripe.ts` → Stripe API → webhook at `api/webhooks/stripe/route.ts` → `lib/subscriptions.ts` → DB
-
-## Component Map
-| Component | Path | Responsibility | Dependencies |
-|-----------|------|----------------|--------------|
-| Checkout | api/billing/checkout/ | Creates Stripe session | stripe, lib/stripe |
-| Webhook | api/webhooks/stripe/ | Handles payment events | stripe, lib/subscriptions |
-| Subscriptions | lib/subscriptions.ts | Updates user plan in DB | prisma |
-
-## Hotspots
-- `lib/stripe.ts:30` — Stripe secret key loaded from env, verified
-- `api/webhooks/stripe/route.ts:15` — Webhook signature verification present
-
-Want me to trace another flow or go deeper on any component?
-    </output>
-  </example>
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "I know this repo" | Map structure, entry points, and conventions before changing code |
+| "Grep is enough" | Document module boundaries and data flow for future agents |
+| "README covers it" | README drifts; verify against actual code paths |
+| "Skip writing the map" | Understanding artifact must persist for handoffs |
+
+## Verification
+
+- [ ] Entry points, module boundaries, and key data flows documented
+- [ ] Conventions verified against code, not README alone
+- [ ] Map saved to docs/ or skill output path for handoff
+- [ ] Open questions or unknown areas explicitly listed
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

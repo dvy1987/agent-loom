@@ -177,6 +177,10 @@ VERDICT: BLOCKED â€” add to no-go repo list
 
 - **`references/threat-patterns.md`**: Full threat pattern catalog. Read for pattern-matching during scans.
 
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

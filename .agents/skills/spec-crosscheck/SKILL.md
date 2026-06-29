@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables
 ---
@@ -176,6 +176,17 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 
 ---
 
+## Verification
+
+- [ ] Constitution, spec, plan, and tasks all loaded before checks
+- [ ] All six checks (Aâ€“F) run with explicit PASS/FAIL per check
+- [ ] Zero [NEEDS CLARIFICATION] markers for PASS verdict
+- [ ] Report saved to docs/reviews/ and implementation gate stated
+
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

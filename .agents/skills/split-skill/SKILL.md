@@ -180,20 +180,21 @@ improve-skills: 220 → 198 lines ✓ | link-check: 140 lines (new) ✓
 ## Reference Files
 
 - **`references/split-patterns.md`**: Pipeline extraction, shared capability extraction, format/schema extraction. Read when the natural seam is unclear.
-
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes � content verified current
 
 ## Impact Report
-
+```
 After completing, always report:
 ```
 Action taken: [linked to existing <skill> / extracted new <child> / Type B]
-Parent: [before] → [after] lines
-Child/linked skill: [name] — [lines] lines ([new / existing])
-Other callers updated: [list or "none"]
+Parent: [before] -> [after] lines
+Child/linked skill: [name] � [lines] lines ([new / existing])
+Other callers updated: [list or none]
 AGENTS.md updated: yes
 Regression check: all capabilities preserved
-agentskills validate: ✓
-Files created: [list or "none — linked to existing"]
+agentskills validate: pass
+```
 Files modified: [parent SKILL.md, AGENTS.md, any updated callers]
 ```

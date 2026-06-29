@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     Red Hat eval-driven dev 2026, DeepEval framework,
@@ -151,36 +151,32 @@ Tell the user:
   <example>
     <input>Set up an eval pipeline for our customer support chatbot</input>
     <output>
-# Eval Pipeline: Support Chatbot
-
-## Evaluator Stack
-### Layer 1 — Deterministic
-- Response under 300 words: PASS/FAIL
-- No PII in response: regex scan
-- Greeting present: string match
-- JSON tool-call schema valid: schema check
-
-### Layer 2 — Statistical
-- Embedding similarity to gold responses: baseline 0.72, alert < 0.65
-- Average response latency: baseline 1.2s, alert > 3s
-
-### Layer 3 — LLM-as-Judge
-- Rubric: docs/evals/2026-04-19-support-chatbot-rubric.md
-- Dimensions: task resolution, accuracy, tone (from eval-rubric-design)
-- Sampling: 30% on PRs, 100% nightly
-- Judge model: GPT-4.1 (different from production model)
-
-## CI/CD
-Pre-merge: deterministic + statistical (full) + LLM judge (30%)
-Gate: all deterministic pass, no dimension drops > 10% from baseline
-Nightly: full suite + known-bad validation
-
-Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
+Three layers designed (deterministic, statistical, LLM-judge). Pipeline saved to docs/evals/YYYY-MM-DD-<slug>-pipeline.md
     </output>
   </example>
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Manual spot checks scale" | Pipeline automates repeatable runs with logged artifacts |
+| "One-off script is enough" | Standardize inputs, outputs, and failure handling |
+| "CI can wait" | Pipeline must document local reproduction first |
+| "Skip versioning fixtures" | Fixture and prompt versions pinned in pipeline manifest |
+
+## Verification
+
+- [ ] Pipeline manifest lists inputs, steps, outputs, and failure handling
+- [ ] Test cases or fixtures version-pinned
+- [ ] Local run instructions documented and verified
+- [ ] Results artifacts land in docs/evals/ or agreed output path
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

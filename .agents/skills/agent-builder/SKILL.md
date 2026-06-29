@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10, arXiv:2601.02577, Addy-Osmani-Code-Agent-Orchestra,
@@ -122,6 +122,26 @@ Running setup-evaluation before handoff to project-orchestrator.
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Process entry is enough" | Architecture spec links process to execution; skipping breaks the learning loop |
+| "Single agent is simpler" | Parallel or specialized steps need explicit boundaries or agents overlap |
+| "I'll prompt agents ad hoc" | Every agent needs `create-agent-prompt` output persisted in the spec |
+| "Setup eval can wait" | `complexity_class = agent-chain` requires setup-evaluation PASS before orchestrator |
+
+## Verification
+
+- [ ] Process entry read and `architecture_spec_ref` linked both ways
+- [ ] Structure decision recorded (single vs multi-agent) with topology if multi
+- [ ] Role prompt generated via `create-agent-prompt` for every defined agent
+- [ ] Spec saved to `docs/architecture/` and handoff path documented
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

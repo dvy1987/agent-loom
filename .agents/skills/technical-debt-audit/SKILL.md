@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agentskills.io, tech-debt-quadrant (Fowler)
 ---
@@ -124,6 +124,26 @@ Ready for: improve-skills batch execution
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Quick grep for TODO" | Categorize severity, blast radius, and paydown order |
+| "Fix while auditing" | Audit first; fixes are separate commits |
+| "All debt equal" | Distinguish blocking vs cosmetic with file links |
+| "No doc needed" | Persist audit to docs/tech-debt/ or skill output log |
+
+## Verification
+
+- [ ] Items categorized by severity and blast radius
+- [ ] Paydown order recommended with rationale
+- [ ] File paths and symbols cited per finding
+- [ ] Audit artifact saved; no drive-by fixes mixed in
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

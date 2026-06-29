@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -123,6 +123,26 @@ Handing off to agent-launcher.
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Architecture looks fine" | Validates process + architecture refs before orchestrator |
+| "Manual review enough" | Run checklist against complexity_class requirements |
+| "FAIL is advisory" | Agent-chain must PASS or revise before proceed |
+| "Skip for single agent" | Non-agent-chain may still need spec when architecture persisted |
+
+## Verification
+
+- [ ] process_entry_ref and architecture_spec_ref both loaded
+- [ ] Checklist run against complexity_class and handoff rules
+- [ ] PASS/FAIL verdict recorded with specific issues if FAIL
+- [ ] Revised architecture re-evaluated after fixes
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: addyosmani/agent-skills frontend-ui-engineering (Phase 3 merge â€” patterns in references only)
   resources:
@@ -166,6 +166,17 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 
 ---
 
+## Verification
+
+- [ ] design-archetype completed before any UI code written
+- [ ] design-tokens-craft and icon-craft outputs used in build
+- [ ] Anti-vibecoded gates passed; design-review run with loop count logged
+- [ ] Files under .design/<feature>/ and build paths logged in SKILL-OUTPUTS.md
+
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

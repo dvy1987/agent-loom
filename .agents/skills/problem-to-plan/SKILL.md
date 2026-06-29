@@ -17,7 +17,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-12
 ---
@@ -140,37 +140,35 @@ Tell the user:
   <example>
     <input>The narration agent crashes when the ElevenLabs API key is missing — instead of a clear error it just throws a raw exception. Fix this and add proper error handling.</input>
     <output>
-I scanned the codebase: `agents/narration/agent.py` calls the ElevenLabs API in `generate()` at line 45 with no try/except. The API key is read from `os.environ` with no fallback.
-
-Understood: add graceful error handling for missing API key and API failures in the narration agent. Creating deliverables...
-
-**Spec saved:** `docs/specs/2026-04-12-narration-error-handling-spec.md`
-- Problem: Raw exception on missing API key, no error handling for API failures
-- Success: Missing key → clear error message, API timeout → retry once then user-facing error
-- Scope: `agents/narration/agent.py` only
-
-**Plan saved:** `docs/plans/2026-04-12-narration-error-handling-plan.md`
-- Phase 1: Add API key validation at agent init (1 task)
-- Phase 2: Add try/except around API calls with retry logic (2 tasks)
-- Phase 3: Add unit tests for error paths (1 task)
-- Effort: S (1-2 hours)
-
-**TODO saved:** `docs/plans/2026-04-12-narration-error-handling-TODO.md`
-- M1: API key validation — 1 task
-- M2: Error handling — 2 tasks (depends on M1)
-- M3: Tests — 1 task
-- 4 tasks total, all independently executable after dependencies met
-
-Agents can pick up tasks from the TODO.
+Spec, plan, and TODO saved under docs/specs/ and docs/plans/ with 4 agent-pickable tasks across 3 phases.
     </output>
   </example>
 </examples>
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Jump to implementation-plan" | Triage complexity before SDD vs tactical path |
+| "All problems need full spec" | Tactical path exists for small bounded changes |
+| "Plan before understanding" | Context or codebase pass may precede planning |
+| "Skip verification phase" | Phase 3 testing/verification is mandatory in output |
+
+## Verification
+
+- [ ] Complexity triage recorded (SDD vs tactical path)
+- [ ] Plan artifacts saved to docs/plans/ with clear scope
+- [ ] Phase 3 verification steps listed with commands where applicable
+- [ ] Handoff to implementation or spec skill documented
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
 ## Impact Report
 
-After completing, always report:
 ```
 Problem planned: [title]
 Deliverables: spec + plan + TODO

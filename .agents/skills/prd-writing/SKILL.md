@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: github/awesome-copilot prd, jamesrochabrun/skills prd-generator, agentskills.io
   resources:
@@ -146,6 +146,26 @@ Read `references/metrics-frameworks.md` when the user needs help choosing succes
 - **`references/metrics-frameworks.md`**: AARRR, HEART, OKRs, North Star with examples. Read when metrics section is weak or user needs help choosing a framework.
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Spec replaces PRD" | PRD is product-level; feature-spec is implementation-bound |
+| "Marketing copy in PRD" | Focus on problem, users, success metrics, scope boundaries |
+| "Living doc in Notion" | Save to docs/prd/ per project convention |
+| "No metrics needed yet" | Success metrics and non-goals must be stated |
+
+## Verification
+
+- [ ] Problem, users, and success metrics explicitly defined
+- [ ] Scope boundaries and non-goals documented
+- [ ] PRD saved to docs/prd/PRD.md or dated variant
+- [ ] Open questions listed for downstream spec work
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

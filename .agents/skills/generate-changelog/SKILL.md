@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: keepachangelog.com, conventionalcommits.org, agentskills.io
   resources:
@@ -154,38 +154,35 @@ Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: changelog w
   <example>
     <input>Generate a changelog for the agent-loom skill library. Recent changes: renamed agent-architect to agent-builder across 8 files, created cross-link-skills skill, created living PRD at docs/prd/PRD.md, updated library-skill to maintain PRD and architecture docs, improved 6 skills to 14/14 scores.</input>
     <output>
-## [0.4.0] - 2026-04-12
-
-**Summary:** Major structural improvements — the skill library now self-maintains its own documentation, skills are cross-linked automatically, and the first living PRD establishes a single source of truth for the project.
-
-### Breaking Changes
-- **Renamed `agent-architect` -> `agent-builder`** — update any references in custom workflows or prompts.
-
-### Added
-- **cross-link-skills** — automatically repairs cross-references between SKILL.md files after creation, rename, or removal.
-- **Living PRD** (`docs/prd/PRD.md`) — single source of truth for both agents and humans. Point-in-time PRDs are now historical snapshots only.
-- **library-skill** now maintains `docs/prd/PRD.md` and `docs/architecture.md` automatically when structural changes occur.
-
-### Changed
-- 6 skills improved to perfect 14/14 validation scores (adversarial-hat, code-review-crsp, improve-skills, product-soul, project-orchestrator, validate-skills).
-
-### Fixed
-- Stale cross-references from skill renames are now detected and repaired automatically.
-
-Changelog generated: v0.4.0
-Changes categorized: 8
-Breaking changes found: 1
-User-facing value statements: 4
-Ready for: release
+v0.4.0 changelog: breaking rename, new cross-link-skills, living PRD, 6 skills at 14/14 — grouped under Keep a Changelog sections.
     </output>
   </example>
 </examples>
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Users read git log" | Changelog is user-facing; git log is not |
+| "Every commit gets a line" | Group by user-visible change; follow Keep a Changelog sections |
+| "Skip UNRELEASED" | New changes accumulate in Unreleased until release tag |
+| "Internal refactors in Highlights" | Maintenance goes under Changed/Fixed per convention |
+
+## Verification
+
+- [ ] CHANGELOG.md follows Keep a Changelog section structure
+- [ ] User-visible changes grouped; internal-only omitted or under Changed
+- [ ] Unreleased section updated for unreleased work
+- [ ] Version/date headers consistent with project tagging policy
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
 ## Impact Report
 
-After completing, always report:
 ```
 Changelog generated: [version]
 Significance: [MAJOR | MINOR | PATCH]

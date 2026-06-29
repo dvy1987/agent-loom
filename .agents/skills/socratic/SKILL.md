@@ -107,6 +107,10 @@ Then the real question isn't community vs. core product. The question is: do you
 
 ---
 
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

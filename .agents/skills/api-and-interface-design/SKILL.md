@@ -141,6 +141,10 @@ Contract-first Task + CreateTaskInput + PaginatedResult. REST: GET/POST /api/tas
 
 ---
 
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

@@ -168,8 +168,6 @@ Load only on matching trigger:
 - `scripts/skill_scaffold.py` — CLI scaffolder.
 - `templates/SKILL-template.md`, `templates/SKILL-OUTPUTS-template.md` — copy on new skill / new outputs log.
 
----
-
 ## Common Rationalizations
 
 | "Reason to bypass the workflow" | Reality |
@@ -179,20 +177,23 @@ Load only on matching trigger:
 | "Description is just a sentence, no need to check 1024 chars" | Loaders truncate or reject. Validator P0 (validate-skills Step 2a) |
 | "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD — discoverability dies on the vine |
 
----
+## Verification
+
+- [ ] `agentskills validate` passes on new skill directory
+- [ ] Step 8 security scan SAFE on all generated output
+- [ ] Step 11 library-skill sync completed (SKILL-INDEX, README, graph)
+- [ ] New skill ≤200 lines (secure-* ≤180, split-only)
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
 After completing, always report:
 ```
-Skill created: [skill-name]
-Tier: [Atomic / Standard / Advanced / System]
-Location: .agents/skills/[skill-name]/
-validate-skills score: [N]/14
-agentskills validate: ✓
-Files created: [list all files]
-Research sources used: [list]
-Published to skills.sh: [yes — URL / no]
-Install command: cp -r .agents/skills/[skill-name]/ ~/.agents/skills/
-Test trigger: "[example phrase that activates this skill]"
+Skill created: [skill-name] | Location: .agents/skills/[skill-name]/
+validate-skills: [N]/14 | Security: SAFE | Files: [list]
+Research sources: [list] | Published: [yes/no]
+Test trigger: "[example phrase]"
 ```

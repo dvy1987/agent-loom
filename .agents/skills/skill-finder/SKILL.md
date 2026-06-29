@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
 ---
@@ -94,6 +94,26 @@ Extending `create-agent-prompt` to include system prompt generation. Verifying l
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "I know every skill" | Match intent via SKILL-INDEX when uncertain |
+| "Search repo randomly" | Read docs/SKILL-INDEX.md and ROUTING.md for priority |
+| "Closest name wins" | Match trigger phrases and call graph, not string similarity |
+| "Suggest without loading SKILL.md" | Opening SKILL.md mandatory before claiming use |
+
+## Verification
+
+- [ ] docs/SKILL-INDEX.md and ROUTING.md consulted
+- [ ] Best match identified with trigger-phrase justification
+- [ ] SKILL.md opened for selected skill before recommendation
+- [ ] Extend vs create decision documented if no exact match
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: The-Mom-Test-Fitzpatrick, Talking-to-Humans-Constable, Lean-Customer-Development-Alvarez, JTBD-interviews-Klement
   resources:
@@ -112,41 +112,7 @@ Tell the user:
 
 ## Output Format — Discovery Doc
 
-```markdown
-# Customer Discovery: <idea>
-Date: YYYY-MM-DD | Interviews: N | Mode: <design / coach / synthesize>
-
-## Learning Goal
-By N interviews, confirm or kill: <specific assumption>.
-
-## Segment Recruited
-<persona> via <tier 1/2/3 source(s)>. Excluded: <friends/family/proxies>.
-
-## Interview Guide
-<30-min structure with actual questions used>
-
-## Coded Quotes
-| # | Code | Quote (≤25 words) | Source |
-|---|---|---|---|
-| 1 | CURRENCY | "I paid an accountant $X/mo just for invoicing chases." | Interview 3 |
-| 2 | OPINION | "I'd love something like that." | Interview 5 — discarded |
-
-## Aggregated Signal
-- Painful problem reported: M/N
-- Currency evidence: M/N
-- Workaround cluster: <which one(s)>
-- Disconfirming patterns: <list>
-
-## Assumption Updates
-1. <assumption> — CONFIRMED / WEAKENED / KILLED — _quote ref_
-2. ...
-
-## Verdict
-- Sufficient signal for: GO-to-eval / ITERATE-segment / KILL-this-assumption / NEED-more-interviews
-
-## Anti-Pattern Audit
-<any "would you use this?" leakage, pitching, friend-ICP issues — flagged>
-```
+Use `references/synthesis-template.md` for the full doc structure (learning goal, coded quotes, aggregated signal, assumption updates, verdict).
 
 ---
 
@@ -177,15 +143,28 @@ Two questions before I draft the guide:
 
 ---
 
-## Calling This Skill From Other Skills
+## Common Rationalizations
 
-`venture-exploration` calls this in the validate stage. `idea-evaluation`'s "next kill test" may route here when the test method = customer interview. Output updates `business-modeling` (canvas hypotheses) and `idea-evaluation` (rubric scores).
+| Excuse | Reality |
+|--------|---------|
+| "Users said they want it" | Mom Test separates compliments from past behavior and paid signals |
+| "Survey validates demand" | Interviews reveal problems; surveys measure what you already guessed |
+| "Five interviews enough to build" | Document patterns and contradictions before concluding fit |
+| "Notes in chat suffice" | Interview synthesis saved to docs/venture/ or discovery folder |
 
----
+## Verification
+
+- [ ] Interview guide uses Mom Test (past behavior, not hypotheticals)
+- [ ] Synthesis captures patterns, contradictions, and surprise findings
+- [ ] Problem severity and willingness-to-pay signals documented
+- [ ] Artifact saved under docs/venture/ or project discovery path
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
-After completing, always report:
 ```
 Customer discovery complete: <idea>
 File saved: docs/ventures/discovery/YYYY-MM-DD-<slug>-interviews.md

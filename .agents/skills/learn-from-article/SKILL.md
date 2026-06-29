@@ -137,6 +137,10 @@ Learnings only - no current skill covers rate limiting. Save to `docs/learnings/
 
 ---
 
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 After completing, always report:

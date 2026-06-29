@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Testing-Business-Ideas-Bland-Osterwalder, YC-Why-Now-Why-You, Lean-Startup-Ries, JTBD-Christensen, The-Mom-Test-Fitzpatrick
   resources:
@@ -158,31 +158,28 @@ SOM: $X (range $Y–$Z) | Most uncertain factor: <factor>
 
 ---
 
-## Example
+## Common Rationalizations
 
-<examples>
-  <example>
-    <input>Evaluate this idea: an AI-powered tool that helps freelance designers send invoices and chase payments</input>
-    <output>
-Two questions before I evaluate:
+| Excuse | Reality |
+|--------|---------|
+| "Gut feel on TAM" | Explicit criteria and scored dimensions required |
+| "Kill without writing" | Document why killed for future pattern recognition |
+| "All ideas are equal" | Rank against constraints and founder-market fit |
+| "Pitch deck replaces eval" | Persist eval artifact to docs/venture/ |
 
-1. What's the specific painful workaround designers use today (e.g., manual Stripe + Notion, or Bonsai/HoneyBook, or chasing in DMs)?
-2. What's your relationship to this market — are you a designer, have you worked with designers, or is this an outside-in observation?
-    </output>
-  </example>
-</examples>
+## Verification
 
----
+- [ ] Evaluation criteria and weights stated upfront
+- [ ] Each idea scored with evidence per dimension
+- [ ] Kill/pivot/pursue recommendation with rationale
+- [ ] Artifact saved to docs/venture/
 
-## Calling This Skill From Other Skills
-
-`venture-exploration` calls this in the evaluate stage. `idea-generation` may call it on top-3 candidates. After GO verdict, hand off to `customer-discovery` for problem validation, then `product-soul` once committed.
-
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
-After completing, always report:
 ```
 Idea evaluation complete: <idea>
 File saved: docs/ventures/evaluations/YYYY-MM-DD-<slug>-eval.md

@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   internal: true
   sources: agent-loom design spec 2026-04-11, Anthropic Claude Code docs, platform-subagent-matrix.md
@@ -141,18 +141,10 @@ When all outputs present (or failures logged) → hand off to `project-orchestra
 
 ## Gotchas
 
-- Parallel agents must be truly independent — if Agent B needs Agent A's
-  output, they are sequential not parallel. Check architecture spec carefully.
-- Sequential agents must chain outputs explicitly — never assume an agent
-  reads prior outputs automatically.
-- Prompt files must exist on disk before spawning — in-memory prompts do
-  not work with the Task tool.
-- The launch manifest is the audit trail — never skip it even for two-agent runs.
-- Hierarchical topologies require the orchestrator prompt to include explicit
-  sub-agent dispatch instructions — verify before spawning, and never eagerly
-  launch those workers from this skill.
-
----
+- Parallel agents must be independent — if B needs A's output, topology is sequential.
+- Prompt files must exist on disk before spawning — Task tool reads paths only.
+- Launch manifest is mandatory — even for two-agent runs.
+- Hierarchical: never spawn workers from this skill — orchestrator dispatches them.
 
 ## Examples
 
@@ -160,26 +152,32 @@ When all outputs present (or failures logged) → hand off to `project-orchestra
   <example>
     <input>Architecture: proc-2026-04-11-012 (3 parallel agents: review-agent, security-agent, debt-agent). Platform: Ampcode. setup-evaluation: PASS. All prompt files present.</input>
     <output>
-Preconditions: ✓ Arch spec ✓ setup-evaluation PASS ✓ All prompts present
-Platform: Ampcode (Task tool)
-Manifest written: docs/agents/runs/2026-04-11-review-pipeline-manifest.md
-
-SPAWN SUBAGENTS:
-Topology: parallel
-
-Agent: review-agent
-Role prompt: docs/agents/review-agent-prompt.md
-Input: docs/handoffs/task-input.md
-Output to: docs/handoffs/review-agent-output.md
-
-[repeat for each agent in architecture spec]
-
-Run all agents concurrently via Task tool. Wait for all outputs.
+Preconditions: ✓ PASS ✓ prompts present | Manifest: docs/agents/runs/2026-04-11-review-pipeline-manifest.md
+SPAWN SUBAGENTS: Topology parallel — review-agent, security-agent, debt-agent → docs/handoffs/*.md
+Run concurrently via Task tool; wait for all outputs.
     </output>
   </example>
 </examples>
 
----
+## Common Rationalizations
+
+| "Reason to skip precondition" | Reality |
+|-------------------------------|---------|
+| "Architecture spec is enough" | setup-evaluation PASS is mandatory — spec alone doesn't validate execution |
+| "Generate a spawn script" | Path A only — Task tool instructions, never bash/SDK |
+| "Skip manifest, spawn now" | Manifest is the audit trail — write before spawning |
+| "User asked to launch directly" | Internal skill — setup-evaluation calls this, not users |
+
+## Verification
+
+- [ ] Architecture spec exists and setup-evaluation PASS recorded
+- [ ] Every agent has prompt file at docs/agents/<name>-prompt.md
+- [ ] Launch manifest written before spawn instructions
+- [ ] All outputs target docs/handoffs/ only
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

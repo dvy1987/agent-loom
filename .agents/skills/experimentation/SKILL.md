@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Microsoft ExP, Booking.com experimentation engine, Statsig 2025-26 handbooks, Eppo guides, Airbnb guardrail-metrics writeup, KDnuggets 2026 A/B pitfalls
   resources:
@@ -137,6 +137,26 @@ Next recommended step: [exact next action]
 - **`references/decision-class-rules.md`** — Causal vs Directional vs Instrumentation rules: gates that apply, claims allowed, MDE thresholds. Read whenever decision class is in doubt.
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Run experiment-spec directly" | Orchestrator routes backlog → spec → runbook → readout |
+| "Skip backlog for urgent test" | Urgent still needs ranked entry and spec |
+| "One sub-skill handles it" | Direct route only when user asks for isolated step |
+| "Readout can wait weeks" | Schedule readout at spec time; do not lose learning window |
+
+## Verification
+
+- [ ] Correct sub-skill invoked for user intent (orchestrator vs direct route)
+- [ ] Artifacts chain: backlog → spec → runbook → readout as applicable
+- [ ] Each artifact saved under docs/experiments/
+- [ ] Final readout includes decision and next action
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

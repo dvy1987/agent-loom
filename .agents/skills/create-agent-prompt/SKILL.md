@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10, arXiv:2601.02577
 ---
@@ -128,6 +128,26 @@ These are NOT implemented in this version. Create via `skill-finder` when demand
 - `create-skill-prompt` — prompts for invoking skills correctly
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Role string in arch spec is enough" | Dedicated prompt per agent enables reuse and review |
+| "Generic helpful assistant works" | Prompt must specify boundaries, tools, and output format |
+| "One prompt for all agents" | Each role needs distinct constraints and knowledge scope |
+| "Ephemeral prompt in chat" | Persist prompt for embedding in AGENTS.md or architecture spec |
+
+## Verification
+
+- [ ] Role, boundaries, tools, and output format defined in prompt
+- [ ] Handoff and failure behavior specified for topology role
+- [ ] Prompt distinct from other agents in same topology
+- [ ] Ready to embed in architecture spec or AGENTS.md
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: addyosmani/agent-skills anti-rationalization tables
 ---
@@ -158,6 +158,17 @@ Revisit triggers: none
 Risks / gaps: validate the suite after generation
 ```
 
+## Verification
+
+- [ ] project-index.md and latest handoff read (bounded, not full memory dump)
+- [ ] git status and git log --oneline -5 run to confirm repo state
+- [ ] 2â€“4 line summary covers context, next action, and drift
+- [ ] Superseded memory entries not treated as current
+
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 After completing, report:

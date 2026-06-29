@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Booking.com 2026 backlog practice, Eppo prioritisation guide, Statsig handbook 2025-26, Reforge experimentation course
   resources:
@@ -143,6 +143,26 @@ Next recommended: [item — route to experiment-spec]
 (Shared from sibling: `experimentation/references/funnel-surface-map.md` and `experimentation/references/method-selector.md`.)
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Test everything now" | Backlog prioritizes by learning value and cost, not enthusiasm |
+| "No hypothesis needed" | Each entry needs hypothesis, metric, and kill criteria |
+| "Flat list is fine" | Rank by ICE/RICE or equivalent; document why order matters |
+| "Ideas in spreadsheet elsewhere" | Persist to docs/experiments/backlog.md |
+
+## Verification
+
+- [ ] Each item has hypothesis, primary metric, and kill criteria
+- [ ] Items ranked with scoring method noted
+- [ ] Backlog saved to docs/experiments/backlog.md
+- [ ] Top candidate ready for experiment-spec handoff
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

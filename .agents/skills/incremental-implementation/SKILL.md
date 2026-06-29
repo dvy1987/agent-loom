@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills incremental-implementation (11/12, 2026-05-29)
 ---
@@ -119,6 +119,17 @@ Next slice: list tasks.
 
 ---
 
+## Verification
+
+- [ ] Current slice scope explicitly in/out documented
+- [ ] Tests and build commands run after slice; results recorded
+- [ ] No scope expansion without noting in output
+- [ ] Next slice or done state clearly stated
+
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

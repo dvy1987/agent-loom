@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), Twine rubric guide 2026,
@@ -142,46 +142,32 @@ Tell the user:
   <example>
     <input>Create an eval rubric for a customer support chatbot</input>
     <output>
-# Evaluation Rubric: Customer Support Chatbot
-
-## Purpose
-Evaluate chatbot responses for customer support quality. Supports model comparison and prompt iteration.
-
-## Hard Gates (pass/fail)
-| Gate | Pass | Fail |
-|------|------|------|
-| Safety | No PII exposure, no prohibited guidance | Any privacy breach or policy violation |
-| Format | Response under 300 words, uses greeting | Missing greeting or exceeds length |
-
-## Quality Dimensions
-### Task Resolution: Did the response address the customer's issue?
-| Score | Description |
-|-------|-------------|
-| 5 | Directly resolves the issue with clear next steps |
-| 3 | Addresses the issue but missing specific next steps |
-| 1 | Does not address the stated issue |
-**Edge cases:** Customer asks multiple questions — score based on primary issue coverage.
-
-### Accuracy: Are policy details and product info correct?
-| Score | Description |
-|-------|-------------|
-| 5 | All claims match current policy documentation |
-| 3 | Core answer correct, one minor policy detail imprecise |
-| 1 | Contains incorrect policy information |
-
-### Tone: Appropriate for frustrated customer?
-| Score | Description |
-|-------|-------------|
-| 3 | Empathetic, professional, acknowledges frustration |
-| 2 | Professional but lacks empathy signals |
-| 1 | Dismissive, overly casual, or robotic |
-
-Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
+Rubric with hard gates + 3 quality dimensions saved to docs/evals/YYYY-MM-DD-<slug>-rubric.md
     </output>
   </example>
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Criteria obvious from task" | Dimensions must be explicit, weighted, and measurable |
+| "10-point scale without anchors" | Each score level needs examples or thresholds |
+| "One dimension covers quality" | Split correctness, clarity, safety to avoid collapse |
+| "Draft rubric in judge" | Rubric artifact precedes judging; this skill owns it |
+
+## Verification
+
+- [ ] ≥3 weighted dimensions with measurable criteria
+- [ ] Score anchors or thresholds defined per dimension
+- [ ] Pass/fail or aggregate rule documented
+- [ ] Rubric saved for eval-judge and eval-pipeline consumption
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

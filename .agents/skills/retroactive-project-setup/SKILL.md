@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: project-setup, codebase-understanding, product-soul, architectural-decision-log, memory-handoff
 ---
@@ -162,27 +162,37 @@ Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
   <example>
     <input>I inherited a 2-year-old Next.js + Prisma app with no AGENTS.md and no agent infra. Set up agents for it without touching code.</input>
     <output>
-Working tree clean ✓ | AGENTS.md absent ✓ | docs/memory absent ✓
-Survey: package.json (Next 14, Prisma 5, Tailwind), README (1 page), 12 source samples across app/, lib/, prisma/. 50 commits scanned — themes: auth refactor, billing integration, perf work.
-Inference matrix: 14 HIGH (stack, commands, structure, code style), 5 LOW (auth strategy, deployment target), 3 GAP (user identity, business model, autonomy prefs).
-Interview: 3 questions asked (user, business model, autonomy). Skipped 3 (already inferred).
-Files created: AGENTS.md (118), docs/architecture.md (94), docs/product-soul.md (76 — PMF marked Hypothesis), docs/adr/ADR-0001-initial-backfill.md (62), 4 memory files. [INFERRED — confirm] tags: 7. Source code modified: 0.
-Next: review the 7 confirm tags, stage the commit.
+Retroactive setup complete: 8 docs/memory files created, 0 source files modified, 7 [INFERRED — confirm] tags flagged.
     </output>
   </example>
 </examples>
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "project-setup covers existing repos" | Retroactive backfills docs/, memory/, skill outputs |
+| "Too late for structure" | Capture current state rather than idealized greenfield |
+| "Skip inventory" | Audit existing files before creating duplicates |
+| "Memory optional for old projects" | Seed docs/memory/ from repo evidence |
+
+## Verification
+
+- [ ] Existing docs and config inventoried before creating files
+- [ ] docs/memory/ seeded with current-state from repo evidence
+- [ ] Missing skill-output paths created without duplicating content
+- [ ] Setup summary logged in SKILL-OUTPUTS.md
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
 ## Impact Report
 
 ```
-Retroactive setup complete: [repo]
-Mode: [single | multi]
-Files created: [N]
-Sub-skills invoked: codebase-understanding, product-soul, architectural-decision-log, project-setup
-[INFERRED — confirm] tags: [count]
-Source code modified: 0
-Memory bootstrap: yes (synthetic handoff seeded)
+Retroactive setup complete: [repo] | Mode: [single|multi]
+Files created: [N] | Memory bootstrap: yes | Source code modified: 0
 Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
 ```

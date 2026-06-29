@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Azure Architecture Center, arXiv:2601.02577 (Orchestral AI), arXiv:2601.07526 (Megaflow), agentskills.io
 ---
@@ -125,6 +125,26 @@ Ready for: implementation-plan
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Diagram is enough" | Spec must define routing, failure handling, and merge strategy in prose |
+| "Orchestrator decides at runtime" | Routing rules must be predefined or failures cascade silently |
+| "More agents = better" | Over-architecting adds handoff cost; combine fuzzy boundaries |
+| "Platform supports parallel" | Verify fan-out against target platform constraints before designing |
+
+## Verification
+
+- [ ] Pattern chosen and documented with agent count and roles
+- [ ] Orchestrator routing, failure handling, and merge strategy defined
+- [ ] Observability strategy stated (tokens, latency, or equivalent)
+- [ ] Output ready for implementation-plan or architecture spec link
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

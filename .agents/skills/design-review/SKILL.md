@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -149,6 +149,26 @@ Verdict: [SHIP / REVISE]
 - **`references/playwright-flow.md`** — automated multi-screen capture flow for Playwright MCP
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Looks good to me" | Review against archetype feels-like claim with concrete checklist |
+| "Screenshot optional" | Visual evidence needed for drift and banned-default detection |
+| "One pass is enough" | Banned defaults often reappear; log review loops and fixes |
+| "Accessibility is separate" | A11y gates are part of design-review verdict |
+
+## Verification
+
+- [ ] Build compared against archetype ARCHETYPE.md and token output
+- [ ] Banned defaults checked; any present have logged justification
+- [ ] Dark mode and mobile layout reviewed, not desktop-only
+- [ ] Review report saved with pass/fail and specific fixes
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

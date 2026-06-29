@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Testing-Business-Ideas-Bland-Osterwalder, Lean-Startup-Ries, The-Mom-Test-Fitzpatrick, Business-Model-Generation-Osterwalder, YC-Startup-School
   resources:
@@ -154,35 +154,28 @@ Open question (if any): <single binary question>
 
 ---
 
-## Example
+## Common Rationalizations
 
-<examples>
-  <example>
-    <input>I have an idea for an app that helps freelance designers chase late invoices. Is it a good business?</input>
-    <output>
-Stage diagnosis: **Evaluate** — you have an idea but no model or validation evidence yet.
+| Excuse | Reality |
+|--------|---------|
+| "Start with business model" | Orchestrates idea → model → eval → discovery order |
+| "Skip customer discovery" | Problem validation before scaling canvas work |
+| "One sub-skill for whole venture" | Route to child unless user names isolated step |
+| "Ideas in head" | Persist venture artifacts under docs/venture/ |
 
-Two prereqs to check before I route to `idea-evaluation`:
+## Verification
 
-1. Specific segment — "freelance designers" is broad. Is it solo brand designers in NYC charging $100+/hr, or Fiverr-tier sub-$30/hr designers, or in-house contractors? Pick one.
-2. Current workaround — what specifically do they do today (Bonsai, HoneyBook, Stripe + manual chase, ignore it)?
+- [ ] Correct sub-skill invoked for user intent
+- [ ] Artifacts chain across idea-generation, modeling, evaluation, discovery
+- [ ] Outputs saved under docs/venture/
+- [ ] Next recommended step stated in impact report
 
-Once I have those, I'll route to `idea-evaluation` with `fermi` for sizing and `assumption-mapping` for the riskiest beliefs.
-    </output>
-  </example>
-</examples>
-
----
-
-## Calling This Skill From Other Skills
-
-Top-level entry point. Called by user or `project-orchestrator`. Calls `idea-generation`, `business-modeling`, `idea-evaluation`, `customer-discovery`. Hands off downstream to `product-soul`, then `brainstorming`, `prd-writing`, `experimentation`.
-
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
-After completing each route, always report:
 ```
 Venture exploration route complete
 Stage: generate / model / evaluate / validate / handoff

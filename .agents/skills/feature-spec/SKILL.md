@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
   resources:
@@ -158,32 +158,25 @@ Re-save to the same path. Append:
 
 ---
 
-## Example
+## Common Rationalizations
 
-<examples>
-  <example>
-    <input>/specify a feature for password-less email magic-link login.</input>
-    <output>
-Reading `docs/constitution.md@2` (auth rule C-2.4: tokens MUST expire ≤ 15 min).
+| Excuse | Reality |
+|--------|---------|
+| "User story covers it" | FR/NFR/AC/edge cases must be complete before plan |
+| "Clarifications later in code" | [NEEDS CLARIFICATION] blocks approval and crosscheck PASS |
+| "Constitution is optional" | Load docs/constitution.md and cite applicable rules |
+| "Draft is good to plan" | Status must be Approved (CL=0) before implementation-plan |
 
-Spec drafted with:
-- 2 user scenarios
-- 5 FRs (request link, validate token, single-use enforcement, expiry, rate limit)
-- 3 NFRs (latency budget per AC, GDPR consent, audit log)
-- 7 ACs in Given/When/Then form
-- 3 edge cases (expired token, replay, multiple devices)
-- Out of scope: SSO, OAuth, social login
-- 2 [NEEDS CLARIFICATION]:
-  - CL-1: Token TTL within constitution limit — 5, 10, or 15 minutes?
-  - CL-2: Should a second click on a used link return generic 404 or "already used"?
+## Verification
 
-Saved as `docs/specs/2026-05-02-magic-link-feature-spec.md` (status: Draft).
-Run `/clarify` next.
-    </output>
-  </example>
-</examples>
+- [ ] Constitution loaded and applicable rules referenced
+- [ ] US, FR, NFR, AC, edge cases, and out-of-scope sections complete
+- [ ] All [NEEDS CLARIFICATION] markers resolved or explicitly counted
+- [ ] Spec saved to docs/specs/ and logged in SKILL-OUTPUTS.md
 
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Kohavi/Tang/Xu Trustworthy Online Controlled Experiments, Microsoft ExP guidelines, Statsig 2026 docs, Eppo MDE handbook
   resources:
@@ -144,6 +144,26 @@ Status: [READY-TO-LAUNCH | DOWNGRADED-TO-DIRECTIONAL | BLOCKED-INSUFFICIENT-POWE
 - **`references/spec-template.md`** — The full spec doc structure to write to disk. Read in Step 9.
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Backlog item is enough" | Spec locks hypothesis, variants, metrics, success criteria |
+| "Metrics figured out in run" | Primary metric defined before launch or results uninterpretable |
+| "No control needed" | Specify control vs treatment and unit of analysis |
+| "Verbal agreement to run" | Approved spec file gates experiment-runbook creation |
+
+## Verification
+
+- [ ] Hypothesis, variants, and primary metric explicitly defined
+- [ ] Success, guardrail, and kill criteria documented
+- [ ] Randomization and unit of analysis specified
+- [ ] Spec saved to docs/experiments/specs/ with approved status
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

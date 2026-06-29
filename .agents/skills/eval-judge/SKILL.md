@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2306.05685 (MT-Bench LLM-as-Judge), arXiv:2602.08672 (GER-Eval),
@@ -111,77 +111,35 @@ Target: [description] | Rubric: [name/path] | Mode: Direct scoring
 | [name] | PASS/FAIL | [specific evidence] |
 
 === Dimension Scores ===
-### [Dimension] — Score: [N]/[max] (confidence: [0-1])
-Evidence: [quotes/observations] | Reasoning: [maps to rubric] | Improvement: [one fix]
+[Per-dimension scores with evidence and reasoning]
 
 === Summary ===
-Gates: [N] pass, [N] fail | Lowest: [dimension] — [fix]
-Verdict: [PASS / FAIL (gate failure)]
-```
-
-## Output Format — Pairwise Comparison
-
-```
-=== Pairwise Evaluation ===
-Comparing: [A] vs [B]
-
-### [Dimension]
-Pass 1 (A first): [A/B/TIE] [0-1] | Pass 2 (B first): [A/B/TIE] [0-1]
-Consistent: [yes/no] | Final: [A/B/TIE] [0-1] | Reasoning: [evidence]
-
-=== Verdict: [A/B/TIE] | Confidence: [0-1] | Position consistency: [N]/[N]
-```
-
----
-
-## Gotchas
-
-- **Length ≠ quality.** Longer responses are systematically rated higher by LLM judges. Actively check: "Would a shorter version with the same content score equally?"
-- **Confident tone ≠ accuracy.** Authoritative-sounding responses get higher scores even when wrong. Always verify factual claims against rubric criteria, not delivery style.
-- **Chain-of-thought improves reliability 15-25%** but also increases token cost. Worth it for quality-critical evals; consider sampling for high-volume pipelines.
-- In pairwise mode, if one output is much longer, the position swap is especially critical — length bias and position bias can compound.
-- Edge cases cause the most reviewer variance. When uncertain, score conservatively and flag for calibration.
-
----
-
-## Example
-
-<examples>
-  <example>
-    <input>Score this API documentation response against our rubric</input>
-    <output>
-=== Evaluation Report ===
-Target: API documentation response for /users endpoint
-Rubric: docs/evals/2026-04-19-api-docs-rubric.md
-Mode: Direct scoring
-
-=== Hard Gates ===
-| Gate | Verdict | Evidence |
-|------|---------|----------|
-| Format | PASS | Includes endpoint, method, params, response example |
-| Safety | PASS | No internal URLs or credentials exposed |
-
-=== Dimension Scores ===
-### Accuracy — Score: 4/5 (confidence: 0.85)
-Evidence: All parameter types correct. Response schema matches actual API.
-Reasoning: One minor issue — rate limit header documented as X-Rate-Limit but actual is X-RateLimit-Remaining.
-Improvement: Update rate limit header name to X-RateLimit-Remaining.
-
-### Completeness — Score: 3/5 (confidence: 0.9)
-Evidence: Missing error response examples for 401 and 429 status codes.
-Reasoning: Core happy path documented but error handling incomplete — rubric requires all documented status codes.
-Improvement: Add error response examples for 401 (unauthorized) and 429 (rate limited).
-
-=== Summary ===
-Hard gates: 2 pass, 0 fail
-Dimensions: Accuracy 4/5, Completeness 3/5
-Lowest-scoring: Completeness — missing error response examples
-Overall verdict: PASS (all gates pass, quality improvements recommended)
+Hard gates + verdict recorded.
     </output>
   </example>
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Rubric in my head" | Written criteria with pass/fail thresholds required |
+| "Subjective quality is fine" | Scores must map to observable evidence per dimension |
+| "One judge run enough" | Document rubric version and sample set for the verdict |
+| "Skip blind comparison" | Fixed criteria and order when comparing outputs |
+
+## Verification
+
+- [ ] Rubric artifact loaded before scoring
+- [ ] Each dimension scored with cited evidence from the artifact
+- [ ] Pass/fail or aggregate verdict recorded with thresholds
+- [ ] Judge output saved for eval pipeline or eval-output handoff
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

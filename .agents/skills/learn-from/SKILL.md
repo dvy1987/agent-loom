@@ -166,8 +166,6 @@ Score: [N]/[max] | Verdict: [PASS/BORDERLINE/REJECT]
 - Multiple sources in one message: process each independently, combined report.
 - When recommending KEEP CURRENT, explain specifically why the current approach is stronger - don't just say "it's fine."
 
----
-
 ## Example
 
 <examples>
@@ -183,7 +181,9 @@ Routed to: learn-from-paper
   </example>
 </examples>
 
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

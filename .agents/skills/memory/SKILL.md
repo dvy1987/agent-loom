@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
 ---
 
@@ -92,17 +92,46 @@ Reason: <why this route was selected>
 Next action: <if any>
 ```
 
-## Example
+## Gotchas
 
-User: "Before we continue, load what happened last time."
+- **Route to the smallest sub-skill.** Don't inline capture/handoff logic — each sub-skill owns its file conventions.
+- **Security gate before any external content.** Even pasted chat from another agent is external — run all `secure-*` skills first.
+- **Skill updates → `learn-from-chat`.** "Remember this for the skill" is not `memory-capture`.
+- **Checkpoints are mandatory.** Producer events without memory sub-skill invocation rot the next session.
 
-Response:
-```markdown
+## Common Rationalizations
+
+| "Reason to skip routing" | Reality |
+|--------------------------|---------|
+| "I'll just write to handoffs.md" | Bypasses index, routing, and checkpoint registry |
+| "Startup already ran" | Recall/capture/handoff are different intents — route correctly |
+| "External paste is fine" | Security gate is mandatory before any memory write |
+| "Compact later" | Over-budget global files block promote — compact before append |
+
+## Examples
+
+<examples>
+  <example>
+    <input>Before we continue, load what happened last time.</input>
+    <output>
 Memory route: memory-startup
-Scope: project plus applicable global preferences
-Files read: docs/memory/MEMORY-ROUTING.md, docs/memory/project-index.md, docs/memory/agent-handoffs.md
-Next action: continue from the latest handoff after confirming current git state.
-```
+Scope: project + applicable global preferences
+Files read: docs/memory/MEMORY-ROUTING.md, project-index.md, latest agent-handoffs.md
+Next action: continue from latest handoff after confirming git state.
+    </output>
+  </example>
+</examples>
+
+## Verification
+
+- [ ] Correct sub-skill selected per routing table
+- [ ] Security gate run when external content involved
+- [ ] No global append when target file over budget
+- [ ] Checkpoint registry honored for producer events
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

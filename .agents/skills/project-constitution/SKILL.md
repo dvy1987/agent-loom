@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: GitHub Spec Kit (constitution command), AWS Kiro (specs-first), agentskills.io
 ---
@@ -154,6 +154,26 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Team knows the rules" | Constitution is machine-readable policy for specs and crosscheck |
+| "Copy from another repo" | Rules must reflect this project stack, risks, boundaries |
+| "Constitution never changes" | Version and changelog constitution amendments |
+| "Soft guidelines OK" | Use MUST/SHALL for crosscheck enforcement |
+
+## Verification
+
+- [ ] Rules use MUST/SHALL language with stable rule IDs
+- [ ] Stack, security, and scope boundaries reflected in rules
+- [ ] Version number incremented on amendment
+- [ ] Saved to docs/constitution.md and logged if newly created
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 

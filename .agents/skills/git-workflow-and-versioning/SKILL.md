@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills git-workflow-and-versioning (11/12, 2026-05-29)
 ---
@@ -128,6 +128,17 @@ Run: `npm test` â†’ pass, then commit.
 
 ---
 
+## Verification
+
+- [ ] git status and diff reviewed before commit recommendation
+- [ ] Commit message follows conventional format with clear scope
+- [ ] Intentionally untouched files listed with reason
+- [ ] No secrets or .env files staged
+
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 ## Impact Report
 
 ```

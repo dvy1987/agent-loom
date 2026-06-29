@@ -17,7 +17,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: JTBD-Christensen, Paul-Graham-essays, YC-Startup-School, Rob-Walling-pain-mining, Y-Combinator-RFS
   resources:
@@ -119,65 +119,32 @@ Tell the user:
 
 ## Output Format — Idea Batch Doc
 
-```markdown
-# Idea Batch — <theme/context>
-Date: YYYY-MM-DD | Methods: <list> | Candidates: N
-
-## Founder/Domain Context
-<2–4 lines summarising the constraints fed in>
-
-## Candidates
-### Idea 1: <pitch>
-[7-field card]
-
-### Idea 2: <pitch>
-[7-field card]
-
-...
-
-## Struck Candidates (with reason)
-- <pitch> — <anti-pattern fired>
-
-## Diversity Check
-<themes covered, gaps acknowledged>
-
-## Next-Step Ranking (rough, not a verdict)
-| # | Pitch | Pain | Wedge | FMF | Sum |
-|---|---|---|---|---|---|
-| 1 | ... | 3 | 2 | 3 | 8 |
-
-## Recommended Next Action
-- Top 1–3 candidates → `business-modeling` (one canvas each)
-- Or one favourite → `idea-evaluation` directly
-```
+Use `references/batch-template.md` for the full batch structure (idea cards, struck candidates, ranking).
 
 ---
 
-## Example
+## Common Rationalizations
 
-<examples>
-  <example>
-    <input>I'm a backend engineer who's worked on payments at two fintechs. Generate 7 startup ideas for me.</input>
-    <output>
-Before I generate, two quick questions:
+| Excuse | Reality |
+|--------|---------|
+| "Brainstorm in chat only" | Persist candidates with problem/solution sketch |
+| "Quantity over quality" | Diverge first, but capture enough detail to evaluate |
+| "One idea is enough" | Generate breadth before idea-evaluation narrows |
+| "Skip weird ideas" | Include contrarian variants; evaluation filters later |
 
-1. What's the most annoying / expensive thing you've seen in payments in the last 12 months — the "I cannot believe this is still a manual problem in 2026" moment?
-2. Are you open to founder-led sales (B2B) or do you want to stay product-led / self-serve only?
-    </output>
-  </example>
-</examples>
+## Verification
 
----
+- [ ] ≥5 distinct ideas captured with problem and solution sketch
+- [ ] Constraints and audience noted for each candidate
+- [ ] Ideas saved to docs/venture/ or agreed path
+- [ ] Top candidates flagged for idea-evaluation handoff
 
-## Calling This Skill From Other Skills
-
-`venture-exploration` calls this in the generate stage. After generation, the user typically picks 1–3 cards to send to `business-modeling`, then `idea-evaluation`.
-
----
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
 
 ## Impact Report
 
-After completing, always report:
 ```
 Idea generation complete: <theme>
 File saved: docs/ventures/ideas/YYYY-MM-DD-batch.md
