@@ -3,17 +3,20 @@ name: memory-handoff
 description: >
   Write concise next-agent handoff summaries across sessions, tools, and coding
   agents. Load when the user says handoff, next agent should know, save context,
-  summarize where we are, switching agents, or before ending a meaningful session.
+  summarize where we are, switching agents, ending session, session wrap-up, or
+  before closing a meaningful session. Also triggers on "write a handoff",
+  "continuity for next agent", "I'm switching to another agent", or at session
+  end per the memory checkpoint registry.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
 ---
 
 # Memory Handoff
 
-You preserve continuity for the next agent. A handoff is short, actionable, and focused on what would otherwise be lost.
+You are a session continuity writer. You preserve what the next agent needs — short, actionable, and focused on what would otherwise be lost.
 
 ## Trigger Policy
 
@@ -21,7 +24,7 @@ Run when a future agent would lose important context:
 - Meaningful code changes, debugging discoveries, architecture debates, spec changes, or deferred decisions.
 - End of a long session with unresolved work.
 - Before switching agents or tools.
-- User says "handoff", "summarize where we are", "save context", "memory handoff", or "next agent should know".
+- User says "handoff", "summarize where we are", "save context", or "next agent should know".
 
 Do not run after trivial interactions.
 
@@ -67,20 +70,63 @@ Do not run after trivial interactions.
 - Keep each handoff under 80 lines.
 - Do not include secrets, tokens, or raw private data.
 - Link to decision entries instead of repeating long rationale.
-- If the handoff gets repetitive, call `memory-compact`.
+- If the handoff log gets repetitive, call `memory-compact`.
 
-## Example
+## Gotchas
 
-User: "I'm moving this to another agent, save a handoff."
+- **Handoff ≠ decision log.** Record decisions via `memory-decision`; handoffs reference them by link.
+- **Working tree matters.** Always note clean vs dirty — next agent's first action may be commit or rebase.
+- **Don't repeat the full debate.** One-line conclusion + link to `decision-log.md` or `learnings.md`.
+- **Trivial sessions skip handoff.** A single-line answer doesn't need a handoff entry.
 
-Output: append a timestamped handoff with current status, unresolved tasks, and files touched.
+## Common Rationalizations
 
-## Impact Report
+| "Reason to skip handoff" | Reality |
+|--------------------------|---------|
+| "Memory files are up to date" | Session nuance (debated-but-not-decided, dirty tree) lives only in chat |
+| "User will tell the next agent" | Users switch tools — handoff is the portable continuity layer |
+| "Too long to summarize" | 80-line cap forces prioritization — that's the point |
+| "I'll commit instead" | Commits don't capture deferred items or revisit triggers |
 
-After completing, report:
+## Output Format
+
 ```markdown
 Handoff saved: docs/memory/agent-handoffs.md
 Current state updated: yes/no
 Index updated: yes/no
+Next recommended action: <one sentence>
+```
+
+## Examples
+
+<examples>
+  <example>
+    <input>I'm moving this to another agent — save a handoff.</input>
+    <output>
+Handoff saved: docs/memory/agent-handoffs.md (2026-06-29 14:30)
+Current state updated: yes
+Index updated: yes
+Next recommended action: Continue Phase 2 batch 3 gap skills via universal-skill-creator.
+Working tree: clean on main.
+    </output>
+  </example>
+</examples>
+
+## Verification
+
+- [ ] Handoff appended to `docs/memory/agent-handoffs.md` under 80 lines
+- [ ] `docs/memory/current-state.md` updated if project state changed
+- [ ] `docs/memory/project-index.md` row added
+- [ ] No secrets; decisions linked not duplicated
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
+## Impact Report
+
+```
+Handoff saved: docs/memory/agent-handoffs.md
+Current state updated: yes/no
 Next recommended action: <one sentence>
 ```

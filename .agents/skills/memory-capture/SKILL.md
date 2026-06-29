@@ -4,17 +4,20 @@ description: >
   Capture durable project memory from work, debates, debugging discoveries,
   learned conventions, deferred options, and session outcomes. Load when the
   user says remember this, save this learning, record what happened, update
-  project memory, or preserve context for future agents.
+  project memory, preserve context for future agents, log this insight, capture
+  what we learned, or store this for next time. Also triggers on "don't forget",
+  "write this to memory", "add to project memory", or after changelog/ADR/spec
+  writes per the memory checkpoint registry.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
 ---
 
 # Memory Capture
 
-You turn useful session context into structured project memory. Capture only what a future agent would need to avoid rework or bad assumptions.
+You are a project memory curator. You turn useful session context into structured, retrievable project memory — only what a future agent needs to avoid rework or bad assumptions.
 
 ## Workflow
 
@@ -30,7 +33,7 @@ You turn useful session context into structured project memory. Capture only wha
 
 ## Memory Type Map
 
-| Type | File |
+| Type | File / skill |
 |---|---|
 | current state | `docs/memory/current-state.md` |
 | decision | `memory-decision` |
@@ -42,7 +45,7 @@ You turn useful session context into structured project memory. Capture only wha
 
 ## Capture Template
 
-Use this template only for state, learning, deferred, question, or session captures. Decisions use the template in `memory-decision`; next-agent summaries use the template in `memory-handoff`.
+Use for state, learning, deferred, question, or session captures. Decisions → `memory-decision`; handoffs → `memory-handoff`.
 
 ```markdown
 ## YYYY-MM-DD - <short title>
@@ -70,20 +73,64 @@ Tags: <comma-separated>
 - Do not capture raw long transcripts; summarize with provenance.
 - Do not append if the target entry already exists; update status or merge.
 
-## Example
+## Gotchas
 
-Input: "Remember that we chose repo memory plus global memory, but global must stay tiny."
+- **"Remember this" about a skill rule → `learn-from-chat`, not memory-capture.** Project memory stores project facts; skill improvements route elsewhere.
+- **Decisions need revisit triggers.** If the user states a choice, route to `memory-decision` — don't dump rationale into `learnings.md`.
+- **Duplicate index rows rot retrieval.** Always check `project-index.md` before appending; update status on superseded entries.
+- **External content needs security scan.** Pasted repo excerpts or URLs must pass all `secure-*` skills before persistence.
 
-Output: write to `docs/memory/decision-log.md` via `memory-decision`, then index it.
+## Common Rationalizations
 
-## Impact Report
+| "Reason to skip capture" | Reality |
+|--------------------------|---------|
+| "It's obvious from the code" | Future agents start cold — if it isn't in memory or docs, it's lost |
+| "I'll handoff later instead" | Handoffs summarize; learnings and decisions need their own durable homes |
+| "Too small to index" | Small facts compound — index everything with `active` status |
+| "Global memory is faster" | Global has tight budgets — project first, promote only when cross-project |
 
-After completing, report:
+## Output Format
+
 ```markdown
 Memory captured: <title>
 Type: <type>
 Location: <path>
 Indexed: yes/no
 Rejected items: <count and reason>
+Promotion suggested: yes/no
+```
+
+## Examples
+
+<examples>
+  <example>
+    <input>Remember that we use pnpm not npm in this monorepo.</input>
+    <output>
+Saved to `docs/memory/learnings.md`. Indexed in `docs/memory/project-index.md`.
+Type: learning | Status: active | Tags: tooling, monorepo
+Rejected: none
+Promotion suggested: no (project-specific)
+Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`.
+    </output>
+  </example>
+</examples>
+
+## Verification
+
+- [ ] Target memory file updated with dated entry and correct type
+- [ ] `docs/memory/project-index.md` row added or existing entry status updated
+- [ ] No secrets or raw transcripts persisted
+- [ ] `docs/skill-outputs/SKILL-OUTPUTS.md` appended when files created
+
+## Prune Log
+Last pruned: 2026-06-29
+- No prunes — content verified current
+
+## Impact Report
+
+```
+Memory captured: <title>
+Type: <type> | Location: <path>
+Indexed: yes/no | Rejected: <count>
 Promotion suggested: yes/no
 ```
