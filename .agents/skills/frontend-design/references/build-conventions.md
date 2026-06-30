@@ -45,8 +45,7 @@ Practical conventions for the build phase. Framework-agnostic where possible; fr
 ### React / Next.js
 - Server components by default; client components only when interactivity demands.
 - Tailwind v4 with `@theme` directive sourcing tokens from `tokens.css`.
-- Avoid headless UI libraries unless archetype is generic — they smuggle in defaults. Prefer Radix primitives + archetype-styled wrappers.
-- No shadcn/ui drop-in. If you must use shadcn as a starter, restyle every component before ship.
+- Use Radix primitives (or shadcn/ui, which wraps them) for behavior + accessibility — but drive ALL styling from DESIGN.md tokens. A default shadcn drop-in is generic by definition; restyle every visible surface before ship. See `stack-selection.md`.
 
 ### Vue / Nuxt
 - `<script setup>`, composition API.
@@ -89,13 +88,13 @@ Avoid prop drilling past ~3 levels — restructure or use context.
 ```
 src/
   styles/
-    tokens.css       <- from design-tokens-craft
+    tokens.css       <- from design-system
     base.css         <- resets + base styles using tokens
   components/
     [archetype-named primitives]
   pages/ or routes/
     [feature pages]
-  icons/             <- from icon-craft
+  icons/             <- from design-system icon strategy
     [coherent set]
 public/
   fonts/             <- archetype's actual fonts, self-hosted

@@ -676,54 +676,43 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ### `frontend-design`
 **Triggers:** "build a UI", "design a frontend", "build a landing page", "build a dashboard", "design a SaaS interface", "beautify a UI", "redesign this", "make this not look AI-generated", "give this real design polish", "frontend design"
-**What it does:** Orchestrator for the frontend-design suite. Diagnoses the ask (one-shot / full app / refactor / direct sub-skill), routes through `design-archetype` → optional research → `design-tokens-craft` → `icon-craft` → build → `design-review`. Hard-bans defaults (Inter-only, Tailwind grays, purple→pink gradient, Lucide drop-in, centered hero with 2 CTAs, 3-col feature grid) without archetype-grounded justification. Mobile-first, dark-mode-first. Real working code only — no placeholders.
-**Calls:** `design-archetype` (Step 2) → `design-tokens-craft` (Step 4) → `icon-craft` (Step 5) → `design-review` (Step 7). Max 2 review loops before escalating.
-**Output files:** `.design/<feature>/ARCHETYPE.md`, `RESEARCH.md`, `TOKENS.md`, `ICONS.md`, `REVIEW.md`, plus `src/...` build
+**What it does:** Orchestrator + builder for the design suite. Stage 0 derives audience/brand AND recommends the stack from `docs/product-soul.md`/PRD/specs (default app stack: React + Next + Tailwind v4 + shadcn/ui; matches an existing repo). Diagnoses the ask (fast / full / refactor / direct), routes `design-direction` → `design-system` → build → `design-review`. Builds from golden examples with mandatory polish + state-coverage gates (loading/empty/error/populated, every interactive state). Hard-bans defaults (Inter-only, Tailwind grays, purple→pink gradient, Lucide drop-in, centered hero+2CTAs, 3-col feature grid). Emits ONE `DESIGN.md`. Real working code only.
+**Calls:** `design-direction` (Step 2) → `design-system` (Step 3) → build (Step 4) → `design-review` (Step 5). Max 2 review loops before escalating.
+**Output files:** `.design/<feature>/{DIRECTION.md,REVIEW.md}`, `DESIGN.md`, `src/styles/tokens.css`, plus `src/...` build
 **Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**References:** `references/anti-vibecoded-checklist.md` (banned defaults + distinctive moves), `references/build-conventions.md` (mobile-first, motion, a11y, framework conventions), `references/one-shot-flow.md` (compressed flow for posters/single artifacts)
-**Impact report:** Feature, archetype, path taken, sub-skills invoked, anti-vibecoded gates passed, review loops, distinctive moves applied
+**References:** `references/stack-selection.md` (product→stack; shadcn-as-primitives), `references/polish-playbook.md` (state coverage + motion specifics), `references/golden-examples/{components,states,composition}.md` (positive taste), `references/anti-vibecoded-checklist.md`, `references/build-conventions.md`, `references/one-shot-flow.md`
+**Impact report:** Feature, stack, direction, path, sub-skills, state coverage, distinctive moves, APCA, review loops
 
 ---
 
-### `design-archetype`
-**Triggers:** "pick an aesthetic", "choose a design direction", "what should this look like", "make this feel like Linear / Stripe / Apple / Duolingo", "give me a design direction", "classify this product visually" — or called by `frontend-design` Step 2
-**What it does:** Sub-skill of `frontend-design`. Picks exactly one archetype from a curated catalog of 12: `b2b-productivity`, `enterprise-trust`, `premium-consumer`, `playful-consumer`, `editorial`, `brutalist-distinctive`, `dev-tool`, `marketing-landing`, `creative-tool` (Leonardo/Midjourney/Runway), `social-feed` (X/Threads/Bluesky), `conversational-ai` (ChatGPT/Claude/Perplexity), `spatial-canvas` (FigJam/Miro/tldraw). Each archetype = typography pair, color logic, motion philosophy, density, icon stance, 3 reference sites, anti-patterns. Scores candidates 0–3 on audience fit / job fit / distinctive fit. Outputs a `feels like X` claim grounded in a real product.
+### `design-direction`
+**Triggers:** "pick an aesthetic", "choose a design direction", "what should this look like", "make this feel like Linear / Apple / Duolingo", "give me design directions", "explore some looks" — or called by `frontend-design` Step 2. (Replaces deprecated `design-archetype`.)
+**What it does:** Sub-skill of `frontend-design`. The anti-generic gate: derives a deliberate posture from product docs, scores a curated palette of 12 archetypes (b2b-productivity, enterprise-trust, premium-consumer, playful-consumer, editorial, brutalist-distinctive, dev-tool, marketing-landing, creative-tool, social-feed, conversational-ai, spatial-canvas), then generates **2-3 genuinely distinct directions** (differing on type/color/layout/motion/density/bold-move — not three palettes of one idea), compares side-by-side, and commits to ONE (agent picks for a non-technical owner with plain rationale). No hybrids.
 **Called by:** `frontend-design` (Step 2)
-**Output file:** `.design/<feature>/ARCHETYPE.md`
-**References:** `references/selection-rubric.md` + 12 archetype files in `references/archetypes/`
-**Impact report:** Archetype selected, feels-like reference, top 3 scores, adaptations applied
+**Output file:** `.design/<feature>/DIRECTION.md` (chosen + rejected-options audit trail)
+**References:** `references/exploration-method.md` (how to diverge, posture axes, who chooses), `references/selection-rubric.md`, 12 archetype files in `references/archetypes/`
+**Impact report:** Posture, directions explored, chosen direction + feels-like, owner mode, chooser
 
 ---
 
-### `design-tokens-craft`
-**Triggers:** "generate design tokens", "create a design system", "set up CSS custom properties", "build a token scale", "design tokens for", "set up a theme" — or called by `frontend-design` Step 4
-**What it does:** Sub-skill of `frontend-design`. Generates archetype-driven semantic tokens (color, typography, spacing, radius, motion, elevation). Hard-bans Tailwind-default palettes (`slate`, `zinc`, `gray`), Inter-only typography, purple→pink gradients, 9-step grayscale dumps, and inverted-lightness dark mode unless archetype demands it. Uses `oklch()` for color definitions. Outputs `tokens.css`, `tokens.ts`, and `TOKENS.md` rationale.
-**Called by:** `frontend-design` (Step 4)
-**Output files:** `src/styles/tokens.css`, `src/styles/tokens.ts`, `.design/<feature>/TOKENS.md`
+### `design-system`
+**Triggers:** "build a design system", "generate design tokens", "create a DESIGN.md", "set up a theme", "design a color/type system", "pick icons" — or called by `frontend-design` Step 3. (Replaces deprecated `design-tokens-craft` + `icon-craft`.)
+**What it does:** Sub-skill of `frontend-design`. Turns a chosen direction into ONE canonical `DESIGN.md` + production `tokens.css` in the stack's format (shadcn HSL vars / Tailwind v4 `@theme`). Tokens "all the way down": 8-step oklch neutral ramp, every interactive state (hover/active/focus/disabled), focus-ring color+opacity, text-on-accent, spacing/radius/elevation/motion scales, **APCA-validated** contrast. Folds in icon strategy (one family, stroke matched to type weight) and component contracts (variants + composition + use-when) for core atoms. Hard-bans slate/zinc default ramps, Inter-only, purple→pink, inverted dark mode, default Lucide.
+**Called by:** `frontend-design` (Step 3)
+**Output files:** `DESIGN.md`, `src/styles/tokens.css` (+ optional `tokens.ts`)
 **Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**References:** `references/token-recipes.md` (per-archetype starter recipes), `references/typography-pairings.md` (paid + free pairings), `references/banned-palettes.md` (vibecoded tells)
-**Impact report:** Archetype, recipe used, color/type slot counts, banned defaults rejected, files written
-
----
-
-### `icon-craft`
-**Triggers:** "pick icons", "design an icon set", "customize Lucide / Phosphor / Heroicons", "generate SVG icons", "make icons feel custom", "the icons look generic", "icons for this product" — or called by `frontend-design` Step 5
-**What it does:** Sub-skill of `frontend-design`. Picks ONE icon strategy: `tuned-phosphor`, `custom-svg`, `hand-drawn`, `mixed-metaphor`, or `system-native`. Solves the "Lucide everywhere" vibecoded tell. Matches stroke weight to typography, defines grid/keyline/radius/terminal style, generates SVG component set when archetype demands custom. Bans default Lucide drop-in.
-**Called by:** `frontend-design` (Step 5)
-**Output files:** `src/icons/index.tsx`, `public/icons/*.svg`, `.design/<feature>/ICONS.md`
-**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**References:** `references/icon-strategies.md` (5 strategies + per-archetype defaults), `references/svg-craft.md` (grid, stroke, optical sizing, terminal style, export rules)
-**Impact report:** Strategy, source, icons inventoried, anti-Lucide-default audit, files written
+**References:** `references/design-md-template.md` (canonical format), `references/state-tokens.md` (ramp/states/focus/APCA/tiers), `references/token-recipes.md`, `references/typography-pairings.md`, `references/banned-palettes.md`, `references/icon-strategies.md`, `references/svg-craft.md`
+**Impact report:** Direction, token format, color/state slot counts, APCA result, icon strategy, component contracts
 
 ---
 
 ### `design-review`
-**Triggers:** "review this UI", "audit this design", "is this design good", "does this feel like Linear", "design QA", "evaluate visual quality", "check if this looks vibecoded" — or called by `frontend-design` Step 7
-**What it does:** Sub-skill of `frontend-design`. Scores a built UI against its archetype's `feels like X` claim across 10 dimensions (archetype fidelity, anti-vibecoded gates, typography, color, iconography, layout & rhythm, motion, accessibility hard-gate, responsive, distinctive moves). Produces specific, prioritized fixes — never vibes-based feedback. Max 8 findings per pass, max 2 review loops before escalating. Supports paste-screenshot (manual) or Playwright MCP (automated multi-screen capture).
-**Called by:** `frontend-design` (Step 7)
-**Output file:** `.design/<feature>/REVIEW.md` (+ `AUTOMATED-AUDIT.md` if Playwright)
-**References:** `references/review-rubric.md` (0–3 scoring per dimension with anchors + verdict thresholds), `references/playwright-flow.md` (capture matrix + automated checks)
-**Impact report:** Review pass, verdict (SHIP/REVISE), hard gates, top dimension scores, findings raised
+**Triggers:** "review this UI", "audit this design", "is this design good", "does this feel like Linear", "design QA", "evaluate visual quality", "check if this looks vibecoded" — or called by `frontend-design` Step 5
+**What it does:** Sub-skill of `frontend-design`. Scores a built UI against its chosen direction's `feels like X` across 11 dimensions (direction fidelity, anti-vibecoded, typography, color, **state coverage**, iconography, layout & rhythm, motion, accessibility hard-gate, responsive, distinctive moves). Accessibility uses **APCA** contrast (not the legacy WCAG ratio) via a bundled Node script — body Lc≥75, large ≥45, non-text ≥30, both modes. State-coverage and polish are gates. Specific, prioritized, file-level fixes — never vibes. Max 8 findings, max 2 loops. Paste-screenshot or Playwright MCP.
+**Called by:** `frontend-design` (Step 5)
+**Output file:** `.design/<feature>/REVIEW.md`
+**References:** `references/review-rubric.md` (0–3 anchors + SHIP thresholds), `references/apca-contrast.md` (targets + usage), `references/playwright-flow.md`; `scripts/apca.mjs` (APCA calculator)
+**Impact report:** Review pass, verdict (SHIP/REVISE), APCA result, state coverage, direction fidelity, findings raised
 
 ---
 

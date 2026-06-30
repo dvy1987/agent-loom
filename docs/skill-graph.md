@@ -123,9 +123,8 @@ flowchart LR
 
   subgraph PS_Frontend["PS: Frontend Design"]
     fd[frontend-design]
-    da[design-archetype]
-    dtc[design-tokens-craft]
-    ic[icon-craft]
+    ddir[design-direction]
+    dsys[design-system]
     dr[design-review]
   end
 
@@ -290,10 +289,11 @@ flowchart LR
   ero --> adl
 
   %% --- Frontend design ---
-  fd --> da
-  fd --> dtc
-  fd --> ic
+  fd --> ddir
+  ddir --> dsys
+  dsys --> fd
   fd --> dr
+  dr -.->|revise| fd
 
   %% --- Venture exploration ---
   ve --> ig
@@ -318,7 +318,7 @@ flowchart LR
 ## Reading the Graph
 
 - **Entry points** — skills users invoke directly: `universal-skill-creator`, `improve-skills`, `learn-from` (+ `learn-from-paper`/`-repo`/`-article`/`-chat`), `reality-check`, `project-orchestrator`, `project-setup`, `retroactive-project-setup`, `process-decomposer`, `agent-builder`, `deep-thinking`, `brainstorming`, `prd-writing`, `product-soul`, `venture-exploration`, `experimentation`, `eval-output`, `frontend-design`, `spec-driven-development`, `problem-to-plan`, `memory`
-- **Orchestrators** — skills whose primary job is routing to a child set: `learn-from` → ingestion sub-skills; `deep-thinking` → thinking frameworks; `memory` → memory suite; `eval-output` → rubric/judge/pipeline; `experimentation` → backlog/spec/runbook/readout; `frontend-design` → archetype/tokens/icons/review; `venture-exploration` → idea/model/eval/discovery; `spec-driven-development` → constitution/spec/plan/cross-check/TDD; `project-orchestrator` → process & setup layer
+- **Orchestrators** — skills whose primary job is routing to a child set: `learn-from` → ingestion sub-skills; `deep-thinking` → thinking frameworks; `memory` → memory suite; `eval-output` → rubric/judge/pipeline; `experimentation` → backlog/spec/runbook/readout; `frontend-design` → direction/system/review; `venture-exploration` → idea/model/eval/discovery; `spec-driven-development` → constitution/spec/plan/cross-check/TDD; `project-orchestrator` → process & setup layer
 - **Meta chain** — `improve-skills` runs the full cycle: validate → ingest `docs/learnings/chat-learnings.md` → deprecate → prune → research → rewrite → split/compress → cross-link → library-skill → generate-changelog → write terminal statuses back to chat-learnings
 - **Targeted improvement loop** — `learn-from-chat` (in-session) escalates restructure-class edits to `improve-skills TARGET=<skill> SKIP_RESEARCH=true`; `improve-skills` also reads OPEN entries from `docs/learnings/chat-learnings.md` during periodic full passes — the two skills form one closed feedback loop
 - **Library sync** — `library-skill` is invoked after every structural change (by `universal-skill-creator`, `split-skill`, `deprecate-skill`, `improve-skills`, `skill-finder`) and fans out to SKILL-INDEX, AGENTS.md, README, this graph, PRD, and architecture, then calls `generate-changelog`

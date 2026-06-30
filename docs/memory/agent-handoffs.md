@@ -644,3 +644,39 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Working Tree
 - Clean (no uncommitted changes).
+
+---
+
+## 2026-06-30 12:30 — Handoff (session end)
+
+### Done
+- **Design Skill Suite rebuild complete** (plan `design-skills-rebuild`). 5 skills → 4: new `design-direction` + `design-system`; rewritten `frontend-design` v2.0 + `design-review` v2.0.
+- Salvaged all taste content (12 archetypes, token recipes, typography, banned palettes, icon strategies) into new skills before deprecation.
+- Added golden-examples library, polish-playbook, stack-selection, state-tokens, DESIGN.md template, APCA script (`design-review/scripts/apca.mjs` — tested).
+- Deprecated `design-archetype`, `design-tokens-craft`, `icon-craft` → `.agents/skills/.deprecated/*-deprecated-2026-06-30/` with DEPRECATION.md + deprecation-log entries.
+- Library synced: AGENTS.md, SKILL-INDEX.md, skill-graph.md, README.md (97 skills), PRD.md, project-setup template + architecture-design-rigor.
+- Changelog: `docs/changelogs/2026-06-30-design-suite-rebuild.md`.
+
+### Decisions
+- **Explore before commit:** `design-direction` must generate 2-3 genuinely distinct directions (not three palettes of one idea) — the #1 anti-generic fix.
+- **One DESIGN.md:** replaces scattered ARCHETYPE/TOKENS/ICONS files.
+- **APCA over WCAG ratio** for contrast gates (dark themes + thin type).
+- **shadcn as primitives layer**, not a drop-in look — restyle via DESIGN.md tokens.
+- Default app stack: React + Next + Tailwind v4 + shadcn/ui (derived per product via stack-selection.md).
+
+### Deferred
+- **Commit + push** — user did not request commit; large uncommitted working tree (~40+ files).
+- **`agentskills validate` CLI** not installed in environment — manual checks passed (≤200 lines, loader-safe, descriptions <1024, all resources present).
+- **Formal `validate-skills` / `skill-deconflict` / `cross-link-skills` sweep** — docs updated manually; run before commit if CLI available.
+
+### Next Agent Should Know
+- Working tree is **dirty** with the full design suite rebuild. Review `git status` before any other work.
+- Old skill names in historical changelogs/comparisons/handoffs are expected — active skills use `design-direction` + `design-system`.
+- To recover deprecated skills: see `.agents/skills/.deprecated/*/DEPRECATION.md` recovery commands.
+
+### Revisit Triggers
+- User asks to commit → stage all design-suite files; message should cover rebuild + deprecations.
+- User tests design skills on a real project → watch for generic output; the exploration step in `design-direction` is the critical gate.
+
+### Working Tree
+- **Dirty, uncommitted.** New: `design-direction/`, `design-system/`, golden-examples, APCA script, changelog. Modified: frontend-design, design-review, project-setup, AGENTS.md, README, SKILL-INDEX, skill-graph, PRD. Archived: 3 deprecated skills.

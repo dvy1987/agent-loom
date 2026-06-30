@@ -6,15 +6,30 @@ Agent instructions for working in this repo.
 
 ---
 
+## Skill Invocation — Non-Negotiable
+
+Skills in `.agents/skills/` are mandatory workflows, not optional reference. When a
+request matches a skill — by its `description` triggers, the User Entry Points table,
+or `.agents/ROUTING.md` — you MUST open that `SKILL.md` and follow its steps BEFORE
+answering or acting. This holds on every host that surfaces these skills, Cursor included.
+
+- Match before acting: scan `.agents/skills/` for a matching skill before any non-trivial task.
+- Invoking = opening `SKILL.md` and executing its workflow. Naming it, or saying you
+  "would" use it, does not count.
+- If multiple skills match, resolve with `.agents/ROUTING.md` — never skip all of them.
+- "Task seems simple" / "I already know how" is NOT grounds to skip. The skill encodes
+  the required workflow and overrides prior assumptions.
+- Skip a matching skill ONLY if the user explicitly says "don't use skills" / "skip the
+  skill" / names a different tool.
+
+---
+
 ## Startup Skill Loading - Mandatory
 
 Before routing or invoking any skill in this repo:
 1. Read `.agents/ROUTING.md` to apply repo skill priority and conflict rules.
 2. Read `docs/SKILL-INDEX.md` to identify the correct skill entry point.
 3. Open the selected `.agents/skills/<name>/SKILL.md` before claiming to use that skill.
-
-Discovering that a skill exists is not enough. A skill is only loaded when its `SKILL.md`
-has been opened and its workflow is being followed.
 
 ---
 
@@ -198,10 +213,9 @@ domain          | specialized, not universally needed      | install only when n
 "reality-check"       → reality-check
 "evaluate claims"     → reality-check
 "deconflict skills"   → skill-deconflict
-"build a frontend"    → frontend-design (orchestrator → design-archetype, design-tokens-craft, icon-craft, design-review)
-"pick a design direction" → design-archetype
-"design tokens for"   → design-tokens-craft
-"design icons"        → icon-craft
+"build a frontend"    → frontend-design (orchestrator → design-direction, design-system, design-review)
+"pick a design direction" / "explore looks" → design-direction
+"design system" / "design tokens" / "DESIGN.md" / "icons" → design-system
 "review this UI"      → design-review
 "design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
 "A/B test this"       → experimentation

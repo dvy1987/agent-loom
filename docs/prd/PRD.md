@@ -156,9 +156,8 @@ Global install, project-scoped output. Cover the full product and engineering li
 | `experiment-runbook` | Translates spec into launch runbook — flags, exposure events, ramp, rollback |
 | `experiment-readout` | SRM-blocked readout — validity checks, causal interpretation, decision |
 | `frontend-design` | Orchestrator — archetype → tokens → icons → build → review, anti-vibecoded gates |
-| `design-archetype` | Picks one of 12 curated product archetypes — biggest lever against vibecoded UI |
-| `design-tokens-craft` | Archetype-driven semantic oklch tokens with hand-tuned dark mode |
-| `icon-craft` | Solves "Lucide everywhere" — 5 icon strategies + SVG craft rules |
+| `design-direction` | Explores 2-3 genuinely distinct directions, commits to one — biggest lever against generic UI (replaces design-archetype) |
+| `design-system` | Canonical DESIGN.md + state-level oklch tokens (APCA-checked) + icon strategy + component contracts (replaces design-tokens-craft + icon-craft) |
 | `design-review` | 10-dimension rubric review against the archetype's "feels like X" promise |
 | `venture-exploration` | Orchestrator — diagnoses business-idea lifecycle stage and routes |
 | `idea-generation` | Generates 5–10 structured idea cards; bans "Uber for X" / "everyone" |

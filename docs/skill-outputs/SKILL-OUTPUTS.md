@@ -196,3 +196,7 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-02 | generate-changelog | docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md | Phase 2 batch 2 changelog |
 | 2026-06-02 | memory-handoff | docs/memory/agent-handoffs.md | Session end: push pending; memory routing file added |
 | 2026-06-02 | memory-startup | docs/memory/MEMORY-ROUTING.md | Add missing memory routing skeleton file |
+| 2026-06-30 | design-suite-rebuild | .agents/skills/design-direction/, design-system/, frontend-design/, design-review/ | Full design suite rebuild: 2 new + 2 rewritten + 3 deprecated skills |
+| 2026-06-30 | generate-changelog | docs/changelogs/2026-06-30-design-suite-rebuild.md | Design suite rebuild changelog |
+| 2026-06-30 | memory-handoff | docs/memory/agent-handoffs.md | Session end: design suite rebuild complete; uncommitted |
+| 2026-06-30 | memory-capture | docs/memory/current-state.md, docs/memory/learnings.md, docs/memory/project-index.md | Design suite rebuild state + learning captured |

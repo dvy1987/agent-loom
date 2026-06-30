@@ -2,11 +2,11 @@
 
 Scoring 0–3 per dimension. Anchors below.
 
-## Archetype fidelity
+## Direction fidelity
 
-- **0** — does not feel like the claimed reference at all; reads as a different archetype
+- **0** — does not feel like the chosen direction's "feels like X" at all; reads as a different direction
 - **1** — partial fit; some right moves, but key signature elements missing
-- **2** — recognizable as the archetype; most signature moves present
+- **2** — recognizable as the direction; most signature moves present
 - **3** — feels indistinguishable in spirit from the reference; signature moves all present and intentional
 
 ## Anti-vibecoded gates
@@ -28,7 +28,14 @@ Scoring 0–3 per dimension. Anchors below.
 - **0** — hex literals in components, banned palettes present, dark mode is inverted lightness
 - **1** — tokens used inconsistently, OR dark mode partially executed
 - **2** — all colors via tokens, dark mode is a separate hand-set story
-- **3** — color story is distinctive, used as content where appropriate, contrast quietly excellent
+- **3** — color story is distinctive, used as content where appropriate, contrast quietly excellent (APCA, see below)
+
+## State coverage
+
+- **0** — only the populated/happy path exists; no empty/loading/error
+- **1** — some states present but inconsistent (e.g. spinners not skeletons, generic "No data")
+- **2** — every data surface has loading + empty + error + populated; interactive els have hover/active/focus-visible/disabled
+- **3** — states are designed with equal care (skeletons match layout, empty offers next action, errors are specific + recoverable)
 
 ## Iconography
 
@@ -54,9 +61,9 @@ Scoring 0–3 per dimension. Anchors below.
 ## Accessibility (HARD GATE — pass/fail)
 
 PASS requires ALL of:
-- Color contrast 4.5:1 body / 3:1 UI in BOTH modes
+- APCA contrast in BOTH modes: body Lc≥75, large/bold ≥45, non-text UI ≥30 (run `scripts/apca.mjs`, see `apca-contrast.md`)
 - Keyboard reachable for every interactive element
-- Visible focus state on every interactive element
+- Visible `:focus-visible` state on every interactive element
 - Heading hierarchy sequential
 - Form fields have associated `<label>`
 - Icons that convey meaning have `aria-label`
@@ -83,9 +90,10 @@ FAIL on any of the above. No partial credit.
 ## Verdict thresholds
 
 - **SHIP** requires:
-  - Accessibility = PASS
-  - Archetype fidelity ≥ 2
+  - Accessibility = PASS (APCA targets met in both modes)
+  - Direction fidelity ≥ 2
   - Anti-vibecoded ≥ 2
+  - State coverage ≥ 2
   - All other dimensions ≥ 2
   - Distinctive moves ≥ 2
 

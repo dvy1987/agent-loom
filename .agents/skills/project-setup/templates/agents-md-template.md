@@ -1,5 +1,12 @@
 # AGENTS.md — [Project Name]
 
+## Skill Invocation — Non-Negotiable
+Skills in `.agents/skills/` (and global `~/.agents/skills/`) are mandatory workflows, not optional reference. When a request matches a skill — by its `description` triggers or the Orchestration Map below — open that `SKILL.md` and follow its steps BEFORE answering or acting. This holds on every host that surfaces these skills, Cursor included.
+- Match before acting: scan available skills before any non-trivial task.
+- Invoking = opening `SKILL.md` and executing its workflow. Naming it, or saying you "would" use it, does not count.
+- "Task seems simple" / "I already know how" is NOT grounds to skip.
+- Skip a matching skill ONLY if the user explicitly says "don't use skills" / "skip the skill" / names a different tool.
+
 ## Project Overview
 [One sentence: what this is, stack, what makes it architecturally non-standard]
 
@@ -54,6 +61,19 @@ Note: Prefer file-scoped commands for lint, test, typecheck. Use project-wide bu
 - **Strong at:** [areas where user is expert — agents defer]
 - **Agents lead on:** [skill gaps — agents handle more autonomously]
 - **Working style:** [preferences: small PRs, test-first, review-everything, etc.]
+
+## Agent-Led Architecture & Design
+<!-- Include when owner_mode is non-technical or hybrid (see references/architecture-design-rigor.md). -->
+The owner cannot evaluate architecture/design choices, so the agent OWNS them — apply full rigor, never pick the first option, never defer the technical call to the owner.
+
+Before ANY architectural decision (data model, API/module boundaries, framework/library choice, state, auth, persistence, deployment, scaling):
+1. `brainstorming` — frame 2–4 approaches, get direction approval.
+2. `deep-thinking` (`first-principles`, `pre-mortem`, `assumption-mapping`, `second-order`) — pressure-test before committing.
+3. `api-and-interface-design` for boundaries; `source-driven-development` to ground framework choices in official docs (cite versions).
+4. Present a plain-language trade-off (options + cost/speed/risk/user impact); get approval on the PRODUCT implication, not the code.
+5. Record via `architectural-decision-log`. Never ship a decision the owner couldn't explain in one plain sentence.
+
+Before ANY UI/UX work: `frontend-design` → `design-direction` (explore 2-3 distinct directions) → `design-system` (DESIGN.md + tokens) → build → `design-review` (must pass). Translate the chosen direction into product terms for approval.
 
 ## Session Lifecycle — Mandatory
 <!-- Include only if memory suite installed and user did not opt out in Axis 1 Q5. -->

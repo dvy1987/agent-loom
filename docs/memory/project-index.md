@@ -36,3 +36,7 @@
 | 2026-06-02 | changelog | `docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md` | active | addyosmani, phase-2, context-engineering, security-hardening, ci-cd | MINOR: 3 coding gap skills (batch 2). |
 | 2026-06-02 | state | `docs/memory/current-state.md` | active | addyosmani, phase-2-batch-2 | 11th deliverable: 3 gap skills; 98 skills; batch 3 next. |
 | 2026-06-02 | handoff | `docs/memory/agent-handoffs.md` | active | session-end, phase-2-batch-2, push-pending | Session end: batch 2 committed (`b25bdae`); `main` ahead origin by 1; push pending. |
+| 2026-06-30 | handoff | `docs/memory/agent-handoffs.md` | active | design-suite-rebuild, session-end, uncommitted | Design suite 5→4 skills rebuilt; 3 deprecated; golden examples + APCA; dirty tree; commit pending. |
+| 2026-06-30 | state | `docs/memory/current-state.md` | active | design-suite-rebuild, design-direction, design-system | 12th deliverable: design suite rebuild; 97 skills; uncommitted. |
+| 2026-06-30 | changelog | `docs/changelogs/2026-06-30-design-suite-rebuild.md` | active | design-suite, frontend-design, design-direction, design-system, design-review | MAJOR: design suite rebuild — explore-before-commit, ONE DESIGN.md, APCA, golden examples. |
+| 2026-06-30 | learning | `docs/memory/learnings.md` | active | design-suite, anti-slop, golden-examples, exploration | Generic AI UI fails from skipping exploration + missing positive examples + scattered design intent — fixed by direction→system→build chain. |

@@ -1,8 +1,8 @@
 # Current State
 
-Last updated: 2026-06-02 (Phase 2 batch 2)
+Last updated: 2026-06-30 (Design Skill Suite rebuild)
 
-Eleven landed items across 2026-05-13 → 2026-06-02. Items 6–11 cover addyosmani/agent-skills ingestion.
+Twelve landed items across 2026-05-13 → 2026-06-30. Items 6–11 cover addyosmani/agent-skills ingestion; item 12 is the design suite rebuild.
 
 1. **Retroactive Project Setup** (2026-05-13). `retroactive-project-setup` bootstraps agent layer over existing codebases via write-allowlist.
 
@@ -18,25 +18,25 @@ Eleven landed items across 2026-05-13 → 2026-06-02. Items 6–11 cover addyosm
 
 7. **Insight #5 Description Cleanup** (2026-06-01, `0652967`). Cleared 9 Step 2b warnings; library scan 0 process-step description warnings.
 
-8. **First Coding Gaps Closed** (2026-06-01, `286fcba`). Added `incremental-implementation` and `git-workflow-and-versioning`; Phase 1 complete. Library ~92 skills.
+8. **First Coding Gaps Closed** (2026-06-01, `286fcba`). Added `incremental-implementation` and `git-workflow-and-versioning`; Phase 1 complete.
 
-9. **Phase 3 Comparisons + Craft Merge** (2026-06-01, `5c4e443`). 8 pairwise comparisons + SUMMARY; 10 skills upgraded + 3 references; validate-skills P2 craft flags; creator requires rationalizations/verification for project-specific. Meta layer intact.
+9. **Phase 3 Comparisons + Craft Merge** (2026-06-01, `5c4e443`). 8 pairwise comparisons + SUMMARY; 10 skills upgraded + 3 references; validate-skills P2 craft flags.
 
-10. **Phase 2 Batch 1** (2026-06-01). Added `source-driven-development`, `code-simplification`, `api-and-interface-design` (addyosmani gaps). Library ~95 skills.
+10. **Phase 2 Batch 1** (2026-06-01). Added `source-driven-development`, `code-simplification`, `api-and-interface-design`.
 
-11. **Phase 2 Batch 2** (2026-06-02). Added `context-engineering`, `app-security-hardening`, `ci-cd-and-automation` (addyosmani gaps). Library ~98 skills.
+11. **Phase 2 Batch 2** (2026-06-02, `b25bdae`). Added `context-engineering`, `app-security-hardening`, `ci-cd-and-automation`. Library ~98 skills.
+
+12. **Design Skill Suite Rebuild** (2026-06-30, uncommitted). 5→4 skills: new `design-direction` + `design-system`; rewritten `frontend-design` v2.0 + `design-review` v2.0; deprecated `design-archetype`, `design-tokens-craft`, `icon-craft`. Golden examples, APCA script, ONE `DESIGN.md` output. Library ~97 skills. Changelog: `docs/changelogs/2026-06-30-design-suite-rebuild.md`.
 
 Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2a; checkpoint registry (2026-05-11).
 
 ## Active Risks
 
-- `agentskills validate` CLI unavailable in some environments — manual Step 2a/2b checks used.
-- `secure-skill` / `secure-skill-runtime` slightly over 180-line split threshold (185/187) — pre-existing; split when touched.
-- `project-setup` at 201 lines — pre-existing; compress or split when touched.
+- **Large uncommitted working tree** from design suite rebuild — commit pending user request.
+- `agentskills validate` CLI unavailable in some environments — manual checks used for new skills.
 - Phase 2 addyosmani gaps (~4 skills) remain after batch 2.
-- Legacy `project-specific` skills may lack Common Rationalizations / Verification — P2 flags now enforced on new work; library sweep pending.
-- `main` ahead of `origin/main` by 1 commit (`b25bdae`) — push pending.
+- Legacy `project-specific` skills may lack Common Rationalizations / Verification — library sweep pending.
 
 ## Immediate Next Step
 
-**Phase 2 batch 3** — `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration` via `universal-skill-creator`. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`. Alternative: `validate-skills` library sweep for P2 craft flags.
+Commit the design suite rebuild when user requests, then push. Continue Phase 2 batch 3 (`performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration`, `browser-testing-with-devtools`) per `docs/comparisons/2026-06-01-SUMMARY.md`.

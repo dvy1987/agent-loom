@@ -11,18 +11,18 @@ For single artifacts where the full pipeline is overkill: a poster, a single com
 
 ## Compressed steps
 
-### 1. Pick archetype in 30 seconds
+### 1. Pick a direction in 30 seconds
 
-Look at the user's request. Pick from `design-archetype`'s catalog without invoking the full skill. If the user named a reference product, use its archetype.
+Look at the user's request. Pick one posture from `design-direction`'s catalog (`references/archetypes/`) without invoking the full skill. If the user named a reference product, use its posture. Even one-shots still pick deliberately — don't default to the mean.
 
 Record the choice as a single line at the top of the artifact:
 ```
-<!-- archetype: editorial · feels like Vercel changelog · 2026-04-30 -->
+<!-- direction: editorial · feels like Vercel changelog · 2026-04-30 -->
 ```
 
 ### 2. Inline tokens
 
-Skip a separate tokens file. Define a small token set inline in CSS custom properties at the top of the artifact, drawn from the archetype's recipe. Keep it minimal: 2 colors, 2 fonts, 4 spacing values, 1 radius, 1 motion curve.
+Skip a separate tokens file. Define a small token set inline in CSS custom properties at the top of the artifact, drawn from the direction's recipe. Keep it minimal: 2 colors, 2 fonts, 4 spacing values, 1 radius, 1 motion curve.
 
 ### 3. Icons
 
@@ -41,13 +41,12 @@ Before declaring done, scan against `anti-vibecoded-checklist.md`. One pass. Fix
 
 ## Skip these
 
-- Visual research step
-- Separate `design-tokens-craft` invocation
-- Separate `icon-craft` invocation
+- The multi-direction exploration (one informal pick is enough for a single artifact)
+- Separate `design-system` invocation
 - `design-review` Playwright loop (do a single screenshot self-review instead)
 
 ## Don't skip these
 
-- The archetype choice (even informal)
+- The direction choice (even informal)
 - The distinctive move requirement
 - The anti-vibecoded scan
