@@ -18,6 +18,7 @@ metadata:
   resources:
     references:
       - examples.md
+      - review-conventions.md
 ---
 
 # Code Review
@@ -55,6 +56,8 @@ Ask ONE clarifying question if scope is ambiguous: "Which changes should I revie
 4. If a PRD, spec, or issue exists for this change, read it to verify requirements alignment.
 
 ### Step 3 — Evaluate Against Five Axes
+
+Read `references/review-conventions.md` for axis questions, prefix table, change sizing, and dead-code hygiene.
 
 | Axis | What to look for |
 |------|-----------------|

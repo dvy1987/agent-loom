@@ -233,11 +233,11 @@ All 12 coding gap skills created. Library at **102 skills** including `performan
 - **Comparisons:** 8 pairwise docs + `docs/comparisons/2026-06-01-SUMMARY.md` (`5c4e443`).
 - **Application:** Craft merge into 10+ skills; rationalizations + verification extended to **all** thinking, meta, and project-specific skills (2026-07-04, `3145508` + follow-up).
 - **L3:** 102/102 `references/examples.md`; quality tiers in `docs/SKILL-EXAMPLES-INDEX.md`.
-- **CI:** `.github/workflows/validate-skills.yml` enforces validate + P2 craft + graph health.
+- **Validation:** Run `check_p2_craft.py`, `agentskills validate`, and `validate_application_mode.py` locally — no repo CI workflow.
 
 ### Phase 4 — ONGOING (library operations, not addyosmani)
 
-- Consumer-repo validation automated via `validate_application_mode.py` smoke test in CI.
+- Consumer-repo validation via `validate_application_mode.py` local smoke test (not CI).
 - `learn-from-repo` Step 4b queues pairwise compares → `docs/comparisons/INGEST-QUEUE.md`.
 - Optional: hand-curate L3 `curated` tier for highest-traffic skills.
 

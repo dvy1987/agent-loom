@@ -1,6 +1,6 @@
 # Build Conventions
 
-Practical conventions for the build phase. Framework-agnostic where possible; framework-specific where it matters.
+Practical conventions for the build phase. **Implementation recipes:** `ui-patterns.md` (container/presentation, optimistic updates, forms, tables). Framework-agnostic where possible; framework-specific where it matters.
 
 ## Mobile-First
 

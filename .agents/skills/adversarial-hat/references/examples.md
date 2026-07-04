@@ -1,71 +1,131 @@
 # Adversarial Hat — Full Worked Examples
 
-Skill: `adversarial-hat` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
-
-## Example 1 — Documented workflow
-
-**Input:** Adversarial hat on our product-soul — community feature to drive retention
-
-**Output:**
-```
-CRITICAL FINDINGS
-1. "Community drives retention" is stated as strategic premise but has no cited evidence for this segment. Research (Lenny Rachitsky 2023) shows community works for daily-use products. This product's usage is monthly invoicing — a different pattern.
-   Resolution: Find 3 comparable monthly-use B2B SaaS products where community measurably improved retention. If not found, the premise needs revision.
-
-2. PMF section states "12 active" without separating community-driven from product-driven activation. If those 12 were active before community existed, community's contribution is zero.
-   Resolution: Separate activation cohorts — community access vs. no access.
-
-SIGNIFICANT FINDINGS
-1. No mechanism described for when founding members go quiet — which they will.
-   Resolution: Define moderation and re-engagement playbook before launch.
-
-WHAT WOULD NEED TO BE TRUE
-1. Monthly-use B2B SaaS has documented cases of community improving retention >10%.
-2. At least 5 of 12 active users want to connect with each other, not just the product team.
-
-STRONGEST ELEMENTS
-The PMF falsification condition ("if users complete integration once and never return, we are a tutorial") is excellent — apply the same rigour to the community hypothesis.
-```
-
-## Example 2 — Step-by-step execution
-
-**Input:** "Run `adversarial-hat` on [concrete task]"
-
-**Agent actions:**
-1. Identify the Artefact Type
-2. Run the Three Phases
-3. Deliver the Adversarial Report
-4. Offer Integration
-
-**Impact Report shape:**
-```
-Adversarial review: [document]
-Phases run: [D / C / Ch — all or subset]
-Critical: N | Significant: N | Minor: N
-Integrated into document: [yes / no]
-```
-
-## Example 3 — Anti-skip (rationalization defense)
-
-**Input:** Agent tries to skip a gate
-
-| Excuse | Reality |
-|---|---|
-| "We're aligned already" | Alignment theater hides unstated objections until launch. |
-| "Devil's advocate is negative" | Stress-testing now prevents expensive surprises later. |
-| "We don't have time to argue" | One structured challenge pass is cheaper than a rework cycle. |
-| "The plan is obviously sound" | Obvious plans skip edge cases that only adversarial review surfaces. |
-
-## Example 4 — Gotcha application
-
-**Input:** Task hits a non-obvious edge case
-
-**Apply:**
-- Generic critiques are useless. "Timeline is aggressive" is noise. "Timeline assumes third-party API integration takes 2 weeks — historically takes 6–8 weeks" is adversarial hat.
-- Phase order matters. Running Phase 3 before Phase 1 critiques solutions built on wrong foundations.
-- The strongest adversarial critique is often the simplest: "Does this solve the problem users actually have?"
-- Complementary to `inversion`: inversion asks "what is the opposite?" — adversarial hat asks "what is wrong with what we have?"
+Enriched from SKILL.md + AO Phase 3 depth merge. Copy prompts from `adversarial-prompt.md`.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — Three-phase document review (product-soul)
+
+**Input:** Adversarial hat on community feature for retention
+
+**Phase 1 — Diagnostic:** "Community drives retention" = hypothesis, not cited for monthly B2B segment.
+
+**Phase 2 — Creative:** Alternative — embedded help + templates may outperform community for low-frequency users.
+
+**Phase 3 — Challenge:** Fails if founding members go quiet — no moderation playbook.
+
+**Output:** Critical findings + WHAT WOULD NEED TO BE TRUE + STRONGEST ELEMENTS (see SKILL.md template).
+
+---
+
+## Example 2 — In-flight CLAIM → DOUBT (code)
+
+**Input:** Agent about to add global singleton for cache
+
+**CLAIM (author only — not sent to reviewer):**
+```
+Decision: Add CacheManager singleton in src/lib/cache.ts
+Why it matters: Shared across API routes — wrong lifecycle breaks tests
+Non-trivial: crosses module boundary, hidden global state
+```
+
+**EXTRACT (sent to reviewer):**
+```markdown
+## ARTIFACT
+export class CacheManager { static instance; get(k) { ... } set(k,v) { ... } }
+
+## CONTRACT
+- Must work in serverless handlers (no stale cross-request state)
+- Must not break parallel tests
+- Project uses explicit DI in src/api/* pattern
+```
+
+**DOUBT:** Use code-specific prompt from `adversarial-prompt.md`
+
+**RECONCILE:** Finding "singleton breaks serverless" → Valid + actionable → inject per-request cache instead.
+
+---
+
+## Example 3 — Copy-paste DOUBT prompt (plan)
+
+**Input:** Implementation plan Phase 1 has 8 XL tasks
+
+Paste into fresh context:
+
+```
+Adversarial review of this plan section. Assume timeline and dependencies are optimistic.
+...
+ARTIFACT:
+[paste Phase 1 task list]
+
+CONTRACT:
+FR-1 through FR-5 from feature-spec; MVP demoable in 2 weeks
+```
+
+**Finding:** Task 4 "Build entire admin panel" = horizontal slice — split vertically.
+
+---
+
+## Example 4 — TDD satisfies DOUBT
+
+**Input:** Bug fix for `completedAt` missing
+
+1. Author writes failing Prove-It test (RED)
+2. **Skip separate DOUBT loop** for behavioral claim — repro test is the doubt
+3. Fix → GREEN → ship
+
+---
+
+## Example 5 — Cross-model offer (interactive)
+
+After cycle 1 on payment migration:
+
+```
+Adversarial pass complete: 1 Critical (data loss on rollback), 2 Significant.
+Want a second model to review the same ARTIFACT+CONTRACT cold? (y/n)
+```
+
+User: yes → spawn with file-based artifact per `adversarial-prompt.md` stdin-safe section.
+
+---
+
+## Example 6 — Doubt theater escalation
+
+**Cycle 1:** 0 findings  
+**Cycle 2:** 0 findings  
+**Cycle 3:** Reviewer says "looks good"
+
+**Action:** Stop. Report doubt theater. Escalate CLAIM + artifacts to user — do not loop.
+
+---
+
+## Example 7 — Reconcile table
+
+| Finding | Classification | Action |
+|---------|----------------|--------|
+| Missing rate limit | Valid trade-off | User decides ship v1 without |
+| Wrong HTTP status | Valid + actionable | Fix, re-run cycle 2 |
+| "Prefer tabs over spaces" | Noise | Dismiss |
+
+---
+
+## Example 8 — Architecture ADR doubt
+
+**ARTIFACT:** "We'll use event sourcing for notifications"
+
+**CONTRACT:** Team size 2, MVP in 6 weeks, current stack Postgres + REST
+
+**Finding (Significant):** ES ops burden exceeds team capacity — Consider outbox pattern instead.
+
+---
+
+## Example 9 — Fresh-context document escalation
+
+**When:** PRD about to ship to stakeholders; 0 critical on first pass; reviewer agreed in 30 seconds
+
+**Action:** Run Fresh-Context mode with `adversarial-prompt.md` core prompt — pass PRD section + success metrics as CONTRACT only.
+
+---
+
+See `references/adversarial-prompt.md` for all copy-paste prompts (code, plan, architecture, TDD, CLI shapes).
+See `SKILL.md` for three-phase Diagnostic → Creative → Challenge and stop conditions.

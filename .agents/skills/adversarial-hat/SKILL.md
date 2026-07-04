@@ -114,7 +114,7 @@ STRONGEST ELEMENTS (what to build on)
 
 Use when a **non-trivial** decision is about to stand (branching logic, cross-module change, unverified invariant, irreversible deploy). Skip for formatting, obvious one-liners, or pure reads.
 
-Copy the checklist from `references/adversarial-prompt.md`:
+Copy the checklist from `references/adversarial-prompt.md` (full prompt library for code, plans, architecture):
 1. **CLAIM** — decision + why it matters (2–3 lines)
 2. **EXTRACT** — smallest artifact + contract only (no your reasoning)
 3. **DOUBT** — fresh-context reviewer with adversarial prompt (never pass CLAIM)

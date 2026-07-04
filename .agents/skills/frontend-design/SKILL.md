@@ -21,6 +21,7 @@ metadata:
       - stack-selection.md
       - polish-playbook.md
       - build-conventions.md
+      - ui-patterns.md
       - anti-vibecoded-checklist.md
       - one-shot-flow.md
       - golden-examples/components.md
@@ -79,7 +80,7 @@ Invoke `design-direction`. It explores 2-3 distinct directions and commits to on
 Invoke `design-system` with the direction + chosen stack/token-format. Output: canonical `DESIGN.md` + `tokens.css` (state-level, APCA-checked) + icon strategy + component contracts.
 
 ### Step 4 — Build
-Implement using ONLY the DESIGN.md tokens, the component contracts, and the icon strategy. Match `references/golden-examples/*`. Apply `references/build-conventions.md`. Mandatory gates before "done":
+Implement using ONLY the DESIGN.md tokens, the component contracts, and the icon strategy. Match `references/golden-examples/*`. Apply `references/build-conventions.md` and `references/ui-patterns.md` (container/presentation, optimistic updates, forms, tables). Mandatory gates before "done":
 - [ ] No banned default present (run `references/anti-vibecoded-checklist.md`)
 - [ ] All values via tokens; no hex/`slate-*`/magic numbers in components
 - [ ] Every data surface: loading + empty + error + populated rendered
@@ -134,6 +135,7 @@ Read `references/examples.md` for full worked examples.
 - `references/golden-examples/states.md` — empty / loading / error patterns
 - `references/golden-examples/composition.md` — non-default hero, app shell, staggered entrance
 - `references/build-conventions.md` — framework conventions, layout, a11y, file structure
+- `references/ui-patterns.md` — container/presentation, optimistic updates, forms, tables, error boundaries
 - `references/anti-vibecoded-checklist.md` — banned defaults + distinctive-moves list
 - `references/one-shot-flow.md` — compressed flow for single artifacts
 

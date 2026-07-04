@@ -41,7 +41,7 @@ Read the PRD (`docs/prd/`) or implementation plan (`docs/plans/`).
 Identify the smallest, testable unit of functionality.
 
 ### Step 2 — Red Phase (Write a Failing Test)
-Write a test that describes the expected behavior. For **bug fixes**, use the **Prove-It Pattern**: reproduce the bug in a test first — it must fail before you touch production code (see `references/tdd-patterns.md`).
+Write a test that describes the expected behavior. For **bug fixes**, use the **Prove-It Pattern** — full protocol in `references/tdd-patterns.md` (repro → fix → regression guard).
 Run the test and confirm it fails for the right reason (e.g., `ReferenceError` or `AssertionError`).
 Stop. Do not write any production code yet.
 

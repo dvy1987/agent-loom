@@ -46,4 +46,4 @@
 | 2026-07-04 | state | `docs/memory/current-state.md` | active | P2-craft, L3-floor, memory-handoff-v1.3 | 15th deliverable: P2 craft complete, L3 floor 55 lines, push trigger wired. Superseded by adversarial remediation entry. |
 | 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | adversarial-remediation, CI, P2-all-PS | Full P2 on 71 project-specific; CI workflow; B4/B5; external handoff fixed. |
 | 2026-07-04 | state | `docs/memory/current-state.md` | active | CI, P2-project-specific, ingest-queue | 16th deliverable: adversarial review remediation complete. |
-| 2026-07-04 | ci | `.github/workflows/validate-skills.yml` | active | validate-skills, P2-craft, graph-health | Library self-enforcement CI gate. |
+| 2026-07-04 | ci | `.github/workflows/validate-skills.yml` | removed | validate-skills, P2-craft, graph-health | Added then removed per user — validate locally only. |

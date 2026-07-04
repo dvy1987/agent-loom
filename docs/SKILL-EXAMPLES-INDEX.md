@@ -97,7 +97,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 <!-- EXAMPLES-INDEX:AUTO:START -->
 
-**Last scan:** 102 skills | L3 present: 102 | curated: 9 | padded: 15 | inline-only: 0 | broken pointers: 0
+**Last scan:** 102 skills | L3 present: 102 | curated: 9 | padded: 14 | inline-only: 0 | broken pointers: 0
 
 ### All skills — L3 status
 
@@ -117,7 +117,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `browser-testing-with-devtools` | yes | yes | curated | references/examples.md |
 | `business-modeling` | yes | yes | enriched | references/examples.md |
 | `ci-cd-and-automation` | yes | yes | curated | references/examples.md |
-| `code-review-crsp` | yes | yes | standard | references/examples.md |
+| `code-review-crsp` | yes | yes | enriched | references/examples.md |
 | `code-simplification` | yes | yes | curated | references/examples.md |
 | `codebase-understanding` | yes | yes | enriched | references/examples.md |
 | `compress-skill` | yes | yes | enriched | references/examples.md |
@@ -143,12 +143,12 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `feature-spec` | yes | yes | standard | references/examples.md |
 | `fermi` | yes | yes | enriched | references/examples.md |
 | `first-principles` | yes | yes | enriched | references/examples.md |
-| `frontend-design` | no | yes | padded | references/examples.md, references/golden-examples/ |
+| `frontend-design` | no | yes | enriched | references/examples.md, references/golden-examples/ |
 | `generate-changelog` | yes | yes | enriched | references/examples.md |
 | `git-workflow-and-versioning` | yes | yes | enriched | references/examples.md |
 | `idea-evaluation` | yes | yes | enriched | references/examples.md |
 | `idea-generation` | yes | yes | enriched | references/examples.md |
-| `implementation-plan` | yes | yes | standard | references/examples.md |
+| `implementation-plan` | yes | yes | enriched | references/examples.md |
 | `improve-skills` | yes | yes | enriched | references/examples.md |
 | `incremental-implementation` | yes | yes | enriched | references/examples.md |
 | `inversion` | yes | yes | enriched | references/examples.md |
@@ -200,7 +200,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `spec-driven-development` | yes | yes | enriched | references/examples.md |
 | `split-skill` | yes | yes | enriched | references/examples.md |
 | `technical-debt-audit` | yes | yes | enriched | references/examples.md |
-| `test-driven-development` | yes | yes | standard | references/examples.md |
+| `test-driven-development` | yes | yes | enriched | references/examples.md |
 | `tool-finder` | yes | yes | enriched | references/examples.md |
 | `universal-skill-creator` | no | yes | standard | references/examples.md |
 | `validate-skills` | yes | yes | standard | references/examples.md |

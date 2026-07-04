@@ -16,6 +16,7 @@ metadata:
   resources:
     references:
       - examples.md
+      - triage-and-untrusted-output.md
 ---
 
 # Debug and Fix
@@ -62,13 +63,15 @@ If multiple bugs arrive at once:
 2. Present the numbered list for user confirmation and prioritisation.
 3. Process one at a time through the full cycle.
 
-### Step 3 — Triage (Reproduce → Localize → Reduce)
+### Step 3 — Triage (Reproduce → Localize → Reduce → Fix → Guard → Verify)
 
-1. **Reproduce** — make the failure reliable (`[project test command]` with filter if needed). If not reproducible, document environment/timing/state hypotheses before guessing.
-2. **Localize** — which layer fails (UI, API, DB, build, test, external)? Use `git bisect` for regressions when useful.
-3. **Reduce** — smallest failing case (minimal input, stripped test).
-4. Search with `Grep`; read source and nearby tests.
-5. Summarise **root cause** (not symptom) to the user — wait for acknowledgement before proceeding.
+Follow the **six-step AO triage** in `references/triage-and-untrusted-output.md` (recipes, bisect, non-repro tree, untrusted-output rules). Summary:
+1. **Reproduce** — reliable failure (`[project test command]`).
+2. **Localize** — layer (UI/API/DB/build/external).
+3. **Reduce** — smallest failing case.
+4. Present **root cause** to user — wait before fix.
+5. **Guard** — Prove-It regression test.
+6. **Verify E2E** — full suite + build + manual if UI.
 
 ### Step 4 — Apply the Fix
 

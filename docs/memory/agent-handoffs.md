@@ -781,22 +781,18 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Done
 - **P2 project-specific:** All 71 skills now have Common Rationalizations + Verification; Red Flags added library-wide on PS skills (`add_p2_craft_project.py`).
-- **CI:** `.github/workflows/validate-skills.yml` — agentskills validate, ≤200 lines, `check_p2_craft.py`, examples index sync, graph health + application-mode smoke test.
-- **Meta B4:** `learn-from-repo` Step 4b → `docs/comparisons/INGEST-QUEUE.md`.
-- **Meta B5:** `improve-skills` Step 2b addyosmani pattern pass documented.
-- **Docs:** External handoff §7 updated (Phase 2/3 COMPLETE); stale NOT STARTED superseded.
 - **L3:** Quality tiers (curated/enriched/padded/standard) in `build_examples_index.py`; memory suite + design replenished/padded to ≥55.
-- **Scripts:** `add_p2_craft_project.py`, `check_p2_craft.py`, `replenish_l3.py`, `validate_application_mode.py`.
+- **Scripts:** `add_p2_craft_project.py`, `check_p2_craft.py`, `replenish_l3.py`, `validate_application_mode.py` (local only — no GitHub Actions).
 
 ### Decisions
-- `check_p2_craft.py` gates **project-specific** only (frontmatter category), not body mentions.
-- Application-mode graph validated via synthetic smoke test in CI (not manual consumer repo).
+- `check_p2_craft.py` gates **project-specific** only (frontmatter category), not body mentions. Run locally — no repo CI workflow.
+- Application-mode graph validated via `validate_application_mode.py` local smoke test (not manual consumer repo).
 
 ### Deferred
 - Hand-curate L3 `padded` → `curated` for highest-traffic skills (user deferred manual review).
 
 ### Next Agent Should Know
-- CI will fail if project-specific P2 craft regresses or SKILL-EXAMPLES-INDEX drifts.
+- Run `check_p2_craft.py` locally before skill changes; regenerate `docs/SKILL-EXAMPLES-INDEX.md` if L3 files change.
 - `docs/comparisons/INGEST-QUEUE.md` receives learn-from-repo overlap rows.
 
 ### Working Tree
