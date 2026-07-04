@@ -1,8 +1,8 @@
 # Product Soul — Full Worked Examples
 
-Skill: `product-soul` | Load when producing output for this workflow.
+Skill: `product-soul` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Write the product soul for a B2B SaaS tool that helps indie developers manage their Stripe billing without writing code
 
@@ -48,19 +48,39 @@ Version: 1.0 | Date: YYYY-MM-DD | Status: Hypothesis (PMF unconfirmed)
 - [ ] Is the Stripe-builds-this-natively risk material within 18 months?
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `product-soul` for [concrete task]"
+**Input:** "Run `product-soul` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Check for Existing Context
+2. Discovery Interview (Five Lenses)
+3. Run Inversion + Adversarial Hat (Recommended)
+4. Write the Product Soul Document
+5. Self-Review
+6. Save and Log
+
+**Impact Report shape:**
 ```
-Invoked `product-soul`.
-Step 1: Check for Existing Context
-Step 2: Discovery Interview (Five Lenses)
-Step 3: Run Inversion + Adversarial Hat (Recommended)
-See SKILL.md Impact Report schema.
+Product Soul complete: [product name]
+File saved: docs/product-soul.md
+Sections written: User · Business · Strategy · PMF · GTM
+PMF status: [Confirmed / Pre-PMF hypothesis / Unknown]
+Inversion run: [yes / no]
+Open hypotheses: N
+Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **The hardest lens is PMF — and it's the most important.** Don't let the user conflate interest with adoption, or signups with retention. Push for the honest answer: is there behavioural evidence that people need this, or is it still a hypothesis?
+- **Strategy without a named competitor is not strategy.** "We are unique because..." is not a strategic position. "We do X that [specific competitor] cannot do because [specific reason]" is.
+- **GTM is not marketing.** Distribution channel is the mechanism by which users first encounter and adopt the product. Most early-stage products have one channel that actually works. Name it specifically.
+- **This document ages.** The PMF and GTM sections become stale fastest. Add a `Last Updated` field and note which sections are hypotheses vs. confirmed.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

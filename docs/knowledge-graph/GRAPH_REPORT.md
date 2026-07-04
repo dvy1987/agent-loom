@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-04T02:44:35.620522+00:00
-Mode: skill-library | Nodes: 121 | Edges: 416
+Generated: 2026-07-04T02:52:36.403032+00:00
+Mode: skill-library | Nodes: 125 | Edges: 434
 
 ## God nodes (skill connectivity)
 - universal-skill-creator
@@ -34,7 +34,7 @@ Mode: skill-library | Nodes: 121 | Edges: 416
 - What depends on secure-skill, and what does secure-skill invoke?
 
 ## Provenance
-- Authoritative invokes: 164
-- EXTRACTED: 212 | INFERRED: 204
+- Authoritative invokes: 170
+- EXTRACTED: 218 | INFERRED: 216
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

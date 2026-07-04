@@ -470,6 +470,38 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `performance-optimization`
+**Triggers:** "optimize performance", "Core Web Vitals", "LCP", "INP", "CLS", "slow page", "profile bottleneck", "bundle size"
+**What it does:** Measure, profile, and fix performance bottlenecks — synthetic + RUM baselines, targeted fixes, regression guards. Not for premature optimization without evidence.
+**Called by:** Frontend/backend perf work; pairs with `browser-testing-with-devtools`, `ci-cd-and-automation`
+**Impact report:** Baseline metrics, bottleneck, delta, guard status
+
+---
+
+### `shipping-and-launch`
+**Triggers:** "launch checklist", "go live", "production deploy", "rollout plan", "rollback plan", "ship to prod"
+**What it does:** Safe production launches — pre-launch checklist, monitoring, staged rollout, rollback triggers. Pairs with `ci-cd-and-automation` and `app-security-hardening`.
+**Called by:** Release and deployment planning
+**Impact report:** Risk level, stages, checklist status, rollback readiness
+
+---
+
+### `browser-testing-with-devtools`
+**Triggers:** "browser testing", "Chrome DevTools", "test in browser", "verify UI fix", "console errors", "network tab"
+**What it does:** Test and debug browser UIs via Chrome DevTools MCP — DOM, console, network, performance traces, screenshots. Requires MCP configured.
+**Called by:** Frontend debugging; pairs with `frontend-design`, `performance-optimization`
+**Impact report:** URL, evidence captured, fix verification status
+
+---
+
+### `api-deprecation-and-migration`
+**Triggers:** "deprecate API", "API migration", "sunset endpoint", "breaking change", "migration guide"
+**What it does:** Deprecate APIs/features safely — announce, migrate consumers, sunset on timeline. Distinct from meta `deprecate-skill` (skill-library retirement).
+**Called by:** API lifecycle and platform changes; pairs with `api-and-interface-design`
+**Impact report:** Consumers, timeline, migration tooling status
+
+---
+
 ### `implementation-plan`
 **Triggers:** "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy", "/plan", "/tasks"
 **What it does:** Create a detailed, step-by-step implementation plan for a feature or project. Reads `docs/specs/<slug>-feature-spec.md` first when present (refuses to proceed if status≠Approved). Builds a Requirement Traceability table mapping every FR/NFR/C-N to tasks. Tags each task with the IDs it satisfies — read by `spec-crosscheck`. Supports tasks-only mode (called by `spec-driven-development /tasks`).

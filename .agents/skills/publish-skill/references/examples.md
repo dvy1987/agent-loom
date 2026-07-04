@@ -1,8 +1,8 @@
 # Publish Skill — Full Worked Examples
 
-Skill: `publish-skill` | Load when producing output for this workflow.
+Skill: `publish-skill` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Publish the brainstorming skill to skills.sh
 
@@ -30,19 +30,40 @@ Install: npx skills brainstorming
 Test install dry-run: ✓
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `publish-skill` for [concrete task]"
+**Input:** "Run `publish-skill` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Pre-publish Validation
+2. Determine Package Format
+3. Write or Verify README
+4. Package
+5. Publish to skills.sh
+6. Optionally Push to GitHub
+7. Report
+
+**Impact Report shape:**
 ```
-Invoked `publish-skill`.
-Step 1: Pre-publish Validation
-Step 2: Determine Package Format
-Step 3: Write or Verify README
-See SKILL.md Impact Report schema.
+Published: [skill-name]
+Registry URL: https://skills.sh/[skill-name]
+Install command: npx skills [skill-name]
+Package format: [.md / .zip]
+validate-skills score at publish: [N]/14
+Proprietary content scan: clean
+GitHub push: [yes — commit hash / no]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- `npx skills publish` requires the directory name to match the `name` field in frontmatter exactly — mismatch causes a silent failure
+- Check for hardcoded paths (e.g., `/home/user/workspace/`) in scripts before publishing — they won't work on other machines
+- If the skill uses `scripts/`, verify the script has no hardcoded credentials, internal URLs, or machine-specific paths
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

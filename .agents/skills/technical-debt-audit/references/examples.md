@@ -1,8 +1,8 @@
 # Technical Debt Audit — Full Worked Examples
 
-Skill: `technical-debt-audit` | Load when producing output for this workflow.
+Skill: `technical-debt-audit` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Run a tech debt audit on the agent-loom skill library.
 
@@ -37,19 +37,27 @@ Refactoring roadmap created: yes
 Ready for: improve-skills batch execution
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `technical-debt-audit` for [concrete task]"
+**Input:** "Run `technical-debt-audit` on [concrete task]"
 
-**Output:**
-```
-Invoked `technical-debt-audit`.
-Step 1: Scan the Project
-Step 2: Categorize the Debt
-Step 3: Estimate the "Interest Rate"
-See SKILL.md Impact Report schema.
-```
+**Agent actions:**
+1. Scan the Project
+2. Categorize the Debt
+3. Estimate the "Interest Rate"
+4. Draft the Audit Report
+5. Present and Save
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- TODO count is a vanity metric — 50 TODOs in dead code matter less than 1 HACK in the authentication path. Weight findings by blast radius (how many features break if this debt compounds), not by count.
+- Agents over-report cosmetic debt (naming, formatting, comment style) and under-report structural debt (circular dependencies, missing abstractions, god objects). Prioritize structural debt that blocks feature velocity over cosmetic issues that only affect readability.
+- "Refactor everything" is not a roadmap. Each high-interest item needs a specific, time-boxed remediation task (e.g., "Extract auth logic from UserController into AuthService — 2h estimate") not a vague directive.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

@@ -1,29 +1,40 @@
 # Experimentation — Full Worked Examples
 
-Skill: `experimentation` | Load when producing output for this workflow.
+Skill: `experimentation` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — Typical invocation
+## Example 1 — Step-by-step execution
 
-**Input:** "Run `experimentation` for [concrete task]"
+**Input:** "Run `experimentation` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Diagnose the Lifecycle Stage
+2. Pre-Route Hooks (Optional)
+3. Route to Child Skill
+4. Enforce Lifecycle Completeness
+5. Surface the Funnel-ROI Map
+6. Hand Off Downstream
+
+**Impact Report shape:**
 ```
-Invoked `experimentation`.
-Step 1: Diagnose the Lifecycle Stage
-Step 2: Pre-Route Hooks (Optional)
-Step 3: Route to Child Skill
-See SKILL.md Impact Report schema.
+Experiment: [name or "TBD"]
+Lifecycle stage: [backlog | spec | runbook | readout]
+Decision class: [Causal | Directional | Instrumentation]
+Routed to: [child skill]
+Upstream skills called: [list or none]
+Downstream handoff: [list or none]
+Next recommended step: [exact next action]
 ```
 
-## Example 2 — Success criteria
+## Example 2 — Gotcha application
 
-**Input:** "Use `experimentation` on this project"
+**Input:** Task hits a non-obvious edge case
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Apply:**
+- **A/B is not the universal answer.** Persistent treatments, lifecycle email, recommendations, and notification programs default to **holdouts**. Marketplaces / feeds / scheduling default to **switchbacks**. SEO / content default to **quasi-experiments**. Routing the user to the wrong method is the single biggest avoidable mistake.
+- **Decision class declared up front, never retrofitted.** A Directional test cannot become "Causal" after the fact because the lift looked nice. Once tagged Directional, claims are forever stripped of significance language.
+- **The orchestrator never analyses results itself.** Always route to `experiment-readout`. SRM and exposure-parity checks live there and are mandatory before any metric is reported.
+- **Skipping a stage is allowed, but only with a recorded justification.** If the user wants to launch without a spec ("just a copy tweak"), force a one-line note in the artefact — silent skips break the learnings log later.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

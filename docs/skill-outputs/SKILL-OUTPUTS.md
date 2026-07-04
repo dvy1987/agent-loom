@@ -215,3 +215,7 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-03 | improve-skills | AGENTS.md, universal-skill-creator, compress-skill, improve-skills, learn-from, learn-from-repo, validate-skills, split-skill, SKILL-EXAMPLES-INDEX | Never-discard-examples invariant |
 | 2026-07-04 | improve-skills | 77 skills references/examples.md + backfill_examples.py | Full library L3 backfill (98/98 skills) |
 | 2026-07-04 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Session handoff + commit-trigger wiring (v1.2) |
+| 2026-07-04 | improve-skills | ~70 skills references/examples.md + enrich_examples.py | L3 quality pass (thin auto-backfills) |
+| 2026-07-04 | universal-skill-creator | performance-optimization, shipping-and-launch, browser-testing-with-devtools, api-deprecation-and-migration | Phase 2 gap skills (addyosmani patterns) |
+| 2026-07-04 | improve-skills | brainstorming/references/examples.md | idea-refine examples 4–6 (restaurant, collab, retro) |
+| 2026-07-04 | library-skill | docs/SKILL-INDEX.md, README.md, AGENTS.md, docs/skill-graph.md, docs/SKILL-EXAMPLES-INDEX.md | Sync after gap skills + enrichment (102 skills) |

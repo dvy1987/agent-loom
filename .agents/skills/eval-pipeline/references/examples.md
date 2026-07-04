@@ -1,8 +1,8 @@
 # Eval Pipeline — Full Worked Examples
 
-Skill: `eval-pipeline` | Load when producing output for this workflow.
+Skill: `eval-pipeline` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Set up an eval pipeline for our customer support chatbot
 
@@ -35,19 +35,28 @@ Nightly: full suite + known-bad validation
 Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `eval-pipeline` for [concrete task]"
+**Input:** "Run `eval-pipeline` on [concrete task]"
 
-**Output:**
-```
-Invoked `eval-pipeline`.
-Step 1: Understand the System
-Step 2: Design the Three-Layer Evaluator Stack
-Step 3: Design the Eval Dataset
-Pipeline designed: [system name]
-```
+**Agent actions:**
+1. Understand the System
+2. Design the Three-Layer Evaluator Stack
+3. Design the Eval Dataset
+4. Wire CI/CD Integration
+5. Define Alerting and Baselines
+6. Write the Pipeline Design Document
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Intermittent failures are real.** A run of 100 can pass, but nightly runs over weeks surface subtle issues. Design for long-term signal, not single-run confidence.
+- **LLM judges need calibration too.** When you change the judge model or rubric, re-run known-bad cases to verify the judge still catches failures.
+- **Sampling rates matter for cost.** LLM-as-judge on 100% of PR traffic burns budget fast. Start at 20% and increase for high-risk changes only.
+- **Eval datasets go stale.** As the system evolves, old test cases may no longer represent real usage. Schedule quarterly dataset refresh.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

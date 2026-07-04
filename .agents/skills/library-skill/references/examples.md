@@ -1,8 +1,8 @@
 # Library Skill — Full Worked Examples
 
-Skill: `library-skill` | Load when producing output for this workflow.
+Skill: `library-skill` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** universal-skill-creator just created a new skill called `library-skill`. Run library-skill to sync the library.
 
@@ -29,15 +29,16 @@ Logged to docs/skill-outputs/SKILL-OUTPUTS.md.
 Invoking generate-changelog...
 ```
 
-## Example 2 — Success criteria
+## Example 2 — Gotcha application
 
-**Input:** "Use `library-skill` on this project"
+**Input:** Task hits a non-obvious edge case
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Apply:**
+- **Stale frontmatter:** Some skills have `category` nested under `metadata`, others at top level. Check both.
+- **Changelog skill location:** The skill named `generate-changelog` lives in `.agents/skills/generate-changelog/` — use the directory name for path, frontmatter `name` for references.
+- **Partial runs:** If scanning finds zero skills, abort — the path is likely wrong. Never wipe reference files.
+- **Concurrent edits:** Another agent may be editing AGENTS.md simultaneously. Read → diff → write, never overwrite wholesale.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

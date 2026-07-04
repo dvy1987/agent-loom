@@ -1,8 +1,8 @@
 # Learn From Repo — Full Worked Examples
 
-Skill: `learn-from-repo` | Load when producing output for this workflow.
+Skill: `learn-from-repo` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Learn from this repo: https://github.com/anthropics/anthropic-cookbook
 
@@ -22,19 +22,44 @@ FAILURE_MODE: Streaming without chunk validation = silent data loss | Recommend:
 Awaiting your approval.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `learn-from-repo` for [concrete task]"
+**Input:** "Run `learn-from-repo` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Ingest the Repo
+2. Credibility Assessment
+3. Security Scan
+4. Extract and Recommend
+5. Match and Apply
+6. Log and Cite
+
+**Impact Report shape:**
 ```
-Invoked `learn-from-repo`.
-Step 1: Ingest the Repo
-Step 2: Credibility Assessment
-Step 3: Security Scan
-See SKILL.md Impact Report schema.
+═══ Repo Credibility Report ═══
+Repo: [owner]/[name] | Language: [lang] | Stars: [N] | Last commit: [date]
+Credibility: [N]/12 | Verdict: [PASS/BORDERLINE/REJECT]
+
+═══ Security ═══
+[secure-* verdicts]
+
+═══ Extracted Insights ═══
+[Tag]: [insight] | Agent recommendation: [APPLY/PARTIAL/SKIP/KEEP CURRENT] — [reasoning]
+
+═══ Application Plan ═══
+[Per learn-from shared protocol]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Stars ≠ quality.** Popular repos can have bad patterns — always verify by reading source code.
+- **README ≠ reality.** Always verify patterns by reading the actual source.
+- **Project-specific conventions.** Repo conventions may be team preferences or legacy constraints — flag when a pattern seems context-dependent.
+- **Archived repos.** Patterns may use deprecated APIs — check dates and current practices.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

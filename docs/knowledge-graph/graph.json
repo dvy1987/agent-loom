@@ -1,14 +1,14 @@
 {
   "version": "2.0",
-  "generated_at": "2026-07-04T02:44:35.620522+00:00",
+  "generated_at": "2026-07-04T02:52:36.403032+00:00",
   "mode": "skill-library",
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 121,
-    "edges": 416,
-    "authoritative_edges": 164,
-    "extracted_edges": 212,
-    "inferred_edges": 204
+    "nodes": 125,
+    "edges": 434,
+    "authoritative_edges": 170,
+    "extracted_edges": 218,
+    "inferred_edges": 216
   },
   "god_nodes": [
     "universal-skill-creator",
@@ -89,15 +89,16 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "app": [
-      "app-security-hardening"
+    "context": [
+      "context-engineering"
     ],
-    "memory": [
+    "experiment": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
       "agent-system-architecture",
       "api-and-interface-design",
+      "api-deprecation-and-migration",
       "apply-paper-to-project",
       "architectural-decision-log",
       "assumption-mapping",
@@ -181,27 +182,24 @@
       "validate-skills",
       "venture-exploration"
     ],
-    "design": [
-      "design-direction",
-      "design-review",
-      "design-system",
-      "frontend-design"
-    ],
-    "ci": [
-      "ci-cd-and-automation"
-    ],
-    "debug": [
-      "debug-and-fix"
-    ],
-    "technical": [
+    "code": [
+      "code-review-crsp",
       "code-simplification",
       "technical-debt-audit"
     ],
-    "context": [
-      "context-engineering"
+    "frontend": [
+      "app-security-hardening",
+      "browser-testing-with-devtools",
+      "ci-cd-and-automation",
+      "design-direction",
+      "design-review",
+      "design-system",
+      "frontend-design",
+      "performance-optimization",
+      "shipping-and-launch"
     ],
-    "code": [
-      "code-review-crsp"
+    "debug": [
+      "debug-and-fix"
     ]
   },
   "nodes": [
@@ -212,6 +210,14 @@
       "path": ".agents/skills/experiment-backlog/SKILL.md",
       "category": "project-specific",
       "community": "experiment"
+    },
+    {
+      "id": "skill_api_deprecation_and_migration",
+      "label": "api-deprecation-and-migration",
+      "type": "skill",
+      "path": ".agents/skills/api-deprecation-and-migration/SKILL.md",
+      "category": "project-specific",
+      "community": "api"
     },
     {
       "id": "skill_project_orchestrator",
@@ -654,6 +660,14 @@
       "community": "product"
     },
     {
+      "id": "skill_shipping_and_launch",
+      "label": "shipping-and-launch",
+      "type": "skill",
+      "path": ".agents/skills/shipping-and-launch/SKILL.md",
+      "category": "project-specific",
+      "community": "shipping"
+    },
+    {
       "id": "skill_implementation_plan",
       "label": "implementation-plan",
       "type": "skill",
@@ -894,6 +908,14 @@
       "community": "research"
     },
     {
+      "id": "skill_performance_optimization",
+      "label": "performance-optimization",
+      "type": "skill",
+      "path": ".agents/skills/performance-optimization/SKILL.md",
+      "category": "project-specific",
+      "community": "performance"
+    },
+    {
       "id": "skill_eval_output",
       "label": "eval-output",
       "type": "skill",
@@ -916,6 +938,14 @@
       "path": ".agents/skills/socratic/SKILL.md",
       "category": "thinking",
       "community": "core"
+    },
+    {
+      "id": "skill_browser_testing_with_devtools",
+      "label": "browser-testing-with-devtools",
+      "type": "skill",
+      "path": ".agents/skills/browser-testing-with-devtools/SKILL.md",
+      "category": "project-specific",
+      "community": "browser"
     },
     {
       "id": "skill_feature_spec",
@@ -2422,6 +2452,60 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_ci_cd_and_automation",
+      "target": "skill_performance_optimization",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_shipping_and_launch",
+      "target": "skill_ci_cd_and_automation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_shipping_and_launch",
+      "target": "skill_app_security_hardening",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_api_deprecation_and_migration",
+      "target": "skill_api_and_interface_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_frontend_design",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_browser_testing_with_devtools",
+      "target": "skill_performance_optimization",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
       "source": "skill_project_orchestrator",
       "target": "skill_agent_builder",
       "relation": "invokes",
@@ -3773,6 +3857,15 @@
     },
     {
       "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
       "target": "skill_debug_and_fix",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
@@ -3783,6 +3876,15 @@
     {
       "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
       "target": "skill_code_review_crsp",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
+      "target": "skill_performance_optimization",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
@@ -3819,6 +3921,15 @@
     {
       "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
       "target": "skill_architectural_decision_log",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
+      "target": "skill_shipping_and_launch",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
@@ -3945,6 +4056,15 @@
     {
       "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
       "target": "skill_technical_debt_audit",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_05_29_handoff_addyosmani_agent_skills_ingestion_read_only_application_deferred_to_next_session",
+      "target": "skill_api_deprecation_and_migration",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
@@ -4412,6 +4532,42 @@
     },
     {
       "source": "handoff_2026_06_02_handoff_phase_2_batch_2_skills_added_uncommitted",
+      "target": "skill_performance_optimization",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_handoff_phase_2_batch_2_skills_added_uncommitted",
+      "target": "skill_shipping_and_launch",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_handoff_phase_2_batch_2_skills_added_uncommitted",
+      "target": "skill_api_deprecation_and_migration",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_handoff_phase_2_batch_2_skills_added_uncommitted",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_handoff_phase_2_batch_2_skills_added_uncommitted",
       "target": "skill_validate_skills",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
@@ -4427,6 +4583,42 @@
       "confidence_score": 1.0,
       "source_file": "docs/memory/agent-handoffs.md",
       "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_06_02_12_40_handoff_session_end",
+      "target": "skill_performance_optimization",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_12_40_handoff_session_end",
+      "target": "skill_shipping_and_launch",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_12_40_handoff_session_end",
+      "target": "skill_api_deprecation_and_migration",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_06_02_12_40_handoff_session_end",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
     },
     {
       "source": "handoff_2026_06_02_12_40_handoff_session_end",

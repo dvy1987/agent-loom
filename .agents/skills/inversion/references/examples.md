@@ -1,8 +1,8 @@
 # Inversion — Full Worked Examples
 
-Skill: `inversion` | Load when producing output for this workflow.
+Skill: `inversion` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** We want to increase user activation. How do we invert this?
 
@@ -27,19 +27,35 @@ Check: Is any of this in the current flow?
 Forward action: Audit the first 3 minutes of the user experience against this list.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `inversion` for [concrete task]"
+**Input:** "Run `inversion` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Assess
+2. Ask (Maximum 2 Questions)
+3. Invert
+4. Translate to Forward Actions
+5. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `inversion`.
-Step 1: Assess
-Step 2: Ask (Maximum 2 Questions)
-Step 3: Invert
 Inversion complete: [problem/goal]
+Method used: [Failure / Opposite Goal / Both]
+Questions asked: N (max 2)
+Forward actions: N
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Every inverted finding must translate to a concrete action. If it doesn't, it's noise.
+- The most useful inversions are non-obvious. If findings are things the user already knew, push deeper.
+- For richer analysis — surfacing assumptions, imagining failure scenarios, or decomposing stuck problems — `deep-thinking` orchestrates these alongside inversion.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

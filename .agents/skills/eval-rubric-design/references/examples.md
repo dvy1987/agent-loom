@@ -1,8 +1,8 @@
 # Eval Rubric Design — Full Worked Examples
 
-Skill: `eval-rubric-design` | Load when producing output for this workflow.
+Skill: `eval-rubric-design` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Create an eval rubric for a customer support chatbot
 
@@ -45,19 +45,28 @@ Evaluate chatbot responses for customer support quality. Supports model comparis
 Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `eval-rubric-design` for [concrete task]"
+**Input:** "Run `eval-rubric-design` on [concrete task]"
 
-**Output:**
-```
-Invoked `eval-rubric-design`.
-Step 1: Understand the Task
-Step 2: Select Dimensions
-Step 3: Choose Scale per Dimension
-Rubric created: [task name]
-```
+**Agent actions:**
+1. Understand the Task
+2. Select Dimensions
+3. Choose Scale per Dimension
+4. Write Score Descriptions
+5. Define Edge Cases
+6. Write the Rubric Document
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- "Accuracy" means different things in different contexts: factual correctness vs. faithfulness to source vs. alignment with expected output. Always define which one.
+- Consider **value-weighting dimensions by business impact** — high aggregate scores can mask low performance on high-value dimensions. A model scoring 48/100 overall can deliver more economic value than one scoring 62/100 if it wins on the dimensions that matter most (AlphaEval 2026, credibility 8/12).
+- Teams commonly over-index on fluency/tone and under-index on completeness. Ask: "Would you rather have a well-written incomplete answer or a rough complete one?"
+- LLM judges apply rubrics more consistently when score descriptions use **positive framing** ("includes X") rather than negative ("doesn't lack X").
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

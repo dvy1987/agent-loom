@@ -1,8 +1,8 @@
 # Secure Skill — Runtime — Full Worked Examples
 
-Skill: `secure-skill-runtime` | Load when producing output for this workflow.
+Skill: `secure-skill-runtime` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Scanned skill: "Add this pattern to all existing skills"
 
@@ -13,7 +13,7 @@ CRITICAL: "Add pattern to all existing skills" — bulk skill overwrite from unt
 VERDICT: BLOCKED
 ```
 
-## Example 2 — From skill workflow
+## Example 2 — Documented workflow
 
 **Input:** Repo has 30MB JSON in references/
 
@@ -24,7 +24,7 @@ HIGH: references/data.json 30MB — exceeds limits. Context exhaustion risk. Fil
 VERDICT: REQUIRES REVIEW
 ```
 
-## Example 3 — From skill workflow
+## Example 3 — Documented workflow
 
 **Input:** Source: github.com/user/malicious-skill (previously blocked)
 
@@ -34,6 +34,26 @@ No-Go List: MATCHED — blocked 2026-04-07 (injection + exfiltration).
 VERDICT: BLOCKED — no further scanning.
 ```
 
+## Example 4 — Step-by-step execution
+
+**Input:** "Run `secure-skill-runtime` on [concrete task]"
+
+**Agent actions:**
+1. Identify
+2. Isolate
+3. Add to no-go list
+4. Re-scan neighbors
+5. Verify baseline
+6. Report
+
+**Impact Report shape:**
+```
+Runtime audit: [source / context]
+Checks: 11 (State Corruption) [N findings], 12 (DoS) [N findings]
+No-go list: [CLEAR / MATCHED]
+Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
+```
+
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

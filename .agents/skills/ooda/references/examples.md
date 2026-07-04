@@ -1,8 +1,8 @@
 # OODA — Full Worked Examples
 
-Skill: `ooda` | Load when producing output for this workflow.
+Skill: `ooda` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** A competitor just launched a nearly identical feature to what we've been building for 3 months. We ship in 6 weeks. What do we do?
 
@@ -35,19 +35,36 @@ NEXT LOOP TRIGGER
 Observe user response to the competitor's feature in the next 2 weeks. If 3+ users mention the competitor unprompted, loop immediately on messaging strategy.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `ooda` for [concrete task]"
+**Input:** "Run `ooda` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Observe: What Do We Actually Know?
+2. Orient: What Does This Mean?
+3. Decide: What's the Move?
+4. Act: Move
+5. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `ooda`.
-Step 1: Observe: What Do We Actually Know?
-Step 2: Orient: What Does This Mean?
-Step 3: Decide: What's the Move?
 OODA loop: [situation]
+Key orientation insight: [what the analysis revealed]
+Decision made: [the specific committed action]
+Owner: [who] | Timeline: [when]
+Next loop trigger: [what to watch and when]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- The most common OODA failure is getting stuck in Orient — debating what the situation means while the situation changes. Set a time limit for Orient.
+- Bad orientation is invisible. If the team consistently makes wrong decisions despite good information, the orientation is the problem — update the mental model, not the decision process.
+- OODA under competitive pressure: the goal is not a better decision than the competitor — it is a faster decision loop. Speed of iteration beats quality of individual decisions in dynamic environments.
+- For product decisions: "Act" should be the smallest version of the decision that generates real feedback. Big commits reduce loop speed.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

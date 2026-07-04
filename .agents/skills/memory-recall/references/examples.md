@@ -1,29 +1,25 @@
 # Memory Recall — Full Worked Examples
 
-Skill: `memory-recall` | Load when producing output for this workflow.
+Skill: `memory-recall` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Targeted query
 
-**Input:** "Run `memory-recall` for [concrete task]"
+**Input:** "What did we decide about dark mode?"
 
-**Output:**
-```
-Invoked `memory-recall`.
-Step 1: Identify the recall target: feature, decision, bug, user preference, deferred option, learning, or session.
-Step 2: Read `docs/memory/MEMORY-ROUTING.md` and `docs/memory/project-index.md`.
-Step 3: Select candidate files and sections by tags, status, date, and scope.
-See SKILL.md Impact Report schema.
-```
+**Output:** Search project-index + decisions + recent handoffs; cite file paths.
 
-## Example 2 — Success criteria
+## Example 2 — No match
 
-**Input:** "Use `memory-recall` on this project"
+**Input:** Query with no hits
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Say explicitly "no durable record"; offer `memory-capture` if user confirms.
+
+## Example 3 — Bounded read
+
+**Input:** Broad "what happened last week"
+
+**Output:** Summarize last handoff + index highlights only — no full log scan.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

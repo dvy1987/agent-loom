@@ -1,29 +1,25 @@
 # Memory Forget — Full Worked Examples
 
-Skill: `memory-forget` | Load when producing output for this workflow.
+Skill: `memory-forget` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Wrong capture
 
-**Input:** "Run `memory-forget` for [concrete task]"
+**Input:** "Forget the SQLite decision — we're not using it"
 
-**Output:**
-```
-Invoked `memory-forget`.
-Step 1: Identify exact target memory and scope: project, global, or both.
-Step 2: Confirm ambiguity if multiple entries match.
-Step 3: Classify action: delete, redact, archive, mark superseded, or add do-not-store rule.
-See SKILL.md Impact Report schema.
-```
+**Output:** Redact or strike through with date; never silent delete of audit trail.
 
-## Example 2 — Success criteria
+## Example 2 — PII slip
 
-**Input:** "Use `memory-forget` on this project"
+**Input:** Accidental API key in session note
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Remove secret; log forget action in handoff.
+
+## Example 3 — User privacy
+
+**Input:** "Don't keep my client name"
+
+**Output:** Forget named entities from session-notes only; keep structural decisions.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

@@ -1,8 +1,8 @@
 # Architectural Decision Log (ADL) — Full Worked Examples
 
-Skill: `architectural-decision-log` | Load when producing output for this workflow.
+Skill: `architectural-decision-log` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** We just decided to use SQLite instead of PostgreSQL for our internal tool. Record this as an ADR.
 
@@ -36,19 +36,28 @@ Critical consequences: No concurrent writes, limited FTS
 Ready for: implementation
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `architectural-decision-log` for [concrete task]"
+**Input:** "Run `architectural-decision-log` on [concrete task]"
 
-**Output:**
-```
-Invoked `architectural-decision-log`.
-Step 1: Identify the Decision
-Step 2: Gather Context & Options
-Step 3: Draft the ADR
-See SKILL.md Impact Report schema.
-```
+**Agent actions:**
+1. Identify the Decision
+2. Gather Context & Options
+3. Draft the ADR
+4. Link to Previous Decisions
+5. Present and Save
+6. Memory Checkpoint (Mandatory)
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- The highest-value ADR content is the rejected alternatives with rejection reasons — not the chosen option. Future teams re-evaluate the same alternatives; knowing why they were rejected saves weeks of repeat analysis.
+- ADRs written retrospectively produce confabulated reasoning. Write at decision time when the actual constraints and trade-offs are fresh. A rough ADR today beats a polished one written from memory next month.
+- "Accepted" is not permanent. Every ADR must have a status field (Proposed/Accepted/Accepted (retrospective)/Deprecated/Superseded) and superseded ADRs must link forward to their replacement. Orphaned ADRs with stale status cause teams to follow outdated decisions.
+- `SYNTHESIS` mode is honest, not confident. Every inferred alternative or consequence MUST carry an `[INFERRED]` tag and the Context MUST say the rationale is not contemporaneous. Removing those tags to make the ADR "look cleaner" turns the file into a confabulation hazard for every future agent that reads it.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

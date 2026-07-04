@@ -1,8 +1,8 @@
 # Assumption Mapping — Full Worked Examples
 
-Skill: `assumption-mapping` | Load when producing output for this workflow.
+Skill: `assumption-mapping` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Map the assumptions in our community feature plan
 
@@ -33,19 +33,36 @@ MONITOR
 TOTAL: 8 assumptions found | Critical: 2 | Validated: 1 | Monitor: 5
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `assumption-mapping` for [concrete task]"
+**Input:** "Run `assumption-mapping` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Read the Plan or Document
+2. State Each as a Falsifiable Claim
+3. Place Each on the Grid
+4. Prioritise the Critical Zone
+5. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `assumption-mapping`.
-Step 1: Read the Plan or Document
-Step 2: State Each as a Falsifiable Claim
-Step 3: Place Each on the Grid
 Assumption map: [plan/document]
+Total assumptions surfaced: N
+Critical (high importance, low evidence): N
+Validated: N | Monitor: N | Deprioritised: N
+Minimum experiments defined: N
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Teams tend to list risks when asked for assumptions. If it starts with "what if..." it's a risk. If it starts with "we believe..." or "this requires..." it's an assumption.
+- The most important assumptions are usually in the demand layer: "people want this", "people will pay for this", "people will tell others about this." Test demand before supply.
+- Don't map more than 15 assumptions at once. It becomes noise. Focus on the top 5 critical ones.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

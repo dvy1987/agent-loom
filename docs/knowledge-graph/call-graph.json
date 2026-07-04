@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T02:44:35.620522+00:00",
+  "generated_at": "2026-07-04T02:52:36.403032+00:00",
   "edges": [
     {
       "source": "skill_experiment_backlog",
@@ -1264,6 +1264,60 @@
     {
       "source": "skill_feature_spec",
       "target": "skill_api_and_interface_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_ci_cd_and_automation",
+      "target": "skill_performance_optimization",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_shipping_and_launch",
+      "target": "skill_ci_cd_and_automation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_shipping_and_launch",
+      "target": "skill_app_security_hardening",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_api_deprecation_and_migration",
+      "target": "skill_api_and_interface_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_frontend_design",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_browser_testing_with_devtools",
+      "target": "skill_performance_optimization",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

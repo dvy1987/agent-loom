@@ -1,8 +1,8 @@
 # Deep Thinking — Full Worked Examples
 
-Skill: `deep-thinking` | Load when producing output for this workflow.
+Skill: `deep-thinking` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** I need to decide whether to hire a full-time community manager or outsource it. I've been going back and forth for weeks.
 
@@ -17,19 +17,37 @@ The real question isn't who manages community — it's whether community is cent
 Shall I run inversion on "community as core retention strategy" to help you think that through? Or would you rather map the assumptions behind each option?
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `deep-thinking` for [concrete task]"
+**Input:** "Run `deep-thinking` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Diagnose
+2. Name the Framework(s) and Why
+3. Run the Primary Framework
+4. Check: Is More Needed?
+5. Run Secondary Framework (if needed)
+6. Synthesise
+
+**Impact Report shape:**
 ```
-Invoked `deep-thinking`.
-Step 1: Diagnose
-Step 2: Name the Framework(s) and Why
-Step 3: Run the Primary Framework
 Deep thinking session: [problem/decision/document]
+Frameworks used: [list]
+Core insight: [the main thing this session revealed]
+Hidden assumption/question exposed: [if any]
+Concrete next action: [what to do now]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Diagnosis is the most important step.** Wrong framework for the problem wastes time and produces shallow insight. Invest in Step 1.
+- **Socratic and adversarial-hat don't combine well.** Socratic builds up; adversarial tears down. Use one per session unless a specific finding calls for the other.
+- **Pre-mortem works best just before commitment.** If the decision is already made, use `adversarial-hat` instead.
+- **If the user is emotionally attached to their plan**, lead with `socratic` to surface their assumptions through questions rather than `adversarial-hat` which can feel like an attack.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

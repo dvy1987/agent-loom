@@ -1,29 +1,25 @@
 # Memory Audit — Full Worked Examples
 
-Skill: `memory-audit` | Load when producing output for this workflow.
+Skill: `memory-audit` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Stale index
 
-**Input:** "Run `memory-audit` for [concrete task]"
+**Input:** project-index references removed skill
 
-**Output:**
-```
-Invoked `memory-audit`.
-Step 1: Read memory routing and indexes for the requested scope.
-Step 2: Check target files exist and are referenced by the index.
-Step 3: Check global line budgets and active total size.
-See SKILL.md Impact Report schema.
-```
+**Output:** Flag drift; list files to fix or archive.
 
-## Example 2 — Success criteria
+## Example 2 — Orphan decisions
 
-**Input:** "Use `memory-audit` on this project"
+**Input:** Decision with no implementing code
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Mark `status: unverified` for human review.
+
+## Example 3 — Coverage report
+
+**Input:** User asks "is memory healthy?"
+
+**Output:** Table: last handoff date, decision count, stale entries.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

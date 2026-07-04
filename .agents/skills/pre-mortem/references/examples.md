@@ -1,8 +1,8 @@
 # Pre-mortem — Full Worked Examples
 
-Skill: `pre-mortem` | Load when producing output for this workflow.
+Skill: `pre-mortem` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** We're launching our community feature in 6 weeks. Run a pre-mortem.
 
@@ -28,19 +28,36 @@ ONE THING TO DO TODAY
 Decide who owns community before writing a single line of code.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `pre-mortem` for [concrete task]"
+**Input:** "Run `pre-mortem` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Set the Scene
+2. Generate Failure Causes (Diverge)
+3. Prioritise by Impact × Blindness
+4. Convert to Prevention Actions
+5. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `pre-mortem`.
-Step 1: Set the Scene
-Step 2: Generate Failure Causes (Diverge)
-Step 3: Prioritise by Impact × Blindness
 Pre-mortem complete: [project/plan]
+Time horizon: [N months/years]
+Causes generated: N
+High priority (impact × blindness): N
+Prevention actions defined: N
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- The "obvious cause" is usually the most important one. Teams avoid stating it because it feels embarrassing. Name it first — it unlocks the rest.
+- Pre-mortem is most powerful just before a major commitment, not after. If you're already mid-execution, `adversarial-hat` is more useful.
+- Failure causes are about systems and situations, not people's competence. Keep it structural.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

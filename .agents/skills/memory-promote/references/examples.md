@@ -1,29 +1,25 @@
 # Memory Promote — Full Worked Examples
 
-Skill: `memory-promote` | Load when producing output for this workflow.
+Skill: `memory-promote` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Session → durable
 
-**Input:** "Run `memory-promote` for [concrete task]"
+**Input:** Repeated session note about CI policy
 
-**Output:**
-```
-Invoked `memory-promote`.
-Step 1: Read the source project memory entry and provenance.
-Step 2: Classify target: user preference, global agent rule, or reusable learning.
-Step 3: Apply promotion gate: cross-project, stable, repeatedly useful, non-sensitive, and not obvious.
-See SKILL.md Impact Report schema.
-```
+**Output:** Promote to `docs/memory/decisions/` or project-index bullet.
 
-## Example 2 — Success criteria
+## Example 2 — Criteria
 
-**Input:** "Use `memory-promote` on this project"
+**Input:** One-off typo fix note
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Do not promote — stays in session-notes.
+
+## Example 3 — User request
+
+**Input:** "Make this permanent"
+
+**Output:** Promote with date + source handoff link.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

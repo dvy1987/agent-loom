@@ -1,8 +1,8 @@
 # First Principles — Full Worked Examples
 
-Skill: `first-principles` | Load when producing output for this workflow.
+Skill: `first-principles` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Our SaaS onboarding takes 14 steps and users drop off at step 6. First principles this.
 
@@ -28,19 +28,34 @@ EXPECTED DELTA
 A user can experience value in <2 minutes instead of completing 14 steps. Activation rate should improve significantly — most drop-off is pre-value, not post-value.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `first-principles` for [concrete task]"
+**Input:** "Run `first-principles` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Frame
+2. Run the Six Steps
+3. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `first-principles`.
-Step 1: Frame
-Step 2: Run the Six Steps
-Step 3: Deliver
 First principles analysis: [problem]
+Assumptions challenged: N
+Conventional constraints identified: N
+Fundamental truths confirmed: N
+New solution built: yes
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Most people stop at Step 3 — they identify assumptions but don't rebuild. Always complete Step 6.
+- Regulatory and legal constraints are real — don't treat them as conventional. But question whether you've interpreted them correctly.
+- First principles is not "ignore all prior art." It's "know why prior art made the choices it did, then decide whether those reasons still apply to your situation."
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

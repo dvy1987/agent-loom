@@ -716,3 +716,26 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Graph
 - Incremental rebuild run at handoff; see `docs/knowledge-graph/GRAPH_REPORT.md`.
+
+---
+
+## 2026-07-04 14:30 — Handoff (L3 enrichment + Phase 2 gaps)
+
+### Done
+- **L3 quality pass:** `enrich_examples.py` enriched ~70 thin auto-backfilled `references/examples.md` files (memory suite templates + SKILL.md extraction).
+- **Phase 2 gap skills:** `performance-optimization`, `shipping-and-launch`, `browser-testing-with-devtools`, `api-deprecation-and-migration` (addyosmani patterns, 102 skills total).
+- **Brainstorming L3:** Examples 4–6 from idea-refine (restaurant regulars, codebase-aware collab, stale retros).
+- **Library sync:** SKILL-INDEX, README (102 count), AGENTS.md entry points, skill-graph + knowledge-graph rebuild (434 edges, graph_health PASS).
+- **Validation:** agentskills validate 102/102 PASS; 0 missing L3.
+
+### Deferred
+- Hand-curated L3 still thin on some meta/memory skills (<55 lines) — optional second manual pass.
+- P2 craft flags (rationalizations/verification) on thinking/meta skills — advisory only.
+
+### Next Agent Should Know
+- All Phase 2 gap skills from SUMMARY.md are now present.
+- `enrich_examples.py` skips HAND_CURATED set including the 4 new gap skills.
+- Regenerate indexes: `build_examples_index.py`, `build_graph.py --incremental`.
+
+### Working Tree
+- Ready to commit: enrichment batch + 4 gap skills + library sync.

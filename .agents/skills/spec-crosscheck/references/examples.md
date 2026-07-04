@@ -1,8 +1,8 @@
 # Spec Crosscheck — Full Worked Examples
 
-Skill: `spec-crosscheck` | Load when producing output for this workflow.
+Skill: `spec-crosscheck` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** /analyze the magic-link feature.
 
@@ -31,19 +31,48 @@ Required:
 Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `spec-crosscheck` for [concrete task]"
+**Input:** "Run `spec-crosscheck` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Locate inputs
+2. Run six checks
+3. Write the report
+4. Save, log, present
+
+**Impact Report shape:**
 ```
-Invoked `spec-crosscheck`.
-Step 1: Locate inputs
-Step 2: Run six checks
-Step 3: Write the report
 Crosscheck: <slug>
+Verdict: PASS | FAIL
+Checks: A=<v> B=<v> C=<v> D=<v> E=<v> F=<v>
+Findings: <N> (severity breakdown)
+Saved: docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md
+Logged: docs/skill-outputs/SKILL-OUTPUTS.md
+Implementation: gated|unblocked
 ```
+
+## Example 3 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "Reason to PASS anyway" | Reality |
+| "Only 1 `[NEEDS CLARIFICATION]` left — close enough" | Hard rule: PASS forbidden while ANY marker remains. The single remaining one is usually the riskiest |
+| "Constitution rule is small, an implicit waiver is fine" | Implicit waivers fail crosscheck. Force the spec to spell it out in `## Constitution Waivers` with rule ID + rationale |
+| "Task lacks a DoD but the team knows what's meant" | Tribal knowledge fails the next agent. No DoD = FAIL, fix in the artefact not in the head |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- A PASS doesn't mean the implementation is correct — it means the spec, plan, and tasks are mutually consistent and the spec is unambiguous. Correctness is verified by tests after implementation.
+- "Constitutional waivers" are real — sometimes a feature legitimately needs to break a rule. Require explicit `## Constitution Waivers` in the spec with rule ID and rationale; never let a waiver be implicit.
+- This skill is read-only. Do not edit any spec/plan/task to make checks pass — instruct the user to fix and re-run.
+- Re-runs are cheap. After the user fixes findings, re-run rather than guessing.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

@@ -68,3 +68,65 @@ Recommend **A + C**: CSS variables for charts, Tailwind dark: for app shell, `pr
 - [ ] Not Doing list makes trade-offs explicit
 - [ ] Key assumptions listed with validation approach
 - [ ] User approved design before implementation handoff
+
+---
+
+## Example 4 — Venture idea (restaurant regulars) — from idea-refine
+
+**Input:** "I want to help local restaurants compete with DoorDash"
+
+**Phase 1 — Reframe:**
+> How might we help restaurants **retain** existing customers who already order from them — instead of competing for discovery on delivery apps?
+
+**Clarifying:** Who is the user — owner, diner, or both? What does "compete" mean — more orders, higher margin, or less platform dependency?
+
+**User:** "Restaurant owners. Compete = keep regulars ordering direct so they skip 30% platform fees."
+
+**Variations (sample):**
+1. **SMS reorder for regulars** — owner uploads top 20 phones + usual order; one-tap confirm link.
+2. **Inversion — loyalty without an app** — punch-card via SMS, not another install.
+3. **Simplification — pickup-only v1** — no delivery logistics in MVP.
+
+**Phase 3 one-pager highlights:**
+- **MVP:** SMS reorder for self-identified regulars, pickup only.
+- **Not Doing:** Delivery, marketplace discovery, branded apps, POS integration in v1.
+- **Assumption to validate:** Regulars will reorder via SMS vs their usual app (5 restaurants × 20 regulars, 4 weeks).
+
+---
+
+## Example 5 — Codebase-aware feature (real-time collaboration)
+
+**Input:** "Add real-time collaboration to our document editor"
+
+**Context scan:** Block-based editor, REST persistence, no WebSocket layer yet.
+
+**Clarifying:** Same-paragraph editing (Google Docs) vs different sections (Notion)? How many simultaneous users?
+
+**User:** "2–5 people, different sections. Losing deals — buyers expect real-time."
+
+**Variations:**
+1. **Block-level locking** — `locked_by` + presence; fits existing block model.
+2. **Async-first** — suggestions/comments as primary mode.
+3. **Presence without co-edit** — cursors only; coordinate verbally.
+
+**Recommendation:** Variation 1 or 3 to **close the competitive checkbox** quickly; defer character-level CRDT.
+
+**Not Doing (Phase 3):** Offline sync, AI-mediated collab, per-character merge in v1.
+
+---
+
+## Example 6 — Process idea (stale retrospectives)
+
+**Input:** "Fix our weekly retros — people dread them"
+
+**Diagnosis:** 8 people, 3–4 talk; same WWW format; **action items pile up unchanged** — output layer is broken, not just format.
+
+**Variations:**
+1. **One action item max** — demo completion at next retro or that *is* the topic.
+2. **Async retro** — written reflections; 15-min standup to agree one change.
+3. **Anonymous dot-vote** — structure for quiet voices.
+
+**Phase 3 recommendation:** Start variation 1 + anonymous submission (variation 3) — **$0 prep**, test next week.
+
+**Not Doing:** New tools, elaborate facilitation kits, budget spend before proving follow-through works.
+

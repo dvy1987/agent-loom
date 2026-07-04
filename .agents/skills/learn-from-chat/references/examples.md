@@ -1,8 +1,8 @@
 # Learn From Chat — Full Worked Examples
 
-Skill: `learn-from-chat` | Load when producing output for this workflow.
+Skill: `learn-from-chat` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** During debugging, the agent discovers that compress-skill's workflow doesn't check whether moved references are actually loaded by the skill at runtime.
 
@@ -23,19 +23,39 @@ compress-skill:
 Awaiting your approval to apply.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `learn-from-chat` for [concrete task]"
+**Input:** "Run `learn-from-chat` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Capture
+2. Classify
+3. Match
+4. Present
+5. Apply (user approval required)
+6. Log
+
+**Impact Report shape:**
 ```
-Invoked `learn-from-chat`.
-Step 1: Capture
-Step 2: Classify
-Step 3: Match
-See SKILL.md Impact Report schema.
+Chat learning captured: [YYYY-MM-DD]
+Discovered: [one-sentence insight]
+Classification: [tag] | Generalizable: [yes/no]
+Status: [IMPLEMENTED / ESCALATED / REJECTED]
+Skills modified: [list] | Contradictions resolved: [N]
+validate-skills: [skill]: [before] → [after]   (omit if ESCALATED)
+Logged: docs/learnings/chat-learnings.md
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Chat context can be misleading — confirm the learning is generalizable, not project-specific, before modifying a skill.
+- Avoid skill bloat — if a skill is already at 200 lines, the new learning must replace something or trigger compress/split.
+- Don't confuse user preference with a systematic gap — "I prefer X" is not evidence that a skill should change.
+- Multiple learnings from one chat should each be evaluated independently — don't batch-approve.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

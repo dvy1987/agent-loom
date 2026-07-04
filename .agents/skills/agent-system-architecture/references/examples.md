@@ -1,8 +1,8 @@
 # Agent System Architecture — Full Worked Examples
 
-Skill: `agent-system-architecture` | Load when producing output for this workflow.
+Skill: `agent-system-architecture` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Design a multi-agent system for automated PR review that checks code quality, security vulnerabilities, and test coverage in parallel.
 
@@ -33,19 +33,27 @@ Observability strategy: Token usage + latency per agent logged to manifest
 Ready for: implementation-plan
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `agent-system-architecture` for [concrete task]"
+**Input:** "Run `agent-system-architecture` on [concrete task]"
 
-**Output:**
-```
-Invoked `agent-system-architecture`.
-Step 1: Define the Objective
-Step 2: Select Orchestration Pattern
-Step 3: Define Wiring & Communication
-See SKILL.md Impact Report schema.
-```
+**Agent actions:**
+1. Define the Objective
+2. Select Orchestration Pattern
+3. Define Wiring & Communication
+4. Design for Observability
+5. Present and Save
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Shared-blackboard state creates hidden coupling — agents reading stale state produce cascading errors that look like logic bugs. Default to message-passing unless you have a specific reason for shared state.
+- "Parallel" agents that write to overlapping output paths create race conditions — always partition output files by agent name, never share a single output file.
+- Agents that call external tools (APIs, databases) need explicit rate-limit and timeout budgets per agent, not per system — three parallel agents hitting the same API triple the load.
+- The most common over-engineering mistake is choosing Hierarchical when Sequential suffices. Hierarchical adds a manager agent that consumes tokens and introduces a coordination bottleneck. Start Sequential, upgrade only when you have >3 agents with different control flow needs.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

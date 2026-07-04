@@ -97,7 +97,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 <!-- EXAMPLES-INDEX:AUTO:START -->
 
-**Last scan:** 98 skills | L3 present: 98 | inline-only: 0 | broken pointers: 0
+**Last scan:** 102 skills | L3 present: 102 | inline-only: 0 | broken pointers: 0
 
 ### All skills — L3 status
 
@@ -108,11 +108,13 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `agent-launcher` | yes | yes | references/examples.md |
 | `agent-system-architecture` | yes | yes | references/examples.md |
 | `api-and-interface-design` | yes | yes | references/examples.md |
+| `api-deprecation-and-migration` | yes | yes | references/examples.md |
 | `app-security-hardening` | yes | yes | references/examples.md |
 | `apply-paper-to-project` | yes | yes | references/examples.md |
 | `architectural-decision-log` | yes | yes | references/examples.md |
 | `assumption-mapping` | yes | yes | references/examples.md |
 | `brainstorming` | yes | yes | references/examples.md |
+| `browser-testing-with-devtools` | yes | yes | references/examples.md |
 | `business-modeling` | yes | yes | references/examples.md |
 | `ci-cd-and-automation` | yes | yes | references/examples.md |
 | `code-review-crsp` | yes | yes | references/examples.md |
@@ -168,6 +170,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `memory-recall` | yes | yes | references/examples.md |
 | `memory-startup` | yes | yes | references/examples.md |
 | `ooda` | yes | yes | references/examples.md |
+| `performance-optimization` | yes | yes | references/examples.md |
 | `prd-writing` | yes | yes | references/examples.md |
 | `pre-mortem` | yes | yes | references/examples.md |
 | `problem-to-plan` | yes | yes | references/examples.md |
@@ -187,6 +190,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `secure-skill-repo-ingestion` | no | yes | references/examples.md |
 | `secure-skill-runtime` | yes | yes | references/examples.md |
 | `setup-evaluation` | yes | yes | references/examples.md |
+| `shipping-and-launch` | yes | yes | references/examples.md |
 | `skill-deconflict` | yes | yes | references/examples.md |
 | `skill-finder` | yes | yes | references/examples.md |
 | `skill-routing` | yes | yes | references/examples.md |

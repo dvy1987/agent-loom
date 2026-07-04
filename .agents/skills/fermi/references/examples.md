@@ -1,8 +1,8 @@
 # Fermi Estimation — Full Worked Examples
 
-Skill: `fermi` | Load when producing output for this workflow.
+Skill: `fermi` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** We're thinking of building for indie developers in India. How big is that market?
 
@@ -35,19 +35,38 @@ WHAT THIS ENABLES
 At $20/month and 5% market penetration (675 users), ARR = $162,000. This determines whether the segment justifies a dedicated product. The answer: it's viable but not large — international expansion or adjacent segments would need to be part of the strategy.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `fermi` for [concrete task]"
+**Input:** "Run `fermi` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Frame the Question
+2. Build the Factor Tree
+3. Estimate Each Factor
+4. Calculate
+5. Sense-Check
+6. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `fermi`.
-Step 1: Frame the Question
-Step 2: Build the Factor Tree
-Step 3: Estimate Each Factor
 Fermi estimate: [question]
+Factors decomposed: N
+Central estimate: [number with unit]
+Range: [low] – [high]
+Most uncertain factor: [which one]
+Decision enabled: [what this makes possible]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- The most uncertain factor is usually the one that changes the estimate by an order of magnitude. Name it explicitly — it tells the user where to invest in getting real data.
+- Fermi estimates are not for precise budgets or legal commitments. They are for "is this worth pursuing?" decisions.
+- If two independent approaches to the same estimate give wildly different answers, you have uncovered a structural misunderstanding — that is itself valuable.
+- Always state what the estimate enables. "We don't have the numbers" often means "we haven't made an estimate yet." A Fermi estimate converts paralysis into a decision.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

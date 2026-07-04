@@ -1,29 +1,25 @@
 # Memory Handoff — Full Worked Examples
 
-Skill: `memory-handoff` | Load when producing output for this workflow.
+Skill: `memory-handoff` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Commit trigger (v1.2)
 
-**Input:** "Run `memory-handoff` for [concrete task]"
+**Input:** User says "commit these changes"
 
-**Output:**
-```
-Invoked `memory-handoff`.
-Step 1: Read `docs/memory/project-index.md` and latest `docs/memory/agent-handoffs.md` if present.
-Step 2: Inspect current session context and `git status --short`.
-Step 3: Summarize only durable context: done, debated, decisions, blockers, deferred items, next steps, revisit triggers.
-See SKILL.md Impact Report schema.
-```
+**Output:** Run `memory-handoff` first → append to `docs/memory/agent-handoffs.md` → then `git commit`.
 
-## Example 2 — Success criteria
+## Example 2 — Session end
 
-**Input:** "Use `memory-handoff` on this project"
+**Input:** Large refactor complete, user leaving
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Handoff block: done / next / blockers / files touched / graph rebuild flag.
+
+## Example 3 — Thin context recovery
+
+**Input:** Next agent starts cold
+
+**Output:** `memory-startup` reads handoff tail + project-index; does not load full history.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

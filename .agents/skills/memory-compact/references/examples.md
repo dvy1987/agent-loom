@@ -1,29 +1,25 @@
 # Memory Compact — Full Worked Examples
 
-Skill: `memory-compact` | Load when producing output for this workflow.
+Skill: `memory-compact` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Bloated handoff log
 
-**Input:** "Run `memory-compact` for [concrete task]"
+**Input:** `agent-handoffs.md` > 200 entries
 
-**Output:**
-```
-Invoked `memory-compact`.
-Step 1: Identify scope: project file, global file, or whole store.
-Step 2: Check line counts and active budgets.
-Step 3: Classify entries as keep, merge, summarize, archive, delete-candidate, or unsafe.
-See SKILL.md Impact Report schema.
-```
+**Output:** Archive older entries to `docs/memory/archive/`; keep index of archived ranges.
 
-## Example 2 — Success criteria
+## Example 2 — Duplicate notes
 
-**Input:** "Use `memory-compact` on this project"
+**Input:** Same decision captured 4 times
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Merge into single decision file; leave redirect stubs.
+
+## Example 3 — Pre-audit
+
+**Input:** Before `memory-audit`
+
+**Output:** Compact first to reduce audit surface.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

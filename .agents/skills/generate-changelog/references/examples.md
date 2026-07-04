@@ -1,8 +1,8 @@
 # Generate Changelog — Full Worked Examples
 
-Skill: `generate-changelog` | Load when producing output for this workflow.
+Skill: `generate-changelog` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Generate a changelog for the agent-loom skill library. Recent changes: renamed agent-architect to agent-builder across 8 files, created cross-link-skills skill, created living PRD at docs/prd/PRD.md, updated library-skill to maintain PRD and architecture docs, improved 6 skills to 14/14 scores.
 
@@ -33,19 +33,30 @@ User-facing value statements: 4
 Ready for: release
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `generate-changelog` for [concrete task]"
+**Input:** "Run `generate-changelog` on [concrete task]"
 
-**Output:**
-```
-Invoked `generate-changelog`.
-Step 1: Gather Recent Changes
-Step 2: Significance Triage (MANDATORY GATE)
-Step 3: Categorize the Changes
-See SKILL.md Impact Report schema.
-```
+**Agent actions:**
+1. Gather Recent Changes
+2. Significance Triage (MANDATORY GATE)
+3. Categorize the Changes
+4. Synthesize the Value (Four-Dimension Test)
+5. Draft the Changelog
+6. Conditional README Update (MAJOR or MINOR only)
+7. Conditional Release Push (MAJOR or MINOR only)
+8. Present and Save
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Agents default to listing every commit verbatim — this produces noise, not a changelog. Group 5-15 related commits into one user-facing change with a value statement.
+- Breaking changes buried under "Changed" get missed by users. They must be the FIRST section with a clear prefix, even if there is only one.
+- Internal refactors, dependency bumps, and CI fixes are not user-facing changes. Omit them from user-facing changelogs entirely — they belong in internal release notes only.
+- Agents tend to default every release to MAJOR. Be honest in Step 2 — most releases are PATCH. Only escalate when the criteria genuinely match.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

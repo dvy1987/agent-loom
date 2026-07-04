@@ -1,29 +1,25 @@
 # Memory Capture — Full Worked Examples
 
-Skill: `memory-capture` | Load when producing output for this workflow.
+Skill: `memory-capture` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — Session fact
 
-**Input:** "Run `memory-capture` for [concrete task]"
+**Input:** "We chose Postgres over SQLite for multi-tenant"
 
-**Output:**
-```
-Invoked `memory-capture`.
-Step 1: Identify the memory type: state, decision, learning, deferred item, open question, session event, or handoff.
-Step 2: Reject trivial, temporary, duplicate, sensitive, or already-obvious content.
-Step 3: If the item is a reusable skill/process rule, route to `learn-from-chat` instead.
-See SKILL.md Impact Report schema.
-```
+**Output:** Append dated entry to `docs/memory/session-notes.md` with source (user) and tags.
 
-## Example 2 — Success criteria
+## Example 2 — After major skill edit
 
-**Input:** "Use `memory-capture` on this project"
+**Input:** `universal-skill-creator` finishes new skill
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** Capture skill name, validation status, INDEX sync pending.
+
+## Example 3 — Bounded capture
+
+**Input:** Long debug log pasted
+
+**Output:** Extract 3–5 bullets only; link to file path instead of pasting full log.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

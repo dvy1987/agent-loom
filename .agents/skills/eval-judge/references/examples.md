@@ -1,8 +1,8 @@
 # Eval Judge — Full Worked Examples
 
-Skill: `eval-judge` | Load when producing output for this workflow.
+Skill: `eval-judge` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Score this API documentation response against our rubric
 
@@ -37,19 +37,41 @@ Lowest-scoring: Completeness — missing error response examples
 Overall verdict: PASS (all gates pass, quality improvements recommended)
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `eval-judge` for [concrete task]"
+**Input:** "Run `eval-judge` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Gather Inputs
+2. Choose Evaluation Mode
+3. Direct Scoring
+4. Pairwise Comparison (if two outputs)
+5. Confidence Scoring
+6. Internal Consistency Check (long-form outputs only)
+7. Produce Evaluation Report
+
+**Impact Report shape:**
 ```
-Invoked `eval-judge`.
-Step 1: Gather Inputs
-Step 2: Choose Evaluation Mode
-Step 3: Direct Scoring
 Evaluation complete: [target]
+Mode: [direct scoring / pairwise comparison]
+Rubric used: [name/path]
+Hard gates: [N] pass, [N] fail
+Dimensions scored: [N]
+Average confidence: [0-1]
+Verdict: [PASS / FAIL / Winner A/B/TIE]
+Key finding: [one-line summary]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Length ≠ quality.** Longer responses are systematically rated higher by LLM judges. Actively check: "Would a shorter version with the same content score equally?"
+- **Confident tone ≠ accuracy.** Authoritative-sounding responses get higher scores even when wrong. Always verify factual claims against rubric criteria, not delivery style.
+- **Chain-of-thought improves reliability 15-25%** but also increases token cost. Worth it for quality-critical evals; consider sampling for high-volume pipelines.
+- In pairwise mode, if one output is much longer, the position swap is especially critical — length bias and position bias can compound.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

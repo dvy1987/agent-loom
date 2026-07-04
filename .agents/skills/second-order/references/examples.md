@@ -1,8 +1,8 @@
 # Second-Order Thinking — Full Worked Examples
 
-Skill: `second-order` | Load when producing output for this workflow.
+Skill: `second-order` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** We're thinking of adding a free tier to our B2B SaaS. Think this through second-order.
 
@@ -35,19 +35,36 @@ RECOMMENDED TIME HORIZON
 This decision should be evaluated at 12 months post-launch with conversion rate and support cost data — not at 30 days when signups feel like validation.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `second-order` for [concrete task]"
+**Input:** "Run `second-order` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. State the decision and its obvious first-order effect
+2. Second-order chain
+3. Third-order chain (if stakes are high)
+4. Time mapping
+5. Deliver
+
+**Impact Report shape:**
 ```
-Invoked `second-order`.
-Step 1: State the decision and its obvious first-order effect
-Step 2: Second-order chain
-Step 3: Third-order chain (if stakes are high)
 Second-order analysis: [decision]
+Orders traced: [1st / 2nd / 3rd]
+Hidden risks found: N
+Hidden opportunities found: N
+Recommended time horizon: [X]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- The most dangerous decisions are first-order positive, second-order negative. They feel good and build momentum right up until the second-order consequence arrives.
+- Competitive decisions require second-order thinking about the adversary's response, not just internal consequences. If you lower prices, competitors can lower prices too.
+- Systems resist change and then overcorrect. If a consequence involves changing human behaviour, assume resistance in the medium-term and overshoot in the long-term.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

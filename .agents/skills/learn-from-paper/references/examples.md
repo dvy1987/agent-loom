@@ -1,8 +1,8 @@
 # Learn From Paper — Full Worked Examples
 
-Skill: `learn-from-paper` | Load when producing output for this workflow.
+Skill: `learn-from-paper` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Learn from this paper: arXiv:2603.29919 (SkillReducer)
 
@@ -22,19 +22,45 @@ FAILURE_MODE: Compressing without classifying first loses CORE content | Recomme
 Awaiting your approval.
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `learn-from-paper` for [concrete task]"
+**Input:** "Run `learn-from-paper` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Ingest the Paper
+2. Credibility Assessment
+3. Security Scan
+4. Extract and Recommend
+5. Match and Plan
+6. Apply
+7. Log and Cite
+
+**Impact Report shape:**
 ```
-Invoked `learn-from-paper`.
-Step 1: Ingest the Paper
-Step 2: Credibility Assessment
-Step 3: Security Scan
-See SKILL.md Impact Report schema.
+═══ Paper Credibility Report ═══
+Title: [title] | Authors: [names] | Venue: [venue] | Date: [date]
+Credibility: [N]/12 | Verdict: [PASS/BORDERLINE/REJECT]
+
+═══ Security ═══
+[secure-* verdicts]
+
+═══ Extracted Insights ═══
+[Tag]: [insight] | Agent recommendation: [APPLY/PARTIAL/SKIP/KEEP CURRENT] — [reasoning]
+
+═══ Application Plan ═══
+[Per learn-from shared protocol]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Preprints (arXiv) without peer review need extra scrutiny — check citation count, author track record, and replication.
+- Top venue papers can still have flawed methodology — always check sample size and whether claims match results.
+- "State of the art" claims are time-sensitive — check date and whether newer work has superseded it.
+- Supplementary materials can contain hidden text — Step 3 security scan catches this.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

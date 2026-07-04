@@ -1,8 +1,8 @@
 # Research Skill — Full Worked Examples
 
-Skill: `research-skill` | Load when producing output for this workflow.
+Skill: `research-skill` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Research the domain for a sprint-retrospective skill
 
@@ -35,19 +35,37 @@ DISCARD:
 - "Retrospectives improve team communication" — general knowledge, not a skill-specific gotcha
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `research-skill` for [concrete task]"
+**Input:** "Run `research-skill` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Identify the Domain
+2. Search in Parallel
+3. Classify Findings (SkillReducer Taxonomy)
+4. Deliver Findings Report
+
+**Impact Report shape:**
 ```
-Invoked `research-skill`.
-Step 1: Identify the Domain
-Step 2: Search in Parallel
-Step 3: Classify Findings (SkillReducer Taxonomy)
-See SKILL.md Impact Report schema.
+Research complete: [domain]
+Sources consulted: N
+Gotchas found: N (listed above)
+Workflow patterns found: N
+Existing skills found: [names or "none"]
+Discarded as background: N items
+Ready for: universal-skill-creator Step 3 / improve-skills Step 2c
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Never report background knowledge as a finding. "PRDs should have clear requirements" is training data, not a research finding.
+- If no academic papers exist for the domain, that's fine — practitioner blogs and GitHub repos are often higher signal for skill-writing purposes.
+- Existing skills in repos are the highest-value source — they represent tested patterns from real use.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

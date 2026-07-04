@@ -1,8 +1,8 @@
 # Create Agent Prompt — Full Worked Examples
 
-Skill: `create-agent-prompt` | Load when producing output for this workflow.
+Skill: `create-agent-prompt` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Create a role prompt for a "Code Review Agent" in a parallel fan-out topology that receives code diffs and produces review comments.
 
@@ -31,19 +31,35 @@ FAILURE BEHAVIOR:
 - Never approve without reviewing — if unsure, request-changes with explanation
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `create-agent-prompt` for [concrete task]"
+**Input:** "Run `create-agent-prompt` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Gather Context
+2. Write Role Prompt
+3. Validate
+4. Return
+
+**Impact Report shape:**
 ```
-Invoked `create-agent-prompt`.
-Step 1: Gather Context
-Step 2: Write Role Prompt
-Step 3: Validate
 Agent prompt created for: [agent name]
+Topology role: [role in topology]
+Handoff: [to whom]
+Failure behavior: defined
+Ready to embed in: AGENTS.md / architecture spec
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Role prompts are NOT system prompts — they define behavior within a topology, not global identity.
+- Avoid "be helpful" or "be thorough" — these are noise. Be specific about what the agent does.
+- If the agent's boundary overlaps with another agent, the topology is wrong — flag it to agent-builder.
+- 
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

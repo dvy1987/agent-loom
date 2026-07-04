@@ -1,8 +1,8 @@
 # Project Orchestrator — Full Worked Examples
 
-Skill: `project-orchestrator` | Load when producing output for this workflow.
+Skill: `project-orchestrator` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** I want to go from this rough idea to a full implementation plan.
 
@@ -19,19 +19,37 @@ Skill: `project-orchestrator` | Load when producing output for this workflow.
 Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `project-orchestrator` for [concrete task]"
+**Input:** "Run `project-orchestrator` on [concrete task]"
 
-**Output:**
+**Agent actions:**
+1. Read Project State
+2. Route the Request
+3. Plan and Present
+4. Execute (Platform-Aware)
+5. Synthesise and Check for AGENTS.md Refresh
+6. Execution Feedback (Learning Loop)
+
+**Impact Report shape:**
 ```
-Invoked `project-orchestrator`.
-Step 1: Read Project State
-Step 2: Route the Request
-Step 3: Plan and Present
 Orchestration complete: [request summary]
+Mode: [single / sequential / parallel]
+Skills invoked: [list]
+Subagents spawned: [N or "sequential"]
+Next recommended phase: [phase + skill]
 ```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Don't over-orchestrate.** Single-skill requests need routing, not orchestration.
+- **Subagent scope creep is the #1 failure.** Every subagent needs explicit file boundaries.
+- **Read the AGENTS.md Orchestration Map first** — if `project-setup` ran, it's already customised.
+- **File-based coordination is the universal fallback.** Write the plan to a file — every platform reads files.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

@@ -1,29 +1,25 @@
 # Memory Decision — Full Worked Examples
 
-Skill: `memory-decision` | Load when producing output for this workflow.
+Skill: `memory-decision` | Memory suite enrichment pass.
 
-## Example 1 — Typical invocation
+## Example 1 — ADR-style record
 
-**Input:** "Run `memory-decision` for [concrete task]"
+**Input:** "Why JWT over sessions?"
 
-**Output:**
-```
-Invoked `memory-decision`.
-Step 1: State the decision in one sentence.
-Step 2: Capture context: constraints, repo state, user preference, and date.
-Step 3: List alternatives considered, including deferred options.
-See SKILL.md Impact Report schema.
-```
+**Output:** Write `docs/memory/decisions/YYYY-MM-DD-jwt-auth.md` — context, decision, consequences.
 
-## Example 2 — Success criteria
+## Example 2 — Reversal
 
-**Input:** "Use `memory-decision` on this project"
+**Input:** New evidence contradicts old decision
 
-**Output:**
-```
-See SKILL.md Impact Report schema.
-```
+**Output:** New decision file references superseded ADR; do not delete old record.
+
+## Example 3 — Lightweight
+
+**Input:** Small trade-off (library pick)
+
+**Output:** One paragraph in session-notes with `decision:` tag for later promotion.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.

@@ -1,8 +1,8 @@
 # PRD Writing — Full Worked Examples
 
-Skill: `prd-writing` | Load when producing output for this workflow.
+Skill: `prd-writing` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
-## Example 1 — From skill workflow
+## Example 1 — Documented workflow
 
 **Input:** Write a PRD for adding biometric authentication to our iOS app
 
@@ -13,19 +13,30 @@ Before I write this, one question:
 What's driving this now — is password login causing user drop-off, security incidents, or support tickets? Do you have data on where users abandon in the auth flow?
 ```
 
-## Example 2 — Typical invocation
+## Example 2 — Step-by-step execution
 
-**Input:** "Run `prd-writing` for [concrete task]"
+**Input:** "Run `prd-writing` on [concrete task]"
 
-**Output:**
-```
-Invoked `prd-writing`.
-Step 1: Check for Existing Context
-Step 2: Format Selection
-Step 3: Discovery Interview
-See SKILL.md Impact Report schema.
-```
+**Agent actions:**
+1. Check for Existing Context
+2. Format Selection
+3. Discovery Interview
+4. Inversion + Adversarial Hat (optional but recommended)
+5. Confirm Scope
+6. Write the PRD
+7. Self-Review
+8. Present, Save, and Iterate
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Discovery is not optional — a PRD built on assumptions is worse than no PRD.
+- "Out of scope" is the most important scope management tool. If it's empty, ask the user to fill it.
+- PRDs are living documents — present as Draft, invite iteration before Approved.
+- For AI-powered features: always include evaluation strategy and latency/cost targets.
 
 ---
 
-See `SKILL.md` for hard rules, gotchas, and verification checklist.
+See `SKILL.md` for hard rules and verification checklist.
