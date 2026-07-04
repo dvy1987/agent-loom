@@ -17,6 +17,7 @@ metadata:
   resources:
     references:
       - credibility-rubric.md
+      - examples.md
 ---
 
 # Learn From Paper
@@ -134,6 +135,8 @@ Awaiting your approval.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

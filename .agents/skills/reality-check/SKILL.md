@@ -18,6 +18,9 @@ metadata:
   sources: >
     CohnReznick-SoftwareDueDiligence-2025, arXiv-2604.02837-SecureSkills, Euvic-TechDD-Guide,
     DEBATE-arXiv-2405.09935, AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Reality Check
@@ -168,6 +171,8 @@ Composite: 2/10 for headline claim. Skill library: 7/10. Control plane: 4/10. Au
 - `implementation-plan` → Step 8 (structure the roadmap deliverable)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

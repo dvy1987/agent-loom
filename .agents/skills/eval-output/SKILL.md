@@ -18,6 +18,9 @@ metadata:
     Anthropic eval guide 2026, Twine rubric guide 2026,
     github/awesome-copilot/agentic-eval, DeepEval framework,
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Eval Output
@@ -125,6 +128,8 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

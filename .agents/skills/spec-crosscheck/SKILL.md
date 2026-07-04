@@ -16,6 +16,9 @@ metadata:
   version: "1.1"
   category: project-specific
   sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables
+  resources:
+    references:
+      - examples.md
 ---
 
 # Spec Crosscheck
@@ -175,6 +178,8 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

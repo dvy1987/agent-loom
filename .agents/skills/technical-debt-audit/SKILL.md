@@ -13,6 +13,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: agentskills.io, tech-debt-quadrant (Fowler)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Technical Debt Audit
@@ -124,6 +127,8 @@ Ready for: improve-skills batch execution
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

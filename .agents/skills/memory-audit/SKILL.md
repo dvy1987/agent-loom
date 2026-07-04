@@ -10,6 +10,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Audit
@@ -59,6 +62,8 @@ Recommended next step: <skill>
 ## Example
 
 Finding: P0 `~/.agent-loom/memories/reusable-learnings.md` is 260/200 lines. Run `memory-compact` before any global write.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

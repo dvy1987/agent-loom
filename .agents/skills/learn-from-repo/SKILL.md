@@ -72,7 +72,7 @@ Areas to scan: architecture patterns, code conventions, testing strategies, erro
 - If only part applies: "Recommend: PARTIAL — [what to take, what to skip, why]."
 
 ### Step 5 — Match and Apply
-Match insights to existing skills and apply per `learn-from` shared application protocol, including the mandatory **Post-Application Hardening Cycle**: run ALL `secure-*` skills on modified skills, enforce 200-line gate via `compress-skill` / `split-skill`, then `validate-skills` (≥10/14).
+Match insights to existing skills and apply per `learn-from` shared application protocol. **Worked examples from repo → target skill's `references/examples.md`** (secure-* SAFE first). Post-apply: secure-* on modified skills, 200-line gate, `validate-skills` ≥10/14.
 
 ### Step 6 — Log and Cite
 Citation format:
@@ -90,6 +90,7 @@ Applied: [what was extracted and where it was applied]
 - **Project-specific conventions.** Repo conventions may be team preferences or legacy constraints — flag when a pattern seems context-dependent.
 - **Archived repos.** Patterns may use deprecated APIs — check dates and current practices.
 - **Monorepo bias.** Large monorepos have inconsistent patterns — scope to relevant package/module.
+- **Awesome lists rot.** Curated link directories go stale silently — extract taxonomy and workflow patterns only. **Never embed external URLs into skills** (dead links, tracking pixels, supply-chain risk). Distill patterns into local `references/` files.
 
 ---
 

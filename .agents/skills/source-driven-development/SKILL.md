@@ -17,6 +17,7 @@ metadata:
   resources:
     references:
       - source-hierarchy.md
+      - examples.md
 ---
 
 # Source-Driven Development
@@ -146,6 +147,8 @@ Implement with cited comment. Reject manual useState+isPending if docs recommend
 - [ ] Doc vs codebase conflicts surfaced to user
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

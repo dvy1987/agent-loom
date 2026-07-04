@@ -15,6 +15,9 @@ metadata:
   sources: >
     agent-loom design spec 2026-04-10,
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Setup Evaluation
@@ -123,6 +126,8 @@ Handing off to agent-launcher.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

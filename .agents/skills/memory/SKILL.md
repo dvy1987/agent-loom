@@ -10,6 +10,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory
@@ -51,6 +54,7 @@ Global active memory is a small curated operating manual, not a journal.
 | "remember this", "save this learning" | `memory-capture` |
 | "remember this for the skill/process" | `learn-from-chat` |
 | "handoff", "next agent should know" | `memory-handoff` |
+| "commit", "create a commit", "commit these changes" | `memory-handoff` first (prepare docs), then commit per user/git-workflow |
 | "record this decision" | `memory-decision` |
 | "make this global" | `memory-promote` |
 | "memory is too big" | `memory-compact` |
@@ -69,7 +73,9 @@ Memory sub-skills MUST auto-fire at these producer events — not only when the 
 | Major commit (>20 files OR breaking change) | `memory-capture` | state |
 | Skill created or significantly edited | `memory-capture` | provenance |
 | Session end signal, long pause, or user says "ending session" | `memory-handoff` | continuity |
+| `memory-handoff` completed | `knowledge-graph` | incremental graph sync (`build_graph.py --incremental`) |
 | Pre-commit on large change | `memory-handoff` | continuity |
+| User requests git commit | `memory-handoff` | prepare handoff before commit |
 
 Skipping a checkpoint loses durable context for the next agent. If multiple checkpoints fire together (e.g. changelog + session end), invoke each sub-skill in the order: capture/decision first, handoff last.
 
@@ -103,6 +109,8 @@ Scope: project plus applicable global preferences
 Files read: docs/memory/MEMORY-ROUTING.md, docs/memory/project-index.md, docs/memory/agent-handoffs.md
 Next action: continue from the latest handoff after confirming current git state.
 ```
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

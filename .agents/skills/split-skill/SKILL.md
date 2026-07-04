@@ -96,7 +96,7 @@ Update AGENTS.md call graph. Verify parent is now under 200 lines. Jump to Step 
 
 **If creating a new child skill (from Step 2b or 2c):**
 Write the child SKILL.md following the full skill creation standard:
-- Under 200 lines, role definition, workflow, output format, 1–2 examples
+- Under 200 lines, role definition, workflow, output format, 1 teaser example; overflow → `references/examples.md`
 - Description works for both standalone and parent-triggered invocation
 - Output format structured so the parent can consume it directly
 - `metadata.category` set appropriately

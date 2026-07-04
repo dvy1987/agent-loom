@@ -16,6 +16,7 @@ metadata:
   resources:
     references:
       - api-patterns.md
+      - examples.md
 ---
 
 # API and Interface Design
@@ -134,6 +135,8 @@ Contract-first Task + CreateTaskInput + PaginatedResult. REST: GET/POST /api/tas
 - [ ] Schema/types committed with implementation
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

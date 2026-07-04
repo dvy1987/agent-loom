@@ -35,6 +35,8 @@ You are a Senior AI Skill Engineer running a systematic improvement pass over a 
 
 **Fix structural gaps before rewriting.** Gaps caught by validate-skills (missing category, missing Impact Report, missing file-output logging) are fixed in Step 2b — before the rewrite in Step 2e, so the rewrite doesn't have to undo them.
 
+**L3 examples mandate.** External repo examples (e.g. addyosmani): `secure-*` SAFE first → full pairs in `references/examples.md`; never delete for line limits. Run `build_examples_index.py`.
+
 **Chat learnings are an input, not a mandate.** `docs/learnings/chat-learnings.md` is consumed in Step 1b. Apply discretion — not every OPEN entry must land in a skill. Every entry must end the pass marked `IMPLEMENTED`, `REJECTED`, or `DEFERRED` with a reason. Silent skipping is a failure.
 
 ---
@@ -104,7 +106,7 @@ BACKGROUND and EDGE_CASE move to `references/` with specific load triggers.
 2. Merge any chat-learnings queued for this skill in Step 1b into the matching section (GOTCHA → Gotchas, FAILURE_MODE → Hard Rules or Gotchas, TECHNIQUE → Workflow). Cite: `Chat learning [YYYY-MM-DD]`.
 3. Add gotchas from research
 4. Sharpen workflow — imperative one-liners, MUST/NEVER
-5. Replace synthetic examples with realistic ones
+5. Replace synthetic examples with realistic ones — if >1 or >15 lines total, write `references/examples.md` and keep one teaser inline; **never delete** an example without an L3 home
 6. Tighten output format schema
 7. Move BACKGROUND to `references/background.md`
 8. Bump `metadata.version`
@@ -172,6 +174,8 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 
 ---
 
+Read `references/examples.md` for full worked examples.
+
 ## Reference Files
 
 - **`validate-skills/references/validation-rubric.md`**: Scoring rubric (single source of truth). Read during Step 2c.
@@ -192,6 +196,5 @@ Skills deprecated: N | split: N | compressed: N
 Per-skill: [skill]: X/14 → Y/14 | [lines] lines | [key change]
 Sources: [source] → [skill]
 Chat learnings: N OPEN at start → I implemented · R rejected · D deferred
-Files modified: [list]
-Files created: [list]
+Files modified: [list] | L3 backfill: [list]
 ```

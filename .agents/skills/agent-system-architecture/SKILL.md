@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: Azure Architecture Center, arXiv:2601.02577 (Orchestral AI), arXiv:2601.07526 (Megaflow), agentskills.io
+  resources:
+    references:
+      - examples.md
 ---
 
 # Agent System Architecture
@@ -125,6 +128,8 @@ Ready for: implementation-plan
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

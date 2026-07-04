@@ -23,6 +23,7 @@ metadata:
       - mom-test-rules.md
       - interview-guide-template.md
       - synthesis-template.md
+      - examples.md
 ---
 
 # Customer Discovery
@@ -175,13 +176,9 @@ Two questions before I draft the guide:
   </example>
 </examples>
 
----
+`venture-exploration` calls this in the validate stage. `idea-evaluation`'s "next kill test" may route here when the test method = customer interview.
 
-## Calling This Skill From Other Skills
-
-`venture-exploration` calls this in the validate stage. `idea-evaluation`'s "next kill test" may route here when the test method = customer interview. Output updates `business-modeling` (canvas hypotheses) and `idea-evaluation` (rubric scores).
-
----
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

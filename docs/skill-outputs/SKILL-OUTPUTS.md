@@ -200,3 +200,18 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-30 | generate-changelog | docs/changelogs/2026-06-30-design-suite-rebuild.md | Design suite rebuild changelog |
 | 2026-06-30 | memory-handoff | docs/memory/agent-handoffs.md | Session end: design suite rebuild complete; uncommitted |
 | 2026-06-30 | memory-capture | docs/memory/current-state.md, docs/memory/learnings.md, docs/memory/project-index.md | Design suite rebuild state + learning captured |
+| 2026-07-03 | learn-from-repo | .agents/skills/design-review/references/ethical-patterns.md, ux-heuristics.md | Ethical patterns + UX heuristics gates (no external links) |
+| 2026-07-03 | learn-from-repo | .agents/skills/design-direction/references/ux-context-checklist.md | Pre-direction research/plan/constraints checklist |
+| 2026-07-03 | learn-from-repo | .agents/skills/design-review/SKILL.md, design-direction/SKILL.md, learn-from-repo/SKILL.md | awesome-ui insights applied; link-import prohibition |
+| 2026-07-03 | knowledge-graph | .agents/skills/knowledge-graph/ | New native knowledge graph skill (stdlib, no Graphify) |
+| 2026-07-03 | knowledge-graph | docs/knowledge-graph/graph.json, GRAPH_INDEX.md, manifest.json | Initial project graph build |
+| 2026-07-03 | knowledge-graph | memory-handoff, memory, memory-startup, memory-recall, codebase-understanding, context-engineering, debug-and-fix, memory-capture, memory-compact, AGENTS.md, SKILL-INDEX.md | Graph integration + graphify pattern improvements |
+| 2026-07-03 | knowledge-graph | .agents/skills/knowledge-graph/ v2.0 | Authoritative ingestion, GRAPH_REPORT, call-graph.json, graph_health.py, path/explain query |
+| 2026-07-03 | knowledge-graph | docs/knowledge-graph/ | v2 rebuild: 120 nodes, 412 edges, 164 authoritative invokes |
+| 2026-07-03 | knowledge-graph | project-setup, retroactive-project-setup, library-skill, validate-skills, cross-link-skills, learn-from, universal-skill-creator | v2 integration wiring + project bootstrap |
+| 2026-07-03 | universal-skill-creator | docs/SKILL-EXAMPLES-INDEX.md, scripts/build_examples_index.py | L3 examples lookup index + auto-scan |
+| 2026-07-03 | universal-skill-creator | brainstorming/references/examples.md, validate-skills/references/examples.md | Backfill L3 examples; fix broken brainstorming pointer |
+| 2026-07-03 | improve-skills | 17 skills references/examples.md backfill | addyosmani AO patterns (secure-* SAFE); L3 examples mandate |
+| 2026-07-03 | improve-skills | AGENTS.md, universal-skill-creator, compress-skill, improve-skills, learn-from, learn-from-repo, validate-skills, split-skill, SKILL-EXAMPLES-INDEX | Never-discard-examples invariant |
+| 2026-07-04 | improve-skills | 77 skills references/examples.md + backfill_examples.py | Full library L3 backfill (98/98 skills) |
+| 2026-07-04 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Session handoff + commit-trigger wiring (v1.2) |

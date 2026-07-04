@@ -15,6 +15,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: meta
+  resources:
+    references:
+      - examples.md
 ---
 
 # Skill Routing
@@ -125,6 +128,8 @@ Pre-req: met
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

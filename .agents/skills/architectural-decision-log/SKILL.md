@@ -15,6 +15,9 @@ metadata:
   version: "1.1"
   category: project-specific
   sources: adolfi.dev (AI generated ADR), salesforce.com (Architectural Decisions), Nygard ADR template
+  resources:
+    references:
+      - examples.md
 ---
 
 # Architectural Decision Log (ADL)
@@ -134,6 +137,8 @@ Ready for: implementation
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

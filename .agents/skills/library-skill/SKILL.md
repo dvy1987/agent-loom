@@ -15,6 +15,9 @@ metadata:
   author: dvy1987
   version: "1.2"
   category: meta
+  resources:
+    references:
+      - examples.md
 ---
 
 # Library Skill
@@ -76,6 +79,14 @@ Create or overwrite `docs/skill-graph.md` with a Mermaid `flowchart LR`:
 - Every skill is a node; every call relationship is a directed edge (`caller --> callee`).
 - Group nodes by category using Mermaid `subgraph` blocks (`meta`, `thinking`, `project-specific`, `domain`).
 
+### 5b. Sync knowledge graph
+
+If `.agents/skills/knowledge-graph/` exists, run incremental rebuild so `call-graph.json` and `graph.json` match the new `skill-graph.md`:
+```bash
+python3 .agents/skills/knowledge-graph/scripts/build_graph.py --incremental
+```
+Append graph outputs to Step 9 log. Skip if build script missing (consumer project without knowledge-graph).
+
 ### 6. Update `docs/architecture.md`
 
 If `docs/architecture.md` does not exist, invoke `codebase-understanding` to create it, then continue with step 7.
@@ -128,9 +139,7 @@ Append each updated file to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 
 ### 10. Invoke `generate-changelog`
 
-Call `generate-changelog` with a summary of structural changes made. This is the final step — never skip it.
-
----
+Call `generate-changelog` with a summary of structural changes made. Final step — never skip.
 
 ## Gotchas
 
@@ -138,7 +147,7 @@ Call `generate-changelog` with a summary of structural changes made. This is the
 - **Changelog skill location:** The skill named `generate-changelog` lives in `.agents/skills/generate-changelog/` — use the directory name for path, frontmatter `name` for references.
 - **Partial runs:** If scanning finds zero skills, abort — the path is likely wrong. Never wipe reference files.
 - **Concurrent edits:** Another agent may be editing AGENTS.md simultaneously. Read → diff → write, never overwrite wholesale.
-- **Never make a heading lie about its own table.** Standalone "N skills" prose drifts silently (no row signals it) — rewrite it every run, even a deprecate-only sync changes N. But a heading like "Meta Skills (22)" labels the rows beneath it; bumping it to the registry while the table is short of rows turns a consistent-but-stale doc into an inconsistent one. Sync heading counts only alongside the rows; otherwise leave them and flag the gap.
+- **Never make a heading lie about its own table.** Sync heading counts only with matching rows; otherwise flag the gap in Impact Report.
 
 ---
 
@@ -171,7 +180,7 @@ Invoking generate-changelog...
   </example>
 </examples>
 
----
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

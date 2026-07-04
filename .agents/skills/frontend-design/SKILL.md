@@ -26,6 +26,7 @@ metadata:
       - golden-examples/components.md
       - golden-examples/states.md
       - golden-examples/composition.md
+      - examples.md
 ---
 
 # Frontend Design
@@ -116,6 +117,8 @@ Anti-slop gates: [N/N] | APCA: [pass] | Review loops: [N]
 - [ ] design-review verdict SHIP (or ≤2 loops then escalation noted)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 - `references/stack-selection.md` — derive stack from product docs; shadcn-as-primitives

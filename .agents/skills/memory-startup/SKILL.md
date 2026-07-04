@@ -18,6 +18,9 @@ metadata:
   version: "1.2"
   category: project-specific
   sources: addyosmani/agent-skills anti-rationalization tables
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Startup
@@ -58,6 +61,7 @@ Then yield. Do not re-read memory files mid-session.
 1. Check for `docs/memory/MEMORY-ROUTING.md`; if missing, create the project memory skeleton.
 2. Read `docs/memory/MEMORY-ROUTING.md`.
 3. Read `docs/memory/project-index.md`.
+3.5. **Knowledge graph (when installed):** If `docs/knowledge-graph/graph.json` missing or older than latest handoff date in `agent-handoffs.md`, run `build_graph.py --incremental`. Read `GRAPH_INDEX.md` for hub nodes; run `query_graph.py` when the opener implies relational context.
 4. Read only the latest relevant sections from `current-state.md`, `agent-handoffs.md`, `decision-log.md`, `deferred.md`, and `open-questions.md`.
 5. Check for `~/.agent-loom/memories/MEMORY-ROUTING.md`.
 6. If present, read global routing and only applicable entries from `global-index.md`, `user-preferences.md`, and `global-agent-rules.md`.
@@ -157,6 +161,8 @@ Current state: memory suite design approved; skill creation in progress
 Revisit triggers: none
 Risks / gaps: validate the suite after generation
 ```
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

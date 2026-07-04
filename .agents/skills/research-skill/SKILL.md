@@ -15,6 +15,9 @@ metadata:
   version: "1.0"
   category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025
+  resources:
+    references:
+      - examples.md
 ---
 
 # Research Skill
@@ -135,6 +138,8 @@ DISCARD:
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

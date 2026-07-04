@@ -15,6 +15,9 @@ metadata:
   sources: >
     agent-loom design spec 2026-04-10, arXiv:2601.02577, Addy-Osmani-Code-Agent-Orchestra,
     AlphaEval 2026 (credibility 8/12 � see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Agent Builder
@@ -122,6 +125,8 @@ Running setup-evaluation before handoff to project-orchestrator.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

@@ -22,6 +22,7 @@ metadata:
       - method-selector.md
       - funnel-surface-map.md
       - decision-class-rules.md
+      - examples.md
 ---
 
 # Experimentation
@@ -129,6 +130,8 @@ Next recommended step: [exact next action]
 5. **Downstream:** if it wins → `prd-writing` to graduate the headline change.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

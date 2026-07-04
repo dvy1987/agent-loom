@@ -19,6 +19,7 @@ metadata:
   resources:
     references:
       - compression-theory.md
+      - examples.md
 ---
 
 # Compress Skill
@@ -36,6 +37,8 @@ You are a skill optimization engineer. You compress SKILL.md files to under 200 
 **Always go through split-skill when CORE content is the problem.** If after classifying content the skill still has >200 lines of genuinely CORE content, invoke `split-skill` — do not attempt further compression. `split-skill` will first check whether an existing skill can absorb the sub-capability (link rather than create), then extract a new child only if needed. Never create a new split without checking existing skills first.
 
 **Never commit a compressed skill that fails any regression check.** Restore content and invoke `split-skill` rather than ship a degraded skill.
+
+**Never delete examples.** EXAMPLE overflow → `references/examples.md` + load trigger + `metadata.resources` — see `docs/SKILL-EXAMPLES-INDEX.md`.
 
 ---
 
@@ -56,7 +59,7 @@ Tag each section:
 | `CORE` | Hard gates, MUST/NEVER rules, gotchas agent needs every run | Stay in body |
 | `WORKFLOW` | Numbered procedural steps | Stay, compress to one-liners |
 | `FORMAT` | Output schema or template | Stay, cut surrounding prose |
-| `EXAMPLE` | Input → output pairs | Keep 1 shortest inline; rest → `references/examples.md` |
+| `EXAMPLE` | Input → output pairs | Keep 1 inline + pointer; rest → `references/examples.md` |
 | `BACKGROUND` | Rationale, "why", verbose context, LLM already knows | → `references/background.md` + load trigger |
 | `EDGE_CASE` | Applies to <20% of invocations | → `references/edge-cases.md` + load trigger |
 | `DUPLICATE` | Already stated elsewhere in the file | Delete |
@@ -76,8 +79,9 @@ Otherwise → proceed to Step 4.
 1. **Delete what LLM already knows** — if any line could appear in generic training data, delete it
 2. **Convert prose to imperative one-liners** — "Ask at least 2 clarifying questions before writing"
 3. **Move BACKGROUND/EDGE_CASE to references/** — with specific load triggers, not generic "see references/"
-4. **Collapse redundant sections** — merge Scope + Constraints + Never into one `## Constraints` section
-5. **Compress description** — keep primary capability + top 3 triggers + key synonyms, target under 400 chars
+4. **Move EXAMPLE overflow to L3** — create `references/examples.md` with moved pairs; add `Read references/examples.md when [condition]` in SKILL.md; declare in `metadata.resources.references`
+5. **Collapse redundant sections** — merge Scope + Constraints + Never into one `## Constraints` section
+6. **Compress description** — keep primary capability + top 3 triggers + key synonyms, target under 400 chars
 
 ### Step 5 — Regression Check
 
@@ -85,7 +89,7 @@ Otherwise → proceed to Step 4.
 - [ ] All hard gates (MUST/NEVER) still in body, not references
 - [ ] All gotchas still in body
 - [ ] Output format intact — agent can produce correct output from body alone
-- [ ] At least one complete example inline
+- [ ] At least one complete example inline **or** inline teaser + `references/examples.md` with load trigger
 
 If any check fails → restore content and invoke `split-skill`.
 
@@ -145,7 +149,8 @@ Result: 354 → 115 lines (67% reduction)
 
 ## Reference Files
 
-- **`references/compression-theory.md`**: SkillReducer research and Vercel compressed-index findings. Read if user asks why compression improves quality.
+- **`references/compression-theory.md`**: SkillReducer research. Read if user asks why compression improves quality.
+- **`references/examples.md`**: Full before/after compression walkthroughs. Read when classifying EXAMPLE overflow.
 
 ---
 

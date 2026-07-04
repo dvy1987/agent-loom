@@ -20,6 +20,7 @@ metadata:
   resources:
     references:
       - adversarial-prompt.md
+      - examples.md
 ---
 
 # Adversarial Hat
@@ -178,6 +179,8 @@ The PMF falsification condition ("if users complete integration once and never r
 `prd-writing` → after discovery, before writing | `inversion` → complementary, run both
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

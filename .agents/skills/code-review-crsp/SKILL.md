@@ -15,6 +15,9 @@ metadata:
   version: "1.1"
   category: project-specific
   sources: code-review-skill-builtin, addyosmani/agent-skills code-review-and-quality (Phase 3 merge)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Code Review
@@ -169,6 +172,8 @@ Want me to fix any of these? Reply with the numbers.
 - [ ] Review covered all five axes, not only correctness
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

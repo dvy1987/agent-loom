@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: Gary-Klein-prospective-hindsight, Klein-1998-Sources-of-Power
+  resources:
+    references:
+      - examples.md
 ---
 
 # Pre-mortem
@@ -128,6 +131,8 @@ Decide who owns community before writing a single line of code.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

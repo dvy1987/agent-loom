@@ -13,6 +13,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: addyosmani/agent-skills security-and-hardening (11/12, 2026-05-29)
+  resources:
+    references:
+      - examples.md
 ---
 
 # App Security Hardening
@@ -143,6 +146,8 @@ Validate request DTO at the route boundary, enforce authZ (user can only update 
 - [ ] Remaining risks (if any) are explicitly listed with rationale
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

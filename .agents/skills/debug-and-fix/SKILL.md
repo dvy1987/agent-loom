@@ -10,9 +10,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
-  sources: fixing-bugs-skill-template, addyosmani/agent-skills debugging-and-error-recovery (Phase 3 merge)
+  sources: fixing-bugs-skill-template, addyosmani/agent-skills debugging-and-error-recovery (Phase 3 merge), safishamsi/graphify (graph trace, 11/12)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Debug and Fix
@@ -47,6 +50,10 @@ Identify the source and extract expected behaviour, actual behaviour, and reprod
 - **Error log / stack trace:** Extract file paths, line numbers, error types, and originating call.
 - **Linear issue:** Fetch with `mcp__linear__get_issue` and read comments via `mcp__linear__list_comments`. Cross-reference against the actual codebase — issue descriptions may be stale.
 - **No specific bug given:** Ask the user to describe the problem or specify a Linear project to pull from.
+
+### Step 1.5 — Trace via knowledge graph (if present)
+
+If `docs/knowledge-graph/graph.json` exists and the bug mentions a component/file/skill, run `query_graph.py` with those keywords. Use 1-hop neighbors to widen localization before grep — cite paths with EXTRACTED/INFERRED confidence.
 
 ### Step 2 — Triage (Multiple Bugs Only)
 
@@ -89,6 +96,8 @@ If the bug came from Linear:
 - Linear issue descriptions can be outdated — verify every claim against the current codebase.
 - A passing test suite after a fix does not mean the fix is correct — check that the test actually exercises the bug's code path.
 - Multiple symptoms may share one root cause — check for shared dependencies before treating each as separate.
+- Read-only exploration agents cannot persist graph/chunk files — verify write outputs exist before trusting parallel traces.
+- Skipped pipeline stages must emit valid empty artifacts; missing intermediate files cause silent downstream merge failures.
 
 ---
 
@@ -175,6 +184,8 @@ Update HID-42 status to "Done"?
 - [ ] Original scenario verified end-to-end
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

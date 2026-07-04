@@ -5,6 +5,7 @@ Read this file first. Do not load every memory file by default.
 | Intent | File | Read when |
 |---|---|---|
 | Resume work | `agent-handoffs.md` | Starting a new session; read latest entry only. |
+| Skill/memory relationships | `docs/knowledge-graph/GRAPH_INDEX.md` | Need graph hubs, communities, or query before deep scan. |
 | Current status | `current-state.md` | Need a snapshot of where the project is now. |
 | Past decisions | `decision-log.md` | Need rationale for a choice; filter by tag/date. |
 | Project learnings | `learnings.md` | Looking for known patterns or gotchas. |

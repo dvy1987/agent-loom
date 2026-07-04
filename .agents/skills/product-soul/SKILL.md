@@ -21,6 +21,7 @@ metadata:
     references:
       - discovery-questions.md
       - product-soul-schema.md
+      - examples.md
 ---
 
 # Product Soul
@@ -175,6 +176,8 @@ When `brainstorming` or `prd-writing` need strategic context: "Read `docs/produc
 When `inversion` is called from this skill: "Apply inversion to the strategic assumptions in [lens]."
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

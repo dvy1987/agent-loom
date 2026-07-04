@@ -18,6 +18,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: John-Boyd-OODA-loop, OODA-Canvas-TDHJ-2026, Boyd-competitive-advantage
+  resources:
+    references:
+      - examples.md
 ---
 
 # OODA
@@ -153,6 +156,8 @@ Observe user response to the competitor's feature in the next 2 weeks. If 3+ use
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

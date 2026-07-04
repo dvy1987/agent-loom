@@ -14,6 +14,9 @@ metadata:
   author: dvy1987
   version: "2.1"
   category: meta
+  resources:
+    references:
+      - examples.md
 ---
 
 # Learn From Article
@@ -136,6 +139,8 @@ Learnings only - no current skill covers rate limiting. Save to `docs/learnings/
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

@@ -21,6 +21,7 @@ metadata:
       - validity-checks.md
       - readout-template.md
       - learnings-format.md
+      - examples.md
 ---
 
 # Experiment Readout
@@ -143,6 +144,8 @@ Downstream: [prd-writing | architectural-decision-log | reality-check | none]
 - **Downstream:** route to `prd-writing` to graduate the change.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

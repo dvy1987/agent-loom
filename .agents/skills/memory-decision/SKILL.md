@@ -10,6 +10,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Decision
@@ -69,6 +72,8 @@ Tags: <comma-separated>
 Decision: use `~/.agent-loom/memories/` for global memory.
 
 Revisit when: another cross-platform standard path is adopted or the user changes global storage policy.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

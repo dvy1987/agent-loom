@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: project-setup, codebase-understanding, product-soul, architectural-decision-log, memory-handoff
+  resources:
+    references:
+      - examples.md
 ---
 
 # Retroactive Project Setup
@@ -44,6 +47,7 @@ docs/memory/current-state.md
 docs/memory/agent-handoffs.md        (seeded with one synthetic entry)
 docs/memory/learnings.md             (stub)
 docs/skill-outputs/SKILL-OUTPUTS.md  (bootstrap if missing)
+docs/knowledge-graph/                 (via knowledge-graph initial build)
 ```
 
 Any write outside this list = abort and report.
@@ -112,6 +116,8 @@ Write the four `docs/memory/` files directly (these are stubs, no skill needed):
 - `agent-handoffs.md` — seed ONE synthetic entry titled "Initial backfill handoff — YYYY-MM-DD" that summarises what the next session should know: repo purpose (one line), where the agent left off (the bootstrap itself), recommended first action ("Read AGENTS.md, confirm the [INFERRED — confirm] tags, then proceed with normal work"). Mark explicitly: `synthetic: true`.
 - `learnings.md` — empty stub with header only.
 
+**6b. Knowledge graph:** If `.agents/skills/knowledge-graph/` exists, run `build_graph.py`; link `GRAPH_INDEX.md` in `project-index.md`.
+
 ### Step 7 — Confirm, Log, Stop
 
 1. Show the user the exact list of files created with line counts.
@@ -173,6 +179,8 @@ Next: review the 7 confirm tags, stage the commit.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

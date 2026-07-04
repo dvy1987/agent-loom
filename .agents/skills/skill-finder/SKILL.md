@@ -14,6 +14,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
+  resources:
+    references:
+      - examples.md
 ---
 
 # Skill Finder
@@ -94,6 +97,8 @@ Extending `create-agent-prompt` to include system prompt generation. Verifying l
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

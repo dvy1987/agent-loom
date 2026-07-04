@@ -17,6 +17,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: Howard-Marks-Most-Important-Thing, Farnam-Street-second-order, Buffett-Munger
+  resources:
+    references:
+      - examples.md
 ---
 
 # Second-Order Thinking
@@ -148,6 +151,8 @@ This decision should be evaluated at 12 months post-launch with conversion rate 
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

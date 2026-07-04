@@ -17,6 +17,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: Aristotle-first-principles, Musk-SpaceX-battery-case, Goedel-first-principles-2025
+  resources:
+    references:
+      - examples.md
 ---
 
 # First Principles
@@ -131,6 +134,8 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

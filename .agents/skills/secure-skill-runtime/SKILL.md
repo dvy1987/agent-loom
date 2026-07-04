@@ -20,6 +20,7 @@ metadata:
   resources:
     references:
       - no-go-repos.md
+      - examples.md
 ---
 
 # Secure Skill — Runtime
@@ -176,6 +177,8 @@ VERDICT: BLOCKED — no further scanning.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

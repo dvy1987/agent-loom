@@ -23,6 +23,7 @@ metadata:
     references:
       - routing-table.md
       - handoff-gate.md
+      - examples.md
 ---
 
 # Venture Exploration
@@ -179,6 +180,8 @@ Once I have those, I'll route to `idea-evaluation` with `fermi` for sizing and `
 Top-level entry point. Called by user or `project-orchestrator`. Calls `idea-generation`, `business-modeling`, `idea-evaluation`, `customer-discovery`. Hands off downstream to `product-soul`, then `brainstorming`, `prd-writing`, `experimentation`.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

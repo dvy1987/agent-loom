@@ -22,6 +22,7 @@ metadata:
     references:
       - metrics-frameworks.md
       - prd-schemas.md
+      - examples.md
 ---
 
 # PRD Writing
@@ -139,6 +140,8 @@ Read `references/prd-schemas.md` for complete PRD templates.
 Read `references/metrics-frameworks.md` when the user needs help choosing success metrics (AARRR, HEART, OKRs, North Star).
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

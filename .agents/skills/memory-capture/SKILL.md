@@ -8,8 +8,11 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Capture
@@ -27,6 +30,15 @@ You turn useful session context into structured project memory. Capture only wha
 7. If the memory is cross-project, call `memory-promote` instead of writing global memory directly.
 8. Append file changes to `docs/skill-outputs/SKILL-OUTPUTS.md`.
 9. Tell the user what was saved and what was rejected.
+
+## Hard Rules
+
+- Project first; global only through `memory-promote`.
+- Do not store secrets, credentials, or unnecessary personal data.
+- Do not capture raw long transcripts; summarize with provenance.
+- Do not append if the target entry already exists; update status or merge.
+- Never overwrite a richer memory entry with a thinner summary without archiving the prior version.
+- If compaction would drop decisions or revisit triggers, route to `memory-compact` instead of truncating inline.
 
 ## Memory Type Map
 
@@ -75,6 +87,8 @@ Tags: <comma-separated>
 Input: "Remember that we chose repo memory plus global memory, but global must stay tiny."
 
 Output: write to `docs/memory/decision-log.md` via `memory-decision`, then index it.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

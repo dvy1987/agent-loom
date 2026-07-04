@@ -16,6 +16,9 @@ metadata:
   author: dvy1987
   version: "1.2"
   category: meta
+  resources:
+    references:
+      - examples.md
 ---
 
 # Learn From Chat
@@ -165,6 +168,8 @@ Awaiting your approval to apply.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

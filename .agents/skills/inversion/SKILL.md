@@ -16,6 +16,9 @@ metadata:
   version: "2.0"
   category: thinking
   sources: Munger-Farnam-Street, Jacobi-inversion
+  resources:
+    references:
+      - examples.md
 ---
 
 # Inversion
@@ -112,6 +115,8 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

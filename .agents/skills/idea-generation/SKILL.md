@@ -25,6 +25,7 @@ metadata:
       - generation-methods.md
       - idea-card-template.md
       - anti-patterns.md
+      - examples.md
 ---
 
 # Idea Generation
@@ -174,6 +175,8 @@ Before I generate, two quick questions:
 `venture-exploration` calls this in the generate stage. After generation, the user typically picks 1–3 cards to send to `business-modeling`, then `idea-evaluation`.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

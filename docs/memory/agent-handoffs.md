@@ -680,3 +680,39 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Working Tree
 - **Dirty, uncommitted.** New: `design-direction/`, `design-system/`, golden-examples, APCA script, changelog. Modified: frontend-design, design-review, project-setup, AGENTS.md, README, SKILL-INDEX, skill-graph, PRD. Archived: 3 deprecated skills.
+
+---
+
+## 2026-07-04 08:15 — Handoff (commit session)
+
+### Done
+- **Knowledge-graph v2:** authoritative ingestion from `skill-graph.md` + SKILL-INDEX; `call-graph.json`, `GRAPH_REPORT.md`, `graph_health.py`; query `path`/`explain`; dual-mode (skill-library / application); project-setup + retroactive bootstrap.
+- **L3 examples:** 98/98 skills have `references/examples.md`; `backfill_examples.py` + `build_examples_index.py`; 17 hand-curated addyosmani examples + 77 auto-backfill.
+- **Never-discard-examples invariant:** AGENTS.md, universal-skill-creator, compress-skill, improve-skills, learn-from, validate-skills (P1), split-skill, SKILL-EXAMPLES-INDEX.
+- **Ingestion learnings:** awesome-ui → design-review/design-direction; graphify → knowledge-graph + consumer wiring.
+- **memory-handoff v1.2:** user says **commit** → prepare handoff docs before git commit (AGENTS.md + memory routing updated).
+
+### Decisions
+- Knowledge-graph is **project-specific** — installs in any consumer repo via `project-setup`, not agent-loom-only.
+- Examples **relocate to L3**, never delete for line limits.
+- Commit requests are a **handoff trigger** (continuity before checkpoint).
+
+### Deferred
+- Enrich thin auto-backfilled L3 files (`improve-skills TARGET=<skill>`).
+- Consumer-project validation of application-mode graph.
+- Phase 2 addyosmani remaining gap skills per SUMMARY.md.
+
+### Next Agent Should Know
+- Read this handoff + `docs/knowledge-graph/GRAPH_INDEX.md` for skill routing hints.
+- `docs/SKILL-EXAMPLES-INDEX.md` — all skills have L3 examples; regenerate with `build_examples_index.py`.
+- Saying **commit** should invoke `memory-handoff` first (now encoded in skill + AGENTS.md).
+
+### Revisit Triggers
+- User starts work in another repo → run `project-setup` Step 6b to bootstrap graph.
+- New skill created → `library-skill` Step 5b incremental graph rebuild + L3 examples via creator.
+
+### Working Tree
+- **Committed this session** — large batch (~200 files): knowledge-graph, L3 backfill, design learnings, handoff trigger.
+
+### Graph
+- Incremental rebuild run at handoff; see `docs/knowledge-graph/GRAPH_REPORT.md`.

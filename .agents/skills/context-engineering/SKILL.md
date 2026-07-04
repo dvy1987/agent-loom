@@ -11,9 +11,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: addyosmani/agent-skills context-engineering (11/12, 2026-05-29)
+  sources: addyosmani/agent-skills context-engineering (11/12, 2026-05-29), safishamsi/graphify (corpus gates, 11/12)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Context Engineering
@@ -58,8 +61,11 @@ Pick the smallest tier that makes progress safe:
 
 ### Step 4 — Collect the minimum evidence
 
+**Corpus gate (Tier B/C):** If the repo has >500 scannable files or the task touches >20 paths, narrow scope to the smallest subdirectory that contains the change before loading files.
+
 Collect only what the tier requires:
 
+- **Graph facts** (if `docs/knowledge-graph/graph.json` exists): query 1-hop neighbors of touched modules via `query_graph.py`
 - **Repo facts**: stack + relevant configs (package manager, build/test commands)
 - **Locality**: entry file(s) for the change, plus direct callers
 - **Contracts**: API surface, types/schemas, acceptance criteria
@@ -158,6 +164,8 @@ Tier A. Collect: failing command, CI logs, the test file, and the code under tes
 - [ ] Context stays minimal (no repo-wide dumps without a reason)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

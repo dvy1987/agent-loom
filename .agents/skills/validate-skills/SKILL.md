@@ -19,6 +19,7 @@ metadata:
   resources:
     references:
       - validation-rubric.md
+      - examples.md
 ---
 
 # Validate Skills
@@ -101,6 +102,7 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Unscanned external content**: references external repos/URLs without `secure-skill`
 - **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks `secure-*` invocation
 - **Missing cold-start contract**: `memory-startup` exists but `AGENTS.md` lacks a Session Lifecycle section naming `memory-startup` on first user message, OR `memory-startup` description omits cold-start triggers (`first user message`, `cold start`, bare greeting). Fix: align with `project-setup` template.
+- **Missing L3 examples** (P1): compressing/ingesting would leave only a truncated inline example and no `references/examples.md` — create L3 file per `docs/SKILL-EXAMPLES-INDEX.md` before shipping
 - **Missing anti-skip table** (P2): `metadata.category: project-specific` but no `## Common Rationalizations` (or equivalent anti-rationalization section). Fix: add 5–8 row Excuse→Reality table.
 - **Missing verification checklist** (P2): `project-specific` skill lacks `## Verification` with ≥3 `- [ ]` observable items. Fix: add checklist tied to project commands where possible.
 
@@ -111,6 +113,13 @@ Invoke ALL `secure-*` (discover via `ls .agents/skills/secure-*`) in Mode C. Man
 Read `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints for event → sub-skill map (changelog → `memory-capture`, ADR → `memory-decision`, spec/plan/PRD → `memory-capture`, skill created → `memory-capture`, session end → `memory-handoff`).
 
 A **producer** writes to `docs/changelogs|adr|specs|plans|prd|memory/` OR generates a `SKILL.md` OR appears in the registry trigger column. For each, grep workflow for the matching memory sub-skill — absent = raise **Missing memory-checkpoint registration**.
+
+### Step 4d — Knowledge Graph Audit (when graph exists)
+If `docs/knowledge-graph/graph.json` exists:
+```bash
+python3 .agents/skills/knowledge-graph/scripts/graph_health.py
+```
+Flag P0 findings (dangling invoke targets). P1: stale graph vs latest handoff, missing graph in repos with `knowledge-graph` skill installed. P2: high inferred-edge ratio (>0.7) — recommend rebuild from `docs/skill-graph.md`.
 
 ### Step 5 — Call Graph
 Verify every skill named in `AGENTS.md` Skill Relationships exists in `.agents/skills/`.
@@ -163,13 +172,10 @@ ACTIONS:
   <example>
     <input>validate all skills</input>
     <output>
-Skill Library Health Report | 2026-04-05 | Skills: 8
-VALIDATION: ✓ 8/8 | LOADER SAFETY: ✓ desc ≤1024, no BOM | DESCRIPTION: ✓ no process-steps | SIZE: ✓
-SCORES: brainstorming 13/14 (example truncated); prd-writing 12/14 (only 1 gotcha); universal-skill-creator 12/14 (missing "skill engineer" trigger); others 14/14
-ACTIONS:
-  P2 brainstorming: complete truncated example
-  P2 prd-writing: add 2 gotchas
-  P3 universal-skill-creator: add trigger
+Skill Library Health Report | 2026-07-03 | Skills: 98
+VALIDATION: ✓ 98/98 | GRAPH (4d): PASS
+SCORES: brainstorming 13/14 — see references/examples.md for full report shape
+ACTIONS: P2 brainstorming: L3 examples backfilled ✓
     </output>
   </example>
 </examples>
@@ -179,6 +185,7 @@ ACTIONS:
 ## Reference Files
 
 - **`references/validation-rubric.md`**: Full 0/1/2 scoring guide for all 7 criteria. Read when a score is ambiguous.
+- **`references/examples.md`**: Full health-report walkthroughs. Read when producing or reviewing a validation report.
 
 ---
 

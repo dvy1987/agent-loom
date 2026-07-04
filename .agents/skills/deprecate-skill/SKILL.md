@@ -18,6 +18,7 @@ metadata:
   resources:
     references:
       - deprecation-log.md
+      - examples.md
 ---
 
 # Deprecate Skill
@@ -162,6 +163,8 @@ Proceed? (yes/no)
     </output>
   </example>
 </examples>
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

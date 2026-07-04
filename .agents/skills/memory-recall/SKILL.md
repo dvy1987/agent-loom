@@ -7,8 +7,11 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Recall
@@ -19,6 +22,7 @@ You retrieve the smallest useful memory slice for the task. Your job is relevanc
 
 1. Identify the recall target: feature, decision, bug, user preference, deferred option, learning, or session.
 2. Read `docs/memory/MEMORY-ROUTING.md` and `docs/memory/project-index.md`.
+2.5. If `docs/knowledge-graph/graph.json` exists, run `query_graph.py` with recall topic — add matching memory/skill paths to candidates.
 3. Select candidate files and sections by tags, status, date, and scope.
 4. Read only selected sections from project memory.
 5. If user preferences or global process rules may matter, read `~/.agent-loom/memories/MEMORY-ROUTING.md` and `global-index.md`.
@@ -62,6 +66,8 @@ Staleness / contradictions:
 User: "Why did we choose local and global memory?"
 
 Output: summarize the decision, cite `decision-log.md`, include alternatives, and list revisit triggers.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

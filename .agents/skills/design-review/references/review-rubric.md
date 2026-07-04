@@ -32,10 +32,21 @@ Scoring 0–3 per dimension. Anchors below.
 
 ## State coverage
 
+Includes **micro-copy** quality — empty, error, loading, and CTA text are part of the score.
+
 - **0** — only the populated/happy path exists; no empty/loading/error
-- **1** — some states present but inconsistent (e.g. spinners not skeletons, generic "No data")
-- **2** — every data surface has loading + empty + error + populated; interactive els have hover/active/focus-visible/disabled
-- **3** — states are designed with equal care (skeletons match layout, empty offers next action, errors are specific + recoverable)
+- **1** — some states present but inconsistent (e.g. spinners not skeletons, generic "No data", "Error occurred")
+- **2** — every data surface has loading + empty + error + populated; interactive els have hover/active/focus-visible/disabled; copy is functional
+- **3** — states designed with equal care: skeletons match layout; empty states offer a specific next action; errors name what failed + how to recover; CTAs state the real outcome (no vague "Continue" / "Submit")
+
+### Micro-copy signals (use when scoring State coverage)
+
+| Signal | Weak (caps at 1) | Strong (supports 2–3) |
+|---|---|---|
+| Empty state | "No data" / "Nothing here" | "No projects yet — create one to get started" |
+| Error state | "Something went wrong" | "Couldn't save — check your connection and retry" |
+| CTA | "Continue" / "OK" / "Learn more" | "Create project" / "Start 14-day trial" / "Download CSV" |
+| Loading | Silent or generic spinner only | Skeleton matches layout; label where wait is long |
 
 ## Iconography
 
@@ -53,10 +64,12 @@ Scoring 0–3 per dimension. Anchors below.
 
 ## Motion
 
+Includes **delight** — transitions that confirm causality; not decoration-only animation.
+
 - **0** — `transition-all duration-300` everywhere, no easing variation, no reduced-motion support
 - **1** — motion exists but doesn't follow archetype budget; reduced-motion present but partial
 - **2** — duration budget matches archetype; easing curve is archetype-specific; reduced-motion fully honored
-- **3** — motion expresses state and confirms causality; one signature motion moment present
+- **3** — motion expresses state and confirms causality; one signature delight moment per primary flow
 
 ## Accessibility (HARD GATE — pass/fail)
 
@@ -70,6 +83,14 @@ PASS requires ALL of:
 - `prefers-reduced-motion` shrinks durations to ≤0.01ms
 
 FAIL on any of the above. No partial credit.
+
+## Ethical patterns (HARD GATE — pass/fail)
+
+PASS requires NONE of the patterns in `ethical-patterns.md`:
+confirm shaming, mislabeled actions, hidden costs, forced continuity, fake urgency,
+privacy zuckering, roach motel.
+
+FAIL on any hit. No partial credit. Ethical fails outrank polish — fix before iterating typography.
 
 ## Responsive
 
@@ -91,6 +112,7 @@ FAIL on any of the above. No partial credit.
 
 - **SHIP** requires:
   - Accessibility = PASS (APCA targets met in both modes)
+  - Ethical patterns = PASS (no deceptive UI per `ethical-patterns.md`)
   - Direction fidelity ≥ 2
   - Anti-vibecoded ≥ 2
   - State coverage ≥ 2

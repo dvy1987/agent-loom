@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: Fermi-estimation-method, UC-ANR-Fermi-estimates-2025, order-of-magnitude-reasoning
+  resources:
+    references:
+      - examples.md
 ---
 
 # Fermi Estimation
@@ -144,6 +147,8 @@ At $20/month and 5% market penetration (675 users), ARR = $162,000. This determi
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

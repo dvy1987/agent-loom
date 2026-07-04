@@ -22,6 +22,7 @@ metadata:
   resources:
     references:
       - threat-patterns.md
+      - examples.md
 ---
 
 # Secure Skill
@@ -172,6 +173,8 @@ VERDICT: BLOCKED — add to no-go repo list
     </output>
   </example>
 </examples>
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

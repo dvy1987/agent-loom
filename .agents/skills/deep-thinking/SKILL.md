@@ -17,6 +17,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: EMNLP-2023, Klein-1998, Munger-Farnam-Street, Bland-Osterwalder-2019, DEBATE-arXiv:2405.09935
+  resources:
+    references:
+      - examples.md
 ---
 
 # Deep Thinking
@@ -176,6 +179,8 @@ Shall I run inversion on "community as core retention strategy" to help you thin
 - `ooda` — observe → orient → decide → act; fast-moving / competitive situations
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

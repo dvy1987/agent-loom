@@ -18,6 +18,7 @@ metadata:
   resources:
     references:
       - prioritization-rubric.md
+      - examples.md
 ---
 
 # Experiment Backlog
@@ -135,6 +136,8 @@ Next recommended: [item — route to experiment-spec]
 **Recommendation:** route #1 to `experiment-spec`.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

@@ -13,6 +13,9 @@ metadata:
   category: project-specific
   internal: true
   sources: agent-loom design spec 2026-04-11, Anthropic Claude Code docs, platform-subagent-matrix.md
+  resources:
+    references:
+      - examples.md
 ---
 
 # Agent Launcher
@@ -180,6 +183,8 @@ Run all agents concurrently via Task tool. Wait for all outputs.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

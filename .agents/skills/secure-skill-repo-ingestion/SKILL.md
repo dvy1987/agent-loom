@@ -17,6 +17,9 @@ metadata:
   version: "1.0"
   category: meta
   sources: arXiv:2604.03081, Snyk-ToxicSkills-2026, CVE-2026-34070, OWASP-Agentic-Top10-2026, Stellar-Cyber-2026
+  resources:
+    references:
+      - examples.md
 ---
 
 # Secure Skill — Repo Ingestion
@@ -166,6 +169,8 @@ VERDICT: [SAFE / BLOCKED / REQUIRES REVIEW]
 ```
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

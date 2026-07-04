@@ -21,6 +21,7 @@ metadata:
       - posthog-binding.md
       - vendor-mapping.md
       - launch-qa-checklist.md
+      - examples.md
 ---
 
 # Experiment Runbook
@@ -169,6 +170,8 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 - **QA:** 6/6 pre-launch checks pass
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

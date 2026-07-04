@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: EMNLP-2023-Socratic-Questioning-arXiv:2303.09014
+  resources:
+    references:
+      - examples.md
 ---
 
 # Socratic
@@ -106,6 +109,8 @@ Then the real question isn't community vs. core product. The question is: do you
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

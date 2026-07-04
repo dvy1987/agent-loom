@@ -10,6 +10,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Promote
@@ -69,6 +72,8 @@ Source updated: <yes/no>
 Project learning: "User prefers concise, direct engineering updates."
 
 Verdict: promote to `user-preferences.md` if repeatedly confirmed and not already present.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

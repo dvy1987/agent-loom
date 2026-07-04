@@ -16,6 +16,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: GitHub Spec Kit (constitution command), AWS Kiro (specs-first), agentskills.io
+  resources:
+    references:
+      - examples.md
 ---
 
 # Project Constitution
@@ -154,6 +157,8 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

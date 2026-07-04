@@ -20,6 +20,7 @@ metadata:
     references:
       - citation-standards.md
       - obsolete-techniques.md
+      - examples.md
 ---
 
 # Prune Skill
@@ -168,6 +169,8 @@ agentskills validate: ✓
     </output>
   </example>
 </examples>
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

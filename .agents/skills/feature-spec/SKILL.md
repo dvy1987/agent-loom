@@ -20,6 +20,7 @@ metadata:
   resources:
     references:
       - feature-spec-schema.md
+      - examples.md
 ---
 
 # Feature Spec
@@ -183,7 +184,7 @@ Run `/clarify` next.
   </example>
 </examples>
 
----
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

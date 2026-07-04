@@ -16,6 +16,9 @@ metadata:
   version: "1.1"
   category: project-specific
   sources: GitHub Spec Kit, AWS Kiro, agentskills.io, addyosmani/agent-skills spec-driven-development (Phase 3 merge)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Spec-Driven Development
@@ -133,6 +136,8 @@ Starting at `/specify`. Routing to `feature-spec` (mode=specify).
 - [ ] Correct leaf skill invoked; slug consistent across artifacts
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

@@ -13,6 +13,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
+  resources:
+    references:
+      - examples.md
 ---
 
 # Tool Finder
@@ -104,6 +107,8 @@ Setup: Configure `mcp__postgres` in your MCP settings with connection string. Se
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

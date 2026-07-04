@@ -21,6 +21,7 @@ metadata:
       - mde-heuristics.md
       - validity-threats.md
       - spec-template.md
+      - examples.md
 ---
 
 # Experiment Spec
@@ -136,6 +137,8 @@ Status: [READY-TO-LAUNCH | DOWNGRADED-TO-DIRECTIONAL | BLOCKED-INSUFFICIENT-POWE
 - **Validity threats:** novelty (low — copy change), channel-mix (mitigated), bot traffic (filtered)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

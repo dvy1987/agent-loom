@@ -17,6 +17,7 @@ metadata:
   resources:
     references:
       - publish-checklist.md
+      - examples.md
 ---
 
 # Publish Skill
@@ -169,6 +170,8 @@ Test install dry-run: ✓
     </output>
   </example>
 </examples>
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

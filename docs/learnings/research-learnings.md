@@ -49,3 +49,50 @@ Template:
 - Skills modified: eval-rubric-design (×2), eval-judge, eval-pipeline, agent-builder (×2), process-decomposer, reality-check
 - Skills created from this learning: none
 - Notes: Format compliance finding validates existing eval-rubric-design hard gate. Multi-paradigm composition finding validates existing eval-pipeline 3-layer approach. Both KEEP CURRENT.
+
+## 2026-07-03 - awesome-ui: ethics + UX heuristics gap in design suite; no link imports
+- Source: kevindeasis/awesome-ui (Markdown awesome list). Credibility 7/12 BORDERLINE.
+- Type: repo
+- Security: SAFE
+- Classification: GOTCHA × 1, TECHNIQUE × 3, FAILURE_MODE × 1, BACKGROUND × 2, SKIP × 3
+- Insight: Design review lacked ethical-pattern and UX-heuristic gates; direction lacked pre-build context capture. Awesome-list links rot — patterns only, no URL embedding.
+- Recommended action: Applied — design-review v2.1 (ethical-patterns.md, ux-heuristics.md), design-direction v1.1 (ux-context-checklist.md), learn-from-repo gotcha on link imports.
+- Skills modified: design-review, design-direction, learn-from-repo
+- Skills created from this learning: none
+- Notes: Erik Kennedy 7-rules and text-over-image kept current (already stronger). Tool/inspiration link directories skipped per security policy.
+
+## 2026-07-03 - graphify: native knowledge-graph skill + consumer integration
+- Source: safishamsi/graphify (Python CLI + agent skill). Credibility 11/12 PASS.
+- Type: repo
+- Security: SAFE (patterns extracted; no vendored graphify pip install)
+- Classification: GOTCHA × 2, TECHNIQUE × 4, FAILURE_MODE × 2
+- Insight: Query-before-rebuild, EXTRACTED/INFERRED labeling, corpus gates, shrink guard, handoff-sync graph — implemented as native stdlib `knowledge-graph` skill.
+- Recommended action: Applied — new `knowledge-graph` skill; wired to memory-handoff, memory-startup, memory-recall, codebase-understanding, context-engineering, debug-and-fix; graphify learnings in memory-capture/compact.
+- Skills modified: knowledge-graph (new), memory-handoff, memory, memory-startup, memory-recall, codebase-understanding, context-engineering, debug-and-fix, memory-capture, memory-compact, learn-from-repo (prior)
+- Skills created from this learning: knowledge-graph
+- Notes: User declined external Graphify install; graph at `docs/knowledge-graph/graph.json`.
+
+## 2026-07-03 - graphify: knowledge-graph v2 gap fixes
+- Source: safishamsi/graphify patterns + adversarial review of v1 graph
+- Type: repo (patterns only)
+- Classification: TECHNIQUE × 6, FAILURE_MODE × 3, GOTCHA × 2
+- Insight: v1 was ~79% INFERRED noise; v2 ingests authoritative `skill-graph.md` + SKILL-INDEX **Calls:**, real communities, GRAPH_REPORT, call-graph.json, graph_health audit, path/explain query, project-setup bootstrap.
+- Recommended action: Applied — knowledge-graph v2.0; wired project-setup, retroactive-project-setup, library-skill, validate-skills Step 4d, cross-link-skills, learn-from confidence rubric.
+- Skills modified: knowledge-graph, project-setup, retroactive-project-setup, memory-startup, library-skill, validate-skills, cross-link-skills, learn-from, universal-skill-creator, SKILL-INDEX
+- Notes: Dual-mode (skill-library in agent-loom, application in consumer repos). No pip install.
+
+## 2026-07-03 - L3 examples backfill (addyosmani + ingestion skills)
+- Source: addyosmani/agent-skills snapshots (secure-* structural scan SAFE 2026-07-03)
+- Type: improve-skills mandate
+- Insight: Examples were deleted during compress, not relocated; 21 skills now have references/examples.md
+- Recommended action: Applied — backfill + never-discard invariant in AGENTS.md, creator, compress, improve, learn-from, validate
+- Skills modified: 17 example backfills + 8 policy skills
+- Notes: Index at docs/SKILL-EXAMPLES-INDEX.md; regenerate via build_examples_index.py
+
+## 2026-07-04 - Full library L3 examples backfill
+- Source: improve-skills mandate (all remaining skills)
+- Type: batch backfill via backfill_examples.py
+- Insight: 77 skills had inline-only examples; all 98 now have references/examples.md
+- Recommended action: Applied — auto-extract inline + workflow synthesis; 17 prior hand-curated AO examples retained
+- Skills modified: 77 new L3 files + SKILL.md resource/pointer wiring
+- Notes: enrich thin auto-backfills via improve-skills TARGET=<skill> over time

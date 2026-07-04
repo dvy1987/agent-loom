@@ -36,7 +36,7 @@ Open `.agents/skills/your-skill-name/SKILL.md` and fill in:
 - **Role definition** — "You are a [specific expert] specializing in [narrow domain]"
 - **Numbered workflow** — one action per step, action verbs only
 - **Gotchas** — non-obvious facts the agent will get wrong without being told
-- **2+ examples** — realistic input → complete (non-truncated) output
+- **2+ examples** — realistic input → complete output. Extras go in `references/examples.md` (see `docs/SKILL-EXAMPLES-INDEX.md`); **never delete** to save lines — relocate to L3.
 - **`## Impact Report` section** — at the end of SKILL.md. States exactly what files are created, modified, or moved, and what the agent delivers in chat after the skill runs. Required for every skill.
 - **File-output logging** — if the skill generates any project files, it must append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user the file path. See `universal-skill-creator/templates/SKILL-OUTPUTS-template.md`.
 

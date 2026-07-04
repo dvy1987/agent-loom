@@ -17,6 +17,9 @@ metadata:
   version: "1.4"
   category: thinking
   sources: obra/superpowers brainstorming, agentskills.io best practices, addyosmani/agent-skills interview-me + idea-refine (Phase 3 merge)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Brainstorming

@@ -13,6 +13,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: agent-loom design spec 2026-04-10, arXiv:2601.02577
+  resources:
+    references:
+      - examples.md
 ---
 
 # Create Agent Prompt
@@ -128,6 +131,8 @@ These are NOT implemented in this version. Create via `skill-finder` when demand
 - `create-skill-prompt` — prompts for invoking skills correctly
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

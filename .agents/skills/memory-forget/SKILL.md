@@ -9,6 +9,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Forget
@@ -58,6 +61,8 @@ Residual references removed: yes/no
 User: "Forget that global preference; it is no longer true."
 
 Output: remove or retire the matching entry in `~/.agent-loom/memories/user-preferences.md` and update `global-index.md`.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

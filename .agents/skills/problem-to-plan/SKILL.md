@@ -20,6 +20,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: agent-loom design spec 2026-04-12
+  resources:
+    references:
+      - examples.md
 ---
 
 # Problem to Plan
@@ -167,6 +170,8 @@ Agents can pick up tasks from the TODO.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

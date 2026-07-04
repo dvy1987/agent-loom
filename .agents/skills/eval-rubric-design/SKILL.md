@@ -18,6 +18,9 @@ metadata:
     Anthropic eval guide 2026, ICER 2025 rubric paper,
     Google evaluation guidance, NIST AI RMF,
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Eval Rubric Design
@@ -182,6 +185,8 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

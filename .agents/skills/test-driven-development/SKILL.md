@@ -18,6 +18,7 @@ metadata:
   resources:
     references:
       - tdd-patterns.md
+      - examples.md
 ---
 
 # Test-Driven Development (TDD)
@@ -168,6 +169,8 @@ Ready for: code review
 - [ ] No tests skipped or disabled to green the suite
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

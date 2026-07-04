@@ -10,6 +10,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Compact
@@ -49,8 +52,10 @@ You reduce memory bloat without losing the reasoning future agents need.
 
 ## Hard Rules
 
-- Never remove a decision's revisit triggers.
-- Never compact by deleting provenance.
+- Never append to an over-budget file without compacting first.
+- Never delete active decisions, revisit triggers, or provenance.
+- Never compact global memory without user approval.
+- **Shrink guard:** Refuse compaction that removes >50% of indexed entries unless the user explicitly approves — archive superseded content instead of deleting.
 - Never increase global memory during compaction.
 - If meaning would change, stop and ask the user.
 
@@ -69,6 +74,8 @@ Preserved decisions: <count>
 ## Example
 
 If `reusable-learnings.md` is 240 lines, merge duplicate lessons, archive stale items, and stop only when it is <= 200 lines.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

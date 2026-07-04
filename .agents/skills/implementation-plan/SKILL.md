@@ -17,6 +17,7 @@ metadata:
   resources:
     references:
       - plan-schemas.md
+      - examples.md
 ---
 
 # Implementation Plan
@@ -184,7 +185,7 @@ Ready for: engineering execution
 - [ ] No task >~5 files (XL tasks split)
 - [ ] Traceability table complete when feature-spec exists
 
----
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

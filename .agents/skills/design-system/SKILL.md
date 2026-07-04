@@ -24,6 +24,7 @@ metadata:
       - banned-palettes.md
       - icon-strategies.md
       - svg-craft.md
+      - examples.md
 ---
 
 # Design System
@@ -99,6 +100,8 @@ Use `references/design-md-template.md` verbatim — sections: Theme, Color (sema
 - [ ] `banned-palettes.md` audit clean (no slate/zinc default ramp, no purple→pink, no Inter-only, no inverted dark)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 - `references/design-md-template.md` — canonical DESIGN.md structure (copy verbatim)

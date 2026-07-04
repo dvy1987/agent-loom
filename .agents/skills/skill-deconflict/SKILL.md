@@ -14,6 +14,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: meta
+  resources:
+    references:
+      - examples.md
 ---
 
 # Skill Deconflict
@@ -180,6 +183,8 @@ INTENT DIVERSITY
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

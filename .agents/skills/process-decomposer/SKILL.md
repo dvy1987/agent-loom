@@ -17,6 +17,9 @@ metadata:
   sources: >
     agent-loom design spec 2026-04-10,
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Process Decomposer
@@ -138,6 +141,8 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

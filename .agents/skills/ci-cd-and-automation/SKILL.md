@@ -12,6 +12,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: addyosmani/agent-skills ci-cd-and-automation (11/12, 2026-05-29)
+  resources:
+    references:
+      - examples.md
 ---
 
 # CI/CD and Automation
@@ -138,6 +141,8 @@ Create `.github/workflows/ci.yml` with node-version pinned, npm cache, `npm ci`,
 - [ ] Branch protections enforce required checks (or explicitly deferred)
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

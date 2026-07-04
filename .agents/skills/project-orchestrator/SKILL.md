@@ -21,6 +21,7 @@ metadata:
       - agents-md-refresh-check.md
       - orchestration-patterns.md
       - platform-subagent-matrix.md
+      - examples.md
 ---
 
 # Project Orchestrator
@@ -54,6 +55,7 @@ Always present the plan before executing — user approves, then it runs.
 | Tests exist and pass | Review / release phase |
 
 Also read: `AGENTS.md` Orchestration Map (if present), `docs/skill-outputs/SKILL-OUTPUTS.md`.
+If `docs/knowledge-graph/GRAPH_INDEX.md` exists, query hub nodes and communities for skill-routing hints before Step 2.
 
 ### Step 2 — Route the Request
 
@@ -161,6 +163,8 @@ Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

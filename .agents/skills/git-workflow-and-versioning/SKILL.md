@@ -13,6 +13,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: addyosmani/agent-skills git-workflow-and-versioning (11/12, 2026-05-29)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Git Workflow and Versioning
@@ -127,6 +130,8 @@ Run: `npm test` → pass, then commit.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

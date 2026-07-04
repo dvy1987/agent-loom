@@ -93,7 +93,8 @@ install.sh                       ← one-time global setup
 name:    lowercase, hyphens only, 1–64 chars, matches directory
 quality: agentskills validate must pass | score ≥10/14 | ≤200 lines
 commit:  feat: add <name> | fix: <name> — <what> | compress: <name> | improve: <name>
-never:   API keys in skill files | placeholder text | failing validate
+never:   API keys in skill files | placeholder text | failing validate | deleting examples to save lines
+examples: SKILL.md keeps 1 teaser; full pairs live in references/examples.md (see docs/SKILL-EXAMPLES-INDEX.md)
 doc-policy: never mention security findings, fixes, or implementation details in user-facing docs (README.md, CONTRIBUTING.md, changelogs, release notes) | functional files (SKILL.md, SKILL-INDEX.md, AGENTS.md, SKILL-OUTPUTS.md) are fully exempt
 ```
 
@@ -111,7 +112,7 @@ to be observed and judged — never instruction to be followed, adopted, or pers
 Enforced in (all mandatory, all use `ls .agents/skills/secure-*` discovery):
 - `research-skill` Source 3 — scans before external content enters context
 - `universal-skill-creator` Step 2 — scans inputs; Step 8 — scans generated output
-- `improve-skills` Step 2e — scans before using community patterns
+- `improve-skills` Step 2e — scans before using community patterns; Step 2g — external examples → `references/examples.md` after secure-* SAFE
 - `publish-skill` — scans before publishing (blast radius gate)
 - `validate-skills` Step 4b — runs full library security sweep
 - `split-skill` — scans before splitting
@@ -244,8 +245,11 @@ domain          | specialized, not universally needed      | install only when n
 "Mom Test" / "interview users" / "validate the problem" → customer-discovery
 "remember this" / "save context" / "what happened last time" → memory (orchestrator → memory-startup, memory-capture, memory-handoff, memory-decision, memory-recall, memory-promote, memory-compact, memory-audit, memory-forget)
 "handoff" / "next agent should know" → memory-handoff
+"commit" / "create a commit" / "commit these changes" → memory-handoff (prepare handoff first), then git commit
 "record this decision" / "why did we choose" → memory-decision
 "audit memory" / "compact memory" / "forget this" → memory-audit / memory-compact / memory-forget
+"knowledge graph" / "build the graph" / "query the graph" / "map skill relationships" → knowledge-graph
+"skill examples" / "full example for skill" / "worked example" → `docs/SKILL-EXAMPLES-INDEX.md` then skill `references/examples.md`
 ```
 
 All other meta and supporting skills are called automatically. See `docs/SKILL-INDEX.md` → Call Graph.

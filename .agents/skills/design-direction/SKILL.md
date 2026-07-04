@@ -12,13 +12,14 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: Superdesign anti-slop chain, Anthropic frontend-design skill, design-archetype (merged)
+  sources: Superdesign anti-slop chain, Anthropic frontend-design skill, design-archetype (merged), kevindeasis/awesome-ui (ux-context checklist, 7/12)
   resources:
     references:
       - exploration-method.md
       - selection-rubric.md
+      - ux-context-checklist.md
       - archetypes/b2b-productivity.md
       - archetypes/enterprise-trust.md
       - archetypes/premium-consumer.md
@@ -31,6 +32,7 @@ metadata:
       - archetypes/social-feed.md
       - archetypes/conversational-ai.md
       - archetypes/spatial-canvas.md
+      - examples.md
 ---
 
 # Design Direction
@@ -63,7 +65,7 @@ before exactly one is chosen. The chosen direction is a complete philosophy that
 ## Workflow
 
 ### Step 1 — Read product reality
-Read `docs/product-soul.md`, PRD, specs (and any brand assets). Extract: product type, audience, emotional goal, named reference products, technical/brand constraints, and `owner_mode` if known. If none exist, ask ONE question: "What is this for, and which product should it feel closest to (or 'pick for me')?"
+Read `docs/product-soul.md`, PRD, specs (and any brand assets). Run `references/ux-context-checklist.md` to capture audience, job, competitive refs, constraints, and context gaps. Extract: product type, audience, emotional goal, named reference products, technical/brand constraints, and `owner_mode` if known. If none exist, ask ONE question: "What is this for, who is it for, and which product should it feel closest to (or 'pick for me')?" Record unchecked checklist items as gaps in DIRECTION.md — gaps do not block exploration.
 
 ### Step 2 — Score the archetype palette
 Read `references/selection-rubric.md`. Score the 12 archetypes (`references/archetypes/<name>.md`) on audience fit, job fit, distinctive fit. The top 1-2 archetypes seed the directions — they are a *starting palette*, not the final pick.
@@ -110,6 +112,9 @@ Posture: [one sentence] | Seed archetypes: [top 1-2]
 
 ## Rejected options (audit trail)
 - [name] — rejected because [reason]
+
+## Context gaps
+- [unchecked items from ux-context-checklist — does not block ship of direction]
 ```
 
 ---
@@ -119,13 +124,16 @@ Posture: [one sentence] | Seed archetypes: [top 1-2]
 - [ ] A deliberate posture is stated; directions are not all center-of-axis
 - [ ] Exactly one direction chosen; no hybrid; runner-up influence noted
 - [ ] Each direction names a real "feels like X" and concrete type/color/layout/motion
-- [ ] `.design/<feature>/DIRECTION.md` written with rejected-options appendix
+- [ ] `.design/<feature>/DIRECTION.md` written with rejected-options appendix + context gaps
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 - `references/exploration-method.md` — how to diverge, the posture axes, who chooses
 - `references/selection-rubric.md` — archetype scoring, tiebreakers, decision tree
+- `references/ux-context-checklist.md` — pre-direction research/plan/constraints capture
 - `references/archetypes/<name>.md` — the 12-posture starting palette (open the seeds from Step 2)
 
 ---

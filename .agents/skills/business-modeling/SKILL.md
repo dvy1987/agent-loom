@@ -24,6 +24,7 @@ metadata:
       - canvas-selector.md
       - canvas-templates.md
       - anti-patterns.md
+      - examples.md
 ---
 
 # Business Modeling
@@ -177,6 +178,8 @@ Two questions before I pick the canvas:
 `venture-exploration` calls this in the model stage. Output feeds `idea-evaluation` (top-3 assumptions become kill-test inputs) and `customer-discovery` (segment + JTBD become interview targets).
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

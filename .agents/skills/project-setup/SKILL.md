@@ -20,6 +20,7 @@ metadata:
     references:
       - interview-questions.md
       - architecture-design-rigor.md
+      - examples.md
     templates:
       - agents-md-template.md
 ---
@@ -147,6 +148,8 @@ If merging into an existing AGENTS.md: preserve all project-specific content, in
 
 Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Every agent tool reads it automatically. Re-run `project-setup` after writing a PRD or changing the stack."
 
+**6b. Knowledge graph:** If `knowledge-graph` installed, run `build_graph.py`; add `GRAPH_INDEX.md` to `project-index.md` when memory suite present.
+
 ---
 
 ## Update Mode (called by project-orchestrator)
@@ -184,9 +187,7 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 ## Example
 
 **Input:** "Set up agents. I'm a PM building a React Native habit tracker. Not confident in architecture, testing, or security."
-**Output:** `owner_mode: non-technical`. AGENTS.md includes the Agent-Led Architecture & Design block (arch+design autonomy HIGH, wired to brainstorming/deep-thinking/api-and-interface-design/frontend-design with plain-language trade-offs). Boundaries: agents create components/tests freely; ADR every arch choice. Session Lifecycle + Skill Invocation blocks included. Rubric self-score 13/14, no starred zero. Saved, 134 lines.
-
----
+**Output:** `owner_mode: non-technical`. AGENTS.md with Agent-Led Architecture, Session Lifecycle, Skill Invocation. Rubric 13/14.
 
 ## Impact Report
 
@@ -195,6 +196,5 @@ Project setup complete: [name] | Platform: [target] | Mode: [single|multi]
 Files saved: [paths] ([line counts]) | Commands auto-extracted from: [manifests]
 User role: [role] | Owner mode: [technical|hybrid|non-technical] | Skill gaps filled: [list]
 Orchestration Map: [skill count] across [phase count] phases
-Session Lifecycle + Agent-Led blocks: [yes/no] | Rubric self-score: [n/14]
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
+Session Lifecycle + Agent-Led blocks: [yes/no] | Rubric: [n/14] | L3: references/examples.md
 ```

@@ -16,6 +16,9 @@ metadata:
   author: dvy1987
   version: "1.0"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Apply Paper to Project
@@ -173,6 +176,8 @@ After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

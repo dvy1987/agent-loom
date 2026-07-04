@@ -16,6 +16,7 @@ metadata:
   resources:
     references:
       - simplification-patterns.md
+      - examples.md
 ---
 
 # Code Simplification
@@ -131,6 +132,8 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 - [ ] Simplified code matches project conventions
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 

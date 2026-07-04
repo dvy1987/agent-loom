@@ -15,6 +15,9 @@ metadata:
   version: "1.0"
   category: thinking
   sources: Bland-Osterwalder-Testing-Business-Ideas, assumption-mapping-2019
+  resources:
+    references:
+      - examples.md
 ---
 
 # Assumption Mapping
@@ -148,6 +151,8 @@ TOTAL: 8 assumptions found | Critical: 2 | Validated: 1 | Monitor: 5
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

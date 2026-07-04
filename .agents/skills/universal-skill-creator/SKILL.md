@@ -32,7 +32,8 @@ You are a Senior AI Skill Engineer. Your skills work on every major AI agent pla
 ## Hard Rules
 
 Always produce complete, non-truncated output — never use `[...]` placeholders in a deliverable skill.
-Always include at least one realistic example. Always state the install directory.
+Always include at least one realistic example (teaser in SKILL.md; ≥2 full pairs in `references/examples.md` when needed). **Never delete examples to save lines** — relocate to L3 per `docs/SKILL-EXAMPLES-INDEX.md`.
+Always state the install directory.
 Never put API keys, passwords, or secrets in skill files.
 Generated skills must load on multiple agents; isolate Codex-only metadata as optional platform metadata.
 
@@ -87,7 +88,8 @@ Category rules:
 - `domain` — specialized, not universally needed; install only when required
 
 ### Step 5 — Write the Body
-Required sections: Role definition · Numbered workflow (imperative one-liners) · Output format schema · 1–2 examples · Constraints.
+Required sections: Role definition · Numbered workflow (imperative one-liners) · Output format schema · 1 teaser example · Constraints.
+**Examples:** ≥2 pairs → `references/examples.md` (in `metadata.resources`); shortest inline + load trigger. See `docs/SKILL-EXAMPLES-INDEX.md`.
 **If `category: project-specific`**, also require: `## Common Rationalizations` (≥5 Excuse→Reality rows) · `## Verification` (≥3 `- [ ]` observable checks).
 Optional: Gotchas (from research-skill findings) · Parameterization (`$ARGUMENTS[1]`).
 If resources exist, state exactly when to read or execute each one. Avoid nested references; link direct children from SKILL.md.
@@ -119,6 +121,8 @@ Invoke `cross-link-skills` with trigger `created — <skill-name>` to repair mis
 
 ### Step 11 — Library Sync (Mandatory)
 Invoke `library-skill` with trigger `new skill added — <skill-name>`. Syncs `docs/SKILL-INDEX.md`, `AGENTS.md`, `README.md`, `docs/skill-graph.md`, `docs/architecture.md`, `docs/prd/PRD.md`, then auto-invokes `generate-changelog`. Skipping rots the library — see Common Rationalizations.
+
+**11b. Graph sync:** `library-skill` Step 5b runs `knowledge-graph` incremental rebuild when installed. For consumer projects, confirm `docs/knowledge-graph/` exists after first skill install.
 
 ### Step 12 — Publish (Optional)
 If user opts in, invoke `publish-skill` (handles packaging, README, registry submission).
@@ -163,7 +167,7 @@ Every skill MUST include:
 Load only on matching trigger:
 - `references/platform-matrix.md` — install-target / platform.
 - `references/advanced-patterns.md` — Advanced/System tier (XML, openai.yaml, Factory, Warp, stacking).
-- `references/github-repo-research.md`, `references/research-papers.md` — community survey / paper grounding.
+- `references/github-repo-research.md` / `research-papers.md` — community survey / paper grounding.
 - `references/examples.md` — full worked example.
 - `scripts/skill_scaffold.py` — CLI scaffolder.
 - `templates/SKILL-template.md`, `templates/SKILL-OUTPUTS-template.md` — copy on new skill / new outputs log.
@@ -177,10 +181,7 @@ Load only on matching trigger:
 | "User said 'go ahead build' after planning — skip Steps 8–11" | Bypassing skips deconflict/validate/cross-link/library-sync. Re-route through here even for batch builds (AGENTS.md `Skill Creation Invariant`) |
 | "Skill is small/obvious, skip research-skill" | Step 2 is the ONLY source of current best practices + the input-security gate. Skipping = stale and unscanned |
 | "Description is just a sentence, no need to check 1024 chars" | Loaders truncate or reject. Validator P0 (validate-skills Step 2a) |
-| "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD — discoverability dies on the vine |
-
----
-
+| "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD |
 ## Impact Report
 
 After completing, always report:

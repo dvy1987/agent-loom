@@ -19,6 +19,9 @@ metadata:
   version: "1.0"
   category: meta
   sources: OWASP-Agentic-Top10-2026, Vectra-AI-2026, Snyk-ToxicSkills-2026
+  resources:
+    references:
+      - examples.md
 ---
 
 # Secure Skill — Content Sanitization
@@ -155,6 +158,8 @@ VERDICT: BLOCKED
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

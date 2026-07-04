@@ -3,12 +3,17 @@ name: memory-handoff
 description: >
   Write concise next-agent handoff summaries across sessions, tools, and coding
   agents. Load when the user says handoff, next agent should know, save context,
-  summarize where we are, switching agents, or before ending a meaningful session.
+  summarize where we are, switching agents, before ending a meaningful session,
+  or when the user asks to commit / create a git commit — commit requests MUST
+  run this skill first to prepare handoff docs, then proceed with the commit.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.2"
   category: project-specific
+  resources:
+    references:
+      - examples.md
 ---
 
 # Memory Handoff
@@ -22,6 +27,7 @@ Run when a future agent would lose important context:
 - End of a long session with unresolved work.
 - Before switching agents or tools.
 - User says "handoff", "summarize where we are", "save context", "memory handoff", or "next agent should know".
+- **User asks to commit** ("commit", "create a commit", "commit these changes", "prepare commit") — run full handoff workflow **before** staging/committing so the next session has continuity. Pair with `git-workflow-and-versioning` for the commit itself after handoff is saved.
 
 Do not run after trivial interactions.
 
@@ -33,7 +39,8 @@ Do not run after trivial interactions.
 4. Append the handoff to `docs/memory/agent-handoffs.md`.
 5. Update `docs/memory/current-state.md` if the project state changed.
 6. Update `docs/memory/project-index.md` with the handoff entry.
-7. Append changes to `docs/skill-outputs/SKILL-OUTPUTS.md`.
+7. **Update knowledge graph** — run `python3 .agents/skills/knowledge-graph/scripts/build_graph.py --incremental`. If it fails, add `### Graph` note in handoff; do not block save.
+8. Append changes to `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 ## Template
 
@@ -74,6 +81,8 @@ Do not run after trivial interactions.
 User: "I'm moving this to another agent, save a handoff."
 
 Output: append a timestamped handoff with current status, unresolved tasks, and files touched.
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

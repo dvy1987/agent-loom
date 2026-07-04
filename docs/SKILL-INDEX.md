@@ -1,6 +1,7 @@
 # Skill Index
 
 Complete reference for all skills in this repo.
+**L3 examples lookup:** `docs/SKILL-EXAMPLES-INDEX.md` — full worked examples when SKILL.md inline examples are teasers.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
@@ -622,9 +623,19 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ### `codebase-understanding`
 **Triggers:** "understand this repo", "how does this project work", "explain the architecture", "what does this repo do", "show me the structure", "onboard me", "walk me through this codebase"
-**What it does:** Maps project architecture, identifies major layers and components, traces 2-3 key data flows through the codebase, and surfaces complexity hotspots (high complexity, missing tests, convention deviations). Reads actual source files to verify every claim. Platform-agnostic — works without builtin walkthrough tools.
+**What it does:** Maps project architecture, identifies major layers and components, traces 2-3 key data flows through the codebase, and surfaces complexity hotspots (high complexity, missing tests, convention deviations). Queries `docs/knowledge-graph/` when present (Step 0). Tags claims EXTRACTED/INFERRED/AMBIGUOUS. Reads actual source files to verify every claim.
+**Calls:** `knowledge-graph` (query when graph exists)
 **Output:** No files generated. Architecture overview + key flows + component map + hotspots + recommendations in chat.
 **Impact report:** Scope, tech stack, layers identified, flows traced, hotspots flagged, recommended next step
+
+---
+
+### `knowledge-graph`
+**Triggers:** "knowledge graph", "build the graph", "update the graph", "query the graph", "map skill relationships", "what connects to X", "project map"
+**What it does:** v2 native graph (stdlib). Dual-mode: `skill-library` (agent-loom) or `application` (consumer repos). Authoritative invokes from `skill-graph.md` + SKILL-INDEX; queries via `query`/`path`/`explain`; health via `graph_health.py`. Bootstrapped by `project-setup`. Auto-incremental on `memory-handoff`.
+**Calls:** none (leaf producer)
+**Output:** `graph.json`, `call-graph.json`, `GRAPH_INDEX.md`, `GRAPH_REPORT.md`, `manifest.json`
+**Impact report:** Mode, nodes, edges, authoritative invoke count, shrink guard status
 
 ---
 

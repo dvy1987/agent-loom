@@ -14,6 +14,9 @@ metadata:
   version: "1.0"
   category: project-specific
   sources: addyosmani/agent-skills incremental-implementation (11/12, 2026-05-29)
+  resources:
+    references:
+      - examples.md
 ---
 
 # Incremental Implementation
@@ -118,6 +121,8 @@ Next slice: list tasks.
 </examples>
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

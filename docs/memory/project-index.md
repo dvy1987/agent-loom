@@ -40,3 +40,5 @@
 | 2026-06-30 | state | `docs/memory/current-state.md` | active | design-suite-rebuild, design-direction, design-system | 12th deliverable: design suite rebuild; 97 skills; uncommitted. |
 | 2026-06-30 | changelog | `docs/changelogs/2026-06-30-design-suite-rebuild.md` | active | design-suite, frontend-design, design-direction, design-system, design-review | MAJOR: design suite rebuild — explore-before-commit, ONE DESIGN.md, APCA, golden examples. |
 | 2026-06-30 | learning | `docs/memory/learnings.md` | active | design-suite, anti-slop, golden-examples, exploration | Generic AI UI fails from skipping exploration + missing positive examples + scattered design intent — fixed by direction→system→build chain. |
+| 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | knowledge-graph, L3-examples, commit-trigger, session-end | KG v2 + 98/98 L3 examples + never-discard invariant; commit→handoff trigger; committed. |
+| 2026-07-04 | state | `docs/memory/current-state.md` | active | knowledge-graph, examples-L3, memory-handoff | 13th deliverable: KG v2, full L3 backfill, commit-handoff wiring. |

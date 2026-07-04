@@ -17,6 +17,7 @@ metadata:
   resources:
     references:
       - changelog-template.md
+      - examples.md
 ---
 
 # Generate Changelog
@@ -181,7 +182,7 @@ Ready for: release
   </example>
 </examples>
 
----
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

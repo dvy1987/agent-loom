@@ -24,6 +24,7 @@ metadata:
       - evaluation-rubric.md
       - kill-test-recipes.md
       - anti-patterns.md
+      - examples.md
 ---
 
 # Idea Evaluation
@@ -179,6 +180,8 @@ Two questions before I evaluate:
 `venture-exploration` calls this in the evaluate stage. `idea-generation` may call it on top-3 candidates. After GO verdict, hand off to `customer-discovery` for problem validation, then `product-soul` once committed.
 
 ---
+
+Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
