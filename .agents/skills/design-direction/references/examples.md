@@ -1,60 +1,61 @@
-# Design Direction — Full Worked Examples
+# Design Direction — Full Session Examples
 
-Skill: `design-direction` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
-
-## Example 1 — Step-by-step execution
-
-**Input:** "Run `design-direction` on [concrete task]"
-
-**Agent actions:**
-1. Read product reality
-2. Score the archetype palette
-3. Set the posture
-4. Generate 2-3 distinct directions
-5. Compare side-by-side
-6. Commit to one
-7. Write DIRECTION.md
-
-**Impact Report shape:**
-```
-Direction set: [feature]
-Posture: [one line]
-Directions explored: [N] (differ on: [dimensions])
-Chosen: [name] — feels like [product]
-Owner mode: [technical | non-technical] | chooser: [user | agent]
-DIRECTION.md: .design/<feature>/DIRECTION.md
-Handoff to: design-system
-```
-
-## Example 2 — Anti-skip (rationalization defense)
-
-**Input:** Agent tries to skip a gate
-
-| Excuse | Reality |
-|---|---|
-| "I already know the right look — skip exploration" | The first idea IS the corpus mean. Generate options or you converge on slop. |
-| "Three color variants count as three directions" | They don't. Diverge on type, layout, motion too, or it's one direction. |
-| "Owner is non-technical, just ask them to pick a vibe" | They can't. Recommend one with plain rationale; decide for them. |
-| "Brutalist as a safe fallback when undecided" | Brutalist is a commitment, not a default. Only when brand already owns it. |
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — B2B settings page (3 distinct directions)
 
-## Verification checklist (L3)
+**Input:** "Design direction for our team billing settings — feels trustworthy, not playful"
 
-- [ ] Examples align with SKILL.md hard rules
-- [ ] Anti-skip shown
-- [ ] Output matches Impact Report
-- [ ] Traceable input → outcome
+**Agent actions:**
+1. Read `docs/product-soul.md` + PRD — audience: finance admins, emotional goal: confidence.
+2. Score archetypes — top seeds: `enterprise-trust`, `b2b-productivity`.
+3. Posture: restrained, cool, classic, quiet, calm.
+4. Generate 3 directions differing on type, layout, motion:
+   - **Ledger** — feels like Stripe Dashboard; tabular density, mono accents
+   - **Briefing** — feels like Linear; sidebar nav, generous whitespace
+   - **Vault** — feels like 1Password; card stacks, strong elevation
+5. Side-by-side comparison table; owner non-technical → agent recommends **Ledger** with plain rationale.
+6. Write `.design/billing-settings/DIRECTION.md`; handoff to `design-system`.
 
-## Verification checklist (L3)
+---
+
+## Example 2 — Anti-skip (three palettes ≠ three directions)
+
+**Input:** Agent proposes light/dark/blue variants of same layout
+
+**Response:** Block — diverge on ≥3 dimensions (type, layout, motion) or it's one direction.
+
+---
+
+## Example 3 — No product docs
+
+**Input:** "Make it look modern" (no PRD)
+
+**Agent asks ONE question:** "What is this for, who is it for, and which product should it feel closest to?"
+
+---
+
+## Example 4 — Reference without posture
+
+**Input:** "Make it like Linear"
+
+**Output:** Reference sets fit; still state posture sentence + bold move per direction — never stop at the name drop.
+
+---
+
+## Example 5 — Orchestrator handoff
+
+**Input:** `frontend-design` routes here for new dashboard shell
+
+**Output:** DIRECTION.md committed; Impact Report lists handoff to `design-system` with chosen direction name and file path.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Suite note
-
-See orchestrator skill and sibling references for full suite walkthrough.

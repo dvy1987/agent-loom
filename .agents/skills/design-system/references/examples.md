@@ -1,62 +1,60 @@
-# Design System — Full Worked Examples
+# Design System — Full Session Examples
 
-Skill: `design-system` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
-
-## Example 1 — Step-by-step execution
-
-**Input:** "Run `design-system` on [concrete task]"
-
-**Agent actions:**
-1. Read inputs
-2. Seed from the recipe
-3. Build color tokens (state-level)
-4. Typography, spatial, motion, elevation
-5. APCA pass
-6. Icon strategy
-7. Component contracts
-8. Emit
-
-**Impact Report shape:**
-```
-Design system built: [feature]
-Direction: [name]
-Token format: [shadcn HSL / oklch / @theme]
-Color slots (with states): [count] | Neutral ramp: 8-step
-APCA: [all pass / fixes applied]
-Icon strategy: [name] | Component contracts: [count]
-Files: DESIGN.md, src/styles/tokens.css[, tokens.ts]
-Handoff to: frontend-design (build)
-```
-
-## Example 2 — Anti-skip (rationalization defense)
-
-**Input:** Agent tries to skip a gate
-
-| Excuse | Reality |
-|---|---|
-| "Accent + a few greys is enough" | The slop lives in the unstated 95% — define every state or the model guesses the mean. |
-| "Invert light mode for dark" | Inverted lightness reads cheap. Dark is a separate hand-set story. |
-| "WCAG 4.5:1 is fine" | WCAG misreads dark themes and thin type. Use APCA Lc targets. |
-| "Skip DESIGN.md, just write CSS" | DESIGN.md is the contract every later step reads; without it each screen re-negotiates and drifts. |
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — Ledger direction → tokens
 
-## Verification checklist (L3)
+**Input:** DIRECTION.md chosen: **Ledger** (Stripe-like B2B)
 
-- [ ] Examples align with SKILL.md hard rules
-- [ ] Anti-skip shown
-- [ ] Output matches Impact Report
-- [ ] Traceable input → outcome
+**Agent actions:**
+1. Seed from archetype `enterprise-trust` recipe.
+2. Build 8-step neutral ramp + semantic slots (bg, fg, muted, accent) with hover/focus/disabled states.
+3. Typography: display GT Sectra / body Inter; spatial 4px grid; motion 150ms ease-out.
+4. APCA pass on all text pairs — fix `--secondary-foreground` on dark.
+5. Icon strategy: Lucide 1.5px stroke; component contracts for Button, Table, Badge.
+6. Emit `DESIGN.md` + `src/styles/tokens.css`.
 
-## Verification checklist (L3)
+**Impact Report:** 24 color slots, APCA all pass, 6 component contracts, handoff to `frontend-design`.
+
+---
+
+## Example 2 — Dark mode is not invert
+
+**Input:** Agent inverts light tokens for dark
+
+**Response:** Block — dark is hand-set per DIRECTION.md; inverted lightness reads cheap.
+
+---
+
+## Example 3 — Skip DESIGN.md
+
+**Input:** "Just write the CSS variables"
+
+**Response:** DESIGN.md is the contract — without it each screen re-negotiates and drifts.
+
+---
+
+## Example 4 — Accent-only palette
+
+**Input:** "Primary blue + greys is enough"
+
+**Response:** Slop lives in unstated states — define hover, focus, disabled, error for every semantic slot.
+
+---
+
+## Example 5 — shadcn HSL emit
+
+**Input:** Stack uses shadcn + Tailwind v4
+
+**Output:** Emit HSL tokens in `tokens.css` matching shadcn conventions; document slot mapping in DESIGN.md §Integration.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Suite note
-
-See orchestrator skill and sibling references for full suite walkthrough.

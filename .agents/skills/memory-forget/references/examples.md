@@ -1,55 +1,55 @@
-# Memory Forget — Full Worked Examples
+# Memory Forget — Full Session Examples
 
-Skill: `memory-forget` | Memory suite enrichment pass.
-
-## Example 1 — Wrong capture
-
-**Input:** "Forget the SQLite decision — we're not using it"
-
-**Output:** Redact or strike through with date; never silent delete of audit trail.
-
-## Example 2 — PII slip
-
-**Input:** Accidental API key in session note
-
-**Output:** Remove secret; log forget action in handoff.
-
-## Example 3 — User privacy
-
-**Input:** "Don't keep my client name"
-
-**Output:** Forget named entities from session-notes only; keep structural decisions.
-
-## Example 4 — Audit trail
-
-**Input:** Forget request on captured secret
-
-**Output:** Redact content; append forget record to handoff with date (no silent erase).
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — Wrong decision retracted
 
-## Verification checklist (L3)
+**Input:** "Forget the SQLite decision — we're not using it"
+
+**Agent actions:**
+1. Strike through entry with date + reason in `decision-log.md`.
+2. Never silent delete — audit trail preserved.
+3. Append forget action to latest handoff.
+
+---
+
+## Example 2 — PII slip
+
+**Input:** Accidental client name in session note
+
+**Output:** Redact named entities from session-notes; log forget in handoff without repeating PII.
+
+---
+
+## Example 3 — Secret in capture
+
+**Input:** API key pasted into memory
+
+**Output:** `memory-forget` redacts content; `secure-*` documents finding; handoff notes date of redaction.
+
+---
+
+## Example 4 — User privacy request
+
+**Input:** "Don't keep my client's company name anywhere"
+
+**Output:** Forget named entities from session scope; keep structural decisions (e.g., "B2B SaaS") anonymized.
+
+---
+
+## Example 5 — Audit trail preserved
+
+**Input:** Forget wrong API endpoint decision
+
+**Output:** Strike-through with date in decision-log; handoff logs forget action — never silent erase of history.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Template snippet (handoff block)
-
-```markdown
-### Done
-- <completed>
-### Next Agent Should Know
-- <continuity>
-### Working Tree
-- <clean | dirty summary>
-```
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

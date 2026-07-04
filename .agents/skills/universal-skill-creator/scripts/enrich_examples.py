@@ -486,7 +486,7 @@ def build_appendix(name: str, skill_text: str, start_n: int) -> str:
             lines.append(f"- {g}")
         lines.append("")
     lines += [
-        "## Verification checklist (L3)",
+        "## Verification checklist (full session)",
         "",
         "- [ ] Examples align with SKILL.md hard rules",
         "- [ ] Anti-skip or rationalization pattern shown",

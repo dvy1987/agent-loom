@@ -1,55 +1,55 @@
-# Memory Compact — Full Worked Examples
+# Memory Compact — Full Session Examples
 
-Skill: `memory-compact` | Memory suite enrichment pass.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+---
 
 ## Example 1 — Bloated handoff log
 
-**Input:** `agent-handoffs.md` > 200 entries
+**Input:** `agent-handoffs.md` exceeds 200 entries
 
-**Output:** Archive older entries to `docs/memory/archive/`; keep index of archived ranges.
+**Agent actions:**
+1. Archive entries older than 90 days to `docs/memory/archived/handoffs-2026-H1.md`.
+2. Leave index row: `archived: handoffs 2026-01..06`.
+3. Preserve latest 20 handoffs in active file.
 
-## Example 2 — Duplicate notes
+---
 
-**Input:** Same decision captured 4 times
+## Example 2 — Merge duplicate decisions
 
-**Output:** Merge into single decision file; leave redirect stubs.
+**Input:** Same JWT decision captured 4 times in session-notes
 
-## Example 3 — Pre-audit
+**Output:** Single `decision-log.md` entry; session-notes get one-line redirect stubs.
 
-**Input:** Before `memory-audit`
+---
 
-**Output:** Compact first to reduce audit surface.
+## Example 3 — Pre-audit compaction
+
+**Input:** User runs `memory-audit` on large repo
+
+**Output:** Recommend `memory-compact` first to shrink audit surface.
+
+---
 
 ## Example 4 — Global budget pressure
 
-**Input:** `~/.agent-loom/memories/` over active budget
+**Input:** `~/.agent-loom/memories/` over active line budget
 
 **Output:** Archive low-signal entries; preserve decisions + provenance links.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 5 — Handoff calls compact
 
-## Verification checklist (L3)
+**Input:** `memory-handoff` detects repetitive handoffs
+
+**Output:** Handoff recommends `memory-compact` in Next Agent section before appending another near-duplicate entry.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Template snippet (handoff block)
-
-```markdown
-### Done
-- <completed>
-### Next Agent Should Know
-- <continuity>
-### Working Tree
-- <clean | dirty summary>
-```
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

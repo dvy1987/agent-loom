@@ -1,59 +1,59 @@
-# Design Review — Full Worked Examples
+# Design Review — Full Session Examples
 
-Skill: `design-review` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
-
-## Example 1 — Step-by-step execution
-
-**Input:** "Run `design-review` on [concrete task]"
-
-**Agent actions:**
-1. Read inputs
-2. Capture screens
-3. APCA contrast pass (hard gate)
-4. Ethical patterns pass (hard gate)
-5. UX heuristics pass
-6. Score the rubric
-7. Specific findings
-8. Prioritize (max 8)
-
-**Impact Report shape:**
-```
-Review complete: [feature] | Pass: [N] | Verdict: [SHIP / REVISE]
-APCA: [PASS / N pairs failed] | Ethical: [PASS/FAIL] | UX heuristics: [N fails]
-State coverage: [N/3] | Direction fidelity: [N/3] | Distinctive moves: [N/3]
-Findings raised: [count] | REVIEW.md written
-Handoff: [back to frontend-design build / ship]
-```
-
-## Example 2 — Anti-skip (rationalization defense)
-
-**Input:** Agent tries to skip a gate
-
-| Excuse | Reality |
-|---|---|
-| "WCAG 4.5:1 passes, ship it" | WCAG misreads dark/thin type. Use APCA Lc targets. |
-| "Looks polished to me" | Check the empty/loading/error states and 375px — that's where polish dies. |
-| "Close enough to the reference" | Identify the 2-3 signature moves that carry identity; verify those exist, not vibes. |
-| "Code-only review is fine" | Drift surfaces visually. Capture screens (Playwright or pasted) or flag the gap. |
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — SHIP with minor fixes
 
-## Verification checklist (L3)
+**Input:** Review billing settings built against DIRECTION.md "Ledger"
 
-- [ ] Examples align with SKILL.md hard rules
-- [ ] Anti-skip shown
-- [ ] Output matches Impact Report
-- [ ] Traceable input → outcome
+**Agent actions:**
+1. Capture screens at 1440px + 375px (Playwright or user paste).
+2. Run `scripts/apca.mjs` — 2 pairs fail on secondary button dark mode.
+3. Ethical patterns pass; UX heuristics: empty state missing for invoice list.
+4. Findings (max 8 prioritized):
+   - P0: Add empty state for zero invoices
+   - P1: Secondary CTA Lc 42 → target 45 (token `--muted-foreground`)
+5. Write `.design/billing-settings/REVIEW.md` — Verdict: **REVISE** (2 blockers).
 
-## Verification checklist (L3)
+---
+
+## Example 2 — APCA hard gate
+
+**Input:** "WCAG 4.5:1 passes, ship it"
+
+**Response:** WCAG misreads dark/thin type. Re-run APCA — body text on `bg-muted` fails Lc 68 (<75).
+
+---
+
+## Example 3 — State coverage gate
+
+**Input:** Happy path looks polished
+
+**Output:** FAIL — no loading skeleton on invoice table; no error state on payment failure.
+
+---
+
+## Example 4 — Direction fidelity
+
+**Input:** Hero uses Inter; DIRECTION.md specifies GT Sectra display
+
+**Finding:** "Swap `--font-display` per DIRECTION.md §Typography — current Inter 700 reads generic vs Ledger reference."
+
+---
+
+## Example 5 — Playwright capture path
+
+**Input:** No screenshots pasted; repo has Playwright MCP
+
+**Output:** Follow `references/playwright-flow.md` — capture login, settings, empty invoice list at 375px before scoring.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Suite note
-
-See orchestrator skill and sibling references for full suite walkthrough.

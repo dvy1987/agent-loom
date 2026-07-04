@@ -10,9 +10,8 @@ Sixteen landed items across 2026-05-13 → 2026-07-04.
 
 ## Active Risks
 
-- ~27 L3 files still `padded` tier — structurally complete, not hand-curated AO craft.
 - Inferred graph edges remain ~50% — use authoritative invokes for routing hints.
 
 ## Immediate Next Step
 
-Optional: elevate high-traffic L3 from `padded` → `curated` via `improve-skills TARGET=<skill>`. Run `check_p2_craft.py` locally before skill changes.
+Run `check_p2_craft.py` locally before skill changes; `curate_padded_l3.py` for any future L3 regression.

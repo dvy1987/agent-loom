@@ -1,55 +1,63 @@
-# Memory Handoff — Full Worked Examples
+# Memory Handoff — Full Session Examples
 
-Skill: `memory-handoff` | Memory suite enrichment pass.
-
-## Example 1 — Commit / push trigger (v1.3)
-
-**Input:** User says "commit these changes" or "push to origin"
-
-**Output:** Run full handoff workflow first → append `docs/memory/agent-handoffs.md` → update current-state + project-index → incremental graph rebuild → then proceed with git commit and/or push.
-
-## Example 2 — Commit and push together
-
-**Input:** "commit and push when ready"
-
-**Output:** Handoff documents working tree state and commits pending; after handoff saved, stage → commit → push. Next agent reads handoff even if push succeeds.
-
-## Example 3 — Session end
-
-**Input:** Large refactor complete, user leaving
-
-**Output:** Handoff block: done / next / blockers / files touched / graph rebuild flag.
-
-## Example 4 — Thin context recovery
-
-**Input:** Next agent starts cold
-
-**Output:** `memory-startup` reads handoff tail + project-index; does not load full history.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — Commit and push (v1.3 trigger)
 
-## Verification checklist (L3)
+**Input:** "commit and push when ready"
+
+**Agent actions:**
+1. Read `project-index.md` + latest handoff tail.
+2. `git status --short` — note dirty files.
+3. Write handoff block (done, debated, decisions, deferred, next, revisit, working tree).
+4. Append to `docs/memory/agent-handoffs.md`.
+5. Update `current-state.md` + `project-index.md`.
+6. Run `build_graph.py --incremental` (note failure in handoff if needed).
+7. Log to `docs/skill-outputs/SKILL-OUTPUTS.md`.
+8. **Then** stage → commit → push via `git-workflow-and-versioning`.
+
+**Sample handoff excerpt:**
+```markdown
+## 2026-07-04 14:00 — Handoff
+### Done
+- Fixed webhook idempotency key collision
+### Next Agent Should Know
+- Signature verification is next; see `src/webhooks/stripe.ts`
+### Working Tree
+- clean after commit abc1234
+```
+
+---
+
+## Example 2 — Session end without git
+
+**Input:** "I'm switching to another agent — save context"
+
+**Output:** Handoff under 80 lines; no secrets; link decisions instead of repeating rationale.
+
+---
+
+## Example 3 — Anti-skip
+
+**Input:** Agent stages commit without handoff.
+
+**Response:** Stop — run handoff workflow first. Next agent loses blockers and approved scope.
+
+---
+
+## Example 4 — Thin recovery for next agent
+
+**Input:** Next session starts cold.
+
+**Output:** `memory-startup` reads handoff tail + index — not full history.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Template snippet (handoff block)
-
-```markdown
-### Done
-- <completed>
-### Next Agent Should Know
-- <continuity>
-### Working Tree
-- <clean | dirty summary>
-```
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

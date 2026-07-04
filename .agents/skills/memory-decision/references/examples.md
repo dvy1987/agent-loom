@@ -1,55 +1,63 @@
-# Memory Decision — Full Worked Examples
+# Memory Decision — Full Session Examples
 
-Skill: `memory-decision` | Memory suite enrichment pass.
-
-## Example 1 — ADR-style record
-
-**Input:** "Why JWT over sessions?"
-
-**Output:** Write `docs/memory/decisions/YYYY-MM-DD-jwt-auth.md` — context, decision, consequences.
-
-## Example 2 — Reversal
-
-**Input:** New evidence contradicts old decision
-
-**Output:** New decision file references superseded ADR; do not delete old record.
-
-## Example 3 — Lightweight
-
-**Input:** Small trade-off (library pick)
-
-**Output:** One paragraph in session-notes with `decision:` tag for later promotion.
-
-## Example 4 — Revisit trigger
-
-**Input:** Decision assumed stable for 6 months
-
-**Output:** Add `revisit: when traffic 10x` to decision file; `memory-recall` surfaces it on scale discussions.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 1 — Auth architecture choice
 
-## Verification checklist (L3)
+**Input:** "Record why we chose JWT over server sessions"
+
+**Agent writes to `docs/memory/decision-log.md`:**
+```markdown
+## 2026-07-04 - JWT over server sessions
+Status: active | Confidence: high | Tags: auth, api
+
+### Decision
+Use stateless JWT access tokens + refresh rotation.
+
+### Context
+Multi-region API, no sticky sessions, mobile clients.
+
+### Alternatives
+- Server sessions: simpler revoke, needs Redis cluster
+- PASETO: less ecosystem support
+
+### Revisit triggers
+- When concurrent sessions >50k or instant revoke becomes compliance requirement
+```
+
+Updates `project-index.md`. Offers ADR via `architectural-decision-log` if user wants.
+
+---
+
+## Example 2 — Supersede old decision
+
+**Input:** New evidence — compliance requires instant revoke
+
+**Output:** New entry references superseded JWT decision; old record kept with `Status: superseded`.
+
+---
+
+## Example 3 — Lightweight library pick
+
+**Input:** "We picked Zod over Yup for forms"
+
+**Output:** One paragraph in session-notes with `decision:` tag; promote later if repeated.
+
+---
+
+## Example 4 — Anti-skip
+
+**Input:** "Don't bother logging — we'll remember"
+
+**Response:** Undocumented decisions get re-debated every session. Record with revisit triggers.
+
+---
+
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Template snippet (handoff block)
-
-```markdown
-### Done
-- <completed>
-### Next Agent Should Know
-- <continuity>
-### Working Tree
-- <clean | dirty summary>
-```
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

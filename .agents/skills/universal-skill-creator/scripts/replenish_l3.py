@@ -18,6 +18,7 @@ from enrich_examples import build_enriched, is_preserve_append  # noqa: E402
 def strip_padding(text: str) -> str:
     for marker in (
         "\n## Verification checklist (L3)",
+        "\n## Verification checklist (full session)",
         "\n## Suite note",
         "\n## Golden example pointers",
         "\n## Additional workflow notes",

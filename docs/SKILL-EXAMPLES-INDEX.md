@@ -97,7 +97,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 <!-- EXAMPLES-INDEX:AUTO:START -->
 
-**Last scan:** 102 skills | L3 present: 102 | curated: 9 | padded: 14 | inline-only: 0 | broken pointers: 0
+**Last scan:** 102 skills | L3 present: 102 | curated: 23 | padded: 0 | inline-only: 0 | broken pointers: 0
 
 ### All skills — L3 status
 
@@ -128,9 +128,9 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `debug-and-fix` | yes | yes | enriched | references/examples.md |
 | `deep-thinking` | yes | yes | enriched | references/examples.md |
 | `deprecate-skill` | yes | yes | enriched | references/examples.md |
-| `design-direction` | no | yes | padded | references/examples.md |
-| `design-review` | no | yes | padded | references/examples.md |
-| `design-system` | no | yes | padded | references/examples.md |
+| `design-direction` | no | yes | curated | references/examples.md |
+| `design-review` | no | yes | curated | references/examples.md |
+| `design-system` | no | yes | curated | references/examples.md |
 | `eval-judge` | yes | yes | enriched | references/examples.md |
 | `eval-output` | yes | yes | enriched | references/examples.md |
 | `eval-pipeline` | yes | yes | enriched | references/examples.md |
@@ -159,16 +159,16 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `learn-from-paper` | yes | yes | enriched | references/examples.md |
 | `learn-from-repo` | yes | yes | enriched | references/examples.md |
 | `library-skill` | yes | yes | enriched | references/examples.md |
-| `memory` | yes | yes | padded | references/examples.md |
-| `memory-audit` | yes | yes | padded | references/examples.md |
-| `memory-capture` | yes | yes | padded | references/examples.md |
-| `memory-compact` | yes | yes | padded | references/examples.md |
-| `memory-decision` | yes | yes | padded | references/examples.md |
-| `memory-forget` | yes | yes | padded | references/examples.md |
-| `memory-handoff` | yes | yes | padded | references/examples.md |
-| `memory-promote` | yes | yes | padded | references/examples.md |
-| `memory-recall` | yes | yes | padded | references/examples.md |
-| `memory-startup` | yes | yes | padded | references/examples.md |
+| `memory` | yes | yes | curated | references/examples.md |
+| `memory-audit` | yes | yes | curated | references/examples.md |
+| `memory-capture` | yes | yes | curated | references/examples.md |
+| `memory-compact` | yes | yes | curated | references/examples.md |
+| `memory-decision` | yes | yes | curated | references/examples.md |
+| `memory-forget` | yes | yes | curated | references/examples.md |
+| `memory-handoff` | yes | yes | curated | references/examples.md |
+| `memory-promote` | yes | yes | curated | references/examples.md |
+| `memory-recall` | yes | yes | curated | references/examples.md |
+| `memory-startup` | yes | yes | curated | references/examples.md |
 | `ooda` | yes | yes | enriched | references/examples.md |
 | `performance-optimization` | yes | yes | curated | references/examples.md |
 | `prd-writing` | yes | yes | enriched | references/examples.md |
@@ -187,7 +187,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `second-order` | yes | yes | enriched | references/examples.md |
 | `secure-skill` | yes | yes | enriched | references/examples.md |
 | `secure-skill-content-sanitization` | yes | yes | enriched | references/examples.md |
-| `secure-skill-repo-ingestion` | no | yes | padded | references/examples.md |
+| `secure-skill-repo-ingestion` | no | yes | curated | references/examples.md |
 | `secure-skill-runtime` | yes | yes | enriched | references/examples.md |
 | `setup-evaluation` | yes | yes | enriched | references/examples.md |
 | `shipping-and-launch` | yes | yes | curated | references/examples.md |

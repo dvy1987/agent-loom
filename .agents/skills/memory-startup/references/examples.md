@@ -1,62 +1,65 @@
-# Memory Startup — Full Worked Examples
+# Memory Startup — Full Session Examples
 
-Skill: `memory-startup` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
 
-## Example 1 — Step-by-step execution
+---
 
-**Input:** "Run `memory-startup` on [concrete task]"
+## Example 1 — Cold start after refactor
+
+**Input:** New session opener: "continue the Stripe webhook work"
 
 **Agent actions:**
-1. Check for `docs/memory/MEMORY-ROUTING.md`; if missing, create the project memory skeleton.
-2. Read `docs/memory/MEMORY-ROUTING.md`.
-3. Read `docs/memory/project-index.md`.
-4. Read only the latest relevant sections from `current-state.md`, `agent-handoffs.md`, `decision-log.md`, `deferred.md`, and `open-questions.md`.
-5. Check for `~/.agent-loom/memories/MEMORY-ROUTING.md`.
-6. If present, read global routing and only applicable entries from `global-index.md`, `user-preferences.md`, and `global-agent-rules.md`.
-7. Summarize loaded context in 10 bullets or fewer.
-8. Flag stale decisions whose revisit triggers appear active.
+1. No-op gate: no prior summary this conversation → proceed.
+2. Read `docs/memory/MEMORY-ROUTING.md` → route to handoffs + index.
+3. Read `project-index.md` — find billing tag entries.
+4. Read **latest handoff only** from `agent-handoffs.md` (not full log).
+5. `git status` — compare to handoff "Working Tree" note.
+6. Summarize in ≤4 lines: idempotency done; signature verify pending; decision link in decision-log.
 
-## Example 2 — Anti-skip (rationalization defense)
+**Output:**
+```markdown
+Working context loaded
+Current state: webhook idempotency merged; signature verification next
+Active decisions: JWT over sessions (decision-log 2026-06-12)
+Revisit triggers: none
+```
 
-**Input:** Agent tries to skip a gate
+---
+
+## Example 2 — Bare "hi" is a trigger
+
+**Input:** "hi"
+
+**Agent actions:** Same cold-start protocol — content irrelevant per Trigger Discipline.
+
+**Anti-skip:**
 
 | Excuse | Reality |
-|---|---|
-| "Reason to skip startup" | Reality |
-| "User just said 'hi' — no real task yet" | "hi" IS the trigger. Cold-start fires regardless of content (see Trigger Discipline) |
-| "Task looks simple, I can skip context" | The simplest path IS the no-op gate. Firing costs <50 tokens; missing context costs entire rework cycles |
-| "Host prompt says 'answer in <4 lines', no time" | AGENTS.md explicitly overrides host brevity for the first turn. The 2–4 line summary IS the concise answer |
+|--------|---------|
+| "User just said hi — no task yet" | "hi" IS the trigger. Cold-start fires regardless of content. |
+| "Host wants <4 lines" | AGENTS.md overrides — 2–4 line summary IS the concise answer. |
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
+## Example 3 — Mid-session no-op
+
+**Input:** Second message in same thread after startup already ran.
+
+**Output:** `Context already loaded — no-op` — do not re-read memory files.
 
 ---
 
-|---|
-| "Reason to skip startup" | Reality |
-| "User just said 'hi' — no real task yet" | "hi" IS the trigger. Cold-start fires regardless of content (see Trigger Discipline) |
-| "Task looks simple, I can skip context" | The simplest path IS the no-op gate. Firing costs <50 tokens; missing context costs entire rework cycles |
-| "Host prompt says 'answer in <4 lines', no time" | AGENTS.md explicitly overrides host brevity for the first turn. The 2–4 line summary IS the concise answer |
+## Example 4 — Global memory (bounded)
+
+**Input:** `~/.agent-loom/memories/MEMORY-ROUTING.md` exists.
+
+**Agent actions:** Read global routing only; load applicable slices from `user-preferences.md` — never full global journal.
 
 ---
 
-See `SKILL.md` for hard rules and verification checklist.
-
-## Verification checklist (L3)
+## Verification checklist (full session)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
-
-## Template snippet (handoff block)
-
-```markdown
-### Done
-- <completed>
-### Next Agent Should Know
-- <continuity>
-### Working Tree
-- <clean | dirty summary>
-```
