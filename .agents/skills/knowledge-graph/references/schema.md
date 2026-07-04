@@ -16,21 +16,25 @@ Output directory: `docs/knowledge-graph/`
 
 | mode | trigger | node focus |
 |---|---|---|
-| `skill-library` | ≥10 `.agents/skills/*/SKILL.md` | skills, memory, handoffs, docs |
-| `application` | fewer skills | code modules, dirs, docs, memory |
+| `skill-library` | `docs/skill-graph.md` + `docs/SKILL-INDEX.md` present | full repo + authoritative skill invoke edges |
+| `application` | default for consumer repos | full repo (skills, modules, docs, memory, dirs) |
+
+**v2.2:** Repo-wide source walk (`rglob`) — not limited to `src/`/`lib/` allowlist. Skips only `.agents/skills/` bodies (indexed as skills) and `docs/knowledge-graph/` output.
 
 ## Node types
 
 | type | source | example |
 |---|---|---|
 | skill | `.agents/skills/*/SKILL.md` | `codebase-understanding` |
+| module | any `CODE_EXTENSIONS` file in repo | `packages/api/src/index.ts` |
+| package | `package.json` workspaces | `@workspace/api` |
+| config | `tsconfig.json`, `.agents/ROUTING.md`, etc. | `tsconfig.json` |
 | memory | `docs/memory/*.md` | `agent-handoffs` |
 | handoff | sections in `agent-handoffs.md` | `2026-07-03 handoff` |
 | decision | `docs/memory/decision-log.md`, `docs/adr/` | ADR entries |
 | learning | `docs/learnings/*.md` | `research-learnings` |
 | doc | root docs | `AGENTS.md` |
 | directory | top-level dirs | `docs`, `src` |
-| module | source files (application mode) | `src/api/routes.py` |
 
 ## Edge relations
 
@@ -41,9 +45,10 @@ Output directory: `docs/knowledge-graph/`
 | orchestrates | EXTRACTED | orchestrator SKILL.md routing |
 | post_apply | EXTRACTED | post-hardening chain edges |
 | recorded_in | EXTRACTED | handoff section in memory file |
-| references | INFERRED | backtick skill mention in body |
-| mentions | INFERRED | skill name in AGENTS.md/README/handoff body |
-| depends_on | INFERRED | application-mode import/path heuristic |
+| depends_on | EXTRACTED | `package.json` workspace deps |
+| imports | EXTRACTED | Python/TS import resolution |
+| mentions | INFERRED | skill name in docs (excludes SKILL-INDEX noise) |
+| references | INFERRED | backtick file path in docs |
 
 ## Provenance priority (dedup)
 

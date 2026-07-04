@@ -232,3 +232,5 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | generate-changelog | docs/changelogs/2026-07-04-adversarial-remediation.md | Remediation changelog |
 | 2026-07-04 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Adversarial remediation handoff |
 | 2026-07-04 | improve-skills | 6 daily-driver skills + L3 references | Phase 3 depth: TDD Prove-It, debug triage, CRSP five-axis, plan templates, adversarial prompts, UI patterns |
+| 2026-07-04 | knowledge-graph | build_graph.py v2.1, validate_application_mode.py, schema/integration | Fix auto mode: consumer repos with skills+code → `full` graph (entire repo, not skills-only) |
+| 2026-07-04 | knowledge-graph | build_graph.py v2.2, graph_health.py, SKILL.md | Repo-wide rglob scan; coverage gate; P0 skills-only-graph health check |

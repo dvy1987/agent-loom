@@ -2,8 +2,8 @@
 
 ## Deployment
 
-- **agent-loom:** skill-library mode — authoritative invoke graph from `docs/skill-graph.md` + `SKILL-INDEX.md`
-- **Consumer projects:** application mode — modules, docs, memory; bootstrap via `project-setup` Step 6b
+- **agent-loom:** skill-library mode when `docs/skill-graph.md` + `docs/SKILL-INDEX.md` exist — authoritative invoke graph layered on full-repo scan
+- **Consumer projects:** application mode — same full-repo scan (skills + code + docs + memory); bootstrap via `project-setup` Step 6b
 - Meta skills (`improve-skills`, `library-skill`, `validate-skills`) consume the graph in agent-loom only
 
 ## Producers (build/update)
@@ -40,4 +40,4 @@ If `docs/knowledge-graph/graph.json` exists and the task is relational: **query 
 
 ## Health audit flags
 
-`graph_health.py` reports: missing graph (P1), dangling invoke targets (P0), orphan skills on disk (P2), stale graph vs latest handoff (P1), high inferred ratio >0.7 (P2).
+`graph_health.py` reports: missing graph (P1), **skills-only-graph** (P0 — source on disk, 0 modules), dangling invoke targets (P0), orphan skills on disk (P2), stale graph vs latest handoff (P1), high inferred ratio >0.7 (P2).

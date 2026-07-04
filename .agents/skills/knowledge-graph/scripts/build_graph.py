@@ -19,9 +19,35 @@ MANIFEST_FILE = "manifest.json"
 INDEX_FILE = "GRAPH_INDEX.md"
 REPORT_FILE = "GRAPH_REPORT.md"
 
-SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist", "build", ".cursor", ".deprecated"}
-SKIP_SUFFIXES = {".pyc", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2"}
+SKIP_DIRS = {
+    ".git",
+    "node_modules",
+    "__pycache__",
+    ".venv",
+    "venv",
+    "dist",
+    "build",
+    ".cursor",
+    ".deprecated",
+    ".expo",
+    ".idea",
+}
+SKIP_SUFFIXES = {".pyc", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2", ".map", ".lock"}
 SENSITIVE_NAMES = {".env", "credentials", "secrets", "id_rsa", ".pem"}
+CODE_EXTENSIONS = {".py", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".go", ".rs", ".rb", ".vue", ".svelte"}
+DOC_ROOT_FILES = ("AGENTS.md", "README.md", "package.json", "pyproject.toml", "Cargo.toml", "go.mod")
+# Repo-wide scan skips skill bodies (indexed separately) and graph output
+MODULE_SKIP_PREFIXES = (".agents/skills/", "docs/knowledge-graph/")
+# Huge index files — skill backticks are not semantic mentions
+DOC_MENTION_SKIP = frozenset({
+    "docs/SKILL-INDEX.md",
+    "docs/skill-graph.md",
+    "docs/SKILL-EXAMPLES-INDEX.md",
+})
+CONFIG_NAMES = frozenset({
+    "package.json", "pyproject.toml", "Cargo.toml", "go.mod", "Gemfile",
+    "tsconfig.json", "pnpm-workspace.yaml", "turbo.json",
+})
 
 SKILL_NAME_RE = re.compile(r"^name:\s*([a-z][a-z0-9-]{0,63})\s*$", re.MULTILINE)
 HANDOFF_HEADER_RE = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2}[^\n]*)", re.MULTILINE)
@@ -31,6 +57,13 @@ MERMAID_EDGE_RE = re.compile(r"^\s+([\w-]+)\s*--+>\s*([\w-]+)")
 CALLS_LINE_RE = re.compile(r"\*\*Calls:\*\*\s*(.+)$", re.MULTILINE)
 CALL_SKILL_RE = re.compile(r"`([a-z][a-z0-9-]{1,63})`")
 PY_IMPORT_RE = re.compile(r"^(?:from|import)\s+([\w.]+)", re.MULTILINE)
+TS_FROM_IMPORT_RE = re.compile(
+    r"""(?:import|export)\s+(?:type\s+)?(?:\{[^}]*\}|\*\s+as\s+\w+|\w+)\s+from\s+['"]([^'"]+)['"]""",
+    re.MULTILINE,
+)
+TS_SIDE_IMPORT_RE = re.compile(r"""import\s+['"]([^'"]+)['"]""", re.MULTILINE)
+TS_REQUIRE_RE = re.compile(r"""require\s*\(\s*['"]([^'"]+)['"]\s*\)""", re.MULTILINE)
+PATH_ALIAS_RE = re.compile(r'"(@[^/]+)/\*"\s*:\s*\[\s*"([^"]+)"')
 
 
 def _slug(text: str) -> str:
@@ -65,9 +98,170 @@ def _edge(src: str, tgt: str, rel: str, conf: str = "EXTRACTED", score: float = 
 
 
 def detect_mode(root: Path) -> str:
-    skills = list((root / ".agents/skills").glob("*/SKILL.md")) if (root / ".agents/skills").is_dir() else []
-    skills = [s for s in skills if ".deprecated" not in str(s)]
-    return "skill-library" if len(skills) >= 10 else "application"
+    """Label only — does not limit what gets scanned. Full repo is always indexed."""
+    has_authoritative = (root / "docs/skill-graph.md").is_file() and (root / "docs/SKILL-INDEX.md").is_file()
+    return "skill-library" if has_authoritative else "application"
+
+
+def _rel(root: Path, path: Path) -> str:
+    return str(path.relative_to(root))
+
+
+def iter_repo_source_files(root: Path) -> list[Path]:
+    """Walk entire repo for application source — not limited to a fixed dir allowlist."""
+    files: list[Path] = []
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in CODE_EXTENSIONS:
+            continue
+        if _should_skip(path):
+            continue
+        rel = _rel(root, path)
+        if any(rel.startswith(prefix) for prefix in MODULE_SKIP_PREFIXES):
+            continue
+        files.append(path)
+    return sorted(files, key=lambda p: _rel(root, p))
+
+
+def _source_root_summary(files: list[Path], root: Path) -> list[str]:
+    roots: set[str] = set()
+    for path in files:
+        rel = _rel(root, path)
+        roots.add(rel.split("/")[0] if "/" in rel else "(root)")
+    return sorted(roots)
+
+
+def _skill_count(root: Path) -> int:
+    skills_dir = root / ".agents/skills"
+    if not skills_dir.is_dir():
+        return 0
+    return sum(1 for p in skills_dir.glob("*/SKILL.md") if ".deprecated" not in str(p))
+
+
+def _code_dirs_with_source(root: Path) -> list[str]:
+    return _source_root_summary(iter_repo_source_files(root), root)
+
+
+def _repo_has_source_files(root: Path) -> bool:
+    return bool(iter_repo_source_files(root))
+
+
+def explain_build_plan(root: Path) -> dict:
+    """Human-readable plan printed before every build — no silent mode surprises."""
+    mode = detect_mode(root)
+    skill_count = _skill_count(root)
+    code_dirs = _code_dirs_with_source(root)
+    has_authoritative = mode == "skill-library"
+
+    if has_authoritative:
+        mode_reason = (
+            "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present "
+            "→ adds authoritative skill invoke edges. Still scans full repo (not skills-only)."
+        )
+    elif skill_count and code_dirs:
+        mode_reason = (
+            f"application label: {skill_count} skills in .agents/skills plus source under "
+            f"{', '.join(code_dirs)} → indexing entire repository (skills + code + docs + memory)."
+        )
+    elif code_dirs:
+        mode_reason = (
+            f"application label: source under {', '.join(code_dirs)} → full codebase + docs + memory."
+        )
+    elif skill_count:
+        mode_reason = (
+            f"application label: {skill_count} skills, no application source dirs found "
+            "→ skills + docs + memory (add src/, lib/, app/, etc. for code nodes)."
+        )
+    else:
+        mode_reason = "application label: minimal repo → docs, memory, and directory structure."
+
+    scan_layers = [
+        f"skills ({skill_count} in .agents/skills)" if skill_count else "skills (none)",
+        (
+            f"repo-wide source ({', '.join(code_dirs)})"
+            if code_dirs
+            else "repo-wide source (none — no .py/.ts/.tsx/.js outside .agents/skills)"
+        ),
+        "docs (AGENTS.md, README.md, docs/**/*.md)",
+        "memory (docs/memory, handoffs)",
+        "packages (package.json workspaces)",
+        "config (.agents/ROUTING.md, tsconfig, pyproject, etc.)",
+        "top-level directories",
+    ]
+    if has_authoritative:
+        scan_layers.append("authoritative invokes (skill-graph.md + SKILL-INDEX.md)")
+
+    return {
+        "mode": mode,
+        "mode_reason": mode_reason,
+        "skill_count": skill_count,
+        "code_dirs": code_dirs,
+        "scan_layers": scan_layers,
+    }
+
+
+def print_build_plan(plan: dict) -> None:
+    print(f"Auto mode: {plan['mode']}")
+    print(f"Why: {plan['mode_reason']}")
+    print("Scanning: " + " | ".join(plan["scan_layers"]))
+
+
+def load_path_aliases(root: Path) -> dict[str, str]:
+    aliases: dict[str, str] = {"@": "."}
+    tsconfig = root / "tsconfig.json"
+    if not tsconfig.is_file():
+        return aliases
+    for match in PATH_ALIAS_RE.finditer(_read(tsconfig)):
+        alias, target = match.group(1), match.group(2).strip("./")
+        aliases[alias] = target or "."
+    return aliases
+
+
+def _resolve_import_spec(root: Path, importer: Path, spec: str, path_aliases: dict[str, str]) -> Path | None:
+    if not spec or spec.startswith("node:"):
+        return None
+    if not spec.startswith(".") and not spec.startswith("@") and "/" not in spec:
+        return None
+
+    base: Path | None = None
+    if spec.startswith("."):
+        base = (importer.parent / spec).resolve()
+    elif spec.startswith("@"):
+        for alias, target in sorted(path_aliases.items(), key=lambda item: -len(item[0])):
+            if spec == alias or spec.startswith(f"{alias}/"):
+                rest = spec[len(alias) :].lstrip("/")
+                base = (root / target / rest).resolve()
+                break
+    else:
+        base = (root / spec).resolve()
+
+    if base is None:
+        return None
+
+    candidates = [
+        base,
+        base.with_suffix(".ts"),
+        base.with_suffix(".tsx"),
+        base.with_suffix(".js"),
+        base.with_suffix(".jsx"),
+        base / "index.ts",
+        base / "index.tsx",
+        base / "index.js",
+    ]
+    for candidate in candidates:
+        try:
+            candidate.relative_to(root)
+        except ValueError:
+            continue
+        if candidate.is_file() and not _should_skip(candidate):
+            return candidate
+    return None
+
+
+def _extract_ts_imports(text: str) -> list[str]:
+    specs: list[str] = []
+    for pattern in (TS_FROM_IMPORT_RE, TS_SIDE_IMPORT_RE, TS_REQUIRE_RE):
+        specs.extend(pattern.findall(text))
+    return specs
 
 
 def parse_mermaid_call_graph(path: Path) -> tuple[dict[str, str], list[dict]]:
@@ -230,24 +424,171 @@ def security_gate_edges() -> list[dict]:
     return edges
 
 
-def scan_application_code(root: Path) -> tuple[dict[str, dict], list[dict]]:
+def scan_codebase(root: Path) -> tuple[dict[str, dict], list[dict]]:
+    """Index all application source in the repo (repo-wide walk, not .agents-only)."""
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
-    code_dirs = [root / "src", root / "lib", root / "app", root / "api"]
-    for base in code_dirs:
-        if not base.is_dir():
-            continue
-        for path in base.rglob("*.py"):
-            if _should_skip(path):
-                continue
-            rel = str(path.relative_to(root))
-            nid = _nid("module", rel)
-            nodes[nid] = {"id": nid, "label": path.name, "type": "module", "path": rel, "community": "code"}
-            for imp in PY_IMPORT_RE.findall(_read(path)):
+    path_aliases = load_path_aliases(root)
+    files = iter_repo_source_files(root)
+
+    for path in files:
+        rel = _rel(root, path)
+        community = rel.split("/")[0] if "/" in rel else "code"
+        nid = _nid("module", rel)
+        nodes[nid] = {
+            "id": nid,
+            "label": path.name,
+            "type": "module",
+            "path": rel,
+            "community": community,
+            "language": path.suffix.lstrip("."),
+        }
+
+    known = {_rel(root, p) for p in files}
+    for path in files:
+        rel = _rel(root, path)
+        src = _nid("module", rel)
+        text = _read(path)
+        if path.suffix.lower() == ".py":
+            for imp in PY_IMPORT_RE.findall(text):
                 top = imp.split(".")[0]
-                tgt = _nid("module", top)
-                edges.append(_edge(nid, tgt, "imports", "EXTRACTED", 1.0, rel, "python-ast-lite"))
+                for candidate in known:
+                    if candidate.replace("/", ".").startswith(top) or candidate.split("/")[0] == top:
+                        edges.append(_edge(src, _nid("module", candidate), "imports", "EXTRACTED", 1.0, rel, "python-import"))
+                        break
+            continue
+
+        for spec in _extract_ts_imports(text):
+            resolved = _resolve_import_spec(root, path, spec, path_aliases)
+            if resolved is None:
+                continue
+            tgt_rel = _rel(root, resolved)
+            if tgt_rel in known:
+                edges.append(_edge(src, _nid("module", tgt_rel), "imports", "EXTRACTED", 1.0, rel, "ts-import"))
+
     return nodes, edges
+
+
+def scan_packages(root: Path) -> tuple[dict[str, dict], list[dict]]:
+    nodes: dict[str, dict] = {}
+    edges: list[dict] = []
+    for pkg_json in root.rglob("package.json"):
+        if _should_skip(pkg_json) or "node_modules" in pkg_json.parts:
+            continue
+        rel_dir = _rel(root, pkg_json.parent)
+        if rel_dir.startswith(".agents/skills"):
+            continue
+        try:
+            data = json.loads(_read(pkg_json))
+        except json.JSONDecodeError:
+            continue
+        name = data.get("name") or rel_dir
+        nid = _nid("package", name)
+        nodes[nid] = {
+            "id": nid,
+            "label": name,
+            "type": "package",
+            "path": rel_dir,
+            "community": "packages",
+        }
+        rel_pkg = _rel(root, pkg_json)
+        for dep in list(data.get("dependencies", {}).keys()) + list(data.get("devDependencies", {}).keys()):
+            if dep.startswith(".") or dep.startswith("file:"):
+                continue
+            edges.append(
+                _edge(nid, _nid("package", dep), "depends_on", "EXTRACTED", 1.0, rel_pkg, "package.json")
+            )
+    return nodes, edges
+
+
+def scan_config_and_agents(root: Path) -> tuple[dict[str, dict], list[dict]]:
+    nodes: dict[str, dict] = {}
+    edges: list[dict] = []
+    for path in root.rglob("*"):
+        if not path.is_file() or path.name not in CONFIG_NAMES:
+            continue
+        if _should_skip(path):
+            continue
+        rel = _rel(root, path)
+        if rel.startswith(".agents/skills/"):
+            continue
+        nid = _nid("config", rel)
+        nodes[nid] = {
+            "id": nid,
+            "label": path.name,
+            "type": "config",
+            "path": rel,
+            "community": "config",
+        }
+    agents = root / ".agents"
+    if agents.is_dir():
+        for path in agents.rglob("*.md"):
+            if ".agents/skills" in str(path):
+                continue
+            rel = _rel(root, path)
+            nid = _nid("config", rel)
+            nodes[nid] = {
+                "id": nid,
+                "label": path.name,
+                "type": "config",
+                "path": rel,
+                "community": "agents",
+            }
+    return nodes, edges
+
+
+def scan_docs(root: Path) -> tuple[dict[str, dict], list[dict]]:
+    nodes: dict[str, dict] = {}
+    edges: list[dict] = []
+    doc_paths: list[Path] = []
+
+    for name in DOC_ROOT_FILES:
+        path = root / name
+        if path.is_file():
+            doc_paths.append(path)
+
+    docs_dir = root / "docs"
+    if docs_dir.is_dir():
+        for path in docs_dir.rglob("*.md"):
+            if "knowledge-graph" in path.parts:
+                continue
+            doc_paths.append(path)
+
+    for path in doc_paths:
+        rel = _rel(root, path)
+        community = "docs"
+        if rel.startswith("docs/memory"):
+            community = "memory"
+        elif rel.startswith("docs/adr"):
+            community = "decisions"
+        nid = _nid("doc", rel)
+        nodes[nid] = {"id": nid, "label": path.stem, "type": "doc", "path": rel, "community": community}
+        if rel in DOC_MENTION_SKIP:
+            continue
+        text = _read(path)
+        for skill in SKILL_TOKEN_RE.findall(text):
+            if (root / ".agents/skills" / skill / "SKILL.md").exists():
+                edges.append(_edge(nid, _nid("skill", skill), "mentions", "INFERRED", 0.75, rel, "doc-mention"))
+        for module in re.findall(r"`([^`\s]+/[^`\s]+)`", text):
+            if module.startswith(".agents/skills"):
+                continue
+            if (root / module).is_file() or (root / module).exists():
+                edges.append(_edge(nid, _nid("module", module), "references", "INFERRED", 0.7, rel, "doc-path"))
+
+    return nodes, edges
+
+
+def scan_top_level_directories(root: Path) -> dict[str, dict]:
+    nodes: dict[str, dict] = {}
+    for path in sorted(root.iterdir()):
+        if not path.is_dir() or path.name in SKIP_DIRS:
+            continue
+        if path.name.startswith(".") and path.name not in {".agents"}:
+            continue
+        rel = path.name
+        nid = _nid("directory", rel)
+        nodes[nid] = {"id": nid, "label": rel, "type": "directory", "path": rel, "community": "structure"}
+    return nodes
 
 
 def _should_skip(path: Path) -> bool:
@@ -306,10 +647,10 @@ def god_nodes(nodes: dict[str, dict], edges: list[dict], limit: int = 10) -> lis
         degree[e["source"]] += 1
         degree[e["target"]] += 1
     ranked = sorted(
-        [(d, nodes[nid]["label"]) for nid, d in degree.items() if nodes[nid]["type"] == "skill"],
+        [(d, nodes[nid]["label"], nodes[nid]["type"]) for nid, d in degree.items() if nodes[nid]["type"] in ("skill", "module")],
         reverse=True,
     )
-    return [label for _, label in ranked[:limit]]
+    return [f"{label} ({kind})" if kind == "module" else label for _, label, kind in ranked[:limit]]
 
 
 def surprising_connections(nodes: dict[str, dict], edges: list[dict], limit: int = 8) -> list[dict]:
@@ -352,7 +693,9 @@ def write_report(graph: dict, path: Path) -> None:
         f"Generated: {graph['generated_at']}",
         f"Mode: {graph.get('mode', 'unknown')} | Nodes: {graph['stats']['nodes']} | Edges: {graph['stats']['edges']}",
         "",
-        "## God nodes (skill connectivity)",
+        f"**Why this mode:** {graph.get('mode_reason', 'n/a')}",
+        "",
+        "## God nodes (skills + modules)",
     ]
     for g in gods:
         lines.append(f"- {g}")
@@ -381,10 +724,21 @@ def write_index(graph: dict, path: Path) -> None:
         "",
         f"Generated: {graph['generated_at']}",
         f"Mode: **{graph.get('mode')}** | Nodes: {graph['stats']['nodes']} | Edges: {graph['stats']['edges']}",
-        f"EXTRACTED: {graph['stats'].get('extracted_edges', 0)} | INFERRED: {graph['stats'].get('inferred_edges', 0)}",
         "",
-        "## Hub nodes",
+        f"**Why this mode:** {graph.get('mode_reason', 'n/a')}",
+        "",
+        "**Scan layers:**",
     ]
+    for layer in graph.get("scan_layers", []):
+        lines.append(f"- {layer}")
+    lines.extend(
+        [
+            "",
+            f"EXTRACTED: {graph['stats'].get('extracted_edges', 0)} | INFERRED: {graph['stats'].get('inferred_edges', 0)}",
+            "",
+            "## Hub nodes",
+        ]
+    )
     for g in graph.get("god_nodes", [])[:8]:
         lines.append(f"- {g}")
     lines.extend(["", "## Communities", ""])
@@ -392,6 +746,9 @@ def write_index(graph: dict, path: Path) -> None:
         lines.append(f"**{comm}** ({len(members)}): {', '.join(members[:10])}")
         if len(members) > 10:
             lines.append(f"  … +{len(members) - 10} more")
+    lines.extend(["", "## Node types", ""])
+    for kind, count in sorted(graph.get("stats", {}).get("node_types", {}).items()):
+        lines.append(f"- **{kind}**: {count}")
     lines.extend(
         [
             "",
@@ -404,8 +761,10 @@ def write_index(graph: dict, path: Path) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def build_graph(root: Path) -> dict:
-    mode = detect_mode(root)
+def build_graph(root: Path, plan: dict | None = None) -> dict:
+    if plan is None:
+        plan = explain_build_plan(root)
+    mode = plan["mode"]
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
 
@@ -413,9 +772,17 @@ def build_graph(root: Path) -> dict:
         nodes.update(ns)
         edges.extend(es)
 
+    # Always index the full repository (never .agents/skills-only).
+    merge(*scan_skills(root))
+    merge(*scan_codebase(root))
+    merge(*scan_packages(root))
+    merge(*scan_config_and_agents(root))
+    merge(*scan_docs(root))
+    merge(*parse_memory_and_handoffs(root))
+    nodes.update(scan_top_level_directories(root))
+
+    # Authoritative skill invoke graph (agent-loom and other skill libraries).
     if mode == "skill-library":
-        skill_nodes, skill_edges = scan_skills(root)
-        merge(skill_nodes, skill_edges)
         sg = root / "docs/skill-graph.md"
         if sg.exists():
             _, m_edges = parse_mermaid_call_graph(sg)
@@ -424,8 +791,6 @@ def build_graph(root: Path) -> dict:
         if si.exists():
             edges.extend(parse_skill_index_calls(si))
         edges.extend(security_gate_edges())
-        merge(*parse_memory_and_handoffs(root))
-        # Checkpoint: memory-handoff → knowledge-graph
         if _nid("skill", "memory-handoff") in nodes and _nid("skill", "knowledge-graph") in nodes:
             edges.append(
                 _edge(
@@ -435,22 +800,18 @@ def build_graph(root: Path) -> dict:
                     source="memory-checkpoint",
                 )
             )
-    else:
-        merge(*scan_application_code(root))
-        merge(*parse_memory_and_handoffs(root))
-        skill_nodes, skill_edges = scan_skills(root)
-        merge(skill_nodes, skill_edges)
-
-    for d in ("docs", ".agents", "src", "lib"):
-        dp = root / d
-        if dp.is_dir():
-            nid = _nid("directory", d)
-            nodes[nid] = {"id": nid, "label": d, "type": "directory", "path": d, "community": "structure"}
 
     deduped = dedupe_edges(edges, nodes)
-    auth = sum(1 for e in deduped if e.get("provenance") in ("skill-graph.md", "SKILL-INDEX.md", "security-chain", "memory-checkpoint"))
+    auth = sum(
+        1
+        for e in deduped
+        if e.get("provenance") in ("skill-graph.md", "SKILL-INDEX.md", "security-chain", "memory-checkpoint")
+    )
     extracted = sum(1 for e in deduped if e["confidence"] == "EXTRACTED")
     inferred = len(deduped) - extracted
+    node_types: dict[str, int] = defaultdict(int)
+    for n in nodes.values():
+        node_types[n["type"]] += 1
 
     communities = detect_communities(nodes, deduped)
     gods = god_nodes(nodes, deduped)
@@ -458,9 +819,11 @@ def build_graph(root: Path) -> dict:
     questions = suggested_questions(surprises, gods)
 
     return {
-        "version": "2.0",
+        "version": "2.2",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": mode,
+        "mode_reason": plan["mode_reason"],
+        "scan_layers": plan["scan_layers"],
         "root": str(root.resolve()),
         "stats": {
             "nodes": len(nodes),
@@ -468,6 +831,7 @@ def build_graph(root: Path) -> dict:
             "authoritative_edges": auth,
             "extracted_edges": extracted,
             "inferred_edges": inferred,
+            "node_types": dict(sorted(node_types.items())),
         },
         "god_nodes": gods,
         "surprising_connections": surprises,
@@ -478,31 +842,79 @@ def build_graph(root: Path) -> dict:
     }
 
 
+def verify_coverage(graph: dict, root: Path, strict: bool) -> int:
+    """Reject skills-only graphs when application source exists on disk."""
+    types = graph.get("stats", {}).get("node_types", {})
+    modules = types.get("module", 0)
+    source_files = iter_repo_source_files(root)
+    source_count = len(source_files)
+
+    if source_count > 0 and modules == 0:
+        msg = (
+            f"COVERAGE FAIL: {source_count} source file(s) on disk but 0 module nodes in graph — "
+            "skills-only regression. Graph must map the whole repo, not just .agents/skills."
+        )
+        print(msg, file=sys.stderr)
+        return 1 if strict else 0
+
+    if source_count > 10 and modules < max(3, source_count // 20):
+        print(
+            f"COVERAGE WARN: {source_count} source files but only {modules} module nodes — "
+            "import resolution may be thin; check tsconfig paths and extensions.",
+            file=sys.stderr,
+        )
+    return 0
+
+
+def _digest_inputs(root: Path, digest: "hashlib._Hash") -> None:
+    def add_file(path: Path) -> None:
+        if path.is_file():
+            digest.update(path.read_bytes())
+
+    def add_tree(base: Path, suffixes: set[str] | None = None) -> None:
+        if not base.is_dir():
+            return
+        for path in sorted(base.rglob("*")):
+            if not path.is_file() or _should_skip(path):
+                continue
+            if suffixes and path.suffix.lower() not in suffixes:
+                continue
+            digest.update(path.read_bytes())
+
+    for name in DOC_ROOT_FILES:
+        add_file(root / name)
+    add_file(root / "docs/skill-graph.md")
+    add_file(root / "docs/SKILL-INDEX.md")
+    add_tree(root / "docs/memory", {".md"})
+    add_tree(root / "docs", {".md"})
+    add_tree(root / ".agents/skills", {".md"})
+    add_tree(root / ".agents", {".md"})
+    for path in iter_repo_source_files(root):
+        digest.update(path.read_bytes())
+    for name in CONFIG_NAMES:
+        for path in root.rglob(name):
+            if path.is_file() and not _should_skip(path):
+                digest.update(path.read_bytes())
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--incremental", action="store_true", help="Skip if manifest unchanged")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Exit 1 if source files exist but graph has 0 module nodes (skills-only regression)",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     out = root / OUT_DIR
     out.mkdir(parents=True, exist_ok=True)
 
     manifest_path = out / MANIFEST_FILE
-    inputs = [
-        root / "docs/skill-graph.md",
-        root / "docs/SKILL-INDEX.md",
-        root / "docs/memory/agent-handoffs.md",
-        root / ".agents/skills",
-    ]
     digest = hashlib.sha256()
-    for p in inputs:
-        if p.is_file():
-            digest.update(p.read_bytes())
-        elif p.is_dir():
-            for f in sorted(p.rglob("SKILL.md")):
-                if ".deprecated" not in str(f):
-                    digest.update(f.read_bytes())
+    _digest_inputs(root, digest)
     new_hash = digest.hexdigest()[:16]
     if args.incremental and manifest_path.exists():
         old = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -518,7 +930,9 @@ def main() -> int:
         except (json.JSONDecodeError, KeyError):
             pass
 
-    graph = build_graph(root)
+    plan = explain_build_plan(root)
+    print_build_plan(plan)
+    graph = build_graph(root, plan)
     new_count = graph["stats"]["nodes"]
     if old_count > 10 and new_count < old_count * 0.5 and not args.force:
         print(f"REFUSED: {new_count} nodes < 50% of {old_count}. Use --force.", file=sys.stderr)
@@ -536,7 +950,14 @@ def main() -> int:
     )
     write_index(graph, out / INDEX_FILE)
     write_report(graph, out / REPORT_FILE)
-    print(f"Graph v2: {gp} ({new_count} nodes, {graph['stats']['edges']} edges, mode={graph['mode']})")
+    types = graph["stats"].get("node_types", {})
+    types_str = ", ".join(f"{k}={v}" for k, v in sorted(types.items()))
+    print(f"Done: {gp} — {new_count} nodes, {graph['stats']['edges']} edges, mode={graph['mode']}")
+    if types_str:
+        print(f"Node types: {types_str}")
+    cov = verify_coverage(graph, root, args.strict)
+    if cov != 0:
+        return cov
     return 0
 
 

@@ -12,6 +12,23 @@ from pathlib import Path
 GRAPH = Path("docs/knowledge-graph/graph.json")
 SKILLS_DIR = Path(".agents/skills")
 HANDOFFS = Path("docs/memory/agent-handoffs.md")
+CODE_EXTENSIONS = {".py", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs", ".go", ".rs", ".rb", ".vue", ".svelte"}
+SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist", "build", ".cursor", ".deprecated", ".expo", ".idea"}
+MODULE_SKIP = (".agents/skills/", "docs/knowledge-graph/")
+
+
+def _count_source_files(root: Path) -> int:
+    n = 0
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in CODE_EXTENSIONS:
+            continue
+        if any(p in SKIP_DIRS for p in path.parts):
+            continue
+        rel = str(path.relative_to(root))
+        if any(rel.startswith(p) for p in MODULE_SKIP):
+            continue
+        n += 1
+    return n
 
 
 def main() -> int:
@@ -30,6 +47,18 @@ def main() -> int:
     graph = json.loads(graph_path.read_text(encoding="utf-8"))
     nodes = {n["id"]: n for n in graph["nodes"]}
     skill_labels = {n["label"] for n in graph["nodes"] if n["type"] == "skill"}
+    module_count = sum(1 for n in graph["nodes"] if n["type"] == "module")
+
+    if module_count == 0:
+        source_on_disk = _count_source_files(root)
+        if source_on_disk > 0:
+            findings.append(
+                {
+                    "severity": "P0",
+                    "issue": "skills-only-graph",
+                    "detail": f"{source_on_disk} source files on disk, 0 module nodes — full-repo scan failed",
+                }
+            )
 
     disk_skills = set()
     sd = root / SKILLS_DIR

@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.0"
+  version: "2.2"
   category: project-specific
   sources: safishamsi/graphify patterns (native stdlib impl, no pip install)
   resources:
@@ -36,10 +36,11 @@ You maintain a **queryable project graph** at `docs/knowledge-graph/`. Stdlib Py
 | **agent-loom** (skill library) | `skill-library` | Map skill invoke chains, memory, handoffs |
 | **Any consumer project** | `application` | Map modules, docs, memory for GRAPHIFY-style project management |
 
-Mode auto-detects: ≥10 skills in `.agents/skills/` → `skill-library`; else `application`. Meta skills (`improve-skills`, `validate-skills`, `library-skill`) run in agent-loom; this skill installs into **any** project via `project-setup`.
+Mode auto-detects from authoritative skill-library files: `docs/skill-graph.md` **and** `docs/SKILL-INDEX.md` → `skill-library` label; otherwise `application`. **Both modes always perform a repo-wide scan** — skills, all application source (any path), packages, config, docs, memory, directories. Never skills-only.
 
 ## Hard Rules
 
+- **Full repo, always.** `build_graph.py` walks the entire repository for source files. `.agents/skills/` is indexed as skills, not skipped — but application code in `packages/`, `artifacts/`, `lib/`, etc. must appear as `module` nodes.
 - **Query before rebuild.** Relational questions → `query_graph.py` first.
 - **Authoritative > inferred.** `invokes` from `docs/skill-graph.md` + `SKILL-INDEX.md` **Calls:** lines are authoritative; `references` edges are hypotheses.
 - **Shrink guard.** No `--force` unless user confirms or graph is corrupt.
@@ -56,6 +57,7 @@ Mode auto-detects: ≥10 skills in `.agents/skills/` → `skill-library`; else `
 | "Skip graph on handoff" | Next agent loses relational context. |
 | "Need Graphify pip package" | Native stdlib scripts; patterns only, no install. |
 | "Only for agent-loom" | Bootstrap in every project via `project-setup`. |
+| "Many skills = skills-only graph" | Wrong — repo-wide scan always runs; read build stdout `Why:` line. |
 
 ---
 
@@ -66,10 +68,12 @@ Read `GRAPH_INDEX.md` and `GRAPH_REPORT.md` when present.
 
 ### Step 2 — Build or update
 ```bash
-python3 .agents/skills/knowledge-graph/scripts/build_graph.py              # full
+python3 .agents/skills/knowledge-graph/scripts/build_graph.py              # full repo scan
 python3 .agents/skills/knowledge-graph/scripts/build_graph.py --incremental  # handoff/default
 python3 .agents/skills/knowledge-graph/scripts/build_graph.py --force       # override shrink guard
+python3 .agents/skills/knowledge-graph/scripts/build_graph.py --strict      # fail if source on disk but 0 modules
 ```
+**Stdout always prints:** auto mode label, **why** that label was chosen, and **scan layers** (skills, code dirs, docs, memory). Read it before assuming skills-only — both modes scan the full repository.
 
 ### Step 3 — Query
 ```bash
@@ -116,6 +120,8 @@ Files: graph.json, call-graph.json, GRAPH_INDEX.md, GRAPH_REPORT.md
 ## Verification
 
 - [ ] `graph.json`, `GRAPH_INDEX.md`, `GRAPH_REPORT.md` exist under `docs/knowledge-graph/`
+- [ ] Build stdout shows `repo-wide source` layer (not skills-only)
+- [ ] Consumer repos with code have `module` nodes in `graph.json` stats
 - [ ] `call-graph.json` present when mode=skill-library
 - [ ] Shrink guard respected (or `--force` approved)
 - [ ] Query results cite path + confidence + provenance
