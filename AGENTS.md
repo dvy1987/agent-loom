@@ -165,6 +165,7 @@ python3 .agents/skills/universal-skill-creator/scripts/check_p2_craft.py      # 
 python3 .agents/skills/universal-skill-creator/scripts/check_ao_sections.py     # AO five-section gate
 python3 .agents/skills/universal-skill-creator/scripts/check_phase3_depth.py  # daily-driver depth
 python3 .agents/skills/universal-skill-creator/scripts/check_l3_tiers.py      # L3 tier (no padded/broken)
+python3 .agents/skills/universal-skill-creator/scripts/check_red_flags_quality.py  # skill-specific Red Flags, no boilerplate
 ```
 
 After writing or editing any skill:

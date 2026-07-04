@@ -189,11 +189,10 @@ Update HID-42 status to "Done"?
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- Fix applied against minified path without source mapping
+- Linear ticket claims accepted without codebase verification
+- Suite green but reproduction test does not exercise bug
+- Root cause declared before minimal repro exists
 ## Impact Report
 
 `Bug fixed: [one-line summary] Root cause: [one-line explanation] Files changed: [list] Tests: [command + pass/fail count] Linear updated: [yes — issue ID / no / N/A] Next: [next bu`

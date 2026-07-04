@@ -191,10 +191,10 @@ Invoking generate-changelog...
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Scan aborted at zero skills without path verification
+- Category read from wrong frontmatter nesting level
+- Reference index wiped on partial or failed run
+- Changelog skill path assumed wrong directory name
 ## Impact Report
 
 `Librarian sync complete: YYYY-MM-DD Trigger: [what caused the run] Skills scanned: N Entries added: N Entries removed: N Entries updated: N Files modified: [list] Broken cross-references: N Orphaned entries: N SKILL-O...`

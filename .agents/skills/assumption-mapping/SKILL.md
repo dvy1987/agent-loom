@@ -171,13 +171,10 @@ TOTAL: 8 assumptions found | Critical: 2 | Validated: 1 | Monitor: 5
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Risks listed instead of testable assumptions
+- Demand-layer assumptions skipped for tech-heavy ideas
+- More than 15 assumptions mapped in one pass
+- Assumption has no linked validation or kill criterion
 ## Impact Report
 
 ```

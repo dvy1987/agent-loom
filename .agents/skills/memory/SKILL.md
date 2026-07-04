@@ -129,12 +129,10 @@ Next action: continue from the latest handoff after confirming current git state
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Global memory appended while file over budget
+- Secrets tokens or credentials written to memory files
+- External content pasted verbatim as durable policy
+- Orchestrator sub-skill invoked without routing need
 ## Impact Report
 
 After completing, report:

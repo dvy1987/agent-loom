@@ -157,13 +157,10 @@ No edits needed.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Description edited to remove skill names used as triggers
+- Examples rewritten to break illustrative skill references
+- Functional invoke links stripped from workflow steps
+- Call graph updated without checking reverse references
 ## Impact Report
 
 ```

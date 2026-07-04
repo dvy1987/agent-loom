@@ -116,13 +116,10 @@ Extending `create-agent-prompt` to include system prompt generation. Verifying l
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Match chosen from name similarity not description purpose
+- Partial overlap misread as full capability coverage
+- No-match not returned when library truly lacks fit
+- Called skill recommended without reading full SKILL.md
 ## Impact Report
 
 ```

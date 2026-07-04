@@ -131,13 +131,10 @@ Next slice: list tasks.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Slice shipped without tests while later slices depend on it
+- While-I-am-here refactor bundled into feature slice
+- Long-lived branch used instead of flag for partial UX
+- Slice boundary unclear — spans unrelated subsystems
 ## Impact Report
 
 ```

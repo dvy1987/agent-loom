@@ -191,10 +191,10 @@ Two questions before I pick the canvas:
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Full BMC used when Lean Canvas fits earlier uncertainty
+- VPC filled without confirmed segment or problem fit
+- Canvas treated as validation with zero customer evidence
+- Revenue model assumed without pricing or willingness signal
 ## Impact Report
 
 `Business modeling complete: <idea> File saved: docs/ventures/models/YYYY-MM-DD-<slug>-canvas.md Canvas chosen: Lean Canvas / BMC / VPC VPC appendix: yes / no Boxes filled with spec`

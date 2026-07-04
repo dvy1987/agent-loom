@@ -146,13 +146,10 @@ Ready for: improve-skills batch execution
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- TODO count reported without weighting by risk area
+- Cosmetic debt overweighted versus structural coupling
+- Roadmap says refactor everything without time boxes
+- Authentication or payment HACK deprioritized as cosmetic
 ## Impact Report
 
 After completing, always report:

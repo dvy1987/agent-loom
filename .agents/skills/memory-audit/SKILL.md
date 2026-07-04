@@ -81,12 +81,10 @@ Finding: P0 `~/.agent-loom/memories/reusable-learnings.md` is 260/200 lines. Run
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Audit deletes entries without explicit user request
+- Suspected injection handled without secure-* scan
+- Full session logs loaded instead of routed slices
+- Audit report omits stale or superseded status flags
 ## Impact Report
 
 After completing, report:

@@ -140,13 +140,10 @@ Result: [pass/fail + notes]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- UI fix claimed done without browser verification
+- Personal browser profile used on untrusted pages
+- Page-context JS mutates state without explicit approval
+- Stale service worker cache masks whether fix works
 ## Impact Report
 
 ```

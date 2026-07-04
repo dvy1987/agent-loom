@@ -91,12 +91,10 @@ Verdict: promote to `user-preferences.md` if repeatedly confirmed and not alread
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Low-confidence maybe promoted to global memory
+- Internal URLs or private project facts promoted globally
+- Global memory used as unstructured journal dump
+- Promote executed without user intent confirmation
 ## Impact Report
 
 After completing, report:

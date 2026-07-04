@@ -191,10 +191,10 @@ Run all agents concurrently via Task tool. Wait for all outputs.
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Parallel agents spawned with hidden data dependencies
+- Sequential chain assumes implicit handoff between agents
+- Spawn attempted before prompt files exist on disk
+- Subagent scope lacks explicit file boundaries
 ## Impact Report
 
 `Agents launched: [N] Platform: Claude Code / Ampcode (Task tool native) Topology: sequential | parallel | hierarchical Manifest: docs/agents/runs/YYYY-MM-DD-<slug>-manifest.md Outp`

@@ -80,12 +80,10 @@ Output: remove or retire the matching entry in `~/.agent-loom/memories/user-pref
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- User deletion request overridden for convenience
+- Index still references forgotten entry paths
+- Decision rationale deleted when archival was safer
+- Forget run without checking downstream handoff refs
 ## Impact Report
 
 After completing, report:

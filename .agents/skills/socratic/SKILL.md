@@ -129,13 +129,10 @@ Then the real question isn't community vs. core product. The question is: do you
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- User's surface question answered before probing
+- Short answer accepted without one deeper follow-up
+- Socratic used for simple binary decision
+- Session ends without surfacing deepest unresolved question
 ## Impact Report
 
 ```

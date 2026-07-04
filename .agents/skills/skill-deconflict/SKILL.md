@@ -191,10 +191,10 @@ INTENT DIVERSITY
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- learn-from family treated as duplicate instead of orchestrator
+- inversion and adversarial-hat merged as same capability
+- Generic word overlap flagged without full phrase match
+- Deconflict report missing recommended survivor skill
 ## Impact Report
 
 `Deconflict complete: YYYY-MM-DD Mode: single-skill | library-wide Skills scanned: N Name collisions found: N Trigger overlaps found: N pairs Over-used triggers: N phrases Diversity failures: N | warnings: N | passes: ...`

@@ -140,13 +140,10 @@ Starting at `/specify`. Routing to `feature-spec` (mode=specify).
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Router writes constitution or spec content directly
+- Tactical bug fix forced through full SDD pipeline
+- Ambiguous SDD request starts at wrong phase
+- Child skill skipped for explicit slash command route
 ## Impact Report
 
 ```

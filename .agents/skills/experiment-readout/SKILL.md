@@ -163,12 +163,10 @@ Downstream: [prd-writing | architectural-decision-log | reality-check | none]
 
 ## Red Flags
 
-- No primary metric named
-- No guardrail metrics
-- Sample size or duration hand-waved
-
-Read `references/examples.md` for full worked examples.
-
+- Analysis proceeds despite failed SRM check
+- Significant language used for Directional decision class
+- Primary win declared while guardrail metric breached
+- Instrumentation drift mid-test ignored in validity review
 ## Reference Files
 
 - **`references/validity-checks.md`** — SRM, exposure parity, event-rate stability, novelty windows, segment hygiene. Run in Step 1.

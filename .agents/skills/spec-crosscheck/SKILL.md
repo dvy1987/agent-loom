@@ -186,11 +186,10 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- PASS taken as proof implementation is correct
+- Constitutional waiver applied without documented approval
+- Spec or plan edited during read-only crosscheck
+- Approved status assumed while Needs Clarification remains
 ## Impact Report
 
 `Crosscheck: <slug> Verdict: PASS | FAIL Checks: A=<v> B=<v> C=<v> D=<v> E=<v> F=<v> Findings: <N> (severity breakdown) Saved: docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md Logg`

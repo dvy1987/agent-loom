@@ -191,10 +191,10 @@ Top-level entry point. Called by user or `project-orchestrator`. Calls `idea-gen
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- idea-evaluation loop exceeds three cycles without surfacing
+- Segment size accepted on trust me without evidence
+- product-soul invoked before strategic concept survives eval
+- Kill from evaluation ignored to keep exploring same idea
 ## Impact Report
 
 `Venture exploration route complete Stage: generate / model / evaluate / validate / handoff Child invoked: <skill> Prerequisites status: pass / N missing Handoff gate (if relevant):`

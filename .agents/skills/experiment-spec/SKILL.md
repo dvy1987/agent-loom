@@ -156,12 +156,10 @@ Status: [READY-TO-LAUNCH | DOWNGRADED-TO-DIRECTIONAL | BLOCKED-INSUFFICIENT-POWE
 
 ## Red Flags
 
-- No primary metric named
-- No guardrail metrics
-- Sample size or duration hand-waved
-
-Read `references/examples.md` for full worked examples.
-
+- Decision class missing from line one of the spec
+- Hypothesis not falsifiable — no if-clause decision rule
+- MDE stated as absolute percent instead of relative lift
+- Exposure defined as flag fetch not user-visible variant
 ## Reference Files
 
 - **`references/mde-heuristics.md`** — Quick sample-size table by baseline conversion and relative MDE. Read in Step 6.

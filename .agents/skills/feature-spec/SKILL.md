@@ -191,10 +191,10 @@ Run `/clarify` next.
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Spec drifts into HOW — stack or file paths in requirements
+- Acceptance criteria not testable as written
+- Edge cases omitted that block spec-crosscheck coverage
+- Needs Clarification list left non-empty at approval
 ## Impact Report
 
 `Feature spec: <title> Status: Draft | Clarifying | Approved Constitution: docs/constitution.md@<N> Counts: US=<N> FR=<N> NFR=<N> AC=<N> Edge=<N> CL=<N> Saved: docs/specs/YYYY-MM-DD`

@@ -144,13 +144,10 @@ Running setup-evaluation before handoff to project-orchestrator.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Topology designed without checking platform parallel limits
+- Single agent shipped with no role prompt or skill stack
+- Scaffold choice ignored despite large benchmark variance
+- Fan-out merge has no explicit output contract between agents
 ## Impact Report
 
 ```

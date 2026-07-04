@@ -191,10 +191,10 @@ When `inversion` is called from this skill: "Apply inversion to the strategic as
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- PMF lens skipped — interest conflated with retention
+- Strategy claims no named competitor or alternative
+- GTM reduced to marketing tagline without channel mechanism
+- User described as demographic not situational person
 ## Impact Report
 
 `Product Soul complete: [product name] File saved: docs/product-soul.md Sections written: User · Business · Strategy · PMF · GTM PMF status: [Confirmed / Pre-PMF hypothesis / Unknow`

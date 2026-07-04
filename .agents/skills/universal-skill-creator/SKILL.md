@@ -141,11 +141,10 @@ Every skill MUST include:
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- SKILL.md written directly bypassing creator Step 8 chain
+- secure-* gate skipped at Step 2 or Step 9
+- Description trigger phrases removed during edit
+- validate-skills or skill-deconflict not run after create
 ## Impact Report`** — skill-specific format, in-chat after every run.
 2. **File-output logging** — if skill writes project files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and notify user.
 3. **Learnings provenance** — if from `docs/learnings/*.md`, update source entry with skill name + path + date.

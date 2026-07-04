@@ -158,13 +158,10 @@ DISCARD:
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Training knowledge reported as sourced finding
+- External source used before secure-* SAFE clearance
+- Repo skills ignored as highest-value pattern source
+- No practitioner source when academic literature empty
 ## Reference Files
 
 - **`references/domain-search-queries.md`**: Pre-built search query templates for 20 common skill domains. Read when the domain is well-known to get a head start on query formulation.

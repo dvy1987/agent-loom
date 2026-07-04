@@ -159,13 +159,10 @@ Read `references/metrics-frameworks.md` when the user needs help choosing succes
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- PRD drafted without discovery or evidence section
+- Out of scope section empty or missing
+- Requirements stated as untestable aspirations
+- PRD marked Approved on first draft without iteration
 ## Reference Files
 
 - **`references/prd-schemas.md`**: Complete schemas for Full PRD, Lean PRD, One-Pager, Technical PRD. Read when writing any PRD.

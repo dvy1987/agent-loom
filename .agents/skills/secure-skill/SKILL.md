@@ -181,13 +181,10 @@ VERDICT: BLOCKED — add to no-go repo list
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Partial file scan — content after line 400 skipped
+- Obfuscation finding downgraded below CRITICAL
+- Sub-check skipped because orchestrator already ran once
+- Capability mismatch with stated skill purpose ignored
 ## Reference Files
 
 - **`references/threat-patterns.md`**: Full threat pattern catalog. Read for pattern-matching during scans.

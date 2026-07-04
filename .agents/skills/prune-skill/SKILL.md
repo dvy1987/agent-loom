@@ -176,13 +176,10 @@ agentskills validate: ✓
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Technique pruned because no disproving paper found
+- Newer publication assumed better without evidence check
+- Entire concept deleted instead of obsolete instruction line
+- Prune executed before secure-* scan of target skill
 ## Reference Files
 
 - **`references/citation-standards.md`**: Trust tiers for sources (peer-reviewed journals, arXiv, practitioner blogs, social media). Read before accepting any source as grounds for pruning.

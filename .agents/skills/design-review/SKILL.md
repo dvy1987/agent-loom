@@ -135,13 +135,10 @@ Direction: feels like [reference] | Pass: [N] | Verdict: [SHIP / REVISE]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Generic praise instead of scoring against direction brief
+- Contrast judged by eyeball instead of APCA script
+- Finding vague — no specific token or component target
+- Accessibility issues noted without measurable failure
 ## Reference Files
 - `references/review-rubric.md` — 0-3 anchors per dimension + SHIP thresholds
 - `references/apca-contrast.md` — APCA targets + how to run the script

@@ -191,10 +191,10 @@ Two questions before I evaluate:
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Composite score treated as verdict over distribution wedge
+- Monetisation deferred for revenue-dependent viability
+- GO issued with founder-market-fit score of one unmitigated
+- Kill criteria from evaluation ignored after low score
 ## Impact Report
 
 `Idea evaluation complete: <idea> File saved: docs/ventures/evaluations/YYYY-MM-DD-<slug>-eval.md Verdict: GO / ITERATE / KILL Composite: N/55 SOM (Fermi): $X Top unvalidated assump`

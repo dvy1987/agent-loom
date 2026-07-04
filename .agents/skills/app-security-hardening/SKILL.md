@@ -149,13 +149,10 @@ Validate request DTO at the route boundary, enforce authZ (user can only update 
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Frontend-only validation treated as sufficient
+- Multi-tenant query missing account or tenant constraint
+- Secrets or tokens logged in error or debug output
+- External JSON trusted without schema or type validation
 ## Impact Report
 
 ```

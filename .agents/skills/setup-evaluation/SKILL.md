@@ -145,13 +145,10 @@ Handing off to agent-launcher.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Eval run from same agent that built the target — bias
+- Partial pass reported as acceptable overall pass
+- Architecture spec missing for complex multi-agent build
+- Knowledge-gap flags ignored instead of acknowledged
 ## Impact Report
 
 ```

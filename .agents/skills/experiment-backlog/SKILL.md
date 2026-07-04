@@ -155,12 +155,10 @@ Next recommended: [item — route to experiment-spec]
 
 ## Red Flags
 
-- No primary metric named
-- No guardrail metrics
-- Sample size or duration hand-waved
-
-Read `references/examples.md` for full worked examples.
-
+- Backlog item missing funnel surface or hypothesis sentence
+- High ICE item kept despite hard feasibility failure
+- ICE scores self-inflated without anchor to past wins
+- Retention experiment listed without long-running holdout plan
 ## Reference Files
 
 - **`references/prioritization-rubric.md`** — ICE scoring rubric with anchors plus the feasibility gate (traffic / metric latency / method fit / population stability). Read in Step 3.

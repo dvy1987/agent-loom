@@ -128,13 +128,10 @@ Owner / window: [who / when]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Launch without rollback path or previous artifact
+- Traffic shifted before error and KPI monitors exist
+- Full rollout for non-trivial change without canary
+- Staging-only validation at fraction of prod data volume
 ## Impact Report
 
 ```

@@ -191,10 +191,10 @@ Do you have an existing design system or component library (Tailwind, MUI, style
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Design section combined with unresolved approach question
+- Multiple questions asked in a single message
+- Existing codebase ignored before proposing new structure
+- Direction chosen without user agreement on approach
 ## Impact Report
 
 `Brainstorming: [topic] | doc: docs/specs/YYYY-MM-DD-<topic>-design.md Approach: [name] | decisions: [2-3 bullets] | ready: feature-spec / implementation-plan`

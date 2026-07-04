@@ -160,13 +160,10 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Triage read only first process volume not all
+- Partial cluster match treated as exact process hit
+- skill-chain task launched outside project-orchestrator
+- Decomposition skips triage on complex multi-skill request
 ## Impact Report
 
 ```

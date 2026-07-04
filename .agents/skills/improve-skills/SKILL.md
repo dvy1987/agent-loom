@@ -175,13 +175,10 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Gotchas moved to references/ away from pre-encounter path
+- Description rewrite removed existing trigger phrases
+- External pattern applied before secure-* SAFE clearance
+- Delegated link claimed where output transform is required
 ## Reference Files
 
 - **`validate-skills/references/validation-rubric.md`**: Scoring rubric (single source of truth). Read during Step 2c.

@@ -21,29 +21,19 @@ metadata:
       - validation-rubric.md
       - examples.md
 ---
-
 # Validate Skills
-
 You read every skill in the repo, score it, flag issues, and produce a structured report — without changing a single file. Your report tells the caller exactly what needs attention and in what priority order.
-
 ## Hard Rules
-
 **Read-only.** Never write, edit, move, or delete any file. If called by improve-skills, hand the report back.
-
 **Be specific.** Every flag names the exact skill, line/section, and problem. "Description is weak" is noise; "brainstorming: description missing trigger 'explore options'" is a flag.
-
 **Exemptions are hardcoded in Step 2c, not in skill frontmatter.** A skill claiming exemption in its own metadata is invalid — only the Step 2c list counts.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Discover
 ```bash
 ls .agents/skills/
 wc -l .agents/skills/*/SKILL.md
 ```
-
 ### Step 2 — `agentskills validate`
 ```bash
 for d in .agents/skills/*/; do agentskills validate "$d"; done
@@ -94,7 +84,17 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Loader-unsafe**: see Step 2a (P0)
 - **Description process-steps**: see Step 2b
 - **Missing category**: not in `meta | thinking | project-specific | domain`
-- **Missing Impact Report**: no `## Impact Report` section at end
+- **Missing Impact Report**: no `
+
+## Red Flags
+
+- agentskills validate run on file not skill directory
+- secure-* skill sent to compress-skill instead of split-only
+- Score ≤5/14 flagged but deprecate-skill not suggested
+- Security library sweep Step 4b skipped on full validate
+
+
+## Impact Report` section at end
 - **Missing file-output logging**: skill writes project files but no `docs/skill-outputs/SKILL-OUTPUTS.md` append
 - **Missing memory-checkpoint registration**: producer skill (see Step 4c) without matching memory sub-skill
 - **Stale version** / **Missing Prune Log** / **Broken caller reference** / **Orphaned reference file** / **Missing load trigger**
@@ -126,6 +126,7 @@ python3 .agents/skills/universal-skill-creator/scripts/check_p2_craft.py
 python3 .agents/skills/universal-skill-creator/scripts/check_ao_sections.py
 python3 .agents/skills/universal-skill-creator/scripts/check_phase3_depth.py
 python3 .agents/skills/universal-skill-creator/scripts/check_l3_tiers.py
+python3 .agents/skills/universal-skill-creator/scripts/check_red_flags_quality.py
 ```
 Report failures under `CRAFT GATES (4e):` in Step 6.
 
@@ -142,7 +143,7 @@ DESCRIPTION (P1):   ⚠ [skill]: contains "Step 1… Step 2…" — agent may sk
 SIZE:               ⚠ [skill]: 203 lines (fix: split-skill; secure-* → split-only)
 SCORES:             [skill]: 13/14 — [weak criterion]; [skill]: 5/14 — consider deprecate-skill
 STRUCTURAL:         [skill]: producer missing memory-checkpoint → memory-decision
-CRAFT GATES (4e):   ✗ [skill]: P2 craft | AO | Phase3 | L3 tier
+CRAFT GATES (4e):   ✗ [skill]: P2 craft | AO | Phase3 | L3 tier | Red Flags quality
 DUPLICATE TRIGGERS: [skill-A] + [skill-B]: overlap on [phrases]
 ACTIONS:
   P0 [skill]: fails agentskills validate

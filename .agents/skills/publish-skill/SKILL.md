@@ -191,10 +191,10 @@ Test install dry-run: ✓
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Directory name mismatches frontmatter name field
+- Hardcoded local paths left in scripts or examples
+- Publish attempted before full secure-* library sweep
+- Scripts contain internal URLs or machine-specific paths
 ## Impact Report
 
 `Published: [skill-name] Registry URL: https://skills.sh/[skill-name] Install command: npx skills [skill-name] Package format: [.md / .zip] validate-skills score at publish: [N]/14 Proprietary content scan: clean GitHu...`

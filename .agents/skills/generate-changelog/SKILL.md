@@ -191,10 +191,10 @@ Ready for: release
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Every commit listed verbatim instead of grouped themes
+- Breaking changes buried below Changed section
+- Internal refactors or CI fixes listed as user-facing
+- Version bump inconsistent with semver of actual changes
 ## Impact Report
 
 `Changelog generated: [version] Significance: [MAJOR | MINOR | PATCH] Changes categorized: [N] Breaking changes found: [N] Four-Dimension value statements: [N] README updated: [yes `

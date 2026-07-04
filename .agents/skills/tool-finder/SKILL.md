@@ -126,13 +126,10 @@ Setup: Configure `mcp__postgres` in your MCP settings with connection string. Se
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Built-in Read Write Grep Bash flagged as missing tools
+- MCP availability assumed same across all platforms
+- Globally installed CLI assumed available in sandbox
+- Tool recommendation without verifying platform constraints
 ## Impact Report
 
 ```

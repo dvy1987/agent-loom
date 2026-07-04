@@ -173,11 +173,10 @@ Result: 354 → 115 lines (67% reduction)
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- secure-* skill compressed instead of split at 180 lines
+- Description triggers removed during compression
+- Content moved to references/ without load trigger
+- CORE workflow steps deleted to hit line budget
 ## Impact Report
 
 After completing, always report:

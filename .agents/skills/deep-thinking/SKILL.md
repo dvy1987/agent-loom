@@ -191,10 +191,10 @@ Shall I run inversion on "community as core retention strategy" to help you thin
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Framework chosen before problem diagnosis
+- Socratic and adversarial-hat combined in one session
+- Pre-mortem run after commitment already made
+- Session ends without one concrete next action
 ## Impact Report
 
 `Deep thinking session: [problem/decision/document] Frameworks used: [list] Core insight: [the main thing this session revealed] Hidden assumption/question exposed: [if any] Concrete next action: [what to do now]`

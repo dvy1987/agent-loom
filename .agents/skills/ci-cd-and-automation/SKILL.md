@@ -144,13 +144,10 @@ Create `.github/workflows/ci.yml` with node-version pinned, npm cache, `npm ci`,
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- CI commands diverge from local lint/test/build scripts
+- Runtimes and action versions left unpinned
+- Branch protection missing — CI is advisory only
+- Secrets committed or inlined in workflow YAML
 ## Impact Report
 
 ```

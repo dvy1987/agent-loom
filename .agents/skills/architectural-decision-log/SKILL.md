@@ -156,13 +156,10 @@ Ready for: implementation
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- ADR written retrospectively with confabulated rationale
+- Rejected alternatives omitted from the record
+- Accepted status used with no revisit or supersede path
+- Decision recorded without observable enforcement hook
 ## Impact Report
 
 After completing, always report:

@@ -181,13 +181,10 @@ Proceed? (yes/no)
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Deprecation without grepping callers across SKILL.md files
+- Skill archived but surviving skill description not updated
+- Migration path missing for merged trigger phrases
+- Call graph left pointing at .deprecated/ skill
 ## Reference Files
 
 - **`references/deprecation-log.md`**: Running log of all deprecated skills with dates, reasons, and migration paths. Updated after every deprecation. Read when the user asks "what skills have been deprecated and why?"

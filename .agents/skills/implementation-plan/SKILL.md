@@ -187,11 +187,10 @@ Ready for: engineering execution
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- Plan reads like PRD with user stories not tasks
+- Phase one cannot produce any demoable vertical slice
+- Horizontal layering plan — all DB then all API
+- Plan omits explicit files and verification per phase
 ## Impact Report
 
 `Plan complete: [feature name] Phases defined: [N] Total tasks: [N] Critical risks identified: [N] Estimated effort: [S/M/L] Ready for: engineering execution / sprint planning`

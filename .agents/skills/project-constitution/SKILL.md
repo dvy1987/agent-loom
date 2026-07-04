@@ -176,13 +176,10 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Rule stated as preference — routinely waived in practice
+- Unenforceable rule like code should be clean
+- Constitution changed without version bump and amendment
+- Spec approved against outdated constitution version
 ## Impact Report
 
 ```

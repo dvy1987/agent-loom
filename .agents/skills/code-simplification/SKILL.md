@@ -135,13 +135,10 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Simplification required test changes that alter behavior
+- Well-named helper inlined for fewer lines only
+- Nested ternaries introduced to reduce line count
+- Refactor bundled unrelated behavior changes
 ## Reference Files
 
 - **`references/simplification-patterns.md`**: Pattern signal table and language examples — read at Step 2.

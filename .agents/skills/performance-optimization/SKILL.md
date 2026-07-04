@@ -141,13 +141,10 @@ Guard: [CI/monitoring added]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Optimization started without baseline measurement
+- CSS or frontend tuned while DB is actual bottleneck
+- Multiple changes shipped — win cannot be attributed
+- Synthetic score improved but real-user metrics flat
 ## Impact Report
 
 ```

@@ -150,13 +150,10 @@ These are NOT implemented in this version. Create via `skill-finder` when demand
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Role prompt written as global system identity
+- Prompt filled with vague be-helpful noise
+- Agent boundary overlaps another agent without flagging
+- Success handoff omits what to pass and to whom
 ## Impact Report
 
 ```

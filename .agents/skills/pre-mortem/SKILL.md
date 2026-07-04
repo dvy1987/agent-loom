@@ -151,13 +151,10 @@ Decide who owns community before writing a single line of code.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Obvious failure cause avoided because it feels embarrassing
+- Pre-mortem run mid-execution after commitment locked
+- Failure causes blame people instead of systems
+- Mitigations listed without owner or timeline
 ## Impact Report
 
 ```

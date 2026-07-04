@@ -191,10 +191,10 @@ The PMF falsification condition ("if users complete integration once and never r
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Generic critique without named failure mode or evidence
+- Phase 3 run before Phase 1 foundations are challenged
+- Solutions critiqued without testing problem-solution fit
+- Critique stops at timeline noise instead of core assumptions
 ## Impact Report
 
 `Adversarial review: [document] Phases run: [D / C / Ch — all or subset] Critical: N | Significant: N | Minor: N Integrated into document: [yes / no]`

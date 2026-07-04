@@ -188,13 +188,10 @@ Agents can pick up tasks from the TODO.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- TODO tasks not self-contained for isolated agent execution
+- Broad feature request forced into narrow change-spec
+- Change-spec written as full feature-spec with FR/NFR bloat
+- Success criteria missing from every TODO item
 ## Impact Report
 
 `Problem planned: [title] Deliverables: spec + plan + TODO Spec: docs/specs/YYYY-MM-DD-<slug>-spec.md Plan: docs/plans/YYYY-MM-DD-<slug>-plan.md TODO: docs/plans/YYYY-MM-DD-<slug>-T`

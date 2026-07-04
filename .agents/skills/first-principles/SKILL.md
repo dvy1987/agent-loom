@@ -154,13 +154,10 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Rebuild step skipped after assumptions identified
+- Legal or regulatory constraints dismissed as conventional
+- Prior art ignored instead of questioned with reasons
+- Output lists assumptions without reconstructed approach
 ## Impact Report
 
 ```

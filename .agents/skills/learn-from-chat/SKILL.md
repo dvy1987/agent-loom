@@ -188,13 +188,10 @@ Awaiting your approval to apply.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Skill or memory updated without explicit user approval
+- One-off project quirk captured as global learning
+- Learning added to skill already at 200 lines without swap
+- User preference recorded as systematic skill gap
 ## Impact Report
 
 `Chat learning captured: [YYYY-MM-DD] Discovered: [one-sentence insight] Classification: [tag] | Generalizable: [yes/no] Status: [IMPLEMENTED / ESCALATED / REJECTED] Skills modified: [list] | Contradictions resolved: [...`

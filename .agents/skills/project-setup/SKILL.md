@@ -191,10 +191,10 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- AGENTS.md generated without interview step
+- Orchestration Map auto-generated without milestone context
+- Skill gaps not mapped to installed library
+- Memory skeleton skipped for repo using memory suite
 ## Impact Report
 
 `Project setup complete: [name] | Platform: [target] | Mode: [single|multi] Files saved: [paths] ([line counts]) | Commands auto-extracted from: [manifests] User role: [role] | Owne`

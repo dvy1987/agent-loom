@@ -150,13 +150,10 @@ Implement with cited comment. Reject manual useState+isPending if docs recommend
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- API choice made from training data not fetched docs
+- Entire docs site fetched instead of one decision page
+- Deprecated API used because snippet was memorable
+- Version in code mismatches version cited from docs
 ## Reference Files
 
 - **`references/source-hierarchy.md`**: Authority order and non-authoritative sources — read at Step 2.

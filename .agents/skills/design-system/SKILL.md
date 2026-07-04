@@ -103,13 +103,10 @@ Use `references/design-md-template.md` verbatim — sections: Theme, Color (sema
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- DESIGN.md generated without reading DIRECTION.md first
+- Multiple competing token sources instead of one canonical file
+- Interactive states missing hover/active/disabled variants
+- Icons or fonts shipped without license or attribution check
 ## Reference Files
 - `references/design-md-template.md` — canonical DESIGN.md structure (copy verbatim)
 - `references/state-tokens.md` — tokens-all-the-way-down: ramp, states, focus ring, APCA, tiers

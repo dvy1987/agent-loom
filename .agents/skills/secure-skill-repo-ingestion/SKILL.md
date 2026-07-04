@@ -187,13 +187,10 @@ VERDICT: [SAFE / BLOCKED / REQUIRES REVIEW]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Repo example copied into skill without quarantine review
+- Dependency deep scan skipped for referenced script paths
+- Poisoned examples directory ingested without isolation
+- File or path traversal pattern not flagged in ingestion
 ## Impact Report
 
 `Repo ingestion audit: [repo URL or name] Files scanned: [N] | Skipped: [N] Checks run: 7 (Poisoned Examples), 8 (Dependencies), 9 (File/Path), 10 (Format) Findings: [N critical, N high, N medium] Quarantine status: [C...`

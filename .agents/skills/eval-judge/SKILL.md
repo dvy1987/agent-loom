@@ -191,10 +191,10 @@ Overall verdict: PASS (all gates pass, quality improvements recommended)
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Longer response scored higher without length bias check
+- Confident tone rewarded over factual accuracy
+- Pairwise compare run as two independent absolute scores
+- Judge model changed without recalibrating on known-bad cases
 ## Impact Report
 
 `Evaluation complete: [target] Mode: [direct scoring / pairwise comparison] Rubric used: [name/path] Hard gates: [N] pass, [N] fail Dimensions scored: [N] Average confidence: [0-1] `

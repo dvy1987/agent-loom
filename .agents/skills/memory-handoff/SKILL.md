@@ -101,12 +101,10 @@ Output: append a timestamped handoff with current status, unresolved tasks, and 
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Handoff exceeds 80-line budget
+- Secrets tokens or raw private data in handoff body
+- Long decision rationale pasted instead of log link
+- Git state omitted from handoff next-agent context
 ## Impact Report
 
 After completing, report:

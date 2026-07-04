@@ -191,10 +191,10 @@ Two questions before I draft the guide:
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Interviews designed to validate instead of learn
+- Future-tense hypotheticals treated as evidence
+- No currency question on past spend or workaround effort
+- Kill signal ignored because interview felt positive
 ## Impact Report
 
 `Customer discovery complete: <idea> File saved: docs/ventures/discovery/YYYY-MM-DD-<slug>-interviews.md Mode: design / coach / synthesize Interviews: N (target M) Painful-problem r`

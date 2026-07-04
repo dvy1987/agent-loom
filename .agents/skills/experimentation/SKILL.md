@@ -149,12 +149,10 @@ Next recommended step: [exact next action]
 
 ## Red Flags
 
-- No primary metric named
-- No guardrail metrics
-- Sample size or duration hand-waved
-
-Read `references/examples.md` for full worked examples.
-
+- Decision class retrofitted after results are known
+- Orchestrator analyzes results instead of routing to readout
+- A/B chosen for persistent treatment needing holdout design
+- Primary metric or guardrails declared post-launch
 ## Reference Files
 
 - **`references/method-selector.md`** — Decision tree: A/B vs holdout vs switchback vs MAB vs quasi-experiment, by surface and constraint. Read in Step 1 when method is unclear.

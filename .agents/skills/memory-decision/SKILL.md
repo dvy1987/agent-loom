@@ -91,12 +91,10 @@ Revisit when: another cross-platform standard path is adopted or the user change
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Decision logged without revisit trigger or explicit none
+- Old decision overwritten instead of superseded link
+- Deferred item recorded as rejected decision
+- Rationale duplicated in handoff instead of decision-log link
 ## Impact Report
 
 After completing, report:

@@ -159,13 +159,10 @@ Learnings only - no current skill covers rate limiting. Save to `docs/learnings/
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Eng blog scale advice applied without user scale context
+- Medium or dev.to piece taken as fact without evidence
+- Best-practices list adopted without production proof
+- Article fetched and persisted before secure-* SAFE
 ## Impact Report
 
 After completing, always report:

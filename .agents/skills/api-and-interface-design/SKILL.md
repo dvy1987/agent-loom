@@ -138,13 +138,10 @@ Contract-first Task + CreateTaskInput + PaginatedResult. REST: GET/POST /api/tas
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Undocumented quirks left as implicit caller contracts
+- Validation duplicated in every internal function
+- PUT used for partial updates instead of PATCH
+- List endpoints return unbounded arrays without pagination
 ## Reference Files
 
 - **`references/api-patterns.md`**: REST resource layout, pagination, PATCH, branded IDs, unions — read at Step 3.

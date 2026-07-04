@@ -177,10 +177,10 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Exposure event fires on flag fetch not variant render
+- Custom exposure captured without PostHog $feature_flag_called
+- B2B test assigns at person level instead of account group
+- Runbook shipped without rollback or kill-switch steps
 ## Impact Report
 
 After writing the runbook, emit:

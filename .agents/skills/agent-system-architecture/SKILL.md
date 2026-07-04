@@ -147,13 +147,10 @@ Ready for: implementation-plan
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Shared blackboard without staleness or versioning rules
+- Parallel agents write to overlapping output paths
+- External tool calls lack per-agent rate-limit budgets
+- Termination criteria undefined — no owner decides done
 ## Impact Report
 
 After completing, always report:

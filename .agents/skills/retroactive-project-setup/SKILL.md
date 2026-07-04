@@ -191,10 +191,10 @@ Next: review the 7 confirm tags, stage the commit.
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Write-allowlist violated — files changed outside contract
+- Inferred fact written as certain without confirm tag
+- Architecture doc reimplemented instead of orchestrating
+- Synthetic handoff missing git hash and branch state
 ## Impact Report
 
 `Retroactive setup complete: [repo] Mode: [single | multi] Files created: [N] Sub-skills invoked: codebase-understanding, product-soul, architectural-decision-log, project-setup [IN`

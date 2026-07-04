@@ -191,10 +191,10 @@ Routed to: learn-from-paper
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Sub-skill credibility gate skipped before application
+- External content applied before all secure-* skills pass
+- Repo guardrail silently overwritten by external pattern
+- Multiple sources merged without per-source security scan
 ## Impact Report
 
 `Source: [URL/path/conversation] | Type: [paper/repo/article/chat] Credibility: [score] | Security: [SAFE/BLOCKED] Insights: [N] GOTCHAs, [N] TECHNIQUEs, [N] FAILURE_MODEs, [N] METRICs, [N] CONTRADICTIONs Recommendatio...`

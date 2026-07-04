@@ -85,12 +85,10 @@ Output: summarize the decision, cite `decision-log.md`, include alternatives, an
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Full agent-handoffs or session-log loaded by default
+- Superseded decision presented as current policy
+- Stale memory cited without flagging uncertainty
+- Recall bypasses MEMORY-ROUTING intent table
 ## Impact Report
 
 After completing, report:

@@ -191,10 +191,10 @@ VERDICT: BLOCKED — no further scanning.
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Skill overwrite attempted from external repo content
+- Provenance chain missing for approved external item
+- DoS or state-corruption pattern not enforced at runtime
+- No-go repo list bypassed for convenience
 ## Impact Report
 
 `Runtime audit: [source / context] Checks: 11 (State Corruption) [N findings], 12 (DoS) [N findings] No-go list: [CLEAR / MATCHED] Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]`

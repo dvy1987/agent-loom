@@ -130,13 +130,10 @@ Posture: [one sentence] | Seed archetypes: [top 1-2]
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Single safe direction presented without exploration
+- Directions differ on fewer than three dimensions
+- Hybrid direction committed instead of one clear posture
+- Non-technical owner given options without a recommendation
 ## Reference Files
 - `references/exploration-method.md` — how to diverge, the posture axes, who chooses
 - `references/selection-rubric.md` — archetype scoring, tiebreakers, decision tree

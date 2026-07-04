@@ -167,13 +167,10 @@ At $20/month and 5% market penetration (675 users), ARR = $162,000. This determi
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Most uncertain factor not identified or bounded
+- Estimate presented for legal or budget commitment
+- Independent approaches disagree by order of magnitude unresolved
+- Population or rate assumptions stated without source
 ## Impact Report
 
 ```

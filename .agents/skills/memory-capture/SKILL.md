@@ -106,12 +106,10 @@ Output: write to `docs/memory/decision-log.md` via `memory-decision`, then index
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Raw long transcript captured instead of summarized note
+- Capture written directly to global without promote path
+- Secrets or credentials included in captured note
+- Capture lacks provenance or source attribution
 ## Impact Report
 
 After completing, report:

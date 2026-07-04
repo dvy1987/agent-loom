@@ -191,10 +191,10 @@ Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Flaky eval treated as one-off instead of tracked over time
+- Judge or rubric change without regression on bad cases
+- LLM judge run on 100% traffic with no sampling plan
+- Pipeline green while dimension-level failures are hidden
 ## Impact Report
 
 `Pipeline designed: [system name] Maturity stage: [1-4] Evaluator layers: deterministic ([N] checks), statistical ([N] metrics), LLM-judge ([N] dimensions) Dataset splits: [N] cases`

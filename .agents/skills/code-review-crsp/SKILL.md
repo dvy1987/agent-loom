@@ -180,13 +180,10 @@ Want me to fix any of these? Reply with the numbers.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Review produced on empty diff without scope confirmation
+- Test file changes skipped or given superficial pass
+- Large rename treated as logic change without diff-filter
+- Findings lack severity and concrete remediation
 ## Impact Report
 
 ```

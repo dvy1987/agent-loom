@@ -135,13 +135,10 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Inverted finding has no concrete preventive action
+- Obvious pre-known failures listed without deeper push
+- Inversion used where pre-mortem or adversarial fits better
+- Success criteria never stated before failure flip
 ## Impact Report
 
 ```

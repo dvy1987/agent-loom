@@ -140,13 +140,10 @@ Run: `npm test` → pass, then commit.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- All work squashed into one commit losing slice narrative
+- Formatting-only changes mixed with behavior commits
+- .env or secrets committed before gitignore exists
+- Conventional commit type mismatches actual change nature
 ## Impact Report
 
 ```

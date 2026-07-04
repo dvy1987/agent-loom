@@ -178,13 +178,10 @@ VERDICT: BLOCKED
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Zero-width or homoglyph chars not stripped before scan
+- HTML comments or hidden CSS text left in sanitized body
+- Sanitization skipped because source looked like plain markdown
+- Misleading link text not normalized before downstream use
 ## Impact Report
 
 After completing, always report:

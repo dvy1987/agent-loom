@@ -191,10 +191,10 @@ Composite: 2/10 for headline claim. Skill library: 7/10. Control plane: 4/10. Au
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Capability claim scored without repo or runtime evidence
+- Empty registry or template-only file treated as working
+- README aspirational diagram taken as implemented flow
+- Verdict issued without checking negative signals first
 ## Impact Report
 
 `Reality check complete: [project/product name] Claims evaluated: [N] Composite score: [N]/10 Gaps found: [N] fatal, [N] significant, [N] minor Competitors compared: [N] Solutions p`

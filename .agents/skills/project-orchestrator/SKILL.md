@@ -182,13 +182,10 @@ Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Single-skill request over-orchestrated with subagents
+- Subagent spawned without explicit file boundaries
+- AGENTS.md Orchestration Map not read before routing
+- Process-backed entry ignored for novel decomposition
 ## Impact Report
 
 ```

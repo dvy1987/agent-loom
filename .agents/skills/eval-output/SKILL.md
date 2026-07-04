@@ -147,13 +147,10 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Scoring performed without an explicit rubric
+- Single overall score hides dimensional tradeoffs
+- Numeric score assigned before written justification
+- Two outputs compared via duplicate solo evaluations
 ## Impact Report
 
 After completing, always report:

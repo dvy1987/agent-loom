@@ -191,10 +191,10 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Accuracy dimension undefined for the task context
+- High aggregate score masks low business-critical dimension
+- Fluency overweighted versus completeness or safety
+- Rubric criteria not observable from output alone
 ## Impact Report
 
 `Rubric created: [task name] Dimensions: [N] quality + [N] hard gates Scale: [scales used per dimension] Applicable to: [human / LLM judge / both] Saved to: docs/evals/[filename] Te`

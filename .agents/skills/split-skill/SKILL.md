@@ -191,10 +191,10 @@ improve-skills: 220 → 198 lines ✓ | link-check: 140 lines (new) ✓
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- New child skill created without checking absorption fit
+- Split performed on secure-* skill via compress path
+- Pipeline stage split breaking shared step context
+- Post-split line counts not verified under 200
 ## Impact Report
 
 `Action taken: [linked to existing <skill> / extracted new <child> / Type B] Parent: [before] → [after] lines Child/linked skill: [name] — [lines] lines ([new / existing]) Other callers updated: [list or "none"] AGENTS...`

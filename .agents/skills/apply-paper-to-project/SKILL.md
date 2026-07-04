@@ -191,10 +191,10 @@ After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Paper ingested directly instead of via learn-from-paper
+- Codebase refactored before reading AGENTS.md and architecture
+- Technique applied beyond what evidence supports
+- Paper benchmark context assumed to match project scale
 ## Impact Report
 
 `Paper applied: [title] Project: [path] Changes applied: [N] Files modified: [list] Deferred items: [N] ADR created: [path or N/A] Tests: [passed/failed/N/A]`

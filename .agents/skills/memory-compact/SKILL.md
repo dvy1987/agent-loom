@@ -93,12 +93,10 @@ If `reusable-learnings.md` is 240 lines, merge duplicate lessons, archive stale 
 
 ## Red Flags
 
-- Handoff or capture contains API keys or tokens
-- Unbounded paste of logs into memory files
-- Global memory append without compact check
-
-Read `references/examples.md` for full worked examples.
-
+- Append to over-budget file without compacting first
+- Active decisions or revisit triggers deleted during compact
+- Global memory compacted without user approval
+- Provenance stripped when merging duplicate entries
 ## Impact Report
 
 After completing, report:

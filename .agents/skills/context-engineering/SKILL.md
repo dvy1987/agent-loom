@@ -167,13 +167,10 @@ Tier A. Collect: failing command, CI logs, the test file, and the code under tes
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Context gathered by guessing instead of repo evidence
+- Irrelevant files included that dilute the task signal
+- Constraints unnamed so violations go unnoticed
+- Assumptions presented as facts without confirmation path
 ## Impact Report
 
 ```

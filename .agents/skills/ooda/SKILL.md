@@ -176,13 +176,10 @@ Observe user response to the competitor's feature in the next 2 weeks. If 3+ use
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Stuck in Orient debating meaning while action delayed
+- Observe step skipped — acting on assumptions only
+- OODA loop never closes with explicit Act step
+- Competitive response modeled as static not adaptive
 ## Impact Report
 
 ```

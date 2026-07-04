@@ -191,10 +191,10 @@ Want me to trace another flow or go deeper on any component?
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- utils/ or helpers/ named as architecture without reading code
+- Monorepo mapped from single entry point only
+- Generated artifacts included in architecture map
+- Dependency graph inferred without reading imports
 ## Impact Report
 
 `Codebase mapped: [repo name or path] Scope: [full repo / specific system] Tech stack: [summary] Layers identified: [count] Key flows traced: [count] Hotspots flagged: [count] Next:`

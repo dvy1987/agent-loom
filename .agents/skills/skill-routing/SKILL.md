@@ -148,13 +148,10 @@ Pre-req: met
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- Ambiguous review routed without disambiguating code vs UI
+- Plan request sent to wrong planner skill for intent
+- Non-invocable label returned instead of concrete skill name
+- Multiple candidates returned without disambiguation step
 ## Impact Report
 
 ```

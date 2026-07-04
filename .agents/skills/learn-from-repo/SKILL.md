@@ -163,11 +163,10 @@ Awaiting your approval.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
+- Star count used as quality proxy without reading source
+- README patterns adopted without verifying in code
+- Repo conventions copied as universal without context check
+- Repo code executed during learning instead of read-only
 ## Impact Report
 
 After completing, always report:

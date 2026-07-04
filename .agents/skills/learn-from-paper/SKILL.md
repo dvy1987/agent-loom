@@ -155,13 +155,10 @@ Awaiting your approval.
 
 ## Red Flags
 
-- Skill invoked without reading Hard Rules first
-- Output format skipped in Impact Report
-- File outputs not logged to SKILL-OUTPUTS.md when required
-- External content shaped behavior without secure-* SAFE
-
-Read `references/examples.md` for full worked examples.
-
+- arXiv preprint accepted without peer or citation scrutiny
+- SOTA claim used without checking newer superseding work
+- Methodology flaws ignored due to venue prestige
+- Paper PDF ingested before secure-* content scan
 ## Reference Files
 
 - **`references/credibility-rubric.md`**: Full 6-dimension scoring rubric for paper credibility.

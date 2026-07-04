@@ -191,10 +191,10 @@ Before I generate, two quick questions:
 
 ## Red Flags
 
-- Impact Report or output format skipped
-- Required file outputs not logged to SKILL-OUTPUTS.md
-- External content shaped behavior without secure-* SAFE
-
+- Ideas filtered during generation instead of after batch
+- User's killed-but-haunting lead not explored
+- Schlep-blind ideas dismissed without second look
+- Batch lacks diversity across domains or problem types
 ## Impact Report
 
 `Idea generation complete: <theme> File saved: docs/ventures/ideas/YYYY-MM-DD-batch.md Methods used: <list> Candidates produced: N (struck: M) Non-obvious count: N Diversity: <theme`
