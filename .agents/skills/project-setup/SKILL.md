@@ -51,24 +51,19 @@ Present extracted commands to the user for confirmation in Step 2 instead of ask
 - **If no split directories but project has existing code:** generate a single root `AGENTS.md`.
 - **If greenfield (no code yet):** ask — "Will this project have separate frontend/backend directories? If yes, I'll create scoped AGENTS.md files for each."
 Store the decision as `agents_md_mode: single | multi` for Steps 4–6.
-
 **1d. Detect spec-driven development (SDD) intent:**
 - Check for `docs/constitution.md`, `docs/specs/*-feature-spec.md`, or `docs/reviews/*-spec-crosscheck.md`.
 - **If any exist:** treat the project as specs-first. Skip the question.
 - **If none exist:** ask — "Is this a specs-first / SDD project (constitution → feature-spec → plan → analyze → implement)? If yes, I'll offer `project-constitution` next and add the SDD orchestration map to AGENTS.md."
 Store the decision as `sdd_mode: on | off` for Steps 5–6. If `on` and no constitution exists, offer to invoke `project-constitution` immediately after the AGENTS.md is saved.
-
 ### Step 2 — User Interview (Two Axes)
-
 One question at a time. Stop each axis when you have enough.
-
 **Axis 1 — User Context (skill gaps and working style).** Core questions (pick the most relevant 2–3):
 1. "What is your primary role?"
 2. "Which areas do you feel confident handling yourself?"
 3. "Which areas should agents handle more autonomously — security, testing, architecture, DevOps, frontend, database design?"
 4. "Any strong preferences for how agents should work?"
 5. "Want the full Session Lifecycle block (session-start: load handoff + bounded memory; session-end: auto handoff/capture on producer events)?" — default yes if memory suite installed.
-
 **Axis 2 — Project Context.** Core questions (skip what was discovered in Step 1):
 1. "What are you building, in one sentence?"
 2. "Tech stack and key dependencies?"
@@ -194,6 +189,11 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 - [ ] docs/memory/ skeleton present
 - [ ] Graph bootstrap attempted if knowledge-graph present
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

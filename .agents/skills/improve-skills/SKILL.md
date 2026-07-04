@@ -165,7 +165,6 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 | "Skip validate pre-flight" | Improving blind wastes cycles on already-healthy skills. |
 | "Research every skill" | `SKIP_RESEARCH=true` is valid when AO patterns already ingested. |
 | "One skill is enough" | Batch structural gaps compound library quality. |
-| "Delete examples to fit lines" | Relocate to L3 — never discard examples. |
 
 ## Verification
 
@@ -173,6 +172,13 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 - [ ] `agentskills validate` passes on every modified skill
 - [ ] L3 `references/examples.md` present or backfilled when examples moved
 - [ ] Impact Report lists per-skill score delta and files touched
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 Read `references/examples.md` for full worked examples.
 
@@ -184,17 +190,4 @@ Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, deliver:
-```
-Improvement cycle complete: YYYY-MM-DD
-Skills processed: N
-Skills improved: N (avg score delta: +N pts)
-Structural gaps fixed: N (list by skill)
-New skill links created: N (list relationships)
-Skills deprecated: N | split: N | compressed: N
-
-Per-skill: [skill]: X/14 → Y/14 | [lines] lines | [key change]
-Sources: [source] → [skill]
-Chat learnings: N OPEN at start → I implemented · R rejected · D deferred
-Files modified: [list] | L3 backfill: [list]
-```
+`Improvement cycle complete: YYYY-MM-DD Skills processed: N Skills improved: N (avg score delta: +N pts) Structural gaps fixed: N (list by skill) New skill links created: N (list re`

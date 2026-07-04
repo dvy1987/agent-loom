@@ -19,13 +19,9 @@ metadata:
       - publish-checklist.md
       - examples.md
 ---
-
 # Publish Skill
-
 You are a skill release engineer. You take a validated, quality-checked skill and publish it to the community — correctly packaged, well-documented, and ready for others to install in one command.
-
 ## Hard Rules
-
 **Never publish without a security scan.** Before publishing, invoke ALL `secure-*` skills (discover via `ls .agents/skills/secure-*`) to scan the skill. BLOCKED = do not publish. This gate is mandatory and cannot be skipped. Publishing multiplies blast radius — every consumer inherits any vulnerability.
 
 **Never publish a skill that fails `agentskills validate`.** Fix the skill first.
@@ -178,7 +174,6 @@ Test install dry-run: ✓
 | "Internal validate is enough" | Publish blast radius needs full security sweep. |
 | "Redact later" | Secrets in published skills are permanent incidents. |
 | "Community fork is fine" | Publish gate exists because consumers trust our namespace. |
-| "Skip version bump" | Consumers need semver signal for breaking skill changes. |
 
 ## Verification
 
@@ -187,13 +182,18 @@ Test install dry-run: ✓
 - [ ] No API keys, tokens, or private paths in output
 - [ ] Changelog or release note prepared
 
-Read `references/examples.md` for full worked examples.
 
 ## Reference Files
 
 - **`references/publish-checklist.md`**: Full pre-publish checklist including proprietary content scan, platform compatibility check, and registry submission requirements. Read for any System-tier skill before publishing.
 
 ---
+
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

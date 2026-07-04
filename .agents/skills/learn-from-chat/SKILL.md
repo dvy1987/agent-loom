@@ -186,6 +186,13 @@ Awaiting your approval to apply.
 - [ ] Line count ≤200 or routed to split/compress
 - [ ] Learning logged to research-learnings or skill gotchas, not raw chat
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

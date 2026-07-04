@@ -171,6 +171,13 @@ Result: 354 → 115 lines (67% reduction)
 - [ ] `agentskills validate` passes on target skill
 - [ ] Workflow steps and hard rules preserved in compressed form
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 ## Impact Report
 
 After completing, always report:

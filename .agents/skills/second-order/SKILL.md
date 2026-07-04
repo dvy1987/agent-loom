@@ -169,6 +169,13 @@ This decision should be evaluated at 12 months post-launch with conversion rate 
 - [ ] Time horizons used (not all consequences treated as immediate)
 - [ ] One hidden risk or opportunity surfaced beyond the obvious
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

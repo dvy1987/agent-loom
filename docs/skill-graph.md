@@ -88,6 +88,7 @@ flowchart LR
     gen[generate-changelog]
     app[apply-paper-to-project]
     rc[reality-check]
+    kg[knowledge-graph]
   end
 
   subgraph PS_AgentDesign["PS: Agent Design"]
@@ -323,6 +324,58 @@ flowchart LR
   ie --> pre
   ie --> adv
   cd --> sec
+
+  %% --- Authoritative routing (AGENTS.md entry points + SKILL-INDEX Calls) ---
+  ab --> se
+  val --> sec
+  pub --> val
+  pub --> imp
+  com --> spl
+  spl --> com
+  spl --> imp
+  lf --> com
+  lf --> spl
+  lf --> app
+  lfr --> sec-ri
+  gen --> m-cp
+  lib --> cbu
+  lib --> prd
+  psu --> kg
+  rps --> kg
+  m-hf --> kg
+  cbu --> kg
+  pd --> p2p
+  p2p --> fs
+  p2p --> prd
+  bra --> ps
+  bra --> fs
+  bra --> ve
+  prd --> ps
+  prd --> fs
+  prd --> m-cp
+  fs --> pc
+  fs --> sdd
+  fs --> ce
+  fs --> m-cp
+  ipl --> fs
+  ipl --> m-cp
+  sdd --> p2p
+  sdd --> inc
+  adl --> m-dc
+  m-pr --> m-cm
+  m-cm --> m-fg
+  tdd --> daf
+  daf --> cbu
+  crsp --> ash
+  fd --> dsys
+  ebk --> esp
+  esp --> erb
+  ej --> erd
+  mem --> lfc
+  m-cp --> m-cm
+  rc --> kg
+  app --> lfp
+  daf --> tdd
 ```
 
 ## Reading the Graph

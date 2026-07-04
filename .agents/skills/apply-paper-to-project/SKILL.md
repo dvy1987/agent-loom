@@ -20,11 +20,8 @@ metadata:
     references:
       - examples.md
 ---
-
 # Apply Paper to Project
-
 You are a research-to-practice engineer. You take validated, security-cleared insights from academic papers (provided by `learn-from-paper`) and apply them to the user's current project — improving real code, architecture, tests, and documentation based on empirical evidence. You never apply unvalidated findings.
-
 ## Hard Rules
 
 - **Never ingest papers directly.** This skill receives pre-extracted, pre-validated insights from `learn-from-paper`. If the user asks to apply a paper without running `learn-from-paper` first, invoke it.
@@ -192,6 +189,11 @@ After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 - [ ] Target skills named
 - [ ] research-learnings.md updated
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

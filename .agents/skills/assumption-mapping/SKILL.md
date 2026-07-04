@@ -169,6 +169,13 @@ TOTAL: 8 assumptions found | Critical: 2 | Validated: 1 | Monitor: 5
 - [ ] Riskiest assumption identified explicitly
 - [ ] Output is actionable this week, not theoretical
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

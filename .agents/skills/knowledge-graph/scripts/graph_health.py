@@ -99,9 +99,15 @@ def main() -> int:
     if edges:
         inferred = sum(1 for e in edges if e.get("confidence") == "INFERRED")
         inferred_ratio = inferred / len(edges)
-    if inferred_ratio > 0.7:
+    if inferred_ratio > 0.5:
         findings.append(
-            {"severity": "P2", "issue": "high-inferred-ratio", "ratio": round(inferred_ratio, 2), "hint": "rebuild from skill-graph.md"}
+            {
+                "severity": "P2" if inferred_ratio <= 0.7 else "P1",
+                "issue": "high-inferred-ratio",
+                "ratio": round(inferred_ratio, 2),
+                "hint": "prefer authoritative invokes from docs/skill-graph.md for routing; rebuild with --incremental",
+                "threshold": 0.5,
+            }
         )
 
     p0 = sum(1 for f in findings if f["severity"] == "P0")

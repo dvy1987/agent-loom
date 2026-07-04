@@ -31,17 +31,12 @@ Never write the spec without referencing the project constitution version (`docs
 Never invent functional requirements — if the user has not stated something, mark `[NEEDS CLARIFICATION]`.
 Never use vague language ("fast", "intuitive", "robust") — replace with measurable criteria or mark for clarification.
 ---
-
 ## Modes
-
 This skill has two modes — pick by user intent or orchestrator parameter:
 - **specify** (default) — write a new spec or major rewrite
 - **clarify** — resolve `[NEEDS CLARIFICATION]` markers in an existing spec
-
 ---
-
 ## Workflow — specify mode
-
 ### Step 1 — Read existing context
 
 In priority order:
@@ -194,6 +189,11 @@ Run `/clarify` next.
 - [ ] No implementation details in spec body
 - [ ] spec-crosscheck can trace every requirement
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

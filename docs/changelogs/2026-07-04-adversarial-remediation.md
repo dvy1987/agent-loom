@@ -6,7 +6,7 @@ Closed gaps from adversarial review of addyosmani ingestion “mostly finished�
 
 ### Added
 - P2 craft (Common Rationalizations, Verification, Red Flags) on all 71 project-specific skills
-- `check_p2_craft.py`, `add_p2_craft_project.py`, `replenish_l3.py`, `validate_application_mode.py`, `check_phase3_depth.py`, `curate_daily_driver_l3.py` (local scripts — no GitHub Actions)
+- `check_p2_craft.py`, `add_p2_craft_project.py`, `replenish_l3.py`, `validate_application_mode.py`, `check_phase3_depth.py`, `curate_daily_driver_l3.py`, `check_ao_sections.py`, `backfill_red_flags.py`, `backfill_ingest_queue.py` (local scripts — no GitHub Actions)
 - `docs/comparisons/INGEST-QUEUE.md` for learn-from-repo overlap queue (Meta B4)
 - L3 quality tiers in `docs/SKILL-EXAMPLES-INDEX.md` (curated / enriched / padded / standard)
 

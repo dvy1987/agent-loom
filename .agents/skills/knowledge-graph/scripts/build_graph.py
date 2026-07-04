@@ -537,7 +537,7 @@ def scan_config_and_agents(root: Path) -> tuple[dict[str, dict], list[dict]]:
     return nodes, edges
 
 
-def scan_docs(root: Path) -> tuple[dict[str, dict], list[dict]]:
+def scan_docs(root: Path, *, skill_library: bool = False) -> tuple[dict[str, dict], list[dict]]:
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
     doc_paths: list[Path] = []
@@ -564,6 +564,9 @@ def scan_docs(root: Path) -> tuple[dict[str, dict], list[dict]]:
         nid = _nid("doc", rel)
         nodes[nid] = {"id": nid, "label": path.stem, "type": "doc", "path": rel, "community": community}
         if rel in DOC_MENTION_SKIP:
+            continue
+        if skill_library:
+            # Routing is authoritative via docs/skill-graph.md + SKILL-INDEX; doc backticks are noise.
             continue
         text = _read(path)
         for skill in SKILL_TOKEN_RE.findall(text):
@@ -777,7 +780,7 @@ def build_graph(root: Path, plan: dict | None = None) -> dict:
     merge(*scan_codebase(root))
     merge(*scan_packages(root))
     merge(*scan_config_and_agents(root))
-    merge(*scan_docs(root))
+    merge(*scan_docs(root, skill_library=(mode == "skill-library")))
     merge(*parse_memory_and_handoffs(root))
     nodes.update(scan_top_level_directories(root))
 

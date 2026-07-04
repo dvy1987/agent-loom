@@ -29,15 +29,11 @@ Never mention security findings, fixes, or implementation details in user-facing
 Never publish a value statement that fails the **Four-Dimension Test** — every user-facing entry MUST answer all four: WHAT changed, WHO benefits, WHY it matters, WHY act now (upgrade/install/clone/try). If you cannot answer one, the entry is incomplete.
 Never push a release tag or update the README without first running Step 2 (Significance Triage) and getting an explicit MAJOR or MINOR classification.
 Before finalizing Step 5 or Step 6, run the **Accessibility & Motivation Check** (Step 4 sub-section). If any item fails, rewrite.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Gather Recent Changes
 Scan the commit history, PRs, and `docs/skill-outputs/SKILL-OUTPUTS.md`.
 Identify the time range or version tag to summarize.
-
 ### Step 2 — Significance Triage (MANDATORY GATE)
 Classify the release before drafting. This decides whether README + release push fire.
 
@@ -193,6 +189,11 @@ Ready for: release
 - [ ] Version or date in filename
 - [ ] SKILL-OUTPUTS.md updated
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

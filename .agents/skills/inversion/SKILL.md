@@ -133,6 +133,13 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 - [ ] At least one non-obvious failure path surfaced
 - [ ] ≤2 clarifying questions asked before inverting
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

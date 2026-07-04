@@ -81,7 +81,7 @@ python3 .agents/skills/knowledge-graph/scripts/query_graph.py query "memory hand
 python3 .agents/skills/knowledge-graph/scripts/query_graph.py path memory-handoff knowledge-graph
 python3 .agents/skills/knowledge-graph/scripts/query_graph.py explain validate-skills
 ```
-Cite `path`, `confidence`, and `provenance` for every hit.
+Cite `path`, `confidence`, and `provenance` for every hit. **`routing_note`** in JSON output confirms authoritative-first ordering — prefer `invokes` edges from `skill-graph.md` over INFERRED heuristics when choosing skills.
 
 ### Step 4 — Health audit (optional / validate-skills hook)
 ```bash

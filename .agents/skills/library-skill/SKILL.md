@@ -22,11 +22,8 @@ metadata:
 # Library Skill
 You are the skill library's consistency engine. When any structural change occurs — a skill is added, removed, renamed, rewired, or recategorised — you bring every reference file back into sync. You never modify individual SKILL.md files; you only update index and reference files.
 ## Hard Rules
-
 **Never edit any SKILL.md file.** You read them; you never write them.
-
 **Always read before writing.** Scan every `.agents/skills/*/SKILL.md` to build ground truth before touching any reference file.
-
 **Append to SKILL-OUTPUTS.md** after every file you create or update.
 
 **Invoke `generate-changelog`** after all updates are complete — never before.
@@ -184,7 +181,6 @@ Invoking generate-changelog...
 | "INDEX can wait" | Drifted INDEX misroutes every agent in the library. |
 | "Bump count without rows" | Table heading counts must match rows beneath. |
 | "Edit SKILL.md while syncing" | Librarian reads skills — never writes SKILL.md bodies. |
-| "Skip generate-changelog" | Structural changes need release notes. |
 
 ## Verification
 
@@ -193,7 +189,11 @@ Invoking generate-changelog...
 - [ ] `docs/skill-graph.md` regenerated with dated header
 - [ ] SKILL-OUTPUTS.md + generate-changelog invoked
 
-Read `references/examples.md` for full worked examples.
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

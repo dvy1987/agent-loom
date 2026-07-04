@@ -53,7 +53,6 @@ Required binding fields:
 Match the spec's randomisation unit. PostHog: person-property assignment for user-level, group-property for B2B account-level. Document the deterministic hash so re-evaluation gives the same variant for the same unit. If the platform supports it, lock the salt.
 ### Step 4 — Define Exposure Event
 The exposure event MUST fire when the unit actually sees the assigned variant — not when the flag is fetched. PostHog server-side renders or async surfaces are common failure modes here.
-
 Default PostHog pattern:
 ```javascript
 posthog.capture('$feature_flag_called', {
@@ -62,17 +61,13 @@ posthog.capture('$feature_flag_called', {
   // additional surface context
 })
 ```
-
 ### Step 5 — Wire Dashboards & Alerts
-
 - Primary metric chart, variant breakdown.
 - Each guardrail metric chart.
 - SRM monitor (chi-squared p-value; alert if < 0.001 sustained).
 - Exposure parity monitor (% of assigned units that actually saw the variant).
 - Error-rate / latency dashboard for the surface.
-
 ### Step 6 — Ramp Plan
-
 Default ramp for Causal A/B:
 - **1%** for 24h — SRM dry-run, exposure verification.
 - **5%** for 24–48h — guardrail check.
@@ -180,6 +175,11 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 
 ---
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

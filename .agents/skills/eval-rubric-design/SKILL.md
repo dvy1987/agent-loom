@@ -36,13 +36,9 @@ You are an evaluation architect. You design structured rubrics that turn vague q
 Ask (max 2 questions):
 1. "What does this LLM/agent do?" — establishes the task and expected output shape.
 2. "What does a perfect output look like vs a failing one?" — reveals the real quality signal.
-
 If the user provides enough context, skip questions and infer.
-
 ### Step 2 — Select Dimensions
-
 Choose from the dimension library (adapt names to the domain):
-
 | Dimension | When to include |
 |-----------|----------------|
 | **Task completion** | Always — did it do what was asked? |
@@ -193,6 +189,11 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 - [ ] Bias mitigations applied for pairwise
 - [ ] Outputs under docs/evals/ when files written
 
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

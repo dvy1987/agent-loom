@@ -157,10 +157,20 @@ All other skills follow the standard 200-line limit with compress or split.
 
 ## Skill Quality Gate
 
+**Single validation entrypoint:** invoke `validate-skills` for any library health check. It runs the full read-only audit in one pass — do not call the craft gate scripts standalone unless debugging a single failure.
+
+`validate-skills` Step 4e auto-invokes (from repo root):
+```bash
+python3 .agents/skills/universal-skill-creator/scripts/check_p2_craft.py      # P2 craft sections
+python3 .agents/skills/universal-skill-creator/scripts/check_ao_sections.py     # AO five-section gate
+python3 .agents/skills/universal-skill-creator/scripts/check_phase3_depth.py  # daily-driver depth
+python3 .agents/skills/universal-skill-creator/scripts/check_l3_tiers.py      # L3 tier (no padded/broken)
+```
+
 After writing or editing any skill:
 ```bash
 wc -l .agents/skills/<name>/SKILL.md      # must be ≤200
-agentskills validate .agents/skills/<name>/
+agentskills validate .agents/skills/<name>/   # when CLI available; else validate-skills Step 2a
 ```
 
 If >200 lines → invoke `split-skill` (see `docs/SKILL-INDEX.md` for full decision logic):

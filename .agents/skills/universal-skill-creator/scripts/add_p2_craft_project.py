@@ -510,8 +510,8 @@ def trim_for_budget(text: str, max_lines: int = 200) -> str:
         )
         lines = text_joined.splitlines()
         if len(lines) > max_lines:
-            # drop red flags section if present (lowest priority)
-            text_joined = re.sub(r"\n## Red Flags\n\n.*?(?=\n## |\n---\n|\Z)", "\n", text_joined, flags=re.DOTALL)
+            # compress rationalization table further before dropping sections
+            text_joined = "\n".join(lines)
             lines = text_joined.splitlines()
         if len(lines) <= max_lines:
             break

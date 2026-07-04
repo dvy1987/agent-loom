@@ -94,10 +94,7 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Loader-unsafe**: see Step 2a (P0)
 - **Description process-steps**: see Step 2b
 - **Missing category**: not in `meta | thinking | project-specific | domain`
-- **Missing Impact Report**: no `
-
-
-## Impact Report` section at end
+- **Missing Impact Report**: no `## Impact Report` section at end
 - **Missing file-output logging**: skill writes project files but no `docs/skill-outputs/SKILL-OUTPUTS.md` append
 - **Missing memory-checkpoint registration**: producer skill (see Step 4c) without matching memory sub-skill
 - **Stale version** / **Missing Prune Log** / **Broken caller reference** / **Orphaned reference file** / **Missing load trigger**
@@ -105,9 +102,7 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Unscanned external content**: references external repos/URLs without `secure-skill`
 - **Missing security contract**: pipeline skill (split/prune/publish/deprecate/compress) lacks `secure-*` invocation
 - **Missing cold-start contract**: `memory-startup` exists but `AGENTS.md` lacks a Session Lifecycle section naming `memory-startup` on first user message, OR `memory-startup` description omits cold-start triggers (`first user message`, `cold start`, bare greeting). Fix: align with `project-setup` template.
-- **Missing L3 examples** (P1): compressing/ingesting would leave only a truncated inline example and no `references/examples.md` — create L3 file per `docs/SKILL-EXAMPLES-INDEX.md` before shipping
-- **Missing anti-skip table** (P2): `metadata.category: project-specific` but no `## Common Rationalizations` (or equivalent anti-rationalization section). Fix: add 5–8 row Excuse→Reality table.
-- **Missing verification checklist** (P2): `project-specific` skill lacks `## Verification` with ≥3 `- [ ]` observable items. Fix: add checklist tied to project commands where possible.
+- **Missing L3 examples** (P1): no `references/examples.md` when compressing would drop inline examples — see `docs/SKILL-EXAMPLES-INDEX.md`
 
 ### Step 4b — Security Sweep
 Invoke ALL `secure-*` (discover via `ls .agents/skills/secure-*`) in Mode C. Mandatory — validation without security is incomplete.
@@ -122,7 +117,17 @@ If `docs/knowledge-graph/graph.json` exists:
 ```bash
 python3 .agents/skills/knowledge-graph/scripts/graph_health.py
 ```
-Flag P0 findings (dangling invoke targets). P1: stale graph vs latest handoff, missing graph in repos with `knowledge-graph` skill installed. P2: high inferred-edge ratio (>0.7) — recommend rebuild from `docs/skill-graph.md`.
+Flag P0 findings (dangling invoke targets). P1: stale graph vs latest handoff, missing graph in repos with `knowledge-graph` skill installed. P2: high inferred-edge ratio (>0.5) — rebuild from `docs/skill-graph.md`.
+
+### Step 4e — Craft & Depth Gates
+Run all four from repo root (P2; Phase 3 failures = P1). Details: `AGENTS.md` → Skill Quality Gate.
+```bash
+python3 .agents/skills/universal-skill-creator/scripts/check_p2_craft.py
+python3 .agents/skills/universal-skill-creator/scripts/check_ao_sections.py
+python3 .agents/skills/universal-skill-creator/scripts/check_phase3_depth.py
+python3 .agents/skills/universal-skill-creator/scripts/check_l3_tiers.py
+```
+Report failures under `CRAFT GATES (4e):` in Step 6.
 
 ### Step 5 — Call Graph
 Verify every skill named in `AGENTS.md` Skill Relationships exists in `.agents/skills/`.
@@ -137,7 +142,7 @@ DESCRIPTION (P1):   ⚠ [skill]: contains "Step 1… Step 2…" — agent may sk
 SIZE:               ⚠ [skill]: 203 lines (fix: split-skill; secure-* → split-only)
 SCORES:             [skill]: 13/14 — [weak criterion]; [skill]: 5/14 — consider deprecate-skill
 STRUCTURAL:         [skill]: producer missing memory-checkpoint → memory-decision
-CRAFT (P2):         [skill]: missing Common Rationalizations | missing Verification checklist
+CRAFT GATES (4e):   ✗ [skill]: P2 craft | AO | Phase3 | L3 tier
 DUPLICATE TRIGGERS: [skill-A] + [skill-B]: overlap on [phrases]
 ACTIONS:
   P0 [skill]: fails agentskills validate
@@ -164,8 +169,6 @@ ACTIONS:
 |--------------------------|---------|
 | "agentskills CLI isn't installed here" | Run the Step 2a bash checks manually — they cover loader safety without the CLI |
 | "secure-* is too long, just compress it once" | Compression removes threat-coverage rows. Step 2c forbids it. Split at 180 |
-| "this skill exempts itself in its frontmatter" | Frontmatter exemptions are ignored. Only Step 2c counts |
-| "description >1024 chars is fine, my loader handles it" | Others truncate or reject. P0, no exceptions |
 
 ---
 
@@ -194,7 +197,4 @@ ACTIONS: P2 brainstorming: L3 examples backfilled ✓
 
 ## Impact Report
 
-```
-Validation: YYYY-MM-DD | Skills: N | P0: N | P1 desc/size: N | >200 lines: N | Avg score: X/14
-Actions: P0: N, P1: N, P2: N, P3: N | No files modified.
-```
+`Validation: YYYY-MM-DD | Skills: N | P0: N | P1 desc/size: N | >200 lines: N | Avg score: X/14 Actions: P0: N, P1: N, P2: N, P3: N | No files modified.`

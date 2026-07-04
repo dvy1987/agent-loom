@@ -152,6 +152,13 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 - [ ] Rebuilt solution differs materially from the opening approach
 - [ ] Forward path stated without requiring full rebuild of everything
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

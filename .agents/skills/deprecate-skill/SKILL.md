@@ -171,8 +171,6 @@ Proceed? (yes/no)
 | "Keep it for reference" | Deprecated without mover skill = zombie routing. |
 | "Nobody uses it" | Grep callers and INDEX before assuming zero use. |
 | "Delete immediately" | Deprecation window prevents silent breakage. |
-| "Skip security scan" | External content in deprecation notes still needs secure-*. |
-| "INDEX update optional" | Stale INDEX routes agents to dead skills. |
 
 ## Verification
 
@@ -180,6 +178,13 @@ Proceed? (yes/no)
 - [ ] `.deprecated/` move with date suffix
 - [ ] `library-skill` sync invoked for INDEX/graph
 - [ ] `secure-*` scan completed if external content involved
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 Read `references/examples.md` for full worked examples.
 

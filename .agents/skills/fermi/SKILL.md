@@ -165,6 +165,13 @@ At $20/month and 5% market penetration (675 users), ARR = $162,000. This determi
 - [ ] Most uncertain factor identified for follow-up research
 - [ ] Estimate enables a decision (go / no-go / investigate)
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

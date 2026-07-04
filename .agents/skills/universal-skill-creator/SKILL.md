@@ -139,6 +139,12 @@ After generating, always state: tier + why · compatible platforms · install pa
 Every skill MUST include:
 1. **`
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report`** — skill-specific format, in-chat after every run.
 2. **File-output logging** — if skill writes project files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and notify user.

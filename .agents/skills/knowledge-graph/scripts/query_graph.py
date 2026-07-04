@@ -20,6 +20,21 @@ def _load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _edge_rank(edge: dict) -> int:
+    """Lower is better for routing. Authoritative invokes beat inferred heuristics."""
+    conf = edge.get("confidence", "INFERRED")
+    prov = edge.get("provenance") or ""
+    if edge.get("relation") == "invokes" and "skill-graph" in prov:
+        return 0
+    if conf == "EXTRACTED":
+        return 1
+    return 2
+
+
+def _sort_edges(edges: list[dict]) -> list[dict]:
+    return sorted(edges, key=_edge_rank)
+
+
 def _tokens(q: str) -> list[str]:
     return [t for t in re.findall(r"[a-z0-9][a-z0-9-]{1,63}", q.lower()) if len(t) > 2]
 
@@ -65,7 +80,9 @@ def cmd_query(graph: dict, question: str, depth: int) -> dict:
         nid, d = queue.popleft()
         if d >= depth:
             continue
-        for nb, edge in adj.get(nid, []):
+        # Prefer authoritative / EXTRACTED edges when expanding neighbors
+        nbs = sorted(adj.get(nid, []), key=lambda x: _edge_rank(x[1]))
+        for nb, edge in nbs:
             if nb in seen:
                 continue
             seen.add(nb)
@@ -87,7 +104,8 @@ def cmd_query(graph: dict, question: str, depth: int) -> dict:
     return {
         "question": question,
         "matches": [{"label": s["label"], "type": s["type"], "path": s.get("path")} for s in seeds[:5]],
-        "neighbors": neighbors[:20],
+        "neighbors": sorted(neighbors, key=lambda n: (_edge_rank({"confidence": n.get("confidence"), "relation": n.get("relation"), "provenance": n.get("provenance")}), n.get("depth", 99)))[:20],
+        "routing_note": "Neighbors sorted authoritative-first (skill-graph invokes > EXTRACTED > INFERRED).",
         "stats": graph.get("stats", {}),
     }
 
@@ -110,7 +128,8 @@ def cmd_path(graph: dict, start_label: str, end_label: str) -> dict:
         cur = queue.popleft()
         if cur == end["id"]:
             break
-        for nb, edge in adj.get(cur, []):
+        nbs = sorted(adj.get(cur, []), key=lambda x: _edge_rank(x[1]))
+        for nb, edge in nbs:
             if nb not in prev:
                 prev[nb] = (cur, edge)
                 queue.append(nb)
@@ -133,7 +152,15 @@ def cmd_path(graph: dict, start_label: str, end_label: str) -> dict:
         )
         cur = prev[cur][0]
     chain.reverse()
-    return {"start": start_label, "end": end_label, "path": chain, "hops": len(chain) - 1}
+    inferred_hops = sum(1 for step in chain[1:] if step.get("confidence") == "INFERRED")
+    return {
+        "start": start_label,
+        "end": end_label,
+        "path": chain,
+        "hops": len(chain) - 1,
+        "routing_note": "Path prefers authoritative/EXTRACTED edges; verify INFERRED hops against SKILL.md.",
+        "inferred_hops": inferred_hops,
+    }
 
 
 def cmd_explain(graph: dict, label: str) -> dict:
@@ -155,7 +182,14 @@ def cmd_explain(graph: dict, label: str) -> dict:
                 outbound.append(
                     {"to": tgt["label"], "relation": e["relation"], "confidence": e["confidence"], "provenance": e.get("provenance")}
                 )
-    return {"node": node, "inbound": inbound[:15], "outbound": outbound[:15]}
+    inbound.sort(key=lambda e: _edge_rank({"confidence": e.get("confidence"), "relation": e.get("relation"), "provenance": e.get("provenance")}))
+    outbound.sort(key=lambda e: _edge_rank({"confidence": e.get("confidence"), "relation": e.get("relation"), "provenance": e.get("provenance")}))
+    return {
+        "node": node,
+        "inbound": inbound[:15],
+        "outbound": outbound[:15],
+        "routing_note": "Edges sorted authoritative-first for skill routing.",
+    }
 
 
 def main() -> int:

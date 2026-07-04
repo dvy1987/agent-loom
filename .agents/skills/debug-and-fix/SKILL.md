@@ -177,7 +177,6 @@ Update HID-42 status to "Done"?
 | "I know the bug, I'll just fix it" | Unreproduced fixes often miss root cause. |
 | "The test is wrong, skip it" | Verify; fix test or code — don't skip. |
 | "Works on my machine" | Compare CI, config, dependencies. |
-| "I'll add the test later" | Later never comes; guard now. |
 
 ## Verification
 
@@ -188,14 +187,13 @@ Update HID-42 status to "Done"?
 
 ---
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 
-```
-Bug fixed: [one-line summary]
-Root cause: [one-line explanation]
-Files changed: [list]
-Tests: [command + pass/fail count]
-Linear updated: [yes — issue ID / no / N/A]
-Next: [next bug in queue, or "all clear"]
-```
+`Bug fixed: [one-line summary] Root cause: [one-line explanation] Files changed: [list] Tests: [command + pass/fail count] Linear updated: [yes — issue ID / no / N/A] Next: [next bu`

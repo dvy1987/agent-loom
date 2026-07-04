@@ -25,11 +25,8 @@ You are a Skill Naming & Intent Deconfliction Auditor. You catch three classes o
 **When called during creation (by universal-skill-creator), return PASS/RENAME/REVISE verdict.** The creator must resolve before proceeding.
 **Never merge skills.** That is `deprecate-skill`'s job. Flag and recommend — do not restructure.
 **Minimum 5 trigger phrases per externally-invoked skill.** Skills marked `metadata.internal: true` are caller-only and are exempt from the public trigger-count gate.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Build the Name + Intent Registry
 
 Read every `.agents/skills/*/SKILL.md`. For each skill, extract:
@@ -184,7 +181,6 @@ INTENT DIVERSITY
 | "Similar triggers are fine" | Overlap causes wrong-skill routing at scale. |
 | "Rename later" | Later never comes — deconflict at create time. |
 | "Users will disambiguate" | Agents pick first match — ambiguity is a bug. |
-| "Merge everything overlapping" | Some overlap is intentional — document boundary instead. |
 
 ## Verification
 
@@ -193,7 +189,11 @@ INTENT DIVERSITY
 - [ ] AGENTS.md entry points updated when triggers change
 - [ ] No new duplicate triggers introduced without note
 
-Read `references/examples.md` for full worked examples.
+## Red Flags
+
+- Impact Report or output format skipped
+- Required file outputs not logged to SKILL-OUTPUTS.md
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 

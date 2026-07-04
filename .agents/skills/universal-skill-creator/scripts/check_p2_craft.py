@@ -42,6 +42,8 @@ def main() -> int:
             items = len(re.findall(r"^- \[ \]", vbody, re.M))
             if items < 3:
                 failures.append(f"{name}: Verification has {items} items (need ≥3)")
+        if "## Red Flags" not in text:
+            failures.append(f"{name}: missing Red Flags")
         ex = d / "references" / "examples.md"
         if ex.exists() and len(ex.read_text().splitlines()) < 55:
             failures.append(f"{name}: L3 examples <55 lines")

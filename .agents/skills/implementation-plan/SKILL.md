@@ -185,15 +185,13 @@ Ready for: engineering execution
 - [ ] No task >~5 files (XL tasks split)
 - [ ] Traceability table complete when feature-spec exists
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 
-After completing, always report:
-```
-Plan complete: [feature name]
-Phases defined: [N]
-Total tasks: [N]
-Critical risks identified: [N]
-Estimated effort: [S/M/L]
-Ready for: engineering execution / sprint planning
-```
+`Plan complete: [feature name] Phases defined: [N] Total tasks: [N] Critical risks identified: [N] Estimated effort: [S/M/L] Ready for: engineering execution / sprint planning`

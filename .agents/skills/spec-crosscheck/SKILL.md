@@ -184,15 +184,13 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 - [ ] Report delivered before code merge
 - [ ] Orchestrator notified of blockers
 
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 ## Impact Report
 
-```
-Crosscheck: <slug>
-Verdict: PASS | FAIL
-Checks: A=<v> B=<v> C=<v> D=<v> E=<v> F=<v>
-Findings: <N> (severity breakdown)
-Saved: docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md
-Logged: docs/skill-outputs/SKILL-OUTPUTS.md
-Implementation: gated|unblocked
-```
+`Crosscheck: <slug> Verdict: PASS | FAIL Checks: A=<v> B=<v> C=<v> D=<v> E=<v> F=<v> Findings: <N> (severity breakdown) Saved: docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md Logg`
