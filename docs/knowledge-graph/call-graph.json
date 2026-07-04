@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T09:49:02.422747+00:00",
+  "generated_at": "2026-07-04T11:20:54.519448+00:00",
   "edges": [
     {
       "source": "skill_experiment_backlog",
@@ -598,6 +598,15 @@
     {
       "source": "skill_memory_promote",
       "target": "skill_memory_compact",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_agent_loom_sync",
+      "target": "skill_validate_skills",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -1786,6 +1795,24 @@
     {
       "source": "skill_retroactive_project_setup",
       "target": "skill_knowledge_graph",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_project_setup",
+      "target": "skill_agent_loom_sync",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_retroactive_project_setup",
+      "target": "skill_agent_loom_sync",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

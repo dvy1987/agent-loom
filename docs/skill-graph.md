@@ -89,6 +89,7 @@ flowchart LR
     app[apply-paper-to-project]
     rc[reality-check]
     kg[knowledge-graph]
+    alms[agent-loom-sync]
   end
 
   subgraph PS_AgentDesign["PS: Agent Design"]
@@ -342,6 +343,9 @@ flowchart LR
   lib --> prd
   psu --> kg
   rps --> kg
+  psu --> alms
+  rps --> alms
+  alms --> val
   m-hf --> kg
   cbu --> kg
   pd --> p2p

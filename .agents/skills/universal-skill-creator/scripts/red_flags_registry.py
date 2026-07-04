@@ -21,6 +21,12 @@ RED_FLAGS: dict[str, list[str]] = {
         "Spawn attempted before prompt files exist on disk",
         "Subagent scope lacks explicit file boundaries",
     ],
+    "agent-loom-sync": [
+        "Whole-tree rsync with delete on .agents/skills/",
+        "Local-only skill missing from protected list in plan",
+        "Forked skill overwritten without user opt-in",
+        "Upstream path points at wrong repo or missing .agents/skills",
+    ],
     "agent-system-architecture": [
         "Shared blackboard without staleness or versioning rules",
         "Parallel agents write to overlapping output paths",

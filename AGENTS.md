@@ -213,6 +213,7 @@ domain          | specialized, not universally needed      | install only when n
 "improve skills"      → improve-skills
 "learn from"          → learn-from (orchestrator → learn-from-paper, learn-from-repo, learn-from-article, learn-from-chat)
 "set up this project" → project-setup
+"sync agent-loom" / "update skills from upstream" / "rsync from ../agent-loom" / "pull skill library updates" → agent-loom-sync
 "backfill agent infra" / "retroactive project setup" → retroactive-project-setup
 "what should I do"    → project-orchestrator
 "orchestrate / split" → project-orchestrator

@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-04T09:49:02.422747+00:00
-Mode: skill-library | Nodes: 206 | Edges: 460
+Generated: 2026-07-04T11:20:54.519448+00:00
+Mode: skill-library | Nodes: 207 | Edges: 463
 
 **Why this mode:** skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).
 
@@ -15,7 +15,7 @@ Mode: skill-library | Nodes: 206 | Edges: 460
 - split-skill
 - feature-spec
 - experimentation
-- learn-from
+- project-setup
 
 ## Surprising cross-community connections
 - project-orchestrator → skill-routing (invokes: project ↔ skill)
@@ -36,7 +36,7 @@ Mode: skill-library | Nodes: 206 | Edges: 460
 - What depends on secure-skill, and what does secure-skill invoke?
 
 ## Provenance
-- Authoritative invokes: 214
-- EXTRACTED: 236 | INFERRED: 224
+- Authoritative invokes: 217
+- EXTRACTED: 239 | INFERRED: 224
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

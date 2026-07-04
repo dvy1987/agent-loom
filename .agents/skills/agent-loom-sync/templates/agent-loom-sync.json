@@ -1,0 +1,7 @@
+{
+  "upstream": "../agent-loom",
+  "protected_skills": [],
+  "forked_skills": {},
+  "last_sync": null,
+  "upstream_commit": null
+}
