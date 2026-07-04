@@ -1,10 +1,10 @@
 {
   "version": "2.2",
-  "generated_at": "2026-07-04T11:20:54.519448+00:00",
+  "generated_at": "2026-07-04T17:01:21.701060+00:00",
   "mode": "skill-library",
   "mode_reason": "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).",
   "scan_layers": [
-    "skills (103 in .agents/skills)",
+    "skills (104 in .agents/skills)",
     "repo-wide source (none — no .py/.ts/.tsx/.js outside .agents/skills)",
     "docs (AGENTS.md, README.md, docs/**/*.md)",
     "memory (docs/memory, handoffs)",
@@ -15,19 +15,19 @@
   ],
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 207,
-    "edges": 463,
-    "authoritative_edges": 217,
-    "extracted_edges": 239,
+    "nodes": 209,
+    "edges": 465,
+    "authoritative_edges": 218,
+    "extracted_edges": 241,
     "inferred_edges": 224,
     "node_types": {
       "config": 1,
-      "directory": 2,
+      "directory": 3,
       "doc": 77,
       "handoff": 16,
       "learning": 2,
       "memory": 6,
-      "skill": 103
+      "skill": 104
     }
   },
   "god_nodes": [
@@ -109,7 +109,22 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "memory": [
+    "code": [
+      "app-security-hardening",
+      "browser-testing-with-devtools",
+      "ci-cd-and-automation",
+      "code-review-crsp",
+      "code-simplification",
+      "design-direction",
+      "design-review",
+      "design-system",
+      "frontend-design",
+      "performance-optimization",
+      "shipping-and-launch",
+      "svg-creation",
+      "technical-debt-audit"
+    ],
+    "debug": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -201,22 +216,6 @@
       "universal-skill-creator",
       "validate-skills",
       "venture-exploration"
-    ],
-    "code": [
-      "code-simplification",
-      "technical-debt-audit"
-    ],
-    "design": [
-      "app-security-hardening",
-      "browser-testing-with-devtools",
-      "ci-cd-and-automation",
-      "code-review-crsp",
-      "design-direction",
-      "design-review",
-      "design-system",
-      "frontend-design",
-      "performance-optimization",
-      "shipping-and-launch"
     ]
   },
   "nodes": [
@@ -331,6 +330,14 @@
       "path": ".agents/skills/split-skill/SKILL.md",
       "category": "meta",
       "community": "split"
+    },
+    {
+      "id": "skill_svg_creation",
+      "label": "svg-creation",
+      "type": "skill",
+      "path": ".agents/skills/svg-creation/SKILL.md",
+      "category": "project-specific",
+      "community": "svg"
     },
     {
       "id": "skill_incremental_implementation",
@@ -737,7 +744,7 @@
       "label": "validate-skills",
       "type": "skill",
       "path": ".agents/skills/validate-skills/SKILL.md",
-      "category": "meta",
+      "category": "project-specific",
       "community": "validate"
     },
     {
@@ -1771,6 +1778,13 @@
       "type": "directory",
       "path": "docs",
       "community": "structure"
+    },
+    {
+      "id": "directory_hooks",
+      "label": "hooks",
+      "type": "directory",
+      "path": "hooks",
+      "community": "structure"
     }
   ],
   "edges": [
@@ -1881,6 +1895,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_svg_creation",
+      "target": "skill_design_system",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_memory",
@@ -2289,6 +2312,15 @@
     },
     {
       "source": "skill_project_setup",
+      "target": "skill_agent_loom_sync",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_project_setup",
       "target": "skill_retroactive_project_setup",
       "relation": "invokes",
       "confidence": "EXTRACTED",
@@ -2326,6 +2358,15 @@
     {
       "source": "skill_problem_to_plan",
       "target": "skill_feature_spec",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_retroactive_project_setup",
+      "target": "skill_agent_loom_sync",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -2529,6 +2570,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_design_system",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/design-system/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_feature_spec",
@@ -5728,24 +5778,6 @@
     {
       "source": "skill_retroactive_project_setup",
       "target": "skill_knowledge_graph",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_project_setup",
-      "target": "skill_agent_loom_sync",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_retroactive_project_setup",
-      "target": "skill_agent_loom_sync",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

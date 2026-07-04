@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T11:20:54.519448+00:00",
+  "generated_at": "2026-07-04T17:01:21.701060+00:00",
   "edges": [
     {
       "source": "skill_experiment_backlog",
@@ -108,6 +108,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_svg_creation",
+      "target": "skill_design_system",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_memory",
@@ -516,6 +525,15 @@
     },
     {
       "source": "skill_project_setup",
+      "target": "skill_agent_loom_sync",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_project_setup",
       "target": "skill_retroactive_project_setup",
       "relation": "invokes",
       "confidence": "EXTRACTED",
@@ -553,6 +571,15 @@
     {
       "source": "skill_problem_to_plan",
       "target": "skill_feature_spec",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_retroactive_project_setup",
+      "target": "skill_agent_loom_sync",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -756,6 +783,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_design_system",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/design-system/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_feature_spec",
@@ -1795,24 +1831,6 @@
     {
       "source": "skill_retroactive_project_setup",
       "target": "skill_knowledge_graph",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_project_setup",
-      "target": "skill_agent_loom_sync",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_retroactive_project_setup",
-      "target": "skill_agent_loom_sync",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

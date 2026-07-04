@@ -229,6 +229,7 @@ domain          | specialized, not universally needed      | install only when n
 "build a frontend"    → frontend-design (orchestrator → design-direction, design-system, design-review)
 "pick a design direction" / "explore looks" → design-direction
 "design system" / "design tokens" / "DESIGN.md" / "icons" → design-system
+"create SVG" / "SVG animation" / "animate SVG" / "SVG loader" / "path animation" → svg-creation
 "review this UI"      → design-review
 "design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
 "A/B test this"       → experimentation

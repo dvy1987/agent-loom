@@ -771,6 +771,17 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `svg-creation`
+**Triggers:** "create SVG", "draw an SVG icon", "animate an SVG", "SVG loader", "path animation", "shape morph", "animated logo", "line drawing effect", "stroke-dashoffset", "SMIL animation", "vector illustration", "fix trashy SVG"
+**What it does:** Handcrafts static SVG graphics and performant animations (line-draw, spinners, morphs, motion paths). Picks SMIL vs CSS from delivery context (`<img>`/README vs inline DOM). Hard-bans scripts and external refs. Distills patterns from supermemoryai svg-animations and SVG-ORA prompt discipline. For token-aligned icon families inside a design build, pairs with `design-system` static craft.
+**Calls:** `design-system` (when icon set must match DESIGN.md tokens)
+**Output files:** `assets/svg/<name>.svg` (or user path)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/static-craft.md`, `references/animation-craft.md`, `references/ai-svg-prompts.md`, `references/examples.md`
+**Impact report:** Asset name, static vs animated, delivery context, path count, quality gate pass/fail
+
+---
+
 ### `experimentation`
 **Triggers:** "design an experiment", "A/B test this", "should we A/B test", "what should we test next", "analyse experiment results", "read out this experiment", "run a holdout test", "experiment on the landing page", "test this hypothesis", "is this lift real", "ship or kill this test"
 **What it does:** Orchestrator for the experimentation skill suite. Diagnoses lifecycle stage (no idea yet → backlog; have idea → spec; have spec → runbook; have results → readout) and routes to the right child. Enforces decision-class labelling (`Causal | Directional | Instrumentation`), SRM hard gate before any readout, and pre-committed decision rules. Platform-agnostic with PostHog as the primary binding. Lifecycle-decomposed (not method-decomposed) — A/B / holdout / switchback / MAB are method choices inside `experiment-spec`.

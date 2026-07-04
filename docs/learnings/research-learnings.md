@@ -96,3 +96,15 @@ Template:
 - Recommended action: Applied — auto-extract inline + workflow synthesis; 17 prior hand-curated AO examples retained
 - Skills modified: 77 new L3 files + SKILL.md resource/pointer wiring
 - Notes: enrich thin auto-backfills via improve-skills TARGET=<skill> over time
+
+## 2026-07-04 - SVG creation and animation craft from community repos
+- Source: supermemoryai/skills svg-animations, seeb4coding/SVG-ORA-Studio, orsinium-labs/svg.py, visioncortex/vtracer (learn-from repo sweep)
+- Type: repo
+- Credibility: 8/12 (supermemory skill), 6/12 (SVG-ORA prompts), 9/12 (svg.py), 11/12 (vtracer)
+- Security: SAFE — patterns distilled; no external URLs embedded in skill body
+- Classification: GOTCHA (SMIL vs CSS by delivery context), TECHNIQUE (stroke-dash draw, morph rules), FAILURE_MODE (guessed dash lengths, script in SVG)
+- Insight: agent-loom had static svg-craft only; trash animations come from wrong animation tech for context and unmeasured path lengths
+- Recommended action: Applied — new `svg-creation` skill with static-craft, animation-craft, ai-svg-prompts, examples L3
+- Skills modified: design-system (caller to svg-creation for animated SVG), library docs
+- Skills created from this learning: svg-creation (`.agents/skills/svg-creation/`)
+- Notes: vtracer noted for bitmap→vector pipeline; GSAP/Motion out of scope (runtime libs)

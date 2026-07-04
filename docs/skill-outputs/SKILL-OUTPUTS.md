@@ -238,3 +238,4 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | improve-skills | 6 daily-driver skills + check_phase3_depth.py, curate_daily_driver_l3.py | Phase 3 application depth COMPLETE — AO craft in references + curated L3 |
 | 2026-07-04 | improve-skills | INGEST-QUEUE backfill, check_ao_sections.py, backfill_red_flags.py, query_graph routing | Ongoing hygiene: ingest queue seeded, AO gate, Red Flags library-wide, authoritative graph routing |
 | 2026-07-04 | universal-skill-creator | hooks/, doc_cache.py, skill wiring | #11 simplify-ignore + #12 ETag doc cache from addyosmani (MIT) |
+| 2026-07-04 | universal-skill-creator | .agents/skills/svg-creation/ | New svg-creation skill — static SVG + SMIL/CSS animation craft (supermemoryai, SVG-ORA patterns) |
