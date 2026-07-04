@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -84,6 +84,12 @@ For each gap: ask user to provide (file, doc, URL). If unavailable: flag as `[KN
 ### Step 5 — Write Process Entry
 
 Write to `docs/processes/YYYY-MM-DD-<task-slug>.md` using the schema from the design spec (Section 6.2). Append summary to latest `docs/processes/process*.md` volume (split at 500 lines). Return `process_entry_ref` and `complexity_class`.
+
+Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
+```markdown
+| YYYY-MM-DD HH:MM | process-decomposer | docs/processes/YYYY-MM-DD-<slug>.md | Process entry: <task summary> |
+```
+Tell the user: "Saved to `docs/processes/...`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.md`."
 
 ### Step 6 — Pattern Learning
 
@@ -167,7 +173,7 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 
 ## Prune Log
 Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+- Added `docs/skill-outputs/SKILL-OUTPUTS.md` append on Step 5 (improve-skills targeted 2026-07-04)
 
 
 ## Impact Report
