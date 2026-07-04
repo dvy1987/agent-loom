@@ -232,6 +232,7 @@ All 12 coding gap skills created. Library at **102 skills** including `performan
 
 - **Comparisons:** 8 pairwise docs + `docs/comparisons/2026-06-01-SUMMARY.md` (`5c4e443`).
 - **Application:** Craft merge into 10+ skills; rationalizations + verification extended to **all** thinking, meta, and project-specific skills (2026-07-04, `3145508` + follow-up).
+- **Daily-driver depth:** Six coding skills fully merged — reference depth + curated L3 (`6ed7b84`, `check_phase3_depth.py`). Not optional polish.
 - **L3:** 102/102 `references/examples.md`; quality tiers in `docs/SKILL-EXAMPLES-INDEX.md`.
 - **Validation:** Run `check_p2_craft.py`, `agentskills validate`, and `validate_application_mode.py` locally — no repo CI workflow.
 

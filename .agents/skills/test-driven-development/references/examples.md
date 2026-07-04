@@ -1,6 +1,8 @@
-# TDD — Full Worked Examples
+# Test-Driven Development — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge. Source: addyosmani/agent-skills `test-driven-development`.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Prove-It, regression, and RED-GREEN-REFACTOR walkthroughs. Deep patterns: `references/tdd-patterns.md`.
 
 ---
 
@@ -133,3 +135,12 @@ Once bisect names the commit, write Prove-It test on main that fails without the
 **Input:** PR fixes login 500 without new test
 
 **Output:** Request changes — "Bug fix must include Prove-It regression per `test-driven-development/references/tdd-patterns.md`."
+---
+
+## Verification checklist (full session)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Deep reference file cited and used (patterns / triage / conventions / schemas / prompts / ui-patterns)
+- [ ] Reader can trace input → concrete agent actions → durable outcome
+- [ ] Cross-skill links honored (TDD↔debug↔review, design suite chain)
+

@@ -235,3 +235,4 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | knowledge-graph | build_graph.py v2.1, validate_application_mode.py, schema/integration | Fix auto mode: consumer repos with skills+code → `full` graph (entire repo, not skills-only) |
 | 2026-07-04 | knowledge-graph | build_graph.py v2.2, graph_health.py, SKILL.md | Repo-wide rglob scan; coverage gate; P0 skills-only-graph health check |
 | 2026-07-04 | improve-skills | 14 L3 references + curate_padded_l3.py, fix_craft_overflow.py | Padded → curated: memory suite, design suite, secure-skill-repo-ingestion (23 curated, 0 padded) |
+| 2026-07-04 | improve-skills | 6 daily-driver skills + check_phase3_depth.py, curate_daily_driver_l3.py | Phase 3 application depth COMPLETE — AO craft in references + curated L3 |

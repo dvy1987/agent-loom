@@ -58,6 +58,7 @@ Repeat Steps 2–4 for the next small unit of functionality.
 ### Step 5 — Verify and Save
 Ensure all tests in the suite pass.
 Save the tests to `tests/` and the code to `src/` (or project equivalent).
+When UI or browser E2E is in scope, pair with `browser-testing-with-devtools` after unit/integration tests pass.
 
 Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```markdown

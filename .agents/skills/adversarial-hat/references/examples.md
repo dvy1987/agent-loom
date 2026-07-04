@@ -1,6 +1,8 @@
-# Adversarial Hat — Full Worked Examples
+# Adversarial Hat — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge. Copy prompts from `adversarial-prompt.md`.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Three-phase document review and in-flight CLAIM→DOUBT loops. Copy prompts: `references/adversarial-prompt.md`.
 
 ---
 
@@ -129,3 +131,12 @@ User: yes → spawn with file-based artifact per `adversarial-prompt.md` stdin-s
 
 See `references/adversarial-prompt.md` for all copy-paste prompts (code, plan, architecture, TDD, CLI shapes).
 See `SKILL.md` for three-phase Diagnostic → Creative → Challenge and stop conditions.
+---
+
+## Verification checklist (full session)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Deep reference file cited and used (patterns / triage / conventions / schemas / prompts / ui-patterns)
+- [ ] Reader can trace input → concrete agent actions → durable outcome
+- [ ] Cross-skill links honored (TDD↔debug↔review, design suite chain)
+

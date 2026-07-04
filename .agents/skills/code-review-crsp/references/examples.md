@@ -1,6 +1,8 @@
-# Code Review CRSP — Full Worked Examples
+# Code Review CRSP — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge. See `review-conventions.md` for five-axis depth.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Five-axis reviews with severity prefixes and merge gates. Deep reference: `references/review-conventions.md`.
 
 ---
 
@@ -134,3 +136,12 @@ Verdict: Approve
 ---
 
 See `references/review-conventions.md` for axis questions, prefix table, and verify-the-verification checklist.
+---
+
+## Verification checklist (full session)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Deep reference file cited and used (patterns / triage / conventions / schemas / prompts / ui-patterns)
+- [ ] Reader can trace input → concrete agent actions → durable outcome
+- [ ] Cross-skill links honored (TDD↔debug↔review, design suite chain)
+

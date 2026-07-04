@@ -1,6 +1,8 @@
-# Debug and Fix — Full Worked Examples
+# Debug and Fix — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Six-step AO triage, untrusted output, and graph-assisted localize. Deep reference: `references/triage-and-untrusted-output.md`.
 
 ---
 
@@ -115,3 +117,12 @@ Commit identified → Prove-It on main → minimal fix.
 
 See `references/triage-and-untrusted-output.md` for full AO triage recipes and untrusted-data rules.
 See `SKILL.md` for hard rules and verification checklist.
+---
+
+## Verification checklist (full session)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Deep reference file cited and used (patterns / triage / conventions / schemas / prompts / ui-patterns)
+- [ ] Reader can trace input → concrete agent actions → durable outcome
+- [ ] Cross-skill links honored (TDD↔debug↔review, design suite chain)
+

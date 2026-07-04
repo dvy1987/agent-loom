@@ -1,6 +1,8 @@
-# Implementation Plan — Full Worked Examples
+# Implementation Plan — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge. See `plan-schemas.md` for full templates.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Vertical slices, AO task templates, and checkpoint blocks. Deep reference: `references/plan-schemas.md`.
 
 ---
 
@@ -114,3 +116,12 @@ Users register with email/password; verify via link; MVP demoable after Task 2.
 ---
 
 See `references/plan-schemas.md` for task template, sizing table, and filled M/XS examples.
+---
+
+## Verification checklist (full session)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Deep reference file cited and used (patterns / triage / conventions / schemas / prompts / ui-patterns)
+- [ ] Reader can trace input → concrete agent actions → durable outcome
+- [ ] Cross-skill links honored (TDD↔debug↔review, design suite chain)
+

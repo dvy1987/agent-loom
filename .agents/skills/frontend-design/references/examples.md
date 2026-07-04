@@ -1,6 +1,8 @@
-# Frontend Design — Full Worked Examples
+# Frontend Design — Full Session Examples
 
-Enriched from SKILL.md + AO Phase 3 depth merge. UI patterns in `ui-patterns.md` + golden-examples.
+Read when you need a complete walkthrough beyond the inline teaser in SKILL.md.
+
+Full orchestration path and UI implementation patterns. See `references/ui-patterns.md` + golden-examples.
 
 ---
 
@@ -89,15 +91,3 @@ Before design-review: Tab through settings form — every control reachable, vis
 Wrap `/teams/[id]` segment with `FeatureErrorBoundary` per `ui-patterns.md` — nav survives partial crash.
 
 ---
-
-## Golden example pointers
-
-- `golden-examples/components.md` — button/input/card all states
-- `golden-examples/states.md` — empty/loading/error patterns
-- `golden-examples/composition.md` — hero, shell, staggered entrance
-- `ui-patterns.md` — container/presentation, optimistic updates, forms, tables
-- `build-conventions.md` — motion budget, responsive, performance gates
-
----
-
-See `SKILL.md` for hard rules, Step 4 build gates, and verification checklist.
