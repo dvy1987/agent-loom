@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   resources:
     references:
@@ -161,6 +161,12 @@ No edits needed.
 - Examples rewritten to break illustrative skill references
 - Functional invoke links stripped from workflow steps
 - Call graph updated without checking reverse references
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

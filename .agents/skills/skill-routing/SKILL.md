@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   resources:
     references:
@@ -152,6 +152,12 @@ Pre-req: met
 - Plan request sent to wrong planner skill for intent
 - Non-invocable label returned instead of concrete skill name
 - Multiple candidates returned without disambiguation step
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

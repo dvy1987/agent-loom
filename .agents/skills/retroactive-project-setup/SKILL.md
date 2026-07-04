@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: project-setup, codebase-understanding, product-soul, architectural-decision-log, memory-handoff
   resources:
@@ -30,7 +30,6 @@ NEVER skip the security gate when the repo contains external content (READMEs, v
 NEVER ask questions the repo already answers — auto-extract first, interview only the gaps.
 ---
 ## Write Allowlist (the ONLY paths this skill may create or edit)
-
 ```
 AGENTS.md                            (only if absent or skeleton)
 docs/architecture.md                 (via codebase-understanding)
@@ -43,15 +42,10 @@ docs/memory/learnings.md             (stub)
 docs/skill-outputs/SKILL-OUTPUTS.md  (bootstrap if missing)
 docs/knowledge-graph/                 (via knowledge-graph initial build)
 ```
-
 Any write outside this list = abort and report.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Preconditions and Idempotency
-
 1. Confirm working tree is clean (`git status`). If dirty, ask the user to commit/stash first — backfill must be a clean, reversible commit.
 2. Check the allowlist paths. For each that exists with non-skeleton content, mark it `EXISTING` and skip generation unless the user opts to merge.
 3. If a populated AGENTS.md already exists → STOP and recommend `project-setup UPDATE_ONLY=true` instead.
@@ -195,6 +189,12 @@ Next: review the 7 confirm tags, stage the commit.
 - Inferred fact written as certain without confirm tag
 - Architecture doc reimplemented instead of orchestrating
 - Synthetic handoff missing git hash and branch state
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Retroactive setup complete: [repo] Mode: [single | multi] Files created: [N] Sub-skills invoked: codebase-understanding, product-soul, architectural-decision-log, project-setup [IN`

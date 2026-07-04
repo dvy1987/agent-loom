@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills security-and-hardening (11/12, 2026-05-29)
   resources:
@@ -153,6 +153,12 @@ Validate request DTO at the route boundary, enforce authZ (user can only update 
 - Multi-tenant query missing account or tenant constraint
 - Secrets or tokens logged in error or debug output
 - External JSON trusted without schema or type validation
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

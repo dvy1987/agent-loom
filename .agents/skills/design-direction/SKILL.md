@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: Superdesign anti-slop chain, Anthropic frontend-design skill, design-archetype (merged), kevindeasis/awesome-ui (ux-context checklist, 7/12)
   resources:
@@ -149,6 +149,11 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 ```

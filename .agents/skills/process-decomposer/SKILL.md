@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -164,6 +164,12 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 - Partial cluster match treated as exact process hit
 - skill-chain task launched outside project-orchestrator
 - Decomposition skips triage on complex multi-skill request
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

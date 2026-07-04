@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: code-review-skill-builtin, addyosmani/agent-skills code-review-and-quality (Phase 3 merge)
   resources:
@@ -184,13 +184,12 @@ Want me to fix any of these? Reply with the numbers.
 - Test file changes skipped or given superficial pass
 - Large rename treated as logic change without diff-filter
 - Findings lack severity and concrete remediation
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
-```
-Review scope: [branch / uncommitted / specific files]
-Files reviewed: [count]
-Issues found: [critical: N, high: N, medium: N, low: N]
-PRD alignment: [checked / not applicable]
-Fixes applied: [list, or "none — advisory only"]
-Tests: [command + pass/fail count]
-```
+`Review scope: [branch / uncommitted / specific files] Files reviewed: [count] Issues found: [critical: N, high: N, medium: N, low: N] PRD alignment: [checked / not applicable] Fixes applied: [list, or "none — advisory...`

@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     Red Hat eval-driven dev 2026, DeepEval framework,
@@ -50,31 +50,25 @@ Map the system's evaluation maturity:
 - Length constraints, response time thresholds
 - Tool-call argument validation
 - Retrieval precision thresholds (for RAG systems)
-
 **Layer 2 — Statistical evaluators** (numeric, trend-trackable):
 - Embedding similarity between output and reference
 - BLEU/ROUGE-like similarity metrics
 - Latency distributions, cost per session
 - Token usage patterns, retrieval recall
-
 **Layer 3 — LLM-as-judge evaluators** (nuanced, expensive):
 - Rubric-based scoring using `eval-judge` patterns
 - Groundedness assessment (output vs. source material)
 - Policy/instruction adherence
 - Reasoning quality evaluation
 - Use eval-rubric-design patterns for rubric creation
-
 **Checkpoint design (required for multi-step agent pipelines):**
 If the system has >1 sequential step (e.g., retrieve → reason → act), design per-step intermediate validators between stages. Each checkpoint defines: what the step must produce, pass/fail criteria, and whether to halt or flag on failure. Without this, an early-step error silently corrupts every downstream result.
-
 ### Step 3 — Design the Eval Dataset
-
 Require four dataset splits:
 1. **Happy path:** Representative successful interactions
 2. **Edge cases:** Boundary conditions, ambiguous inputs, long contexts
 3. **Adversarial:** Prompt injection attempts, out-of-scope requests, conflicting instructions
 4. **Known bad:** Pre-generated outputs with intentional failures — these validate that evaluators catch real problems
-
 **Minimum viable dataset:** 30-50 cases per split for initial validation. Scale to 100+ for production.
 
 ### Step 4 — Wire CI/CD Integration
@@ -195,6 +189,12 @@ Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
 - Judge or rubric change without regression on bad cases
 - LLM judge run on 100% traffic with no sampling plan
 - Pipeline green while dimension-level failures are hidden
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Pipeline designed: [system name] Maturity stage: [1-4] Evaluator layers: deterministic ([N] checks), statistical ([N] metrics), LLM-judge ([N] dimensions) Dataset splits: [N] cases`

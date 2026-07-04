@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   resources:
     references:
@@ -105,6 +105,12 @@ Output: append a timestamped handoff with current status, unresolved tasks, and 
 - Secrets tokens or raw private data in handoff body
 - Long decision rationale pasted instead of log link
 - Git state omitted from handoff next-agent context
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

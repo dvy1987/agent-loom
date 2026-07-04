@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills source-driven-development (11/12, 2026-05-29)
   resources:
@@ -159,6 +159,11 @@ Implement with cited comment. Reject manual useState+isPending if docs recommend
 - **`references/source-hierarchy.md`**: Authority order and non-authoritative sources — read at Step 2.
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

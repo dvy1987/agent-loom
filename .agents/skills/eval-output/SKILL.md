@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), arXiv:2306.05685 (MT-Bench/LLM-as-Judge),
@@ -151,6 +151,12 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 - Single overall score hides dimensional tradeoffs
 - Numeric score assigned before written justification
 - Two outputs compared via duplicate solo evaluations
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, always report:

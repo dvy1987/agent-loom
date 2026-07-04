@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.4"
+  version: "1.5"
   category: thinking
   sources: obra/superpowers brainstorming, agentskills.io best practices, addyosmani/agent-skills interview-me + idea-refine (Phase 3 merge)
   resources:
@@ -40,21 +40,15 @@ One question per message. Wait for the answer before asking the next. Focus on:
 - **Success criteria** — how will we know it worked?
 - **Constraints** — tech stack, timeline, patterns to follow?
 - **Non-goals** — what is explicitly out of scope?
-
 Prefer multiple-choice when options are known. Stop when you have enough to design.
-
 **Quantified stop condition (HYPOTHESIS + CONFIDENCE %).** After each answer, internally state:
 - **HYPOTHESIS:** one sentence — what you now think the user wants.
 - **CONFIDENCE:** integer % (0–100) you can write a defensible design from this.
-
 Proceed to Step 5 only when CONFIDENCE ≥ 70%. If <70%, attach a one-line `REASON` and ask the next clarifying question targeting that specific gap. Never proceed on "user seems satisfied" alone.
-
 ### Step 4b — Restate (How Might We)
 Before options, restate the problem as one crisp **How Might We** sentence. Confirm with the user if ambiguous.
-
 ### Step 5 — Propose 2–3 Approaches
 Present distinct approaches with tradeoffs (5–8 variations max — quality over quantity). Lead with your recommendation and explain why.
-
 ### Step 6 — Present Design in Sections
 Once the user picks an approach, present the design one section at a time. Ask for approval after each section.
 
@@ -195,6 +189,12 @@ Do you have an existing design system or component library (Tailwind, MUI, style
 - Multiple questions asked in a single message
 - Existing codebase ignored before proposing new structure
 - Direction chosen without user agreement on approach
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Brainstorming: [topic] | doc: docs/specs/YYYY-MM-DD-<topic>-design.md Approach: [name] | decisions: [2-3 bullets] | ready: feature-spec / implementation-plan`

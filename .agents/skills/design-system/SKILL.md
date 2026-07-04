@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Google design-md, W3C DTCG tokens, APCA, design-tokens-craft + icon-craft (merged)
   resources:
@@ -125,6 +125,11 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 ```

@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -149,6 +149,12 @@ Handing off to agent-launcher.
 - Partial pass reported as acceptable overall pass
 - Architecture spec missing for complex multi-agent build
 - Knowledge-gap flags ignored instead of acknowledged
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

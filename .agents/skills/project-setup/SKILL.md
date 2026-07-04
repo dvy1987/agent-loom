@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agentskills.io, OpenAI-Codex-AGENTS.md, arXiv:2601.20404, GitHub-blog-2500-repos-analysis, Augment-Code-AGENTS.md-guide
   resources:
@@ -69,20 +69,14 @@ One question at a time. Stop each axis when you have enough.
 2. "Tech stack and key dependencies?"
 3. "Any non-obvious architectural decisions or patterns?"
 4. "What does 'done' look like for a typical task?"
-
 Read `references/interview-questions.md` for the full question bank when deeper probing is needed.
-
 ### Step 3 — Map Skill Gaps (Dynamic)
-
 Based on the interview, identify the user's skill gaps as capability categories (e.g., "security", "testing", "architecture", "product thinking", "release management").
-
 For each identified gap:
 1. **Call `skill-finder`** to search the entire installed skill library for skills that address the gap. Do not rely on a hardcoded list — scan what is actually installed.
 2. **If skill-finder finds a match:** map it to the gap.
 3. **If no skill exists for a gap:** ask the user — "No skill covers [gap]. Want me to create one?" If yes, call `universal-skill-creator` to build it before continuing.
-
 Always include the `secure-skill` family regardless of user gaps — security is non-optional.
-
 **Set `owner_mode`** (technical | hybrid | non-technical) from Axis 1 role + "could you evaluate an architectural decision?". Read `references/architecture-design-rigor.md` for the autonomy policy + quality rubric. Non-technical/hybrid owners get the Agent-Led Architecture & Design block.
 
 ### Step 4 — Generate the AGENTS.md
@@ -195,6 +189,12 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 - Orchestration Map auto-generated without milestone context
 - Skill gaps not mapped to installed library
 - Memory skeleton skipped for repo using memory suite
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Project setup complete: [name] | Platform: [target] | Mode: [single|multi] Files saved: [paths] ([line counts]) | Commands auto-extracted from: [manifests] User role: [role] | Owne`

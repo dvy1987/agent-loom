@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Testing-Business-Ideas-Bland-Osterwalder, YC-Why-Now-Why-You, Lean-Startup-Ries, JTBD-Christensen, The-Mom-Test-Fitzpatrick
   resources:
@@ -43,21 +43,15 @@ Required inputs (ask if missing — one question at a time):
 - Target segment (specific, not "everyone")
 - The painful workaround they use today
 - The user's relationship to this domain (founder-market-fit)
-
 If `docs/ventures/models/<idea>-canvas.md` exists, read it. If `docs/ventures/discovery/<idea>-interviews.md` exists, read it — interview evidence outranks hypothesis.
-
 ### Step 2 — Sizing (always)
 Invoke `fermi` to estimate **SOM** (year-1 reachable revenue). Document factor tree, central estimate, range, most uncertain factor. Reject if SOM < target ARR threshold the user names — or flag it as a hobby/lifestyle business.
-
 ### Step 3 — Surface hidden beliefs
 Invoke `assumption-mapping` on the idea. Capture top 5 critical-and-unvalidated assumptions. These become the basis for the kill test in Step 6.
-
 ### Step 4 — Score the rubric
 Score each of the 11 dimensions 1–5 using `references/evaluation-rubric.md` (full anchors + dimension definitions). One sentence of evidence per score. Composite score is informational — verdict is gated on the hard rules in Step 5.
-
 ### Step 5 — Apply the verdict gate
 Read `references/evaluation-rubric.md` "Verdict Gate". Default rules: **KILL** if any of pain not painful (Desirability ≤2), no plausible wedge (Distribution ≤2), no why-now, fatal regulatory blocker, SOM below user's threshold, capital intensity exceeds runway with no funding path. **ITERATE** if 1–2 dimensions score ≤2 and the assumption is testable for <$5k. **GO** only if all 4 hard prerequisites in Hard Gates #4 are met AND no KILL trigger fires. Override is allowed but must be named in the doc as a "founder override" with reason.
-
 ### Step 6 — Next kill test
 For the riskiest unvalidated assumption from Step 3, design the cheapest disconfirming test using `references/kill-test-recipes.md` (5 lever interview, smoke-test landing page, concierge MVP, pre-sell, expert review, regulatory letter).
 
@@ -195,6 +189,12 @@ Two questions before I evaluate:
 - Monetisation deferred for revenue-dependent viability
 - GO issued with founder-market-fit score of one unmitigated
 - Kill criteria from evaluation ignored after low score
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Idea evaluation complete: <idea> File saved: docs/ventures/evaluations/YYYY-MM-DD-<slug>-eval.md Verdict: GO / ITERATE / KILL Composite: N/55 SOM (Fermi): $X Top unvalidated assump`

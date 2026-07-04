@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Testing-Business-Ideas-Bland-Osterwalder, Lean-Startup-Ries, The-Mom-Test-Fitzpatrick, Business-Model-Generation-Osterwalder, YC-Startup-School
   resources:
@@ -46,10 +46,8 @@ Check what already exists:
 - `docs/ventures/evaluations/` — verdicts
 - `docs/ventures/discovery/` — interview synth
 - `docs/product-soul.md` — already committed?
-
 ### Step 2 — Classify the request
 Read `references/routing-table.md`. Match user intent to one of five stages:
-
 | Stage | Trigger phrases | Route to |
 |---|---|---|
 | **Generate** | "what should I build", "give me startup ideas", "I don't know what to build", "ideate", "blank page" | `idea-generation` |
@@ -57,22 +55,18 @@ Read `references/routing-table.md`. Match user intent to one of five stages:
 | **Evaluate** | "is this a good idea", "evaluate this idea", "screen this", "go/no-go", "should I build this" | `idea-evaluation` |
 | **Validate** | "talk to customers", "validate the problem", "Mom Test", "interview users", "I just talked to N people" | `customer-discovery` |
 | **Commit / Hand off** | "this is the one", "I'm committing to this", "let's productise this" | gate-check → `product-soul` |
-
 If ambiguous, ask one binary question. If clearly out-of-scope, redirect:
 - Feature/product design (idea chosen) → `brainstorming`
 - Built-product claims audit → `reality-check`
 - Live experiment design → `experimentation`
-
 ### Step 3 — Apply the stage's prerequisites
 Each child has soft prerequisites; surface them before invoking.
-
 | Child | Prerequisites |
 |---|---|
 | `idea-generation` | None. Founder/domain context preferred but not required. |
 | `business-modeling` | Idea + segment named. If missing, ask before invoking. |
 | `idea-evaluation` | Idea + segment + current workaround named. Canvas optional but improves quality. |
 | `customer-discovery` | Idea + segment + ONE specific assumption to validate. |
-
 If prereqs missing, ask one question, then invoke. Do not run a child blind.
 
 ### Step 4 — Invoke exactly one child
@@ -195,6 +189,12 @@ Top-level entry point. Called by user or `project-orchestrator`. Calls `idea-gen
 - Segment size accepted on trust me without evidence
 - product-soul invoked before strategic concept survives eval
 - Kill from evaluation ignored to keep exploring same idea
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Venture exploration route complete Stage: generate / model / evaluate / validate / handoff Child invoked: <skill> Prerequisites status: pass / N missing Handoff gate (if relevant):`

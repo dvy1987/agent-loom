@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Kohavi/Tang/Xu Trustworthy Online Controlled Experiments, Microsoft ExP guidelines, Statsig 2026 docs, Eppo MDE handbook
   resources:
@@ -167,6 +167,11 @@ Status: [READY-TO-LAUNCH | DOWNGRADED-TO-DIRECTIONAL | BLOCKED-INSUFFICIENT-POWE
 - **`references/spec-template.md`** — The full spec doc structure to write to disk. Read in Step 9.
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

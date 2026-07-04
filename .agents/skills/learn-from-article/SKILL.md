@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.1"
+  version: "2.2"
   category: meta
   resources:
     references:
@@ -163,6 +163,12 @@ Learnings only - no current skill covers rate limiting. Save to `docs/learnings/
 - Medium or dev.to piece taken as fact without evidence
 - Best-practices list adopted without production proof
 - Article fetched and persisted before secure-* SAFE
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, always report:

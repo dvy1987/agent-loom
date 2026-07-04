@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -95,6 +95,12 @@ Revisit when: another cross-platform standard path is adopted or the user change
 - Old decision overwritten instead of superseded link
 - Deferred item recorded as rejected decision
 - Rationale duplicated in handoff instead of decision-log link
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

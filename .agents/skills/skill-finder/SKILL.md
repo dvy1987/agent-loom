@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
   resources:
@@ -120,6 +120,12 @@ Extending `create-agent-prompt` to include system prompt generation. Verifying l
 - Partial overlap misread as full capability coverage
 - No-match not returned when library truly lacks fit
 - Called skill recommended without reading full SKILL.md
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

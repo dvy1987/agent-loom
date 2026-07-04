@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills shipping-and-launch (11/12, 2026-05-29)
   resources:
@@ -132,6 +132,12 @@ Owner / window: [who / when]
 - Traffic shifted before error and KPI monitors exist
 - Full rollout for non-trivial change without canary
 - Staging-only validation at fraction of prod data volume
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

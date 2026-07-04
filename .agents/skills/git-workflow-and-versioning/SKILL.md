@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills git-workflow-and-versioning (11/12, 2026-05-29)
   resources:
@@ -144,6 +144,12 @@ Run: `npm test` → pass, then commit.
 - Formatting-only changes mixed with behavior commits
 - .env or secrets committed before gitignore exists
 - Conventional commit type mismatches actual change nature
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

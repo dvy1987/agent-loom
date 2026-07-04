@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: meta
   sources: SkillReducer arXiv:2603.29919, agentskills.io best practices, Vercel AGENTS.md research
   resources:
@@ -177,6 +177,12 @@ Result: 354 → 115 lines (67% reduction)
 - Description triggers removed during compression
 - Content moved to references/ without load trigger
 - CORE workflow steps deleted to hit line budget
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, always report:

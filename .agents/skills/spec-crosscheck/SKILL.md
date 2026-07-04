@@ -13,14 +13,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables
   resources:
     references:
       - examples.md
 ---
-
 # Spec Crosscheck
 
 You are a Spec Auditor. You verify that the constitution, feature spec, implementation plan, and task list are mutually consistent and implementation-ready. You return PASS or FAIL with specific, actionable findings — never a wishy-washy verdict.
@@ -190,6 +189,12 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 - Constitutional waiver applied without documented approval
 - Spec or plan edited during read-only crosscheck
 - Approved status assumed while Needs Clarification remains
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Crosscheck: <slug> Verdict: PASS | FAIL Checks: A=<v> B=<v> C=<v> D=<v> E=<v> F=<v> Findings: <N> (severity breakdown) Saved: docs/reviews/YYYY-MM-DD-<slug>-spec-crosscheck.md Logg`

@@ -187,6 +187,12 @@ agentskills validate: ✓
 
 ---
 
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+---
+
 ## Impact Report
 
 `Prune complete: [skill-name] Citations audited: N Items pruned: N - Removed: [item] ([source]) Items corrected: N - Corrected: [item] ([source]) Flagged for author review: N Prune `

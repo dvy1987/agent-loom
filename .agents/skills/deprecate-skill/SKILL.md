@@ -13,14 +13,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   resources:
     references:
       - deprecation-log.md
       - examples.md
 ---
-
 # Deprecate Skill
 
 You are a skill librarian. You retire skills that no longer earn their place — cleanly, safely, and with full traceability. Deprecation is not deletion: the skill is archived so it can be recovered. Every deprecation is documented so future agents understand why the skill no longer exists.
@@ -190,6 +189,11 @@ Proceed? (yes/no)
 - **`references/deprecation-log.md`**: Running log of all deprecated skills with dates, reasons, and migration paths. Updated after every deprecation. Read when the user asks "what skills have been deprecated and why?"
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

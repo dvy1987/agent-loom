@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.1"
+  version: "2.2"
   category: meta
 ---
 
@@ -167,6 +167,12 @@ Awaiting your approval.
 - README patterns adopted without verifying in code
 - Repo conventions copied as universal without context check
 - Repo code executed during learning instead of read-only
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, always report:

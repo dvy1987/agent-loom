@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   resources:
     references:
@@ -28,24 +28,18 @@ You are a Skill Naming & Intent Deconfliction Auditor. You catch three classes o
 ---
 ## Workflow
 ### Step 1 — Build the Name + Intent Registry
-
 Read every `.agents/skills/*/SKILL.md`. For each skill, extract:
 - `name` (from frontmatter)
 - `metadata.internal` (default false)
 - All trigger phrases from `description` (quoted phrases after "Load when", "Also triggers on", "triggers on")
 - The core purpose (one-sentence summary of what the skill does)
 - Category (`meta`, `project-specific`, `domain`, `thinking`)
-
 Store as `{name, internal, triggers[], purpose, category}`.
-
 ### Step 2 — Name Collision Check
-
 For every pair of skill names, check:
 1. **Lexical similarity** — shared stems, shared words, or names that differ by only a prefix/suffix (e.g., `skill-finder` vs `skill-finder-v2`, `debug-fix` vs `debug-and-fix`)
 2. **Semantic similarity** — names that imply the same action to a human reader (e.g., `code-review` vs `code-audit`, `plan-maker` vs `implementation-plan`)
-
 Flag pairs where names are confusingly similar but purposes differ. Do NOT flag intentional families (e.g., `secure-skill`, `secure-skill-runtime` — same family, different scope. `learn-from`, `learn-from-paper` — orchestrator + sub-skills).
-
 **Intentional family detection:** If skill A's name is a prefix of skill B's name AND skill A calls skill B (or vice versa), they are a family — skip.
 
 ### Step 3 — Trigger Overlap Check
@@ -195,6 +189,12 @@ INTENT DIVERSITY
 - inversion and adversarial-hat merged as same capability
 - Generic word overlap flagged without full phrase match
 - Deconflict report missing recommended survivor skill
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Deconflict complete: YYYY-MM-DD Mode: single-skill | library-wide Skills scanned: N Name collisions found: N Trigger overlaps found: N pairs Over-used triggers: N phrases Diversity failures: N | warnings: N | passes: ...`

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: github/awesome-copilot prd, jamesrochabrun/skills prd-generator, agentskills.io
   resources:
@@ -169,6 +169,11 @@ Read `references/metrics-frameworks.md` when the user needs help choosing succes
 - **`references/metrics-frameworks.md`**: AARRR, HEART, OKRs, North Star with examples. Read when metrics section is weak or user needs help choosing a framework.
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

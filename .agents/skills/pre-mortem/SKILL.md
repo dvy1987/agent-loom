@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
   sources: Gary-Klein-prospective-hindsight, Klein-1998-Sources-of-Power
   resources:
@@ -155,6 +155,12 @@ Decide who owns community before writing a single line of code.
 - Pre-mortem run mid-execution after commitment locked
 - Failure causes blame people instead of systems
 - Mitigations listed without owner or timeline
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
   sources: EMNLP-2023-Socratic-Questioning-arXiv:2303.09014
   resources:
@@ -133,6 +133,12 @@ Then the real question isn't community vs. core product. The question is: do you
 - Short answer accepted without one deeper follow-up
 - Socratic used for simple binary decision
 - Session ends without surfacing deepest unresolved question
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

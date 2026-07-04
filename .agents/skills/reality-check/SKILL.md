@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     CohnReznick-SoftwareDueDiligence-2025, arXiv-2604.02837-SecureSkills, Euvic-TechDD-Guide,
@@ -32,22 +32,16 @@ Never skip the competitive positioning section. Claims exist in a market context
 Always score claims numerically (1-10) with cited evidence. No vague assessments.
 Always produce both deliverables: findings doc AND roadmap doc in `docs/`.
 ---
-
 ## Workflow
-
 ### Step 0 — Discover What the Project Claims to Be
-
 If the user provides specific claims, or is evaluating someone else's project, skip to Step 1 and extract claims from README/PRD/marketing docs. Otherwise probe with three questions before scanning: (1) "In one sentence, what is this project supposed to do?" (core promise), (2) "Who is the target user, and what problem does it solve?" (scope + audience), (3) "What makes this different from alternatives?" (differentiation). Do not proceed to scoring until you have a concrete list of claims.
-
 ### Step 1 — Gather Evidence (Silent Scan)
-
 Read everything before judging anything:
 1. **Claims source**: README, PRD, marketing docs, user-facing descriptions
 2. **Implementation**: source code, skill files, config, scripts
 3. **Proof of execution**: logs, output files, process registries, run artifacts, test results
 4. **History**: git log (recent 30 commits), changelogs, commit patterns
 5. **Architecture**: architecture docs, dependency graphs, call graphs
-
 Build a mental model: what does this project CLAIM vs what does it ACTUALLY DO?
 
 ### Step 2 — Extract Claims
@@ -195,6 +189,12 @@ Composite: 2/10 for headline claim. Skill library: 7/10. Control plane: 4/10. Au
 - Empty registry or template-only file treated as working
 - README aspirational diagram taken as implemented flow
 - Verdict issued without checking negative signals first
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Reality check complete: [project/product name] Claims evaluated: [N] Composite score: [N]/10 Gaps found: [N] fatal, [N] significant, [N] minor Competitors compared: [N] Solutions p`

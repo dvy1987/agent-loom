@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025, addyosmani/agent-skills sdd-cache (MIT)
   resources:
@@ -179,6 +179,11 @@ DISCARD:
 - **`universal-skill-creator/references/research-papers.md`**: Canonical research papers on agent skill design (arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025, etc.). Read when the domain being researched overlaps with skill architecture, prompting techniques, or context window management — these papers contain authoritative findings that should inform what gets added to a skill body vs. references/.
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

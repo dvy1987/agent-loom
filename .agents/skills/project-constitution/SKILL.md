@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: GitHub Spec Kit (constitution command), AWS Kiro (specs-first), agentskills.io
   resources:
@@ -180,6 +180,12 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 - Unenforceable rule like code should be clean
 - Constitution changed without version bump and amendment
 - Spec approved against outdated constitution version
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

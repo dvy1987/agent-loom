@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -133,6 +133,12 @@ Next action: continue from the latest handoff after confirming current git state
 - Secrets tokens or credentials written to memory files
 - External content pasted verbatim as durable policy
 - Orchestrator sub-skill invoked without routing need
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

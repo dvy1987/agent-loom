@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills performance-optimization (11/12, 2026-05-29)
   resources:
@@ -145,6 +145,12 @@ Guard: [CI/monitoring added]
 - CSS or frontend tuned while DB is actual bottleneck
 - Multiple changes shipped — win cannot be attributed
 - Synthetic score improved but real-user metrics flat
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: addyosmani/agent-skills anti-rationalization tables
   resources:
@@ -175,6 +175,12 @@ Risks / gaps: validate the suite after generation
 - Superseded decision treated as active without status check
 - Global memory skeleton created without user intent
 - Cold-start skipped on bare greeting first message
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

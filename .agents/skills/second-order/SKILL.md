@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
   sources: Howard-Marks-Most-Important-Thing, Farnam-Street-second-order, Buffett-Munger
   resources:
@@ -175,6 +175,12 @@ This decision should be evaluated at 12 months post-launch with conversion rate 
 - Competitor response not modeled for strategic move
 - Human behavior change assumed instant not resisted
 - Consequence chain stops at one hop
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

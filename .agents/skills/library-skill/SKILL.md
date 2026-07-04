@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: meta
   resources:
     references:
@@ -25,17 +25,11 @@ You are the skill library's consistency engine. When any structural change occur
 **Never edit any SKILL.md file.** You read them; you never write them.
 **Always read before writing.** Scan every `.agents/skills/*/SKILL.md` to build ground truth before touching any reference file.
 **Append to SKILL-OUTPUTS.md** after every file you create or update.
-
 **Invoke `generate-changelog`** after all updates are complete — never before.
-
 **Conditional calls:** Steps 6-7 may invoke `codebase-understanding` or `prd-writing` to create missing docs. These are conditional — they only fire when the target file does not exist.
-
 ---
-
 ## Workflow
-
 ### 1. Scan all skills
-
 Read every `.agents/skills/*/SKILL.md`. For each skill, extract:
 - `name` (from frontmatter)
 - `description` (from frontmatter)
@@ -195,6 +189,12 @@ Invoking generate-changelog...
 - Category read from wrong frontmatter nesting level
 - Reference index wiped on partial or failed run
 - Changelog skill path assumed wrong directory name
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Librarian sync complete: YYYY-MM-DD Trigger: [what caused the run] Skills scanned: N Entries added: N Entries removed: N Entries updated: N Files modified: [list] Broken cross-references: N Orphaned entries: N SKILL-O...`

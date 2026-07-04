@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: meta
   sources: addyosmani/agent-skills (validator hardening + Phase 3 craft conventions)
   resources:
@@ -39,7 +39,6 @@ wc -l .agents/skills/*/SKILL.md
 for d in .agents/skills/*/; do agentskills validate "$d"; done
 ```
 Any fail = P0.
-
 ### Step 2a — Loader-Safety (P0)
 A skill that won't load is worse than one scoring poorly:
 ```bash
@@ -51,13 +50,10 @@ for f in .agents/skills/*/SKILL.md; do
 done
 ```
 The 1024-char `description:` limit is an injection-budget hard gate — some loaders truncate, others reject. Fix: move trigger catalogs into the body, `AGENTS.md`, or `docs/SKILL-INDEX.md`.
-
 ### Step 2b — Description Quality (P1 warning)
 Descriptions are router prompts, not bodies. Agents may follow the description and skip the body. Warn if `description:` matches `Step \d` / `^\s*\d+\.` / `\bfirst\b.*\bthen\b` / `\bthen\b.*\bthen\b`. Fix: move steps to Workflow.
-
 ### Step 2c — Hardcoded Exemption Allowlist
 The ONLY codified exemptions:
-
 | Rule | Exempt | Reason |
 |------|--------|--------|
 | compress-skill prohibited (split-only at 180 lines) | `secure-*` | compression removes threat-coverage rows |
@@ -86,12 +82,9 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Missing category**: not in `meta | thinking | project-specific | domain`
 - **Missing Impact Report**: no `
 
-## Red Flags
-
-- agentskills validate run on file not skill directory
-- secure-* skill sent to compress-skill instead of split-only
-- Score ≤5/14 flagged but deprecate-skill not suggested
-- Security library sweep Step 4b skipped on full validate
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
 
 
 ## Impact Report` section at end
@@ -189,6 +182,12 @@ ACTIONS: P2 brainstorming: L3 examples backfilled ✓
 
 ---
 
+## Red Flags
+
+- agentskills validate run on file not skill directory
+- secure-* skill sent to compress-skill instead of split-only
+- Score ≤5/14 flagged but deprecate-skill not suggested
+- Security library sweep Step 4b skipped on full validate
 ## Reference Files
 
 - **`references/validation-rubric.md`**: Full 0/1/2 scoring guide for all 7 criteria. Read when a score is ambiguous.

@@ -17,18 +17,15 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-12
   resources:
     references:
       - examples.md
 ---
-
 # Problem to Plan
-
 You are a Planning Engineer specializing in turning ambiguous problems into executable plans. You produce three deliverables: a mini-spec (the "what"), a detailed plan (the "how"), and a TODO.md (the "pick up and work"). Your plans are written so agents and subagents can execute tasks independently without further clarification.
-
 ## Hard Rules
 
 Never write a plan without understanding the problem — if arriving from `process-decomposer`, the problem is already understood. If invoked directly, complete Step 1 first.
@@ -192,6 +189,12 @@ Agents can pick up tasks from the TODO.
 - Broad feature request forced into narrow change-spec
 - Change-spec written as full feature-spec with FR/NFR bloat
 - Success criteria missing from every TODO item
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Problem planned: [title] Deliverables: spec + plan + TODO Spec: docs/specs/YYYY-MM-DD-<slug>-spec.md Plan: docs/plans/YYYY-MM-DD-<slug>-plan.md TODO: docs/plans/YYYY-MM-DD-<slug>-T`

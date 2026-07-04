@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
   sources: John-Boyd-OODA-loop, OODA-Canvas-TDHJ-2026, Boyd-competitive-advantage
   resources:
@@ -180,6 +180,12 @@ Observe user response to the competitor's feature in the next 2 weeks. If 3+ use
 - Observe step skipped — acting on assumptions only
 - OODA loop never closes with explicit Act step
 - Competitive response modeled as static not adaptive
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

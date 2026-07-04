@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10, arXiv:2601.02577
   resources:
@@ -154,6 +154,12 @@ These are NOT implemented in this version. Create via `skill-finder` when demand
 - Prompt filled with vague be-helpful noise
 - Agent boundary overlaps another agent without flagging
 - Success handoff omits what to pass and to whom
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

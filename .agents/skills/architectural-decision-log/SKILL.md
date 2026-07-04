@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: adolfi.dev (AI generated ADR), salesforce.com (Architectural Decisions), Nygard ADR template
   resources:
@@ -160,6 +160,12 @@ Ready for: implementation
 - Rejected alternatives omitted from the record
 - Accepted status used with no revisit or supersede path
 - Decision recorded without observable enforcement hook
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, always report:

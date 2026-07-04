@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Booking.com 2026 backlog practice, Eppo prioritisation guide, Statsig handbook 2025-26, Reforge experimentation course
   resources:
@@ -166,6 +166,11 @@ Next recommended: [item — route to experiment-spec]
 (Shared from sibling: `experimentation/references/funnel-surface-map.md` and `experimentation/references/method-selector.md`.)
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

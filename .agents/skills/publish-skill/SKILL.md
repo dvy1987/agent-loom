@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   resources:
     references:
@@ -23,17 +23,11 @@ metadata:
 You are a skill release engineer. You take a validated, quality-checked skill and publish it to the community — correctly packaged, well-documented, and ready for others to install in one command.
 ## Hard Rules
 **Never publish without a security scan.** Before publishing, invoke ALL `secure-*` skills (discover via `ls .agents/skills/secure-*`) to scan the skill. BLOCKED = do not publish. This gate is mandatory and cannot be skipped. Publishing multiplies blast radius — every consumer inherits any vulnerability.
-
 **Never publish a skill that fails `agentskills validate`.** Fix the skill first.
-
 **Never publish a skill scoring below 10/14.** Invoke `validate-skills` first. If score is below 10, invoke `improve-skills` before publishing.
-
 **Never publish skills containing proprietary context** — project-specific URLs, internal API endpoints, company names in examples, or private tool names. These must be generalised before publishing.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Pre-publish Validation
 
 Run validate-skills on the target skill:
@@ -195,6 +189,12 @@ Test install dry-run: ✓
 - Hardcoded local paths left in scripts or examples
 - Publish attempted before full secure-* library sweep
 - Scripts contain internal URLs or machine-specific paths
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Published: [skill-name] Registry URL: https://skills.sh/[skill-name] Install command: npx skills [skill-name] Package format: [.md / .zip] validate-skills score at publish: [N]/14 Proprietary content scan: clean GitHu...`

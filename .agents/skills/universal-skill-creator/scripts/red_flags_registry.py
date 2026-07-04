@@ -608,6 +608,7 @@ RED_FLAGS: dict[str, list[str]] = {
         "secure-* gate skipped at Step 2 or Step 9",
         "Description trigger phrases removed during edit",
         "validate-skills or skill-deconflict not run after create",
+        "Consumer skill shipped without metadata.origin: project-local",
     ],
     "validate-skills": [
         "agentskills validate run on file not skill directory",

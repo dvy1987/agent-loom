@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.0"
+  version: "2.1"
   category: project-specific
   sources: Anthropic frontend-design skill, Superdesign anti-slop chain, v0/Lovable practice, addyosmani frontend-ui-engineering
   resources:
@@ -145,6 +145,11 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 ```

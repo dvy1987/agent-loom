@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: addyosmani/agent-skills code-simplification + simplify-ignore hook (MIT)
   resources:
@@ -145,9 +145,6 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 - Well-named helper inlined for fewer lines only
 - Nested ternaries introduced to reduce line count
 - Refactor bundled unrelated behavior changes
-
----
-
 ## Reference Files
 
 - **`references/simplification-patterns.md`**: Pattern signal table — read at Step 2.
@@ -155,6 +152,11 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 - **`hooks/SIMPLIFY-IGNORE.md`**: Full setup, examples, limitations (repo root).
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   resources:
     references:
@@ -110,6 +110,12 @@ Output: write to `docs/memory/decision-log.md` via `memory-decision`, then index
 - Capture written directly to global without promote path
 - Secrets or credentials included in captured note
 - Capture lacks provenance or source attribution
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

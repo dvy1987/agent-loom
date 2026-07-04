@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.1"
+  version: "2.2"
   category: project-specific
   sources: APCA-W3, Anthropic frontend-design skill, design-review v1 (upgraded), kevindeasis/awesome-ui (ethical + UX heuristics, 7/12)
   resources:
@@ -156,6 +156,11 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 ```

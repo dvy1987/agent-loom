@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), Twine rubric guide 2026,
@@ -50,21 +50,15 @@ Choose from the dimension library (adapt names to the domain):
 | **Safety / compliance** | When policy, legal, or ethical constraints exist (always pass/fail) |
 | **Internal consistency** | When outputs are long-form (>1 page) — checks for contradictions across sections (e.g., differing figures, conflicting claims). AlphaEval 2026 documents this as a top agent failure mode. |
 | **Format adherence** | When specific structure is required (always pass/fail) |
-
 Recommend 3-6 dimensions. More than 6 causes reviewer fatigue and reduces consistency.
-
 ### Step 3 — Choose Scale per Dimension
-
 | Scale | Best for |
 |-------|----------|
 | Pass/fail | Hard gates, binary requirements |
 | 1-3 | Operational decisions (fail/acceptable/excellent) |
 | 1-5 | Model comparison, tracking gradual improvement |
-
 Mixed scales are fine — use pass/fail for gates, ordinal for quality.
-
 ### Step 4 — Write Score Descriptions
-
 For each quality dimension, write concrete descriptions for each score level:
 
 ```
@@ -195,6 +189,12 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 - High aggregate score masks low business-critical dimension
 - Fluency overweighted versus completeness or safety
 - Rubric criteria not observable from output alone
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Rubric created: [task name] Dimensions: [N] quality + [N] hard gates Scale: [scales used per dimension] Applicable to: [human / LLM judge / both] Saved to: docs/evals/[filename] Te`

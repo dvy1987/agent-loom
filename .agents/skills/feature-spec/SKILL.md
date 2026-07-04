@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
   resources:
@@ -38,24 +38,18 @@ This skill has two modes — pick by user intent or orchestrator parameter:
 ---
 ## Workflow — specify mode
 ### Step 1 — Read existing context
-
 In priority order:
 1. `docs/constitution.md` — required. If missing, offer `project-constitution` first.
 2. `docs/product-soul.md` — strategic grounding (optional).
 3. `docs/prd/<latest>.md` — if a PRD exists, import problem framing and user context.
 4. `docs/specs/<latest>-design.md` — if `brainstorming` produced a design doc, import the approach (but discard architecture sections).
-
 ### Step 2 — Discovery (max 3 questions, one at a time)
-
 Ask only what cannot be inferred:
 1. "What is the user-visible outcome when this works?"
 2. "What are the 2–3 most important things this MUST NOT do (out of scope)?"
 3. "Are there constitutional rules this feature has to specifically address?"
-
 If the request is too vague to draft FRs, mark them `[NEEDS CLARIFICATION]` and continue — don't loop in interview.
-
 ### Step 2b — Reframe vague requirements
-
 Adjectives ("fast", "intuitive") → measurable criteria (latency, error rate, completion %) — confirm targets with user before drafting FRs.
 
 ### Step 3 — Write the spec
@@ -195,6 +189,12 @@ Run `/clarify` next.
 - Acceptance criteria not testable as written
 - Edge cases omitted that block spec-crosscheck coverage
 - Needs Clarification list left non-empty at approval
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Feature spec: <title> Status: Draft | Clarifying | Approved Constitution: docs/constitution.md@<N> Counts: US=<N> FR=<N> NFR=<N> AC=<N> Edge=<N> CL=<N> Saved: docs/specs/YYYY-MM-DD`

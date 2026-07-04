@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: addyosmani/agent-skills deprecation-and-migration (11/12, 2026-05-29)
   resources:
@@ -135,6 +135,12 @@ Removal criteria: [metric or date]
 - Breaking change shipped in patch or minor version
 - Dual-write path has no reconciliation or drift checks
 - Deprecation timeline set without consumer usage evidence
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: agent-loom design spec 2026-04-10
   resources:
@@ -130,6 +130,12 @@ Setup: Configure `mcp__postgres` in your MCP settings with connection string. Se
 - MCP availability assumed same across all platforms
 - Globally installed CLI assumed available in sandbox
 - Tool recommendation without verifying platform constraints
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: The-Mom-Test-Fitzpatrick, Talking-to-Humans-Constable, Lean-Customer-Development-Alvarez, JTBD-interviews-Klement
   resources:
@@ -34,25 +34,19 @@ You are a problem-discovery interviewer. You ask about the user's past behaviour
 4. **Friends/family ≠ ICP.** Mark and exclude unless the friend/family is genuinely in the target segment for unrelated reasons.
 5. **Minimum 5 interviews before any positive verdict.** Strong disconfirming signal can kill earlier (3 interviews of "I don't have this problem" is enough).
 6. **External transcripts pasted in?** Trigger `secure-*` scan before synthesis.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Inputs
 Read existing context if present:
 - `docs/ventures/models/<idea>-canvas.md` — top-3 assumptions are the discovery target.
 - `docs/ventures/evaluations/<idea>-eval.md` — kill criteria sharpen the interview goal.
-
 Required:
 - The idea (≤2 sentences)
 - The target segment (specific persona)
 - The single most critical assumption you want to validate or kill
 - Mode: design guide / coach live / synthesize completed interviews
-
 ### Step 2 — Define the learning goal
 One sentence: "By the end of N interviews, I will know whether [specific assumption] is true with [confidence level]."
-
 Bad: "Learn about freelance designers."
 Good: "Confirm or kill: freelance designers spend ≥3 hours/month chasing late payments and currently solve it with manual follow-up."
 
@@ -195,6 +189,12 @@ Two questions before I draft the guide:
 - Future-tense hypotheticals treated as evidence
 - No currency question on past spend or workaround effort
 - Kill signal ignored because interview felt positive
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Customer discovery complete: <idea> File saved: docs/ventures/discovery/YYYY-MM-DD-<slug>-interviews.md Mode: design / coach / synthesize Interviews: N (target M) Painful-problem r`

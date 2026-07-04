@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.1"
+  version: "2.2"
   category: meta
   sources: Snyk-ToxicSkills-2026, arXiv:2602.12430, arXiv:2604.03081, OWASP-Agentic-Top10-2026, Vectra-AI-2026, addyosmani/agent-skills anti-rationalization tables
   resources:
@@ -189,9 +189,11 @@ VERDICT: BLOCKED — add to no-go repo list
 
 - **`references/threat-patterns.md`**: Full threat pattern catalog. Read for pattern-matching during scans.
 
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
-```
-Security audit: [skill] | Files: N | Critical: N | High: N | Medium: N | Low: N
-Hierarchy: [INTACT/VIOLATED] | Verdict: [SAFE/BLOCKED/REQUIRES REVIEW]
-```
+`Security audit: [skill] | Files: N | Critical: N | High: N | Medium: N | Low: N Hierarchy: [INTACT/VIOLATED] | Verdict: [SAFE/BLOCKED/REQUIRES REVIEW]`

@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
   sources: OWASP-Agentic-Top10-2026, Vectra-AI-2026, Snyk-ToxicSkills-2026
   resources:
@@ -182,14 +182,12 @@ VERDICT: BLOCKED
 - HTML comments or hidden CSS text left in sanitized body
 - Sanitization skipped because source looked like plain markdown
 - Misleading link text not normalized before downstream use
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
-After completing, always report:
-```
-Content sanitization: [source file or directory]
-Files processed: [N]
-Checks run: 13 (Hidden Content), 14 (Markdown), 15 (Unicode)
-Findings: [N critical, N high, N medium]
-Sanitization applied: [HTML stripped / unicode normalized / comments extracted / none]
-Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
-```
+`Content sanitization: [source file or directory] Files processed: [N] Checks run: 13 (Hidden Content), 14 (Markdown), 15 (Unicode) Findings: [N critical, N high, N medium] Sanitization applied: [HTML stripped / unicod...`

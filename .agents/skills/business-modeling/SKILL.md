@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Strategyzer-Osterwalder-Pigneur, Lean-Canvas-Maurya, Value-Proposition-Design-Strategyzer, Testing-Business-Ideas-Bland-Osterwalder
   resources:
@@ -35,24 +35,18 @@ You are a business-model designer. You pick exactly one canvas based on stage an
 4. **No empty boxes.** Every box gets either a specific entry or `[HYPOTHESIS — needs validation]`.
 5. **Anti-fluff:** moat / unfair advantage / channels / customer relationships boxes are scrubbed for vague phrases (`references/anti-patterns.md`).
 ---
-
 ## Workflow
-
 ### Step 1 — Inputs
 Read existing context if present:
 - `docs/ventures/ideas/YYYY-MM-DD-batch.md` (if user picked from a batch)
 - `docs/ventures/discovery/<idea>-interviews.md` (if interviews already exist — use them as evidence)
-
 Required:
 - The idea (≤2 sentences)
 - The chosen segment (specific persona)
 - Stage signal: pre-launch / pre-revenue / pre-PMF / post-PMF
-
 If any are missing, ask one at a time.
-
 ### Step 2 — Pick the canvas
 Read `references/canvas-selector.md`. Default rules:
-
 | Use | When |
 |---|---|
 | **Lean Canvas** (default) | Early-stage, pre-PMF, startup, single founder/small team. Replaces 4 BMC blocks with `Problem`, `Solution`, `Key Metrics`, `Unfair Advantage`. |
@@ -195,6 +189,12 @@ Two questions before I pick the canvas:
 - VPC filled without confirmed segment or problem fit
 - Canvas treated as validation with zero customer evidence
 - Revenue model assumed without pricing or willingness signal
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Business modeling complete: <idea> File saved: docs/ventures/models/YYYY-MM-DD-<slug>-canvas.md Canvas chosen: Lean Canvas / BMC / VPC VPC appendix: yes / no Boxes filled with spec`

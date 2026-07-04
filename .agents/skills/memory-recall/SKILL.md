@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   resources:
     references:
@@ -89,6 +89,12 @@ Output: summarize the decision, cite `decision-log.md`, include alternatives, an
 - Superseded decision presented as current policy
 - Stale memory cited without flagging uncertainty
 - Recall bypasses MEMORY-ROUTING intent table
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:

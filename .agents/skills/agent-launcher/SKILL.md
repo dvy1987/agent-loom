@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   internal: true
   sources: agent-loom design spec 2026-04-11, Anthropic Claude Code docs, platform-subagent-matrix.md
@@ -43,24 +43,18 @@ Verify all three before proceeding:
 ### Step 1 — Platform Check
 Confirm platform is Claude Code or Ampcode (Task tool available).
 Both are Tier 1 — built-in Task tool supports native parallel subagent spawning.
-
 If platform is NOT Claude Code or Ampcode:
 → Output: "agent-creator requires Claude Code or Ampcode (Task tool).
   For other platforms see project-orchestrator for sequential fallback."
 → Halt.
-
 ### Step 2 — Read Architecture Spec
-
 From `docs/architecture/YYYY-MM-DD-<task-slug>-arch.md` extract:
 - Agent list: name, role, skills[], tools[], input source, output path
 - Topology: sequential | parallel | hierarchical
 - Merge strategy
 - Failure handling rules
-
 ### Step 3 — Write Launch Manifest
-
 Always write BEFORE spawning:
-
 ```
 docs/agents/runs/YYYY-MM-DD-<slug>-manifest.md
 
@@ -195,6 +189,12 @@ Run all agents concurrently via Task tool. Wait for all outputs.
 - Sequential chain assumes implicit handoff between agents
 - Spawn attempted before prompt files exist on disk
 - Subagent scope lacks explicit file boundaries
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Agents launched: [N] Platform: Claude Code / Ampcode (Task tool native) Topology: sequential | parallel | hierarchical Manifest: docs/agents/runs/YYYY-MM-DD-<slug>-manifest.md Outp`

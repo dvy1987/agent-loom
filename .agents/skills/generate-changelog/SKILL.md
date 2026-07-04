@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: keepachangelog.com, conventionalcommits.org, agentskills.io
   resources:
@@ -36,15 +36,12 @@ Scan the commit history, PRs, and `docs/skill-outputs/SKILL-OUTPUTS.md`.
 Identify the time range or version tag to summarize.
 ### Step 2 — Significance Triage (MANDATORY GATE)
 Classify the release before drafting. This decides whether README + release push fire.
-
 | Level | Criteria | Triggers README update? | Triggers release push? |
 |---|---|---|---|
 | **MAJOR** | Breaking change, new top-level capability, renamed public surface, ≥5 new features, or any change that alters how a user installs/uses the project | ✅ Yes | ✅ Yes |
 | **MINOR** | New non-breaking feature, ≥3 user-visible improvements, new skill/module added | ✅ Yes (if README mentions the surface area) | ✅ Yes |
 | **PATCH** | Bug fixes, internal refactors, doc tweaks, single small enhancement | ❌ No | ❌ No (batch into next minor) |
-
 State the chosen level explicitly: `Significance: MAJOR | MINOR | PATCH — <one-line justification>`.
-
 ### Step 3 — Categorize the Changes
 Use the "Keep a Changelog" standard:
 - **Added:** For new features.
@@ -53,16 +50,13 @@ Use the "Keep a Changelog" standard:
 - **Removed:** For now removed features.
 - **Fixed:** For any bug fixes.
 - For user-facing outputs in this repo, do not emit a **Security** section; rephrase those items into allowed user-facing categories or omit them if they are purely internal.
-
 ### Step 4 — Synthesize the Value (Four-Dimension Test)
 For each entry, write a value statement that answers all four dimensions in plain language:
 1. **WHAT** — the concrete change (feature, fix, capability)
 2. **WHO** — which users or roles benefit
 3. **WHY IT MATTERS** — the pain it removes or outcome it unlocks
 4. **WHY NOW** — the reason a user should act now (install, upgrade, clone, or try) based on this change
-
 Format: `**<What>** — <Who benefits> can now <Why it matters>. <Why act now>.`
-
 #### Accessibility & Motivation Check (run for Step 5 changelog copy and Step 6 README copy; pass only if all are true)
 - Opens with a 1-sentence hook, then at most 3 top value statements before details.
 - Uses plain language; remove internal jargon, commit-speak, and unexplained acronyms.
@@ -195,6 +189,12 @@ Ready for: release
 - Breaking changes buried below Changed section
 - Internal refactors or CI fixes listed as user-facing
 - Version bump inconsistent with semver of actual changes
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Changelog generated: [version] Significance: [MAJOR | MINOR | PATCH] Changes categorized: [N] Breaking changes found: [N] Four-Dimension value statements: [N] README updated: [yes `

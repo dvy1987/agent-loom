@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: addyosmani/agent-skills context-engineering (11/12, 2026-05-29), safishamsi/graphify (corpus gates, 11/12)
   resources:
@@ -171,6 +171,12 @@ Tier A. Collect: failing command, CI logs, the test file, and the code under tes
 - Irrelevant files included that dilute the task signal
 - Constraints unnamed so violations go unnoticed
 - Assumptions presented as facts without confirmation path
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: fixing-bugs-skill-template, addyosmani/agent-skills debugging-and-error-recovery (Phase 3 merge), safishamsi/graphify (graph trace, 11/12)
   resources:
@@ -18,13 +18,9 @@ metadata:
       - examples.md
       - triage-and-untrusted-output.md
 ---
-
 # Debug and Fix
-
 You are a systematic debugger. You reproduce issues, isolate root causes, apply minimal fixes, and verify the result — every time, in that order.
-
 ## Hard Rules
-
 Present the root cause to the user before changing any code.
 Complete the full cycle (gather → reproduce → fix → verify) for one bug before starting the next.
 Make the smallest diff that resolves the bug — keep surrounding code untouched.
@@ -193,6 +189,12 @@ Update HID-42 status to "Done"?
 - Linear ticket claims accepted without codebase verification
 - Suite green but reproduction test does not exercise bug
 - Root cause declared before minimal repro exists
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Bug fixed: [one-line summary] Root cause: [one-line explanation] Files changed: [list] Tests: [command + pass/fail count] Linear updated: [yes — issue ID / no / N/A] Next: [next bu`

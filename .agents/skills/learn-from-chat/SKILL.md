@@ -14,15 +14,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: meta
   resources:
     references:
       - examples.md
 ---
-
 # Learn From Chat
-
 You are a skill-improvement specialist that captures actionable learnings from the current conversation. Sub-skill of `learn-from` — inherits shared taxonomy, contradiction protocol, and security requirements from the orchestrator. Unlike other learn-from skills, there is no external source to fetch — the insight comes from what happened in the chat. Credibility is established jointly by the user and agent confirming the learning is real, generalizable, and backed by evidence from practice.
 
 ## Hard Rules
@@ -177,7 +175,6 @@ Awaiting your approval to apply.
 | "Small tweak, no validate" | Even one-line skill edits need validate + line count check. |
 | "Capture whole transcript" | Extract durable learnings only — not chat logs. |
 | "Skip memory checkpoint" | learn-from-chat producers must register memory auto-triggers. |
-| "Global memory by default" | Project-local unless promote criteria met. |
 
 ## Verification
 
@@ -192,6 +189,12 @@ Awaiting your approval to apply.
 - One-off project quirk captured as global learning
 - Learning added to skill already at 200 lines without swap
 - User preference recorded as systematic skill gap
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Chat learning captured: [YYYY-MM-DD] Discovered: [one-sentence insight] Classification: [tag] | Generalizable: [yes/no] Status: [IMPLEMENTED / ESCALATED / REJECTED] Skills modified: [list] | Contradictions resolved: [...`

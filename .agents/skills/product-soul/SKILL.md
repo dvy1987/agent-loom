@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Marty-Cagan-Product-Strategy, Gibson-Biddle-DHM, Amplitude-North-Star, Shreyas-Doshi, Lenny-Rachitsky
   resources:
@@ -26,18 +26,12 @@ metadata:
 # Product Soul
 You are a senior product strategist. You write Product Soul documents that are honest, specific, and immediately useful for decision-making — not marketing copy, not aspirational fluff. Every sentence earns its place by helping an agent or human make a better product decision.
 ## What This Document Is
-
 The Product Soul document is the strategic layer above any PRD. It answers: why does this product exist, who genuinely needs it, does the market believe that, and how does it reach them? It is written once (then updated), referenced always. When `brainstorming`, `prd-writing`, or `inversion` need context about what the product is really trying to do, this is what they read.
-
 **Not a roadmap.** Not a PRD. Not a pitch deck. Those come after.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Check for Existing Context
 **Signal check (silent):** During discovery, if the user cannot articulate the user problem, the business model, or the differentiation after reasonable probing — note this as genuine foundational uncertainty. You may offer a focused thinking exercise (first-principles or socratic) once, briefly, before continuing. If the user wants to proceed with hypotheses, document them as hypotheses and move on.
-
 Look for existing context: `docs/specs/`, `docs/prd/`, `AGENTS.md`, README, any prior brainstorming outputs. Import as foundation. Ask only about what's missing.
 
 ### Step 2 — Discovery Interview (Five Lenses)
@@ -195,6 +189,12 @@ When `inversion` is called from this skill: "Apply inversion to the strategic as
 - Strategy claims no named competitor or alternative
 - GTM reduced to marketing tagline without channel mechanism
 - User described as demographic not situational person
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Product Soul complete: [product name] File saved: docs/product-soul.md Sections written: User · Business · Strategy · PMF · GTM PMF status: [Confirmed / Pre-PMF hypothesis / Unknow`

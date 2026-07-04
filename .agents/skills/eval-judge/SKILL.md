@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: >
     arXiv:2306.05685 (MT-Bench LLM-as-Judge), arXiv:2602.08672 (GER-Eval),
@@ -38,24 +38,18 @@ Required: output to evaluate + rubric (from `eval-rubric-design` or user-provide
 Optional: original prompt, reference/expected output, retrieval context, conversation history.
 If no rubric exists: route to `eval-rubric-design` first. Do not score without criteria.
 ### Step 2 — Choose Evaluation Mode
-
 | Signal | Mode |
 |--------|------|
 | One output to assess | **Direct scoring** |
 | Two outputs to compare | **Pairwise comparison** |
 | Output + expected answer | **Direct scoring** with reference |
-
 ### Step 3a — Direct Scoring
-
 For each dimension in the rubric:
-
 1. **Find evidence** — identify specific parts of the output relevant to this dimension
 2. **Reason** — explain how the evidence maps to the rubric's score descriptions
 3. **Score** — assign the numeric score based on the reasoning
 4. **Suggest improvement** — one specific, actionable fix
-
 For hard gates: evaluate pass/fail with cited evidence. Any gate failure = overall FAIL.
-
 ### Step 3b — Pairwise Comparison (if two outputs)
 
 **Pass 1:** Present Response A first, Response B second. Score per dimension.
@@ -195,6 +189,12 @@ Overall verdict: PASS (all gates pass, quality improvements recommended)
 - Confident tone rewarded over factual accuracy
 - Pairwise compare run as two independent absolute scores
 - Judge model changed without recalibrating on known-bad cases
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Evaluation complete: [target] Mode: [direct scoring / pairwise comparison] Rubric used: [name/path] Hard gates: [N] pass, [N] fail Dimensions scored: [N] Average confidence: [0-1] `

@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.0"
+  version: "2.1"
   category: thinking
   sources: Munger-Farnam-Street, Jacobi-inversion
   resources:
@@ -139,6 +139,12 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 - Obvious pre-known failures listed without deeper push
 - Inversion used where pre-mortem or adversarial fits better
 - Success criteria never stated before failure flip
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

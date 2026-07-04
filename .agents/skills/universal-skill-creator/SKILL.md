@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.3"
+  version: "2.4"
   spec: agentskills.io/specification
   sources: anthropics/skills, openai/skills, warpdotdev/oz-skills, agentskills.io, arXiv:2602.12430, arXiv:2603.29919, NeurIPS-2025, addyosmani/agent-skills anti-rationalization tables
   resources:
@@ -136,7 +136,14 @@ Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: skill creat
 After generating, always state: tier + why · compatible platforms · install path `.agents/skills/<skill-name>/` · test trigger phrase.
 
 Every skill MUST include:
-1. **`## Impact Report`** — skill-specific format, in-chat after every run.
+1. **`
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
+## Impact Report`** — skill-specific format, in-chat after every run.
 2. **File-output logging** — if skill writes project files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and notify user.
 3. **Learnings provenance** — if from `docs/learnings/*.md`, update source entry with skill name + path + date.
 
@@ -149,7 +156,16 @@ Every skill MUST include:
 - **Description triggers are additive.** Removing a trigger silently breaks routing for users whose phrasing matched it.
 - **Frontmatter is loader-critical.** UTF-8 no BOM, `---` at byte 0, closing `---`, description <1024 chars, `metadata.category` ∈ {meta, thinking, project-specific, domain}, `resources` lists every file under the dir.
 - **Atomic tier first; promote on demand.** Bloat hurts routing and tokens.
-- **Red flags:** direct SKILL.md write · skipped secure gates · consumer skill without `origin: project-local`
+
+---
+
+## Red Flags
+
+- SKILL.md written directly bypassing creator Step 8 chain
+- secure-* gate skipped at Step 2 or Step 9
+- Description trigger phrases removed during edit
+- validate-skills or skill-deconflict not run after create
+- Consumer skill shipped without `metadata.origin: project-local`
 
 ---
 
@@ -176,8 +192,6 @@ Load on trigger: `references/*.md` (platform, patterns, research, examples) · `
 | "User said 'go ahead build' after planning — skip Steps 8–11" | Bypassing skips deconflict/validate/cross-link/library-sync. Re-route through here even for batch builds (AGENTS.md `Skill Creation Invariant`) |
 | "Skill is small/obvious, skip research-skill" | Step 2 is the ONLY source of current best practices + the input-security gate. Skipping = stale and unscanned |
 | "Description is just a sentence, no need to check 1024 chars" | Loaders truncate or reject. Validator P0 (validate-skills Step 2a) |
-| "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD |
-| "User will add origin later" | Step 7b mandatory — sync protection needs this metadata |
 
 ---
 

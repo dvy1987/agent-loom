@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: meta
   resources:
     references:
@@ -39,21 +39,15 @@ Read the oversized skill. Identify the section(s) of genuinely CORE content that
 - Its input and output
 - Whether it has a clear trigger condition
 - Whether it could be useful independently
-
 ### Step 2 — Check Existing Skills First (before creating anything)
-
 Scan every skill in `.agents/skills/`. For the excess sub-capability, ask:
-
 **2a — Does an existing skill already do this, or could it with a small change?**
 Read descriptions and workflows of all existing skills. For each candidate:
-
 1. **Already covers it fully** — output format is directly consumable, delegation saves tokens, relationship is stable → link immediately, skip to Step 5.
-
 2. **Covers it partially** — the existing skill does 80%+ of the job but needs a marginal improvement. Improvement is acceptable if:
    - The target skill stays under 200 lines after the change
    - The change does not alter the target skill's core purpose or break existing callers
    - The output format becomes directly consumable by the parent
-   
    If all three are true → make the targeted improvement to the existing skill inline (or invoke `improve-skills` on it), then link. Document what was changed and why in the commit message.
 
 3. **Cannot be adapted without scope creep or size violation** → do not modify. Proceed to Step 2b.
@@ -195,6 +189,12 @@ improve-skills: 220 → 198 lines ✓ | link-check: 140 lines (new) ✓
 - Split performed on secure-* skill via compress path
 - Pipeline stage split breaking shared step context
 - Post-split line counts not verified under 200
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Action taken: [linked to existing <skill> / extracted new <child> / Type B] Parent: [before] → [after] lines Child/linked skill: [name] — [lines] lines ([new / existing]) Other callers updated: [list or "none"] AGENTS...`

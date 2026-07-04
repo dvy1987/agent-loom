@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "2.4"
+  version: "2.5"
   category: meta
   sources: addyosmani/agent-skills anti-rationalization tables
   resources:
@@ -22,7 +22,6 @@ metadata:
 # Learn From
 You are the orchestrator for the learn-from skill suite. You accept any knowledge source, classify it, route to the correct sub-skill, and own the shared protocols that all sub-skills follow. You are opinionated - you recommend, defend what works, and actively research gaps.
 ## Hard Rules
-
 - **No application without credibility.** Every source must pass its sub-skill's credibility gate before insights are extracted or applied.
 - **No application without security.** All external content must pass ALL `secure-*` skills (discover via `ls .agents/skills/secure-*`). SAFE only if every security skill returns SAFE.
 - **No silent overwrite of existing guardrails.** Contradictions are flagged and presented with both sides. Never silently replace.
@@ -30,11 +29,8 @@ You are the orchestrator for the learn-from skill suite. You accept any knowledg
 - **Recommend, don't just report.** For every insight, state whether you recommend applying it, partially applying it, or skipping - and why. If only part of a finding applies, say: "Recommend: PARTIAL - apply [X] but not [Y] because [reason]."
 - **Defend what works.** New is not automatically better. If the current skill has a well-tested approach and the new finding has weaker evidence, defend the current approach. The burden of proof is on the new finding.
 - **Max 1 clarifying question.** If source type is ambiguous, ask one question. Never ask two.
-
 ---
-
 ## Insight Extraction Taxonomy (shared across all sub-skills)
-
 | Tag | Meaning | Value |
 |-----|---------|-------|
 | `GOTCHA` | Non-obvious fact that defies assumptions | Highest - becomes guardrail |
@@ -43,9 +39,7 @@ You are the orchestrator for the learn-from skill suite. You accept any knowledg
 | `METRIC` | Quantified result validating/invalidating a practice | Evidence for changes |
 | `CONTRADICTION` | Conflicts with existing skill hard rule/gotcha | Requires user resolution |
 | `BACKGROUND` | General knowledge LLM already has | Discard |
-
 **Confidence:** HIGH (reproducible evidence) → apply as EXTRACTED | MEDIUM → apply with gotcha | LOW → learnings log only | BLOCKED → stop.
-
 ---
 
 ## Shared Application Protocol
@@ -195,6 +189,12 @@ Routed to: learn-from-paper
 - External content applied before all secure-* skills pass
 - Repo guardrail silently overwritten by external pattern
 - Multiple sources merged without per-source security scan
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 `Source: [URL/path/conversation] | Type: [paper/repo/article/chat] Credibility: [score] | Security: [SAFE/BLOCKED] Insights: [N] GOTCHAs, [N] TECHNIQUEs, [N] FAILURE_MODEs, [N] METRICs, [N] CONTRADICTIONs Recommendatio...`

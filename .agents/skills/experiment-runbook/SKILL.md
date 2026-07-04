@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: PostHog experiments docs 2026, Statsig SDK docs, Booking.com launch QA practices, KDnuggets 2026 SRM tooling
   resources:
@@ -72,11 +72,8 @@ Default ramp for Causal A/B:
 - **1%** for 24h — SRM dry-run, exposure verification.
 - **5%** for 24–48h — guardrail check.
 - **50%** (or pre-declared allocation) — full duration run.
-
 Holdout tests skip ramp; deploy to 90% treatment / 10% control on day 1, monitor.
-
 ### Step 7 — Pre-Launch QA
-
 Run `references/launch-qa-checklist.md`. Block launch if any item fails:
 - Flag returns expected variants for known test users.
 - Exposure event fires in both variants.
@@ -84,15 +81,12 @@ Run `references/launch-qa-checklist.md`. Block launch if any item fails:
 - Guardrails fire and chart correctly.
 - Variant rendering matches spec.
 - No bot/internal traffic counted.
-
 ### Step 8 — Rollback Procedure
-
 Document:
 - Kill switch (flag override path).
 - Who can flip it (oncall / PM / engineer).
 - Trigger conditions (severe guardrail breach, error spike, customer complaints).
 - Post-rollback steps (preserve data, write incident note).
-
 ### Step 9 — Write the Runbook File
 
 Path: `docs/experiments/runbooks/YYYY-MM-DD-<slug>-runbook.md`. Append to `docs/skill-outputs/SKILL-OUTPUTS.md`.
@@ -181,6 +175,12 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 - Custom exposure captured without PostHog $feature_flag_called
 - B2B test assigns at person level instead of account group
 - Runbook shipped without rollback or kill-switch steps
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After writing the runbook, emit:

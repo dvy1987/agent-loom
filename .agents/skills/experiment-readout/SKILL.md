@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   sources: Microsoft ExP postmortem practice, Booking.com 2026 readouts, Kohavi/Tang/Xu trustworthy experiments, Airbnb guardrail discoveries, KDnuggets 2026
   resources:
@@ -174,6 +174,11 @@ Downstream: [prd-writing | architectural-decision-log | reality-check | none]
 - **`references/learnings-format.md`** — Learnings log entry format. Use in Step 8.
 
 ---
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
 
 ## Impact Report
 

@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: thinking
   sources: Aristotle-first-principles, Musk-SpaceX-battery-case, Goedel-first-principles-2025
   resources:
@@ -158,6 +158,12 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 - Legal or regulatory constraints dismissed as conventional
 - Prior art ignored instead of questioned with reasons
 - Output lists assumptions without reconstructed approach
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 ```

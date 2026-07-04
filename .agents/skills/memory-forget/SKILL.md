@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
   resources:
     references:
@@ -84,6 +84,12 @@ Output: remove or retire the matching entry in `~/.agent-loom/memories/user-pref
 - Index still references forgotten entry paths
 - Decision rationale deleted when archival was safer
 - Forget run without checking downstream handoff refs
+
+## Prune Log
+Last pruned: 2026-07-04
+- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+
+
 ## Impact Report
 
 After completing, report:
