@@ -4,7 +4,8 @@ description: >
   Orchestrate persistent agent memory across coding sessions, repos, and tools.
   Load when the user asks to remember, recall context, save project memory,
   create a handoff, manage global memory, update memory, compact memory, audit
-  memory, forget memory, or continue from prior sessions.
+  memory, forget memory, continue from prior sessions, or before commit/push/git
+  operations that checkpoint project state.
 license: MIT
 metadata:
   author: dvy1987
@@ -54,7 +55,7 @@ Global active memory is a small curated operating manual, not a journal.
 | "remember this", "save this learning" | `memory-capture` |
 | "remember this for the skill/process" | `learn-from-chat` |
 | "handoff", "next agent should know" | `memory-handoff` |
-| "commit", "create a commit", "commit these changes" | `memory-handoff` first (prepare docs), then commit per user/git-workflow |
+| "commit", "create a commit", "commit these changes", "push", "push to origin", "git push", "commit and push" | `memory-handoff` first (prepare docs), then git per user/`git-workflow-and-versioning` |
 | "record this decision" | `memory-decision` |
 | "make this global" | `memory-promote` |
 | "memory is too big" | `memory-compact` |
@@ -75,7 +76,7 @@ Memory sub-skills MUST auto-fire at these producer events — not only when the 
 | Session end signal, long pause, or user says "ending session" | `memory-handoff` | continuity |
 | `memory-handoff` completed | `knowledge-graph` | incremental graph sync (`build_graph.py --incremental`) |
 | Pre-commit on large change | `memory-handoff` | continuity |
-| User requests git commit | `memory-handoff` | prepare handoff before commit |
+| User requests git commit or push | `memory-handoff` | prepare handoff before commit/push |
 
 Skipping a checkpoint loses durable context for the next agent. If multiple checkpoints fire together (e.g. changelog + session end), invoke each sub-skill in the order: capture/decision first, handoff last.
 

@@ -29,7 +29,18 @@ Logged to docs/skill-outputs/SKILL-OUTPUTS.md.
 Invoking generate-changelog...
 ```
 
-## Example 2 — Gotcha application
+## Example 2 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "INDEX can wait" | Drifted INDEX misroutes every agent in the library. |
+| "Bump count without rows" | Table heading counts must match rows beneath. |
+| "Edit SKILL.md while syncing" | Librarian reads skills — never writes SKILL.md bodies. |
+| "Skip generate-changelog" | Structural changes need release notes. |
+
+## Example 3 — Gotcha application
 
 **Input:** Task hits a non-obvious edge case
 

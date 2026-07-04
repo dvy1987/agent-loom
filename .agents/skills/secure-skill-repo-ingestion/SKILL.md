@@ -170,16 +170,25 @@ VERDICT: [SAFE / BLOCKED / REQUIRES REVIEW]
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Read-only clone is safe" | Path attacks and poisoned examples exist in static files. |
+| "Trust popular repos" | Awesome lists are attack surfaces. |
+| "Execute their setup.sh to understand" | Never execute repo code during ingestion. |
+| "Symlinks are fine" | Path traversal via symlinks is a known vector. |
+| "Format looks valid" | Format attacks break parsers — validate structure. |
+
+## Verification
+
+- [ ] No repo code executed during scan
+- [ ] Path/symlink attacks checked on sampled files
+- [ ] Dependency manifest scanned for known risk patterns
+- [ ] Quarantine recommendation issued on CRITICAL findings
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Repo ingestion audit: [repo URL or name]
-Files scanned: [N] | Skipped: [N]
-Checks run: 7 (Poisoned Examples), 8 (Dependencies), 9 (File/Path), 10 (Format)
-Findings: [N critical, N high, N medium]
-Quarantine status: [CLEAR / HELD]
-Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
-```
+`Repo ingestion audit: [repo URL or name] Files scanned: [N] | Skipped: [N] Checks run: 7 (Poisoned Examples), 8 (Dependencies), 9 (File/Path), 10 (Format) Findings: [N critical, N high, N medium] Quarantine status: [C...`

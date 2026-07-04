@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-04T02:52:36.403032+00:00
-Mode: skill-library | Nodes: 125 | Edges: 434
+Generated: 2026-07-04T05:08:16.530942+00:00
+Mode: skill-library | Nodes: 127 | Edges: 444
 
 ## God nodes (skill connectivity)
 - universal-skill-creator
@@ -9,8 +9,8 @@ Mode: skill-library | Nodes: 125 | Edges: 434
 - secure-skill
 - improve-skills
 - library-skill
-- experimentation
 - split-skill
+- experimentation
 - learn-from
 - feature-spec
 - spec-driven-development
@@ -35,6 +35,6 @@ Mode: skill-library | Nodes: 125 | Edges: 434
 
 ## Provenance
 - Authoritative invokes: 170
-- EXTRACTED: 218 | INFERRED: 216
+- EXTRACTED: 220 | INFERRED: 224
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

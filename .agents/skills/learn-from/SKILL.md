@@ -185,16 +185,16 @@ Routed to: learn-from-paper
     </output>
   </example>
 </examples>
+
+## Verification
+
+- [ ] Correct child skill selected (paper / repo / article / chat)
+- [ ] `secure-*` SAFE before external content informs output
+- [ ] No direct SKILL.md write — routes through creator or approved edit path
+- [ ] Memory checkpoint fired when producer event occurred
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Source: [URL/path/conversation] | Type: [paper/repo/article/chat]
-Credibility: [score] | Security: [SAFE/BLOCKED]
-Insights: [N] GOTCHAs, [N] TECHNIQUEs, [N] FAILURE_MODEs, [N] METRICs, [N] CONTRADICTIONs
-Recommendations: [N] APPLY, [N] PARTIAL, [N] SKIP, [N] KEEP CURRENT
-Skills modified: [list] | Created: [list]
-Post-apply: [skill]: security [SAFE/BLOCKED] | resize [none/compress/split] | validate [score]/14 | L3: [yes/no]
-```
+`Source: [URL/path/conversation] | Type: [paper/repo/article/chat] Credibility: [score] | Security: [SAFE/BLOCKED] Insights: [N] GOTCHAs, [N] TECHNIQUEs, [N] FAILURE_MODEs, [N] METRICs, [N] CONTRADICTIONs Recommendatio...`

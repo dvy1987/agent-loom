@@ -44,3 +44,46 @@ Skill: `performance-optimization` | addyosmani patterns, security-scanned SAFE.
 ---
 
 See `SKILL.md` for hard rules and verification checklist.
+
+---
+
+## Example 4 — Extended pass (L3 enrichment)
+
+## Example 5 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "It feels fast on my machine" | Your machine is not production traffic or network. |
+| "We'll add monitoring later" | Without baselines you cannot prove improvement. |
+| "Let's rewrite in Rust" | Profile first — often the query or algorithm is the issue. |
+| "Lighthouse is enough" | Lab scores miss real devices and cache states. |
+| "Ship now, optimize later" | Regressions are cheaper to block in CI than fix in prod. |
+
+## Example 6 — Step-by-step execution
+
+**Input:** "Run `performance-optimization` on [concrete task]"
+
+**Agent actions:**
+1. Measure baseline
+2. Identify bottleneck
+3. Fix narrowly
+4. Verify
+5. Guard
+
+## Example 7 — Gotcha application
+
+**Apply:**
+- Synthetic scores ≠ real-user experience — use both.
+- Optimizing the wrong layer (CSS when the DB is the bottleneck).
+- Caching without invalidation creates subtle bugs.
+- Bundle "tree-shaking" claims without measuring shipped bytes.
+- 
+
+## Verification checklist (L3)
+
+- [ ] Examples align with SKILL.md hard rules
+- [ ] Anti-skip or rationalization pattern shown
+- [ ] Output shape matches Impact Report
+- [ ] User can trace from input → durable artifact or chat outcome

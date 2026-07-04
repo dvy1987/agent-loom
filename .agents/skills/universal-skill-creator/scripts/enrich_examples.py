@@ -101,11 +101,26 @@ def extract_output_format(text: str) -> str:
     return m.group(1).strip() if m else ""
 
 
-def is_thin(path: Path) -> bool:
+TARGET_MIN_LINES = 55
+
+
+def line_count(path: Path) -> int:
+    return len(path.read_text(encoding="utf-8").splitlines()) if path.exists() else 0
+
+
+def needs_enrichment(path: Path) -> bool:
     if not path.exists():
         return True
     t = path.read_text(encoding="utf-8")
-    return len(t.splitlines()) < 65 or "Impact Report schema" in t
+    return line_count(path) < TARGET_MIN_LINES or "Impact Report schema" in t
+
+
+def is_preserve_append(path: Path) -> bool:
+    """Hand-curated files with SAFE marker — extend, don't replace."""
+    if not path.exists():
+        return False
+    t = path.read_text(encoding="utf-8")
+    return "security-scanned SAFE" in t or "Full Session Examples" in t
 
 
 MEMORY_EXAMPLES: dict[str, str] = {
@@ -125,20 +140,32 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** "Skip memory, just implement"
 
-**Output:** Block until at least `memory-capture` records the approved spec path and owner.""",
-    "memory-handoff": """## Example 1 — Commit trigger (v1.2)
+**Output:** Block until at least `memory-capture` records the approved spec path and owner.
 
-**Input:** User says "commit these changes"
+## Example 4 — Commit/push checkpoint
 
-**Output:** Run `memory-handoff` first → append to `docs/memory/agent-handoffs.md` → then `git commit`.
+**Input:** User says "commit and push"
 
-## Example 2 — Session end
+**Output:** Route `memory-handoff` → save handoff + update current-state → then `git-workflow-and-versioning` for commit/push. Never push without handoff on meaningful work.""",
+    "memory-handoff": """## Example 1 — Commit / push trigger (v1.3)
+
+**Input:** User says "commit these changes" or "push to origin"
+
+**Output:** Run full handoff workflow first → append `docs/memory/agent-handoffs.md` → update current-state + project-index → incremental graph rebuild → then proceed with git commit and/or push.
+
+## Example 2 — Commit and push together
+
+**Input:** "commit and push when ready"
+
+**Output:** Handoff documents working tree state and commits pending; after handoff saved, stage → commit → push. Next agent reads handoff even if push succeeds.
+
+## Example 3 — Session end
 
 **Input:** Large refactor complete, user leaving
 
 **Output:** Handoff block: done / next / blockers / files touched / graph rebuild flag.
 
-## Example 3 — Thin context recovery
+## Example 4 — Thin context recovery
 
 **Input:** Next agent starts cold
 
@@ -159,7 +186,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** Long debug log pasted
 
-**Output:** Extract 3–5 bullets only; link to file path instead of pasting full log.""",
+**Output:** Extract 3–5 bullets only; link to file path instead of pasting full log.
+
+## Example 4 — Post-push continuity
+
+**Input:** User pushed release tag without handoff
+
+**Output:** Retroactive `memory-handoff` noting tag, commit SHA, and what's deployed vs deferred.""",
     "memory-decision": """## Example 1 — ADR-style record
 
 **Input:** "Why JWT over sessions?"
@@ -176,7 +209,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** Small trade-off (library pick)
 
-**Output:** One paragraph in session-notes with `decision:` tag for later promotion.""",
+**Output:** One paragraph in session-notes with `decision:` tag for later promotion.
+
+## Example 4 — Revisit trigger
+
+**Input:** Decision assumed stable for 6 months
+
+**Output:** Add `revisit: when traffic 10x` to decision file; `memory-recall` surfaces it on scale discussions.""",
     "memory-recall": """## Example 1 — Targeted query
 
 **Input:** "What did we decide about dark mode?"
@@ -193,7 +232,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** Broad "what happened last week"
 
-**Output:** Summarize last handoff + index highlights only — no full log scan.""",
+**Output:** Summarize last handoff + index highlights only — no full log scan.
+
+## Example 4 — Pre-commit recall
+
+**Input:** User says "push" after long session
+
+**Output:** Recall latest handoff draft status; if stale, route to `memory-handoff` before push.""",
     "memory-promote": """## Example 1 — Session → durable
 
 **Input:** Repeated session note about CI policy
@@ -210,7 +255,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** "Make this permanent"
 
-**Output:** Promote with date + source handoff link.""",
+**Output:** Promote with date + source handoff link.
+
+## Example 4 — Reject promotion
+
+**Input:** Experimental spike conclusion
+
+**Output:** Keep in session-notes; promotion requires repeated use or explicit user "make global".""",
     "memory-compact": """## Example 1 — Bloated handoff log
 
 **Input:** `agent-handoffs.md` > 200 entries
@@ -227,7 +278,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** Before `memory-audit`
 
-**Output:** Compact first to reduce audit surface.""",
+**Output:** Compact first to reduce audit surface.
+
+## Example 4 — Global budget pressure
+
+**Input:** `~/.agent-loom/memories/` over active budget
+
+**Output:** Archive low-signal entries; preserve decisions + provenance links.""",
     "memory-audit": """## Example 1 — Stale index
 
 **Input:** project-index references removed skill
@@ -244,7 +301,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** User asks "is memory healthy?"
 
-**Output:** Table: last handoff date, decision count, stale entries.""",
+**Output:** Table: last handoff date, decision count, stale entries.
+
+## Example 4 — Handoff hygiene
+
+**Input:** Handoffs repeat same "next step" for 3 sessions
+
+**Output:** Flag stale continuity; recommend `memory-compact` or update current-state.""",
     "memory-forget": """## Example 1 — Wrong capture
 
 **Input:** "Forget the SQLite decision — we're not using it"
@@ -261,7 +324,13 @@ MEMORY_EXAMPLES: dict[str, str] = {
 
 **Input:** "Don't keep my client name"
 
-**Output:** Forget named entities from session-notes only; keep structural decisions.""",
+**Output:** Forget named entities from session-notes only; keep structural decisions.
+
+## Example 4 — Audit trail
+
+**Input:** Forget request on captured secret
+
+**Output:** Redact content; append forget record to handoff with date (no silent erase).""",
 }
 
 
@@ -297,7 +366,7 @@ def build_enriched(name: str, skill_text: str) -> str:
         "",
     ]
 
-    for i, (inp, out) in enumerate(pairs[:3], 1):
+    for i, (inp, out) in enumerate(pairs[:4], 1):
         lines += [
             f"## Example {i} — Documented workflow",
             "",
@@ -310,7 +379,7 @@ def build_enriched(name: str, skill_text: str) -> str:
             "",
         ]
 
-    n = len(pairs[:3]) + 1
+    n = len(pairs[:4]) + 1
     if steps:
         lines += [
             f"## Example {n} — Step-by-step execution",
@@ -379,6 +448,58 @@ def build_enriched(name: str, skill_text: str) -> str:
     return "\n".join(lines)
 
 
+def build_appendix(name: str, skill_text: str, start_n: int) -> str:
+    """Extend hand-curated L3 without replacing existing examples."""
+    rats = extract_rationalizations(skill_text)
+    gotchas = extract_gotchas(skill_text)
+    steps = extract_workflow_steps(skill_text)
+    lines: list[str] = [f"## Example {start_n} — Extended pass (L3 enrichment)", ""]
+    n = start_n + 1
+    if rats:
+        lines += [
+            f"## Example {n} — Anti-skip (rationalization defense)",
+            "",
+            "**Input:** Agent tries to skip a gate",
+            "",
+            "| Excuse | Reality |",
+            "|---|---|",
+        ]
+        for a, b in rats[:5]:
+            lines.append(f"| {a} | {b} |")
+        lines.append("")
+        n += 1
+    if steps:
+        lines += [
+            f"## Example {n} — Step-by-step execution",
+            "",
+            f"**Input:** \"Run `{name}` on [concrete task]\"",
+            "",
+            "**Agent actions:**",
+        ]
+        for j, s in enumerate(steps[:6], 1):
+            lines.append(f"{j}. {s}")
+        lines.append("")
+        n += 1
+    if gotchas:
+        lines += [f"## Example {n} — Gotcha application", "", "**Apply:**"]
+        for g in gotchas[:5]:
+            lines.append(f"- {g}")
+        lines.append("")
+    lines += [
+        "## Verification checklist (L3)",
+        "",
+        "- [ ] Examples align with SKILL.md hard rules",
+        "- [ ] Anti-skip or rationalization pattern shown",
+        "- [ ] Output shape matches Impact Report",
+        "- [ ] User can trace from input → durable artifact or chat outcome",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+FOOTER = "\n\n---\n\nSee `SKILL.md` for hard rules and verification checklist.\n"
+
+
 def main() -> int:
     enriched = 0
     for d in sorted(SKILLS.glob("*/")):
@@ -389,19 +510,23 @@ def main() -> int:
         ex = d / "references" / "examples.md"
         if not skill_md.exists() or not ex.exists():
             continue
-        if name in HAND_CURATED:
+        if not needs_enrichment(ex):
             continue
-        if name in MEMORY_EXAMPLES and is_thin(ex):
+        skill_text = skill_md.read_text(encoding="utf-8")
+        if name in MEMORY_EXAMPLES:
             header = (
                 f"# {name.replace('-', ' ').title()} — Full Worked Examples\n\n"
                 f"Skill: `{name}` | Memory suite enrichment pass.\n\n"
             )
-            new = header + MEMORY_EXAMPLES[name] + "\n\n---\n\nSee `SKILL.md` for hard rules and verification checklist.\n"
-        elif not is_thin(ex):
-            continue
+            new = header + MEMORY_EXAMPLES[name] + FOOTER
+        elif is_preserve_append(ex):
+            existing = ex.read_text(encoding="utf-8")
+            start_n = len(re.findall(r"^## Example ", existing, re.MULTILINE)) + 1
+            new = existing.rstrip() + "\n\n---\n\n" + build_appendix(name, skill_text, start_n)
+            if len(new.splitlines()) < TARGET_MIN_LINES:
+                new = build_enriched(name, skill_text)
         else:
-            text = skill_md.read_text(encoding="utf-8")
-            new = build_enriched(name, text)
+            new = build_enriched(name, skill_text)
         ex.write_text(new, encoding="utf-8")
         enriched += 1
         print(f"enriched: {name} ({len(new.splitlines())} lines)")

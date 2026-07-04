@@ -173,21 +173,28 @@ The PMF falsification condition ("if users complete integration once and never r
 
 ---
 
-## Calling This Skill
-
-`product-soul` → after first draft | `brainstorming` → before writing design doc
-`prd-writing` → after discovery, before writing | `inversion` → complementary, run both
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "We're aligned already" | Alignment theater hides unstated objections until launch. |
+| "Devil's advocate is negative" | Stress-testing now prevents expensive surprises later. |
+| "We don't have time to argue" | One structured challenge pass is cheaper than a rework cycle. |
+| "The plan is obviously sound" | Obvious plans skip edge cases that only adversarial review surfaces. |
+| "Stakeholders already signed off" | Sign-off without steel-manning is consent, not scrutiny. |
+
+## Verification
+
+- [ ] Strongest counter-argument stated in good faith (not a strawman)
+- [ ] At least one plan change or explicit accept-risk decision recorded
+- [ ] Assumptions challenged map to testable follow-ups
+- [ ] Session ends with forward actions, not endless debate
 
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Adversarial review: [document]
-Phases run: [D / C / Ch — all or subset]
-Critical: N | Significant: N | Minor: N
-Integrated into document: [yes / no]
-```
+`Adversarial review: [document] Phases run: [D / C / Ch — all or subset] Critical: N | Significant: N | Minor: N Integrated into document: [yes / no]`

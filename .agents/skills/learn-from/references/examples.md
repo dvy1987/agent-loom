@@ -1,48 +1,72 @@
 # Learn From — Full Worked Examples
 
-Source: agent-loom orchestrator + addyosmani anti-rationalization patterns (2026-05-29 snapshot).
+Skill: `learn-from` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
----
+## Example 1 — Documented workflow
 
-## Example 1 — Repo ingestion with L3 example preservation
+**Input:** Learn from this: https://arxiv.org/abs/2603.29919
 
-**Input:** `/learn-from-repo addyosmani/agent-skills`
+**Output:**
+```
+=== Learn-From Report ===
+Source: https://arxiv.org/abs/2603.29919 | Type: paper
+Routed to: learn-from-paper
 
-**After APPLY on `test-driven-development`:**
-1. Patterns → SKILL.md body (gates, workflow)
-2. **Full AO worked examples → `references/examples.md`** (not deleted for line limit)
-3. Security: ALL secure-* SAFE before any content persists
-4. `validate-skills` ≥10/14; bump version + citation
-
----
-
-## Example 2 — Contradiction presentation
-
-```markdown
-CONTRADICTION in debug-and-fix:
-Current: Reproduce before fix (line 24)
-New finding: "Hotfix first in prod emergencies"
-Evidence: anecdotal blog post (LOW)
-Agent recommendation: KEEP CURRENT + add gotcha for emergency bypass with user approval
+[Sub-skill extracts insights, orchestrator applies shared protocol with recommendations]
 ```
 
-User must choose REPLACE / KEEP / BOTH / PARTIAL.
+## Example 2 — Step-by-step execution
 
----
+**Input:** "Run `learn-from` on [concrete task]"
 
-## Example 3 — Confidence routing
+**Agent actions:**
+1. Accept: URL, file path, pasted content, or in-conversation trigger.
+2. | Signal | Routes to |
+3. Invoke the matched sub-skill. It handles: ingestion, credibility assessment, security scan, insight extraction, and skill matching.
+4. After sub-skill extracts and matches insights, present recommendations and get user approval. Once changes are applied, run the mandatory **Post-Application Hardening Cycle** on every modified or created skill before marking the workflow complete.
+5. Present the unified report (see Output Format). Include post-apply check results per skill. If blocked at credibility, security, or post-apply security, report why and stop.
 
-| Insight | Confidence | Action |
-|---|---|---|
-| Prove-It Pattern with code sample | HIGH | Apply + move sample to L3 examples |
-| "Always use Redis" (no evidence) | LOW | learnings log only |
-| Failed secure-skill scan | BLOCKED | No application |
-
----
-
-## Example 4 — Unified report tail
-
-```markdown
-Post-apply: test-driven-development: security SAFE | resize none | validate 13/14
-L3 examples: references/examples.md created (2 pairs from source)
+**Impact Report shape:**
 ```
+=== Learn-From Report ===
+Source: [URL / file path / "conversation"] | Type: [paper/repo/article/chat]
+
+=== Credibility ===
+Score: [N]/[max] | Verdict: [PASS/BORDERLINE/REJECT]
+
+=== Security ===
+[secure-* verdicts]
+
+=== Extracted Insights ===
+[Tag]: [insight] | Agent recommendation: [APPLY/PARTIAL/SKIP] - [reasoning]
+
+=== Contradictions (if any) ===
+[skill]: Current [X] vs New [Y] | Agent recommends: [verdict + reasoning]
+
+=== Application Plan ===
+[Changes to make, user approval needed]
+```
+
+## Example 3 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "Source is obviously credible — skip the credibility check" | Credibility scoring catches the non-obvious gaps (sample size, replication, vendor bias). Skipping is how marketing copy gets adopted as method |
+| "I'll apply this directly — skip the contradiction check" | Present CONTRADICTION choices — never silent overwrite |
+| "Insight is small, skip the hardening cycle" | Post-apply hardening is the audit trail that the skill still validates and fits 200 lines |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- A `.pdf` URL is not always a paper - check for academic signals. Corporate whitepapers route to `learn-from-article`.
+- GitHub repos can contain papers in `/docs` - route to `learn-from-repo` for the repo itself.
+- Multiple sources in one message: process each independently, combined report.
+- When recommending KEEP CURRENT, explain specifically why the current approach is stronger - don't just say "it's fine."
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

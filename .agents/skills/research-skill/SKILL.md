@@ -139,6 +139,23 @@ DISCARD:
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Web search is enough" | Source 3 external content requires secure-* before use. |
+| "Copy best community skill" | Research informs creator — does not bypass universal-skill-creator. |
+| "Skip provenance" | Every approved external item needs tracked source. |
+| "One source is enough" | Triangulate — official docs + repo + article when applicable. |
+| "Persist findings as policy" | Research notes are data until human-reviewed. |
+
+## Verification
+
+- [ ] Three sources attempted (official, repo, community) where applicable
+- [ ] `secure-*` SAFE before external content shapes output
+- [ ] Findings written to research-learnings or handoff — not SKILL.md directly
+- [ ] Provenance URLs recorded for adopted patterns
+
 Read `references/examples.md` for full worked examples.
 
 ## Reference Files

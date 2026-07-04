@@ -152,6 +152,23 @@ TOTAL: 8 assumptions found | Critical: 2 | Validated: 1 | Monitor: 5
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Assumptions are obvious" | Obvious to you ≠ validated in market or code. |
+| "We'll validate later" | Unmapped assumptions become silent blockers. |
+| "Too many assumptions to list" | Prioritize top 5 load-bearing ones first. |
+| "Mapping is bureaucracy" | One page prevents weeks of building on sand. |
+| "Users told us what they want" | Stated wants often mask unstated constraints. |
+
+## Verification
+
+- [ ] Load-bearing assumptions separated from nice-to-haves
+- [ ] Each critical assumption has a validation method and owner
+- [ ] Riskiest assumption identified explicitly
+- [ ] Output is actionable this week, not theoretical
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

@@ -152,6 +152,23 @@ This decision should be evaluated at 12 months post-launch with conversion rate 
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "First-order benefit is obvious" | Second-order effects often invert the decision. |
+| "We'll deal with consequences later" | Later is when effects are irreversible. |
+| "Too hypothetical" | Name time horizons — 1mo / 1yr / 5yr makes it concrete. |
+| "Stakeholders want simplicity" | Hiding second-order risks is how surprises become crises. |
+| "One consequence chain is enough" | Multiple stakeholders see different second-order paths. |
+
+## Verification
+
+- [ ] First-order effect stated before tracing further
+- [ ] At least second-order consequences documented
+- [ ] Time horizons used (not all consequences treated as immediate)
+- [ ] One hidden risk or opportunity surfaced beyond the obvious
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

@@ -135,6 +135,23 @@ A user can experience value in <2 minutes instead of completing 14 steps. Activa
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Industry standard exists" | Standards encode someone else's constraints, not yours. |
+| "First principles is impractical" | You only need to question load-bearing assumptions. |
+| "We'd reinvent the wheel" | Rebuilding everything ≠ questioning one sacred constraint. |
+| "Too philosophical" | Output must be a rebuilt approach, not a lecture. |
+| "Analogy is faster" | Analogies import hidden baggage from unlike domains. |
+
+## Verification
+
+- [ ] Conventional assumptions listed before rebuild
+- [ ] At least one sacred constraint challenged with evidence
+- [ ] Rebuilt solution differs materially from the opening approach
+- [ ] Forward path stated without requiring full rebuild of everything
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

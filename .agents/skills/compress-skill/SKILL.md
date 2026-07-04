@@ -154,6 +154,23 @@ Result: 354 → 115 lines (67% reduction)
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Split is safer" | Split when capability is separable; compress when it's one workflow. |
+| "Line count doesn't matter" | Loaders and routers choke on bloated skills. |
+| "Can't lose any words" | Relocate examples to L3 — never delete them. |
+| "Compress secure-* skills" | Security skills are split-only — compression removes threat rows. |
+| "Good enough at 210 lines" | >200 fails the library invariant — fix before shipping. |
+
+## Verification
+
+- [ ] `wc -l` ≤200 after compress (secure-* exempt → split only)
+- [ ] Examples relocated to `references/examples.md`, not deleted
+- [ ] `agentskills validate` passes on target skill
+- [ ] Workflow steps and hard rules preserved in compressed form
+
 ## Impact Report
 
 After completing, always report:

@@ -171,6 +171,22 @@ Test install dry-run: ✓
   </example>
 </examples>
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Internal validate is enough" | Publish blast radius needs full security sweep. |
+| "Redact later" | Secrets in published skills are permanent incidents. |
+| "Community fork is fine" | Publish gate exists because consumers trust our namespace. |
+| "Skip version bump" | Consumers need semver signal for breaking skill changes. |
+
+## Verification
+
+- [ ] Full `secure-*` family returned SAFE
+- [ ] `agentskills validate` + line count ≤200 on published skill
+- [ ] No API keys, tokens, or private paths in output
+- [ ] Changelog or release note prepared
+
 Read `references/examples.md` for full worked examples.
 
 ## Reference Files
@@ -181,13 +197,4 @@ Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Published: [skill-name]
-Registry URL: https://skills.sh/[skill-name]
-Install command: npx skills [skill-name]
-Package format: [.md / .zip]
-validate-skills score at publish: [N]/14
-Proprietary content scan: clean
-GitHub push: [yes — commit hash / no]
-```
+`Published: [skill-name] Registry URL: https://skills.sh/[skill-name] Install command: npx skills [skill-name] Package format: [.md / .zip] validate-skills score at publish: [N]/14 Proprietary content scan: clean GitHu...`

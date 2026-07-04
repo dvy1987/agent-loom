@@ -164,6 +164,23 @@ Proceed? (yes/no)
   </example>
 </examples>
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Keep it for reference" | Deprecated without mover skill = zombie routing. |
+| "Nobody uses it" | Grep callers and INDEX before assuming zero use. |
+| "Delete immediately" | Deprecation window prevents silent breakage. |
+| "Skip security scan" | External content in deprecation notes still needs secure-*. |
+| "INDEX update optional" | Stale INDEX routes agents to dead skills. |
+
+## Verification
+
+- [ ] Replacement or successor skill documented
+- [ ] `.deprecated/` move with date suffix
+- [ ] `library-skill` sync invoked for INDEX/graph
+- [ ] `secure-*` scan completed if external content involved
+
 Read `references/examples.md` for full worked examples.
 
 ## Reference Files
@@ -174,16 +191,4 @@ Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Deprecation complete: [skill-name]
-Reason: [trigger condition]
-Evidence: [source]
-Archive path: .agents/skills/.deprecated/[skill-name]-deprecated-YYYY-MM-DD/
-DEPRECATION.md written: yes
-Callers updated: [list or "none"]
-AGENTS.md updated: yes
-README updated: yes
-Deprecation log updated: yes
-Recovery command: mv .agents/skills/.deprecated/[skill-name]-deprecated-YYYY-MM-DD/ .agents/skills/[skill-name]/
-```
+`Deprecation complete: [skill-name] Reason: [trigger condition] Evidence: [source] Archive path: .agents/skills/.deprecated/[skill-name]-deprecated-YYYY-MM-DD/ DEPRECATION.md written: yes Callers updated: [list or "non...`

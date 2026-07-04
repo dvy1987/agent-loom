@@ -739,3 +739,38 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Working Tree
 - Ready to commit: enrichment batch + 4 gap skills + library sync.
+
+---
+
+## 2026-07-04 10:37 — Handoff (P2 craft + L3 floor + push trigger)
+
+### Done
+- **L3 floor:** All 102 skills now have `references/examples.md` ≥55 lines (`enrich_examples.py` pass 2 + `fix_craft_overflow.py` padding).
+- **P2 craft:** `add_p2_craft.py` added `Common Rationalizations` + `Verification` to all 11 thinking + 22 meta skills (0 missing).
+- **Line budget:** `fix_craft_overflow.py` compressed 14 SKILL.md files back to ≤200 after P2 insertions.
+- **Handoff v1.3:** Commit **and push** now trigger `memory-handoff` first (`memory-handoff`, `memory`, `AGENTS.md`).
+- **Scripts added:** `add_p2_craft.py`, `fix_craft_overflow.py`; `enrich_examples.py` updated (TARGET_MIN_LINES=55, preserve-append for SAFE marker files).
+- **Validation:** agentskills validate 102/102 PASS; SKILL-EXAMPLES-INDEX 102/102.
+
+### Decisions
+- P2 rationalizations/verification apply to **thinking + meta**, not only project-specific.
+- Hand-curated L3 with `security-scanned SAFE` marker uses **append** enrichment, not full replace.
+
+### Deferred
+- Consumer-repo validation of knowledge-graph application mode.
+- Optional manual polish on padded L3 files (design/experiment suites use checklist padding).
+
+### Next Agent Should Know
+- `enrich_examples.py` / `add_p2_craft.py` / `fix_craft_overflow.py` live under `universal-skill-creator/scripts/`.
+- User saying **commit**, **push**, or **commit and push** → `memory-handoff` before git ops (v1.3).
+- Library at **102 skills**; Phase 2 addyosmani gaps closed in prior commit `06ced67`.
+
+### Revisit Triggers
+- New skill created → run `library-skill` + `build_examples_index.py` + ensure L3 ≥55.
+- SKILL.md edit pushes >200 lines → `fix_craft_overflow.py` or `split-skill`.
+
+### Working Tree
+- **Dirty, ~80 files** — P2 craft + L3 enrichment + handoff v1.3; commit + push requested.
+
+### Graph
+- Incremental rebuild at handoff.

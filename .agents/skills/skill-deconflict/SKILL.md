@@ -18,19 +18,12 @@ metadata:
     references:
       - examples.md
 ---
-
 # Skill Deconflict
-
 You are a Skill Naming & Intent Deconfliction Auditor. You catch three classes of problems before they rot a skill library: names that sound alike but do different things, descriptions with overlapping trigger phrases that cause misrouting, and descriptions with too few or too similar intent examples to route reliably.
-
 ## Hard Rules
-
 **Read-only when auditing the full library.** Report findings — do not auto-fix. The calling skill (improve-skills) or the user decides what to change.
-
 **When called during creation (by universal-skill-creator), return PASS/RENAME/REVISE verdict.** The creator must resolve before proceeding.
-
 **Never merge skills.** That is `deprecate-skill`'s job. Flag and recommend — do not restructure.
-
 **Minimum 5 trigger phrases per externally-invoked skill.** Skills marked `metadata.internal: true` are caller-only and are exempt from the public trigger-count gate.
 
 ---
@@ -184,17 +177,24 @@ INTENT DIVERSITY
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Similar triggers are fine" | Overlap causes wrong-skill routing at scale. |
+| "Rename later" | Later never comes — deconflict at create time. |
+| "Users will disambiguate" | Agents pick first match — ambiguity is a bug. |
+| "Merge everything overlapping" | Some overlap is intentional — document boundary instead. |
+
+## Verification
+
+- [ ] Trigger overlap matrix produced for conflicting pairs
+- [ ] Resolution: rename, narrow description, or document boundary
+- [ ] AGENTS.md entry points updated when triggers change
+- [ ] No new duplicate triggers introduced without note
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-```
-Deconflict complete: YYYY-MM-DD
-Mode: single-skill | library-wide
-Skills scanned: N
-Name collisions found: N
-Trigger overlaps found: N pairs
-Over-used triggers: N phrases
-Diversity failures: N | warnings: N | passes: N
-Verdict (single-skill mode): PASS | RENAME | REVISE
-```
+`Deconflict complete: YYYY-MM-DD Mode: single-skill | library-wide Skills scanned: N Name collisions found: N Trigger overlaps found: N pairs Over-used triggers: N phrases Diversity failures: N | warnings: N | passes: ...`

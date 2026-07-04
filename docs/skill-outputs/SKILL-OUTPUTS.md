@@ -219,3 +219,7 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | universal-skill-creator | performance-optimization, shipping-and-launch, browser-testing-with-devtools, api-deprecation-and-migration | Phase 2 gap skills (addyosmani patterns) |
 | 2026-07-04 | improve-skills | brainstorming/references/examples.md | idea-refine examples 4–6 (restaurant, collab, retro) |
 | 2026-07-04 | library-skill | docs/SKILL-INDEX.md, README.md, AGENTS.md, docs/skill-graph.md, docs/SKILL-EXAMPLES-INDEX.md | Sync after gap skills + enrichment (102 skills) |
+| 2026-07-04 | improve-skills | 42 L3 files + enrich_examples.py | Second pass: all L3 ≥55 lines |
+| 2026-07-04 | improve-skills | 31 thinking/meta SKILL.md files + add_p2_craft.py | P2 Common Rationalizations + Verification |
+| 2026-07-04 | improve-skills | fix_craft_overflow.py | Compress SKILL.md to ≤200 after P2 craft |
+| 2026-07-04 | memory-handoff | SKILL.md v1.3, memory/SKILL.md, AGENTS.md | Handoff trigger: commit, push, commit and push |

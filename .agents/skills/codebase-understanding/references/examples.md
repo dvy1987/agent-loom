@@ -1,40 +1,89 @@
 # Codebase Understanding — Full Worked Examples
 
-Adapted for agent-loom architecture doc output + knowledge-graph Step 0.
+Skill: `codebase-understanding` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
----
+## Example 1 — Documented workflow
 
-## Example 1 — Graph-first scan
+**Input:** Help me understand this repo before I start working on it.
 
-**Input:** "Map the auth flow"
+**Output:**
+```
+[Scanned root: Next.js app with Prisma ORM, 3 main directories]
 
-**Step 0:** `query_graph.py query "auth session middleware"` → seed paths: `src/auth/`, `memory: agent-handoffs` mention.
+## Architecture Overview
+Tech stack: TypeScript, Next.js 14, Prisma, PostgreSQL, Tailwind
+Entry points: `src/app/layout.tsx` (UI), `src/app/api/` (API routes)
+Layers: UI (src/app/), API (src/app/api/), Services (src/lib/), DB (prisma/)
 
-**Output tags:** EXTRACTED (from graph invokes) vs INFERRED (from grep) vs AMBIGUOUS (needs file read).
+## Key Flows
+1. User signup: `app/signup/page.tsx` → `api/auth/register/route.ts` → `lib/auth.ts` → Prisma → DB
+2. Dashboard load: `app/dashboard/page.tsx` → `api/projects/route.ts` → `lib/projects.ts` → DB
 
----
+## Component Map
+| Component | Path | Responsibility | Dependencies |
+|-----------|------|----------------|--------------|
+| Auth | src/lib/auth.ts | JWT + session management | prisma, jose |
+| Projects | src/lib/projects.ts | CRUD for projects | prisma |
 
-## Example 2 — Architecture doc excerpt
+## Hotspots
+- `src/lib/auth.ts:45-120` — 75-line function handling both login and registration
+- `prisma/schema.prisma` — 3 TODO comments for missing indexes
 
-```markdown
-## Layer: API
-- `src/routes/auth.ts` — login, refresh [EXTRACTED: read file]
-- Data flow: Client → auth.middleware → UserService → Prisma [INFERRED: verify in Step 3]
+## Recommendations
+- Split auth.ts login/register into separate functions before adding features
+- Add the missing DB indexes flagged in the schema
 
-## Hotspot
-- `UserService.ts` — 480 lines, no tests [EXTRACTED]
+Want me to deep-dive into any of these components?
 ```
 
+## Example 2 — Documented workflow
+
+**Input:** How does the payment flow work in this codebase?
+
+**Output:**
+```
+[Searched for payment/billing/stripe across the codebase]
+
+## Key Flow: Payment Processing
+`app/billing/page.tsx` → `api/billing/checkout/route.ts` → `lib/stripe.ts` → Stripe API → webhook at `api/webhooks/stripe/route.ts` → `lib/subscriptions.ts` → DB
+
+## Component Map
+| Component | Path | Responsibility | Dependencies |
+|-----------|------|----------------|--------------|
+| Checkout | api/billing/checkout/ | Creates Stripe session | stripe, lib/stripe |
+| Webhook | api/webhooks/stripe/ | Handles payment events | stripe, lib/subscriptions |
+| Subscriptions | lib/subscriptions.ts | Updates user plan in DB | prisma |
+
+## Hotspots
+- `lib/stripe.ts:30` — Stripe secret key loaded from env, verified
+- `api/webhooks/stripe/route.ts:15` — Webhook signature verification present
+
+Want me to trace another flow or go deeper on any component?
+```
+
+## Example 3 — Step-by-step execution
+
+**Input:** "Run `codebase-understanding` on [concrete task]"
+
+**Agent actions:**
+1. Query knowledge graph (if present)
+2. Scope the Request
+3. Scan Project Structure
+4. Map Architecture
+5. Trace Key Flows
+6. Surface Hotspots and Risks
+7. Deliver the Mental Model
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Directory names like `utils/` or `helpers/` reveal nothing about responsibility — always read the files inside.
+- Monorepos have multiple entry points — check for workspace configs (`pnpm-workspace.yaml`, `lerna.json`, Cargo workspace).
+- Generated files (build output, lockfiles, compiled assets) pollute architecture maps — identify and exclude them early.
+- A `README.md` may be outdated — cross-reference claims against actual file structure.
+
 ---
 
-## Example 3 — Scope refusal
-
-**Input:** "Understand entire 200k LOC monorepo in one pass"
-
-**Output:** Propose bounded scope — one vertical slice or one directory — with graph seeds.
-
----
-
-## Example 4 — Consumer project (application mode)
-
-No skill-library graph → map `src/`, `docs/`, `docs/memory/` modules; tag INFERRED imports.
+See `SKILL.md` for hard rules and verification checklist.

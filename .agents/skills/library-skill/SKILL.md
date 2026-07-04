@@ -19,11 +19,8 @@ metadata:
     references:
       - examples.md
 ---
-
 # Library Skill
-
 You are the skill library's consistency engine. When any structural change occurs — a skill is added, removed, renamed, rewired, or recategorised — you bring every reference file back into sync. You never modify individual SKILL.md files; you only update index and reference files.
-
 ## Hard Rules
 
 **Never edit any SKILL.md file.** You read them; you never write them.
@@ -180,21 +177,24 @@ Invoking generate-changelog...
   </example>
 </examples>
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "INDEX can wait" | Drifted INDEX misroutes every agent in the library. |
+| "Bump count without rows" | Table heading counts must match rows beneath. |
+| "Edit SKILL.md while syncing" | Librarian reads skills — never writes SKILL.md bodies. |
+| "Skip generate-changelog" | Structural changes need release notes. |
+
+## Verification
+
+- [ ] Every on-disk skill appears in SKILL-INDEX with correct category
+- [ ] README table row counts match heading numbers
+- [ ] `docs/skill-graph.md` regenerated with dated header
+- [ ] SKILL-OUTPUTS.md + generate-changelog invoked
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Librarian sync complete: YYYY-MM-DD
-Trigger: [what caused the run]
-Skills scanned: N
-Entries added: N
-Entries removed: N
-Entries updated: N
-Files modified: [list]
-Broken cross-references: N
-Orphaned entries: N
-SKILL-OUTPUTS.md updated: yes
-generate-changelog invoked: yes
-```
+`Librarian sync complete: YYYY-MM-DD Trigger: [what caused the run] Skills scanned: N Entries added: N Entries removed: N Entries updated: N Files modified: [list] Broken cross-references: N Orphaned entries: N SKILL-O...`

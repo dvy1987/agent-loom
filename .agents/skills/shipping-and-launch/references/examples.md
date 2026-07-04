@@ -37,3 +37,46 @@ Skill: `shipping-and-launch` | addyosmani patterns, security-scanned SAFE.
 ---
 
 See `SKILL.md` for hard rules and verification checklist.
+
+---
+
+## Example 4 — Extended pass (L3 enrichment)
+
+## Example 5 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "It's a small change" | Small deploys still need rollback and error visibility. |
+| "We'll add alerts after launch" | You discover outages from users instead of dashboards. |
+| "Full send is faster" | One incident costs more than a canary day. |
+| "Rollback is unlikely" | Plan for it anyway — Hyrum's Law applies in prod. |
+| "Checklist is bureaucracy" | It's how you remember security and a11y under time pressure. |
+
+## Example 6 — Step-by-step execution
+
+**Input:** "Run `shipping-and-launch` on [concrete task]"
+
+**Agent actions:**
+1. Define success and risk
+2. Pre-launch checklist
+3. Staged rollout
+4. Monitor and decide
+5. Rollback or complete
+
+## Example 7 — Gotcha application
+
+**Apply:**
+- "Green staging" with 10x less data than prod hides query issues.
+- Launch without feature flags forces redeploy to rollback.
+- Announcing before monitoring is wired means flying blind.
+- Skipping comms strands on-call.
+- 
+
+## Verification checklist (L3)
+
+- [ ] Examples align with SKILL.md hard rules
+- [ ] Anti-skip or rationalization pattern shown
+- [ ] Output shape matches Impact Report
+- [ ] User can trace from input → durable artifact or chat outcome

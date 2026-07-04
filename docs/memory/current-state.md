@@ -1,20 +1,20 @@
 # Current State
 
-Last updated: 2026-07-04 (L3 enrichment + Phase 2 gap skills complete)
+Last updated: 2026-07-04 (P2 craft + L3 floor + handoff v1.3 push trigger)
 
-Fourteen landed items across 2026-05-13 → 2026-07-04.
+Fifteen landed items across 2026-05-13 → 2026-07-04.
 
-1.–12. *(See prior entries — through knowledge-graph v2 + L3 backfill, `a9281de`.)*
+1.–13. *(See prior entries — through knowledge-graph v2 + L3 backfill + commit-handoff trigger, `a9281de`/`06ced67`.)*
 
-13. **Knowledge Graph v2 + L3 Examples + Examples Invariant** (2026-07-03/04). Native `knowledge-graph` skill; 98/98 L3 coverage; never-discard-examples policy; `memory-handoff` v1.2 commit trigger.
+14. **Phase 2 gap skills + L3 enrichment** (2026-07-04, `06ced67`). Four addyosmani gap skills; library sync to 102 skills; brainstorming idea-refine examples.
 
-14. **L3 Enrichment + Phase 2 Gaps** (2026-07-04, this commit). `enrich_examples.py` quality pass (~70 skills); 4 gap skills (`performance-optimization`, `shipping-and-launch`, `browser-testing-with-devtools`, `api-deprecation-and-migration`); brainstorming idea-refine examples; **102 skills**; library sync + validate 102/102 PASS.
+15. **P2 craft + L3 floor + push trigger** (2026-07-04, this commit). All L3 ≥55 lines; thinking/meta rationalizations + verification complete; `memory-handoff` v1.3 adds push/commit-and-push triggers; helper scripts `add_p2_craft.py`, `fix_craft_overflow.py`.
 
 ## Active Risks
 
-- Some L3 files still <55 lines (memory meta, hand-curated exceptions) — optional manual enrich.
-- P2 craft advisories (rationalizations/verification) on thinking/meta skills — non-blocking.
+- Padded L3 files (design/experiment suites) are structurally complete but less hand-curated than addyosmani passes — optional polish.
+- `agentskills validate` CLI unavailable in some environments — manual checks used as fallback.
 
 ## Immediate Next Step
 
-Validate knowledge-graph in a **consumer project** (application mode). Consumer-project L3 manual pass on highest-traffic skills if needed.
+Validate knowledge-graph in a **consumer project** (application mode). Optional: hand-curate padded L3 examples for highest-traffic skills.

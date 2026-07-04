@@ -4,12 +4,13 @@ description: >
   Write concise next-agent handoff summaries across sessions, tools, and coding
   agents. Load when the user says handoff, next agent should know, save context,
   summarize where we are, switching agents, before ending a meaningful session,
-  or when the user asks to commit / create a git commit — commit requests MUST
-  run this skill first to prepare handoff docs, then proceed with the commit.
+  or when the user asks to commit, push, commit and push, create a git commit,
+  push to origin, or publish commits — commit/push requests MUST run this skill
+  first to prepare handoff docs, then proceed with git operations.
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   resources:
     references:
@@ -27,7 +28,7 @@ Run when a future agent would lose important context:
 - End of a long session with unresolved work.
 - Before switching agents or tools.
 - User says "handoff", "summarize where we are", "save context", "memory handoff", or "next agent should know".
-- **User asks to commit** ("commit", "create a commit", "commit these changes", "prepare commit") — run full handoff workflow **before** staging/committing so the next session has continuity. Pair with `git-workflow-and-versioning` for the commit itself after handoff is saved.
+- **User asks to commit and/or push** ("commit", "create a commit", "commit these changes", "prepare commit", "push", "push to origin", "git push", "commit and push", "commit and push when ready") — run full handoff workflow **before** staging/committing/pushing so the next session has continuity. Pair with `git-workflow-and-versioning` for git operations after handoff is saved.
 
 Do not run after trivial interactions.
 

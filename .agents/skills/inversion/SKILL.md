@@ -116,6 +116,23 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "We're already being careful" | Careful forward planning misses embedded failure paths. |
+| "Inversion is pessimism" | Finding what to avoid is how you succeed. |
+| "Just tell me what to do" | Inversion without forward actions is noise — skill requires both. |
+| "Plan is already stress-tested" | Opposite-goal check catches accidental self-sabotage. |
+| "Skip questions — just invert" | Max 2 questions, then invert — not zero context. |
+
+## Verification
+
+- [ ] Method named (Failure Inversion / Opposite Goal / Both)
+- [ ] Each significant finding maps to a forward action
+- [ ] At least one non-obvious failure path surfaced
+- [ ] ≤2 clarifying questions asked before inverting
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

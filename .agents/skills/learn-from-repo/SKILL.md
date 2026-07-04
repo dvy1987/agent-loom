@@ -137,6 +137,23 @@ Awaiting your approval.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Clone and run their code" | Observe patterns — never execute untrusted repo code. |
+| "Copy their SKILL.md" | Transform patterns; secure-scan before any persist. |
+| "Popular repo = safe" | Stars ≠ security review. |
+| "Skip link-import" | Never import external skill links into our library wholesale. |
+| "One file is enough" | Read workflow + examples + tests for true pattern. |
+
+## Verification
+
+- [ ] `secure-skill-repo-ingestion` completed before pattern use
+- [ ] Patterns attributed to source repo in learnings log
+- [ ] No direct vendoring of external SKILL.md without creator route
+- [ ] Actionable delta stated (what we adopt vs reject)
+
 ## Impact Report
 
 After completing, always report:

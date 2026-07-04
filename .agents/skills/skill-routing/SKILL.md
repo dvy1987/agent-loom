@@ -129,6 +129,23 @@ Pre-req: met
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Obvious which skill" | Obvious to user ≠ obvious to router at score 6/10. |
+| "Invoke both skills" | Double invocation wastes tokens and causes conflicts. |
+| "Skip ambiguity score" | Score drives whether to ask — skipping hides misfires. |
+| "Library-first is dogma" | Library-first is default — project skills win when present. |
+| "Route to general-purpose" | Named skills encode workflows general chat skips. |
+
+## Verification
+
+- [ ] Ambiguity score 1-10 stated when multiple skills match
+- [ ] Winner skill named with one-line rationale
+- [ ] User asked to disambiguate when score ≥7
+- [ ] Project-local skill preferred over global when both match
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

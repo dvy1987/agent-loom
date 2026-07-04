@@ -1,41 +1,55 @@
 # Project Setup — Full Worked Examples
 
-Adapted for agent-loom AGENTS.md generation workflow.
+Skill: `project-setup` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
+
+## Example 1 — Documented workflow
+
+**Input:** "Set up agents. I'm a PM building a React Native habit tracker. Not confident in architecture, testing, or security."
+
+**Output:**
+```
+`owner_mode: non-technical`. AGENTS.md with Agent-Led Architecture, Session Lifecycle, Skill Invocation. Rubric 13/14.
+```
+
+## Example 2 — Step-by-step execution
+
+**Input:** "Run `project-setup` on [concrete task]"
+
+**Agent actions:**
+1. Check Existing Context
+2. User Interview (Two Axes)
+3. Map Skill Gaps (Dynamic)
+4. Generate the AGENTS.md
+5. Write the Orchestration Map
+6. Present, Iterate, Save
+
+**Impact Report shape:**
+```
+Project setup complete: [name] | Platform: [target] | Mode: [single|multi]
+Files saved: [paths] ([line counts]) | Commands auto-extracted from: [manifests]
+User role: [role] | Owner mode: [technical|hybrid|non-technical] | Skill gaps filled: [list]
+Orchestration Map: [skill count] across [phase count] phases
+Session Lifecycle + Agent-Led blocks: [yes/no] | Rubric: [n/14] | L3: references/examples.md
+```
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **The interview is the highest-leverage step.** 3 minutes of interview → 10x better AGENTS.md. Never skip it (except in `RETROACTIVE=true` mode).
+- **Skill gaps are the secret sauce.** A PM's AGENTS.md looks completely different from an engineer's.
+- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones. LLM-generated context without human input reduces task success ~3%.
+- 
 
 ---
 
-## Example 1 — PM, non-technical owner
+See `SKILL.md` for hard rules and verification checklist.
 
-**Input:** "Set up agents. React Native habit tracker. Weak on architecture, testing, security."
+## Verification checklist (L3)
 
-**Interview (abbreviated):**
-- Role: PM | Done: shipped feature = tested build + store screenshot
-- Gaps: security, testing, architecture → skill-finder maps `app-security-hardening`, `test-driven-development`, `api-and-interface-design`
-
-**Output:** `owner_mode: non-technical`. AGENTS.md with Agent-Led Architecture block, Session Lifecycle, Orchestration Map (brainstorming → feature-spec → TDD). Step 6b: `build_graph.py` if knowledge-graph installed. Rubric 13/14. 134 lines.
-
----
-
-## Example 2 — Engineer, SDD project
-
-**Input:** "Specs-first monorepo, frontend + backend"
-
-**Detection:** `docs/specs/` exists → `sdd_mode: on`, skip SDD question. `agents_md_mode: multi` → root + `frontend/AGENTS.md` + `backend/AGENTS.md`.
-
-**Orchestration:** constitution → feature-spec → plan → crosscheck → implement.
-
----
-
-## Example 3 — Commands auto-extracted
-
-**Input:** User doesn't know test command
-
-**Silent scan:** `package.json` scripts → present "Run `npm test` — confirm?" in Step 2. Never ask for info in manifest.
-
----
-
-## Example 4 — Update mode
-
-**Input:** `UPDATE_ONLY=true` after new ADR bans direct DB access
-
-**Action:** Edit only Boundaries + Non-Obvious Patterns in AGENTS.md; preserve User Context and Session Lifecycle.
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Anti-skip or rationalization defense included where applicable
+- [ ] Output artifacts or Impact Report shape is explicit
+- [ ] Reader can trace input → concrete agent actions → outcome
+- [ ] Cross-check against latest SKILL.md before shipping changes

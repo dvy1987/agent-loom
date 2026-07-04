@@ -48,3 +48,10 @@ Validate request DTO at the route boundary, enforce authZ (user can only update 
 ---
 
 See `SKILL.md` for hard rules and verification checklist.
+
+## Verification checklist (L3)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Anti-skip or rationalization defense included where applicable
+- [ ] Output artifacts or Impact Report shape is explicit
+- [ ] Reader can trace input → concrete agent actions → outcome

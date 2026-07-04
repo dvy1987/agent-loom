@@ -1,47 +1,55 @@
 # Knowledge Graph — Full Worked Examples
 
-Native agent-loom + graphify pattern examples.
+Skill: `knowledge-graph` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
 
----
+## Example 1 — Documented workflow
 
-## Example 1 — Query before rebuild
+**Input:** Build a knowledge graph for this project.
 
-**Input:** "How does memory-handoff connect to knowledge-graph?"
-
-```bash
-python3 .agents/skills/knowledge-graph/scripts/query_graph.py path memory-handoff knowledge-graph
+**Output:**
 ```
-→ 1 hop `invokes` [EXTRACTED]. No full rebuild needed.
-
----
-
-## Example 2 — Skill-library vs application mode
-
-| Host | Mode | Nodes |
-|---|---|---|
-| agent-loom | skill-library | skills, invoke chains |
-| Consumer app repo | application | modules, docs, memory |
-
----
-
-## Example 3 — Handoff incremental sync
-
-After `memory-handoff` Step 7 → `build_graph.py --incremental`. Handoff body skill mentions → semantic edges.
-
----
-
-## Example 4 — Health audit
-
-```bash
-python3 .agents/skills/knowledge-graph/scripts/graph_health.py
+Ran `build_graph.py` → mode=skill-library, 120 nodes, 412 edges (164 authoritative invokes). Hubs: universal-skill-creator, validate-skills, secure-skill. Saved to `docs/knowledge-graph/`. See `GRAPH_REPORT.md` for communities and suggested questions.
 ```
-P0: dangling invoke target. P1: stale vs latest handoff date.
+
+## Example 2 — Documented workflow
+
+**Input:** How does memory-handoff connect to knowledge-graph?
+
+**Output:**
+```
+`query_graph.py path memory-handoff knowledge-graph` → 1 hop via `invokes` [EXTRACTED, provenance: memory-handoff/SKILL.md]. Neighbors: memory-capture, agent-handoffs [recorded_in].
+```
+
+## Example 3 — Step-by-step execution
+
+**Input:** "Run `knowledge-graph` on [concrete task]"
+
+**Agent actions:**
+1. Check existing graph
+2. Build or update
+3. Query
+4. Health audit (optional / validate-skills hook)
+5. Report
+
+## Example 4 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "I'll just grep" | Grep misses invoke chains and handoff lineage. Query the graph. |
+| "Graph is stale, full rebuild" | Try `--incremental` first; authoritative sources may be unchanged. |
+| "INFERRED edge = fact" | Read `source_file` / `provenance` before acting. |
+| "Skip graph on handoff" | Next agent loses relational context. |
 
 ---
 
-## Example 5 — explain subcommand
+See `SKILL.md` for hard rules and verification checklist.
 
-```bash
-python3 .agents/skills/knowledge-graph/scripts/query_graph.py explain validate-skills
-```
-Inbound/outbound with provenance tags.
+## Verification checklist (L3)
+
+- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
+- [ ] Anti-skip or rationalization defense included where applicable
+- [ ] Output artifacts or Impact Report shape is explicit
+- [ ] Reader can trace input → concrete agent actions → outcome
+- [ ] Cross-check against latest SKILL.md before shipping changes

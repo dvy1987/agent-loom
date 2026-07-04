@@ -17,43 +17,27 @@ metadata:
   category: meta
   sources: arXiv:2602.12430, arXiv:2603.29919, agentskills.io best practices
 ---
-
 # Improve Skills
-
 You are a Senior AI Skill Engineer running a systematic improvement pass over a skill library. For each skill: prune → fix gaps → link → research → rewrite → resize. Compression without improved quality is failure. All skills are in scope including meta skills.
-
 ## Modes
-
 - **`FULL_PASS`** (default) — every skill in the library; runs Step 1 → 1b → 2 (looped) → 3 → 4.
 - **`TARGETED`** — invoked as `improve-skills TARGET=<skill> [SKIP_RESEARCH=true]`. Entry point for `learn-from-chat` Step 5 escalation, and for user-driven single-skill fixes. Step 1 scopes validate-skills to TARGET only; Step 1b filters chat-learnings to TARGET; Step 2 runs once; Step 3 repairs cross-refs only for the modified skill. `SKIP_RESEARCH=true` skips **only** Step 2e — use when the change source is already trusted (chat-learning, prior research, user-supplied fix). Never skip 2b, 2h, 2j, 2k, 2l.
-
 ## Hard Rules
-
 **Improve before compressing.** Compressing a weak skill produces a smaller weak skill.
-
 **Split before compressing.** Check for seams and duplication before trimming prose.
-
 **Fix structural gaps before rewriting.** Gaps caught by validate-skills (missing category, missing Impact Report, missing file-output logging) are fixed in Step 2b — before the rewrite in Step 2e, so the rewrite doesn't have to undo them.
-
 **L3 examples mandate.** External repo examples (e.g. addyosmani): `secure-*` SAFE first → full pairs in `references/examples.md`; never delete for line limits. Run `build_examples_index.py`.
-
 **Chat learnings are an input, not a mandate.** `docs/learnings/chat-learnings.md` is consumed in Step 1b. Apply discretion — not every OPEN entry must land in a skill. Every entry must end the pass marked `IMPLEMENTED`, `REJECTED`, or `DEFERRED` with a reason. Silent skipping is a failure.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Pre-flight via validate-skills
 Invoke `validate-skills` across the full library. Use the report to:
 - Fix any P0 failures (agentskills validate fails) before anything else
 - Build the work queue ordered by score: lowest scores first
 - Note all structural flags (missing category, Impact Report, file-output logging) — these are fixed in Step 2b for each skill
 - Flag any skills scoring 0–5/14 as `deprecate-skill` candidates (present to user, don't auto-deprecate)
-
 Report the queue with scores and structural flags. Ask for confirmation before starting.
-
 ### Step 1b — Ingest Chat Learnings
-
 Read `docs/learnings/chat-learnings.md` (canonical log of chat-discovered learnings). For each entry with `Status: OPEN` (or missing), assign exactly one verdict:
 
 - `IMPLEMENTED ([today], pre-existing in <skill> v<ver>)` — already encoded in target skill as Hard Rule / Gotcha / workflow step.
@@ -173,6 +157,22 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 </examples>
 
 ---
+
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Skip validate pre-flight" | Improving blind wastes cycles on already-healthy skills. |
+| "Research every skill" | `SKIP_RESEARCH=true` is valid when AO patterns already ingested. |
+| "One skill is enough" | Batch structural gaps compound library quality. |
+| "Delete examples to fit lines" | Relocate to L3 — never discard examples. |
+
+## Verification
+
+- [ ] `validate-skills` pre-flight run before edits
+- [ ] `agentskills validate` passes on every modified skill
+- [ ] L3 `references/examples.md` present or backfilled when examples moved
+- [ ] Impact Report lists per-skill score delta and files touched
 
 Read `references/examples.md` for full worked examples.
 

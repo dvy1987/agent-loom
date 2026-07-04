@@ -38,7 +38,18 @@ Hidden assumption/question exposed: [if any]
 Concrete next action: [what to do now]
 ```
 
-## Example 3 — Gotcha application
+## Example 3 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "I already thought about it" | Deep-thinking forces explicit framework choice, not vibes. |
+| "One framework is enough" | Wrong frame applied confidently is worse than diagnosing first. |
+| "This doesn't need deep analysis" | Router exists because mis-framed problems waste the wrong skill. |
+| "More thinking = paralysis" | Output must end with one concrete next action. |
+
+## Example 4 — Gotcha application
 
 **Input:** Task hits a non-obvious edge case
 

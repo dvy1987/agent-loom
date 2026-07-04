@@ -174,6 +174,13 @@ VERDICT: BLOCKED — add to no-go repo list
   </example>
 </examples>
 
+## Verification
+
+- [ ] All six core checks executed (injection, exfil, credentials, escalation, supply chain, obfuscation)
+- [ ] Child sanitization + repo-ingestion invoked when content type requires
+- [ ] CRITICAL findings block persist and publish paths
+- [ ] Instruction hierarchy violations flagged explicitly
+
 Read `references/examples.md` for full worked examples.
 
 ## Reference Files

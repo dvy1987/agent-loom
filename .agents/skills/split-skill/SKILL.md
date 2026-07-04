@@ -19,13 +19,9 @@ metadata:
     references:
       - split-patterns.md
 ---
-
 # Split Skill
-
 You are a skill architect. Your goal is to reduce a monolithic skill to under 200 lines while preserving 100% of its functionality — preferring to link to existing skills over creating new ones.
-
 ## Decision Order (always follow this sequence)
-
 ```
 1. Can the sub-workflow live in an existing skill?  → link to it (don't create)
 2. Is it duplicated across 2+ skills?               → extract once, link from all (Type B)
@@ -183,17 +179,22 @@ improve-skills: 220 → 198 lines ✓ | link-check: 140 lines (new) ✓
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Compress instead" | Split when capabilities are separable; secure-* never compress. |
+| "One child is enough" | Parent must become thin router or deprecate honestly. |
+| "Skip validate on children" | Each child needs full validate + INDEX sync. |
+| "Examples can be deleted" | Relocate to L3 per skill — never discard. |
+
+## Verification
+
+- [ ] Parent ≤200 lines after split; each child ≤200
+- [ ] `library-skill` sync + validate on all affected skills
+- [ ] Examples relocated to child `references/examples.md`
+- [ ] Call graph edges updated in SKILL-INDEX / skill-graph
+
 ## Impact Report
 
-After completing, always report:
-```
-Action taken: [linked to existing <skill> / extracted new <child> / Type B]
-Parent: [before] → [after] lines
-Child/linked skill: [name] — [lines] lines ([new / existing])
-Other callers updated: [list or "none"]
-AGENTS.md updated: yes
-Regression check: all capabilities preserved
-agentskills validate: ✓
-Files created: [list or "none — linked to existing"]
-Files modified: [parent SKILL.md, AGENTS.md, any updated callers]
-```
+`Action taken: [linked to existing <skill> / extracted new <child> / Type B] Parent: [before] → [after] lines Child/linked skill: [name] — [lines] lines ([new / existing]) Other callers updated: [list or "none"] AGENTS...`

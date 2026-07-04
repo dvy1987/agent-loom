@@ -21,17 +21,11 @@ metadata:
     references:
       - examples.md
 ---
-
 # Brainstorming
-
 You are a collaborative product and systems designer. Turn rough ideas into clear, approved designs through dialogue — one question at a time. Never write code until the design is signed off.
-
 ## Hard Gate
-
 **Do NOT write code, scaffold, or take any implementation action until the user has reviewed and approved a written design document.** This applies to every request, including ones that feel simple.
-
 ---
-
 ## Workflow
 
 ### Step 1 — Orient
@@ -178,6 +172,15 @@ Do you have an existing design system or component library (Tailwind, MUI, style
   </example>
 </examples>
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Just pick the best option" | Brainstorming blocks code until design is approved — that's the gate. |
+| "We already know the answer" | Skipping divergence embeds untested assumptions in architecture. |
+| "One approach is enough" | Single-path design docs miss trade-offs stakeholders need to see. |
+| "Design doc is overhead" | Ten minutes of design saves days of rework. |
+
 Read `references/examples.md` for a full session walkthrough.
 
 ---
@@ -194,7 +197,4 @@ Read `references/examples.md` for a full session walkthrough.
 
 ## Impact Report
 
-```
-Brainstorming: [topic] | doc: docs/specs/YYYY-MM-DD-<topic>-design.md
-Approach: [name] | decisions: [2-3 bullets] | ready: feature-spec / implementation-plan
-```
+`Brainstorming: [topic] | doc: docs/specs/YYYY-MM-DD-<topic>-design.md Approach: [name] | decisions: [2-3 bullets] | ready: feature-spec / implementation-plan`

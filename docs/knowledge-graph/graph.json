@@ -1,14 +1,14 @@
 {
   "version": "2.0",
-  "generated_at": "2026-07-04T02:52:36.403032+00:00",
+  "generated_at": "2026-07-04T05:08:16.530942+00:00",
   "mode": "skill-library",
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 125,
-    "edges": 434,
+    "nodes": 127,
+    "edges": 444,
     "authoritative_edges": 170,
-    "extracted_edges": 218,
-    "inferred_edges": 216
+    "extracted_edges": 220,
+    "inferred_edges": 224
   },
   "god_nodes": [
     "universal-skill-creator",
@@ -16,8 +16,8 @@
     "secure-skill",
     "improve-skills",
     "library-skill",
-    "experimentation",
     "split-skill",
+    "experimentation",
     "learn-from",
     "feature-spec",
     "spec-driven-development"
@@ -89,10 +89,7 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "context": [
-      "context-engineering"
-    ],
-    "experiment": [
+    "second": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -182,12 +179,10 @@
       "validate-skills",
       "venture-exploration"
     ],
-    "code": [
-      "code-review-crsp",
-      "code-simplification",
-      "technical-debt-audit"
+    "debug": [
+      "debug-and-fix"
     ],
-    "frontend": [
+    "browser": [
       "app-security-hardening",
       "browser-testing-with-devtools",
       "ci-cd-and-automation",
@@ -198,8 +193,13 @@
       "performance-optimization",
       "shipping-and-launch"
     ],
-    "debug": [
-      "debug-and-fix"
+    "code": [
+      "code-review-crsp",
+      "code-simplification",
+      "technical-debt-audit"
+    ],
+    "context": [
+      "context-engineering"
     ]
   },
   "nodes": [
@@ -1141,6 +1141,20 @@
     {
       "id": "handoff_2026_07_04_08_15_handoff_commit_session",
       "label": "2026-07-04 08:15 — Handoff (commit session)",
+      "type": "handoff",
+      "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
+      "id": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "label": "2026-07-04 14:30 — Handoff (L3 enrichment + Phase 2 gaps)",
+      "type": "handoff",
+      "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
+      "id": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "label": "2026-07-04 10:37 — Handoff (P2 craft + L3 floor + push trigger)",
       "type": "handoff",
       "path": "docs/memory/agent-handoffs.md",
       "community": "memory"
@@ -4749,6 +4763,96 @@
     {
       "source": "handoff_2026_07_04_08_15_handoff_commit_session",
       "target": "skill_library_skill",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "target": "memory_docs_memory_agent_handoffs_md",
+      "relation": "recorded_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "target": "skill_performance_optimization",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "target": "skill_shipping_and_launch",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "target": "skill_browser_testing_with_devtools",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_14_30_handoff_l3_enrichment_phase_2_gaps",
+      "target": "skill_api_deprecation_and_migration",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "target": "memory_docs_memory_agent_handoffs_md",
+      "relation": "recorded_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "target": "skill_memory_handoff",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "target": "skill_memory",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "target": "skill_library_skill",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
+      "target": "skill_split_skill",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
       "confidence_score": 0.85,

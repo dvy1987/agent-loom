@@ -138,6 +138,23 @@ No edits needed.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Skills are independent" | Orphan skills rot — callers need discoverable edges. |
+| "INDEX is enough" | SKILL.md cross-links are what agents read at invoke time. |
+| "Link everything" | Link only real invoke relationships, not keyword overlap. |
+| "One pass is enough" | New skills need reciprocal Called-by updates. |
+| "Graph replaces links" | Graph is derived; authoritative links live in SKILL.md + INDEX. |
+
+## Verification
+
+- [ ] New links reflect actual invoke paths (not aspirational)
+- [ ] Reciprocal references updated where bidirectional
+- [ ] No broken skill name references after edit
+- [ ] SKILL-OUTPUTS.md logged if files changed
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

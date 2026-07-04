@@ -1,51 +1,55 @@
-# Git Workflow — Full Worked Examples
+# Git Workflow and Versioning — Full Worked Examples
 
-Source: addyosmani gap fill + conventional commits patterns (2026-06-01).
+Skill: `git-workflow-and-versioning` | Enriched from SKILL.md (improve-skills pass, SKIP_RESEARCH).
+
+## Example 1 — Documented workflow
+
+**Input:** I'm done with the validation endpoint. Ready to commit.
+
+**Output:**
+```
+Staged review: one logical change (POST /validate + tests).
+Message:
+```
+feat: add skill validation endpoint
+
+Exposes validate-skills checks for CI; refs task validate-api.
+```
+Run: `npm test` → pass, then commit.
+```
+
+## Example 2 — Step-by-step execution
+
+**Input:** "Run `git-workflow-and-versioning` on [concrete task]"
+
+**Agent actions:**
+1. Review what's changing
+2. Pre-commit hygiene
+3. Write the message
+4. Commit or advise the user
+5. Summarize for reviewers
+
+## Example 3 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| "I'll commit when the feature is done" | One giant commit can't be reviewed or reverted safely. |
+| "Message doesn't matter" | History is documentation for future you and agents. |
+| "I'll squash later" | Prefer clean incremental commits from the start. |
+| "Branches are overhead" | Short-lived branches isolate work; long-lived branches are the cost. |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Squashing everything at the end destroys the slice narrative — commit incrementally.
+- Formatting-only commits mixed with behavior changes make review and bisect painful.
+- Missing `.gitignore` until `.env` lands in history.
+- `git reset --hard` on shared branches loses others' work — warn first.
 
 ---
 
-## Example 1 — Atomic commit
-
-**Input:** Diff mixes feature + unrelated format
-
-**Output:** Split commits:
-```
-feat(auth): add email validation on register
-style(auth): format auth routes
-```
-
-One logical change per commit.
-
----
-
-## Example 2 — Conventional message
-
-```
-fix(cart): prevent negative quantity in checkout
-
-Root cause: parseInt without bounds check.
-Regression test: cart.quantity.test.ts
-```
-
-Header ≤72 chars; body explains why.
-
----
-
-## Example 3 — Breaking change
-
-```
-feat(api)!: remove legacy /v1/users endpoint
-
-BREAKING CHANGE: clients must use /v2/users
-```
-
----
-
-## Example 4 — Skill improvement commit
-
-```
-improve: test-driven-development — 11/14 → 13/14
-
-- Backfill references/examples.md from addyosmani patterns (secure-* SAFE)
-Sources: addyosmani/agent-skills snapshot 2026-05-29
-```
+See `SKILL.md` for hard rules and verification checklist.

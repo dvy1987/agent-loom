@@ -249,7 +249,7 @@ domain          | specialized, not universally needed      | install only when n
 "Mom Test" / "interview users" / "validate the problem" → customer-discovery
 "remember this" / "save context" / "what happened last time" → memory (orchestrator → memory-startup, memory-capture, memory-handoff, memory-decision, memory-recall, memory-promote, memory-compact, memory-audit, memory-forget)
 "handoff" / "next agent should know" → memory-handoff
-"commit" / "create a commit" / "commit these changes" → memory-handoff (prepare handoff first), then git commit
+"commit" / "push" / "commit and push" / "create a commit" / "push to origin" → memory-handoff (prepare handoff first), then git commit/push
 "record this decision" / "why did we choose" → memory-decision
 "audit memory" / "compact memory" / "forget this" → memory-audit / memory-compact / memory-forget
 "knowledge graph" / "build the graph" / "query the graph" / "map skill relationships" → knowledge-graph

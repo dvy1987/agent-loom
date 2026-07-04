@@ -169,17 +169,25 @@ Awaiting your approval to apply.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| "Chat said so — update the skill" | Human review required before persisting new instructions. |
+| "Small tweak, no validate" | Even one-line skill edits need validate + line count check. |
+| "Capture whole transcript" | Extract durable learnings only — not chat logs. |
+| "Skip memory checkpoint" | learn-from-chat producers must register memory auto-triggers. |
+| "Global memory by default" | Project-local unless promote criteria met. |
+
+## Verification
+
+- [ ] Proposed skill change shown to user before write
+- [ ] `validate-skills` + `agentskills validate` on edited skill
+- [ ] Line count ≤200 or routed to split/compress
+- [ ] Learning logged to research-learnings or skill gotchas, not raw chat
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Chat learning captured: [YYYY-MM-DD]
-Discovered: [one-sentence insight]
-Classification: [tag] | Generalizable: [yes/no]
-Status: [IMPLEMENTED / ESCALATED / REJECTED]
-Skills modified: [list] | Contradictions resolved: [N]
-validate-skills: [skill]: [before] → [after]   (omit if ESCALATED)
-Logged: docs/learnings/chat-learnings.md
-```
+`Chat learning captured: [YYYY-MM-DD] Discovered: [one-sentence insight] Classification: [tag] | Generalizable: [yes/no] Status: [IMPLEMENTED / ESCALATED / REJECTED] Skills modified: [list] | Contradictions resolved: [...`
