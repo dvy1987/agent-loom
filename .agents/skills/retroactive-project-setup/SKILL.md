@@ -117,7 +117,7 @@ Write the four `docs/memory/` files directly (these are stubs, no skill needed):
 1. Show the user the exact list of files created with line counts.
 2. Highlight every `[INFERRED — confirm]` tag location.
 3. Append every created file to `docs/skill-outputs/SKILL-OUTPUTS.md` (bootstrap from template if absent).
-4. Tell the user: "Retroactive setup complete. Review the `[INFERRED — confirm]` tags, then stage the commit. Source code untouched."
+4. Tell the user: "Retroactive setup complete. Review the `[INFERRED — confirm]` tags, then stage the commit. Source code untouched. For ongoing agent-loom library upgrades, invoke `agent-loom-sync`."
 5. Memory checkpoint (mandatory): invoke `memory-capture` with event `retroactive-backfill` and provenance `retroactive-project-setup`.
 
 ---

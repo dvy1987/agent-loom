@@ -131,7 +131,7 @@ If `sdd_mode: on`, add the SDD chain to the Orchestration Map: `project-constitu
 
 If merging into an existing AGENTS.md: preserve all project-specific content, inject any missing mandatory blocks (Skill Invocation, Session Lifecycle), keep under 150 lines, show diff, get approval — no regression on either side.
 
-Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Every agent tool reads it automatically. Re-run `project-setup` after writing a PRD or changing the stack."
+Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Every agent tool reads it automatically. Re-run `project-setup` after writing a PRD or changing the stack. For ongoing agent-loom library upgrades after copying `.agents/`, invoke `agent-loom-sync`."
 
 **6b. Knowledge graph:** If `knowledge-graph` installed, run `build_graph.py`; add `GRAPH_INDEX.md` to `project-index.md` when memory suite present.
 
