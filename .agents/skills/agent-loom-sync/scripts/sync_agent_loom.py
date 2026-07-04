@@ -16,6 +16,12 @@ CONFIG_NAME = "agent-loom-sync.json"
 DEFAULT_UPSTREAM = "../agent-loom"
 SKIP_DIRS = {".deprecated", "__pycache__", ".DS_Store"}
 ORIGIN_RE = re.compile(r"^\s+origin:\s*project-local\s*$", re.MULTILINE)
+_ORIGIN_SCRIPT = (
+    Path(__file__).resolve().parents[2]
+    / "universal-skill-creator"
+    / "scripts"
+    / "project_local_origin.py"
+)
 
 
 def _read(p: Path) -> str:
@@ -197,6 +203,17 @@ def apply_plan(project_root: Path, plan: dict, dry_run: bool) -> dict:
     return {"applied": applied, "rsync_log": rsync_log, "hooks_log": hooks_log}
 
 
+def stamp_local_only_skills(project_root: Path, upstream: Path, *, dry_run: bool) -> list[str]:
+    """Auto-stamp metadata.origin on skills not present upstream."""
+    if not _ORIGIN_SCRIPT.is_file():
+        return []
+    sys.path.insert(0, str(_ORIGIN_SCRIPT.parent))
+    from project_local_origin import stamp_local_only  # noqa: PLC0415
+
+    up_names = set(list_skills(upstream / ".agents" / "skills").keys())
+    return stamp_local_only(project_root, up_names, dry_run=dry_run)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sync agent-loom library skills into project .agents/")
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -246,6 +263,9 @@ def main() -> int:
         return 0
 
     result = apply_plan(root, plan, dry_run=False)
+    stamped = stamp_local_only_skills(root, Path(plan["upstream"]), dry_run=False)
+    if stamped:
+        result["stamped"] = stamped
     cfg = plan["config"]
     cfg["upstream"] = upstream_rel
     cfg["last_sync"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -256,6 +276,9 @@ def main() -> int:
     save_config(root / ".agents", cfg)
 
     print(f"\nApplied: {len(result['applied'])} skills")
+    if result.get("stamped"):
+        print(f"Auto-stamped origin:project-local on {len(result['stamped'])} local-only skills")
+        print(f"  {', '.join(result['stamped'])}")
     print(f"Config updated: .agents/{CONFIG_NAME}")
     return 0
 

@@ -39,6 +39,10 @@ import textwrap
 from pathlib import Path
 from datetime import date
 
+_SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(_SCRIPT_DIR))
+from project_local_origin import ensure_project_local_origin, is_consumer_repo  # noqa: E402
+
 # ---------------------------------------------------------------------------
 # Templates
 # ---------------------------------------------------------------------------
@@ -472,6 +476,16 @@ def main():
 
         if rel_path == "SKILL.md":
             content = build_skill_md(args.name, args.author, args.desc, today)
+            repo_root = skill_root.resolve()
+            for _ in range(6):
+                if (repo_root / ".agents" / "skills").is_dir():
+                    break
+                if repo_root.parent == repo_root:
+                    repo_root = Path.cwd()
+                    break
+                repo_root = repo_root.parent
+            if is_consumer_repo(repo_root):
+                content, _ = ensure_project_local_origin(content)
 
         elif rel_path.startswith("references/"):
             content = REFERENCES_PLACEHOLDER.format(title=title, name=args.name)

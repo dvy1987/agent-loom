@@ -3,7 +3,7 @@
 ## Automatic protection (never overwrite on sync)
 
 1. **Local-only** — skill directory exists in project but not in upstream `.agents/skills/`.
-2. **project-local origin** — `metadata.origin: project-local` in SKILL.md frontmatter.
+2. **project-local origin** — `metadata.origin: project-local` in SKILL.md. `universal-skill-creator` writes it; `agent-loom-sync --apply` stamps it on local-only skills missing it.
 3. **forked_skills** — key listed in `.agents/agent-loom-sync.json` with optional reason string.
 4. **protected_skills** — explicit list in config (manual pins).
 
@@ -29,7 +29,7 @@ When user wants upstream version of a forked skill:
 3. Re-run sync with `--apply`
 
 When user wants to keep fork permanently:
-- Add `origin: project-local` or keep in `forked_skills`
+- Add to `forked_skills`, or rely on auto-stamp if the skill is local-only (not in upstream)
 
 ## What is NOT synced by default
 

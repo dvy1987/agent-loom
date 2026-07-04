@@ -20,18 +20,12 @@ Local-only protected (1): `my-deploy-pipeline`
 Config will be written to `.agents/agent-loom-sync.json`.
 </output>
 
-## Example 2 — Mark a forked library skill as project-local
+## Example 2 — Protect a customized library skill (same name as upstream)
 
 <input>I customized debug-and-fix for our stack — don't overwrite it on sync</input>
 
 <output>
-Add to `.agents/skills/debug-and-fix/SKILL.md` frontmatter under `metadata:`:
-
-```yaml
-  origin: project-local
-```
-
-Or add to `.agents/agent-loom-sync.json`:
+Add to `.agents/agent-loom-sync.json`:
 
 ```json
 "forked_skills": {
@@ -40,6 +34,8 @@ Or add to `.agents/agent-loom-sync.json`:
 ```
 
 Re-run dry-run — `debug-and-fix` moves to Forked/skipped. Other library skills still update.
+
+**Note:** Repo-only skills get `metadata.origin: project-local` from `universal-skill-creator` at create time; `agent-loom-sync --apply` backfills any missing.
 </output>
 
 ## Example 3 — Apply sync
