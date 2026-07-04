@@ -128,6 +128,29 @@ Ready for: improve-skills batch execution
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Debt = style only | Include reliability, security, operability. |
+| No prioritization | Rank by interest × blast radius. |
+| Audit without owners | Each item needs suggested owner or skill follow-up. |
+| One-time report forgotten | Log to docs/reports/ and SKILL-OUTPUTS. |
+
+## Verification
+
+- [ ] Report under docs/reports/
+- [ ] Items ranked with rationale
+- [ ] Suggested remediation skill per item
+- [ ] SKILL-OUTPUTS.md updated
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

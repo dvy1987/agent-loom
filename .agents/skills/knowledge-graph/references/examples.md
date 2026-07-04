@@ -46,10 +46,14 @@ Ran `build_graph.py` → mode=skill-library, 120 nodes, 412 edges (164 authorita
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
+|---|
+| "I'll just grep" | Grep misses invoke chains and handoff lineage. Query the graph. |
+| "Graph is stale, full rebuild" | Try `--incremental` first; authoritative sources may be unchanged. |
+| "INFERRED edge = fact" | Read `source_file` / `provenance` before acting. |
+| "Skip graph on handoff" | Next agent loses relational context. |
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

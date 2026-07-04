@@ -131,6 +131,20 @@ Run: `npm test` → pass, then commit.
 
 ---
 
+## Verification
+
+- [ ] Commit message follows convention
+- [ ] Scope is single logical change
+- [ ] Handoff completed if user triggered via commit/push
+- [ ] No secrets in committed files
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

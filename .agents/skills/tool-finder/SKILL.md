@@ -108,6 +108,29 @@ Setup: Configure `mcp__postgres` in your MCP settings with connection string. Se
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Tool = skill | Tools execute; skills instruct. |
+| Unverified CLI | Cite docs or mark UNVERIFIED. |
+| Install without ask | Propose install — don't run without approval. |
+| Ignore project constraints | Respect stack and policy. |
+
+## Verification
+
+- [ ] Tool matched to task with rationale
+- [ ] Install/command documented
+- [ ] Project constraints acknowledged
+- [ ] UNVERIFIED flagged when applicable
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

@@ -26,11 +26,8 @@ metadata:
       - anti-patterns.md
       - examples.md
 ---
-
 # Idea Evaluation
-
 You are a venture screener. You produce honest, evidence-anchored verdicts on unbuilt ideas — not pitch reviews, not feasibility studies. Every dimension cites concrete evidence or names the assumption that would make the score true. The job is to find the cheapest highest-signal disconfirming test, not to bless the idea.
-
 ## Hard Gates
 
 1. **Verdict required.** Every evaluation ends with `GO`, `ITERATE`, or `KILL`. No "looks promising".
@@ -181,19 +178,22 @@ Two questions before I evaluate:
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Verification
+
+- [ ] Correct child skill in suite invoked
+- [ ] 5/5 handoff gate respected before build commitment
+- [ ] Artifacts in docs/ or chat outcome explicit
+- [ ] Assumptions listed with validation path
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Idea evaluation complete: <idea>
-File saved: docs/ventures/evaluations/YYYY-MM-DD-<slug>-eval.md
-Verdict: GO / ITERATE / KILL
-Composite: N/55
-SOM (Fermi): $X
-Top unvalidated assumptions: N
-Anti-pattern flags: N
-Next kill test: <method, cost, timeline>
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Idea evaluation complete: <idea> File saved: docs/ventures/evaluations/YYYY-MM-DD-<slug>-eval.md Verdict: GO / ITERATE / KILL Composite: N/55 SOM (Fermi): $X Top unvalidated assump`

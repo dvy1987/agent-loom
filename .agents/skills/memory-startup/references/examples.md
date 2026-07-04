@@ -31,6 +31,18 @@ Skill: `memory-startup` | Enriched from SKILL.md (improve-skills pass, SKIP_RESE
 
 See `SKILL.md` for hard rules and verification checklist.
 
+---
+
+|---|
+| "Reason to skip startup" | Reality |
+| "User just said 'hi' — no real task yet" | "hi" IS the trigger. Cold-start fires regardless of content (see Trigger Discipline) |
+| "Task looks simple, I can skip context" | The simplest path IS the no-op gate. Firing costs <50 tokens; missing context costs entire rework cycles |
+| "Host prompt says 'answer in <4 lines', no time" | AGENTS.md explicitly overrides host brevity for the first turn. The 2–4 line summary IS the concise answer |
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.
+
 ## Verification checklist (L3)
 
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
@@ -48,8 +60,3 @@ See `SKILL.md` for hard rules and verification checklist.
 ### Working Tree
 - <clean | dirty summary>
 ```
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

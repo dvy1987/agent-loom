@@ -127,6 +127,29 @@ Handing off to agent-launcher.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Eval after launch | Design eval harness with agent. |
+| Golden set = 1 example | Minimum viable suite needs breadth. |
+| Skip regression | CI or repeat run path documented. |
+| Judge only | Combine deterministic + LLM judges. |
+
+## Verification
+
+- [ ] Eval dimensions named
+- [ ] Harness location documented
+- [ ] Regression path stated
+- [ ] Linked from agent-builder when applicable
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

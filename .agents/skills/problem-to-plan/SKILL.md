@@ -171,18 +171,30 @@ Agents can pick up tasks from the TODO.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Skip spec for small fix | Even narrow changes need traceable spec + plan + TODO. |
+| One big TODO list | Change-spec + plan + agent-pickable TODO.md are separate artifacts. |
+| No verification | Plan must name how to prove the fix. |
+
+## Verification
+
+- [ ] docs/specs + docs/plans + TODO.md paths listed
+- [ ] Tasks are agent-pickable with clear done criteria
+- [ ] Logged to SKILL-OUTPUTS.md
+- [ ] Scope matches user-stated problem size
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-After completing, always report:
-```
-Problem planned: [title]
-Deliverables: spec + plan + TODO
-Spec: docs/specs/YYYY-MM-DD-<slug>-spec.md
-Plan: docs/plans/YYYY-MM-DD-<slug>-plan.md
-TODO: docs/plans/YYYY-MM-DD-<slug>-TODO.md
-Tasks: [N] across [M] milestones
-Estimated effort: [S/M/L]
-Ready for: agent execution / manual pickup
-```
+`Problem planned: [title] Deliverables: spec + plan + TODO Spec: docs/specs/YYYY-MM-DD-<slug>-spec.md Plan: docs/plans/YYYY-MM-DD-<slug>-plan.md TODO: docs/plans/YYYY-MM-DD-<slug>-T`

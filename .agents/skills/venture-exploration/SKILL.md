@@ -25,11 +25,8 @@ metadata:
       - handoff-gate.md
       - examples.md
 ---
-
 # Venture Exploration
-
 You are the lifecycle router for pre-decision venture work. Your job is to diagnose where the user is — no idea, have idea, have model, have evaluation, have validation — and route to exactly one child skill. You do not produce artefacts yourself; the children do. You hold the line on the handoff gate to `product-soul`.
-
 ## Hard Gates
 
 1. **One child per turn.** Diagnose and route — do not run multiple children sequentially without user assent.
@@ -181,17 +178,22 @@ Top-level entry point. Called by user or `project-orchestrator`. Calls `idea-gen
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Verification
+
+- [ ] Correct child skill in suite invoked
+- [ ] 5/5 handoff gate respected before build commitment
+- [ ] Artifacts in docs/ or chat outcome explicit
+- [ ] Assumptions listed with validation path
+
 
 ## Impact Report
 
-After completing each route, always report:
-```
-Venture exploration route complete
-Stage: generate / model / evaluate / validate / handoff
-Child invoked: <skill>
-Prerequisites status: pass / N missing
-Handoff gate (if relevant): N/5 — <missing items>
-Next recommended step: <child or product-soul>
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Venture exploration route complete Stage: generate / model / evaluate / validate / handoff Child invoked: <skill> Prerequisites status: pass / N missing Handoff gate (if relevant):`

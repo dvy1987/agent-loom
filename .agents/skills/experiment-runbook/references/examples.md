@@ -30,7 +30,17 @@ Rollback: [documented yes/no]
 Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 ```
 
-## Example 2 — Gotcha application
+## Example 2 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| Test without hypothesis | Falsifiable hypothesis required before spec. |
+| Peek until significant | Peek policy must be pre-committed in spec. |
+| Any metric goes | Primary + guardrail metrics defined up front. |
+
+## Example 3 — Gotcha application
 
 **Input:** Task hits a non-obvious edge case
 
@@ -43,13 +53,3 @@ Status: [READY-TO-LAUNCH | BLOCKED-QA-FAIL | BLOCKED-MISSING-SPEC]
 ---
 
 See `SKILL.md` for hard rules and verification checklist.
-
-## Verification checklist (L3)
-
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

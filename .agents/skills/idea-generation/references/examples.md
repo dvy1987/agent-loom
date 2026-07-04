@@ -53,9 +53,23 @@ Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
+|---|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Don't filter while generating.** Strike anti-patterns AFTER the batch exists, not during. Filtering during generation kills quantity.
+- **The user's killed-but-haunting idea is often the best lead.** Probe it.
+- **Schlep blindness** is real: ideas the user dismisses with "but that would be annoying / complicated / regulated / sales-heavy" are often the best, because nobody else wants the schlep either.
+- **"Live in the future"** ideas need a concrete why-now or they're sci-fi.
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

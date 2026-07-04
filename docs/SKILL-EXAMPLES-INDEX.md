@@ -97,113 +97,113 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 <!-- EXAMPLES-INDEX:AUTO:START -->
 
-**Last scan:** 102 skills | L3 present: 102 | inline-only: 0 | broken pointers: 0
+**Last scan:** 102 skills | L3 present: 102 | curated: 9 | padded: 15 | inline-only: 0 | broken pointers: 0
 
 ### All skills — L3 status
 
-| Skill | Inline example | L3 file | Location |
-|---|---|---|---|
-| `adversarial-hat` | yes | yes | references/examples.md |
-| `agent-builder` | yes | yes | references/examples.md |
-| `agent-launcher` | yes | yes | references/examples.md |
-| `agent-system-architecture` | yes | yes | references/examples.md |
-| `api-and-interface-design` | yes | yes | references/examples.md |
-| `api-deprecation-and-migration` | yes | yes | references/examples.md |
-| `app-security-hardening` | yes | yes | references/examples.md |
-| `apply-paper-to-project` | yes | yes | references/examples.md |
-| `architectural-decision-log` | yes | yes | references/examples.md |
-| `assumption-mapping` | yes | yes | references/examples.md |
-| `brainstorming` | yes | yes | references/examples.md |
-| `browser-testing-with-devtools` | yes | yes | references/examples.md |
-| `business-modeling` | yes | yes | references/examples.md |
-| `ci-cd-and-automation` | yes | yes | references/examples.md |
-| `code-review-crsp` | yes | yes | references/examples.md |
-| `code-simplification` | yes | yes | references/examples.md |
-| `codebase-understanding` | yes | yes | references/examples.md |
-| `compress-skill` | yes | yes | references/examples.md |
-| `context-engineering` | yes | yes | references/examples.md |
-| `create-agent-prompt` | yes | yes | references/examples.md |
-| `cross-link-skills` | yes | yes | references/examples.md |
-| `customer-discovery` | yes | yes | references/examples.md |
-| `debug-and-fix` | yes | yes | references/examples.md |
-| `deep-thinking` | yes | yes | references/examples.md |
-| `deprecate-skill` | yes | yes | references/examples.md |
-| `design-direction` | no | yes | references/examples.md |
-| `design-review` | no | yes | references/examples.md |
-| `design-system` | no | yes | references/examples.md |
-| `eval-judge` | yes | yes | references/examples.md |
-| `eval-output` | yes | yes | references/examples.md |
-| `eval-pipeline` | yes | yes | references/examples.md |
-| `eval-rubric-design` | yes | yes | references/examples.md |
-| `experiment-backlog` | yes | yes | references/examples.md |
-| `experiment-readout` | yes | yes | references/examples.md |
-| `experiment-runbook` | yes | yes | references/examples.md |
-| `experiment-spec` | yes | yes | references/examples.md |
-| `experimentation` | yes | yes | references/examples.md |
-| `feature-spec` | yes | yes | references/examples.md |
-| `fermi` | yes | yes | references/examples.md |
-| `first-principles` | yes | yes | references/examples.md |
-| `frontend-design` | no | yes | references/examples.md, references/golden-examples/ |
-| `generate-changelog` | yes | yes | references/examples.md |
-| `git-workflow-and-versioning` | yes | yes | references/examples.md |
-| `idea-evaluation` | yes | yes | references/examples.md |
-| `idea-generation` | yes | yes | references/examples.md |
-| `implementation-plan` | yes | yes | references/examples.md |
-| `improve-skills` | yes | yes | references/examples.md |
-| `incremental-implementation` | yes | yes | references/examples.md |
-| `inversion` | yes | yes | references/examples.md |
-| `knowledge-graph` | yes | yes | references/examples.md |
-| `learn-from` | yes | yes | references/examples.md |
-| `learn-from-article` | yes | yes | references/examples.md |
-| `learn-from-chat` | yes | yes | references/examples.md |
-| `learn-from-paper` | yes | yes | references/examples.md |
-| `learn-from-repo` | yes | yes | references/examples.md |
-| `library-skill` | yes | yes | references/examples.md |
-| `memory` | yes | yes | references/examples.md |
-| `memory-audit` | yes | yes | references/examples.md |
-| `memory-capture` | yes | yes | references/examples.md |
-| `memory-compact` | yes | yes | references/examples.md |
-| `memory-decision` | yes | yes | references/examples.md |
-| `memory-forget` | yes | yes | references/examples.md |
-| `memory-handoff` | yes | yes | references/examples.md |
-| `memory-promote` | yes | yes | references/examples.md |
-| `memory-recall` | yes | yes | references/examples.md |
-| `memory-startup` | yes | yes | references/examples.md |
-| `ooda` | yes | yes | references/examples.md |
-| `performance-optimization` | yes | yes | references/examples.md |
-| `prd-writing` | yes | yes | references/examples.md |
-| `pre-mortem` | yes | yes | references/examples.md |
-| `problem-to-plan` | yes | yes | references/examples.md |
-| `process-decomposer` | yes | yes | references/examples.md |
-| `product-soul` | yes | yes | references/examples.md |
-| `project-constitution` | yes | yes | references/examples.md |
-| `project-orchestrator` | yes | yes | references/examples.md |
-| `project-setup` | yes | yes | references/examples.md |
-| `prune-skill` | yes | yes | references/examples.md |
-| `publish-skill` | yes | yes | references/examples.md |
-| `reality-check` | yes | yes | references/examples.md |
-| `research-skill` | yes | yes | references/examples.md |
-| `retroactive-project-setup` | yes | yes | references/examples.md |
-| `second-order` | yes | yes | references/examples.md |
-| `secure-skill` | yes | yes | references/examples.md |
-| `secure-skill-content-sanitization` | yes | yes | references/examples.md |
-| `secure-skill-repo-ingestion` | no | yes | references/examples.md |
-| `secure-skill-runtime` | yes | yes | references/examples.md |
-| `setup-evaluation` | yes | yes | references/examples.md |
-| `shipping-and-launch` | yes | yes | references/examples.md |
-| `skill-deconflict` | yes | yes | references/examples.md |
-| `skill-finder` | yes | yes | references/examples.md |
-| `skill-routing` | yes | yes | references/examples.md |
-| `socratic` | yes | yes | references/examples.md |
-| `source-driven-development` | yes | yes | references/examples.md |
-| `spec-crosscheck` | yes | yes | references/examples.md |
-| `spec-driven-development` | yes | yes | references/examples.md |
-| `split-skill` | yes | yes | references/examples.md |
-| `technical-debt-audit` | yes | yes | references/examples.md |
-| `test-driven-development` | yes | yes | references/examples.md |
-| `tool-finder` | yes | yes | references/examples.md |
-| `universal-skill-creator` | no | yes | references/examples.md |
-| `validate-skills` | yes | yes | references/examples.md |
-| `venture-exploration` | yes | yes | references/examples.md |
+| Skill | Inline | L3 | Quality | Location |
+|---|---|---|---|---|
+| `adversarial-hat` | yes | yes | enriched | references/examples.md |
+| `agent-builder` | yes | yes | enriched | references/examples.md |
+| `agent-launcher` | yes | yes | enriched | references/examples.md |
+| `agent-system-architecture` | yes | yes | enriched | references/examples.md |
+| `api-and-interface-design` | yes | yes | curated | references/examples.md |
+| `api-deprecation-and-migration` | yes | yes | curated | references/examples.md |
+| `app-security-hardening` | yes | yes | enriched | references/examples.md |
+| `apply-paper-to-project` | yes | yes | enriched | references/examples.md |
+| `architectural-decision-log` | yes | yes | enriched | references/examples.md |
+| `assumption-mapping` | yes | yes | enriched | references/examples.md |
+| `brainstorming` | yes | yes | curated | references/examples.md |
+| `browser-testing-with-devtools` | yes | yes | curated | references/examples.md |
+| `business-modeling` | yes | yes | enriched | references/examples.md |
+| `ci-cd-and-automation` | yes | yes | curated | references/examples.md |
+| `code-review-crsp` | yes | yes | standard | references/examples.md |
+| `code-simplification` | yes | yes | curated | references/examples.md |
+| `codebase-understanding` | yes | yes | enriched | references/examples.md |
+| `compress-skill` | yes | yes | enriched | references/examples.md |
+| `context-engineering` | yes | yes | standard | references/examples.md |
+| `create-agent-prompt` | yes | yes | enriched | references/examples.md |
+| `cross-link-skills` | yes | yes | enriched | references/examples.md |
+| `customer-discovery` | yes | yes | enriched | references/examples.md |
+| `debug-and-fix` | yes | yes | enriched | references/examples.md |
+| `deep-thinking` | yes | yes | enriched | references/examples.md |
+| `deprecate-skill` | yes | yes | enriched | references/examples.md |
+| `design-direction` | no | yes | padded | references/examples.md |
+| `design-review` | no | yes | padded | references/examples.md |
+| `design-system` | no | yes | padded | references/examples.md |
+| `eval-judge` | yes | yes | enriched | references/examples.md |
+| `eval-output` | yes | yes | enriched | references/examples.md |
+| `eval-pipeline` | yes | yes | enriched | references/examples.md |
+| `eval-rubric-design` | yes | yes | enriched | references/examples.md |
+| `experiment-backlog` | yes | yes | enriched | references/examples.md |
+| `experiment-readout` | yes | yes | enriched | references/examples.md |
+| `experiment-runbook` | yes | yes | enriched | references/examples.md |
+| `experiment-spec` | yes | yes | enriched | references/examples.md |
+| `experimentation` | yes | yes | enriched | references/examples.md |
+| `feature-spec` | yes | yes | standard | references/examples.md |
+| `fermi` | yes | yes | enriched | references/examples.md |
+| `first-principles` | yes | yes | enriched | references/examples.md |
+| `frontend-design` | no | yes | padded | references/examples.md, references/golden-examples/ |
+| `generate-changelog` | yes | yes | enriched | references/examples.md |
+| `git-workflow-and-versioning` | yes | yes | enriched | references/examples.md |
+| `idea-evaluation` | yes | yes | enriched | references/examples.md |
+| `idea-generation` | yes | yes | enriched | references/examples.md |
+| `implementation-plan` | yes | yes | standard | references/examples.md |
+| `improve-skills` | yes | yes | enriched | references/examples.md |
+| `incremental-implementation` | yes | yes | enriched | references/examples.md |
+| `inversion` | yes | yes | enriched | references/examples.md |
+| `knowledge-graph` | yes | yes | enriched | references/examples.md |
+| `learn-from` | yes | yes | enriched | references/examples.md |
+| `learn-from-article` | yes | yes | enriched | references/examples.md |
+| `learn-from-chat` | yes | yes | enriched | references/examples.md |
+| `learn-from-paper` | yes | yes | enriched | references/examples.md |
+| `learn-from-repo` | yes | yes | enriched | references/examples.md |
+| `library-skill` | yes | yes | enriched | references/examples.md |
+| `memory` | yes | yes | padded | references/examples.md |
+| `memory-audit` | yes | yes | padded | references/examples.md |
+| `memory-capture` | yes | yes | padded | references/examples.md |
+| `memory-compact` | yes | yes | padded | references/examples.md |
+| `memory-decision` | yes | yes | padded | references/examples.md |
+| `memory-forget` | yes | yes | padded | references/examples.md |
+| `memory-handoff` | yes | yes | padded | references/examples.md |
+| `memory-promote` | yes | yes | padded | references/examples.md |
+| `memory-recall` | yes | yes | padded | references/examples.md |
+| `memory-startup` | yes | yes | padded | references/examples.md |
+| `ooda` | yes | yes | enriched | references/examples.md |
+| `performance-optimization` | yes | yes | curated | references/examples.md |
+| `prd-writing` | yes | yes | enriched | references/examples.md |
+| `pre-mortem` | yes | yes | enriched | references/examples.md |
+| `problem-to-plan` | yes | yes | enriched | references/examples.md |
+| `process-decomposer` | yes | yes | enriched | references/examples.md |
+| `product-soul` | yes | yes | enriched | references/examples.md |
+| `project-constitution` | yes | yes | enriched | references/examples.md |
+| `project-orchestrator` | yes | yes | enriched | references/examples.md |
+| `project-setup` | yes | yes | enriched | references/examples.md |
+| `prune-skill` | yes | yes | enriched | references/examples.md |
+| `publish-skill` | yes | yes | enriched | references/examples.md |
+| `reality-check` | yes | yes | enriched | references/examples.md |
+| `research-skill` | yes | yes | enriched | references/examples.md |
+| `retroactive-project-setup` | yes | yes | enriched | references/examples.md |
+| `second-order` | yes | yes | enriched | references/examples.md |
+| `secure-skill` | yes | yes | enriched | references/examples.md |
+| `secure-skill-content-sanitization` | yes | yes | enriched | references/examples.md |
+| `secure-skill-repo-ingestion` | no | yes | padded | references/examples.md |
+| `secure-skill-runtime` | yes | yes | enriched | references/examples.md |
+| `setup-evaluation` | yes | yes | enriched | references/examples.md |
+| `shipping-and-launch` | yes | yes | curated | references/examples.md |
+| `skill-deconflict` | yes | yes | enriched | references/examples.md |
+| `skill-finder` | yes | yes | enriched | references/examples.md |
+| `skill-routing` | yes | yes | enriched | references/examples.md |
+| `socratic` | yes | yes | enriched | references/examples.md |
+| `source-driven-development` | yes | yes | curated | references/examples.md |
+| `spec-crosscheck` | yes | yes | enriched | references/examples.md |
+| `spec-driven-development` | yes | yes | enriched | references/examples.md |
+| `split-skill` | yes | yes | enriched | references/examples.md |
+| `technical-debt-audit` | yes | yes | enriched | references/examples.md |
+| `test-driven-development` | yes | yes | standard | references/examples.md |
+| `tool-finder` | yes | yes | enriched | references/examples.md |
+| `universal-skill-creator` | no | yes | standard | references/examples.md |
+| `validate-skills` | yes | yes | standard | references/examples.md |
+| `venture-exploration` | yes | yes | enriched | references/examples.md |
 
 <!-- EXAMPLES-INDEX:AUTO:END -->

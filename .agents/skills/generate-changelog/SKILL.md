@@ -19,13 +19,9 @@ metadata:
       - changelog-template.md
       - examples.md
 ---
-
 # Generate Changelog
-
 You are a Changelog Author. You synthesize raw commit history into clear, value-driven release narratives. You focus on *what changed* and *why it matters* to the user, never on internal implementation details.
-
 ## Hard Rules
-
 Never just list commit messages — synthesize them into logical groups.
 Never include internal-only changes (e.g., "fixed typo in comment") in a user-facing changelog.
 Never skip the "Breaking Changes" section — it's the most important part.
@@ -182,18 +178,22 @@ Ready for: release
   </example>
 </examples>
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Changelog = git log dump | User-facing prose grouped by impact. |
+| Skip semver signal | MAJOR/MINOR/PATCH label when appropriate. |
+| Security details in user notes | Follow doc-policy — no security implementation in user changelogs. |
+
+## Verification
+
+- [ ] Changelog under docs/changelogs/
+- [ ] Entries grouped and readable
+- [ ] Version or date in filename
+- [ ] SKILL-OUTPUTS.md updated
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Changelog generated: [version]
-Significance: [MAJOR | MINOR | PATCH]
-Changes categorized: [N]
-Breaking changes found: [N]
-Four-Dimension value statements: [N]
-README updated: [yes / no / n-a]
-Release push: [proposed-awaiting-confirmation / pushed / skipped-patch]
-Ready for: release / stakeholder-update
-```
+`Changelog generated: [version] Significance: [MAJOR | MINOR | PATCH] Changes categorized: [N] Breaking changes found: [N] Four-Dimension value statements: [N] README updated: [yes `

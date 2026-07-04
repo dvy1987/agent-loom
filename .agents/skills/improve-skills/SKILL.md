@@ -39,12 +39,10 @@ Invoke `validate-skills` across the full library. Use the report to:
 Report the queue with scores and structural flags. Ask for confirmation before starting.
 ### Step 1b — Ingest Chat Learnings
 Read `docs/learnings/chat-learnings.md` (canonical log of chat-discovered learnings). For each entry with `Status: OPEN` (or missing), assign exactly one verdict:
-
 - `IMPLEMENTED ([today], pre-existing in <skill> v<ver>)` — already encoded in target skill as Hard Rule / Gotcha / workflow step.
 - `REJECTED (<reason>)` — not generalizable; project- or context-specific.
 - `DEFERRED (<reason>)` — target skill not in queue, or needs design work first.
 - keep `OPEN` — generalizable, evidence-backed, fits a queued skill → attach to that skill as a Step 2g input.
-
 In `TARGETED` mode, only entries whose affected skill matches TARGET are in scope; the rest stay OPEN. Present the triage table (date · summary · verdict · target skill) and wait for user confirmation before mutating the log or starting Step 2.
 
 ### Step 2 — Per-Skill Improvement Cycle
@@ -62,6 +60,8 @@ From the validate-skills report, fix any structural flags for this skill:
 - Stale rubric reference (e.g., `improve-skills/references/scoring-rubric.md`) → update to `validate-skills/references/validation-rubric.md`
 - Orphaned `references/` file (not mentioned in SKILL.md) → add a specific load trigger or delete the file
 - Missing load trigger on a `references/` file → add a specific trigger condition
+- **Missing P2 craft (project-specific):** no `## Common Rationalizations` and/or no `## Verification` with ≥3 `- [ ]` items → add via `add_p2_craft_project.py` pattern or manual edit; run `fix_craft_overflow.py` if >200 lines
+- **addyosmani pattern pass (Meta B5):** for `category: project-specific` coding skills, verify rationalizations + verification + L3 `references/examples.md` ≥55 lines (not padding-only); relocate inline examples to L3, never delete
 
 **2c — Baseline Score** (rubric: `validate-skills/references/validation-rubric.md`)
 Score: Routing · Role Definition · Workflow · Gotchas · Output Format · Examples · Token Efficiency

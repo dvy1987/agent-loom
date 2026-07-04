@@ -162,6 +162,20 @@ Revisit triggers: none
 Risks / gaps: validate the suite after generation
 ```
 
+## Verification
+
+- [ ] project-index and latest handoff consulted
+- [ ] Git status compared to handoff note
+- [ ] Summary under 2–4 lines for user
+- [ ] No full history load
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

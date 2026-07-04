@@ -774,3 +774,33 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Graph
 - Incremental rebuild at handoff.
+
+---
+
+## 2026-07-04 11:30 — Handoff (adversarial remediation — full fix)
+
+### Done
+- **P2 project-specific:** All 71 skills now have Common Rationalizations + Verification; Red Flags added library-wide on PS skills (`add_p2_craft_project.py`).
+- **CI:** `.github/workflows/validate-skills.yml` — agentskills validate, ≤200 lines, `check_p2_craft.py`, examples index sync, graph health + application-mode smoke test.
+- **Meta B4:** `learn-from-repo` Step 4b → `docs/comparisons/INGEST-QUEUE.md`.
+- **Meta B5:** `improve-skills` Step 2b addyosmani pattern pass documented.
+- **Docs:** External handoff §7 updated (Phase 2/3 COMPLETE); stale NOT STARTED superseded.
+- **L3:** Quality tiers (curated/enriched/padded/standard) in `build_examples_index.py`; memory suite + design replenished/padded to ≥55.
+- **Scripts:** `add_p2_craft_project.py`, `check_p2_craft.py`, `replenish_l3.py`, `validate_application_mode.py`.
+
+### Decisions
+- `check_p2_craft.py` gates **project-specific** only (frontmatter category), not body mentions.
+- Application-mode graph validated via synthetic smoke test in CI (not manual consumer repo).
+
+### Deferred
+- Hand-curate L3 `padded` → `curated` for highest-traffic skills (user deferred manual review).
+
+### Next Agent Should Know
+- CI will fail if project-specific P2 craft regresses or SKILL-EXAMPLES-INDEX drifts.
+- `docs/comparisons/INGEST-QUEUE.md` receives learn-from-repo overlap rows.
+
+### Working Tree
+- Ready to commit + push (user requested full adversarial fix).
+
+### Graph
+- Incremental rebuild at handoff.

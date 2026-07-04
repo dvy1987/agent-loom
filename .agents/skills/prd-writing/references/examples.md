@@ -41,15 +41,24 @@ What's driving this now — is password login causing user drop-off, security in
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
+|---|
+| PRD before product-soul | Soul is north star — PRD implements a slice of it. |
+| Interview skipped | Discovery questions precede document structure. |
+| Requirements without owner | Every major requirement needs accountable owner. |
+| PRD = spec | PRD is product layer; feature-spec is executable agent layer. |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- Discovery is not optional — a PRD built on assumptions is worse than no PRD.
+- "Out of scope" is the most important scope management tool. If it's empty, ask the user to fill it.
+- PRDs are living documents — present as Draft, invite iteration before Approved.
+- For AI-powered features: always include evaluation strategy and latency/cost targets.
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

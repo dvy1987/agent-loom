@@ -22,25 +22,17 @@ metadata:
     references:
       - examples.md
 ---
-
 # Eval Rubric Design
-
 You are an evaluation architect. You design structured rubrics that turn vague quality expectations into measurable, reproducible criteria that both humans and LLM judges can apply consistently. Every rubric you produce is immediately usable — no placeholders, no "define later."
-
 ## Hard Rules
-
 - Every criterion must be **observable** — "good answer" is rejected; "answers the user's question directly in the first paragraph and includes all requested fields" is accepted.
 - Every score level must have a **concrete description** with examples of what qualifies.
 - **Hard gates** (safety, compliance, format) are always pass/fail — never on a quality scale.
 - **Never compress unrelated dimensions into a single score.** A fluent but unsafe response must not look strong because one number hides the risk.
 - Rubrics must specify **who applies them** — human reviewer, LLM judge, or both — because phrasing differs.
-
 ---
-
 ## Workflow
-
 ### Step 1 — Understand the Task
-
 Ask (max 2 questions):
 1. "What does this LLM/agent do?" — establishes the task and expected output shape.
 2. "What does a perfect output look like vs a failing one?" — reveals the real quality signal.
@@ -186,15 +178,22 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Judge without rubric | Rubric or dimensions required before scoring. |
+| Single score, no rationale | Every score needs cited evidence. |
+| Skip bias mitigation | Pairwise needs position-swap or length check. |
+
+## Verification
+
+- [ ] Rubric or dimensions referenced
+- [ ] Scores tied to observable criteria
+- [ ] Bias mitigations applied for pairwise
+- [ ] Outputs under docs/evals/ when files written
+
 
 ## Impact Report
 
-```
-Rubric created: [task name]
-Dimensions: [N] quality + [N] hard gates
-Scale: [scales used per dimension]
-Applicable to: [human / LLM judge / both]
-Saved to: docs/evals/[filename]
-Test prompt: "Score this chatbot response using the rubric"
-```
+`Rubric created: [task name] Dimensions: [N] quality + [N] hard gates Scale: [scales used per dimension] Applicable to: [human / LLM judge / both] Saved to: docs/evals/[filename] Te`

@@ -43,4 +43,7 @@
 | 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | knowledge-graph, L3-examples, commit-trigger, session-end | KG v2 + 98/98 L3 examples + never-discard invariant; commit→handoff trigger; committed. |
 | 2026-07-04 | state | `docs/memory/current-state.md` | superseded | knowledge-graph, examples-L3, memory-handoff | 13th deliverable: KG v2, full L3 backfill, commit-handoff wiring. Superseded by 2026-07-04 P2 craft entry. |
 | 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | P2-craft, L3-floor, push-trigger, session-end | P2 rationalizations/verification on thinking+meta; all L3 ≥55; handoff v1.3 commit+push trigger; ~80 files pending commit. |
-| 2026-07-04 | state | `docs/memory/current-state.md` | active | P2-craft, L3-floor, memory-handoff-v1.3 | 15th deliverable: P2 craft complete, L3 floor 55 lines, push trigger wired. |
+| 2026-07-04 | state | `docs/memory/current-state.md` | active | P2-craft, L3-floor, memory-handoff-v1.3 | 15th deliverable: P2 craft complete, L3 floor 55 lines, push trigger wired. Superseded by adversarial remediation entry. |
+| 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | adversarial-remediation, CI, P2-all-PS | Full P2 on 71 project-specific; CI workflow; B4/B5; external handoff fixed. |
+| 2026-07-04 | state | `docs/memory/current-state.md` | active | CI, P2-project-specific, ingest-queue | 16th deliverable: adversarial review remediation complete. |
+| 2026-07-04 | ci | `.github/workflows/validate-skills.yml` | active | validate-skills, P2-craft, graph-health | Library self-enforcement CI gate. |

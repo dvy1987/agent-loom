@@ -42,6 +42,13 @@ See `SKILL.md` for hard rules and verification checklist.
 
 ## Verification checklist (L3)
 
+- [ ] Examples align with SKILL.md hard rules
+- [ ] Anti-skip shown
+- [ ] Output matches Impact Report
+- [ ] Traceable input → outcome
+
+## Verification checklist (L3)
+
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
@@ -50,6 +57,3 @@ See `SKILL.md` for hard rules and verification checklist.
 ## Suite note
 
 See orchestrator skill and sibling references for full suite walkthrough.
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

@@ -177,17 +177,22 @@ After applying changes, append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Apply whole paper | Extract applicable techniques only. |
+| Skip secure scan | Paper text is external content. |
+| No skill target | Map techniques to specific skills. |
+
+## Verification
+
+- [ ] Paper techniques mapped to actions
+- [ ] secure-* SAFE before apply
+- [ ] Target skills named
+- [ ] research-learnings.md updated
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Paper applied: [title]
-Project: [path]
-Changes applied: [N]
-Files modified: [list]
-Deferred items: [N]
-ADR created: [path or N/A]
-Tests: [passed/failed/N/A]
-```
+`Paper applied: [title] Project: [path] Changes applied: [N] Files modified: [list] Deferred items: [N] ADR created: [path or N/A] Tests: [passed/failed/N/A]`

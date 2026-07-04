@@ -137,7 +137,10 @@ Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: skill creat
 After generating, always state: tier + why · compatible platforms · install path `.agents/skills/<skill-name>/` · test trigger phrase.
 
 Every skill MUST include:
-1. **`## Impact Report`** — skill-specific format, in-chat after every run.
+1. **`
+
+
+## Impact Report`** — skill-specific format, in-chat after every run.
 2. **File-output logging** — if skill writes project files, append `| YYYY-MM-DD HH:MM | [skill-name] | [path] | [description] |` to `docs/skill-outputs/SKILL-OUTPUTS.md` and notify user.
 3. **Learnings provenance** — if from `docs/learnings/*.md`, update source entry with skill name + path + date.
 
@@ -184,16 +187,4 @@ Load only on matching trigger:
 | "Library-skill is just docs, can skip" | Without Step 11 the new skill is invisible in SKILL-INDEX, README, graph, PRD |
 ## Impact Report
 
-After completing, always report:
-```
-Skill created: [skill-name]
-Tier: [Atomic / Standard / Advanced / System]
-Location: .agents/skills/[skill-name]/
-validate-skills score: [N]/14
-agentskills validate: ✓
-Files created: [list all files]
-Research sources used: [list]
-Published to skills.sh: [yes — URL / no]
-Install command: cp -r .agents/skills/[skill-name]/ ~/.agents/skills/
-Test trigger: "[example phrase that activates this skill]"
-```
+`Skill created: [skill-name] Tier: [Atomic / Standard / Advanced / System] Location: .agents/skills/[skill-name]/ validate-skills score: [N]/14 agentskills valid`

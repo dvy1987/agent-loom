@@ -132,10 +132,18 @@ Starting at `/specify`. Routing to `feature-spec` (mode=specify).
 
 ## Verification
 
+- [ ] Orchestrator routes child skills in correct order
 - [ ] Phase order respected (no implement without PASS analyze)
 - [ ] Correct leaf skill invoked; slug consistent across artifacts
 
 ---
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
 
 Read `references/examples.md` for full worked examples.
 

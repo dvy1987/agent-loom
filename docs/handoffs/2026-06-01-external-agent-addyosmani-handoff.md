@@ -224,13 +224,24 @@ AGENTS.md, CLAUDE.md, CONTRIBUTING.md, README.md
 | `secure-*` sweep on modified skills not re-run | Per `learn-from` Post-Application Hardening Cycle, every modified skill needs a `secure-*` re-scan. Unclear whether this was done | Re-run `secure-skill` on each of the 9 modified skills |
 | `agentskills validate` CLI was unavailable in original environment | Long-standing limitation. Verify availability and run if possible | `which agentskills` then `agentskills validate <dir>` per skill |
 
-### Phase 2 — NOT STARTED
+### Phase 2 — COMPLETE (2026-07-04)
 
-Zero of the 12 coding gap skills have been created. Library still has 90 skills (would grow to ~102 after Phase 2). No `.github/workflows/` exists.
+All 12 coding gap skills created. Library at **102 skills** including `performance-optimization`, `shipping-and-launch`, `browser-testing-with-devtools`, `api-deprecation-and-migration`, and Phase 2 batches 1–2. See `docs/comparisons/2026-06-01-SUMMARY.md` §C.
 
-### Phase 3 — NOT STARTED
+### Phase 3 — COMPLETE (2026-06-01 comparisons + 2026-06-01 application)
 
-Zero of the 8 common-skill pair content comparisons have been done.
+- **Comparisons:** 8 pairwise docs + `docs/comparisons/2026-06-01-SUMMARY.md` (`5c4e443`).
+- **Application:** Craft merge into 10+ skills; rationalizations + verification extended to **all** thinking, meta, and project-specific skills (2026-07-04, `3145508` + follow-up).
+- **L3:** 102/102 `references/examples.md`; quality tiers in `docs/SKILL-EXAMPLES-INDEX.md`.
+- **CI:** `.github/workflows/validate-skills.yml` enforces validate + P2 craft + graph health.
+
+### Phase 4 — ONGOING (library operations, not addyosmani)
+
+- Consumer-repo validation automated via `validate_application_mode.py` smoke test in CI.
+- `learn-from-repo` Step 4b queues pairwise compares → `docs/comparisons/INGEST-QUEUE.md`.
+- Optional: hand-curate L3 `curated` tier for highest-traffic skills.
+
+> **Superseded notice:** Sections below describing Phase 2/3 as NOT STARTED are historical — kept for audit trail only.
 
 ---
 

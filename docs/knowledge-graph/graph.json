@@ -1,26 +1,26 @@
 {
   "version": "2.0",
-  "generated_at": "2026-07-04T05:08:16.530942+00:00",
+  "generated_at": "2026-07-04T05:58:56.559707+00:00",
   "mode": "skill-library",
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 127,
-    "edges": 444,
+    "nodes": 128,
+    "edges": 451,
     "authoritative_edges": 170,
-    "extracted_edges": 220,
-    "inferred_edges": 224
+    "extracted_edges": 225,
+    "inferred_edges": 226
   },
   "god_nodes": [
     "universal-skill-creator",
     "validate-skills",
-    "secure-skill",
     "improve-skills",
+    "secure-skill",
+    "venture-exploration",
     "library-skill",
     "split-skill",
     "experimentation",
     "learn-from",
-    "feature-spec",
-    "spec-driven-development"
+    "feature-spec"
   ],
   "surprising_connections": [
     {
@@ -52,6 +52,13 @@
       "to_community": "improve"
     },
     {
+      "from": "customer-discovery",
+      "to": "venture-exploration",
+      "relation": "invokes",
+      "from_community": "customer",
+      "to_community": "venture"
+    },
+    {
       "from": "reality-check",
       "to": "assumption-mapping",
       "relation": "invokes",
@@ -66,18 +73,11 @@
       "to_community": "adversarial"
     },
     {
-      "from": "split-skill",
-      "to": "improve-skills",
+      "from": "business-modeling",
+      "to": "venture-exploration",
       "relation": "invokes",
-      "from_community": "split",
-      "to_community": "improve"
-    },
-    {
-      "from": "split-skill",
-      "to": "compress-skill",
-      "relation": "invokes",
-      "from_community": "split",
-      "to_community": "compress"
+      "from_community": "business",
+      "to_community": "venture"
     }
   ],
   "suggested_questions": [
@@ -86,10 +86,10 @@
     "How does publish-skill (publish) connect to validate-skills (validate)?",
     "What depends on universal-skill-creator, and what does universal-skill-creator invoke?",
     "What depends on validate-skills, and what does validate-skills invoke?",
-    "What depends on secure-skill, and what does secure-skill invoke?"
+    "What depends on improve-skills, and what does improve-skills invoke?"
   ],
   "communities": {
-    "second": [
+    "learn": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -179,9 +179,6 @@
       "validate-skills",
       "venture-exploration"
     ],
-    "debug": [
-      "debug-and-fix"
-    ],
     "browser": [
       "app-security-hardening",
       "browser-testing-with-devtools",
@@ -194,9 +191,14 @@
       "shipping-and-launch"
     ],
     "code": [
-      "code-review-crsp",
+      "code-review-crsp"
+    ],
+    "technical": [
       "code-simplification",
       "technical-debt-audit"
+    ],
+    "debug": [
+      "debug-and-fix"
     ],
     "context": [
       "context-engineering"
@@ -360,7 +362,7 @@
       "label": "improve-skills",
       "type": "skill",
       "path": ".agents/skills/improve-skills/SKILL.md",
-      "category": "meta",
+      "category": "project-specific",
       "community": "improve"
     },
     {
@@ -1160,6 +1162,13 @@
       "community": "memory"
     },
     {
+      "id": "handoff_2026_07_04_11_30_handoff_adversarial_remediation_full_fix",
+      "label": "2026-07-04 11:30 — Handoff (adversarial remediation — full fix)",
+      "type": "handoff",
+      "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
       "id": "memory_docs_memory_learnings_md",
       "label": "learnings",
       "type": "memory",
@@ -1251,6 +1260,15 @@
       "provenance": "SKILL.md"
     },
     {
+      "source": "skill_customer_discovery",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/customer-discovery/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_reality_check",
       "target": "skill_assumption_mapping",
       "relation": "invokes",
@@ -1267,6 +1285,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_business_modeling",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/business-modeling/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_split_skill",
@@ -1701,6 +1728,15 @@
       "provenance": "SKILL.md"
     },
     {
+      "source": "skill_idea_generation",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/idea-generation/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_problem_to_plan",
       "target": "skill_spec_driven_development",
       "relation": "invokes",
@@ -1836,6 +1872,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_skill_finder",
+      "target": "skill_universal_skill_creator",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
       "source": "skill_frontend_design",
       "target": "skill_design_direction",
       "relation": "invokes",
@@ -1879,6 +1924,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_idea_evaluation",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/idea-evaluation/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_eval_output",
@@ -2072,15 +2126,6 @@
     {
       "source": "skill_deprecate_skill",
       "target": "skill_library_skill",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_skill_finder",
-      "target": "skill_universal_skill_creator",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -4853,6 +4898,33 @@
     {
       "source": "handoff_2026_07_04_10_37_handoff_p2_craft_l3_floor_push_trigger",
       "target": "skill_split_skill",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_11_30_handoff_adversarial_remediation_full_fix",
+      "target": "memory_docs_memory_agent_handoffs_md",
+      "relation": "recorded_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_07_04_11_30_handoff_adversarial_remediation_full_fix",
+      "target": "skill_learn_from_repo",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_04_11_30_handoff_adversarial_remediation_full_fix",
+      "target": "skill_improve_skills",
       "relation": "handoff_mentions",
       "confidence": "INFERRED",
       "confidence_score": 0.85,

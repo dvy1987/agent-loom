@@ -30,7 +30,18 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 4. Self-review
 5. Save and notify
 
-## Example 3 — Gotcha application
+## Example 3 — Anti-skip (rationalization defense)
+
+**Input:** Agent tries to skip a gate
+
+| Excuse | Reality |
+|---|---|
+| Constitution is boilerplate | C-N rules must be project-specific and testable. |
+| Skip version bump | Amendments need version + date for spec linkage. |
+| Copy from template only | Interview user for real non-negotiables. |
+| One page is enough | Depth on gates beats vague values. |
+
+## Example 4 — Gotcha application
 
 **Input:** Task hits a non-obvious edge case
 
@@ -43,13 +54,3 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 ---
 
 See `SKILL.md` for hard rules and verification checklist.
-
-## Verification checklist (L3)
-
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes

@@ -142,6 +142,29 @@ This needs planning deliverables (spec + plan + TODO). Routing to `problem-to-pl
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Decompose without triage | Triage first — maybe a single skill handles it. |
+| Too many parallel tracks | Cap parallelism to what user can review. |
+| Skip skill-finder | Name concrete skills, not vague workstreams. |
+| No exit criteria | Each subtask needs done definition. |
+
+## Verification
+
+- [ ] Triage outcome stated (single skill vs decompose)
+- [ ] Subtasks map to named skills
+- [ ] Dependencies between subtasks explicit
+- [ ] User confirmed scope before dispatch
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

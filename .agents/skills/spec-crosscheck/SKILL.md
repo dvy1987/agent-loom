@@ -133,8 +133,6 @@ Tell the user:
 |-------------------------|---------|
 | "Only 1 `[NEEDS CLARIFICATION]` left — close enough" | Hard rule: PASS forbidden while ANY marker remains. The single remaining one is usually the riskiest |
 | "Constitution rule is small, an implicit waiver is fine" | Implicit waivers fail crosscheck. Force the spec to spell it out in `## Constitution Waivers` with rule ID + rationale |
-| "Task lacks a DoD but the team knows what's meant" | Tribal knowledge fails the next agent. No DoD = FAIL, fix in the artefact not in the head |
-| "Plan has 1 extra task not in spec — minor scope drift, let it slide" | Plan→Spec is the scope-creep gate. Either add an FR or drop the task. No third option |
 
 ## Gotchas
 
@@ -179,7 +177,13 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Verification
+
+- [ ] Every spec requirement mapped to plan task or explicit gap
+- [ ] Constitution violations flagged
+- [ ] Report delivered before code merge
+- [ ] Orchestrator notified of blockers
+
 
 ## Impact Report
 

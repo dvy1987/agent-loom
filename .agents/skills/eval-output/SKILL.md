@@ -129,6 +129,29 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Judge without rubric | Rubric or dimensions required before scoring. |
+| Single score, no rationale | Every score needs cited evidence. |
+| Skip bias mitigation | Pairwise needs position-swap or length check. |
+| Eval once, never again | Pipeline skills define regression reruns. |
+
+## Verification
+
+- [ ] Rubric or dimensions referenced
+- [ ] Scores tied to observable criteria
+- [ ] Bias mitigations applied for pairwise
+- [ ] Outputs under docs/evals/ when files written
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

@@ -71,6 +71,13 @@ Areas to scan: architecture patterns, code conventions, testing strategies, erro
 - If the pattern adds genuine value: "Recommend: APPLY — [evidence from repo]."
 - If only part applies: "Recommend: PARTIAL — [what to take, what to skip, why]."
 
+### Step 4b — Overlap / pairwise compare queue (Meta B4)
+
+When extracted patterns overlap an existing agent-loom skill (same name, trigger overlap, or ≥60% description similarity):
+1. Append a row to `docs/comparisons/INGEST-QUEUE.md` (create if missing): `| date | repo | their-skill | our-skill | overlap reason | status: pending |`
+2. In the Application Plan, add: `PAIRWISE: queue comparison for [our-skill] vs [repo pattern] before APPLY on body text.`
+3. Do **not** edit SKILL.md bodies during ingestion — queue for `improve-skills TARGET=<skill>` or manual Phase-3-style compare.
+
 ### Step 5 — Match and Apply
 Match insights to existing skills and apply per `learn-from` shared application protocol. **Worked examples from repo → target skill's `references/examples.md`** (secure-* SAFE first). Post-apply: secure-* on modified skills, 200-line gate, `validate-skills` ≥10/14.
 

@@ -27,6 +27,17 @@ def scan() -> tuple[list[dict], dict[str, int]]:
         ex = skill_dir / "references" / "examples.md"
         golden_dir = skill_dir / "references" / "golden-examples"
         golden = list(golden_dir.glob("*.md")) if golden_dir.is_dir() else []
+        quality = "—"
+        if ex.exists():
+            et = ex.read_text(encoding="utf-8")
+            if "security-scanned SAFE" in et or "Full Session Examples" in et:
+                quality = "curated"
+            elif "Enriched from SKILL.md" in et and "Verification checklist (L3)" not in et:
+                quality = "enriched"
+            elif "Verification checklist (L3)" in et or "Suite note" in et:
+                quality = "padded"
+            else:
+                quality = "standard"
         locs: list[str] = []
         if ex.exists():
             locs.append("references/examples.md")
@@ -45,6 +56,7 @@ def scan() -> tuple[list[dict], dict[str, int]]:
                 "locs": locs,
                 "ptr": ptr,
                 "broken": ptr and not locs,
+                "quality": quality,
             }
         )
     stats = {
@@ -52,6 +64,8 @@ def scan() -> tuple[list[dict], dict[str, int]]:
         "l3": sum(1 for r in rows if r["l3"]),
         "inline_only": sum(1 for r in rows if r["inline"] and not r["l3"]),
         "broken": sum(1 for r in rows if r["broken"]),
+        "curated": sum(1 for r in rows if r.get("quality") == "curated"),
+        "padded": sum(1 for r in rows if r.get("quality") == "padded"),
     }
     return rows, stats
 
@@ -60,17 +74,17 @@ def render(rows: list[dict], stats: dict[str, int]) -> str:
     lines = [
         MARKER_START,
         "",
-        f"**Last scan:** {len(rows)} skills | L3 present: {stats['l3']} | inline-only: {stats['inline_only']} | broken pointers: {stats['broken']}",
+        f"**Last scan:** {len(rows)} skills | L3 present: {stats['l3']} | curated: {stats.get('curated', 0)} | padded: {stats.get('padded', 0)} | inline-only: {stats['inline_only']} | broken pointers: {stats['broken']}",
         "",
         "### All skills — L3 status",
         "",
-        "| Skill | Inline example | L3 file | Location |",
-        "|---|---|---|---|",
+        "| Skill | Inline | L3 | Quality | Location |",
+        "|---|---|---|---|---|",
     ]
     for r in rows:
         loc = ", ".join(r["locs"]) if r["locs"] else ("⚠ missing" if r["broken"] else "—")
         lines.append(
-            f"| `{r['name']}` | {'yes' if r['inline'] else 'no'} | {'yes' if r['l3'] else 'no'} | {loc} |"
+            f"| `{r['name']}` | {'yes' if r['inline'] else 'no'} | {'yes' if r['l3'] else 'no'} | {r.get('quality', '—')} | {loc} |"
         )
     lines.extend(["", MARKER_END])
     return "\n".join(lines)

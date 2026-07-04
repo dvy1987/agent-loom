@@ -176,18 +176,22 @@ Before I generate, two quick questions:
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Verification
+
+- [ ] Correct child skill in suite invoked
+- [ ] 5/5 handoff gate respected before build commitment
+- [ ] Artifacts in docs/ or chat outcome explicit
+- [ ] Assumptions listed with validation path
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Idea generation complete: <theme>
-File saved: docs/ventures/ideas/YYYY-MM-DD-batch.md
-Methods used: <list>
-Candidates produced: N (struck: M)
-Non-obvious count: N
-Diversity: <themes>
-Top 3 by rough score: <names>
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Idea generation complete: <theme> File saved: docs/ventures/ideas/YYYY-MM-DD-batch.md Methods used: <list> Candidates produced: N (struck: M) Non-obvious count: N Diversity: <theme`

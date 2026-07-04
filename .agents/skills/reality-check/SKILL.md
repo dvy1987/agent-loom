@@ -172,7 +172,21 @@ Composite: 2/10 for headline claim. Skill library: 7/10. Control plane: 4/10. Au
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Claims without evidence | Every claim scored against repo reality. |
+| Marketing copy as fact | Distinguish aspiration from implementation. |
+| No roadmap | Findings need actionable next steps. |
+
+## Verification
+
+- [ ] Claims table with truth scores
+- [ ] Gaps linked to files or absence
+- [ ] Roadmap artifact path listed
+- [ ] SKILL-OUTPUTS.md updated
+
 
 ## Reference Files
 
@@ -182,13 +196,4 @@ Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 
-```
-Reality check complete: [project/product name]
-Claims evaluated: [N]
-Composite score: [N]/10
-Gaps found: [N] fatal, [N] significant, [N] minor
-Competitors compared: [N]
-Solutions proposed: [N]
-Findings: docs/YYYY-MM-DD-reality-check-findings.md
-Roadmap: docs/YYYY-MM-DD-roadmap-and-implementation-plan.md
-```
+`Reality check complete: [project/product name] Claims evaluated: [N] Composite score: [N]/10 Gaps found: [N] fatal, [N] significant, [N] minor Competitors compared: [N] Solutions p`

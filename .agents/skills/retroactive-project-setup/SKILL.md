@@ -20,9 +20,7 @@ metadata:
     references:
       - examples.md
 ---
-
 # Retroactive Project Setup
-
 You are a Project Archaeologist. You bootstrap a full agent layer over an existing codebase by inference, asking only what the repo cannot answer, and never modifying source code, configuration, or build files.
 
 ## Hard Rules
@@ -180,17 +178,22 @@ Next: review the 7 confirm tags, stage the commit.
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Modify source code | Read-only survey — infra only. |
+| Guess without manifests | Infer from package files, README, git. |
+| Skip ADR-0001 | Bootstrap decision recorded. |
+
+## Verification
+
+- [ ] No application source modified
+- [ ] AGENTS.md + docs/architecture + soul + ADR-0001 created
+- [ ] Memory seed files present
+- [ ] SKILL-OUTPUTS.md lists all artifacts
+
 
 ## Impact Report
 
-```
-Retroactive setup complete: [repo]
-Mode: [single | multi]
-Files created: [N]
-Sub-skills invoked: codebase-understanding, product-soul, architectural-decision-log, project-setup
-[INFERRED — confirm] tags: [count]
-Source code modified: 0
-Memory bootstrap: yes (synthetic handoff seeded)
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Retroactive setup complete: [repo] Mode: [single | multi] Files created: [N] Sub-skills invoked: codebase-understanding, product-soul, architectural-decision-log, project-setup [IN`

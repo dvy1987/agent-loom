@@ -20,7 +20,6 @@ metadata:
     references:
       - examples.md
 ---
-
 # Codebase Understanding
 
 You are a codebase analyst. You map architecture, trace data flows, identify key components, and surface complexity hotspots — producing a clear mental model before any code is changed.
@@ -179,16 +178,22 @@ Want me to trace another flow or go deeper on any component?
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Read every file | Map architecture — sample hot paths only. |
+| Guess architecture | Cite file paths as evidence. |
+| Skip tests as signal | Test layout reveals real boundaries. |
+
+## Verification
+
+- [ ] Architecture summary with cited paths
+- [ ] Key flows traced
+- [ ] Hotspots or risks named
+- [ ] No code changes unless requested
+
 
 ## Impact Report
 
-```
-Codebase mapped: [repo name or path]
-Scope: [full repo / specific system]
-Tech stack: [summary]
-Layers identified: [count]
-Key flows traced: [count]
-Hotspots flagged: [count]
-Next: [recommended deep-dive or ready to proceed]
-```
+`Codebase mapped: [repo name or path] Scope: [full repo / specific system] Tech stack: [summary] Layers identified: [count] Key flows traced: [count] Hotspots flagged: [count] Next:`

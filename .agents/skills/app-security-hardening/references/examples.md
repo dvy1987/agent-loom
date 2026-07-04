@@ -49,9 +49,24 @@ Validate request DTO at the route boundary, enforce authZ (user can only update 
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
+|---|
+| "We’ll add security later" | Retrofits are expensive; boundary validation is cheapest at creation time. |
+| "Frontend already checks this" | Attackers don’t use your UI. Validate server-side. |
+| "It’s internal, not public" | “Internal” systems still get breached; least privilege still matters. |
+| "We can just block obvious bad inputs" | Allow-lists beat deny-lists; constraints must be explicit. |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- “We validated on the frontend” is not validation.
+- Multi-tenant bugs are often missing constraints, not fancy exploits.
+- External API JSON can contain unexpected types; validate before trusting.
+- Logging is an exfiltration channel; redact by default.
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

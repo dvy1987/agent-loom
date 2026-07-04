@@ -94,7 +94,10 @@ Each flag is a concrete fix for `improve-skills` Step 2b:
 - **Loader-unsafe**: see Step 2a (P0)
 - **Description process-steps**: see Step 2b
 - **Missing category**: not in `meta | thinking | project-specific | domain`
-- **Missing Impact Report**: no `## Impact Report` section at end
+- **Missing Impact Report**: no `
+
+
+## Impact Report` section at end
 - **Missing file-output logging**: skill writes project files but no `docs/skill-outputs/SKILL-OUTPUTS.md` append
 - **Missing memory-checkpoint registration**: producer skill (see Step 4c) without matching memory sub-skill
 - **Stale version** / **Missing Prune Log** / **Broken caller reference** / **Orphaned reference file** / **Missing load trigger**

@@ -46,10 +46,23 @@ Session Lifecycle + Agent-Led blocks: [yes/no] | Rubric: [n/14] | L3: references
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
+|---|
+| Copy template AGENTS.md | Interview user for gaps and routing. |
+| Skip knowledge-graph bootstrap | Step 6b builds graph when skill installed. |
+| Install every skill | Recommend subset from interview. |
+
+## Example 4 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **The interview is the highest-leverage step.** 3 minutes of interview → 10x better AGENTS.md. Never skip it (except in `RETROACTIVE=true` mode).
+- **Skill gaps are the secret sauce.** A PM's AGENTS.md looks completely different from an engineer's.
+- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones. LLM-generated context without human input reduces task success ~3%.
+- 
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

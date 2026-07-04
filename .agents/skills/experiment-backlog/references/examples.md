@@ -38,18 +38,24 @@ Next recommended: [item — route to experiment-spec]
 
 See `SKILL.md` for hard rules and verification checklist.
 
-## Verification checklist (L3)
+---
 
-- [ ] Examples demonstrate SKILL.md hard rules, not generic chat
-- [ ] Anti-skip or rationalization defense included where applicable
-- [ ] Output artifacts or Impact Report shape is explicit
-- [ ] Reader can trace input → concrete agent actions → outcome
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
-- [ ] Cross-check against latest SKILL.md before shipping changes
+|---|
+| Test without hypothesis | Falsifiable hypothesis required before spec. |
+| Peek until significant | Peek policy must be pre-committed in spec. |
+| Any metric goes | Primary + guardrail metrics defined up front. |
+| Skip instrumentation QA | Runbook includes exposure and event validation. |
+
+## Example 3 — Gotcha application
+
+**Input:** Task hits a non-obvious edge case
+
+**Apply:**
+- **Feasibility is a binary gate, not an ICE multiplier.** A high-ICE item with insufficient traffic at planned MDE is REJECTED — not "deprioritised". Letting it sit on the backlog wastes attention and creates phantom queues.
+- **ICE inflation.** Self-proposed ideas score themselves 8/9/8. Anchor scoring against past wins where you already know the lift size — recalibrate every quarter.
+- **Retention A/Bs without a holdout are fake.** Retention metrics need a long-running holdout cohort. Reject any retention test that lacks one and surface "fix the holdout first" as a blocking dependency.
+- **Don't replace the backlog file — append.** `docs/experiments/backlog.md` is a living portfolio with status. Replacing it loses the lifecycle history that downstream skills (especially `experiment-readout` learnings) depend on.
+
+---
+
+See `SKILL.md` for hard rules and verification checklist.

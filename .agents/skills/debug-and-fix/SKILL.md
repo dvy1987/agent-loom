@@ -185,7 +185,6 @@ Update HID-42 status to "Done"?
 
 ---
 
-Read `references/examples.md` for full worked examples.
 
 ## Impact Report
 

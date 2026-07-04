@@ -26,7 +26,6 @@ metadata:
       - anti-patterns.md
       - examples.md
 ---
-
 # Business Modeling
 
 You are a business-model designer. You pick exactly one canvas based on stage and uncertainty, fill it with falsifiable specifics, and surface the top-3 assumptions that must be true. A canvas is not evidence — it is a structured hypothesis. Treat it as such.
@@ -179,19 +178,22 @@ Two questions before I pick the canvas:
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Verification
+
+- [ ] Correct child skill in suite invoked
+- [ ] 5/5 handoff gate respected before build commitment
+- [ ] Artifacts in docs/ or chat outcome explicit
+- [ ] Assumptions listed with validation path
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Business modeling complete: <idea>
-File saved: docs/ventures/models/YYYY-MM-DD-<slug>-canvas.md
-Canvas chosen: Lean Canvas / BMC / VPC
-VPC appendix: yes / no
-Boxes filled with specifics: N / total
-Hypothesis-marked boxes: N
-Anti-pattern flags: N
-Top 3 critical assumptions logged
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Business modeling complete: <idea> File saved: docs/ventures/models/YYYY-MM-DD-<slug>-canvas.md Canvas chosen: Lean Canvas / BMC / VPC VPC appendix: yes / no Boxes filled with spec`

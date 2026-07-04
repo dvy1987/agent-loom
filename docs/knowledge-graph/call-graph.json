@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T05:08:16.530942+00:00",
+  "generated_at": "2026-07-04T05:58:56.559707+00:00",
   "edges": [
     {
       "source": "skill_experiment_backlog",
@@ -56,6 +56,15 @@
       "provenance": "SKILL.md"
     },
     {
+      "source": "skill_customer_discovery",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/customer-discovery/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_reality_check",
       "target": "skill_assumption_mapping",
       "relation": "invokes",
@@ -72,6 +81,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_business_modeling",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/business-modeling/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_split_skill",
@@ -506,6 +524,15 @@
       "provenance": "SKILL.md"
     },
     {
+      "source": "skill_idea_generation",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/idea-generation/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_problem_to_plan",
       "target": "skill_spec_driven_development",
       "relation": "invokes",
@@ -641,6 +668,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_skill_finder",
+      "target": "skill_universal_skill_creator",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
       "source": "skill_frontend_design",
       "target": "skill_design_direction",
       "relation": "invokes",
@@ -684,6 +720,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_idea_evaluation",
+      "target": "skill_venture_exploration",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/idea-evaluation/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_eval_output",
@@ -877,15 +922,6 @@
     {
       "source": "skill_deprecate_skill",
       "target": "skill_library_skill",
-      "relation": "invokes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
-    },
-    {
-      "source": "skill_skill_finder",
-      "target": "skill_universal_skill_creator",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

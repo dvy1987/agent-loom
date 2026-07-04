@@ -126,6 +126,29 @@ Running setup-evaluation before handoff to project-orchestrator.
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Agent without boundaries | Define tools, memory, and escalation limits. |
+| Copy prompt from blog | secure-* scan; cite sources. |
+| Skip setup-evaluation | Eval hooks belong in agent design. |
+| One-shot mega-prompt | Split orchestrator vs worker skills. |
+
+## Verification
+
+- [ ] Agent role and boundaries documented
+- [ ] Skill/tool routing map produced
+- [ ] Memory policy stated
+- [ ] Outputs logged when files created
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

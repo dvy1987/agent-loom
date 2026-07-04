@@ -129,6 +129,29 @@ Ready for: implementation-plan
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Micro-agents everywhere | Orchestration cost — minimize hops. |
+| Shared mutable state | Document state ownership per agent. |
+| No failure modes | Timeouts, retries, human escalation required. |
+| Skip security boundary | Tool access least privilege. |
+
+## Verification
+
+- [ ] Architecture diagram or component list
+- [ ] Data flow and state ownership clear
+- [ ] Failure and escalation paths defined
+- [ ] docs/architecture/ updated
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

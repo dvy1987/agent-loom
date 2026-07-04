@@ -223,3 +223,11 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | improve-skills | 31 thinking/meta SKILL.md files + add_p2_craft.py | P2 Common Rationalizations + Verification |
 | 2026-07-04 | improve-skills | fix_craft_overflow.py | Compress SKILL.md to ≤200 after P2 craft |
 | 2026-07-04 | memory-handoff | SKILL.md v1.3, memory/SKILL.md, AGENTS.md | Handoff trigger: commit, push, commit and push |
+| 2026-07-04 | improve-skills | 71 project-specific SKILL.md + add_p2_craft_project.py | Full P2 craft on project-specific layer |
+| 2026-07-04 | ci-cd-and-automation | .github/workflows/validate-skills.yml | Library CI: validate + P2 + graph |
+| 2026-07-04 | learn-from-repo | Step 4b, docs/comparisons/INGEST-QUEUE.md | Meta B4 overlap compare queue |
+| 2026-07-04 | improve-skills | Step 2b addyosmani pattern pass | Meta B5 |
+| 2026-07-04 | universal-skill-creator | check_p2_craft.py, replenish_l3.py, build_examples_index quality tiers | CI + L3 quality |
+| 2026-07-04 | knowledge-graph | validate_application_mode.py | Application-mode smoke test |
+| 2026-07-04 | generate-changelog | docs/changelogs/2026-07-04-adversarial-remediation.md | Remediation changelog |
+| 2026-07-04 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Adversarial remediation handoff |

@@ -138,6 +138,29 @@ Ready for: implementation
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| ADR after the fact only | Interactive mode for contemporaneous decisions. |
+| Delete old ADRs | Supersede — never erase audit trail. |
+| No alternatives | Document options rejected. |
+| SYNTHESIS without evidence | Retrospective mode cites repo findings. |
+
+## Verification
+
+- [ ] ADR under docs/adr/ with date
+- [ ] Context, decision, consequences present
+- [ ] Status set (proposed/accepted/superseded)
+- [ ] SKILL-OUTPUTS.md updated
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

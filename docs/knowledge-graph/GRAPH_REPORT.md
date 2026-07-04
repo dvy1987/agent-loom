@@ -1,29 +1,29 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-04T05:08:16.530942+00:00
-Mode: skill-library | Nodes: 127 | Edges: 444
+Generated: 2026-07-04T05:58:56.559707+00:00
+Mode: skill-library | Nodes: 128 | Edges: 451
 
 ## God nodes (skill connectivity)
 - universal-skill-creator
 - validate-skills
-- secure-skill
 - improve-skills
+- secure-skill
+- venture-exploration
 - library-skill
 - split-skill
 - experimentation
 - learn-from
 - feature-spec
-- spec-driven-development
 
 ## Surprising cross-community connections
 - project-orchestrator → skill-routing (invokes: project ↔ skill)
 - project-orchestrator → process-decomposer (invokes: project ↔ process)
 - publish-skill → validate-skills (invokes: publish ↔ validate)
 - publish-skill → improve-skills (invokes: publish ↔ improve)
+- customer-discovery → venture-exploration (invokes: customer ↔ venture)
 - reality-check → assumption-mapping (invokes: reality ↔ assumption)
 - reality-check → adversarial-hat (invokes: reality ↔ adversarial)
-- split-skill → improve-skills (invokes: split ↔ improve)
-- split-skill → compress-skill (invokes: split ↔ compress)
+- business-modeling → venture-exploration (invokes: business ↔ venture)
 
 ## Suggested questions
 - How does project-orchestrator (project) connect to skill-routing (skill)?
@@ -31,10 +31,10 @@ Mode: skill-library | Nodes: 127 | Edges: 444
 - How does publish-skill (publish) connect to validate-skills (validate)?
 - What depends on universal-skill-creator, and what does universal-skill-creator invoke?
 - What depends on validate-skills, and what does validate-skills invoke?
-- What depends on secure-skill, and what does secure-skill invoke?
+- What depends on improve-skills, and what does improve-skills invoke?
 
 ## Provenance
 - Authoritative invokes: 170
-- EXTRACTED: 220 | INFERRED: 224
+- EXTRACTED: 225 | INFERRED: 226
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

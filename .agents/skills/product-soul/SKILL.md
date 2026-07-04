@@ -177,17 +177,22 @@ When `inversion` is called from this skill: "Apply inversion to the strategic as
 
 ---
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Soul is a long PRD | Five lenses, strategic — not feature list. |
+| Skip GTM lens | Incomplete soul hides go-to-market gaps. |
+| One session forever | Revisit when strategy pivots. |
+
+## Verification
+
+- [ ] All five lenses addressed
+- [ ] docs/product-soul.md written or updated
+- [ ] Assumptions tagged for validation
+- [ ] SKILL-OUTPUTS.md logged
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Product Soul complete: [product name]
-File saved: docs/product-soul.md
-Sections written: User · Business · Strategy · PMF · GTM
-PMF status: [Confirmed / Pre-PMF hypothesis / Unknown]
-Inversion run: [yes / no]
-Open hypotheses: N
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Product Soul complete: [product name] File saved: docs/product-soul.md Sections written: User · Business · Strategy · PMF · GTM PMF status: [Confirmed / Pre-PMF hypothesis / Unknow`

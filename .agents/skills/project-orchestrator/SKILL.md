@@ -164,6 +164,29 @@ Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Orchestrate = do everything | Route and decompose — don't replace child skills. |
+| Wrong skill silently | Name chosen skill + ambiguity score when close. |
+| Skip project-local skills | Prefer project .agents/skills when present. |
+| Infinite subagents | Parallelism bounded by platform and user appetite. |
+
+## Verification
+
+- [ ] Routing decision explicit with rationale
+- [ ] Phase transitions documented
+- [ ] task-plan.md written when parallel work
+- [ ] No duplicate work across child invocations
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

@@ -98,6 +98,29 @@ Extending `create-agent-prompt` to include system prompt generation. Verifying l
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Invent skill inline | Route to universal-skill-creator for new skills. |
+| First match only | List top 2–3 with disambiguation. |
+| Ignore project skills | Check local .agents/skills first. |
+| Skip INDEX | docs/SKILL-INDEX.md is authoritative. |
+
+## Verification
+
+- [ ] 2–3 candidates with trigger overlap noted
+- [ ] Project-local skills checked
+- [ ] Recommendation names one primary skill
+- [ ] Creator route if no match
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

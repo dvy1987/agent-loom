@@ -1,20 +1,18 @@
 # Current State
 
-Last updated: 2026-07-04 (P2 craft + L3 floor + handoff v1.3 push trigger)
+Last updated: 2026-07-04 (adversarial-review remediation — full P2 + CI)
 
-Fifteen landed items across 2026-05-13 → 2026-07-04.
+Sixteen landed items across 2026-05-13 → 2026-07-04.
 
-1.–13. *(See prior entries — through knowledge-graph v2 + L3 backfill + commit-handoff trigger, `a9281de`/`06ced67`.)*
+1.–15. *(Through P2 craft on thinking/meta + L3 floor + handoff v1.3, `3145508`.)*
 
-14. **Phase 2 gap skills + L3 enrichment** (2026-07-04, `06ced67`). Four addyosmani gap skills; library sync to 102 skills; brainstorming idea-refine examples.
-
-15. **P2 craft + L3 floor + push trigger** (2026-07-04, this commit). All L3 ≥55 lines; thinking/meta rationalizations + verification complete; `memory-handoff` v1.3 adds push/commit-and-push triggers; helper scripts `add_p2_craft.py`, `fix_craft_overflow.py`.
+16. **Adversarial remediation** (2026-07-04, this commit). P2 craft on **all 71 project-specific** skills (rationalizations + verification + red flags); `check_p2_craft.py` CI gate; `.github/workflows/validate-skills.yml`; `learn-from-repo` B4 ingest queue; `improve-skills` B5 pattern pass; external handoff §7 updated; `validate_application_mode.py` smoke test; L3 quality tiers in SKILL-EXAMPLES-INDEX.
 
 ## Active Risks
 
-- Padded L3 files (design/experiment suites) are structurally complete but less hand-curated than addyosmani passes — optional polish.
-- `agentskills validate` CLI unavailable in some environments — manual checks used as fallback.
+- ~27 L3 files still `padded` tier — structurally complete, not hand-curated AO craft.
+- Inferred graph edges remain ~50% — use authoritative invokes for routing hints.
 
 ## Immediate Next Step
 
-Validate knowledge-graph in a **consumer project** (application mode). Optional: hand-curate padded L3 examples for highest-traffic skills.
+Optional: elevate high-traffic L3 from `padded` → `curated` via `improve-skills TARGET=<skill>`. Monitor CI on first push.

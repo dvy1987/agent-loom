@@ -178,19 +178,22 @@ Two questions before I draft the guide:
 
 `venture-exploration` calls this in the validate stage. `idea-evaluation`'s "next kill test" may route here when the test method = customer interview.
 
-Read `references/examples.md` for full worked examples.
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Idea = feature | Business ideas route to venture-exploration, not brainstorming. |
+| Skip Mom Test | Customer discovery before building. |
+| Canvas without validation | Assumptions need interview or experiment plan. |
+
+## Verification
+
+- [ ] Correct child skill in suite invoked
+- [ ] 5/5 handoff gate respected before build commitment
+- [ ] Artifacts in docs/ or chat outcome explicit
+- [ ] Assumptions listed with validation path
+
 
 ## Impact Report
 
-After completing, always report:
-```
-Customer discovery complete: <idea>
-File saved: docs/ventures/discovery/YYYY-MM-DD-<slug>-interviews.md
-Mode: design / coach / synthesize
-Interviews: N (target M)
-Painful-problem reports: M/N
-Currency evidence: M/N
-Verdict: CONFIRMED / WEAKENED / KILLED / NEED-MORE
-Assumption updates pushed: N
-Logged to: docs/skill-outputs/SKILL-OUTPUTS.md
-```
+`Customer discovery complete: <idea> File saved: docs/ventures/discovery/YYYY-MM-DD-<slug>-interviews.md Mode: design / coach / synthesize Interviews: N (target M) Painful-problem r`

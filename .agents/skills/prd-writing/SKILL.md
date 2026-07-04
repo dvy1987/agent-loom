@@ -141,6 +141,29 @@ Read `references/metrics-frameworks.md` when the user needs help choosing succes
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| PRD before product-soul | Soul is north star — PRD implements a slice of it. |
+| Interview skipped | Discovery questions precede document structure. |
+| Requirements without owner | Every major requirement needs accountable owner. |
+| PRD = spec | PRD is product layer; feature-spec is executable agent layer. |
+
+## Verification
+
+- [ ] Discovery completed or gaps explicit
+- [ ] PRD file path under docs/prd/ with date
+- [ ] Success metrics measurable
+- [ ] SKILL-OUTPUTS.md updated
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Reference Files

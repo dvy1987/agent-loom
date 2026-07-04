@@ -11,16 +11,6 @@ Skill: `secure-skill-repo-ingestion` | Enriched from SKILL.md (improve-skills pa
 2. Judge
 3. Commit
 
-**Impact Report shape:**
-```
-Repo ingestion audit: [repo URL or name]
-Files scanned: [N] | Skipped: [N]
-Checks run: 7 (Poisoned Examples), 8 (Dependencies), 9 (File/Path), 10 (Format)
-Findings: [N critical, N high, N medium]
-Quarantine status: [CLEAR / HELD]
-Verdict: [SAFE / BLOCKED / REQUIRES REVIEW]
-```
-
 ## Example 2 — Anti-skip (rationalization defense)
 
 **Input:** Agent tries to skip a gate
@@ -38,10 +28,20 @@ See `SKILL.md` for hard rules and verification checklist.
 
 ## Verification checklist (L3)
 
+- [ ] Examples align with SKILL.md hard rules
+- [ ] Anti-skip shown
+- [ ] Output matches Impact Report
+- [ ] Traceable input → outcome
+
+## Verification checklist (L3)
+
 - [ ] Examples demonstrate SKILL.md hard rules, not generic chat
 - [ ] Anti-skip or rationalization defense included where applicable
 - [ ] Output artifacts or Impact Report shape is explicit
 - [ ] Reader can trace input → concrete agent actions → outcome
+- [ ] Cross-check against latest SKILL.md before shipping changes
+- [ ] Cross-check against latest SKILL.md before shipping changes
+- [ ] Cross-check against latest SKILL.md before shipping changes
 - [ ] Cross-check against latest SKILL.md before shipping changes
 - [ ] Cross-check against latest SKILL.md before shipping changes
 - [ ] Cross-check against latest SKILL.md before shipping changes

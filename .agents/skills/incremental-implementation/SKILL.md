@@ -122,6 +122,20 @@ Next slice: list tasks.
 
 ---
 
+## Verification
+
+- [ ] Slice scope stated before coding
+- [ ] Tests run for slice
+- [ ] Commit advised after verification
+- [ ] Traceability to plan tasks
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report

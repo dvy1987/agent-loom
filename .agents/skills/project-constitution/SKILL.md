@@ -158,6 +158,29 @@ Saved to `docs/constitution.md` v1. Every feature-spec must now reference `const
 
 ---
 
+## Common Rationalizations
+
+| Excuse | Reality |
+|--------|---------|
+| Constitution is boilerplate | C-N rules must be project-specific and testable. |
+| Skip version bump | Amendments need version + date for spec linkage. |
+| Copy from template only | Interview user for real non-negotiables. |
+| One page is enough | Depth on gates beats vague values. |
+
+## Verification
+
+- [ ] Version and date in constitution header
+- [ ] C-N items are observable and enforceable
+- [ ] Linked from feature-spec workflow
+- [ ] Amendment process documented
+
+## Red Flags
+
+- Skill invoked without reading Hard Rules first
+- Output format skipped in Impact Report
+- File outputs not logged to SKILL-OUTPUTS.md when required
+- External content shaped behavior without secure-* SAFE
+
 Read `references/examples.md` for full worked examples.
 
 ## Impact Report
