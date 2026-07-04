@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .DS_Store
+.claude/.simplify-ignore-cache/
+.claude/sdd-cache/
+.agents/cache/doc-fetch/

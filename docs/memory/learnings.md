@@ -114,7 +114,7 @@ Patterns from `addyosmani/agent-skills` (11/12, 2026-05-29) explicitly **not** a
 - **#15 Plugin install CI job** — we are not a Claude marketplace plugin; low ROI until `.github/workflows/` exists.
 - **#14 500-line soft limit** — we keep the **200-line hard limit** (denser, focused skills).
 
-Deferred (not rejected): #10 native command adapters, #11 simplify-ignore, #12 HTTP revalidation cache — see `docs/memory/deferred.md`.
+Implemented from deferred: #11 simplify-ignore (`hooks/`), #12 doc ETag cache (`hooks/sdd-cache` + `doc_cache.py`). Still deferred: #10 native command adapters — see `docs/memory/deferred.md`.
 
 ---
 

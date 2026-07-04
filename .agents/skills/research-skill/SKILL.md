@@ -12,12 +12,15 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: meta
-  sources: arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025
+  sources: arXiv:2602.12430, arXiv:2603.29919, NeurIPS 2025, addyosmani/agent-skills sdd-cache (MIT)
   resources:
     references:
+      - doc-cache.md
       - examples.md
+    scripts:
+      - doc_cache.py
 ---
 
 # Research Skill
@@ -36,6 +39,14 @@ Minimum bar: 2 sources per domain. For specialised domains (medical, legal, fina
 
 ### Step 1 — Identify the Domain
 Extract the domain from context. If ambiguous, ask: "What domain should I research? (e.g., 'code review', 'sprint retrospectives', 'database migrations')"
+
+### Step 1b — Cached doc fetch (URLs)
+
+When fetching web sources, prefer ETag revalidation — read `references/doc-cache.md`. Claude Code: wire `hooks/sdd-cache-*.sh`. Else:
+
+```bash
+python3 .agents/skills/research-skill/scripts/doc_cache.py "<url>" --prompt "<what you need from the page>"
+```
 
 ### Step 2 — Search in Parallel
 

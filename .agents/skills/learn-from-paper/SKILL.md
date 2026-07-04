@@ -37,7 +37,7 @@ Sub-skill of `learn-from` (orchestrator). You read academic papers, assess credi
 
 ### Step 1 — Ingest the Paper
 Accept via: uploaded PDF, local file path, arXiv URL, DOI link, Semantic Scholar link, or pasted content.
-- If URL: use the platform's web fetch tool to retrieve the paper or landing page
+- If URL: fetch via `doc_cache.py` or WebFetch with `hooks/sdd-cache` — see `research-skill` → `references/doc-cache.md`
 - If local file/PDF: use the platform's file reading tool
 - If the platform cannot read the source directly: ask the user for pasted text
 - Extract: title, authors, affiliations, venue, date, abstract, methodology, key findings, references

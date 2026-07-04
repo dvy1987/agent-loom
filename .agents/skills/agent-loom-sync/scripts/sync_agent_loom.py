@@ -104,6 +104,23 @@ def rsync_skill(src: Path, dst: Path, dry_run: bool) -> list[str]:
     return lines
 
 
+def rsync_hooks(upstream: Path, project_root: Path, dry_run: bool) -> list[str]:
+    src = upstream / "hooks"
+    dst = project_root / "hooks"
+    if not src.is_dir():
+        return []
+    dst.mkdir(parents=True, exist_ok=True)
+    cmd = ["rsync", "-a", "--exclude", "__pycache__/", "--exclude", ".DS_Store"]
+    if dry_run:
+        cmd.append("--dry-run")
+    cmd.extend([f"{src}/", f"{dst}/"])
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    lines = [ln for ln in (r.stdout + r.stderr).splitlines() if ln.strip()]
+    if r.returncode != 0:
+        raise RuntimeError(f"rsync hooks failed: {r.stderr.strip()}")
+    return lines
+
+
 def build_plan(project_root: Path, upstream_rel: str) -> dict:
     agents = project_root / ".agents"
     skills = agents / "skills"
@@ -144,6 +161,7 @@ def build_plan(project_root: Path, upstream_rel: str) -> dict:
         update.append(name)
 
     local_only = sorted(set(local_skills) - set(up_skills))
+    hooks_present = (upstream / "hooks").is_dir()
 
     return {
         "upstream": str(upstream),
@@ -155,6 +173,7 @@ def build_plan(project_root: Path, upstream_rel: str) -> dict:
         "update": update,
         "unchanged": unchanged,
         "forked": forked,
+        "hooks_sync": hooks_present,
         "config": cfg,
     }
 
@@ -171,7 +190,11 @@ def apply_plan(project_root: Path, plan: dict, dry_run: bool) -> dict:
         rsync_log[name] = rsync_skill(src, dst, dry_run=dry_run)
         applied.append(name)
 
-    return {"applied": applied, "rsync_log": rsync_log}
+    hooks_log: list[str] = []
+    if plan.get("hooks_sync"):
+        hooks_log = rsync_hooks(upstream, project_root, dry_run=dry_run)
+
+    return {"applied": applied, "rsync_log": rsync_log, "hooks_log": hooks_log}
 
 
 def main() -> int:
@@ -199,6 +222,8 @@ def main() -> int:
         return 0
 
     print(f"Upstream: {plan['upstream']} @ {plan['upstream_commit']}")
+    if plan.get("hooks_sync"):
+        print("Hooks: hooks/ will sync from upstream")
     print(f"Add ({len(plan['add'])}): {', '.join(plan['add']) or '—'}")
     print(f"Update ({len(plan['update'])}): {', '.join(plan['update']) or '—'}")
     print(f"Unchanged ({len(plan['unchanged'])}): {len(plan['unchanged'])} skills")

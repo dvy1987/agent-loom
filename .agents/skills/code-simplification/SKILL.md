@@ -10,12 +10,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: addyosmani/agent-skills code-simplification (11/12, 2026-05-29)
+  sources: addyosmani/agent-skills code-simplification + simplify-ignore hook (MIT)
   resources:
     references:
       - simplification-patterns.md
+      - simplify-ignore.md
       - examples.md
 ---
 
@@ -31,10 +32,15 @@ Default scope: code touched in the current task — no drive-by refactors unless
 Separate refactoring commits from feature/bugfix commits.
 Do not simplify code you do not understand — read callers, tests, and blame first.
 >500 lines touched → prefer codemods/AST tools over manual edits.
+Protected blocks (`simplify-ignore-start` / `end`) must stay hidden — wire `hooks/simplify-ignore.sh` in Claude Code or read `references/simplify-ignore.md`.
 
 ---
 
 ## Workflow
+
+### Step 0 — Optional: protect hot paths (Claude Code)
+
+If simplifying code with annotated `simplify-ignore` blocks, register hooks from `hooks/SIMPLIFY-IGNORE.md` before reads/edits. Crash recovery: `echo '{}' | bash hooks/simplify-ignore.sh`.
 
 ### Step 1 — Understand (Chesterton's Fence)
 
@@ -139,9 +145,14 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 - Well-named helper inlined for fewer lines only
 - Nested ternaries introduced to reduce line count
 - Refactor bundled unrelated behavior changes
+
+---
+
 ## Reference Files
 
-- **`references/simplification-patterns.md`**: Pattern signal table and language examples — read at Step 2.
+- **`references/simplification-patterns.md`**: Pattern signal table — read at Step 2.
+- **`references/simplify-ignore.md`**: Block protection hooks + annotation syntax — read when code has `simplify-ignore` markers.
+- **`hooks/SIMPLIFY-IGNORE.md`**: Full setup, examples, limitations (repo root).
 
 ---
 

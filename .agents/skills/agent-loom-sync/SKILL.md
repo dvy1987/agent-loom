@@ -36,7 +36,7 @@ You merge upstream agent-loom library improvements into a consumer project's `.a
 
 **Always dry-run before apply.** Present the plan (add / update / unchanged / local-only / forked) and wait for confirmation before `--apply`.
 
-**Never sync the project root `AGENTS.md` from upstream.** That file is project-specific (from `project-setup`). Only sync `.agents/skills/` and optionally `.agents/ROUTING.md` when the user opts in.
+**Never sync the project root `AGENTS.md` from upstream.** That file is project-specific (from `project-setup`). Sync `.agents/skills/`, and **`hooks/`** when present upstream, optionally `.agents/ROUTING.md` when the user opts in.
 
 **Never run rsync on the whole `.agents/skills/` tree with `--delete`.** Sync per library skill directory only — bulk delete would remove project-local skills.
 
