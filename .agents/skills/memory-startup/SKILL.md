@@ -15,7 +15,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: addyosmani/agent-skills anti-rationalization tables
   resources:
@@ -64,6 +64,7 @@ Then yield. Do not re-read memory files mid-session.
 3.5. **Knowledge graph (when installed):** If `docs/knowledge-graph/graph.json` missing or older than latest handoff date in `agent-handoffs.md`, run `build_graph.py --incremental`. Read `GRAPH_INDEX.md` for hub nodes; run `query_graph.py` when the opener implies relational context.
 3.6. **Harness gap:** If `AGENTS.md` exists and `docs/harness/manifest.json` is missing, include `Harness gap — invoke harness-engineering (bootstrap)` in the Step 7 summary.
 4. Read only the latest relevant sections from `current-state.md`, `agent-handoffs.md`, `decision-log.md`, `deferred.md`, and `open-questions.md`.
+   - **`deferred.md` filter:** Read the **Status at a glance** table first. Surface **only OPEN** items in the Step 7 summary. Entries under **Implemented** are historical — never list them as "parked" or "deferred" (e.g. #11 simplify-ignore and #12 ETag cache are **DONE**).
 5. Check for `~/.agent-loom/memories/MEMORY-ROUTING.md`.
 6. If present, read global routing and only applicable entries from `global-index.md`, `user-preferences.md`, and `global-agent-rules.md`.
 7. Summarize loaded context in 10 bullets or fewer.
@@ -100,7 +101,7 @@ Read this file first. Do not load every memory file by default.
 | Current status | `current-state.md` | Need a snapshot of where the project is now. |
 | Past decisions | `decision-log.md` | Need rationale for a choice; filter by tag/date. |
 | Project learnings | `learnings.md` | Looking for known patterns or gotchas. |
-| Parked ideas | `deferred.md` | Considering reopening a deferred option. |
+| Parked ideas | `deferred.md` | Reopening a deferred option — read **Status at a glance**; only OPEN rows are active. |
 | Open questions | `open-questions.md` | A blocking question needs resolution. |
 | Session detail | `session-log.md` | Above sources are insufficient. |
 | Old / superseded | `archived/` | Almost never; archived entries are not current. |
@@ -144,7 +145,7 @@ Project memory: <files read>
 Global memory: <files read or none>
 Current state: <1-3 bullets>
 Active decisions: <1-3 bullets>
-Deferred items: <1-3 bullets>
+Deferred items: <OPEN only from deferred.md status table — omit DONE entries>
 Revisit triggers: <triggered or none>
 Risks / gaps: <if any>
 ```
@@ -178,8 +179,8 @@ Risks / gaps: validate the suite after generation
 - Cold-start skipped on bare greeting first message
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-05
+- deferred.md filter: surface only OPEN items (#10); #11/#12 DONE — stop stale "parked" summaries
 
 
 ## Impact Report
