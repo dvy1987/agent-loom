@@ -244,3 +244,5 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md | Synced after gsap-animation added; cross-linked svg-creation |
 | 2026-07-05 | universal-skill-creator | .agents/skills/motion-animation/ | New motion-animation skill — Motion/Framer Motion React variants, AnimatePresence, layout, scroll |
 | 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md | Synced after motion-animation added; cross-linked gsap-animation, svg-creation |
+| 2026-07-05 | improve-skills | svg-creation references, research-learnings.md | lengthy-svg WebKit gotcha, vivus inline-draw note, full repo APPLY/PARTIAL/SKIP matrix |
+| 2026-07-05 | learn-from-repo | svg-creation v1.3 references | Polish: 20-example catalog, SMIL recipes, vivus scenario, SVGO safe, awesome-svg map |

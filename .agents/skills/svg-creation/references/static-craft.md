@@ -60,6 +60,45 @@ When refining model-generated SVG:
 4. Run through SVGO mentally: no `Path-1` names; semantic structure only.
 5. Reject paths with hundreds of micro-segments — simplify or re-prompt.
 
+## SVGO post-process
+
+After hand-editing or AI generation, run SVGO to strip editor metadata and shrink paths:
+
+```sh
+svgo input.svg -o output.svg
+# or multipass for smaller output:
+svgo input.svg -o output.svg --multipass
+```
+
+When multiple SVGs share one page, enable **prefixIds** in `svgo.config.mjs` to avoid `id` collisions (gradient/filter defs). Default `preset-default` is fine for icons; disable `cleanupIds` only when IDs are referenced across files.
+
+**Animation-safe overrides** — run quality gate after optimize; animated SVGs break if paths merge wrong or defs strip:
+
+```js
+// svgo.config.mjs — safe defaults for SMIL/CSS animated SVG
+export default {
+  multipass: true,
+  plugins: [
+    {
+      name: 'preset-default',
+      params: {
+        overrides: {
+          mergePaths: false,        // can break per-path stroke-dash draw
+          collapseGroups: false,    // can break animate target structure
+          removeHiddenElems: false, // hidden paths may be SMIL targets
+          removeUselessStrokeAndFill: false, // vivus/SMIL need explicit stroke
+        },
+      },
+    },
+    { name: 'prefixIds', params: { prefix: 'asset-slug' } },
+  ],
+};
+```
+
+Never SVGO-optimize before verifying animation loops; re-test `stroke-dashoffset`, `animate` targets, and gradient `url(#id)` refs.
+
+Re-run svg-creation quality gate after SVGO — verify `viewBox`, contrast, and animation still loops cleanly.
+
 ## Bitmap → vector
 
 If source is PNG/JPG:

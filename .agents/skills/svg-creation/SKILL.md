@@ -10,15 +10,16 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.3"
   category: project-specific
-  sources: supermemoryai/skills svg-animations, seeb4coding/SVG-ORA-Studio, willianjusten/awesome-svg, design-system svg-craft, visioncortex/vtracer
+  sources: supermemoryai/skills svg-animations, seeb4coding/SVG-ORA-Studio, willianjusten/awesome-svg, visioncortex/vtracer, maxwellito/vivus, shshaw/lengthy-svg, williamzujkowski/svg-terminal, BlinkZer0/Ai-Generated-SVG-Examples, svg/svgo, rough-stuff/rough
   resources:
     references:
       - static-craft.md
       - animation-craft.md
       - ai-svg-prompts.md
       - svg-tooling.md
+      - github-safe-smil.md
       - examples.md
 ---
 
@@ -61,7 +62,7 @@ For icon sets inside a full product design build, also invoke `design-system` �
 |---------|----------------|-----|
 | Inline in HTML/React | CSS `@keyframes` or JS `getTotalLength()` | Full DOM access |
 | `<img src="file.svg">` or CSS background | **SMIL only** (`<animate>`, `<animateTransform>`) | CSS/JS cannot reach isolated SVG |
-| GitHub README / sandboxed embed | **SMIL only**, no scripts | Same isolation as `<img>` |
+| GitHub README / sandboxed embed | **SMIL only**, no scripts | Same isolation as `<img>` — read `github-safe-smil.md` |
 | React app with Motion/GSAP | Library + inline SVG | `motion-animation` or `gsap-animation` |
 
 ### Step 3 — Static craft
@@ -171,14 +172,16 @@ See `references/examples.md` for static icon, line-draw, and morph examples.
 - **`references/static-craft.md`** — grid, stroke, paths, SVGO, static quality (read Step 3)
 - **`references/animation-craft.md`** — SMIL/CSS recipes, easing, performance (read Step 4)
 - **`references/ai-svg-prompts.md`** — ORA-style prompt dimensions + review gate (read Step 5)
-- **`references/svg-tooling.md`** — vtracer, SVGO, runtime libs vs SMIL (read for bitmap or tooling questions)
-- **`references/examples.md`** — six worked examples incl. gradient shift + liquid wave (read when output shape is unclear)
+- **`references/svg-tooling.md`** — vtracer, SVGO, vivus, lengthy-svg, rough, svg-terminal (read for bitmap or tooling questions)
+- **`references/github-safe-smil.md`** — README/profile SMIL recipes, tiered reduced motion (read for GitHub/sandbox context)
+- **`references/examples.md`** — worked examples + Ai-Generated 20 catalog (read when output shape is unclear)
 
 ---
 
 ## Prune Log
 Last pruned: 2026-07-05
-- Closed learn-from gaps: gradient shift + liquid wave recipes, full ORA prompt dimensions, svg-tooling taxonomy
+- Learn-from 8 additional repos: github-safe-smil, vivus/lengthy-svg/SVGO/rough depth in L3
+- Polish pass: 20-example catalog, equalizer/neon/DNA/frame SMIL, vivus scenario, SVGO animation-safe, awesome-svg map
 
 ## Impact Report
 

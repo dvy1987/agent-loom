@@ -26,6 +26,10 @@ Mechanism: `stroke-dasharray` = path length; `stroke-dashoffset` starts at lengt
 ```
 Set `--len` via JS: `path.getTotalLength()`.
 
+**WebKit / Safari gotcha (lengthy-svg):** Do not rely on animating `stroke-dashoffset` when **only** `stroke-dasharray` is set via a CSS custom property. WebKit often fails to paint the draw. Fix: set **both** `stroke-dasharray` and `stroke-dashoffset` on the element — as SVG presentation attributes, or inline `style` — then animate offset (CSS `@keyframes`, JS, or SMIL). `pathLength` + matching attribute values is the most reliable cross-browser SMIL approach.
+
+**lengthy-svg + CSS vars:** If using `Lengthy()` to inject `--path-length`, Chrome may treat unitless `calc(var())` keyframes as discrete steps. Use separate `-webkit-keyframes` with `calc(1px * var(--path-length))` on `stroke-dashoffset`, and reset with `-moz-animation-name` for Firefox (lengthy-svg pattern). Prefer SMIL or vivus when cross-browser CSS draw is fragile.
+
 **SMIL (self-contained):**
 ```svg
 <path d="..." fill="none" stroke="currentColor" stroke-width="2"

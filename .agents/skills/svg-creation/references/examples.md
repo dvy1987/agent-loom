@@ -157,3 +157,101 @@ Delivery: GitHub README — SMIL only, no dependencies.
 ```
 
 Use sparingly — `d` animation is repaint-heavy.
+
+---
+
+## Example 7 — Typing dots loader (GitHub-safe SMIL)
+
+**Input:** Three-dot loading indicator for a GitHub README — no JavaScript.
+
+**Output:**
+
+```svg
+<svg viewBox="0 0 60 20" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Loading</title>
+  <circle cx="10" cy="10" r="4" fill="currentColor" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" begin="0s"/>
+  </circle>
+  <circle cx="30" cy="10" r="4" fill="currentColor" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" begin="0.2s"/>
+  </circle>
+  <circle cx="50" cy="10" r="4" fill="currentColor" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+</svg>
+```
+
+See `github-safe-smil.md` for tiered reduced-motion (ship `-static.svg` variant if SMIL must stop).
+
+---
+
+## Catalog — Ai-Generated-SVG-Examples (20)
+
+BlinkZer0 SMIL-only set — map to recipe before inventing new markup. Full snippets: examples below or `github-safe-smil.md`.
+
+| # | File | Pattern | Use |
+|---|------|---------|-----|
+| 01 | pulsing-circle | opacity + r pulse | Ex.4 breathing glow |
+| 02 | rotating-square | `animateTransform` rotate | `animation-craft.md` spinner |
+| 03 | color-morphing-star | `animate` on `fill` | SMIL color pulse |
+| 04 | bouncing-ball | `y` or `animateMotion` | transform bounce |
+| 05 | loading-spinner | arc + `animateTransform` | SKILL.md teaser / spinner recipe |
+| 06 | wave-animation | `d` morph loop | Ex.6 liquid wave |
+| 07 | expanding-rings | staggered scale circles | opacity + scale SMIL |
+| 08 | morphing-shapes | `animate attributeName="d"` | Ex.3 morph menu |
+| 09 | gradient-shift | `stop-color` animate | Ex.5 gradient shift |
+| 10 | heartbeat | scale pulse on path | `github-safe-smil.md` heartbeat |
+| 11 | orbit-system | `animateMotion` | `animation-craft.md` motion path |
+| 12 | typing-dots | staggered opacity | Ex.7 / `github-safe-smil.md` |
+| 13 | neon-glow | filter + opacity | `github-safe-smil.md` neon |
+| 14 | progress-bar | `width` animate on rect | rect `width` 0→100% SMIL |
+| 15 | DNA-helix | dual `stroke-dashoffset` | `github-safe-smil.md` DNA |
+| 16 | clock | rotate hands | two `animateTransform` different `dur` |
+| 17 | equalizer | stagger bar heights | `github-safe-smil.md` equalizer |
+| 18 | rainbow-circle | stroke + rotate | `animateTransform` on group |
+| 19 | starburst | line opacity stagger | line-draw + opacity stagger |
+| 20 | infinity-loop | path draw loop | line-draw SMIL or `pathLength` |
+
+---
+
+## Example 8 — Progress bar (SMIL, README)
+
+**Input:** Indeterminate or looping progress bar for profile README.
+
+**Output:**
+
+```svg
+<svg viewBox="0 0 200 12" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Progress</title>
+  <rect x="0" y="0" width="200" height="12" rx="6" fill="currentColor" opacity="0.15"/>
+  <rect x="0" y="0" width="0" height="12" rx="6" fill="currentColor">
+    <animate attributeName="width" values="0;200;0" dur="2.5s" repeatCount="indefinite"/>
+  </rect>
+</svg>
+```
+
+---
+
+## Example 9 — Orbit dot (SMIL motion path)
+
+**Input:** Dot orbiting a circle for a README badge.
+
+**Output:**
+
+```svg
+<svg viewBox="0 0 100 100" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Orbit</title>
+  <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+  <circle r="5" fill="currentColor">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 80,50 A 30,30 0 1,1 79.9,50"/>
+  </circle>
+</svg>
+```
+
+---
+
+## Example 10 — Braille spinner (frame cycle)
+
+**Input:** Terminal-style loading spinner for GitHub — no JS.
+
+**Output:** See `github-safe-smil.md` braille frame recipe (opacity-cycle across glyph frames).

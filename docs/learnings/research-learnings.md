@@ -106,5 +106,50 @@ Template:
 - Insight: agent-loom had static svg-craft only; trash animations come from wrong animation tech for context and unmeasured path lengths
 - Recommended action: Applied — new `svg-creation` skill with static-craft, animation-craft, ai-svg-prompts, examples L3
 - Skills modified: design-system (caller to svg-creation for animated SVG), library docs
-- Skills created from this learning: svg-creation (`.agents/skills/svg-creation/`)
-- Notes: vtracer noted for bitmap→vector pipeline; runtime split — `svg-creation` SMIL/CSS; `gsap-animation` GSAP; `motion-animation` Motion/React (motion.dev docs, 2026-07-05)
+- Skills created from this learning: svg-creation (`.agents/skills/svg-creation/`), gsap-animation, motion-animation
+
+### Primary sources (user-named)
+| Repo | Verdict | Applied to |
+|------|---------|------------|
+| supermemoryai/skills `svg-animations` | **APPLY** | `svg-creation` — delivery matrix, recipes, morph/freeze rules |
+| visioncortex/vtracer | **PARTIAL** | `svg-tooling.md` — bitmap→vector presets |
+| orsinium-labs/svg.py | **SKIP** | `svg-tooling.md` taxonomy row only (Python codegen, not agent markup) |
+| willianjusten/awesome-svg | **PARTIAL** | `svg-tooling.md` — category taxonomy, no embedded URLs |
+| seeb4coding/SVG-ORA-Studio | **PARTIAL** | `ai-svg-prompts.md` — prompt dimensions + review gate |
+
+### Additional high-signal repos
+| Repo | Verdict | Applied to |
+|------|---------|------------|
+| greensock/GSAP | **APPLY** | `gsap-animation` skill — timelines, ScrollTrigger, SVG plugins |
+| motiondivision/motion | **APPLY** | `motion-animation` skill — variants, AnimatePresence, pathLength |
+| svg/svgo | **PARTIAL** | `static-craft.md` multipass + prefixIds; `svg-tooling.md` CLI |
+| rough-stuff/rough | **PARTIAL** | `svg-tooling.md` — `rough.svg()` API + when to use |
+| maxwellito/vivus | **PARTIAL** | `svg-tooling.md` — prerequisites, types, `recalc`, `data-ignore` |
+| shshaw/lengthy-svg | **PARTIAL** | `animation-craft.md` — WebKit attribute + `-webkit-keyframes` calc px workaround |
+| williamzujkowski/svg-terminal | **PARTIAL** | `github-safe-smil.md` tiered reduced motion; `svg-tooling.md` CLI row |
+| BlinkZer0/Ai-Generated-SVG-Examples | **PARTIAL** | `github-safe-smil.md` recipes; `examples.md` Ex.7 typing dots |
+| jorisperrenet/VectorMation | **SKIP** | Python time-based codegen — same class as svg.py |
+| tympanus.net Codrops SVG Drawing | **SKIP** | Foundational tutorial; techniques already in `animation-craft.md` line-draw |
+
+- Notes: 2026-07-05 runtime split complete; 2026-07-05 lengthy-svg + vivus L3 gaps closed in animation-craft + svg-tooling
+
+## 2026-07-05 - Learn-from batch: 8 additional SVG animation repos
+- Source: greensock/GSAP, maxwellito/vivus, shshaw/lengthy-svg, williamzujkowski/svg-terminal, BlinkZer0/Ai-Generated-SVG-Examples, svg/svgo, rough-stuff/rough, jorisperrenet/VectorMation (+ motiondivision/motion already applied)
+- Type: repo batch (learn-from-repo)
+- Security: SAFE — tutorial/code patterns only; no URLs embedded in skill bodies
+- Classification: TECHNIQUE (github-safe SMIL, vivus prereqs, lengthy-svg WebKit keyframes, SVGO multipass), GOTCHA (tiered reduced motion, vivus hidden paths), TOOLING (rough.js, svg-terminal CLI)
+- Insight: primary five repos covered core FAILURE_MODEs; additional repos add tooling depth and README-specific recipes
+- Recommended action: Applied — `github-safe-smil.md` L3; expanded animation-craft, static-craft, svg-tooling; examples Ex.7–10 + 20-catalog; svg-creation v1.3 polish pass
+- Skills modified: svg-creation (v1.2)
+- Skills created from this learning: none (depth pass on existing skill)
+- Repo verdicts applied:
+  - GSAP → already `gsap-animation`
+  - motion → already `motion-animation`
+  - vivus → PARTIAL applied (`svg-tooling.md` prerequisites + recalc)
+  - lengthy-svg → PARTIAL applied (`animation-craft.md` WebKit keyframes)
+  - svg-terminal → PARTIAL applied (`github-safe-smil.md` tiered reduced motion + tool row)
+  - Ai-Generated-SVG-Examples → PARTIAL applied (`github-safe-smil.md` recipes + examples Ex.7)
+  - svgo → PARTIAL applied (`static-craft.md` + `svg-tooling.md`)
+  - rough → PARTIAL applied (`svg-tooling.md` API snippet)
+  - VectorMation → SKIP (Python codegen)
+  - Codrops SVG Drawing → SKIP (superseded by animation-craft line-draw)
