@@ -1,21 +1,22 @@
 # Current State
 
-Last updated: 2026-07-04 (Phase 3 daily-driver depth complete)
+Last updated: 2026-07-05 (harness skill suite + deep learn-from pass)
 
-Eighteen landed items across 2026-05-13 → 2026-07-04.
+Nineteen landed items across 2026-05-13 → 2026-07-05.
 
-1.–15. *(Through P2 craft on thinking/meta + L3 floor + handoff v1.3, `3145508`.)*
+1.–18. *(Through Phase 3 daily-driver depth, adversarial remediation, KG v2, L3 backfill — see prior entries.)*
 
-16. **Adversarial remediation** (2026-07-04). P2 craft on **all 71 project-specific** skills; `check_p2_craft.py` local gate; `learn-from-repo` B4 ingest queue; `improve-skills` B5 pattern pass; external handoff §7 updated; `validate_application_mode.py` local smoke test; L3 quality tiers. *(GitHub Actions workflow removed per user — validate locally only.)*
+19. **Harness engineering suite** (2026-07-05, **uncommitted**). Three skills: `harness-generation`, `harness-evolution`, `harness-engineering`. Wired into project lifecycle (setup, orchestrator, eval, memory). ADR-0002. Proactive readiness gate for non-dev routing.
 
-17. **Phase 3 daily-driver depth** (2026-07-04, `6ed7b84` + follow-up). Six coding skills — AO craft in references + curated L3; gate: `check_phase3_depth.py`.
-
-18. **Ongoing hygiene** (2026-07-04). `INGEST-QUEUE.md` seeded (10 done); `check_ao_sections.py` + Red Flags on all gated skills; `query_graph.py` authoritative-first routing; graph_health warns at >50% inferred.
+20. **Harness deep learn-from** (2026-07-05, **uncommitted**). 5 papers + 5 repos; 5 pairwise compares; INGEST-QUEUE cleared; L3 deepened (`harness-regression.md`, `harness-trajectory-mining.md`, evolution-loop, diagnosis-etclovg, scaffold-patterns). Library **109 skills**.
 
 ## Active Risks
 
-- Inferred graph edges (~84%) — `query_graph.py` sorts authoritative-first; prefer `docs/skill-graph.md` invokes for routing.
+- Large uncommitted harness batch — next session should commit when user asks.
+- Harness suite not runtime-tested on a consumer project yet.
+- Inferred graph edges (~84%) — `query_graph.py` authoritative-first.
 
 ## Immediate Next Step
 
-Run `check_p2_craft.py`, `check_ao_sections.py`, and `check_phase3_depth.py` locally before skill changes.
+1. If user wants ship: commit harness work (`git status` → logical commit message).
+2. Else: validate locally (`agentskills validate` on harness-* + patched skills) or bootstrap harness on a test project.

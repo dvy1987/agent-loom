@@ -800,3 +800,44 @@ Clean after `5c4e443`. Memory handoff files from this write may be uncommitted u
 
 ### Graph
 - Incremental rebuild at handoff.
+
+---
+
+## 2026-07-05 09:55 — Handoff (harness skill suite + deep learn-from pass)
+
+### Done
+- **Harness suite (3 skills):** `harness-generation` (v0 scaffold), `harness-evolution` (vN→vN+1 loop), `harness-engineering` (orchestrator + proactive readiness gate).
+- **Lifecycle wiring:** `project-setup` Step 6c default-on harness bootstrap; `retroactive-project-setup`, `setup-evaluation` Step 3b, `agent-builder`, `project-orchestrator`, `skill-routing`, `memory-startup`, `reality-check`, `eval-pipeline` cross-linked.
+- **Research + plan:** `docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md`; ADR-0002 harness skill suite.
+- **Deep learn-from (2nd pass):** 5 papers + 5 repos code-verified; 5 pairwise compares in `docs/comparisons/2026-07-05-*.md`; INGEST-QUEUE **0 pending**.
+- **L3 depth:** `evolution-loop.md`, `diagnosis-etclovg.md`, `scaffold-patterns.md`, `harness-regression.md` (new), `harness-trajectory-mining.md` (new), examples + routing.
+- **Skill bumps:** harness-* v1.2, eval-pipeline v1.4, setup-evaluation v1.4, memory-handoff v1.5.
+- **Library:** README/SKILL-INDEX/AGENTS.md → **109 skills**.
+
+### Decisions
+- Harness ≠ `agent-builder` topology — eval harness mandatory before evolution.
+- SIA / weight-update path **SKIP**; harnessforge CLI not vendored (patterns PARTIAL only).
+- Proactive harness triggers intentional — non-dev users should not need to say "harness".
+- Depth lives in L3 refs; SKILL.md bodies stay ≤200 lines.
+
+### Deferred
+- **No commit yet** — user has not requested; large dirty tree (~30+ files).
+- Runtime validation of harness bootstrap on a real consumer project.
+- `agentskills validate` not run in session (CLI not on PATH).
+
+### Next Agent Should Know
+- Start from `docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md` + latest `research-learnings.md` harness deep-pass entry.
+- Key proactive gate: `.agents/skills/harness-engineering/references/harness-readiness-gate.md`.
+- If user asks to commit: single logical commit or split (suite vs deep-pass) per `git-workflow-and-versioning`.
+
+### Revisit Triggers
+- User says "commit" / "push" → handoff already saved; proceed git ops.
+- Missing `docs/harness/manifest.json` in consumer project → auto-route `harness-generation`.
+- New harness research → queue compare in INGEST-QUEUE before SKILL.md body edits.
+
+### Working Tree
+- **Dirty, uncommitted** — harness suite + cross-links + deep pass + comparisons + ADR + graph.json rebuild.
+
+### Graph
+- Incremental rebuild OK — 221 nodes, 490 edges, 109 skills.
+

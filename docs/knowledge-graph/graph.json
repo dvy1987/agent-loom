@@ -1,10 +1,10 @@
 {
   "version": "2.2",
-  "generated_at": "2026-07-05T00:45:37.042125+00:00",
+  "generated_at": "2026-07-05T04:24:06.868230+00:00",
   "mode": "skill-library",
   "mode_reason": "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).",
   "scan_layers": [
-    "skills (106 in .agents/skills)",
+    "skills (109 in .agents/skills)",
     "repo-wide source (none — no .py/.ts/.tsx/.js outside .agents/skills)",
     "docs (AGENTS.md, README.md, docs/**/*.md)",
     "memory (docs/memory, handoffs)",
@@ -15,19 +15,19 @@
   ],
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 211,
-    "edges": 473,
-    "authoritative_edges": 222,
-    "extracted_edges": 246,
-    "inferred_edges": 227,
+    "nodes": 221,
+    "edges": 490,
+    "authoritative_edges": 232,
+    "extracted_edges": 260,
+    "inferred_edges": 230,
     "node_types": {
       "config": 1,
       "directory": 3,
-      "doc": 77,
+      "doc": 84,
       "handoff": 16,
       "learning": 2,
       "memory": 6,
-      "skill": 106
+      "skill": 109
     }
   },
   "god_nodes": [
@@ -36,11 +36,11 @@
     "secure-skill",
     "improve-skills",
     "venture-exploration",
+    "project-setup",
     "library-skill",
     "split-skill",
-    "feature-spec",
-    "experimentation",
-    "project-setup"
+    "retroactive-project-setup",
+    "feature-spec"
   ],
   "surprising_connections": [
     {
@@ -86,18 +86,18 @@
       "to_community": "venture"
     },
     {
+      "from": "harness-evolution",
+      "to": "eval-pipeline",
+      "relation": "invokes",
+      "from_community": "harness",
+      "to_community": "eval"
+    },
+    {
       "from": "reality-check",
       "to": "assumption-mapping",
       "relation": "invokes",
       "from_community": "reality",
       "to_community": "assumption"
-    },
-    {
-      "from": "reality-check",
-      "to": "adversarial-hat",
-      "relation": "invokes",
-      "from_community": "reality",
-      "to_community": "adversarial"
     }
   ],
   "suggested_questions": [
@@ -109,7 +109,7 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "project": [
+    "experiment": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -145,6 +145,9 @@
       "first-principles",
       "generate-changelog",
       "git-workflow-and-versioning",
+      "harness-engineering",
+      "harness-evolution",
+      "harness-generation",
       "idea-evaluation",
       "idea-generation",
       "implementation-plan",
@@ -202,7 +205,7 @@
       "validate-skills",
       "venture-exploration"
     ],
-    "design": [
+    "svg": [
       "app-security-hardening",
       "browser-testing-with-devtools",
       "ci-cd-and-automation",
@@ -302,6 +305,14 @@
       "path": ".agents/skills/customer-discovery/SKILL.md",
       "category": "project-specific",
       "community": "customer"
+    },
+    {
+      "id": "skill_harness_evolution",
+      "label": "harness-evolution",
+      "type": "skill",
+      "path": ".agents/skills/harness-evolution/SKILL.md",
+      "category": "project-specific",
+      "community": "harness"
     },
     {
       "id": "skill_test_driven_development",
@@ -710,6 +721,22 @@
       "path": ".agents/skills/shipping-and-launch/SKILL.md",
       "category": "project-specific",
       "community": "shipping"
+    },
+    {
+      "id": "skill_harness_engineering",
+      "label": "harness-engineering",
+      "type": "skill",
+      "path": ".agents/skills/harness-engineering/SKILL.md",
+      "category": "project-specific",
+      "community": "harness"
+    },
+    {
+      "id": "skill_harness_generation",
+      "label": "harness-generation",
+      "type": "skill",
+      "path": ".agents/skills/harness-generation/SKILL.md",
+      "category": "project-specific",
+      "community": "harness"
     },
     {
       "id": "skill_implementation_plan",
@@ -1156,6 +1183,13 @@
       "community": "docs"
     },
     {
+      "id": "doc_docs_adr_adr_0002_harness_skill_suite_md",
+      "label": "ADR-0002-harness-skill-suite",
+      "type": "doc",
+      "path": "docs/adr/ADR-0002-harness-skill-suite.md",
+      "community": "decisions"
+    },
+    {
       "id": "doc_docs_comparisons_ingest_queue_md",
       "label": "INGEST-QUEUE",
       "type": "doc",
@@ -1177,10 +1211,24 @@
       "community": "docs"
     },
     {
+      "id": "doc_docs_comparisons_2026_07_05_memory_handoff_vs_retro_harness_md",
+      "label": "2026-07-05-memory-handoff-vs-retro-harness",
+      "type": "doc",
+      "path": "docs/comparisons/2026-07-05-memory-handoff-vs-retro-harness.md",
+      "community": "docs"
+    },
+    {
       "id": "doc_docs_comparisons_2026_06_01_test_driven_development_vs_addyosmani_test_driven_development_md",
       "label": "2026-06-01-test-driven-development-vs-addyosmani-test-driven-development",
       "type": "doc",
       "path": "docs/comparisons/2026-06-01-test-driven-development-vs-addyosmani-test-driven-development.md",
+      "community": "docs"
+    },
+    {
+      "id": "doc_docs_comparisons_2026_07_05_project_setup_vs_harnessforge_md",
+      "label": "2026-07-05-project-setup-vs-harnessforge",
+      "type": "doc",
+      "path": "docs/comparisons/2026-07-05-project-setup-vs-harnessforge.md",
       "community": "docs"
     },
     {
@@ -1198,6 +1246,13 @@
       "community": "docs"
     },
     {
+      "id": "doc_docs_comparisons_2026_07_05_setup_evaluation_vs_ahe_md",
+      "label": "2026-07-05-setup-evaluation-vs-ahe",
+      "type": "doc",
+      "path": "docs/comparisons/2026-07-05-setup-evaluation-vs-ahe.md",
+      "community": "docs"
+    },
+    {
       "id": "doc_docs_comparisons_2026_06_01_adversarial_hat_vs_addyosmani_doubt_driven_development_md",
       "label": "2026-06-01-adversarial-hat-vs-addyosmani-doubt-driven-development",
       "type": "doc",
@@ -1212,6 +1267,13 @@
       "community": "docs"
     },
     {
+      "id": "doc_docs_comparisons_2026_07_05_eval_pipeline_vs_ahe_md",
+      "label": "2026-07-05-eval-pipeline-vs-ahe",
+      "type": "doc",
+      "path": "docs/comparisons/2026-07-05-eval-pipeline-vs-ahe.md",
+      "community": "docs"
+    },
+    {
       "id": "doc_docs_comparisons_2026_06_01_planning_suite_vs_addyosmani_planning_and_task_breakdown_md",
       "label": "2026-06-01-planning-suite-vs-addyosmani-planning-and-task-breakdown",
       "type": "doc",
@@ -1223,6 +1285,13 @@
       "label": "2026-06-01-code-review-crsp-vs-addyosmani-code-review-and-quality",
       "type": "doc",
       "path": "docs/comparisons/2026-06-01-code-review-crsp-vs-addyosmani-code-review-and-quality.md",
+      "community": "docs"
+    },
+    {
+      "id": "doc_docs_comparisons_2026_07_05_project_setup_vs_metaharness_md",
+      "label": "2026-07-05-project-setup-vs-metaharness",
+      "type": "doc",
+      "path": "docs/comparisons/2026-07-05-project-setup-vs-metaharness.md",
       "community": "docs"
     },
     {
@@ -1272,6 +1341,13 @@
       "label": "2026-04-12-review-fixes-plan",
       "type": "doc",
       "path": "docs/plans/2026-04-12-review-fixes-plan.md",
+      "community": "docs"
+    },
+    {
+      "id": "doc_docs_plans_2026_07_05_harness_skills_research_and_implementation_plan_md",
+      "label": "2026-07-05-harness-skills-research-and-implementation-plan",
+      "type": "doc",
+      "path": "docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md",
       "community": "docs"
     },
     {
@@ -1881,6 +1957,15 @@
       "provenance": "SKILL.md"
     },
     {
+      "source": "skill_harness_evolution",
+      "target": "skill_eval_pipeline",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
       "source": "skill_reality_check",
       "target": "skill_assumption_mapping",
       "relation": "invokes",
@@ -2097,6 +2182,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_memory_startup",
+      "target": "skill_harness_engineering",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/memory-startup/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_experiment_spec",
       "target": "skill_experiment_runbook",
       "relation": "invokes",
@@ -2149,6 +2243,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_agent_builder",
+      "target": "skill_harness_generation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/agent-builder/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_agent_builder",
@@ -2304,6 +2407,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_harness_engineering",
+      "target": "skill_harness_evolution",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
       "source": "skill_implementation_plan",
       "target": "skill_feature_spec",
       "relation": "invokes",
@@ -2359,12 +2471,12 @@
     },
     {
       "source": "skill_project_setup",
-      "target": "skill_agent_loom_sync",
+      "target": "skill_harness_generation",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
+      "source_file": ".agents/skills/project-setup/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_project_setup",
@@ -2413,12 +2525,12 @@
     },
     {
       "source": "skill_retroactive_project_setup",
-      "target": "skill_agent_loom_sync",
+      "target": "skill_harness_generation",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": null,
-      "provenance": "skill-graph.md"
+      "source_file": ".agents/skills/retroactive-project-setup/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_retroactive_project_setup",
@@ -4914,6 +5026,33 @@
       "provenance": "learnings"
     },
     {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_harness_generation",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_harness_evolution",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_harness_engineering",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
       "source": "skill_universal_skill_creator",
       "target": "skill_split_skill",
       "relation": "invokes",
@@ -5859,6 +5998,24 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_project_setup",
+      "target": "skill_agent_loom_sync",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_retroactive_project_setup",
+      "target": "skill_agent_loom_sync",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": null,
+      "provenance": "skill-graph.md"
+    },
+    {
       "source": "skill_memory_handoff",
       "target": "skill_knowledge_graph",
       "relation": "invokes",
@@ -5960,6 +6117,78 @@
     {
       "source": "skill_motion_animation",
       "target": "skill_frontend_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_harness_generation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_project_setup",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_retroactive_project_setup",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_eval_rubric_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_eval_pipeline",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_reality_check",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_engineering",
+      "target": "skill_agent_builder",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_harness_evolution",
+      "target": "skill_memory_capture",
       "relation": "invokes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,

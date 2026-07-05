@@ -15,7 +15,7 @@ AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" �
 
 **agent-loom fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
-Today the library contains **106 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
+Today the library contains **109 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, harness engineering, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
 
 The library now also includes a process-and-agent design layer for more complex work. Instead of jumping straight from user request to execution, it can decompose a task into a reusable process, decide whether a single skill or a broader agent structure is needed, validate the setup, and then execute through the orchestrator. See [docs/architecture.md](docs/architecture.md) for the current repo architecture.
 
@@ -222,6 +222,9 @@ Cross-agent continuity without global memory bloat. Project memory lives in `doc
 | [`svg-creation`](.agents/skills/svg-creation/) | Handcrafted static SVG + animations (SMIL/CSS line-draw, spinners, morphs) with delivery-context routing; bans scripts and guessed dash lengths | **Files created:** `assets/svg/<name>.svg` + logged | "create SVG", "animate SVG", "SVG loader", "path animation" |
 | [`gsap-animation`](.agents/skills/gsap-animation/) | Runtime GSAP for web apps — timelines, ScrollTrigger, DrawSVG/MorphSVG/MotionPath, React `useGSAP` with cleanup; not for README embeds | **Files created:** component/hook path + logged | "animate with GSAP", "ScrollTrigger", "DrawSVG", "GSAP timeline" |
 | [`motion-animation`](.agents/skills/motion-animation/) | Motion for React — variants, AnimatePresence, layout/layoutId, whileInView, pathLength SVG; declarative enter/exit/gestures | **Files created:** component path + logged | "Framer Motion", "motion.div", "AnimatePresence", "layout animation" |
+| [`harness-engineering`](.agents/skills/harness-engineering/) | Harness orchestrator — bootstrap vs evolution vs audit; routes generation, evolution, eval, reality-check | **Files created:** harness manifest + logged | "harness engineering", "build harness", "improve harness", "agent scaffold" |
+| [`harness-generation`](.agents/skills/harness-generation/) | Seed harness v0 — manifest, eval stub, governance, drift detection; pairs with project-setup | **Files created:** `docs/harness/*` + logged | "generate harness", "harness bootstrap", "harness v0" |
+| [`harness-evolution`](.agents/skills/harness-evolution/) | Improve harness vN→vN+1 — ETCLOVG diagnosis, regression gates, trace-driven edits | **Files created:** harness runs + logged | "evolve harness", "optimize harness", "harness regression" |
 
 #### LLM Output Evaluation Suite
 

@@ -13,11 +13,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: meta
   resources:
     references:
       - examples.md
+      - harness-symptoms.md
 ---
 
 # Skill Routing
@@ -42,6 +43,15 @@ Do NOT use a hardcoded routing table. Call `skill-finder` with the user's reques
 - **1 candidate** → return it. Done. Ambiguity = 1.
 - **0 candidates** → `skill-finder` found nothing. Return `no-match` to the caller.
 - **2+ candidates** → proceed to Step 2.
+
+### Step 1b — Harness symptom pre-route
+
+Before scoring ambiguity, read `references/harness-symptoms.md`.
+
+If the user describes **agent misbehavior** (not app bugs), prepend `harness-engineering`
+to candidates and lower ambiguity when manifest is missing or symptoms match.
+
+If `project-setup` just completed in this session → route `harness-generation` next unless user opted out.
 
 ### Step 2 — Score Ambiguity (1–10)
 
@@ -100,6 +110,7 @@ Pre-req: [met | missing — need X first]
 - Return only concrete, invokable skill names. Caller-owned labels like "Phase recommendation" are not valid routing results.
 - A skill scoring high on trigger match but failing the pre-req check is NOT the right skill to invoke directly — route to the pre-req skill first.
 - When `project-orchestrator` calls you, return fast. Routing should add seconds, not minutes.
+- **Agent complaints are usually harness, not debug.** "Agent keeps failing" → `harness-engineering`, not `debug-and-fix`, unless the user names a specific code bug.
 
 ---
 

@@ -93,6 +93,11 @@ Memory sub-skills auto-fire at producer events — not only when the user asks. 
 
 ## Orchestration Map
 
+### Phase: Agent Harness (run once per project)
+Trigger: after project-setup / retroactive backfill, OR agent misbehavior (see harness-engineering)
+Flow: harness-generation → eval-rubric-design → eval-pipeline → [harness-evolution when agents keep failing]
+Plain language: "Agent reliability setup — rules + checks so agents follow the project and improve when they fail."
+
 ### Phase: Ideation
 Trigger: new feature idea, exploration needed
 Flow: product-soul (if `docs/product-soul.md` missing) → brainstorming → [user approves design]

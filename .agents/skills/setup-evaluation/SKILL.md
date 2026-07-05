@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.4"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -62,6 +62,18 @@ Read:
 | Failure handling | Orchestrator has no defined failure behavior |
 | Role prompts | Any agent missing a role prompt |
 
+### Step 3b — Harness checks (agent-chain)
+
+| Check | FAIL if |
+|-------|---------|
+| Harness manifest | No `docs/harness/manifest.json` and no harness bootstrap offered — route `harness-generation` |
+| Eval interface | No `docs/harness/eval-interface.md` when evolution or self-improvement is in scope |
+| Held-out split | Evolution planned but held-out task split undocumented |
+| Scope | `allowed_write_paths` missing when harness-evolution is in the process |
+| k-rollouts | Evolution planned but eval-interface lacks k≥2 rollouts per task |
+| Trajectory reservoir | Label-free RHO path planned but no trace digest source (`memory-handoff` mining) |
+| Evolve sandbox | Process allows evolve agent to edit verifier, held-out tasks, or `docs/harness/runs/` |
+
 ### Step 4 — Cross-Validate
 
 | Check | FAIL if |
@@ -97,6 +109,7 @@ If the same setup fails 3 times: stop looping, escalate to the user.
 - Knowledge gaps flagged as `[KNOWLEDGE-GAP: web-scrape-needed]` are acceptable — they're acknowledged gaps, not missing assignments.
 - If the same setup fails 3 times, escalate to the user instead of looping.
 - **Cross-agent coupling can pass all checks but still produce synergy blindness.** Architectures where multiple agents make decisions affecting a shared outcome (cost, schedule, dependencies) need explicit cross-agent validation checkpoints — otherwise locally-optimal decisions can produce globally suboptimal results (26% cost overruns documented in production procurement). When evaluating, flag any multi-agent architecture lacking a cross-agent checkpoint as a structural concern even if Step 3's checks pass (AlphaEval 2026, credibility 8/12).
+- **Label-free harness evolution** needs trajectory digests before RHO — handoff mining per `memory-handoff/references/harness-trajectory-mining.md`, not raw transcripts.
 
 ---
 
@@ -151,8 +164,8 @@ Handing off to agent-launcher.
 - Knowledge-gap flags ignored instead of acknowledged
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-05
+- Deep learn-from: Step 3b k-rollouts, trajectory reservoir, evolve sandbox checks
 
 
 ## Impact Report

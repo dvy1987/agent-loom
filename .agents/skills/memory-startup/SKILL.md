@@ -62,6 +62,7 @@ Then yield. Do not re-read memory files mid-session.
 2. Read `docs/memory/MEMORY-ROUTING.md`.
 3. Read `docs/memory/project-index.md`.
 3.5. **Knowledge graph (when installed):** If `docs/knowledge-graph/graph.json` missing or older than latest handoff date in `agent-handoffs.md`, run `build_graph.py --incremental`. Read `GRAPH_INDEX.md` for hub nodes; run `query_graph.py` when the opener implies relational context.
+3.6. **Harness gap:** If `AGENTS.md` exists and `docs/harness/manifest.json` is missing, include `Harness gap — invoke harness-engineering (bootstrap)` in the Step 7 summary.
 4. Read only the latest relevant sections from `current-state.md`, `agent-handoffs.md`, `decision-log.md`, `deferred.md`, and `open-questions.md`.
 5. Check for `~/.agent-loom/memories/MEMORY-ROUTING.md`.
 6. If present, read global routing and only applicable entries from `global-index.md`, `user-preferences.md`, and `global-agent-rules.md`.

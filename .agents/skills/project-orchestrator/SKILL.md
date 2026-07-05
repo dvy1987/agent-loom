@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.3"
   category: project-specific
   sources: arXiv:2601.02577, Addy-Osmani-Code-Agent-Orchestra, Augment-Intent-orchestration, Cursor-2.4-subagents, Codex-subagent-docs
   resources:
@@ -21,6 +21,7 @@ metadata:
       - agents-md-refresh-check.md
       - orchestration-patterns.md
       - platform-subagent-matrix.md
+      - harness-readiness-gate.md
       - examples.md
 ---
 
@@ -55,7 +56,11 @@ Always present the plan before executing — user approves, then it runs.
 | Tests exist and pass | Review / release phase |
 
 Also read: `AGENTS.md` Orchestration Map (if present), `docs/skill-outputs/SKILL-OUTPUTS.md`.
-If `docs/knowledge-graph/GRAPH_INDEX.md` exists, query hub nodes and communities for skill-routing hints before Step 2.
+If `docs/knowledge-graph/GRAPH_INDEX.md` exists, query hub nodes before Step 2.
+
+### Step 1b — Harness readiness gate (mandatory)
+
+Read `references/harness-readiness-gate.md`. If symptoms match OR `AGENTS.md` without manifest → plan `harness-engineering` first (plain language for non-dev owners).
 
 ### Step 2 — Route the Request
 
@@ -66,6 +71,7 @@ Invoke `skill-routing` with the user's request and the project state from Step 1
 - **Single-skill:** No matching process entry exists and `skill-routing` returned one concrete skill → proceed to Step 3.
 - **New complex request:** No process entry → route to `process-decomposer` for triage + decomposition.
 - **Phase recommendation:** `skill-routing` returned `project-orchestrator` for a "what next?" request → recommend based on Step 1.
+- **Harness:** "harness", "scaffold", "improve harness", "self-improving harness" → `harness-engineering` (not `agent-builder`).
 
 If `process-decomposer` returns `agent-chain`: wait for `agent-builder` and `setup-evaluation` to complete before proceeding to execution.
 
@@ -188,10 +194,5 @@ Each feeds the next. ~15-20 min. Shall I start with Product Soul?
 - Process-backed entry ignored for novel decomposition
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
 
-
-## Impact Report
-
-`Orchestration complete: [request summary] Mode: [single / sequential / parallel] Skills invoked: [list] Subagents spawned: [N or "sequential"] Next recommended phase: [phase + skill]`
+`Orchestration complete: [summary] Mode: [single|parallel] Skills: [list] Next: [phase]`

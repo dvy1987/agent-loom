@@ -10,11 +10,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.4"
+  version: "1.5"
   category: project-specific
   resources:
     references:
       - examples.md
+      - harness-trajectory-mining.md
 ---
 
 # Memory Handoff
@@ -42,6 +43,7 @@ Do not run after trivial interactions.
 6. Update `docs/memory/project-index.md` with the handoff entry.
 7. **Update knowledge graph** — run `python3 .agents/skills/knowledge-graph/scripts/build_graph.py --incremental`. If it fails, add `### Graph` note in handoff; do not block save.
 8. Append changes to `docs/skill-outputs/SKILL-OUTPUTS.md`.
+9. **Optional harness mining:** When session had repeated agent failures and harness evolution is queued, distill failure digests per `references/harness-trajectory-mining.md` — never raw transcripts.
 
 ## Template
 
@@ -107,8 +109,8 @@ Output: append a timestamped handoff with current status, unresolved tasks, and 
 - Git state omitted from handoff next-agent context
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-05
+- Deep learn-from: harness-trajectory-mining.md for RHO prerequisite path
 
 
 ## Impact Report

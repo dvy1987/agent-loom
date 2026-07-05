@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: agentskills.io, OpenAI-Codex-AGENTS.md, arXiv:2601.20404, GitHub-blog-2500-repos-analysis, Augment-Code-AGENTS.md-guide
   resources:
@@ -64,6 +64,7 @@ One question at a time. Stop each axis when you have enough.
 3. "Which areas should agents handle more autonomously — security, testing, architecture, DevOps, frontend, database design?"
 4. "Any strong preferences for how agents should work?"
 5. "Want the full Session Lifecycle block (session-start: load handoff + bounded memory; session-end: auto handoff/capture on producer events)?" — default yes if memory suite installed.
+6. "Should agents get a reliability setup (checks that improve when they fail)?" — default **yes** → Orchestration Map harness phase + Step 6c invokes `harness-generation`.
 **Axis 2 — Project Context.** Core questions (skip what was discovered in Step 1):
 1. "What are you building, in one sentence?"
 2. "Tech stack and key dependencies?"
@@ -114,6 +115,8 @@ Structure as phase-based flow. Customise based on user's skill gaps:
 - **Solo founder:** all phases; emphasise pre-mortem and assumption-mapping
 - **Team:** tune boundaries per role if multiple AGENTS.md files needed
 
+**Always include Phase: Agent Harness** unless user opted out (Axis 1 Q6): `harness-generation` → eval suite — label "Agent reliability setup (once)."
+
 If `sdd_mode: on`, add the SDD chain to the Orchestration Map: `project-constitution → brainstorming (optional) → feature-spec /specify → /clarify → implementation-plan /plan → /tasks → spec-crosscheck /analyze → test-driven-development /implement`. Add AGENTS.md rule: "When behavior changes, update feature-spec first; never edit code that violates the latest crosscheck PASS."
 
 ### Step 6 — Present, Iterate, Save
@@ -125,9 +128,11 @@ If `sdd_mode: on`, add the SDD chain to the Orchestration Map: `project-constitu
 
 If merging into an existing AGENTS.md: preserve all project-specific content, inject any missing mandatory blocks (Skill Invocation, Session Lifecycle), keep under 150 lines, show diff, get approval — no regression on either side.
 
-Append to `docs/skill-outputs/SKILL-OUTPUTS.md` and tell the user: "AGENTS.md saved. Every agent tool reads it automatically. Re-run `project-setup` after writing a PRD or changing the stack. For ongoing agent-loom library upgrades after copying `.agents/`, invoke `agent-loom-sync`."
+Append to `docs/skill-outputs/SKILL-OUTPUTS.md`. Tell user: AGENTS.md saved; re-run after PRD/stack changes; use `agent-loom-sync` for library upgrades.
 
 **6b. Knowledge graph:** If `knowledge-graph` installed, run `build_graph.py`; add `GRAPH_INDEX.md` to `project-index.md` when memory suite present.
+
+**6c. Harness bootstrap (default on):** Unless opted out (Q6), invoke `harness-generation` after save. Manifest drift CI per `harness-generation/references/scaffold-patterns.md`.
 
 ---
 
@@ -159,9 +164,7 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 
 - **The interview is the highest-leverage step.** 3 minutes of interview → 10x better AGENTS.md. Never skip it (except in `RETROACTIVE=true` mode).
 - **Skill gaps are the secret sauce.** A PM's AGENTS.md looks completely different from an engineer's.
-- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones. LLM-generated context without human input reduces task success ~3%.
-
----
+- **Orchestration Map ages fastest; never auto-generate without interview.** Re-run after milestones.
 
 ## Example
 
@@ -174,7 +177,6 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 |--------|---------|
 | Copy template AGENTS.md | Interview user for gaps and routing. |
 | Skip knowledge-graph bootstrap | Step 6b builds graph when skill installed. |
-| Install every skill | Recommend subset from interview. |
 
 ## Verification
 
@@ -191,9 +193,7 @@ User Context, Code Style, Project Overview, Boundaries (unless explicitly affect
 - Memory skeleton skipped for repo using memory suite
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
+Last pruned: 2026-07-05 — harness bootstrap Step 6c
 
 ## Impact Report
 

@@ -14,8 +14,16 @@ Skills or patterns flagged by `learn-from-repo` Step 4b for Phase-3-style compar
 | 2026-06-01 | addyosmani/agent-skills | frontend-ui-engineering | frontend-design | Phase 3 pair 8 — KEEP+MERGE | done |
 | 2026-07-03 | kevindeasis/awesome-ui | ux-context + ethical patterns | design-direction, design-review | learn-from ingestion | done |
 | 2026-07-03 | safishamsi/graphify | graph trace + query | knowledge-graph | learn-from ingestion | done |
+| 2026-07-05 | jcaiagent7143-ui/harnessforge | deterministic AGENTS.md init | project-setup | bootstrap overlap — KEEP+MERGE | done |
+| 2026-07-05 | china-qijizhifeng/agentic-harness-engineering | harness regression eval | eval-pipeline | harness-edit regression — MERGE L3 | done |
+| 2026-07-05 | china-qijizhifeng/agentic-harness-engineering | pre-evolution checks | setup-evaluation | Step 3b deepen — MERGE | done |
+| 2026-07-05 | neosigmaai/auto-harness | PROGRAM.md meta-loop | harness-engineering | orchestrator pattern | done |
+| 2026-07-05 | wbopan/retro-harness | session transcript mining | memory-handoff | RHO path — PARTIAL MERGE | done |
+| 2026-07-05 | SuperagenticAI/metaharness | coding-tool scaffold | project-setup | manifest + eval stub — MERGE L3 | done |
 
-**Pending:** *(none — next `learn-from-repo` overlap appends here with `status: pending`)*
+**Pending:** 0 rows (deep pass 2026-07-05 cleared backlog).
+
+**Compare docs:** `docs/comparisons/2026-07-05-*.md` (5 pairwise files).
 
 **Process:** Run read-only compare → user approves → `improve-skills TARGET=<skill>`.
 Regenerate: `python3 .agents/skills/universal-skill-creator/scripts/backfill_ingest_queue.py --check-only`

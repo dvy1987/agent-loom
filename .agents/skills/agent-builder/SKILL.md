@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10, arXiv:2601.02577, Addy-Osmani-Code-Agent-Orchestra,
@@ -31,6 +31,7 @@ Never make the architecture spec ephemeral — always persist to `docs/architect
 Never design agents with overlapping responsibilities — clear boundaries are mandatory.
 Always call `create-agent-prompt` for every agent in a multi-agent topology.
 Always define failure handling for the orchestrator agent.
+Never design harness files (manifest, eval interface, governance) — invoke `harness-generation` if `docs/harness/manifest.json` is absent before `setup-evaluation`.
 
 ---
 
@@ -71,7 +72,7 @@ Update the process entry's `architecture_spec_ref` field to link to this file.
 
 ### Step 5 — Hand Off
 
-If `complexity_class = agent-chain`, invoke `setup-evaluation` (the skill; runs from the `setup-evaluator` agent for independence) with both `process_entry_ref` and `architecture_spec_ref`.
+If `complexity_class = agent-chain`, ensure harness v0 exists (`harness-generation` if missing), then invoke `setup-evaluation` (runs from `setup-evaluator` agent) with `process_entry_ref` and `architecture_spec_ref`.
 
 - PASS → hand approved setup to `project-orchestrator`
 - FAIL → revise the architecture using the returned issues, then re-run setup evaluation

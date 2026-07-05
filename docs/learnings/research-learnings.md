@@ -153,3 +153,34 @@ Template:
   - rough → PARTIAL applied (`svg-tooling.md` API snippet)
   - VectorMation → SKIP (Python codegen)
   - Codrops SVG Drawing → SKIP (superseded by animation-craft line-draw)
+
+## 2026-07-05 - Harness engineering batch: 7 papers + 5 repos → harness skill suite
+- Source: Self-Harness 2606.09498, AHE 2604.25850, HarnessFix 2606.06324, Meta-Harness 2603.28052, RHO 2606.05922, SIA 2605.27276 (PARTIAL), Continual Harness 2605.09998 (PARTIAL); repos harnessforge, AHE, auto-harness, retro-harness, metaharness
+- Type: paper + repo batch
+- Credibility: papers 8–10/12 PASS; repos AHE 10/12, metaharness 9/12, auto-harness 8/12, retro-harness 7/12, harnessforge 6/12 REJECT (patterns PARTIAL only)
+- Security: SAFE — text/read-only ingestion
+- Classification: GOTCHA × 8, TECHNIQUE × 14, FAILURE_MODE × 9, METRIC × 10
+- Insight: 2026 consensus loop — execute → trace → ETCLOVG diagnose → minimal edit → dual-split regression → promote; eval harness mandatory for credible self-improvement
+- Recommended action: Applied — `harness-generation`, `harness-evolution`, `harness-engineering`; patched project-setup, retroactive-project-setup, setup-evaluation, agent-builder, project-orchestrator, reality-check, eval-pipeline
+- Skills modified: project-setup v1.2, setup-evaluation v1.3, agent-builder v1.3, project-orchestrator v1.2, reality-check v1.4, retroactive-project-setup, eval-pipeline
+- Skills created from this learning: harness-generation, harness-evolution, harness-engineering
+- Notes: SIA weight-update and Continual Harness embodied metrics SKIP; harnessforge manifest/drift patterns PARTIAL; plan at `docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md`
+
+## 2026-07-05 - Harness deep learn-from pass: 5 papers + 5 repos → L3 deepening + pairwise compares
+- Source: Self-Harness 2606.09498, AHE 2604.25850, HarnessFix 2606.06324, Meta-Harness 2603.28052, RHO 2606.05922; repos harnessforge, AHE, auto-harness, retro-harness, metaharness (code-verified via GitHub API)
+- Type: paper + repo deep pass (learn-from-paper + learn-from-repo Step 4b compares)
+- Credibility: papers 8–10/12 PASS; repos unchanged from shallow batch
+- Security: SAFE — text/read-only ingestion, no URLs in skill bodies
+- Classification: TECHNIQUE × 22, GOTCHA × 12, FAILURE_MODE × 8 applied to L3 refs
+- Insight highlights:
+  - Self-Harness: φ-signature clustering, addressability filter, same-round merge, preservation context
+  - AHE: k-rollout pass@1, manifest fix/regression P/R asymmetry, loop ordering, evolve sandbox
+  - HarnessFix: 4-field repair spec, forbidden benchmark artifacts, repair memory, pre-validation
+  - Meta-Harness: interface validation, full traces > summaries, Pareto frontier, confound isolation
+  - RHO: DPP θ=0.7, dual diagnostics, mean_score>0 acceptance, trajectory reservoir prerequisite
+  - Repos: harnessforge drift CI, auto-harness file guard, retro-harness 3× solve, metaharness bootstrap
+- Recommended action: Applied — 5 pairwise compares; deepened evolution-loop, diagnosis-etclovg, scaffold-patterns, examples, routing; new harness-regression.md, harness-trajectory-mining.md
+- Skills modified: harness-generation v1.2, harness-evolution v1.2, harness-engineering routing, eval-pipeline v1.4, setup-evaluation v1.4, memory-handoff v1.5, project-setup Step 6c
+- Skills created from this learning: none (L3 depth pass)
+- Compare docs: `docs/comparisons/2026-07-05-project-setup-vs-harnessforge.md`, `eval-pipeline-vs-ahe.md`, `setup-evaluation-vs-ahe.md`, `memory-handoff-vs-retro-harness.md`, `project-setup-vs-metaharness.md`
+- Notes: INGEST-QUEUE cleared (0 pending); SIA/hexo-ai weight path still SKIP

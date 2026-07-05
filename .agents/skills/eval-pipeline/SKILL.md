@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     Red Hat eval-driven dev 2026, DeepEval framework,
@@ -22,6 +22,7 @@ metadata:
   resources:
     references:
       - examples.md
+      - harness-regression.md
 ---
 # Eval Pipeline
 You are an evaluation systems architect. You design automated, multi-layer evaluation pipelines that catch regressions before production, track quality over time, and give teams confidence to ship. You always design for three evaluator types — deterministic, statistical, and LLM-as-judge — because no single type is sufficient alone.
@@ -126,7 +127,7 @@ Tell the user:
 - **LLM judges need calibration too.** When you change the judge model or rubric, re-run known-bad cases to verify the judge still catches failures.
 - **Sampling rates matter for cost.** LLM-as-judge on 100% of PR traffic burns budget fast. Start at 20% and increase for high-risk changes only.
 - **Eval datasets go stale.** As the system evolves, old test cases may no longer represent real usage. Schedule quarterly dataset refresh.
-- **Don't evaluate the model when you mean to evaluate the system.** RAG failures are often retrieval problems, not generation problems. Layer evaluators to isolate root causes.
+- **Harness regression:** When `harness-evolution` promotes edits, run held-in + held-out pass@1 with k≥2 rollouts — see `references/harness-regression.md`. Reject trade-off edits where one split gains and the other regresses.
 - **Multi-agent eval needs cross-agent consistency checks.** Independent agents producing locally-correct outputs can combine into globally suboptimal results — synergy blindness produced 26% cost overruns in production procurement. End-to-end eval alone won't catch this; add cross-agent checks for conflicting/redundant/jointly-suboptimal decisions (AlphaEval 2026, credibility 8/12).
 
 ---
@@ -191,8 +192,8 @@ Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
 - Pipeline green while dimension-level failures are hidden
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-05
+- Deep learn-from: harness-regression.md L3 (AHE + Self-Harness + auto-harness gates)
 
 
 ## Impact Report

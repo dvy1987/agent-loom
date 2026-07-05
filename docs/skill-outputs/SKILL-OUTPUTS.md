@@ -246,3 +246,14 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md | Synced after motion-animation added; cross-linked gsap-animation, svg-creation |
 | 2026-07-05 | improve-skills | svg-creation references, research-learnings.md | lengthy-svg WebKit gotcha, vivus inline-draw note, full repo APPLY/PARTIAL/SKIP matrix |
 | 2026-07-05 | learn-from-repo | svg-creation v1.3 references | Polish: 20-example catalog, SMIL recipes, vivus scenario, SVGO safe, awesome-svg map |
+| 2026-07-05 | research | docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md | Harness engineering landscape digest + phased implementation plan with skill call graph and cross-link matrix |
+| 2026-07-05 | universal-skill-creator | .agents/skills/harness-generation/ | Harness v0 scaffold — manifest, eval stub, governance, drift detection |
+| 2026-07-05 | universal-skill-creator | .agents/skills/harness-evolution/ | Harness vN→vN+1 — ETCLOVG diagnosis, regression gates, trace-driven edits |
+| 2026-07-05 | universal-skill-creator | .agents/skills/harness-engineering/ | Harness orchestrator — bootstrap vs evolution routing |
+| 2026-07-05 | improve-skills | setup-evaluation, project-setup, agent-builder, project-orchestrator, reality-check, retroactive-project-setup, eval-pipeline | Harness cross-links + setup-evaluation Step 3b harness checks |
+| 2026-07-05 | learn-from-paper + learn-from-repo | docs/comparisons/2026-07-05-*.md (5 files) | Deep pairwise compares: harnessforge, AHE×2, retro-harness, metaharness — INGEST-QUEUE cleared |
+| 2026-07-05 | learn-from-paper + learn-from-repo | harness-evolution/references/, harness-generation/references/scaffold-patterns.md | Deep L3: evolution-loop, diagnosis-etclovg, examples, routing — 5 papers ingested |
+| 2026-07-05 | learn-from-repo | eval-pipeline/references/harness-regression.md | New L3 — k-rollout pass@1, dual-split, stochastic aggregation, manifest telemetry |
+| 2026-07-05 | learn-from-repo | memory-handoff/references/harness-trajectory-mining.md | RHO prerequisite — distill session failures without raw transcripts |
+| 2026-07-05 | improve-skills | eval-pipeline v1.4, setup-evaluation v1.4, memory-handoff v1.5, harness-* v1.2 | Deep pass skill bumps + Step 3b / gotcha wiring |
+| 2026-07-05 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Session handoff — harness suite + deep learn-from; uncommitted dirty tree |

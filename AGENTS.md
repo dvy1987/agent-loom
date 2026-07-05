@@ -232,6 +232,11 @@ domain          | specialized, not universally needed      | install only when n
 "create SVG" / "SVG animation" / "animate SVG" / "SVG loader" / "path animation" → svg-creation
 "GSAP" / "animate with GSAP" / "ScrollTrigger" / "DrawSVG" / "GSAP timeline" → gsap-animation
 "Motion" / "Framer Motion" / "motion.div" / "AnimatePresence" / "layout animation" → motion-animation
+"harness engineering" / "build harness" / "improve harness" / "agent scaffold" / "self-improving harness" → harness-engineering
+"generate harness" / "harness bootstrap" / "harness v0" → harness-generation
+"evolve harness" / "optimize harness" / "harness regression" → harness-evolution
+"agent keeps failing" / "agent not following instructions" / "agents ignore rules" / "agents going off rails" / "make agents reliable" / "agent keeps making mistakes" / "same mistake again" / "fix agent behavior" / "agent quality" / "agents not using skills" → harness-engineering
+"set up agents" / "set up this project" → project-setup (then auto harness-generation unless opted out)
 "review this UI"      → design-review
 "design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
 "A/B test this"       → experimentation

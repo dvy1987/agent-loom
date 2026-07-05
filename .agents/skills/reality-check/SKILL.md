@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     CohnReznick-SoftwareDueDiligence-2025, arXiv-2604.02837-SecureSkills, Euvic-TechDD-Guide,
@@ -118,7 +118,7 @@ After both files are written, append entries to `docs/skill-outputs/SKILL-OUTPUT
 - Empty registries, missing directories, and template-only files are the strongest negative signals. "Designed but not populated" ≠ "works."
 - README examples that describe what WOULD happen (aspirational flow diagrams) are not evidence of capability. Check for actual execution artifacts.
 - Cross-platform claims require per-platform verification. "Installed everywhere" ≠ "works equally everywhere."
-- Self-improvement claims without an eval harness are unfalsifiable. No evals = no proof of improvement.
+- Self-improvement claims without an eval harness are unfalsifiable. Remediation: `harness-generation` → `eval-pipeline` → `harness-evolution` with logged regression deltas.
 - Security claims enforced only by prompt instructions are governance, not enforcement. Note the distinction.
 - "Any" and "all" in claims are almost always false. No system handles any/all of anything.
 

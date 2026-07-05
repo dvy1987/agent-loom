@@ -47,3 +47,8 @@
 | 2026-07-04 | handoff | `docs/memory/agent-handoffs.md` | active | adversarial-remediation, CI, P2-all-PS | Full P2 on 71 project-specific; CI workflow; B4/B5; external handoff fixed. |
 | 2026-07-04 | state | `docs/memory/current-state.md` | active | CI, P2-project-specific, ingest-queue | 16th deliverable: adversarial review remediation complete. |
 | 2026-07-04 | ci | `.github/workflows/validate-skills.yml` | removed | validate-skills, P2-craft, graph-health | Added then removed per user — validate locally only. |
+| 2026-07-05 | plan | `docs/plans/2026-07-05-harness-skills-research-and-implementation-plan.md` | active | harness, research, implementation | Harness landscape digest + phased build plan. |
+| 2026-07-05 | adr | `docs/adr/ADR-0002-harness-skill-suite.md` | active | harness, architecture | 3-skill suite decision record. |
+| 2026-07-05 | comparison | `docs/comparisons/2026-07-05-*.md` (5 files) | active | harness, ingest-queue, pairwise | Deep pairwise: harnessforge, AHE×2, retro-harness, metaharness — all done. |
+| 2026-07-05 | handoff | `docs/memory/agent-handoffs.md` | active | harness-suite, deep-learn-from, uncommitted | Harness 3-skill suite + deep pass; dirty tree; commit pending. |
+| 2026-07-05 | state | `docs/memory/current-state.md` | active | harness, 109-skills, uncommitted | 19th–20th deliverables: harness suite + deep L3; next = commit or validate. |

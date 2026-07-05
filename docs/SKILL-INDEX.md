@@ -804,6 +804,40 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `harness-engineering`
+**Triggers:** "harness engineering", "agent keeps failing", "agent not following instructions", "make agents reliable", "agents going off rails", "same mistake again", "fix agent behavior", "agent quality", "agents ignore skills", "why is my agent bad", plus all harness/build/improve phrases
+**Proactive:** AUTO-FIRE on agent misbehavior or missing `docs/harness/manifest.json` when `AGENTS.md` exists — see `references/harness-readiness-gate.md`.
+**What it does:** Orchestrator for harness work — routes bootstrap vs evolution vs audit; separates harness from `agent-builder` topology.
+**Calls:** `harness-generation`, `harness-evolution`, `project-setup`, `retroactive-project-setup`, `eval-rubric-design`, `eval-pipeline`, `reality-check`, `agent-builder` (topology only)
+**Output:** Unified harness report in chat; child skills write `docs/harness/`
+**References:** `references/routing.md`, `references/harness-readiness-gate.md`, `references/examples.md`
+**Impact report:** Intent, child skills, harness version, eval ready
+
+---
+
+### `harness-generation`
+**Triggers:** "generate harness", "scaffold harness", "harness bootstrap", "agent bootstrap", "first time agents", "agent reliability setup", "missing agent configuration"
+**Auto-invoked:** After `project-setup` Step 6c (default on) or `retroactive-project-setup` when manifest missing; when `harness-engineering` Step 0 finds gap.
+**What it does:** Seeds minimal harness v0 — seven-component manifest, eval stub, governance, drift detection. Merges with existing `AGENTS.md` from `project-setup`. Not evolution.
+**Called by:** `harness-engineering`, `project-setup` (Step 6c), `retroactive-project-setup`, `agent-builder` (pre-setup-evaluation)
+**Output files:** `docs/harness/manifest.json`, `docs/harness/eval-interface.md`, governance stub
+**References:** `references/component-manifest.md`, `references/scaffold-patterns.md`, `references/examples.md`
+**Impact report:** Context, manifest path, eval stub, merge mode
+
+---
+
+### `harness-evolution`
+**Triggers:** "improve harness", "agent keeps failing", "same mistake again", "agents ignore skills", "fix agent behavior", "agent unreliable", "self-improving harness", "agent quality plateau"
+**Auto-routed:** From `harness-engineering` when manifest + eval exist and symptoms present.
+**What it does:** Trace-driven harness improvement — ETCLOVG diagnosis, dual-split regression gate, promote vN+1. Requires manifest + eval harness.
+**Calls:** `eval-pipeline` (regression), `memory-capture` (on promote)
+**Called by:** `harness-engineering`, `reality-check` (remediation path)
+**Output files:** `docs/harness/runs/`, `docs/harness/evolve/change_manifest.json`
+**References:** `references/evolution-loop.md`, `references/diagnosis-etclovg.md`, `references/examples.md`
+**Impact report:** Round, layer, held-out Δ, promoted version
+
+---
+
 ### `experimentation`
 **Triggers:** "design an experiment", "A/B test this", "should we A/B test", "what should we test next", "analyse experiment results", "read out this experiment", "run a holdout test", "experiment on the landing page", "test this hypothesis", "is this lift real", "ship or kill this test"
 **What it does:** Orchestrator for the experimentation skill suite. Diagnoses lifecycle stage (no idea yet → backlog; have idea → spec; have spec → runbook; have results → readout) and routes to the right child. Enforces decision-class labelling (`Causal | Directional | Instrumentation`), SRM hard gate before any readout, and pre-committed decision rules. Platform-agnostic with PostHog as the primary binding. Lifecycle-decomposed (not method-decomposed) — A/B / holdout / switchback / MAB are method choices inside `experiment-spec`.
@@ -1057,6 +1091,7 @@ User entry points:
   eval-output              ← "evaluate output" / "score this response" / "run an eval" / "LLM as judge"
   reality-check            ← "reality-check" / "evaluate claims" / "is this real"
   project-setup            ← "set up this project" / "create an AGENTS.md"
+  harness-engineering      ← "harness engineering" / "build harness" / "improve harness" / "agent scaffold"
   project-orchestrator     ← "what should I do next" / "orchestrate" / "parallel tasks"
   spec-driven-development  ← "spec-driven development" / "SDD" / "specs-first" / "/specify" / "/plan" / "/analyze"
   venture-exploration      ← "explore business ideas" / "what should I build" / "evaluate this venture" / "is this a good business idea"
@@ -1126,6 +1161,15 @@ learn-from-chat → validate-skills (Step 5, post-apply, in-scope path only)
 apply-paper-to-project → architectural-decision-log (optional, for significant changes)
 
 project-setup → generates AGENTS.md with Orchestration Map (references project-orchestrator)
+              → harness-generation (Step 6c, v0 manifest + eval stub)
+
+harness-engineering → harness-generation (bootstrap)
+                    → harness-evolution (improve; requires eval harness)
+                    → eval-pipeline (regression)
+                    → reality-check (claim audit)
+
+agent-builder → harness-generation (if no manifest, before setup-evaluation)
+              → setup-evaluation (harness checks Step 3b)
               → project-constitution (when sdd_mode: on and no constitution exists)
 
 spec-driven-development → project-constitution (/constitution)

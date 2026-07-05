@@ -69,6 +69,7 @@ Return to the calling skill: `{ skill_name: "<name>", action: "existing|extended
 - A skill with a similar name but different purpose is NOT a match — read the full description.
 - "Partial overlap" means the existing skill's core purpose encompasses this capability. If it's a tangential addition, create a new skill instead.
 - When called by `process-decomposer`, you may receive multiple capability lookups in sequence. Process each independently — batch decisions cause mismatches.
+- **Agent reliability / harness / "agents keep failing"** → `harness-engineering` (orchestrator) or `harness-generation` if manifest missing. Do not create a new skill.
 
 ---
 

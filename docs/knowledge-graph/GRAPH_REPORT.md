@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-05T00:45:37.042125+00:00
-Mode: skill-library | Nodes: 211 | Edges: 473
+Generated: 2026-07-05T04:24:06.868230+00:00
+Mode: skill-library | Nodes: 221 | Edges: 490
 
 **Why this mode:** skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).
 
@@ -11,11 +11,11 @@ Mode: skill-library | Nodes: 211 | Edges: 473
 - secure-skill
 - improve-skills
 - venture-exploration
+- project-setup
 - library-skill
 - split-skill
+- retroactive-project-setup
 - feature-spec
-- experimentation
-- project-setup
 
 ## Surprising cross-community connections
 - project-orchestrator → skill-routing (invokes: project ↔ skill)
@@ -24,8 +24,8 @@ Mode: skill-library | Nodes: 211 | Edges: 473
 - publish-skill → validate-skills (invokes: publish ↔ validate)
 - publish-skill → improve-skills (invokes: publish ↔ improve)
 - customer-discovery → venture-exploration (invokes: customer ↔ venture)
+- harness-evolution → eval-pipeline (invokes: harness ↔ eval)
 - reality-check → assumption-mapping (invokes: reality ↔ assumption)
-- reality-check → adversarial-hat (invokes: reality ↔ adversarial)
 
 ## Suggested questions
 - How does project-orchestrator (project) connect to skill-routing (skill)?
@@ -36,7 +36,7 @@ Mode: skill-library | Nodes: 211 | Edges: 473
 - What depends on secure-skill, and what does secure-skill invoke?
 
 ## Provenance
-- Authoritative invokes: 222
-- EXTRACTED: 246 | INFERRED: 227
+- Authoritative invokes: 232
+- EXTRACTED: 260 | INFERRED: 230
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`
