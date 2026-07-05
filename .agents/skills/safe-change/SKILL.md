@@ -59,7 +59,8 @@ Edit only what the impact report scoped. No drive-by refactors.
 ### Step 4 — Verify
 
 ```bash
-bash .agents/skills/safe-change/scripts/verify.sh .
+# Use the package/fixture directory — not repo root for subpath edits
+bash .agents/skills/safe-change/scripts/verify.sh examples/seed/calc
 ```
 
 Parse JSON stdout: `pass`, `typecheck`, `tests`, `behaviorVerified`.
@@ -81,7 +82,7 @@ For multi-step work, hand off to `incremental-implementation` or repeat Steps 1�
 
 - Stash on a dirty tree may include unrelated files — scope stash paths when possible.
 - `verify.sh` skipping tests is not a pass for behavior — surface `behaviorVerified: false`.
-- Monorepos may need `verify.sh` run from package subdirectory — pass path as arg.
+- Monorepos: pass the **package/fixture path** to `verify.sh` (e.g. `examples/seed/calc`), not `.` at repo root unless tests live there.
 - Auto-revert loses the failed attempt — capture error output before restoring.
 
 ---

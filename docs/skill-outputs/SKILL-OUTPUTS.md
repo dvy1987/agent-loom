@@ -261,3 +261,5 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-05 | universal-skill-creator | safe-change/scripts/verify.sh, structured-planning/scripts/plan_lint.py, run-trace/scripts/trace_query.py, deploy-anywhere/scripts/preflight.py | Deterministic scripts for verify, plan lint, trace query, deploy preflight |
 | 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md, .agents/ROUTING.md | Synced 119 skills; routing precedence for high-leverage families |
 | 2026-07-05 | quickstart | examples/seed/calc/, examples/*-demo/README.md, docs/why-agent-loom.md, .github/ISSUE_TEMPLATE/good-first-issue.md | Skill 5 onboarding assets + offline fixture |
+| 2026-07-05 | safe-change + quickstart | examples/seed/calc/test_calc.py, verify.sh, demo READMEs | Red-green demo test; verify subpath docs; prune dead run_cmd |
+| 2026-07-05 | memory | docs/memory/deferred.md #13, docs/memory/open-questions.md | Defer COMPATIBILITY.md / One Rule strategy |

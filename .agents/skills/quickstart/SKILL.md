@@ -40,10 +40,10 @@ User has agent-loom skills visible (`.agents/skills/` or global install). If mis
 
 ### Step 2 — Run demo (read `references/DEMO-FLOW.md`)
 
-1. `cd examples/seed/calc`
+1. `cd examples/seed/calc` (or pass path to verify.sh)
 2. `dependency-mapping` on `divide` in `calc.py`
-3. `safe-change` — add zero guard to `divide`
-4. `python3 -m pytest -q` via verify.sh
+3. `safe-change` — add zero guard; **verify fails before fix, passes after**
+4. `bash .agents/skills/safe-change/scripts/verify.sh examples/seed/calc`
 
 ### Step 3 — Explain
 

@@ -18,9 +18,9 @@
 3. Agent should:
    - Run `dependency-mapping` on `divide`
    - Snapshot git state
+   - Confirm **red**: `bash .agents/skills/safe-change/scripts/verify.sh examples/seed/calc` fails on `test_divide_by_zero_raises_explicit_message`
    - Add: `if b == 0: raise ZeroDivisionError("divisor must be non-zero")`
-   - Run `bash .agents/skills/safe-change/scripts/verify.sh examples/seed/calc`
-   - Report KEPT
+   - Re-run verify → pass → report **KEPT**
 
 4. Confirm:
    ```bash

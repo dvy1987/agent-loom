@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # verify.sh — Detect and run type-check + tests; emit structured JSON result.
 # Part of safe-change skill. Stdlib-only bash; no extra deps.
+#
+# Usage: verify.sh [ROOT]
+#   ROOT defaults to . — use the package/fixture directory for subpath edits
+#   (e.g. verify.sh examples/seed/calc), not always repo root.
 set -euo pipefail
 
 ROOT="${1:-.}"
@@ -11,18 +15,6 @@ TESTS_OK=false
 TYPECHECK_CMD=""
 TEST_CMD=""
 BEHAVIOR_VERIFIED=false
-
-run_cmd() {
-  local label="$1"
-  shift
-  if "$@" >/dev/null 2>&1; then
-    echo "[$label] pass: $*" >&2
-    return 0
-  else
-    echo "[$label] fail: $*" >&2
-    return 1
-  fi
-}
 
 # --- Detect typecheck ---
 if [[ -f package.json ]] && command -v npm >/dev/null 2>&1; then
@@ -46,11 +38,20 @@ elif [[ -f Cargo.toml ]]; then
 fi
 
 # --- Detect tests ---
+has_local_tests() {
+  [[ -d tests ]] || compgen -G "test_*.py" >/dev/null 2>&1
+}
+
+has_collectible_tests() {
+  command -v pytest >/dev/null 2>&1 || return 1
+  pytest --collect-only -q 2>/dev/null | grep -q "::"
+}
+
 if [[ -f package.json ]] && command -v npm >/dev/null 2>&1; then
   if node -e "const p=require('./package.json'); process.exit(p.scripts&&p.scripts.test?0:1)" 2>/dev/null; then
     TEST_CMD="npm test"
   fi
-elif [[ -f pyproject.toml ]] || [[ -f setup.py ]] || [[ -d tests ]] || compgen -G "test_*.py" >/dev/null 2>&1; then
+elif has_local_tests || has_collectible_tests; then
   if command -v pytest >/dev/null 2>&1; then
     TEST_CMD="pytest -q"
   elif [[ -f manage.py ]]; then
@@ -67,7 +68,7 @@ if [[ -n "$TYPECHECK_CMD" ]]; then
   if eval "$TYPECHECK_CMD"; then TYPECHECK_OK=true; fi
 else
   echo "[typecheck] skip: no command detected" >&2
-  TYPECHECK_OK=true  # nothing to run is not a failure
+  TYPECHECK_OK=true
 fi
 
 # --- Run tests ---
@@ -75,13 +76,12 @@ if [[ -n "$TEST_CMD" ]]; then
   if eval "$TEST_CMD"; then TESTS_OK=true; BEHAVIOR_VERIFIED=true; fi
 else
   echo "[tests] skip: no command detected — behaviorVerified: false" >&2
-  TESTS_OK=true  # absent tests are not a verify failure; confidence is reduced
+  TESTS_OK=true
 fi
 
 PASS=false
 if $TYPECHECK_OK && $TESTS_OK; then PASS=true; fi
 
-# Structured JSON to stdout
 export PASS="$PASS" TYPECHECK_OK="$TYPECHECK_OK" TESTS_OK="$TESTS_OK"
 export BEHAVIOR_VERIFIED="$BEHAVIOR_VERIFIED" TYPECHECK_CMD="$TYPECHECK_CMD" TEST_CMD="$TEST_CMD"
 python3 - <<'PY'
