@@ -10,14 +10,15 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: supermemoryai/skills svg-animations, seeb4coding/SVG-ORA-Studio, design-system svg-craft, visioncortex/vtracer
+  sources: supermemoryai/skills svg-animations, seeb4coding/SVG-ORA-Studio, willianjusten/awesome-svg, design-system svg-craft, visioncortex/vtracer
   resources:
     references:
       - static-craft.md
       - animation-craft.md
       - ai-svg-prompts.md
+      - svg-tooling.md
       - examples.md
 ---
 
@@ -34,7 +35,7 @@ Never guess `stroke-dasharray` lengths — compute path length or use documented
 Shape morphing requires **identical path command count and types** on both shapes — pad with invisible points if needed.
 Always include `role="img"` plus `<title>` (and `<desc>` when meaning is non-obvious).
 Always add `prefers-reduced-motion` fallback when using CSS animations.
-If input is a **bitmap** (PNG/JPG), route to vectorization (vtracer/Potrace) before hand-editing paths — do not trace by hand in chat.
+If input is a **bitmap** (PNG/JPG), read `references/svg-tooling.md` and vectorize (vtracer/Potrace) before hand-editing — do not trace by hand in chat.
 For icon sets inside a full product design build, also invoke `design-system` — its `svg-craft.md` owns token-aligned icon families.
 
 ---
@@ -51,6 +52,7 @@ For icon sets inside a full product design build, also invoke `design-system` �
 | Loop loader | Spinner, pulse, breathing glow |
 | Morph / menu | Hamburger→X, state transitions |
 | Motion path | Element travels along a curve |
+| Gradient / wave | Color-shift fills, liquid wave backgrounds |
 | Bitmap source | User uploaded raster; needs tracing |
 
 ### Step 2 — Pick delivery context (mandatory)
@@ -60,7 +62,7 @@ For icon sets inside a full product design build, also invoke `design-system` �
 | Inline in HTML/React | CSS `@keyframes` or JS `getTotalLength()` | Full DOM access |
 | `<img src="file.svg">` or CSS background | **SMIL only** (`<animate>`, `<animateTransform>`) | CSS/JS cannot reach isolated SVG |
 | GitHub README / sandboxed embed | **SMIL only**, no scripts | Same isolation as `<img>` |
-| React app with Motion/GSAP | Library + inline SVG | Use project stack |
+| React app with Motion/GSAP | Library + inline SVG | `motion-animation` or `gsap-animation` |
 
 ### Step 3 — Static craft
 
@@ -68,13 +70,13 @@ Read `references/static-craft.md`. Apply grid, stroke, keyline, `currentColor`, 
 
 ### Step 4 — Animation craft (if animated)
 
-Read `references/animation-craft.md`. Pick recipe: line-draw, spinner, morph, gradient shift, motion path. Use `fill="freeze"` on SMIL one-shots; `stroke-linecap="round"` on draws.
+Read `references/animation-craft.md`. Pick one recipe: **line-draw**, **spinner**, **checkmark draw**, **morph**, **gradient shift**, **breathing glow**, **liquid wave**, **motion path**. Use `fill="freeze"` on SMIL one-shots; `stroke-linecap="round"` on draws.
 
 ### Step 5 — Generate
 
 Output one self-contained `<svg>...</svg>` block (or one file per asset). Put reusable defs in `<defs>`. Minimize path count; prefer primitives + arcs over noisy cubics.
 
-**AI-assisted generation:** read `references/ai-svg-prompts.md` and enforce its checklist before accepting model output.
+**AI-assisted generation:** read `references/ai-svg-prompts.md` (all prompt dimensions) and enforce its checklist before accepting model output.
 
 ### Step 6 — Quality gate
 
@@ -103,7 +105,7 @@ Tell the user: "Saved to `[path]`. Logged in `docs/skill-outputs/SKILL-OUTPUTS.m
 - CSS inside `<style>` in an SVG loaded via `<img>` **does not run** — use SMIL for those contexts.
 - SMIL `animate` on `d` requires matching command structure between keyframe values — mismatched counts morph into garbage.
 - `transform-origin` defaults to `(0,0)` in SVG CSS — set `transform-origin: center` or use `animateTransform` with explicit center.
-- Animating `d`, `points`, or filters triggers repaints — prefer `transform` and `opacity` for complex art.
+- Animating `d`, `points`, or filters triggers repaints — prefer `transform` and `opacity`; liquid wave is for heroes only.
 - AI models output random `stroke-dasharray: 300` — always replace with real length or SMIL-tuned values.
 - Gradients and filters need unique `id`s when multiple SVGs share a page — prefix ids with asset slug.
 
@@ -168,14 +170,15 @@ See `references/examples.md` for static icon, line-draw, and morph examples.
 
 - **`references/static-craft.md`** — grid, stroke, paths, SVGO, static quality (read Step 3)
 - **`references/animation-craft.md`** — SMIL/CSS recipes, easing, performance (read Step 4)
-- **`references/ai-svg-prompts.md`** — checklist when using LLM to draft SVG (read Step 5)
-- **`references/examples.md`** — full static + animated worked examples (read when output shape is unclear)
+- **`references/ai-svg-prompts.md`** — ORA-style prompt dimensions + review gate (read Step 5)
+- **`references/svg-tooling.md`** — vtracer, SVGO, runtime libs vs SMIL (read for bitmap or tooling questions)
+- **`references/examples.md`** — six worked examples incl. gradient shift + liquid wave (read when output shape is unclear)
 
 ---
 
 ## Prune Log
-Last pruned: 2026-07-04
-- Initial release (universal-skill-creator 2026-07-04)
+Last pruned: 2026-07-05
+- Closed learn-from gaps: gradient shift + liquid wave recipes, full ORA prompt dimensions, svg-tooling taxonomy
 
 ## Impact Report
 

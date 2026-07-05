@@ -107,3 +107,53 @@ Delivery: `<img>` or file — SMIL `begin="menu.click"`, no CSS/JS.
 ```
 
 Delivery: GitHub README — SMIL only, no dependencies.
+
+---
+
+## Example 5 — Gradient shift (SMIL, self-contained)
+
+**Input:** Animated gradient banner for a marketing embed (no JS).
+
+**Output:**
+
+```svg
+<svg viewBox="0 0 200 100" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Gradient banner</title>
+  <defs>
+    <linearGradient id="banner-shift" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%">
+        <animate attributeName="stop-color"
+          values="#e63946;#457b9d;#2a9d8f;#e63946" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%">
+        <animate attributeName="stop-color"
+          values="#457b9d;#2a9d8f;#e63946;#457b9d" dur="4s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="100" fill="url(#banner-shift)" rx="8"/>
+</svg>
+```
+
+---
+
+## Example 6 — Liquid wave (SMIL morph)
+
+**Input:** Subtle animated wave footer for a landing page hero (inline or file).
+
+**Output:**
+
+```svg
+<svg viewBox="0 0 200 100" role="img" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <title>Wave</title>
+  <path fill="#457b9d" opacity="0.7">
+    <animate attributeName="d" dur="5s" repeatCount="indefinite"
+      values="M 0,40 C 30,35 70,45 100,40 L 100,100 L 0,100 Z;
+              M 0,40 C 30,50 70,30 100,40 L 100,100 L 0,100 Z;
+              M 0,40 C 30,35 70,45 100,40 L 100,100 L 0,100 Z"
+      calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+  </path>
+</svg>
+```
+
+Use sparingly — `d` animation is repaint-heavy.

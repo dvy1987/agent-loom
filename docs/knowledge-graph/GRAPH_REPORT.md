@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-04T17:01:21.701060+00:00
-Mode: skill-library | Nodes: 209 | Edges: 465
+Generated: 2026-07-05T00:45:37.042125+00:00
+Mode: skill-library | Nodes: 211 | Edges: 473
 
 **Why this mode:** skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).
 
@@ -20,23 +20,23 @@ Mode: skill-library | Nodes: 209 | Edges: 465
 ## Surprising cross-community connections
 - project-orchestrator → skill-routing (invokes: project ↔ skill)
 - project-orchestrator → process-decomposer (invokes: project ↔ process)
+- motion-animation → svg-creation (invokes: motion ↔ svg)
 - publish-skill → validate-skills (invokes: publish ↔ validate)
 - publish-skill → improve-skills (invokes: publish ↔ improve)
 - customer-discovery → venture-exploration (invokes: customer ↔ venture)
 - reality-check → assumption-mapping (invokes: reality ↔ assumption)
 - reality-check → adversarial-hat (invokes: reality ↔ adversarial)
-- business-modeling → venture-exploration (invokes: business ↔ venture)
 
 ## Suggested questions
 - How does project-orchestrator (project) connect to skill-routing (skill)?
 - How does project-orchestrator (project) connect to process-decomposer (process)?
-- How does publish-skill (publish) connect to validate-skills (validate)?
+- How does motion-animation (motion) connect to svg-creation (svg)?
 - What depends on universal-skill-creator, and what does universal-skill-creator invoke?
 - What depends on validate-skills, and what does validate-skills invoke?
 - What depends on secure-skill, and what does secure-skill invoke?
 
 ## Provenance
-- Authoritative invokes: 218
-- EXTRACTED: 241 | INFERRED: 224
+- Authoritative invokes: 222
+- EXTRACTED: 246 | INFERRED: 227
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

@@ -15,7 +15,7 @@ AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" �
 
 **agent-loom fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
-Today the library contains **104 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
+Today the library contains **106 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
 
 The library now also includes a process-and-agent design layer for more complex work. Instead of jumping straight from user request to execution, it can decompose a task into a reusable process, decide whether a single skill or a broader agent structure is needed, validate the setup, and then execute through the orchestrator. See [docs/architecture.md](docs/architecture.md) for the current repo architecture.
 
@@ -220,6 +220,8 @@ Cross-agent continuity without global memory bloat. Project memory lives in `doc
 | [`design-system`](.agents/skills/design-system/) | Turns the chosen direction into ONE canonical `DESIGN.md` + state-level oklch tokens (8-step ramp, every interactive state, focus ring, APCA-checked) + icon strategy + component contracts, in the stack's format | **Files created:** `DESIGN.md`, `src/styles/tokens.css` + logged | "build a design system", "design tokens", "create a DESIGN.md", "pick icons" |
 | [`design-review`](.agents/skills/design-review/) | 11-dimension rubric review (incl. state coverage) against the direction's "feels like X"; **APCA** contrast via bundled script (not legacy WCAG); max 2 loops; Playwright MCP optional | **File created:** `.design/<feature>/REVIEW.md` + logged | "review this UI", "audit my frontend", "does this feel like Linear" |
 | [`svg-creation`](.agents/skills/svg-creation/) | Handcrafted static SVG + animations (SMIL/CSS line-draw, spinners, morphs) with delivery-context routing; bans scripts and guessed dash lengths | **Files created:** `assets/svg/<name>.svg` + logged | "create SVG", "animate SVG", "SVG loader", "path animation" |
+| [`gsap-animation`](.agents/skills/gsap-animation/) | Runtime GSAP for web apps — timelines, ScrollTrigger, DrawSVG/MorphSVG/MotionPath, React `useGSAP` with cleanup; not for README embeds | **Files created:** component/hook path + logged | "animate with GSAP", "ScrollTrigger", "DrawSVG", "GSAP timeline" |
+| [`motion-animation`](.agents/skills/motion-animation/) | Motion for React — variants, AnimatePresence, layout/layoutId, whileInView, pathLength SVG; declarative enter/exit/gestures | **Files created:** component path + logged | "Framer Motion", "motion.div", "AnimatePresence", "layout animation" |
 
 #### LLM Output Evaluation Suite
 

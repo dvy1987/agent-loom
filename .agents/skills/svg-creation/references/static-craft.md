@@ -36,6 +36,20 @@ Read during svg-creation Step 3. For token-aligned icon **families** inside a de
 - Reusable gradients, masks, clipPaths, filters → `<defs>`.
 - Prefix `id` values with asset slug when multiple SVGs share a page.
 
+## Gradients, masks, filters (illustrations)
+
+```svg
+<defs>
+  <linearGradient id="slug-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="currentColor" stop-opacity="0.9"/>
+    <stop offset="100%" stop-color="currentColor" stop-opacity="0.4"/>
+  </linearGradient>
+  <filter id="slug-blur"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+```
+
+Animated gradients → `animation-craft.md` gradient-shift recipe.
+
 ## AI output cleanup
 
 When refining model-generated SVG:

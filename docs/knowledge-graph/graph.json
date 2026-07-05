@@ -1,10 +1,10 @@
 {
   "version": "2.2",
-  "generated_at": "2026-07-04T17:01:21.701060+00:00",
+  "generated_at": "2026-07-05T00:45:37.042125+00:00",
   "mode": "skill-library",
   "mode_reason": "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).",
   "scan_layers": [
-    "skills (104 in .agents/skills)",
+    "skills (106 in .agents/skills)",
     "repo-wide source (none — no .py/.ts/.tsx/.js outside .agents/skills)",
     "docs (AGENTS.md, README.md, docs/**/*.md)",
     "memory (docs/memory, handoffs)",
@@ -15,11 +15,11 @@
   ],
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 209,
-    "edges": 465,
-    "authoritative_edges": 218,
-    "extracted_edges": 241,
-    "inferred_edges": 224,
+    "nodes": 211,
+    "edges": 473,
+    "authoritative_edges": 222,
+    "extracted_edges": 246,
+    "inferred_edges": 227,
     "node_types": {
       "config": 1,
       "directory": 3,
@@ -27,7 +27,7 @@
       "handoff": 16,
       "learning": 2,
       "memory": 6,
-      "skill": 104
+      "skill": 106
     }
   },
   "god_nodes": [
@@ -56,6 +56,13 @@
       "relation": "invokes",
       "from_community": "project",
       "to_community": "process"
+    },
+    {
+      "from": "motion-animation",
+      "to": "svg-creation",
+      "relation": "invokes",
+      "from_community": "motion",
+      "to_community": "svg"
     },
     {
       "from": "publish-skill",
@@ -91,40 +98,18 @@
       "relation": "invokes",
       "from_community": "reality",
       "to_community": "adversarial"
-    },
-    {
-      "from": "business-modeling",
-      "to": "venture-exploration",
-      "relation": "invokes",
-      "from_community": "business",
-      "to_community": "venture"
     }
   ],
   "suggested_questions": [
     "How does project-orchestrator (project) connect to skill-routing (skill)?",
     "How does project-orchestrator (project) connect to process-decomposer (process)?",
-    "How does publish-skill (publish) connect to validate-skills (validate)?",
+    "How does motion-animation (motion) connect to svg-creation (svg)?",
     "What depends on universal-skill-creator, and what does universal-skill-creator invoke?",
     "What depends on validate-skills, and what does validate-skills invoke?",
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "code": [
-      "app-security-hardening",
-      "browser-testing-with-devtools",
-      "ci-cd-and-automation",
-      "code-review-crsp",
-      "code-simplification",
-      "design-direction",
-      "design-review",
-      "design-system",
-      "frontend-design",
-      "performance-optimization",
-      "shipping-and-launch",
-      "svg-creation",
-      "technical-debt-audit"
-    ],
-    "debug": [
+    "project": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -216,6 +201,25 @@
       "universal-skill-creator",
       "validate-skills",
       "venture-exploration"
+    ],
+    "design": [
+      "app-security-hardening",
+      "browser-testing-with-devtools",
+      "ci-cd-and-automation",
+      "code-review-crsp",
+      "design-direction",
+      "design-review",
+      "design-system",
+      "frontend-design",
+      "gsap-animation",
+      "motion-animation",
+      "performance-optimization",
+      "shipping-and-launch",
+      "svg-creation"
+    ],
+    "technical": [
+      "code-simplification",
+      "technical-debt-audit"
     ]
   },
   "nodes": [
@@ -274,6 +278,14 @@
       "path": ".agents/skills/learn-from-chat/SKILL.md",
       "category": "meta",
       "community": "learn"
+    },
+    {
+      "id": "skill_motion_animation",
+      "label": "motion-animation",
+      "type": "skill",
+      "path": ".agents/skills/motion-animation/SKILL.md",
+      "category": "project-specific",
+      "community": "motion"
     },
     {
       "id": "skill_publish_skill",
@@ -658,6 +670,14 @@
       "path": ".agents/skills/assumption-mapping/SKILL.md",
       "category": "thinking",
       "community": "assumption"
+    },
+    {
+      "id": "skill_gsap_animation",
+      "label": "gsap-animation",
+      "type": "skill",
+      "path": ".agents/skills/gsap-animation/SKILL.md",
+      "category": "project-specific",
+      "community": "gsap"
     },
     {
       "id": "skill_eval_judge",
@@ -1825,6 +1845,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_motion_animation",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
       "source": "skill_publish_skill",
       "target": "skill_validate_skills",
       "relation": "invokes",
@@ -2237,6 +2266,24 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_motion_animation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/gsap-animation/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_eval_judge",
@@ -4840,6 +4887,33 @@
       "provenance": "learnings"
     },
     {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_svg_creation",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_gsap_animation",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
+      "source": "learning_docs_learnings_research_learnings_md",
+      "target": "skill_motion_animation",
+      "relation": "learning_touches",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "docs/learnings/research-learnings.md",
+      "provenance": "learnings"
+    },
+    {
       "source": "skill_universal_skill_creator",
       "target": "skill_split_skill",
       "relation": "invokes",
@@ -5873,6 +5947,24 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_frontend_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_motion_animation",
+      "target": "skill_frontend_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_learn_from",

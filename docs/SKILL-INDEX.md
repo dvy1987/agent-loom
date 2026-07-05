@@ -777,8 +777,30 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 **Calls:** `design-system` (when icon set must match DESIGN.md tokens)
 **Output files:** `assets/svg/<name>.svg` (or user path)
 **Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
-**References:** `references/static-craft.md`, `references/animation-craft.md`, `references/ai-svg-prompts.md`, `references/examples.md`
+**References:** `references/static-craft.md`, `references/animation-craft.md`, `references/ai-svg-prompts.md`, `references/svg-tooling.md`, `references/examples.md`
 **Impact report:** Asset name, static vs animated, delivery context, path count, quality gate pass/fail
+
+---
+
+### `gsap-animation`
+**Triggers:** "animate with GSAP", "GSAP timeline", "ScrollTrigger", "DrawSVG", "MorphSVG", "MotionPath", "gsap.context", "useGSAP", "scroll animation library", "GSAP React"
+**What it does:** Runtime GSAP animations for web apps — timelines, scroll-driven motion, SVG draw/morph/path plugins, React `useGSAP` integration with cleanup. Hard-bans `<img>`/README SVG targets. Pairs with `svg-creation` for static inline SVG markup; `frontend-design` for token-level motion defaults.
+**Calls:** `svg-creation` (static SVG markup), `frontend-design` (design-token motion in full UI builds)
+**Output files:** User component/hook path (e.g. `src/components/HeroAnimation.tsx`)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/react-integration.md`, `references/svg-plugins.md`, `references/examples.md`
+**Impact report:** Pattern, framework, plugins, cleanup method, reduced-motion handling
+
+---
+
+### `motion-animation`
+**Triggers:** "animate with Motion", "Framer Motion", "motion.div", "AnimatePresence", "layout animation", "whileInView", "motion/react", "useReducedMotion", "React enter exit animation"
+**What it does:** Declarative Motion for React animations — variants, stagger, gestures, AnimatePresence exit, layout/layoutId, whileInView, useScroll, inline SVG pathLength. React/Next client only. Pairs with `svg-creation` for static SVG markup; `gsap-animation` for scroll pin and non-React stacks.
+**Calls:** `svg-creation` (static SVG markup), `frontend-design` (motion tokens in full UI builds)
+**Output files:** User component path (e.g. `src/components/HeroReveal.tsx`)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/react-patterns.md`, `references/svg-and-scroll.md`, `references/examples.md`
+**Impact report:** Pattern, import path, reduced-motion method, AnimatePresence usage
 
 ---
 

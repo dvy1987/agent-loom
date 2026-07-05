@@ -230,6 +230,8 @@ domain          | specialized, not universally needed      | install only when n
 "pick a design direction" / "explore looks" → design-direction
 "design system" / "design tokens" / "DESIGN.md" / "icons" → design-system
 "create SVG" / "SVG animation" / "animate SVG" / "SVG loader" / "path animation" → svg-creation
+"GSAP" / "animate with GSAP" / "ScrollTrigger" / "DrawSVG" / "GSAP timeline" → gsap-animation
+"Motion" / "Framer Motion" / "motion.div" / "AnimatePresence" / "layout animation" → motion-animation
 "review this UI"      → design-review
 "design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
 "A/B test this"       → experimentation

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T17:01:21.701060+00:00",
+  "generated_at": "2026-07-05T00:45:37.042125+00:00",
   "edges": [
     {
       "source": "skill_experiment_backlog",
@@ -36,6 +36,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_motion_animation",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_publish_skill",
@@ -450,6 +459,24 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_svg_creation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_motion_animation",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/gsap-animation/SKILL.md",
+      "provenance": "SKILL.md"
     },
     {
       "source": "skill_eval_judge",
@@ -1926,6 +1953,24 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_gsap_animation",
+      "target": "skill_frontend_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_motion_animation",
+      "target": "skill_frontend_design",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_learn_from",

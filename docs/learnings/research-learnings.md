@@ -107,4 +107,4 @@ Template:
 - Recommended action: Applied — new `svg-creation` skill with static-craft, animation-craft, ai-svg-prompts, examples L3
 - Skills modified: design-system (caller to svg-creation for animated SVG), library docs
 - Skills created from this learning: svg-creation (`.agents/skills/svg-creation/`)
-- Notes: vtracer noted for bitmap→vector pipeline; GSAP/Motion out of scope (runtime libs)
+- Notes: vtracer noted for bitmap→vector pipeline; runtime split — `svg-creation` SMIL/CSS; `gsap-animation` GSAP; `motion-animation` Motion/React (motion.dev docs, 2026-07-05)

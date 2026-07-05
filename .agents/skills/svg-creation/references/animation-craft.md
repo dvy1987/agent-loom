@@ -68,6 +68,48 @@ For mismatched shapes, insert invisible intermediate points — never morph unre
 <path id="track" d="M 10,50 C 50,10 150,90 190,50" fill="none"/>
 ```
 
+`rotate="auto"` orients tangent to path; `rotate="auto-reverse"` flips 180°.
+
+## Gradient shift (color cycle)
+
+Animate `stop-color` on gradient stops — works in self-contained SMIL SVGs.
+
+```svg
+<defs>
+  <linearGradient id="shift" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%">
+      <animate attributeName="stop-color"
+        values="#e63946;#457b9d;#2a9d8f;#e63946" dur="4s" repeatCount="indefinite"/>
+    </stop>
+    <stop offset="100%">
+      <animate attributeName="stop-color"
+        values="#457b9d;#2a9d8f;#e63946;#457b9d" dur="4s" repeatCount="indefinite"/>
+    </stop>
+  </linearGradient>
+</defs>
+<rect width="200" height="100" fill="url(#shift)" rx="8"/>
+```
+
+## Liquid wave
+
+Morph closed wave silhouette — **three** `d` keyframes, matching command count, `calcMode="spline"`:
+
+```svg
+<path fill="#457b9d" opacity="0.7">
+  <animate attributeName="d" dur="5s" repeatCount="indefinite"
+    values="M 0,40 C 30,35 70,45 100,40 L 100,100 L 0,100 Z;
+            M 0,40 C 30,50 70,30 100,40 L 100,100 L 0,100 Z;
+            M 0,40 C 30,35 70,45 100,40 L 100,100 L 0,100 Z"
+    calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+</path>
+```
+
+Repaint-heavy — use for hero backgrounds only, not small icons.
+
+## Breathing glow
+
+Pulse `r` + `opacity` on one shape with matched spline easing. See `references/examples.md` Example 4.
+
 ## Easing
 
 SMIL: `calcMode="spline"` + `keySplines="0.42 0 0.58 1"` (ease-in-out).
@@ -78,6 +120,7 @@ CSS: `animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1)`.
 - Prefer animating `transform` and `opacity` (compositor-friendly).
 - Limit simultaneous `d` morphs on complex paths.
 - One choreographed `<g>` transform beats animating many children independently.
+- Inline CSS: `will-change: transform` on animated elements helps compositing (remove after animation if one-shot).
 
 ## Reduced motion
 

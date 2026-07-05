@@ -239,3 +239,8 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-04 | improve-skills | INGEST-QUEUE backfill, check_ao_sections.py, backfill_red_flags.py, query_graph routing | Ongoing hygiene: ingest queue seeded, AO gate, Red Flags library-wide, authoritative graph routing |
 | 2026-07-04 | universal-skill-creator | hooks/, doc_cache.py, skill wiring | #11 simplify-ignore + #12 ETag doc cache from addyosmani (MIT) |
 | 2026-07-04 | universal-skill-creator | .agents/skills/svg-creation/ | New svg-creation skill — static SVG + SMIL/CSS animation craft (supermemoryai, SVG-ORA patterns) |
+| 2026-07-05 | improve-skills | svg-creation v1.1 references | Gap fill: gradient shift, liquid wave, ORA prompt dims, svg-tooling taxonomy |
+| 2026-07-05 | universal-skill-creator | .agents/skills/gsap-animation/ | New gsap-animation skill — runtime GSAP timelines, ScrollTrigger, SVG plugins, React useGSAP |
+| 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md | Synced after gsap-animation added; cross-linked svg-creation |
+| 2026-07-05 | universal-skill-creator | .agents/skills/motion-animation/ | New motion-animation skill — Motion/Framer Motion React variants, AnimatePresence, layout, scroll |
+| 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md | Synced after motion-animation added; cross-linked gsap-animation, svg-creation |

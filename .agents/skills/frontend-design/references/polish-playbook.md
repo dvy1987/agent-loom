@@ -43,7 +43,7 @@ scattered effects. Disable under reduced-motion. See `golden-examples/compositio
 | `--ease-decelerate` | `cubic-bezier(0.16, 1, 0.3, 1)` | entrances |
 | spring (playful) | `cubic-bezier(0.5, 1.5, 0.5, 1)` | character moments |
 
-Framer Motion / `motion` for React when orchestration is complex; CSS-only otherwise.
+Framer Motion / `motion` for React when orchestration is complex; CSS-only otherwise. Invoke `motion-animation` for Motion patterns; `gsap-animation` for scroll pin and advanced SVG plugins.
 
 ## 5. Detail pass (the 95% the brief never mentions)
 
