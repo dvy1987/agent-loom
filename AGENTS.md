@@ -246,6 +246,16 @@ domain          | specialized, not universally needed      | install only when n
 "read out this experiment" → experiment-readout
 "spec-driven development" → spec-driven-development (orchestrator → project-constitution, feature-spec, implementation-plan, spec-crosscheck)
 "incremental implementation" / "vertical slice" / "thin slice" → incremental-implementation
+"safe change" / "safe edit" / "verified change" / "blast radius" / "what depends on" → safe-change (calls dependency-mapping first)
+"dependency map" / "who calls this" / "impact of changing" → dependency-mapping
+"write the PR" / "PR body" / "intent-separated commits" → pr-authoring
+"structured plan" / "plan with steps" / "subgoal graph" / "plan-ahead" → structured-planning
+"try another approach" / "route around failure" / "if X fails try Y" → dynamic-routing
+"trace this run" / "agent observability" / "run log" → run-trace
+"localize the fault" / "why did the agent fail" / "first incorrect step" → fault-localize
+"deploy anywhere" / "preview deploy" / "deploy to Vercel" → deploy-anywhere
+"issue sync" / "mirror issues" / "sync issues" → issue-sync
+"quickstart" / "first run" / "demo agent-loom" → quickstart
 "git workflow" / "conventional commits" / "atomic commit" → git-workflow-and-versioning
 "source driven" / "cite the docs" / "official documentation" → source-driven-development
 "simplify this code" / "refactor for clarity" → code-simplification

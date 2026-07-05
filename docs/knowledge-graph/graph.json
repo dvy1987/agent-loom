@@ -1,11 +1,11 @@
 {
   "version": "2.2",
-  "generated_at": "2026-07-05T04:24:06.868230+00:00",
+  "generated_at": "2026-07-05T07:19:35.386594+00:00",
   "mode": "skill-library",
   "mode_reason": "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).",
   "scan_layers": [
-    "skills (109 in .agents/skills)",
-    "repo-wide source (none — no .py/.ts/.tsx/.js outside .agents/skills)",
+    "skills (119 in .agents/skills)",
+    "repo-wide source (examples)",
     "docs (AGENTS.md, README.md, docs/**/*.md)",
     "memory (docs/memory, handoffs)",
     "packages (package.json workspaces)",
@@ -15,19 +15,20 @@
   ],
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 221,
-    "edges": 490,
-    "authoritative_edges": 232,
-    "extracted_edges": 260,
-    "inferred_edges": 230,
+    "nodes": 237,
+    "edges": 515,
+    "authoritative_edges": 240,
+    "extracted_edges": 272,
+    "inferred_edges": 243,
     "node_types": {
       "config": 1,
-      "directory": 3,
-      "doc": 84,
-      "handoff": 16,
+      "directory": 4,
+      "doc": 86,
+      "handoff": 17,
       "learning": 2,
       "memory": 6,
-      "skill": 109
+      "module": 2,
+      "skill": 119
     }
   },
   "god_nodes": [
@@ -35,11 +36,11 @@
     "validate-skills",
     "secure-skill",
     "improve-skills",
-    "venture-exploration",
     "project-setup",
+    "venture-exploration",
+    "retroactive-project-setup",
     "library-skill",
     "split-skill",
-    "retroactive-project-setup",
     "feature-spec"
   ],
   "surprising_connections": [
@@ -109,7 +110,7 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "experiment": [
+    "memory": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -130,7 +131,9 @@
       "customer-discovery",
       "debug-and-fix",
       "deep-thinking",
+      "dependency-mapping",
       "deprecate-skill",
+      "dynamic-routing",
       "eval-judge",
       "eval-output",
       "eval-pipeline",
@@ -140,6 +143,7 @@
       "experiment-runbook",
       "experiment-spec",
       "experimentation",
+      "fault-localize",
       "feature-spec",
       "fermi",
       "first-principles",
@@ -182,9 +186,12 @@
       "project-setup",
       "prune-skill",
       "publish-skill",
+      "quickstart",
       "reality-check",
       "research-skill",
       "retroactive-project-setup",
+      "run-trace",
+      "safe-change",
       "second-order",
       "secure-skill",
       "secure-skill-content-sanitization",
@@ -199,13 +206,14 @@
       "spec-crosscheck",
       "spec-driven-development",
       "split-skill",
+      "structured-planning",
       "test-driven-development",
       "tool-finder",
       "universal-skill-creator",
       "validate-skills",
       "venture-exploration"
     ],
-    "svg": [
+    "motion": [
       "app-security-hardening",
       "browser-testing-with-devtools",
       "ci-cd-and-automation",
@@ -223,9 +231,26 @@
     "technical": [
       "code-simplification",
       "technical-debt-audit"
+    ],
+    "issue": [
+      "issue-sync"
+    ],
+    "deploy": [
+      "deploy-anywhere"
+    ],
+    "pr": [
+      "pr-authoring"
     ]
   },
   "nodes": [
+    {
+      "id": "skill_issue_sync",
+      "label": "issue-sync",
+      "type": "skill",
+      "path": ".agents/skills/issue-sync/SKILL.md",
+      "category": "project-specific",
+      "community": "issue"
+    },
     {
       "id": "skill_experiment_backlog",
       "label": "experiment-backlog",
@@ -499,6 +524,14 @@
       "community": "memory"
     },
     {
+      "id": "skill_dynamic_routing",
+      "label": "dynamic-routing",
+      "type": "skill",
+      "path": ".agents/skills/dynamic-routing/SKILL.md",
+      "category": "project-specific",
+      "community": "dynamic"
+    },
+    {
       "id": "skill_learn_from",
       "label": "learn-from",
       "type": "skill",
@@ -643,6 +676,14 @@
       "community": "venture"
     },
     {
+      "id": "skill_structured_planning",
+      "label": "structured-planning",
+      "type": "skill",
+      "path": ".agents/skills/structured-planning/SKILL.md",
+      "category": "project-specific",
+      "community": "structured"
+    },
+    {
       "id": "skill_project_constitution",
       "label": "project-constitution",
       "type": "skill",
@@ -665,6 +706,14 @@
       "path": ".agents/skills/library-skill/SKILL.md",
       "category": "meta",
       "community": "library"
+    },
+    {
+      "id": "skill_quickstart",
+      "label": "quickstart",
+      "type": "skill",
+      "path": ".agents/skills/quickstart/SKILL.md",
+      "category": "project-specific",
+      "community": "core"
     },
     {
       "id": "skill_cross_link_skills",
@@ -705,6 +754,14 @@
       "path": ".agents/skills/apply-paper-to-project/SKILL.md",
       "category": "project-specific",
       "community": "apply"
+    },
+    {
+      "id": "skill_fault_localize",
+      "label": "fault-localize",
+      "type": "skill",
+      "path": ".agents/skills/fault-localize/SKILL.md",
+      "category": "project-specific",
+      "community": "fault"
     },
     {
       "id": "skill_product_soul",
@@ -779,6 +836,14 @@
       "community": "problem"
     },
     {
+      "id": "skill_run_trace",
+      "label": "run-trace",
+      "type": "skill",
+      "path": ".agents/skills/run-trace/SKILL.md",
+      "category": "project-specific",
+      "community": "run"
+    },
+    {
       "id": "skill_eval_rubric_design",
       "label": "eval-rubric-design",
       "type": "skill",
@@ -811,6 +876,14 @@
       "community": "debug"
     },
     {
+      "id": "skill_pr_authoring",
+      "label": "pr-authoring",
+      "type": "skill",
+      "path": ".agents/skills/pr-authoring/SKILL.md",
+      "category": "project-specific",
+      "community": "pr"
+    },
+    {
       "id": "skill_brainstorming",
       "label": "brainstorming",
       "type": "skill",
@@ -841,6 +914,22 @@
       "path": ".agents/skills/memory-promote/SKILL.md",
       "category": "project-specific",
       "community": "memory"
+    },
+    {
+      "id": "skill_deploy_anywhere",
+      "label": "deploy-anywhere",
+      "type": "skill",
+      "path": ".agents/skills/deploy-anywhere/SKILL.md",
+      "category": "project-specific",
+      "community": "deploy"
+    },
+    {
+      "id": "skill_safe_change",
+      "label": "safe-change",
+      "type": "skill",
+      "path": ".agents/skills/safe-change/SKILL.md",
+      "category": "project-specific",
+      "community": "safe"
     },
     {
       "id": "skill_prune_skill",
@@ -979,6 +1068,14 @@
       "community": "eval"
     },
     {
+      "id": "skill_dependency_mapping",
+      "label": "dependency-mapping",
+      "type": "skill",
+      "path": ".agents/skills/dependency-mapping/SKILL.md",
+      "category": "project-specific",
+      "community": "dependency"
+    },
+    {
       "id": "skill_research_skill",
       "label": "research-skill",
       "type": "skill",
@@ -1099,6 +1196,22 @@
       "community": "learn"
     },
     {
+      "id": "module_examples_seed_calc_calc_py",
+      "label": "calc.py",
+      "type": "module",
+      "path": "examples/seed/calc/calc.py",
+      "community": "examples",
+      "language": "py"
+    },
+    {
+      "id": "module_examples_seed_calc_test_calc_py",
+      "label": "test_calc.py",
+      "type": "module",
+      "path": "examples/seed/calc/test_calc.py",
+      "community": "examples",
+      "language": "py"
+    },
+    {
       "id": "config_agents_routing_md",
       "label": "ROUTING.md",
       "type": "config",
@@ -1124,6 +1237,13 @@
       "label": "architecture",
       "type": "doc",
       "path": "docs/architecture.md",
+      "community": "docs"
+    },
+    {
+      "id": "doc_docs_why_agent_loom_md",
+      "label": "why-agent-loom",
+      "type": "doc",
+      "path": "docs/why-agent-loom.md",
       "community": "docs"
     },
     {
@@ -1335,6 +1455,13 @@
       "type": "doc",
       "path": "docs/memory/learnings.md",
       "community": "memory"
+    },
+    {
+      "id": "doc_docs_plans_agent_loom_high_leverage_skill_specs_5_skill_families_md",
+      "label": "agent-loom_ High-Leverage Skill Specs _5 Skill Families_",
+      "type": "doc",
+      "path": "docs/plans/agent-loom_ High-Leverage Skill Specs _5 Skill Families_.md",
+      "community": "docs"
     },
     {
       "id": "doc_docs_plans_2026_04_12_review_fixes_plan_md",
@@ -1841,6 +1968,13 @@
       "community": "memory"
     },
     {
+      "id": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "label": "2026-07-05 09:55 — Handoff (harness skill suite + deep learn-from pass)",
+      "type": "handoff",
+      "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
       "id": "memory_docs_memory_learnings_md",
       "label": "learnings",
       "type": "memory",
@@ -1873,6 +2007,13 @@
       "label": "docs",
       "type": "directory",
       "path": "docs",
+      "community": "structure"
+    },
+    {
+      "id": "directory_examples",
+      "label": "examples",
+      "type": "directory",
+      "path": "examples",
       "community": "structure"
     },
     {
@@ -2200,6 +2341,15 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_dynamic_routing",
+      "target": "skill_debug_and_fix",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/dynamic-routing/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_learn_from",
       "target": "skill_apply_paper_to_project",
       "relation": "invokes",
@@ -2333,6 +2483,15 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_structured_planning",
+      "target": "skill_dynamic_routing",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_process_decomposer",
@@ -2578,6 +2737,24 @@
       "provenance": "skill-graph.md"
     },
     {
+      "source": "skill_safe_change",
+      "target": "skill_dependency_mapping",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_safe_change",
+      "target": "skill_dynamic_routing",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/safe-change/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
       "source": "skill_agent_loom_sync",
       "target": "skill_validate_skills",
       "relation": "invokes",
@@ -2710,6 +2887,15 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".agents/skills/idea-evaluation/SKILL.md",
+      "provenance": "SKILL.md"
+    },
+    {
+      "source": "skill_dependency_mapping",
+      "target": "skill_safe_change",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".agents/skills/dependency-mapping/SKILL.md",
       "provenance": "SKILL.md"
     },
     {
@@ -4675,6 +4861,132 @@
       "provenance": "agent-handoffs.md"
     },
     {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "memory_docs_memory_agent_handoffs_md",
+      "relation": "recorded_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_harness_generation",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_harness_evolution",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_harness_engineering",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_project_setup",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_retroactive_project_setup",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_setup_evaluation",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_agent_builder",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_project_orchestrator",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_skill_routing",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_memory_startup",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_reality_check",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_eval_pipeline",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_05_09_55_handoff_harness_skill_suite_deep_learn_from_pass",
+      "target": "skill_git_workflow_and_versioning",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
       "source": "memory_docs_memory_learnings_md",
       "target": "skill_memory_capture",
       "relation": "learning_touches",
@@ -6104,6 +6416,60 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "skill_safe_change",
+      "target": "skill_git_workflow_and_versioning",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_fault_localize",
+      "target": "skill_run_trace",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_fault_localize",
+      "target": "skill_debug_and_fix",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_fault_localize",
+      "target": "skill_dynamic_routing",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_quickstart",
+      "target": "skill_safe_change",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
+    },
+    {
+      "source": "skill_quickstart",
+      "target": "skill_dependency_mapping",
+      "relation": "invokes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/divya/Projects/Building-apps/agent-loom/docs/SKILL-INDEX.md",
+      "provenance": "SKILL-INDEX.md"
     },
     {
       "source": "skill_gsap_animation",

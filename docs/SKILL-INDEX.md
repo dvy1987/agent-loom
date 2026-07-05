@@ -5,7 +5,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-06-02
+Last updated: 2026-07-05
 
 ---
 
@@ -417,8 +417,88 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 ### `git-workflow-and-versioning`
 **Triggers:** "git workflow", "commit message", "conventional commits", "atomic commit", "branch strategy", "git worktree"
 **What it does:** Atomic commits, conventional messages, short-lived branches, pre-commit hygiene, change summaries for review. Complements host git safety rules; does not replace project hooks.
-**Called by:** `incremental-implementation`, any implementation skill before commit
+**Called by:** `incremental-implementation`, `pr-authoring`, any implementation skill before commit
 **Impact report:** Commits advised/committed, concerns flagged
+
+---
+
+### `dependency-mapping`
+**Triggers:** "what depends on", "blast radius", "who calls this", "impact of changing", "find callers", "reverse dependencies"
+**What it does:** Symbol-scoped blast-radius map — three mandatory impact questions before edits. Pairs with `codebase-understanding` for architecture; hands off to `safe-change`.
+**Called by:** `safe-change` (mandatory pre-edit gate)
+**Impact report:** Risk level, callers, tests, capability ladder rung
+
+---
+
+### `safe-change`
+**Triggers:** "safe change", "safe edit", "verified change", "revert if tests fail", "one change at a time with rollback"
+**What it does:** One logical edit per verify cycle — git snapshot, `verify.sh`, auto-revert on failure. **Verification gate wins over quickstart ease bias.**
+**Calls:** `dependency-mapping` (pre-edit), `git-workflow-and-versioning` (post-keep)
+**Called by:** `quickstart` (demo), `incremental-implementation` (atomic cycles)
+**Impact report:** KEPT/REVERTED, behaviorVerified, verify commands
+
+---
+
+### `pr-authoring`
+**Triggers:** "write the PR", "PR body", "intent-separated commits", "split refactor from feature", "pr summary"
+**What it does:** Intent-separated commits and PR bodies with blast radius + verification evidence. Extends `git-workflow-and-versioning`.
+**Called by:** Post `safe-change` / implementation flows before `gh pr create`
+**Impact report:** PR title/body draft, intent-separated commit list
+
+---
+
+### `structured-planning`
+**Triggers:** "structured plan", "plan with steps", "subgoal graph", "plan-ahead", "checkpoint plan", "revise the plan"
+**What it does:** Runtime plan artifacts at `.agent-loom/plans/` with stable step IDs, commit-one execution, delta log. Distinct from `process-decomposer` (registry) and `problem-to-plan` (doc deliverables).
+**Calls:** `dynamic-routing` on failure; `plan_lint.py` after writes
+**Called by:** Multi-step agent work; pairs with `run-trace` (step_id alignment)
+**Impact report:** task_id, steps done/pending, lint status
+
+---
+
+### `dynamic-routing`
+**Triggers:** "try another approach", "route around failure", "replan on failure", "if X fails try Y", "outcome-based branching"
+**What it does:** Failure-driven plan path selection — reflect, branch, revise (no blind retry). Pairs with `structured-planning`; code defects → `debug-and-fix`.
+**Called by:** `structured-planning` on step failure
+**Impact report:** Route type, plan delta, resume step
+
+---
+
+### `run-trace`
+**Triggers:** "trace this run", "log execution", "agent observability", "run log", "structured trace"
+**What it does:** Append-only JSONL traces (operational/cognitive/contextual) at `.agent-loom/traces/`. Wraps planning and execution skills — default-on during multi-step plans.
+**Called by:** `fault-localize` (evidence); aligns `step_id` with `structured-planning`
+**Impact report:** run_id, record count, error count
+
+---
+
+### `fault-localize`
+**Triggers:** "localize the fault", "first incorrect step", "debug this run", "trace attribution", "why did the agent fail"
+**What it does:** Earliest divergence in trace → hypothesis → targeted repair → outcome flip. REFLECT-style loop.
+**Calls:** `run-trace` (query), `debug-and-fix` (code layer), `dynamic-routing` (plan layer)
+**Impact report:** suspected step, outcome_flip, layer
+
+---
+
+### `deploy-anywhere`
+**Triggers:** "deploy anywhere", "deploy to Vercel", "preview deploy", "ship this", "unified deploy"
+**What it does:** `.agent-loom/deploy.yml` + provider adapters (vercel, github-actions) + `preflight.py` gate. Pairs with `ci-cd-and-automation`.
+**Impact report:** provider, preflight, URL, rollback command
+
+---
+
+### `issue-sync`
+**Triggers:** "issue sync", "sync issues", "mirror issues", "keep Linear and GitHub in sync"
+**What it does:** Mirror issues across trackers with `.agent-loom/issue-sync-map.json` — no duplicate creates.
+**Impact report:** created/updated/closed counts
+
+---
+
+### `quickstart`
+**Triggers:** "quickstart", "first run", "demo agent-loom", "try the skills", "how do I start"
+**What it does:** ~5-minute real win via `safe-change` on `examples/seed/calc/`. Zero credentials. **Ease bias yields to safe-change verify gate.**
+**Calls:** `safe-change`, `dependency-mapping`
+**Impact report:** pass/already-done, fixture path
 
 ---
 

@@ -15,7 +15,19 @@ AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" �
 
 **agent-loom fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
-Today the library contains **109 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, harness engineering, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
+Today the library contains **119 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, harness engineering, safe-change, structured planning, observability, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
+
+---
+
+## Quickstart (~5 minutes)
+
+New here? Get a **real verified edit** on an offline fixture — no API keys:
+
+```text
+Run the agent-loom quickstart
+```
+
+Or browse the product tour: [`examples/`](examples/) (safe-change, structured-planning, deploy-anywhere demos). See [`docs/why-agent-loom.md`](docs/why-agent-loom.md).
 
 The library now also includes a process-and-agent design layer for more complex work. Instead of jumping straight from user request to execution, it can decompose a task into a reusable process, decide whether a single skill or a broader agent structure is needed, validate the setup, and then execute through the orchestrator. See [docs/architecture.md](docs/architecture.md) for the current repo architecture.
 

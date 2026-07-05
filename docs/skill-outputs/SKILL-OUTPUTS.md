@@ -257,3 +257,7 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-05 | learn-from-repo | memory-handoff/references/harness-trajectory-mining.md | RHO prerequisite — distill session failures without raw transcripts |
 | 2026-07-05 | improve-skills | eval-pipeline v1.4, setup-evaluation v1.4, memory-handoff v1.5, harness-* v1.2 | Deep pass skill bumps + Step 3b / gotcha wiring |
 | 2026-07-05 | memory-handoff | docs/memory/agent-handoffs.md, current-state.md, project-index.md | Session handoff — harness suite + deep learn-from; uncommitted dirty tree |
+| 2026-07-05 | universal-skill-creator | 10 skills: dependency-mapping, safe-change, pr-authoring, structured-planning, dynamic-routing, run-trace, fault-localize, deploy-anywhere, issue-sync, quickstart | High-leverage skill families from docs/plans/agent-loom_ High-Leverage Skill Specs _5 Skill Families_.md |
+| 2026-07-05 | universal-skill-creator | safe-change/scripts/verify.sh, structured-planning/scripts/plan_lint.py, run-trace/scripts/trace_query.py, deploy-anywhere/scripts/preflight.py | Deterministic scripts for verify, plan lint, trace query, deploy preflight |
+| 2026-07-05 | library-skill | docs/SKILL-INDEX.md, AGENTS.md, README.md, .agents/ROUTING.md | Synced 119 skills; routing precedence for high-leverage families |
+| 2026-07-05 | quickstart | examples/seed/calc/, examples/*-demo/README.md, docs/why-agent-loom.md, .github/ISSUE_TEMPLATE/good-first-issue.md | Skill 5 onboarding assets + offline fixture |

@@ -103,6 +103,21 @@ This notification should be a single line — not disruptive. Skip the notificat
 - `spec-driven-development` is a thin router. It NEVER writes constitution/spec/plan content directly — always delegates.
 - SDD phase order is enforced: constitution → specify → clarify → plan → tasks → analyze → implement. Later phases refuse to run when earlier ones are missing or unsatisfied.
 
+## High-Leverage Skill Families (2026-07-05)
+
+Precedence when skills overlap:
+
+| Rule | Winner |
+|------|--------|
+| Verify gate vs onboarding ease | **`safe-change` verification** over `quickstart` "make it easy" bias |
+| Observability wrap | **`run-trace`** + **`fault-localize`** wrap planning/execution skills 1–3 |
+| Planning layers | **`process-decomposer`** = triage/registry · **`problem-to-plan`** = doc deliverables · **`structured-planning`** = runtime `.agent-loom/plans/` execution |
+| Multi-slice vs atomic edit | **`incremental-implementation`** = slice cadence across a feature · **`safe-change`** = one verify cycle with auto-revert |
+| Deploy vs CI design | **`deploy-anywhere`** = ship intent · **`ci-cd-and-automation`** = pipeline design |
+| Debug vs plan route | **`debug-and-fix`** = code defect · **`dynamic-routing`** = plan-layer branch |
+
+Build order reference: Skill 2 (safe change) → Skill 1 (planning) → Skill 4 (observability) → Skill 5 (onboarding) → Skill 3 (deploy).
+
 ## Triage Short-Circuits (process-decomposer Step 0)
 
 | Complexity Class | Route |
