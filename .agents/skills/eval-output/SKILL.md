@@ -11,12 +11,13 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), arXiv:2306.05685 (MT-Bench/LLM-as-Judge),
     Anthropic eval guide 2026, Twine rubric guide 2026,
     github/awesome-copilot/agentic-eval, DeepEval framework,
+    arXiv:2606.19544 + arXiv:2603.11027 (judge reliability, 2026),
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
   resources:
     references:
@@ -33,6 +34,7 @@ You are the orchestrator for the eval-output skill suite. You accept any LLM or 
 - **No single overall score.** Always score dimensions independently. A single number hides tradeoffs and blocks root-cause analysis.
 - **Justification before score.** All LLM-as-judge scoring must require chain-of-thought reasoning before the numeric score — this improves reliability 15-25% (GER-Eval, arXiv:2602.08672).
 - **Hard gates are pass/fail.** Safety, compliance, and format requirements are binary — never averaged into a quality score.
+- **Validate the judge itself before gating on its scores.** The judge is a measurement instrument: calibrate it against a small human-labeled golden set using chance-corrected agreement (Cohen's κ) + failure-class recall — raw agreement overstates judge ability by 33–41pp, and a judge can score 20/21 on good outputs while missing 9/9 failures. Protocol: `eval-judge/references/judge-calibration.md`.
 - **Max 1 clarifying question.** If evaluation type is ambiguous, ask one question. Never two.
 
 ---
@@ -101,6 +103,7 @@ Eval type: [rubric-design / direct-scoring / pairwise / pipeline-design]
 - **Long-form agent outputs contradict themselves.** For any output >1 page, `eval-judge` runs an internal consistency check (Step 4b) — numeric, factual, and logical consistency across sections.
 - **Multi-step agent pipelines need per-step evaluation.** Cascade dependency is the #1 pipeline failure mode. `eval-pipeline` enforces per-step checkpoints before end-to-end eval.
 - **Production evals run on traces.** Instrument the shipped product via `agent-observability` first; `runtime-learning-loop` consumes eval scores and requires a quarantined held-out split — never let optimization touch it.
+- **Inter-judge agreement can be illusory.** Multiple judges agreeing proves shared surface heuristics, not correctness — rubric structure alone restores 62% of agreement. Ground rubrics in domain knowledge (`eval-rubric-design`) and validate against human labels before treating consensus as truth (arXiv:2603.11027, 2026).
 
 ---
 
@@ -154,8 +157,8 @@ Recommendation: Add coverage of partial indexes and composite index ordering.
 - Two outputs compared via duplicate solo evaluations
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-08
+- Added judge-validation hard rule + evaluation-illusion gotcha (2026 research pass — arXiv:2606.19544, arXiv:2603.11027)
 
 
 ## Impact Report

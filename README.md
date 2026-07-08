@@ -15,7 +15,7 @@ AI coding tools like Codex, Claude Code, Warp, and Cursor all support "skills" �
 
 **agent-loom fixes this.** A self-improving meta layer researches current papers and practitioner patterns, prunes outdated content with a cited reason, rewrites from evidence, and validates before every commit. The library stays current without manual upkeep. It also installs once globally — available in every tool, every project, via symlinks.
 
-Today the library contains **119 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, harness engineering, safe-change, structured planning, observability, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
+Today the library contains **123 skills** across thinking, project lifecycle, evaluation, security, memory, frontend, harness engineering, safe-change, structured planning, observability, model routing, and meta layers — kept in sync by `library-skill` on every create / split / deprecate / structural improvement.
 
 ---
 
@@ -178,7 +178,8 @@ Three categories of skills — **[`docs/SKILL-INDEX.md`](docs/SKILL-INDEX.md)** 
 |-------|-------------|-----------------|----------------|
 | [`product-soul`](.agents/skills/product-soul/) | Writes `docs/product-soul.md` — strategic north star above any PRD. Five lenses: User, Business, Strategy, PMF, GTM. | **File created:** `docs/product-soul.md` + logged | "write the product soul", "product strategy doc", "product north star" |
 | [`prd-writing`](.agents/skills/prd-writing/) | Discovery interview then structured PRD in your chosen format | **File created:** `docs/prd/YYYY-MM-DD-<feature>-prd.md` + logged to `docs/skill-outputs/SKILL-OUTPUTS.md` | "write a PRD", "document requirements", "create a spec" |
-| [`implementation-plan`](.agents/skills/implementation-plan/) | Create a detailed, step-by-step implementation plan for a feature or project | **File created:** `docs/plans/YYYY-MM-DD-<feature>-plan.md` + logged | "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy" |
+| [`implementation-plan`](.agents/skills/implementation-plan/) | Create a detailed, step-by-step implementation plan for a feature or project — every task tagged with a `model:` tier via model-selection | **File created:** `docs/plans/YYYY-MM-DD-<feature>-plan.md` + logged | "plan a feature", "create a technical roadmap", "break down a PRD into tasks", "design an implementation strategy" |
+| [`model-selection`](.agents/skills/model-selection/) | Advisory model-tier planning — high-cognition model understands deeply + lays foundations, then assigns each module the cheapest safe tier; one-way doors pinned high, module contracts for cheap tiers, observable escalation tripwires, "switch now" announcements at module boundaries (you switch manually) | **File created:** `docs/plans/YYYY-MM-DD-<slug>-model-plan.md` + logged | "which model should I use", "model plan", "model tiers", "cheap model got stuck" |
 | [`incremental-implementation`](.agents/skills/incremental-implementation/) | Ship multi-file work in thin vertical slices — implement, test, verify, commit, repeat | Guides execution; pairs with TDD + git workflow | "incremental implementation", "vertical slice", "thin slice", "one slice at a time" |
 | [`git-workflow-and-versioning`](.agents/skills/git-workflow-and-versioning/) | Atomic commits, conventional messages, short-lived branches, pre-commit hygiene | Advises commit messages and change summaries | "git workflow", "conventional commits", "atomic commit", "branch strategy" |
 | [`source-driven-development`](.agents/skills/source-driven-development/) | DETECT→FETCH→IMPLEMENT→CITE — framework code grounded in official docs for detected versions | Cited implementation + source URLs in chat/code | "source driven development", "cite the docs", "check official documentation", "verify against docs" |
@@ -246,6 +247,16 @@ Cross-agent continuity without global memory bloat. Project memory lives in `doc
 | [`eval-rubric-design`](.agents/skills/eval-rubric-design/) | Designs structured rubrics — quality dimensions, scoring scales, hard gates, score descriptions, edge cases. Includes value-weighting and internal consistency dimensions (AlphaEval) | **File created:** `docs/evals/<name>-rubric.md` + logged | "design a rubric", "create eval criteria", "define quality dimensions" |
 | [`eval-judge`](.agents/skills/eval-judge/) | Direct scoring + pairwise comparison with bias mitigation (position, length, self-enhancement). Long-form internal-consistency check baked in | No files. Score / verdict / rationale in chat. | "rate this", "judge this output", "which response is better", "pairwise compare" |
 | [`eval-pipeline`](.agents/skills/eval-pipeline/) | Designs automated eval pipelines — deterministic checks + statistical metrics + LLM-as-judge into CI-integrated suites with per-step intermediate validation | **Files created:** `docs/evals/<name>-pipeline.md` + CI config + logged | "automate my evals", "CI eval integration", "evaluation pipeline", "regression-test my agent" |
+
+#### Agentic Quality Loop Suite (Shipped Products)
+
+Distinct from `harness-*` (which improve the *coding agent*) and `experimentation` (product A/B tests) — these three instrument and improve a user's *own shipped product's* agents.
+
+| Skill | What it does | Output / Outcome | Trigger phrases |
+|-------|-------------|-----------------|----------------|
+| [`agent-observability`](.agents/skills/agent-observability/) | Instruments a shipped product's agents with tracing (plain-language primer + free-tier-first backend picks: Langfuse/Phoenix/LangSmith/Braintrust) so runs can be inspected, scored, and learned from | **File created:** `docs/observability/OBSERVABILITY.md` + logged | "add observability", "add tracing", "instrument my agents", "debug why my agent gave a bad answer" |
+| [`agent-run-retro`](.agents/skills/agent-run-retro/) | Dev-phase retrospective — interviews you in plain language, drafts ranked hypotheses, runs small pre-declared n=1/n=2 experiments with a cost/ROI kill-switch (quality > performance > cost) | **File created:** `docs/experiments/retro-log.md` + logged | "how did that run go", "retro this run", "the agent output was bad", "draft hypotheses" |
+| [`runtime-learning-loop`](.agents/skills/runtime-learning-loop/) | Production self-improvement loop for shipped agents — traces feed evals feed improvement proposals feed a human approval gate; technique-agnostic (ACE/GEPA/MIPROv2/manual); requires observability + evals | **File created:** `docs/learning-loop/LOOP.md` + logged | "make my agents self-improving", "learn from production traces", "add a learning loop" |
 
 #### Experimentation Suite
 

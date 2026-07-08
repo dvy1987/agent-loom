@@ -268,3 +268,22 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-08 05:10 | project-setup (gen_host_adapters) | .cursor/rules/agent-loom-skills-index.mdc | Generated on-demand skill index for Cursor (119 skills) |
 | 2026-07-08 05:20 | memory-handoff | docs/memory/agent-handoffs.md, docs/memory/current-state.md, docs/memory/project-index.md | Phase 1 mid-plan handoff (agent-loom upgrade plan) |
 | 2026-07-08 05:20 | memory-handoff | docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md | Self-contained external handoff for a zero-context coding agent |
+| 2026-07-08 | universal-skill-creator | .agents/skills/agent-observability/ | New agent-observability — plain-language tracing primer + free-tier-first backend table (Langfuse/Phoenix/LangSmith/Braintrust) + OTel GenAI/OpenInference instrumentation for shipped product agents |
+| 2026-07-08 | universal-skill-creator | .agents/skills/agent-run-retro/ | New agent-run-retro — dev-phase retro interview + ranked hypotheses + n=1/n=2 experiments with kill-switch |
+| 2026-07-08 | universal-skill-creator | .agents/skills/runtime-learning-loop/ | New runtime-learning-loop — technique-agnostic (ACE/GEPA/MIPROv2/manual) production self-improvement loop with autonomy ladder |
+| 2026-07-08 | improve-skills (TARGETED) | .agents/skills/agent-system-architecture/SKILL.md, setup-evaluation/SKILL.md | Cross-linked agent-observability (Step 4 implementation handoff; Product observability check) |
+| 2026-07-08 | improve-skills (TARGETED) | .agents/skills/eval-judge/, eval-rubric-design/, eval-output/, eval-pipeline/ SKILL.md | Cross-linked runtime-learning-loop + agent-observability (held-out quarantine, stage-attributed feedback) |
+| 2026-07-08 | library-skill | docs/SKILL-INDEX.md | Added agent-observability, agent-run-retro, runtime-learning-loop entries + Call Graph edges; 122 skills |
+| 2026-07-08 | library-skill | README.md | Bumped skill count to 122; added Agentic Quality Loop Suite table (3 rows) |
+| 2026-07-08 | library-skill | AGENTS.md | Added 3 User Entry Points for agent-observability, agent-run-retro, runtime-learning-loop |
+| 2026-07-08 | library-skill | (audit only) | docs/prd/PRD.md and docs/skill-graph.md have pre-existing drift predating this phase (missing ~15-20 skills added since 2026-07-04/2026-05-20) — flagged for a dedicated full-sync pass rather than partially patched |
+| 2026-07-08 | project-setup (gen_host_adapters) | .cursor/rules/agent-loom-routing.mdc, agent-loom-skills-index.mdc | Regenerated for 122 skills (was stale at 119 — the 3 Phase 3 skills were invisible to Cursor routing) |
+| 2026-07-08 | universal-skill-creator (build_examples_index) | docs/SKILL-EXAMPLES-INDEX.md | Regenerated: 122 with L3, 0 broken |
+| 2026-07-08 | knowledge-graph (build_graph --incremental) | docs/knowledge-graph/ | Rebuilt: 700 nodes / 541 edges / 122 skill nodes (was at Phase 1 close, 119) |
+| 2026-07-08 | improve-skills (TARGETED, research) | .agents/skills/eval-judge/references/judge-calibration.md | New L3: judge validation protocol — golden set, κ + failure-class recall ensemble, JRH perturbation tests, calibration loop, non-portability rule, evaluation illusion (7 sources, 2026) |
+| 2026-07-08 | improve-skills (TARGETED, research) | eval-judge v1.4, eval-rubric-design v1.4, eval-output v1.4, eval-pipeline v1.6 | Eval-suite research pass: judge-validation gate, corrected stale verbosity-bias claim, consistency–bias paradox, evaluation-illusion + rubric-locking gotchas, JRH perturbation pairs in known-bad split |
+| 2026-07-08 | debug-and-fix | check_p2_craft.py, validate_application_mode.py | Windows portability fix: explicit UTF-8 encoding on file reads (cp1252 crash) |
+| 2026-07-08 | universal-skill-creator | .agents/skills/model-selection/ | New model-selection — advisory model-tier planning with editable registry, module contracts, tripwires (agent-loom upgrade Phase 2) |
+| 2026-07-08 | improve-skills (TARGETED) | implementation-plan v1.3, problem-to-plan v1.2, dynamic-routing v1.1 | Phase 2 wiring: model: tier column, TODO tier tags, Escalate-model-tier route |
+| 2026-07-08 | library-skill | docs/SKILL-INDEX.md, README.md, AGENTS.md, .cursor/rules/ | Synced model-selection; 123 skills total |
+| 2026-07-08 | generate-changelog | docs/changelogs/2026-07-08-agent-loom-upgrade-phase2-model-selection.md | MINOR: Phase 2 model-selection changelog |

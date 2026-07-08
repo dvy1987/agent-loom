@@ -17,9 +17,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
-  sources: agent-loom design spec 2026-04-12
+  sources: agent-loom design spec 2026-04-12, model-selection tier wiring (agent-loom upgrade Phase 2)
   resources:
     references:
       - examples.md
@@ -94,13 +94,13 @@ Generated: YYYY-MM-DD | Plan: docs/plans/YYYY-MM-DD-<slug>-plan.md
 
 ## Tasks
 ### M1
-- [ ] `T1` [Action] [target] — DoD: [criteria] — Files: `[paths]`
+- [ ] `T1` [Action] [target] — DoD: [criteria] — Files: `[paths]` — model: [tier]
 - [ ] `T2` ...
 ### M2
 - [ ] `T3` ... — depends on: T1
 
 ## Agent Notes
-- Tasks are independently executable after dependencies are met
+- Tasks are independently executable after dependencies are met; `model:` tier tags come from `model-selection` (advisory — foundations/one-way doors high; below-high-mid tasks need a contract)
 - Mark `[x]` when complete, add output path in a comment
 ```
 
@@ -191,9 +191,8 @@ Agents can pick up tasks from the TODO.
 - Success criteria missing from every TODO item
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
+Last pruned: 2026-07-08
+- TODO tasks gain model: tier tags via model-selection (agent-loom upgrade Phase 2)
 
 ## Impact Report
 

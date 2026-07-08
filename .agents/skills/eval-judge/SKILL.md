@@ -12,16 +12,17 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     arXiv:2306.05685 (MT-Bench LLM-as-Judge), arXiv:2602.08672 (GER-Eval),
     arXiv:2305.17926 (LLMs not fair evaluators), arXiv:2406.07791 (position bias),
-    DeepEval G-Eval, Anthropic eval guide 2026,
+    DeepEval G-Eval, Anthropic eval guide 2026, arXiv:2606.19544 (judge reliability 2026), Galtea/OpenTrain judge calibration 2026, SAJA ACL 2026,
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
   resources:
     references:
       - examples.md
+      - judge-calibration.md
 ---
 # Eval Judge
 You are an LLM evaluation judge. You score outputs rigorously using structured rubrics and proven LLM-as-judge techniques. You always justify before scoring, mitigate known biases, and report confidence levels. You never produce a single overall score — dimensions are always scored independently.
@@ -36,7 +37,7 @@ You are an LLM evaluation judge. You score outputs rigorously using structured r
 ### Step 1 — Gather Inputs
 Required: output to evaluate + rubric (from `eval-rubric-design` or user-provided).
 Optional: original prompt, reference/expected output, retrieval context, conversation history.
-If no rubric exists: route to `eval-rubric-design` first. Do not score without criteria.
+If no rubric exists: route to `eval-rubric-design` first. Do not score without criteria. If the judge model, rubric, or prompt changed since last validation — or the judge has never been validated — calibrate against a human-labeled golden set first: read `references/judge-calibration.md` (golden set, metric ensemble, perturbation tests).
 ### Step 2 — Choose Evaluation Mode
 | Signal | Mode |
 |--------|------|
@@ -71,7 +72,7 @@ Rate confidence per dimension (0.0-1.0):
 - **0.9-1.0:** Clear evidence, unambiguous score
 - **0.6-0.8:** Evidence present but some interpretation needed
 - **0.3-0.5:** Ambiguous, edge case, or insufficient evidence
-- **<0.3:** Cannot reliably score — flag for human review
+- **<0.3:** Cannot reliably score — flag for human review. Edge cases cause the most reviewer variance; when uncertain, score conservatively and flag for calibration.
 
 ### Step 4b — Internal Consistency Check (long-form outputs only)
 
@@ -123,11 +124,10 @@ Consistent: [yes/no] | Final: [A/B/TIE] [0-1] | Reasoning: [evidence]
 
 ## Gotchas
 
-- **Length ≠ quality.** Longer responses are systematically rated higher by LLM judges. Actively check: "Would a shorter version with the same content score equally?"
+- **Position bias outlasts verbosity bias.** In 2026 cohorts verbosity bias is small (<0.011 across 21 judges) but position bias remains severe — and can hide behind high test–retest consistency (the consistency–bias paradox: reliability ≠ validity, arXiv:2606.19544). The position swap is non-negotiable; still spot-check length on your own slice, since bias direction is distribution-specific.
 - **Confident tone ≠ accuracy.** Authoritative-sounding responses get higher scores even when wrong. Always verify factual claims against rubric criteria, not delivery style.
 - **Chain-of-thought improves reliability 15-25%** but also increases token cost. Worth it for quality-critical evals; consider sampling for high-volume pipelines.
-- In pairwise mode, if one output is much longer, the position swap is especially critical — length bias and position bias can compound.
-- Edge cases cause the most reviewer variance. When uncertain, score conservatively and flag for calibration.
+- **Raw agreement flatters the judge.** Exact-match agreement with humans overstates discriminative ability by 33–41pp; validate judges with Cohen's κ + failure-class recall (`references/judge-calibration.md`).
 - **No reference answer? Judge anyway.** Multi-criteria reference-free judging (relevance, groundedness, completeness, clarity) can outperform ground-truth comparison as a learning signal (Contextual AI 2026). Write justifications with stage attribution ("retrieval missed X" vs "synthesis wrong") so `runtime-learning-loop` optimizers can consume them as textual feedback.
 
 ---
@@ -192,8 +192,8 @@ Overall verdict: PASS (all gates pass, quality improvements recommended)
 - Judge model changed without recalibrating on known-bad cases
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-08
+- Corrected stale 2023-era verbosity-bias claim (now small in modern judges; position bias is the persistent threat — arXiv:2606.19544); added judge-calibration.md L3 (golden set, κ, perturbation tests)
 
 ## Impact Report
 

@@ -236,6 +236,9 @@ domain          | specialized, not universally needed      | install only when n
 "generate harness" / "harness bootstrap" / "harness v0" → harness-generation
 "evolve harness" / "optimize harness" / "harness regression" → harness-evolution
 "agent keeps failing" / "agent not following instructions" / "agents ignore rules" / "agents going off rails" / "make agents reliable" / "agent keeps making mistakes" / "same mistake again" / "fix agent behavior" / "agent quality" / "agents not using skills" → harness-engineering
+"add observability" / "add tracing" / "instrument my agents" / "see what my agent is doing in production" → agent-observability (shipped product's agents, not the coding agent — that's run-trace)
+"retro this run" / "how did that run go" / "the agent output was bad" / "draft hypotheses" → agent-run-retro
+"make my agents self-improving" / "learn from production traces" / "add a learning loop" / "promote agent improvements" → runtime-learning-loop
 "set up agents" / "set up this project" → project-setup (then auto harness-generation unless opted out)
 "review this UI"      → design-review
 "design an experiment" → experimentation (orchestrator → experiment-backlog, experiment-spec, experiment-runbook, experiment-readout)
@@ -250,6 +253,7 @@ domain          | specialized, not universally needed      | install only when n
 "dependency map" / "who calls this" / "impact of changing" → dependency-mapping
 "write the PR" / "PR body" / "intent-separated commits" → pr-authoring
 "structured plan" / "plan with steps" / "subgoal graph" / "plan-ahead" → structured-planning
+"which model should I use" / "model plan" / "model tiers" / "assign models to tasks" / "cheap model got stuck" → model-selection (advisory — emits tier table + switch announcements; the human switches models)
 "try another approach" / "route around failure" / "if X fails try Y" → dynamic-routing
 "trace this run" / "agent observability" / "run log" → run-trace
 "localize the fault" / "why did the agent fail" / "first incorrect step" → fault-localize

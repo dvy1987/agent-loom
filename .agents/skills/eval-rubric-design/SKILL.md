@@ -11,12 +11,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), Twine rubric guide 2026,
     Anthropic eval guide 2026, ICER 2025 rubric paper,
-    Google evaluation guidance, NIST AI RMF,
+    Google evaluation guidance, NIST AI RMF, RULERS arXiv:2601.08654, Evaluation Illusion arXiv:2603.11027 (2026),
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
   resources:
     references:
@@ -50,14 +50,14 @@ Choose from the dimension library (adapt names to the domain):
 | **Safety / compliance** | When policy, legal, or ethical constraints exist (always pass/fail) |
 | **Internal consistency** | When outputs are long-form (>1 page) — checks for contradictions across sections (e.g., differing figures, conflicting claims). AlphaEval 2026 documents this as a top agent failure mode. |
 | **Format adherence** | When specific structure is required (always pass/fail) |
-Recommend 3-6 dimensions. More than 6 causes reviewer fatigue and reduces consistency.
+Recommend 3-6 dimensions. More than 6 causes reviewer fatigue and reduces consistency — split into core + extended rubrics if needed.
 ### Step 3 — Choose Scale per Dimension
 | Scale | Best for |
 |-------|----------|
 | Pass/fail | Hard gates, binary requirements |
 | 1-3 | Operational decisions (fail/acceptable/excellent) |
 | 1-5 | Model comparison, tracking gradual improvement |
-Mixed scales are fine — use pass/fail for gates, ordinal for quality.
+Mixed scales are fine — use pass/fail for gates, ordinal for quality. Avoid 1-10: without detailed anchors, reviewers cluster at 6-8.
 ### Step 4 — Write Score Descriptions
 For each quality dimension, write concrete descriptions for each score level:
 
@@ -116,8 +116,8 @@ Tell the user:
 - Consider **value-weighting dimensions by business impact** — high aggregate scores can mask low performance on high-value dimensions. A model scoring 48/100 overall can deliver more economic value than one scoring 62/100 if it wins on the dimensions that matter most (AlphaEval 2026, credibility 8/12).
 - Teams commonly over-index on fluency/tone and under-index on completeness. Ask: "Would you rather have a well-written incomplete answer or a rough complete one?"
 - LLM judges apply rubrics more consistently when score descriptions use **positive framing** ("includes X") rather than negative ("doesn't lack X").
-- A rubric with >6 dimensions causes reviewer fatigue — split into two rubrics (core + extended) if needed.
-- 1-10 scales without detailed level descriptions are useless — reviewers cluster at 6-8. Use 1-5 or 1-3 instead.
+- **Generic criteria create illusory consensus.** Judges can unanimously reward surface polish while missing substantive failures (three frontier judges praised a pitch whose business model was banned by regulation); rubric structure alone restores 62% of inter-judge agreement. Ground dimensions in task-specific domain knowledge and constraints, not generic quality words (arXiv:2603.11027, 2026).
+- **Lock and version the rubric; demand extractive evidence.** LLM judges re-interpret loose rubrics at every call (rubric drift); treat the rubric as a versioned spec and require judges to quote evidence verbatim from the output — paraphrased "evidence" can be hallucinated (RULERS, arXiv:2601.08654). If two human raters agree on <80% of a pilot set, fix the rubric, not the judge.
 - Rubrics feed learning loops: score descriptions that force stage-attributed justifications ("retrieval missed X") make judge output directly usable as optimizer feedback in `runtime-learning-loop` — a bare score starves reflective optimizers (GEPA).
 
 ---
@@ -192,8 +192,8 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 - Rubric criteria not observable from output alone
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-08
+- Added evaluation-illusion + rubric-locking/extractive-evidence gotchas (2026 research pass); merged two gotchas into Steps 2/3 to hold the 200-line cap
 
 ## Impact Report
 

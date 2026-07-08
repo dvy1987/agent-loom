@@ -5,7 +5,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-07-05
+Last updated: 2026-07-08
 
 ---
 
@@ -464,6 +464,18 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `model-selection`
+**Triggers:** "which model should I use", "model plan", "model tiers", "assign models to tasks", "cheap model got stuck", "which model for this task", "cost-efficient model choice", "model-tier routing"
+**What it does:** Advisory model-tier planner — a high-cognition model deeply understands the problem (plain-language questions, consequences not jargon), then emits a modular Model Plan assigning each module the cheapest tier that can safely execute it. One-way-door decisions (schema, API contracts, auth, dependencies) pinned high regardless of size; below-high-mid modules require a module contract (goal, files, tests, out-of-scope, stop conditions); escalation tripwires are external and observable (same test fails 2x, 3 attempts at one fix — never model self-assessment). Announces "NEXT MODULE → tier X / model Y — switch now" at each boundary; the HUMAN switches models (harnesses like Cursor cannot switch mid-run). NOT `dynamic-routing` (plan-path selection) — this assigns cognition tiers.
+**Calls:** `dynamic-routing` (plan-shaped tripwires), `debug-and-fix` (code-bug tripwires); pairs with `safe-change`/`incremental-implementation` for reversible low-tier execution
+**Called by:** `implementation-plan` (Step 3 model: tier column), `problem-to-plan` (TODO tier tags), `dynamic-routing` (Escalate-model-tier route)
+**Output file:** `docs/plans/YYYY-MM-DD-<slug>-model-plan.md` (or `## Model Plan` section appended to the existing plan)
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/model-tiers.md` (editable tier registry — data, not doctrine), `references/examples.md`
+**Impact report:** Modules per tier, one-way doors pinned, contracts written, switch points, tripwires
+
+---
+
 ### `run-trace`
 **Triggers:** "trace this run", "log execution", "agent observability", "run log", "structured trace"
 **What it does:** Append-only JSONL traces (operational/cognitive/contextual) at `.agent-loom/traces/`. Wraps planning and execution skills — default-on during multi-step plans.
@@ -918,6 +930,39 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `agent-observability`
+**Triggers:** "add observability", "add tracing", "instrument my agents", "see what my agent is doing in production", "set up Langfuse or Phoenix or LangSmith", "debug why my agent gave a bad answer", "track LLM cost per request"
+**What it does:** Instruments a *shipped product's* AI agents with tracing so every run can be inspected, scored, and learned from. Plain-language primer (trace/span/observability) for non-technical owners. Free-tier-first backend decision table (Langfuse Cloud, Phoenix/Arize, LangSmith, Braintrust) + OTel GenAI/OpenInference instrumentation so the backend stays swappable by config. NOT for tracing the coding agent itself — that is `run-trace`. Precondition for `runtime-learning-loop`.
+**Called by:** `agent-system-architecture` (Step 4, implementation handoff), `setup-evaluation` (agent-chain products, Product observability check)
+**Output file:** `docs/observability/OBSERVABILITY.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/backends.md` (decision table + redaction checklist), `references/examples.md`
+**Impact report:** Backend chosen + tier, framework instrumented, first trace verified, redaction status, sampling policy
+
+---
+
+### `agent-run-retro`
+**Triggers:** "how did that run go", "retro this run", "the agent output was bad", "what should we improve", "draft hypotheses", "run a small experiment"
+**What it does:** Development-phase retrospective for a product's *own* agents — interviews the owner in plain language (≤5 questions) about what went well/poorly, drafts ranked improvement hypotheses (impact × confidence ÷ cost), then designs and runs small n=1/n=2 experiments with pre-declared success criteria, guardrails, stop conditions, and a cost/ROI kill-switch. Priority order quality > performance > cost with an explicit diminishing-returns stop rule. NOT a product A/B test (`experimentation`), NOT coding-agent harness repair (`harness-evolution`), NOT production-scale learning (`runtime-learning-loop`).
+**Calls:** `agent-observability` (evidence, if instrumented), `eval-pipeline` (evidence), `memory-capture` (adopted learnings)
+**Output file:** `docs/experiments/retro-log.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/examples.md`
+**Impact report:** Runs reviewed, hypotheses drafted, experiments run/supported/adopted, spend vs budget, kill-switch status
+
+---
+
+### `runtime-learning-loop`
+**Triggers:** "make my product's agents self-improving", "learn from production traces", "add a learning loop", "evolve prompts or playbooks safely", "promote agent improvements", "GEPA-style optimization"
+**What it does:** Designs a self-improvement loop for a *shipped* product's agents — production traces feed evals, evals feed improvement proposals (prompt/playbook/retrieval edits), and a human approval gate promotes changes with rollback. Technique-agnostic (ACE-style playbook deltas, GEPA/MIPROv2 offline optimization, or manual eval-driven iteration, chosen per project via `references/techniques.md` — GEPA is never the default). Hard preconditions: observability + an eval harness with a quarantined held-out set. Competency-gated autonomy ladder (Apprentice → Journeyman → Master); any rollback demotes one stage. Explicitly distinct from `harness-evolution` (coding agent) and `agent-run-retro` (dev-phase manual retros).
+**Calls:** `agent-observability` + `eval-pipeline` (hard preconditions — routes there if missing), `memory-capture` (on promote)
+**Output file:** `docs/learning-loop/LOOP.md`
+**Logged to:** `docs/skill-outputs/SKILL-OUTPUTS.md`
+**References:** `references/techniques.md` (technique decision table), `references/examples.md`
+**Impact report:** Technique chosen, learnable surfaces, autonomy stage, promotions/rollbacks, held-out delta, kill-switch status
+
+---
+
 ### `experimentation`
 **Triggers:** "design an experiment", "A/B test this", "should we A/B test", "what should we test next", "analyse experiment results", "read out this experiment", "run a holdout test", "experiment on the landing page", "test this hypothesis", "is this lift real", "ship or kill this test"
 **What it does:** Orchestrator for the experimentation skill suite. Diagnoses lifecycle stage (no idea yet → backlog; have idea → spec; have spec → runbook; have results → readout) and routes to the right child. Enforces decision-class labelling (`Causal | Directional | Instrumentation`), SRM hard gate before any readout, and pre-committed decision rules. Platform-agnostic with PostHog as the primary binding. Lifecycle-decomposed (not method-decomposed) — A/B / holdout / switchback / MAB are method choices inside `experiment-spec`.
@@ -1248,9 +1293,27 @@ harness-engineering → harness-generation (bootstrap)
                     → eval-pipeline (regression)
                     → reality-check (claim audit)
 
+agent-system-architecture → agent-observability (Step 4, implementation handoff)
+
+setup-evaluation → agent-observability (Product observability check, agent-chain products)
+
+agent-run-retro → agent-observability (evidence, if instrumented)
+                → eval-pipeline (evidence)
+                → memory-capture (adopted learnings)
+
+runtime-learning-loop → agent-observability (hard precondition)
+                      → eval-pipeline (hard precondition)
+                      → memory-capture (on promote)
+
 agent-builder → harness-generation (if no manifest, before setup-evaluation)
               → setup-evaluation (harness checks Step 3b)
               → project-constitution (when sdd_mode: on and no constitution exists)
+
+implementation-plan → model-selection (Step 3, model: tier per task)
+problem-to-plan → model-selection (TODO tier tags)
+dynamic-routing → model-selection (Escalate-model-tier route on tripwires)
+model-selection → dynamic-routing (plan-shaped tripwires)
+                → debug-and-fix (code-bug tripwires)
 
 spec-driven-development → project-constitution (/constitution)
                         → feature-spec (/specify, /clarify)

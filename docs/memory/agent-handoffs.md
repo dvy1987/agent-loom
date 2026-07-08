@@ -1,5 +1,69 @@
 # Agent Handoffs
 
+## 2026-07-08 14:10 — Handoff: Phases 2-3 complete, committed + pushed
+
+### Done
+- **Phase 2 (`model-selection`)** — finished after prior session ran out of tokens mid-library-sync. Skill + `model-tiers.md` + `examples.md` shipped; wired into `implementation-plan`, `problem-to-plan`, `dynamic-routing`; library synced to **123 skills**; changelog `docs/changelogs/2026-07-08-agent-loom-upgrade-phase2-model-selection.md`.
+- **Phase 3 completion audit** (from prior session, included in same commit) — eval-suite research pass (`judge-calibration.md` L3, 4 eval skill bumps), Cursor rules regen 119→122→123, SKILL-EXAMPLES-INDEX + KG rebuilt, Windows UTF-8 fix in validation scripts.
+- **Phase 1** — already committed on `main` before this batch.
+
+### Decisions
+- Phase 2 is **advisory only** — human switches models at module boundaries; no harness auto-switching.
+- `docs/prd/PRD.md` full resync still deferred (pre-existing drift, not partially patched).
+
+### Next Agent Should Know
+- Upgrade plan Phases **4-6 remain open** (superpowers ingestion, SDD×TDD wiring, mobile/MCP gap logging). User stops after each phase to review token spend.
+- Resume from plan `834ff43c-a703-4565-9b8f-2dba210002b0` at **Phase 4** unless user redirects.
+- Large **uncommitted harness batch** from 2026-07-05 may still be on disk in other branches — not part of this commit.
+
+### Working Tree
+- Clean after commit + push.
+
+---
+
+## 2026-07-08 — Handoff: agent-loom upgrade Phase 3 done (agentic quality loop for shipped products)
+
+### Context
+Resumed from commit `4f6fc46` ("agent-loom-learning-fix") per explicit user request in a new session. That commit + `c4b67f8` had already: (a) shipped Phase 1 (see prior entry below), and (b) created the 3 Phase 3 skills, cross-linked them into `agent-system-architecture`/`setup-evaluation`/the eval suite, and validated them — but the conversation ran out of tokens mid-way through the library-sync step (grepping for SKILL-INDEX insertion anchors), before `README.md`/`AGENTS.md`/changelog/memory were touched. This session finished exactly that remaining work. User explicitly asked to skip Phase 2 and do Phase 3 first; Phase 2 remains the next open phase.
+
+### Done
+- Confirmed via direct grep (not just re-reading the old conversation) that the 3 skills existed but zero library-sync files referenced them yet — verified `docs/SKILL-INDEX.md`, `README.md`, `docs/skill-graph.md`, `AGENTS.md`, `docs/prd/PRD.md`, `docs/skill-outputs/SKILL-OUTPUTS.md` all had no hits for `agent-observability`/`agent-run-retro`/`runtime-learning-loop` before starting.
+- **`docs/SKILL-INDEX.md`** — added full entries for the 3 skills (placed between `harness-evolution` and `experimentation`, since the plan explicitly scopes them as distinct from both) + Call Graph edges (`agent-system-architecture → agent-observability`, `setup-evaluation → agent-observability`, `agent-run-retro → agent-observability/eval-pipeline/memory-capture`, `runtime-learning-loop → agent-observability/eval-pipeline/memory-capture`). Last-updated bumped to 2026-07-08.
+- **`README.md`** — skill count 119 → 122; new "Agentic Quality Loop Suite (Shipped Products)" table (3 rows) inserted between the LLM Output Evaluation Suite and Experimentation Suite tables.
+- **`AGENTS.md`** — 3 new User Entry Points lines added after the harness-engineering symptom-matching line, using trigger phrases distinct from `run-trace`'s existing "agent observability" phrase to avoid a naming collision.
+- **`docs/skill-graph.md`** — incremental patch only (not a full regen): new `PS_Quality` subgraph (3 nodes) + edges, header note added. Flagged in the header that this file has not been fully regenerated since 2026-07-04 and is missing several skill families (harness, safe-change, svg/gsap/motion) that predate this session's work.
+- **`docs/skill-outputs/SKILL-OUTPUTS.md`** — logged all of the above.
+- **Changelog** — `docs/changelogs/2026-07-08-agent-loom-upgrade-phase3-quality-loop.md` (MINOR).
+- **Memory** — this handoff + `current-state.md` (22nd deliverable) + `project-index.md` (4 new rows).
+
+### Decisions
+- **Did not touch `docs/prd/PRD.md`.** Its Section 4 skill inventory already had significant pre-existing drift (missing roughly 15-20 skills added since 2026-05-20) — adding 3 rows without fixing the rest would have made the heading-vs-rows mismatch worse, which `library-skill`'s own Hard Rules explicitly warn against ("never make a heading lie about its own table"). Flagged instead of partially patched.
+- **Did not touch `docs/architecture.md`.** No structural execution-flow change from adding 3 project-specific skills — consistent with `library-skill`'s own example output ("no structural flow change, skipped").
+- **Left the stray `docs/adr/FABLE-Agent-loom upgrade...md`** duplicate-of-the-plan file alone per explicit user instruction (not a real ADR, harmless).
+- Treated `c4b67f8` and `d086c53` as safe to keep on `main` — `c4b67f8` only added the three plan/conversation docs needed for this resume, and `d086c53` is an unrelated cherry-picked changelog/encoding-script batch from a different branch that doesn't touch anything in this phase's scope.
+
+### Deferred
+- **Phase 2 (model-selection skill)** — next open phase per the plan; user wants to check in before continuing.
+- **Full `docs/prd/PRD.md` and `docs/skill-graph.md` resync** — dedicated session recommended; scope is large (~15-20 missing skills across both files, predates this phase).
+- Phases 4-6 of the plan unchanged from the original Phase 1 handoff below.
+
+### Next Agent Should Know
+- Resume by reading plan `834ff43c-a703-4565-9b8f-2dba210002b0` (`read_plans`) and the external handoff `docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md` for the full Phase 2 spec and corrected model-tier table — that document's "Phase 1 done" framing is now stale (Phase 3 is also done); trust this handoff and `current-state.md` over it for phase status.
+- Do not re-create the 3 skills or re-run their research pass — they are complete, validated, and library-synced.
+- Continue at **Phase 2 (model-selection)** unless the user redirects.
+
+### Addendum (same session) — Phase 3 completion audit
+User asked whether the Phase 3 problem was FULLY addressed. Audit found and closed:
+1. **The missing eval-suite research pass** (`improve-skills` TARGETED with live research): new L3 `eval-judge/references/judge-calibration.md` (validate the judge itself — golden set, Cohen's κ + failure-class recall, JRH perturbation tests, calibration loop, non-portability rule, evaluation illusion); `eval-judge` v1.4 (pruned stale 2023 verbosity-bias claim — position bias is the real persistent threat), `eval-rubric-design` v1.4 (illusory-consensus + rubric-locking/extractive-evidence gotchas), `eval-pipeline` v1.6 (JRH perturbation pairs in known-bad split), `eval-output` v1.4 (judge-validation hard rule). All exactly ≤200 lines; all gates pass.
+2. **Stale Cursor adapter**: `.cursor/rules/` still said 119 skills — the 3 Phase 3 skills were invisible to Cursor routing (undermined problems #1 AND #3). Regenerated to 122. SKILL-EXAMPLES-INDEX + knowledge graph also rebuilt.
+3. **Windows portability bug**: `check_p2_craft.py` + `validate_application_mode.py` crashed under cp1252 — explicit UTF-8 added; validation gates now run on Windows. NOTE: `python3` does not exist on this machine — use `python`. Earlier gate runs via `python3` were silent no-ops.
+Still open (pre-existing, from the 2026-07-05 high-leverage batch, NOT Phase 3): 12 skills with L3 <55 lines; `gsap-animation`/`motion-animation` missing Red Flags.
+
+### Working Tree
+- Clean at session start (`d086c53`, up to date with `origin/main`). This session's edits (SKILL-INDEX, README, AGENTS.md, skill-graph.md, SKILL-OUTPUTS.md, changelog, memory files, 4 eval SKILL.md + new judge-calibration.md L3, .cursor/rules regen, SKILL-EXAMPLES-INDEX, knowledge-graph, 2 script fixes) are uncommitted — do not commit unless the user asks.
+
+---
+
 ## 2026-07-08 05:10 — Handoff: agent-loom upgrade Phase 1 done (Cursor routing adapter)
 
 ### Done

@@ -30,7 +30,7 @@ def _run(root: Path, *extra: str) -> subprocess.CompletedProcess[str]:
 
 
 def _load_graph(root: Path) -> dict:
-    return json.loads((root / "docs/knowledge-graph/graph.json").read_text())
+    return json.loads((root / "docs/knowledge-graph/graph.json").read_text(encoding="utf-8"))
 
 
 def test_application_with_explanation() -> int:

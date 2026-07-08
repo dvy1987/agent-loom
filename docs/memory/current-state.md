@@ -1,8 +1,8 @@
 # Current State
 
-Last updated: 2026-07-08 (agent-loom upgrade plan, Phase 1 of 6 complete)
+Last updated: 2026-07-08 (agent-loom upgrade plan, Phases 1-3 of 6 complete, committed)
 
-Twenty-one landed items across 2026-05-13 → 2026-07-08.
+Twenty-three landed items across 2026-05-13 → 2026-07-08.
 
 1.–18. *(Through Phase 3 daily-driver depth, adversarial remediation, KG v2, L3 backfill — see prior entries.)*
 
@@ -12,15 +12,22 @@ Twenty-one landed items across 2026-05-13 → 2026-07-08.
 
 21. **Agent-loom upgrade plan Phase 1 — Cursor routing adapter** (2026-07-08, **uncommitted**). Plan `834ff43c-a703-4565-9b8f-2dba210002b0`, 6 phases total. `gen_host_adapters.py` generates `.cursor/rules/agent-loom-routing.mdc` + `agent-loom-skills-index.mdc` from skill frontmatter (portable, no agent-loom-only dependencies). Wired into `project-setup`/`retroactive-project-setup`/`agent-loom-sync`. Deferred #10 → PARTIAL. Full external handoff: `docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md`.
 
+22. **Agent-loom upgrade plan Phase 3 — Agentic quality loop for shipped products** (2026-07-08, committed through `4f6fc46`/`c4b67f8`, this session finished the library sync). Three new skills: `agent-observability`, `agent-run-retro`, `runtime-learning-loop` (122 skills total). Cross-linked into `agent-system-architecture` (v1.2), `setup-evaluation` (v1.5), and the eval suite. `docs/SKILL-INDEX.md`, `README.md`, `AGENTS.md` synced; changelog `docs/changelogs/2026-07-08-agent-loom-upgrade-phase3-quality-loop.md`. User explicitly asked to skip Phase 2 and do Phase 3 first — Phase 2 (model-selection) is now the next open phase. **Known gap:** `docs/prd/PRD.md` and `docs/skill-graph.md` have pre-existing drift (missing ~15-20 skills added since 2026-05-20/2026-07-04) that predates this phase — flagged, not fixed, to avoid a heading/row-count lie; needs a dedicated full `library-skill` resync session.
+
+23. **Phase 3 completion audit — eval-suite research pass + hygiene** (2026-07-08, committed). Closed the last open Phase 3 item: `improve-skills` TARGETED pass with live research on the eval suite ("is my eval suite actually good?"). New L3 `eval-judge/references/judge-calibration.md` (judge = measurement instrument: golden set, κ + failure-class recall, JRH perturbation tests, calibration loop, non-portability, evaluation illusion — 7 sources 2026). `eval-judge` v1.4 (pruned stale 2023 verbosity-bias claim), `eval-rubric-design` v1.4, `eval-pipeline` v1.6, `eval-output` v1.4. Hygiene: Cursor rules regenerated 119→122 (the 3 new skills were invisible to Cursor routing), SKILL-EXAMPLES-INDEX + knowledge graph rebuilt, Windows cp1252 crash fixed in `check_p2_craft.py`/`validate_application_mode.py` (portability). Pre-existing open items: 12 thin L3 files + 2 missing Red Flags from the 2026-07-05 high-leverage batch.
+
+24. **Agent-loom upgrade plan Phase 2 — model-selection** (2026-07-08, committed). New `model-selection` skill (advisory tier planning, editable `model-tiers.md` registry, module contracts, tripwires). Wired into `implementation-plan` v1.3, `problem-to-plan` v1.2, `dynamic-routing` v1.1 (Escalate-model-tier route). Library **123 skills**.
+
 ## Active Risks
 
 - Large uncommitted harness batch — next session should commit when user asks.
 - Harness suite not runtime-tested on a consumer project yet.
 - Inferred graph edges (~84%) — `query_graph.py` authoritative-first.
-- Agent-loom upgrade plan is mid-flight (1 of 6 phases) — stop-after-each-phase by user request; do not assume later phases are done.
+- Agent-loom upgrade plan is mid-flight (3 of 6 phases done; Phases 4-6 open) — stop-after-each-phase by user request; do not assume later phases are done.
+- `docs/prd/PRD.md` and `docs/skill-graph.md` are stale relative to the live skill registry (pre-existing, not caused by Phase 3) — needs a dedicated full-sync session before either is treated as authoritative.
 
 ## Immediate Next Step
 
-1. Continue agent-loom upgrade plan Phase 2 (model-selection skill) — see external handoff doc for full spec and corrected model-tier table.
-2. If user wants ship first: commit harness work + Phase 1 work (`git status` → logical commit message(s)).
-3. Else: validate locally (`agentskills validate` on harness-* + patched skills) or bootstrap harness on a test project.
+1. Continue agent-loom upgrade plan **Phase 4** (superpowers ingestion) — see plan `834ff43c-a703-4565-9b8f-2dba210002b0` and external handoff doc.
+2. Optional/deferred: dedicated `library-skill` full resync for `docs/prd/PRD.md` / `docs/skill-graph.md` drift.
+3. Optional: commit the 2026-07-05 harness batch if still uncommitted elsewhere.

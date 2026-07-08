@@ -1,13 +1,13 @@
 # Project Knowledge Graph Index
 
-Generated: 2026-07-08T05:06:59.120258+00:00
-Mode: **skill-library** | Nodes: 241 | Edges: 520
+Generated: 2026-07-08T08:38:53.632244+00:00
+Mode: **skill-library** | Nodes: 707 | Edges: 562
 
 **Why this mode:** skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).
 
 **Scan layers:**
-- skills (119 in .agents/skills)
-- repo-wide source (examples)
+- skills (123 in .agents/skills)
+- repo-wide source ((root))
 - docs (AGENTS.md, README.md, docs/**/*.md)
 - memory (docs/memory, handoffs)
 - packages (package.json workspaces)
@@ -15,7 +15,7 @@ Mode: **skill-library** | Nodes: 241 | Edges: 520
 - top-level directories
 - authoritative invokes (skill-graph.md + SKILL-INDEX.md)
 
-EXTRACTED: 273 | INFERRED: 247
+EXTRACTED: 291 | INFERRED: 271
 
 ## Hub nodes
 - universal-skill-creator
@@ -24,30 +24,29 @@ EXTRACTED: 273 | INFERRED: 247
 - improve-skills
 - project-setup
 - retroactive-project-setup
-- venture-exploration
 - library-skill
+- venture-exploration
 
 ## Communities
 
-**business** (101): adversarial-hat, agent-builder, agent-launcher, agent-loom-sync, agent-system-architecture, api-and-interface-design, api-deprecation-and-migration, apply-paper-to-project, architectural-decision-log, assumption-mapping
-  … +91 more
+**code** (2): code-simplification, technical-debt-audit
 **deploy** (1): deploy-anywhere
 **issue** (1): issue-sync
-**performance** (13): app-security-hardening, browser-testing-with-devtools, ci-cd-and-automation, code-review-crsp, design-direction, design-review, design-system, frontend-design, gsap-animation, motion-animation
-  … +3 more
 **pr** (1): pr-authoring
-**technical** (2): code-simplification, technical-debt-audit
+**svg** (118): adversarial-hat, agent-builder, agent-launcher, agent-loom-sync, agent-observability, agent-run-retro, agent-system-architecture, api-and-interface-design, api-deprecation-and-migration, app-security-hardening
+  … +108 more
 
 ## Node types
 
-- **config**: 1
-- **directory**: 4
-- **doc**: 88
-- **handoff**: 18
+- **config**: 416
+- **directory**: 6
+- **doc**: 96
+- **handoff**: 20
 - **learning**: 2
 - **memory**: 7
-- **module**: 2
-- **skill**: 119
+- **module**: 36
+- **package**: 1
+- **skill**: 123
 
 See `GRAPH_REPORT.md` for surprising connections and suggested questions.
 

@@ -45,7 +45,7 @@ def main() -> int:
         if "## Red Flags" not in text:
             failures.append(f"{name}: missing Red Flags")
         ex = d / "references" / "examples.md"
-        if ex.exists() and len(ex.read_text().splitlines()) < 55:
+        if ex.exists() and len(ex.read_text(encoding="utf-8").splitlines()) < 55:
             failures.append(f"{name}: L3 examples <55 lines")
     if failures:
         print("P2 craft failures:")

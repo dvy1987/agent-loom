@@ -12,12 +12,12 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.5"
+  version: "1.6"
   category: project-specific
   sources: >
     Red Hat eval-driven dev 2026, DeepEval framework,
     Arize eval pipelines (AIEWF 2025), NVIDIA NeMo Evaluator,
-    NIST AI RMF, OWASP Top 10 LLM 2026,
+    NIST AI RMF, OWASP Top 10 LLM 2026, arXiv:2606.19544, JRH arXiv:2603.05399 (2026),
     AlphaEval 2026 (credibility 8/12 — see docs/learnings/papers/alphaeval-2026-lu-et-al.md)
   resources:
     references:
@@ -69,7 +69,7 @@ Require four dataset splits:
 1. **Happy path:** Representative successful interactions
 2. **Edge cases:** Boundary conditions, ambiguous inputs, long contexts
 3. **Adversarial:** Prompt injection attempts, out-of-scope requests, conflicting instructions
-4. **Known bad:** Pre-generated outputs with intentional failures — these validate that evaluators catch real problems
+4. **Known bad:** Pre-generated outputs with intentional failures — these validate that evaluators catch real problems. Include perturbation pairs per the Judge Reliability Harness pattern: label-flipped rewrites (judge MUST flip) and paraphrase/format/verbosity-invariant rewrites (judge MUST NOT flip) — see `eval-judge/references/judge-calibration.md`
 **Minimum viable dataset:** 30-50 cases per split for initial validation. Scale to 100+ for production.
 
 ### Step 4 — Wire CI/CD Integration
@@ -124,7 +124,7 @@ Tell the user:
 ## Gotchas
 
 - **Intermittent failures are real.** A run of 100 can pass, but nightly runs over weeks surface subtle issues. Design for long-term signal, not single-run confidence.
-- **LLM judges need calibration too.** When you change the judge model or rubric, re-run known-bad cases to verify the judge still catches failures.
+- **LLM judges need calibration too.** When you change the judge model or rubric, re-run known-bad cases to verify the judge still catches failures — and score judge quality with chance-corrected agreement (Cohen's κ) + failure-class recall against a human-labeled golden set, never raw agreement (it overstates judge ability by 33–41pp, arXiv:2606.19544). Full protocol: `eval-judge/references/judge-calibration.md`.
 - **Sampling rates matter for cost.** LLM-as-judge on 100% of PR traffic burns budget fast. Start at 20% and increase for high-risk changes only.
 - **Eval datasets go stale.** As the system evolves, old test cases may no longer represent real usage. Schedule quarterly dataset refresh.
 - **Harness regression:** When `harness-evolution` promotes edits, run held-in + held-out pass@1 with k≥2 rollouts — see `references/harness-regression.md`. Reject trade-off edits where one split gains and the other regresses.
@@ -192,9 +192,8 @@ Pipeline design saved to docs/evals/2026-04-19-support-chatbot-pipeline.md
 - Pipeline green while dimension-level failures are hidden
 
 ## Prune Log
-Last pruned: 2026-07-05
-- Deep learn-from: harness-regression.md L3 (AHE + Self-Harness + auto-harness gates)
-
+Last pruned: 2026-07-08
+- Known-bad split extended with JRH perturbation pairs; judge-calibration gotcha upgraded to κ + failure-class recall (2026 research pass)
 
 ## Impact Report
 

@@ -11,9 +11,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: agentskills.io, github/awesome-copilot implementation-plan, addyosmani/agent-skills planning-and-task-breakdown (Phase 3 merge)
+  sources: agentskills.io, github/awesome-copilot implementation-plan, addyosmani/agent-skills planning-and-task-breakdown (Phase 3 merge), obra/superpowers writing-plans framing (model-tier tasks)
   resources:
     references:
       - plan-schemas.md
@@ -53,6 +53,7 @@ Ask 1–2 targeted questions to clarify technical constraints:
 ### Step 3 — Draft the Plan
 Read `references/plan-schemas.md` for task template, sizing (XS–XL), vertical slices, and checkpoint blocks.
 **Slice vertically** — each task delivers a testable user-visible path; never "build entire schema then entire API."
+**Assign a `model:` tier to every task** — invoke `model-selection` (advisory; the human switches models). Architecture/foundation and one-way-door tasks pinned high-cognition; any task assigned below high-mid needs a module contract (goal, files, tests, out-of-scope, stop conditions) so a cheaper model can execute it safely.
 Ensure the plan includes:
 - **Phase 0: Prerequisites & Setup** (Environment, dependencies, boilerplate).
 - **Phase 1: Core Functionality (MVP)** (The smallest set of tasks to deliver value).
@@ -191,9 +192,8 @@ Ready for: engineering execution
 - Plan omits explicit files and verification per phase
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
+Last pruned: 2026-07-08
+- Added model: tier assignment step wired to model-selection (agent-loom upgrade Phase 2)
 
 ## Impact Report
 

@@ -12,9 +12,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.0"
+  version: "1.1"
   category: project-specific
-  sources: DyFlow NeurIPS 2025, GAP arXiv 2510.25320, NaviAgent arXiv 2506.19500
+  sources: DyFlow NeurIPS 2025, GAP arXiv 2510.25320, NaviAgent arXiv 2506.19500, model-selection tier escalation (agent-loom upgrade Phase 2)
   resources:
     references:
       - ROUTE-PATTERNS.md
@@ -57,6 +57,7 @@ Read `references/ROUTE-PATTERNS.md`. Pick one:
 | **Alternate tool** | Same goal, different tool/path |
 | **Decompose** | Step too large — split into Sx.1, Sx.2 |
 | **Rollback + revise** | Prior step assumption wrong — mark prior `revised`, insert fix step |
+| **Escalate model tier** | Executing model tripped a `model-selection` tripwire (same test failed 2x, 3 attempts at one fix, unscoped design question) — announce the tier switch; the HUMAN changes models (advisory, per model-selection) |
 | **Abort** | Goal infeasible with current constraints — mark `aborted`, stop |
 | **Debug handoff** | Root cause unclear — `debug-and-fix`, resume plan after fix |
 
@@ -78,6 +79,7 @@ Return control to `structured-planning` at the new first pending step.
 - Retrying without changing inputs is not routing — it's a loop.
 - Full replan discards useful done steps — patch the remainder.
 - Environment flakes need explicit transient tag + max 1 retry with backoff.
+- Tier escalation is advisory: announce `switch to [tier/model]` and WAIT — never assume the harness can switch models itself. Tier escalation (who executes) and path revision (what to do) are separate decisions; they can combine.
 
 ---
 
@@ -134,8 +136,8 @@ Full pairs: `references/examples.md`
 - Code bug worked around in plan without debug-and-fix
 
 ## Prune Log
-Last pruned: 2026-07-05
-- Initial release from high-leverage skill spec (Skill 1 family)
+Last pruned: 2026-07-08
+- Added Escalate-model-tier route wired to model-selection tripwires (agent-loom upgrade Phase 2)
 
 ## Impact Report
 

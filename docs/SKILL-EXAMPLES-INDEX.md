@@ -97,7 +97,7 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 
 <!-- EXAMPLES-INDEX:AUTO:START -->
 
-**Last scan:** 102 skills | L3 present: 102 | curated: 29 | padded: 0 | inline-only: 0 | broken pointers: 0
+**Last scan:** 123 skills | L3 present: 123 | curated: 33 | padded: 0 | inline-only: 0 | broken pointers: 0
 
 ### All skills — L3 status
 
@@ -106,6 +106,9 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `adversarial-hat` | yes | yes | curated | references/examples.md |
 | `agent-builder` | yes | yes | enriched | references/examples.md |
 | `agent-launcher` | yes | yes | enriched | references/examples.md |
+| `agent-loom-sync` | yes | yes | standard | references/examples.md |
+| `agent-observability` | yes | yes | curated | references/examples.md |
+| `agent-run-retro` | yes | yes | curated | references/examples.md |
 | `agent-system-architecture` | yes | yes | enriched | references/examples.md |
 | `api-and-interface-design` | yes | yes | curated | references/examples.md |
 | `api-deprecation-and-migration` | yes | yes | curated | references/examples.md |
@@ -127,10 +130,13 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `customer-discovery` | yes | yes | enriched | references/examples.md |
 | `debug-and-fix` | yes | yes | curated | references/examples.md |
 | `deep-thinking` | yes | yes | enriched | references/examples.md |
+| `dependency-mapping` | yes | yes | standard | references/examples.md |
+| `deploy-anywhere` | yes | yes | standard | references/examples.md |
 | `deprecate-skill` | yes | yes | enriched | references/examples.md |
 | `design-direction` | no | yes | curated | references/examples.md |
 | `design-review` | no | yes | curated | references/examples.md |
 | `design-system` | no | yes | curated | references/examples.md |
+| `dynamic-routing` | yes | yes | standard | references/examples.md |
 | `eval-judge` | yes | yes | enriched | references/examples.md |
 | `eval-output` | yes | yes | enriched | references/examples.md |
 | `eval-pipeline` | yes | yes | enriched | references/examples.md |
@@ -140,18 +146,24 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `experiment-runbook` | yes | yes | enriched | references/examples.md |
 | `experiment-spec` | yes | yes | enriched | references/examples.md |
 | `experimentation` | yes | yes | enriched | references/examples.md |
+| `fault-localize` | yes | yes | standard | references/examples.md |
 | `feature-spec` | yes | yes | standard | references/examples.md |
 | `fermi` | yes | yes | enriched | references/examples.md |
 | `first-principles` | yes | yes | enriched | references/examples.md |
 | `frontend-design` | no | yes | curated | references/examples.md, references/golden-examples/ |
 | `generate-changelog` | yes | yes | enriched | references/examples.md |
 | `git-workflow-and-versioning` | yes | yes | enriched | references/examples.md |
+| `gsap-animation` | yes | yes | standard | references/examples.md |
+| `harness-engineering` | yes | yes | standard | references/examples.md |
+| `harness-evolution` | yes | yes | standard | references/examples.md |
+| `harness-generation` | yes | yes | standard | references/examples.md |
 | `idea-evaluation` | yes | yes | enriched | references/examples.md |
 | `idea-generation` | yes | yes | enriched | references/examples.md |
 | `implementation-plan` | yes | yes | curated | references/examples.md |
 | `improve-skills` | yes | yes | enriched | references/examples.md |
 | `incremental-implementation` | yes | yes | enriched | references/examples.md |
 | `inversion` | yes | yes | enriched | references/examples.md |
+| `issue-sync` | yes | yes | standard | references/examples.md |
 | `knowledge-graph` | yes | yes | enriched | references/examples.md |
 | `learn-from` | yes | yes | enriched | references/examples.md |
 | `learn-from-article` | yes | yes | enriched | references/examples.md |
@@ -169,8 +181,11 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `memory-promote` | yes | yes | curated | references/examples.md |
 | `memory-recall` | yes | yes | curated | references/examples.md |
 | `memory-startup` | yes | yes | curated | references/examples.md |
+| `model-selection` | yes | yes | curated | references/examples.md |
+| `motion-animation` | yes | yes | standard | references/examples.md |
 | `ooda` | yes | yes | enriched | references/examples.md |
 | `performance-optimization` | yes | yes | curated | references/examples.md |
+| `pr-authoring` | yes | yes | standard | references/examples.md |
 | `prd-writing` | yes | yes | enriched | references/examples.md |
 | `pre-mortem` | yes | yes | enriched | references/examples.md |
 | `problem-to-plan` | yes | yes | enriched | references/examples.md |
@@ -181,9 +196,13 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `project-setup` | yes | yes | enriched | references/examples.md |
 | `prune-skill` | yes | yes | enriched | references/examples.md |
 | `publish-skill` | yes | yes | enriched | references/examples.md |
+| `quickstart` | yes | yes | standard | references/examples.md |
 | `reality-check` | yes | yes | enriched | references/examples.md |
 | `research-skill` | yes | yes | enriched | references/examples.md |
 | `retroactive-project-setup` | yes | yes | enriched | references/examples.md |
+| `run-trace` | yes | yes | standard | references/examples.md |
+| `runtime-learning-loop` | yes | yes | curated | references/examples.md |
+| `safe-change` | yes | yes | standard | references/examples.md |
 | `second-order` | yes | yes | enriched | references/examples.md |
 | `secure-skill` | yes | yes | enriched | references/examples.md |
 | `secure-skill-content-sanitization` | yes | yes | enriched | references/examples.md |
@@ -199,6 +218,8 @@ Log backfill in `docs/skill-outputs/SKILL-OUTPUTS.md`.
 | `spec-crosscheck` | yes | yes | enriched | references/examples.md |
 | `spec-driven-development` | yes | yes | enriched | references/examples.md |
 | `split-skill` | yes | yes | enriched | references/examples.md |
+| `structured-planning` | yes | yes | standard | references/examples.md |
+| `svg-creation` | yes | yes | standard | references/examples.md |
 | `technical-debt-audit` | yes | yes | enriched | references/examples.md |
 | `test-driven-development` | yes | yes | curated | references/examples.md |
 | `tool-finder` | yes | yes | enriched | references/examples.md |
