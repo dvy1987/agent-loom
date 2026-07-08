@@ -54,7 +54,7 @@ One architectural direction:
 
 ## 4. Current Skill Inventory
 
-**90 skills** across 3 active categories as of 2026-05-20 (meta · thinking · project-specific; `domain` slot reserved, currently empty).
+**102 skills** across 3 active categories as of 2026-06-29 (meta · thinking · project-specific; `domain` slot reserved, currently empty).
 
 ### 4.1 Meta Skills (22)
 
@@ -103,7 +103,7 @@ Structured reasoning frameworks. Always global. Platform-agnostic. Output is alw
 | `fermi` | Decompose unknowns into estimable factors |
 | `ooda` | Boyd's OODA loop for fast-moving situations |
 
-### 4.3 Project-Specific Skills (57)
+### 4.3 Project-Specific Skills (69)
 
 Global install, project-scoped output. Cover the full product and engineering lifecycle.
 

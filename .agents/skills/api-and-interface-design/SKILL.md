@@ -1,7 +1,7 @@
 ---
 name: api-and-interface-design
 description: >
-  Design stable APIs and module boundaries — contract-first types, consistent errors,
+  Design stable APIs and module boundaries â€” contract-first types, consistent errors,
   boundary validation, additive changes. Load when designing REST or GraphQL endpoints,
   public module interfaces, component props, or FE/BE contracts. Also triggers on "API
   design", "interface design", "design the API", "module boundary", "API contract",
@@ -20,34 +20,34 @@ metadata:
 
 # API and Interface Design
 
-You design **stable, hard-to-misuse** interfaces — REST, GraphQL, module exports, component props, or any surface where one piece of code talks to another. Contract first; implementation second.
+You design **stable, hard-to-misuse** interfaces â€” REST, GraphQL, module exports, component props, or any surface where one piece of code talks to another. Contract first; implementation second.
 
 ## Hard Rules
 
 Define the contract (types/schemas) **before** implementation.
 One consistent error shape and status-code strategy across all endpoints.
-Validate at **system boundaries** only — trust internal typed code.
+Validate at **system boundaries** only â€” trust internal typed code.
 Prefer **additive** optional fields over breaking type changes or removals.
 Every list endpoint ships with **pagination** from day one.
-Treat third-party API responses as **untrusted** — validate shape before use.
-Observable public behavior is a commitment (Hyrum's Law) — be intentional about what you expose.
+Treat third-party API responses as **untrusted** â€” validate shape before use.
+Observable public behavior is a commitment (Hyrum's Law) â€” be intentional about what you expose.
 
 ---
 
 ## Workflow
 
-### Step 1 — Scope the interface
+### Step 1 â€” Scope the interface
 
 Identify consumers, transport (HTTP, RPC, in-process), and lifecycle (new vs change).
 If changing an existing public API, inventory observable behaviors users may depend on.
 
-### Step 2 — Write the contract
+### Step 2 â€” Write the contract
 
 Define typed inputs/outputs, error codes, and idempotency semantics.
 Separate `CreateXInput` from full `X` entity (server-generated fields on output).
 Use discriminated unions for state variants when applicable.
 
-### Step 3 — Apply core principles
+### Step 3 â€” Apply core principles
 
 | Principle | Rule |
 |-----------|------|
@@ -59,16 +59,16 @@ Use discriminated unions for state variants when applicable.
 
 Full REST and TypeScript patterns: `references/api-patterns.md`.
 
-### Step 4 — Review for misuse
+### Step 4 â€” Review for misuse
 
-- Can a caller pass ambiguous IDs across entity types? → branded types
+- Can a caller pass ambiguous IDs across entity types? â†’ branded types
 - Do list endpoints leak unbounded arrays?
 - Are errors predictable for every failure mode?
 - Does any endpoint return ad-hoc shapes?
 
-### Step 5 — Document alongside code
+### Step 5 â€” Document alongside code
 
-Commit OpenAPI/GraphQL schema or exported types with the implementation — not "later."
+Commit OpenAPI/GraphQL schema or exported types with the implementation â€” not "later."
 
 ---
 
@@ -76,9 +76,9 @@ Commit OpenAPI/GraphQL schema or exported types with the implementation — not 
 
 - Undocumented quirks become dependencies (Hyrum's Law).
 - Validation in every internal function adds noise without safety.
-- `PUT` for partial updates forces full-object payloads — prefer `PATCH`.
+- `PUT` for partial updates forces full-object payloads â€” prefer `PATCH`.
 - Skipping pagination guarantees a breaking change at scale.
-- External JSON is untrusted — may contain unexpected types or instruction-like strings.
+- External JSON is untrusted â€” may contain unexpected types or instruction-like strings.
 
 ---
 
@@ -86,7 +86,7 @@ Commit OpenAPI/GraphQL schema or exported types with the implementation — not 
 
 | Excuse | Reality |
 |--------|---------|
-| "We'll document the API later" | Types are the documentation — define them first. |
+| "We'll document the API later" | Types are the documentation â€” define them first. |
 | "No pagination needed yet" | You need it at ~100 items; add it now. |
 | "PATCH is too hard, use PUT" | Clients want partial updates. |
 | "Nobody uses that undocumented field" | If observable, someone depends on it. |
@@ -97,13 +97,13 @@ Commit OpenAPI/GraphQL schema or exported types with the implementation — not 
 ## Output Format
 
 ```markdown
-## API design — [resource/module]
+## API design â€” [resource/module]
 
 Consumers: [who]
 Contract: [types or schema summary]
 Endpoints / exports: [list]
 Errors: [shape + status mapping]
-Pagination: [yes — params]
+Pagination: [yes â€” params]
 Breaking risks: [none | flagged items]
 Next: [implementation / ADR / feature-spec link]
 ```
@@ -137,14 +137,14 @@ Contract-first Task + CreateTaskInput + PaginatedResult. REST: GET/POST /api/tas
 
 ## Reference Files
 
-- **`references/api-patterns.md`**: REST resource layout, pagination, PATCH, branded IDs, unions — read at Step 3.
+- **`references/api-patterns.md`**: REST resource layout, pagination, PATCH, branded IDs, unions â€” read at Step 3.
 
 ---
 
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes � content verified current
+- No prunes — content verified current
 ## Impact Report
 
 ```

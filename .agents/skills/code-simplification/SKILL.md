@@ -141,7 +141,7 @@ Read tests + callers. Extract guard clauses (one commit, tests green). Rename `d
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes — content verified current
+- No prunes â€” content verified current
 ## Impact Report
 
 ```

@@ -218,6 +218,10 @@ domain          | specialized, not universally needed      | install only when n
 "context engineering" / "gather context" / "what do you need from me" → context-engineering
 "security hardening" / "OWASP hardening" / "secure this feature" → app-security-hardening
 "CI/CD" / "add CI" / "GitHub Actions" / "set up workflows" → ci-cd-and-automation
+"performance optimization" / "profile this" / "slow page" / "fix LCP" → performance-optimization
+"shipping and launch" / "pre-launch checklist" / "production deploy" / "rollback strategy" → shipping-and-launch
+"API deprecation" / "sunset this endpoint" / "migrate users off" → api-deprecation-and-migration
+"browser testing" / "DevTools MCP" / "test in Chrome" / "check console errors" → browser-testing-with-devtools
 "SDD" / "specs-first" → spec-driven-development
 "/specify" / "write a feature spec" → feature-spec
 "/clarify" / "resolve clarifications" → feature-spec (clarify mode)

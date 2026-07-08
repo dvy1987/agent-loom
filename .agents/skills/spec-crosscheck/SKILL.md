@@ -186,7 +186,7 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes — content verified current
+- No prunes â€” content verified current
 ## Impact Report
 
 ```

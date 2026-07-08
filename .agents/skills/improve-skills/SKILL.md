@@ -178,7 +178,7 @@ Summary: 2 skills improved (+3 avg); chat-learnings: 4 OPEN → 1 impl · 2 pre-
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes � content verified current
+- No prunes — content verified current
 
 ## Impact Report
 

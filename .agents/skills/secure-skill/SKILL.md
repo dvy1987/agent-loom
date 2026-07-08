@@ -180,7 +180,7 @@ VERDICT: BLOCKED — add to no-go repo list
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes � content verified current
+- No prunes — content verified current
 ## Impact Report
 
 ```

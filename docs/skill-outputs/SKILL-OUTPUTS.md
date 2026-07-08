@@ -196,3 +196,15 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-06-02 | generate-changelog | docs/changelogs/2026-06-02-addyosmani-phase2-batch2.md | Phase 2 batch 2 changelog |
 | 2026-06-02 | memory-handoff | docs/memory/agent-handoffs.md | Session end: push pending; memory routing file added |
 | 2026-06-02 | memory-startup | docs/memory/MEMORY-ROUTING.md | Add missing memory routing skeleton file |
+| 2026-06-29 | fix_skill_encoding | scripts/fix_skill_encoding.py | UTF-8 repair script for cp1252-corrupted skill markdown |
+| 2026-06-29 | fix_skill_encoding | .agents/skills/**/SKILL.md (188 files) | Re-encoded mixed UTF-8/cp1252 skill markdown for agentskills validate |
+| 2026-06-29 | library-skill | docs/SKILL-INDEX.md, README.md, docs/skill-graph.md, docs/prd/PRD.md | Hygiene sync after improve-skills bulk edit (98 skills) |
+| 2026-06-29 | generate-changelog | docs/changelogs/2026-06-29-library-hygiene-encoding.md | PATCH changelog for encoding fix + index hygiene |
+| 2026-06-29 | universal-skill-creator | .agents/skills/performance-optimization/SKILL.md | Phase 2 batch 3 — measure-first profiling |
+| 2026-06-29 | universal-skill-creator | .agents/skills/performance-optimization/references/optimization-patterns.md | Performance anti-pattern reference |
+| 2026-06-29 | universal-skill-creator | .agents/skills/shipping-and-launch/SKILL.md | Phase 2 batch 3 — pre-launch checklist + rollout |
+| 2026-06-29 | universal-skill-creator | .agents/skills/api-deprecation-and-migration/SKILL.md | Phase 2 batch 3 — API deprecation (renamed from addyosmani) |
+| 2026-06-29 | universal-skill-creator | .agents/skills/browser-testing-with-devtools/SKILL.md | Phase 2 batch 3 — Chrome DevTools MCP browser verification |
+| 2026-06-29 | universal-skill-creator | .agents/skills/browser-testing-with-devtools/references/mcp-setup.md | DevTools MCP setup reference |
+| 2026-06-29 | library-skill | AGENTS.md, docs/SKILL-INDEX.md, README.md, docs/skill-graph.md, docs/prd/PRD.md | Sync after Phase 2 batch 3 (102 skills) |
+| 2026-06-29 | generate-changelog | docs/changelogs/2026-06-29-addyosmani-phase2-batch3.md | Phase 2 batch 3 changelog |

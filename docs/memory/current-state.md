@@ -39,4 +39,8 @@ Earlier wins: `universal-skill-creator` Step 11 auto-chain; loader-safety Step 2
 
 ## Immediate Next Step
 
-**Phase 2 batch 3** — `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration` via `universal-skill-creator`. Plan: `docs/comparisons/2026-06-01-SUMMARY.md`. Alternative: `validate-skills` library sweep for P2 craft flags.
+**Phase 2 complete** (2026-06-29). All 12 addyosmani gap skills added. Library **102 skills** (meta 22, thinking 11, project-specific 69). Batch 3: `performance-optimization`, `shipping-and-launch`, `api-deprecation-and-migration`, `browser-testing-with-devtools`.
+
+**Post-improve-skills hygiene** — UTF-8 encoding fixed across skill markdown; `agentskills validate` passes **102/102** with `skills-ref` CLI installed.
+
+**Next:** Phase 3 application (user-approved MERGE/ADOPT from comparisons) or memory handoff update.

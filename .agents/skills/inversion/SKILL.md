@@ -116,7 +116,7 @@ Forward action: Audit the first 3 minutes of the user experience against this li
 
 ## Prune Log
 Last pruned: 2026-06-29
-- No prunes — content verified current
+- No prunes â€” content verified current
 ## Impact Report
 
 ```

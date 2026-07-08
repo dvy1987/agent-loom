@@ -4,7 +4,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-06-02
+Last updated: 2026-06-29
 
 ---
 
@@ -445,6 +445,14 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `api-deprecation-and-migration`
+**Triggers:** "API deprecation", "migrate users off", "sunset this endpoint", "strangler migration", "deprecate this API"
+**What it does:** Retires application APIs, libraries, and features with graduated deprecation — usage measurement, migration guides, adapters/strangler patterns, removal only at zero usage. Distinct from `deprecate-skill` (skill-library retirement).
+**Called by:** API replacements, feature sunsetting, duplicate consolidation
+**Impact report:** Deprecation type, consumer count, migration progress, removal date
+
+---
+
 ### `context-engineering`
 **Triggers:** "context engineering", "gather context", "what do you need from me", "before you start"
 **What it does:** Builds a minimal, high-signal context bundle for AI coding tasks — goal, constraints, repo facts (with evidence), key files, assumptions, and a verification plan. Distinct from cross-session continuity (memory suite).
@@ -458,6 +466,14 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 **What it does:** Hardens application code against common security risks — boundary validation, least privilege, safer authZ checks, secrets/logging hygiene, and dependency hygiene. Not a replacement for `secure-skill` (skill-library security).
 **Called by:** Feature implementation and review flows for security-relevant changes
 **Impact report:** Surfaces reviewed, hardening changes, verification run, open risks
+
+---
+
+### `browser-testing-with-devtools`
+**Triggers:** "browser testing", "test in Chrome", "DevTools MCP", "check console errors", "visual verification"
+**What it does:** Verifies browser runtime behavior via Chrome DevTools MCP — screenshots, DOM, console, network, performance traces. Treats browser output as untrusted data. Requires chrome-devtools MCP (see `references/mcp-setup.md`).
+**Called by:** UI implementation and debug flows when runtime verification is needed
+**Impact report:** URL tested, console/network findings, visual pass/fail, MCP profile used
 
 ---
 
@@ -569,6 +585,14 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 
 ---
 
+### `shipping-and-launch`
+**Triggers:** "shipping and launch", "pre-launch checklist", "production deploy", "rollout plan", "rollback strategy"
+**What it does:** Safe production launches — pre-launch checklist, staged rollout, monitoring, rollback plan, post-deploy verification. Complements `generate-changelog` for release notes.
+**Called by:** Production deploys, beta launches, risky migrations
+**Impact report:** Checklist status, rollout stage, rollback ready, first-hour checks
+
+---
+
 ### `project-setup`
 **Triggers:** "set up this project", "create an AGENTS.md", "bootstrap agents", "configure agents for my repo", "agent onboarding", "write an AGENTS.md for this project", "project bootstrap"
 **What it does:** Interviews the user about skill gaps (role, expertise, working style) and project context (stack, architecture, conventions), then generates a tailored AGENTS.md with: project overview, key commands, code style, boundaries (tuned to user comfort), user context (where agents lead vs. defer), and a phase-based Orchestration Map that routes to the right agent-loom at each project stage. Re-run after PRD changes, stack changes, or team changes to update the AGENTS.md.
@@ -633,6 +657,14 @@ Install globally: `~/.agents/skills/`. Output files land inside the current proj
 **What it does:** Reviews code changes against 6 criteria (correctness, completeness, security, conventions, tests, performance). Reads full diff + surrounding context + PRD/spec if available. Presents findings as a numbered list grouped by severity (critical → low) with file paths and line numbers. Offers to fix issues with user approval — one at a time, verified after each.
 **Output:** No files generated. Structured review with severity-classified findings in chat.
 **Impact report:** Review scope, files reviewed, issues by severity, PRD alignment, fixes applied, tests run
+
+---
+
+### `performance-optimization`
+**Triggers:** "performance optimization", "profile this", "slow page", "fix LCP", "reduce bundle size", "Core Web Vitals"
+**What it does:** Measure-first performance work — baseline metrics, bottleneck identification, targeted fix, verification, regression guard. Covers frontend (CWV, bundle) and backend (queries, caching).
+**Called by:** Performance regressions, SLA work, post-feature profiling
+**Impact report:** Scope, baseline/after metrics, bottleneck, guard added
 
 ---
 
