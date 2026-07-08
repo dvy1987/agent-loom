@@ -1,7 +1,7 @@
 # Knowledge Graph Report
 
-Generated: 2026-07-05T07:19:35.386594+00:00
-Mode: skill-library | Nodes: 237 | Edges: 515
+Generated: 2026-07-08T05:06:59.120258+00:00
+Mode: skill-library | Nodes: 241 | Edges: 520
 
 **Why this mode:** skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).
 
@@ -11,8 +11,8 @@ Mode: skill-library | Nodes: 237 | Edges: 515
 - secure-skill
 - improve-skills
 - project-setup
-- venture-exploration
 - retroactive-project-setup
+- venture-exploration
 - library-skill
 - split-skill
 - feature-spec
@@ -37,6 +37,6 @@ Mode: skill-library | Nodes: 237 | Edges: 515
 
 ## Provenance
 - Authoritative invokes: 240
-- EXTRACTED: 272 | INFERRED: 243
+- EXTRACTED: 273 | INFERRED: 247
 
 Query: `python3 .agents/skills/knowledge-graph/scripts/query_graph.py path <A> <B>`

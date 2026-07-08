@@ -51,4 +51,8 @@
 | 2026-07-05 | adr | `docs/adr/ADR-0002-harness-skill-suite.md` | active | harness, architecture | 3-skill suite decision record. |
 | 2026-07-05 | comparison | `docs/comparisons/2026-07-05-*.md` (5 files) | active | harness, ingest-queue, pairwise | Deep pairwise: harnessforge, AHE×2, retro-harness, metaharness — all done. |
 | 2026-07-05 | handoff | `docs/memory/agent-handoffs.md` | active | harness-suite, deep-learn-from, uncommitted | Harness 3-skill suite + deep pass; dirty tree; commit pending. |
-| 2026-07-05 | state | `docs/memory/current-state.md` | active | harness, 109-skills, uncommitted | 19th–20th deliverables: harness suite + deep L3; next = commit or validate. |
+| 2026-07-05 | state | `docs/memory/current-state.md` | superseded | harness, 109-skills, uncommitted | 19th–20th deliverables: harness suite + deep L3. Superseded by 2026-07-08 entry. |
+| 2026-07-08 | plan | plan `834ff43c-a703-4565-9b8f-2dba210002b0` | active | agent-loom-upgrade, model-routing, observability, superpowers, sdd-tdd | 6-phase agent-loom upgrade plan approved with 3 user clarifications (advisory model routing, free-tier observability, technique-agnostic runtime learning, hard portability requirement). |
+| 2026-07-08 | handoff | `docs/memory/agent-handoffs.md` | active | agent-loom-upgrade, phase-1, cursor-routing, uncommitted | Phase 1 (Cursor routing adapter) complete; mid-plan handoff at explicit user request; dirty tree. |
+| 2026-07-08 | handoff | `docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md` | active | external-agent, zero-context, agent-loom-upgrade | Self-contained handoff for a fresh coding agent with no prior context — full plan detail, corrected model-tier table, phase task breakdown. |
+| 2026-07-08 | state | `docs/memory/current-state.md` | active | agent-loom-upgrade, phase-1, uncommitted | 21st deliverable: Cursor routing adapter shipped; next = Phase 2 model-selection. |

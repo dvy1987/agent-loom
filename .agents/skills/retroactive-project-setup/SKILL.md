@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: project-setup, codebase-understanding, product-soul, architectural-decision-log, memory-handoff
   resources:
@@ -112,8 +112,9 @@ Write the four `docs/memory/` files directly (these are stubs, no skill needed):
 2. Highlight every `[INFERRED — confirm]` tag location.
 3. Append every created file to `docs/skill-outputs/SKILL-OUTPUTS.md` (bootstrap from template if absent).
 4. **Invoke `harness-generation`** (gap-fill v0) unless user opted out of agent reliability setup.
-5. Tell the user: "Retroactive setup complete. Review `[INFERRED — confirm]` tags, then stage. Source untouched."
-6. Memory checkpoint: invoke `memory-capture` with event `retroactive-backfill`.
+5. **Host routing adapters:** run `python3 .agents/skills/project-setup/scripts/gen_host_adapters.py` → `.cursor/rules/agent-loom-*.mdc` (reliable skill triggering in Cursor).
+6. Tell the user: "Retroactive setup complete. Review `[INFERRED — confirm]` tags, then stage. Source untouched."
+7. Memory checkpoint: invoke `memory-capture` with event `retroactive-backfill`.
 
 ---
 
@@ -194,7 +195,6 @@ Next: review the 7 confirm tags, stage the commit.
 ## Prune Log
 Last pruned: 2026-07-04
 - No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
 
 ## Impact Report
 

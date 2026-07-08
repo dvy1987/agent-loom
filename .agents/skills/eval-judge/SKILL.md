@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     arXiv:2306.05685 (MT-Bench LLM-as-Judge), arXiv:2602.08672 (GER-Eval),
@@ -128,6 +128,7 @@ Consistent: [yes/no] | Final: [A/B/TIE] [0-1] | Reasoning: [evidence]
 - **Chain-of-thought improves reliability 15-25%** but also increases token cost. Worth it for quality-critical evals; consider sampling for high-volume pipelines.
 - In pairwise mode, if one output is much longer, the position swap is especially critical — length bias and position bias can compound.
 - Edge cases cause the most reviewer variance. When uncertain, score conservatively and flag for calibration.
+- **No reference answer? Judge anyway.** Multi-criteria reference-free judging (relevance, groundedness, completeness, clarity) can outperform ground-truth comparison as a learning signal (Contextual AI 2026). Write justifications with stage attribution ("retrieval missed X" vs "synthesis wrong") so `runtime-learning-loop` optimizers can consume them as textual feedback.
 
 ---
 
@@ -193,7 +194,6 @@ Overall verdict: PASS (all gates pass, quality improvements recommended)
 ## Prune Log
 Last pruned: 2026-07-04
 - No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
 
 ## Impact Report
 

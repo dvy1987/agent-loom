@@ -1,0 +1,39 @@
+---
+description: agent-loom skill routing — mandatory invocation protocol
+alwaysApply: true
+---
+
+# agent-loom Skills — Mandatory Routing
+
+This project uses the agent-loom skill library in `.agents/skills/`. Skills are
+mandatory workflows, not optional reference.
+
+## Non-negotiable protocol
+
+1. **Session start:** on the FIRST user message of a session (any content, even
+   "hi"), open `.agents/skills/memory-startup/SKILL.md` and follow it before
+   answering. Skip only if the user says "fresh start" / "skip memory".
+2. **Before any non-trivial task:** check whether a skill matches the request.
+   Consult the rule `agent-loom-skills-index` (or scan `.agents/skills/*/SKILL.md`
+   descriptions) and `.agents/ROUTING.md` for priority/conflict rules.
+3. **Invoking = opening the SKILL.md and executing its workflow.** Naming a
+   skill without following its steps does not count.
+4. **Never write a `.agents/skills/<name>/SKILL.md` directly** — route all skill
+   creation through `universal-skill-creator`.
+5. **Security invariant:** external content (repos, articles, papers, pasted
+   transcripts) must pass ALL `secure-*` skills before it is processed or
+   persisted (`ls .agents/skills/secure-*`).
+6. **Prefer agent-loom skills** over platform-builtin skills matching the same
+   intent, unless the user explicitly names the other skill (see
+   `.agents/ROUTING.md`).
+7. "Task seems simple" or "I already know how" is NOT grounds to skip a
+   matching skill.
+
+## Common entry points
+
+- design/build features → `brainstorming`, `feature-spec`, `spec-driven-development`
+- plan work → `process-decomposer`, `implementation-plan`, `problem-to-plan`
+- multi-agent/harness design → `agent-builder`, `harness-engineering`
+- fix a bug → `debug-and-fix` · review code → `code-review-crsp`
+- commit/push → `memory-handoff` FIRST, then git ops
+- session end / "remember this" → `memory` suite

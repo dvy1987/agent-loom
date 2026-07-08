@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), Twine rubric guide 2026,
@@ -118,6 +118,7 @@ Tell the user:
 - LLM judges apply rubrics more consistently when score descriptions use **positive framing** ("includes X") rather than negative ("doesn't lack X").
 - A rubric with >6 dimensions causes reviewer fatigue — split into two rubrics (core + extended) if needed.
 - 1-10 scales without detailed level descriptions are useless — reviewers cluster at 6-8. Use 1-5 or 1-3 instead.
+- Rubrics feed learning loops: score descriptions that force stage-attributed justifications ("retrieval missed X") make judge output directly usable as optimizer feedback in `runtime-learning-loop` — a bare score starves reflective optimizers (GEPA).
 
 ---
 
@@ -193,7 +194,6 @@ Rubric saved to docs/evals/2026-04-19-support-chatbot-rubric.md
 ## Prune Log
 Last pruned: 2026-07-04
 - No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
-
 
 ## Impact Report
 

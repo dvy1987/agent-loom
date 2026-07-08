@@ -1,5 +1,40 @@
 # Agent Handoffs
 
+## 2026-07-08 05:10 — Handoff: agent-loom upgrade Phase 1 done (Cursor routing adapter)
+
+### Done
+- Plan `834ff43c-a703-4565-9b8f-2dba210002b0` ("Agent-loom upgrade: triggering, model routing, agentic quality loop, superpowers, SDD×TDD") approved with 3 user clarifications baked in (see Decisions). 6 phases; Phase 1 of 6 complete.
+- **Phase 1 — Cursor trigger reliability:** new `.agents/skills/project-setup/scripts/gen_host_adapters.py` (stdlib-only, portable — reads `.agents/skills/*/SKILL.md` frontmatter only, never agent-loom-only files) generates `.cursor/rules/agent-loom-routing.mdc` (always-on invocation protocol) + `agent-loom-skills-index.mdc` (on-demand 119-skill index). Wired into `project-setup` v1.3 (Step 6d), `retroactive-project-setup` v1.2 (Step 7.5), `agent-loom-sync` v1.2 (post-sync regen). Reopened deferred #10 → PARTIAL (Cursor done; Claude/Gemini command adapters still open).
+- Full external handoff (self-contained, for a fresh coding agent with zero context) written to `docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md` — read that file first if resuming with no prior context.
+
+### Decisions (from user clarifications — binding for Phases 2–6)
+- **Model routing is advisory, not automatic.** Harnesses like Cursor can't switch models mid-run. `model-selection` (Phase 2) must emit a pre-execution model-plan table + per-module-boundary "next module → use tier X" announcements — never assume it can change the model itself.
+- **Observability must not require Phoenix or self-hosting on the user's laptop.** `agent-observability` (Phase 3) needs a free-tier-first backend table (Langfuse Cloud / Phoenix Cloud / LangSmith free tiers; self-host-in-cloud only as last resort) plus a plain-language explainer (separate managed service, HTTPS, never log secrets/PII, sample to control cost) — user has zero infra background.
+- **Runtime self-improvement is technique-agnostic, not GEPA-only.** `runtime-learning-loop` (Phase 3) surveys current alternatives; GEPA (used in user's aegis project) is one option, not the default. The loop + `agent-run-retro` must autonomously design AND run experiments — pre-declared success definitions, guardrails, failure modes, stop conditions, cost/ROI kill-switch. User approves hypotheses/promotions only.
+- **Portability is a hard requirement for every new skill/adapter.** User's workflow is: copy `.agents/` into a new/existing repo → `project-setup` or `retroactive-project-setup`. Nothing built in this plan may depend on agent-loom-only files (e.g. `docs/SKILL-INDEX.md`) — must work after a bare folder copy into any project (aegis, prof-photon, Ember, or future ones).
+
+### Deferred
+- Phases 2–6 of the plan (model-selection skill, agent-observability + agent-run-retro + runtime-learning-loop skills, superpowers ingestion, SDD×TDD wiring, mobile/MCP gap logging) — user asked to stop after each phase to review token spend. Stopped after Phase 1 by user request; also produced this handoff mid-plan by explicit user request (not session end).
+- Mobile app development (React Native/Expo) and MCP server authoring skills — explicitly queued as Phase 6, not this pass.
+
+### Next Agent Should Know
+- **Resume by reading the plan first**: `read_plans` on `834ff43c-a703-4565-9b8f-2dba210002b0`, then the external handoff `docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md` for full corrected model-tier table and phase-by-phase task breakdown.
+- Do not re-litigate the 3 decisions above — they came from direct user clarification, not agent inference.
+- Continue at **Phase 2 (model-selection skill)** unless the user redirects.
+- All new skill creation MUST route through `universal-skill-creator` — never write SKILL.md directly (AGENTS.md invariant).
+
+### Revisit Triggers
+- If resuming in a different tool/agent entirely (not just a new agent-loom session): the external handoff doc is designed for exactly this — read it in full before asking the user anything.
+- If token budget is tight: Phases 2 and 5 are small; Phase 3 is the largest (3 new skills); Phase 4 is one repo ingestion (not exhaustive).
+
+### Working Tree
+- Dirty (Phase 1 uncommitted): 3 skill SKILL.md edits, knowledge-graph rebuild, `deferred.md`, `SKILL-OUTPUTS.md`; new `.agents/skills/project-setup/scripts/gen_host_adapters.py`, new `.cursor/rules/`.
+
+### Graph
+- Incremental rebuild run at Phase 1 close.
+
+---
+
 ## 2026-05-14 - Handoff: memory-startup cold-start trigger hardening
 
 ### Context

@@ -6,7 +6,7 @@ Parked enhancements with rationale. **Reopen only when the listed trigger fires 
 
 | # | Item | Status |
 |---|------|--------|
-| 10 | Native `.claude/commands/` + `.gemini/commands/` adapters | **OPEN** — only active deferral |
+| 10 | Native `.claude/commands/` + `.gemini/commands/` adapters | **PARTIAL** 2026-07-08 — Cursor adapter shipped (`gen_host_adapters.py` → `.cursor/rules/`); Claude/Gemini command adapters still open |
 | 11 | `simplify-ignore.sh` annotation hiding | **DONE** 2026-07-04 — do not surface as parked |
 | 12 | HTTP ETag doc fetch cache | **DONE** 2026-07-04 — do not surface as parked |
 | 13 | Per-skill `COMPATIBILITY.md` + One Rule platform verification | **OPEN** — see `open-questions.md` |

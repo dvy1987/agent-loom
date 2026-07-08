@@ -1,6 +1,6 @@
 {
   "version": "2.2",
-  "generated_at": "2026-07-05T07:19:35.386594+00:00",
+  "generated_at": "2026-07-08T05:06:59.120258+00:00",
   "mode": "skill-library",
   "mode_reason": "skill-library label: docs/skill-graph.md + docs/SKILL-INDEX.md present → adds authoritative skill invoke edges. Still scans full repo (not skills-only).",
   "scan_layers": [
@@ -15,18 +15,18 @@
   ],
   "root": "/Users/divya/Projects/Building-apps/agent-loom",
   "stats": {
-    "nodes": 237,
-    "edges": 515,
+    "nodes": 241,
+    "edges": 520,
     "authoritative_edges": 240,
-    "extracted_edges": 272,
-    "inferred_edges": 243,
+    "extracted_edges": 273,
+    "inferred_edges": 247,
     "node_types": {
       "config": 1,
       "directory": 4,
-      "doc": 86,
-      "handoff": 17,
+      "doc": 88,
+      "handoff": 18,
       "learning": 2,
-      "memory": 6,
+      "memory": 7,
       "module": 2,
       "skill": 119
     }
@@ -37,8 +37,8 @@
     "secure-skill",
     "improve-skills",
     "project-setup",
-    "venture-exploration",
     "retroactive-project-setup",
+    "venture-exploration",
     "library-skill",
     "split-skill",
     "feature-spec"
@@ -110,7 +110,7 @@
     "What depends on secure-skill, and what does secure-skill invoke?"
   ],
   "communities": {
-    "memory": [
+    "business": [
       "adversarial-hat",
       "agent-builder",
       "agent-launcher",
@@ -213,7 +213,7 @@
       "validate-skills",
       "venture-exploration"
     ],
-    "motion": [
+    "performance": [
       "app-security-hardening",
       "browser-testing-with-devtools",
       "ci-cd-and-automation",
@@ -228,15 +228,15 @@
       "shipping-and-launch",
       "svg-creation"
     ],
+    "deploy": [
+      "deploy-anywhere"
+    ],
     "technical": [
       "code-simplification",
       "technical-debt-audit"
     ],
     "issue": [
       "issue-sync"
-    ],
-    "deploy": [
-      "deploy-anywhere"
     ],
     "pr": [
       "pr-authoring"
@@ -1303,6 +1303,13 @@
       "community": "docs"
     },
     {
+      "id": "doc_docs_adr_fable_agent_loom_upgrade_triggering_model_routing_agentic_quality_loop_etc_md",
+      "label": "FABLE-Agent-loom upgrade_ triggering model routing agentic quality loop etc",
+      "type": "doc",
+      "path": "docs/adr/FABLE-Agent-loom upgrade_ triggering model routing agentic quality loop etc.md",
+      "community": "decisions"
+    },
+    {
       "id": "doc_docs_adr_adr_0002_harness_skill_suite_md",
       "label": "ADR-0002-harness-skill-suite",
       "type": "doc",
@@ -1447,6 +1454,13 @@
       "label": "agent-handoffs",
       "type": "doc",
       "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
+      "id": "doc_docs_memory_open_questions_md",
+      "label": "open-questions",
+      "type": "doc",
+      "path": "docs/memory/open-questions.md",
       "community": "memory"
     },
     {
@@ -1807,17 +1821,17 @@
       "community": "docs"
     },
     {
-      "id": "doc_docs_superpowers_plans_2026_04_10_agent_process_expansion_md",
-      "label": "2026-04-10-agent-process-expansion",
-      "type": "doc",
-      "path": "docs/superpowers/plans/2026-04-10-agent-process-expansion.md",
-      "community": "docs"
-    },
-    {
       "id": "doc_docs_learnings_papers_alphaeval_2026_lu_et_al_md",
       "label": "alphaeval-2026-lu-et-al",
       "type": "doc",
       "path": "docs/learnings/papers/alphaeval-2026-lu-et-al.md",
+      "community": "docs"
+    },
+    {
+      "id": "doc_docs_superpowers_plans_2026_04_10_agent_process_expansion_md",
+      "label": "2026-04-10-agent-process-expansion",
+      "type": "doc",
+      "path": "docs/superpowers/plans/2026-04-10-agent-process-expansion.md",
       "community": "docs"
     },
     {
@@ -1852,6 +1866,13 @@
       "id": "memory_docs_memory_agent_handoffs_md",
       "label": "agent-handoffs",
       "type": "memory",
+      "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
+      "id": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "label": "2026-07-08 05:10 — Handoff: agent-loom upgrade Phase 1 done (Cursor routing adapter)",
+      "type": "handoff",
       "path": "docs/memory/agent-handoffs.md",
       "community": "memory"
     },
@@ -1972,6 +1993,13 @@
       "label": "2026-07-05 09:55 — Handoff (harness skill suite + deep learn-from pass)",
       "type": "handoff",
       "path": "docs/memory/agent-handoffs.md",
+      "community": "memory"
+    },
+    {
+      "id": "memory_docs_memory_open_questions_md",
+      "label": "open-questions",
+      "type": "memory",
+      "path": "docs/memory/open-questions.md",
       "community": "memory"
     },
     {
@@ -3023,6 +3051,51 @@
       "confidence_score": 1.0,
       "source_file": null,
       "provenance": "skill-graph.md"
+    },
+    {
+      "source": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "target": "memory_docs_memory_agent_handoffs_md",
+      "relation": "recorded_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "agent-handoffs.md"
+    },
+    {
+      "source": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "target": "skill_project_setup",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "target": "skill_retroactive_project_setup",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "target": "skill_agent_loom_sync",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
+    },
+    {
+      "source": "handoff_2026_07_08_05_10_handoff_agent_loom_upgrade_phase_1_done_cursor_routing_adapter",
+      "target": "skill_universal_skill_creator",
+      "relation": "handoff_mentions",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/memory/agent-handoffs.md",
+      "provenance": "handoff-body"
     },
     {
       "source": "handoff_2026_05_14_handoff_memory_startup_cold_start_trigger_hardening",

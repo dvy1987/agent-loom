@@ -12,7 +12,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.4"
+  version: "1.5"
   category: project-specific
   sources: >
     Red Hat eval-driven dev 2026, DeepEval framework,
@@ -82,7 +82,7 @@ Each stage checkpoint runs its Layer 1 validator (deterministic, ~ms). If a chec
 **End-to-end evaluation** (after all checkpoints pass):
 - **Pre-merge gate:** deterministic (full) → statistical (full) → LLM-judge (20-50% sample). Gate: all deterministic pass + scores above baseline.
 - **Nightly:** full suite incl. 100% LLM-judge. Compare baseline. Run known-bad validation — all must be caught.
-- **Production:** sample N% live traffic, alert on threshold breaches, feed incidents back into dataset.
+- **Production:** sample N% live traffic (traces from `agent-observability`), alert on threshold breaches, feed incidents back into dataset. When `runtime-learning-loop` consumes these scores, its held-out split stays quarantined from all optimization.
 
 ### Step 5 — Define Alerting and Baselines
 

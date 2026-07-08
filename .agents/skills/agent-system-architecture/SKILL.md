@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: Azure Architecture Center, arXiv:2601.02577 (Orchestral AI), arXiv:2601.07526 (Megaflow), agentskills.io
   resources:
@@ -61,6 +61,7 @@ Include a "Supervisor" or "Monitor" component that logs:
 - Token usage per agent.
 - Latency per step.
 - Success/Failure rate of specific tools.
+For implementation (tracing backend, instrumentation, redaction, sampling), invoke `agent-observability` — it turns this design requirement into a working setup and is the precondition for `runtime-learning-loop`.
 
 ### Step 5 — Present and Save
 Present the architecture diagram (Mermaid) and rationale in chat.

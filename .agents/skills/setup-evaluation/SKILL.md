@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.4"
+  version: "1.5"
   category: project-specific
   sources: >
     agent-loom design spec 2026-04-10,
@@ -73,6 +73,7 @@ Read:
 | k-rollouts | Evolution planned but eval-interface lacks k≥2 rollouts per task |
 | Trajectory reservoir | Label-free RHO path planned but no trace digest source (`memory-handoff` mining) |
 | Evolve sandbox | Process allows evolve agent to edit verifier, held-out tasks, or `docs/harness/runs/` |
+| Product observability | Shipped-product agent-chain has no tracing plan — route `agent-observability` (required before any `runtime-learning-loop`) |
 
 ### Step 4 — Cross-Validate
 

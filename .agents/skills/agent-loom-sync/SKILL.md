@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
   sources: agent-loom consumer install pattern (copy .agents + local skills)
   resources:
@@ -91,6 +91,7 @@ Only if user asks: `rsync` upstream `.agents/ROUTING.md` when project has not fo
 ### Step 6 — Post-sync validation
 
 Invoke `validate-skills` (or run Step 4e craft gates) on updated skills. Report P0/P1 before user commits.
+Regenerate host routing adapters: `python3 .agents/skills/project-setup/scripts/gen_host_adapters.py` (refreshes `.cursor/rules/` from the synced skill set).
 
 ### Step 7 — Log and handoff
 

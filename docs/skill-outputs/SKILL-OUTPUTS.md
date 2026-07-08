@@ -263,3 +263,8 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-05 | quickstart | examples/seed/calc/, examples/*-demo/README.md, docs/why-agent-loom.md, .github/ISSUE_TEMPLATE/good-first-issue.md | Skill 5 onboarding assets + offline fixture |
 | 2026-07-05 | safe-change + quickstart | examples/seed/calc/test_calc.py, verify.sh, demo READMEs | Red-green demo test; verify subpath docs; prune dead run_cmd |
 | 2026-07-05 | memory | docs/memory/deferred.md #13, docs/memory/open-questions.md | Defer COMPATIBILITY.md / One Rule strategy |
+| 2026-07-08 05:10 | project-setup (gen_host_adapters) | .agents/skills/project-setup/scripts/gen_host_adapters.py | Host routing adapter generator (deferred #10, Cursor first) |
+| 2026-07-08 05:10 | project-setup (gen_host_adapters) | .cursor/rules/agent-loom-routing.mdc | Always-on Cursor rule: mandatory skill invocation protocol |
+| 2026-07-08 05:10 | project-setup (gen_host_adapters) | .cursor/rules/agent-loom-skills-index.mdc | Generated on-demand skill index for Cursor (119 skills) |
+| 2026-07-08 05:20 | memory-handoff | docs/memory/agent-handoffs.md, docs/memory/current-state.md, docs/memory/project-index.md | Phase 1 mid-plan handoff (agent-loom upgrade plan) |
+| 2026-07-08 05:20 | memory-handoff | docs/handoffs/2026-07-08-external-agent-loom-upgrade-handoff.md | Self-contained external handoff for a zero-context coding agent |

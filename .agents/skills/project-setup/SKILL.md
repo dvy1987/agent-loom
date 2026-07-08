@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: agentskills.io, OpenAI-Codex-AGENTS.md, arXiv:2601.20404, GitHub-blog-2500-repos-analysis, Augment-Code-AGENTS.md-guide
   resources:
@@ -21,6 +21,8 @@ metadata:
       - interview-questions.md
       - architecture-design-rigor.md
       - examples.md
+    scripts:
+      - gen_host_adapters.py
     templates:
       - agents-md-template.md
 ---
@@ -40,10 +42,7 @@ Always keep total AGENTS.md under 150 lines — bloat degrades agent performance
 **1a. Silent scan:** Look for `docs/product-soul.md`, `docs/prd/`, `docs/specs/`, `README.md`, `package.json` / `Cargo.toml` / `pyproject.toml` / `go.mod`, `Makefile`, `Dockerfile`, and any existing `AGENTS.md`. Import all discovered context. Ask only about what is missing.
 **1b. Auto-extract commands:** If manifest files exist, extract key commands silently — do not ask the user for information that is already in the repo:
 - `package.json` → read `scripts` for dev, build, test, lint, typecheck
-- `Makefile` → read targets
-- `Cargo.toml` → infer `cargo build`, `cargo test`, `cargo clippy`
-- `pyproject.toml` → infer from `[tool.pytest]`, `[tool.ruff]`, `[scripts]`
-- `go.mod` → infer `go build`, `go test`
+- `Makefile` → read targets; `Cargo.toml` / `pyproject.toml` / `go.mod` → infer standard build / test / lint commands
 Present extracted commands to the user for confirmation in Step 2 instead of asking them to type commands.
 **1c. Detect project structure for multi-file AGENTS.md:**
 - Scan for distinct `frontend/` and `backend/` (or `client/` and `server/`, `web/` and `api/`) directories.
@@ -84,7 +83,7 @@ Always include the `secure-skill` family regardless of user gaps — security is
 
 **4a. Platform detection:** Check which agent platform the user is on (or ask if ambiguous). Tailor output:
 - **Codex / Ampcode** — full format with Orchestration Map and skill routing
-- **Cursor** — use `.cursorrules` conventions; omit skill routing if no agent-loom installed
+- **Cursor** — full AGENTS.md + Step 6d Cursor rules (`.cursor/rules/`) so skills trigger reliably
 - **Copilot** — use `.github/copilot-instructions.md` format if preferred
 - **Generic** — standard AGENTS.md (works everywhere)
 Default to full format if the user has agent-loom skills installed.
@@ -133,6 +132,8 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`. Tell user: AGENTS.md saved; re-
 **6b. Knowledge graph:** If `knowledge-graph` installed, run `build_graph.py`; add `GRAPH_INDEX.md` to `project-index.md` when memory suite present.
 
 **6c. Harness bootstrap (default on):** Unless opted out (Q6), invoke `harness-generation` after save. Manifest drift CI per `harness-generation/references/scaffold-patterns.md`.
+
+**6d. Host routing adapters (default on):** Run `python3 .agents/skills/project-setup/scripts/gen_host_adapters.py` — emits `.cursor/rules/agent-loom-routing.mdc` (always-on invocation protocol) + `agent-loom-skills-index.mdc` (on-demand index) from installed skill frontmatter. Portable: works in any repo with `.agents/skills/`. Re-run after adding/removing skills.
 
 ---
 

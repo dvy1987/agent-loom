@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
   sources: >
     arXiv:2602.08672 (GER-Eval), arXiv:2306.05685 (MT-Bench/LLM-as-Judge),
@@ -100,6 +100,7 @@ Eval type: [rubric-design / direct-scoring / pairwise / pipeline-design]
 - **High aggregate scores can mask low business value.** Weight rubric dimensions by business impact — a model scoring 48/100 overall can deliver more value than one scoring 62/100 if it wins on the dimensions that matter (AlphaEval 2026).
 - **Long-form agent outputs contradict themselves.** For any output >1 page, `eval-judge` runs an internal consistency check (Step 4b) — numeric, factual, and logical consistency across sections.
 - **Multi-step agent pipelines need per-step evaluation.** Cascade dependency is the #1 pipeline failure mode. `eval-pipeline` enforces per-step checkpoints before end-to-end eval.
+- **Production evals run on traces.** Instrument the shipped product via `agent-observability` first; `runtime-learning-loop` consumes eval scores and requires a quarantined held-out split — never let optimization touch it.
 
 ---
 
