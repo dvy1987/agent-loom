@@ -10,9 +10,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
-  sources: addyosmani/agent-skills git-workflow-and-versioning (11/12, 2026-05-29)
+  sources: addyosmani/agent-skills git-workflow-and-versioning (11/12, 2026-05-29), obra/superpowers finishing-a-development-branch (Phase 4 merge)
   resources:
     references:
       - examples.md
@@ -60,6 +60,10 @@ If the user's environment allows commits, commit. Otherwise output the exact mes
 
 Emit a short change summary (see Output Format).
 
+### Step 6 — Finish the branch (when the task is complete)
+
+Verify tests are green before offering to finish. Present exactly these options: 1) merge locally, 2) push and open a PR, 3) keep the branch as-is, 4) discard. Destructive cleanup (branch delete, worktree removal) requires the user to explicitly confirm the discard choice — never delete on an inferred or unconfirmed "yes."
+
 ---
 
 ## Branching defaults
@@ -77,6 +81,7 @@ Emit a short change summary (see Output Format).
 - Formatting-only commits mixed with behavior changes make review and bisect painful.
 - Missing `.gitignore` until `.env` lands in history.
 - `git reset --hard` on shared branches loses others' work — warn first.
+- Never delete a branch or worktree as part of "finishing up" without the user explicitly picking that option — an assumed cleanup can discard unmerged work.
 
 ---
 
@@ -88,6 +93,7 @@ Emit a short change summary (see Output Format).
 | "Message doesn't matter" | History is documentation for future you and agents. |
 | "I'll squash later" | Prefer clean incremental commits from the start. |
 | "Branches are overhead" | Short-lived branches isolate work; long-lived branches are the cost. |
+| "Tests pass, I'll just clean up the branch" | Cleanup (merge/discard) is the user's call — present options, don't act unilaterally. |
 
 ---
 
@@ -146,8 +152,8 @@ Run: `npm test` → pass, then commit.
 - Conventional commit type mismatches actual change nature
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added branch-finishing flow (merge/PR/keep/discard) with confirm-before-destroy gate (agent-loom Phase 4, obra/superpowers)
 
 
 ## Impact Report

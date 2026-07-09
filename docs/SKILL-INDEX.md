@@ -5,7 +5,7 @@ Complete reference for all skills in this repo.
 Agents: read this when deciding which skill to invoke or checking what a skill produces.
 Humans: read this for a full picture of what's available and what each skill outputs.
 
-Last updated: 2026-07-08
+Last updated: 2026-07-09
 
 ---
 

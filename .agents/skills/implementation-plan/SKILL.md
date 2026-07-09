@@ -11,9 +11,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
-  sources: agentskills.io, github/awesome-copilot implementation-plan, addyosmani/agent-skills planning-and-task-breakdown (Phase 3 merge), obra/superpowers writing-plans framing (model-tier tasks)
+  sources: agentskills.io, github/awesome-copilot implementation-plan, addyosmani/agent-skills planning-and-task-breakdown (Phase 3 merge), obra/superpowers writing-plans (model-tier tasks, task right-sizing, self-review — Phase 2 + Phase 4 merge)
   resources:
     references:
       - plan-schemas.md
@@ -52,7 +52,7 @@ Ask 1–2 targeted questions to clarify technical constraints:
 
 ### Step 3 — Draft the Plan
 Read `references/plan-schemas.md` for task template, sizing (XS–XL), vertical slices, and checkpoint blocks.
-**Slice vertically** — each task delivers a testable user-visible path; never "build entire schema then entire API."
+**Slice vertically** — each task delivers a testable user-visible path; never "build entire schema then entire API." **Right-size each task** — bite-sized enough for one test→implement→verify→commit cycle, naming exact file paths, written so an executor with zero prior context on this codebase could pick it up.
 **Assign a `model:` tier to every task** — invoke `model-selection` (advisory; the human switches models). Architecture/foundation and one-way-door tasks pinned high-cognition; any task assigned below high-mid needs a module contract (goal, files, tests, out-of-scope, stop conditions) so a cheaper model can execute it safely.
 Ensure the plan includes:
 - **Phase 0: Prerequisites & Setup** (Environment, dependencies, boilerplate).
@@ -79,7 +79,7 @@ Build a traceability table mapping every FR/NFR/C-N to the tasks that satisfy it
 Tag each task in the plan with the IDs it satisfies (e.g., `T2 [FR-2, C-2.1]`). This is what `spec-crosscheck` reads.
 
 ### Step 5 — Present and Save
-Present the plan in chat for review.
+Self-review the draft against the upstream spec (full coverage, no placeholders, consistent task IDs and model tiers across phases) and fix issues inline before presenting; then present the plan in chat for review.
 
 Save plan to: `docs/plans/YYYY-MM-DD-<slug>-plan.md`
 If invoked in tasks-only mode (orchestrator passes `mode=tasks`), also derive `docs/plans/YYYY-MM-DD-<slug>-tasks.md` — a flat agent-pickable list (each task with its requirement IDs and DoD).
@@ -192,8 +192,8 @@ Ready for: engineering execution
 - Plan omits explicit files and verification per phase
 
 ## Prune Log
-Last pruned: 2026-07-08
-- Added model: tier assignment step wired to model-selection (agent-loom upgrade Phase 2)
+Last pruned: 2026-07-09
+- Added task right-sizing (exact file paths, zero-context executor) + plan self-review before presenting (agent-loom Phase 4, obra/superpowers)
 
 ## Impact Report
 

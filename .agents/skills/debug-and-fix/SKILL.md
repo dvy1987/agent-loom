@@ -10,9 +10,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.3"
+  version: "1.4"
   category: project-specific
-  sources: fixing-bugs-skill-template, addyosmani/agent-skills debugging-and-error-recovery (Phase 3 merge), safishamsi/graphify (graph trace, 11/12)
+  sources: fixing-bugs-skill-template, addyosmani/agent-skills debugging-and-error-recovery (Phase 3 merge), safishamsi/graphify (graph trace, 11/12), obra/superpowers systematic-debugging (3-strike architecture gate, Phase 4 merge)
   resources:
     references:
       - examples.md
@@ -33,7 +33,7 @@ After every fix, add or update a **regression test** that fails without the fix 
 
 ## Stop-the-Line Rule
 
-When anything unexpected breaks: **stop** new features → **preserve** evidence → **triage** → fix root cause → **verify** → resume.
+When anything unexpected breaks: **stop** new features → **preserve** evidence → **triage** → fix root cause → **verify** → resume. If 3 fix attempts fail on the same bug, stop coding — the problem is likely architectural; discuss with the user before attempting fix #4.
 
 ---
 
@@ -173,6 +173,7 @@ Update HID-42 status to "Done"?
 | "I know the bug, I'll just fix it" | Unreproduced fixes often miss root cause. |
 | "The test is wrong, skip it" | Verify; fix test or code — don't skip. |
 | "Works on my machine" | Compare CI, config, dependencies. |
+| "One more fix attempt" (after 2+ failures) | 3+ failures on the same bug signals wrong architecture, not a wrong fix — discuss before attempt #4. |
 
 ## Verification
 
@@ -191,8 +192,8 @@ Update HID-42 status to "Done"?
 - Root cause declared before minimal repro exists
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added 3-strike architecture escalation gate (agent-loom Phase 4, obra/superpowers systematic-debugging)
 
 
 ## Impact Report

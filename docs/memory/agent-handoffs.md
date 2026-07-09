@@ -1,5 +1,42 @@
 # Agent Handoffs
 
+## 2026-07-09 — Handoff: Phase 4 (obra/superpowers craft merge) complete, uncommitted
+
+### Done
+- Ran `learn-from-repo` on `obra/superpowers`: credibility gate 11/12 PASS, `secure-*` scan of all 12 fetched `SKILL.md` files SAFE (0 findings), pairwise comparison against the 8 agent-loom target skills named in the Phase 4 plan.
+- Verdicts: 1 APPLY (`debug-and-fix`), 5 PARTIAL (`test-driven-development`, `incremental-implementation`, `code-review-crsp`, `implementation-plan`, `git-workflow-and-versioning`), 2 KEEP CURRENT (`brainstorming`, `universal-skill-creator` — no gap, already superior or same upstream lineage).
+- Applied all 6 edits (user initially asked to skip `debug-and-fix` + the security sweep and pause; then asked to complete both, which this session did):
+  - `debug-and-fix` v1.3→v1.4 — 3-strike architecture gate (stop after 3 failed fix attempts, discuss architecture before attempt #4). **200/200 lines — at the ceiling.**
+  - `test-driven-development` v1.2→v1.3 — delete-not-retrofit enforcement; 3 new anti-pattern rows in `references/tdd-patterns.md` (mock's-own-behavior, test-only methods, retrofit-not-delete).
+  - `incremental-implementation` v1.1→v1.2 — evidence-before-claims verify gate (run the command fresh, read output, never claim done from memory) + plan-checkbox ticking.
+  - `code-review-crsp` v1.2→v1.3 — two-pass review order (spec compliance, then quality axes) + pre-fix re-verification rule.
+  - `implementation-plan` v1.3→v1.4 — task right-sizing (exact file paths, zero-context executor) + plan self-review before presenting. **199/200 lines — at the ceiling.**
+  - `git-workflow-and-versioning` v1.1→v1.2 — new Step 6 branch-finishing flow (merge/PR/keep/discard) with confirm-before-destroy gate.
+- Post-application `secure-*` sweep on all 6 files + `tdd-patterns.md`: no injection/exfiltration/credential/escalation/supply-chain/obfuscation/hidden-content/DoS patterns. VERDICT: SAFE.
+- All 5 craft-check scripts (`check_p2_craft`, `check_ao_sections`, `check_phase3_depth`, `check_l3_tiers`, `check_red_flags_quality`) clean for all 6 files — no new failures introduced.
+- Library sync: `docs/SKILL-INDEX.md` last-updated bumped to 2026-07-09. No call-graph or description edit needed — none of the 6 changes added new triggers, outputs, or call relationships (all are internal craft/enforcement additions within existing workflows), which matches the Phase 2 precedent where `model-selection`'s own new-skill entry got Call Graph edges but `implementation-plan`'s existing SKILL-INDEX description was left untouched for the same reason.
+- Changelog: `docs/changelogs/2026-07-09-agent-loom-upgrade-phase4-superpowers-merge.md` (MINOR).
+- `docs/skill-outputs/SKILL-OUTPUTS.md` logged: learn-from-repo research row, the 6-skill improve-skills row, the tdd-patterns.md row, the secure-skill sweep row, the library-skill row, the generate-changelog row.
+
+### Decisions
+- Kept the `debug-and-fix` edit to a single new Common Rationalizations row plus an in-line extension of the existing Stop-the-Line Rule sentence (no new heading) specifically to land at exactly 200 lines rather than exceeding — confirmed with `wc -l` before considering the edit done.
+- Did the same net-zero-line technique for `implementation-plan` (appended clauses to existing lines for both task right-sizing and self-review) since it was already at 199/200 with only 1 line of headroom.
+- Did not re-run the full `library-skill` structural sync workflow (README/AGENTS.md/skill-graph/PRD rewrite) — none of the 6 edits are structural changes (no skill added/removed/renamed, no new call edges), so only the SKILL-INDEX `Last updated` date needed bumping, per the same logic `library-skill`'s own Hard Rules apply to minimal targeted edits.
+
+### Next Agent Should Know
+- Upgrade plan **Phases 5-6 remain open** (SDD×TDD wiring, mobile/MCP gap logging) per plan `834ff43c-a703-4565-9b8f-2dba210002b0`. Resume there unless the user redirects.
+- **`debug-and-fix` (200/200) and `implementation-plan` (199/200) are now at the line ceiling.** Any future edit to either MUST go through `split-skill` immediately — there is no more room to squeeze via line-merging tricks.
+- Working tree is dirty (Phase 4 changes uncommitted) — commit when the user asks, per `git-workflow-and-versioning` + `memory-handoff` trigger policy.
+- `docs/prd/PRD.md` and `docs/skill-graph.md` drift is still pre-existing and unfixed (flagged again, not caused by Phase 4).
+
+### Working Tree
+- Dirty: 6 edited `SKILL.md` files, `references/tdd-patterns.md`, `docs/SKILL-INDEX.md`, `docs/skill-outputs/SKILL-OUTPUTS.md`, `docs/memory/*` (this handoff), plus new untracked changelog file. Commit pending.
+
+### Graph
+- `build_graph.py --incremental` (and full rebuild) refused: shrink-guard tripped, scan found only 259 nodes vs expected 707 (<50%). Reproducible on 2 consecutive runs; not caused by Phase 4 (no graph-scanned scope was touched — only prose edits inside existing SKILL.md/reference files). Did not `--force` — needs investigation before overwriting `graph.json`. `manifest.json`/`graph.json` left untouched at their 2026-07-08 state.
+
+---
+
 ## 2026-07-08 14:10 — Handoff: Phases 2-3 complete, committed + pushed
 
 ### Done

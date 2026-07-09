@@ -193,6 +193,9 @@ npm test -- --watch
 | Mocking everything | Prefer real/fake deps |
 | Green before Red on new behavior | Write failing test first |
 | Bug fix without repro test | Prove-It Pattern mandatory |
+| Testing a mock's own configured behavior | Assert on the code under test's reaction, not the mock — a mock "passing" proves nothing |
+| Test-only methods/hooks added to production classes | Test through the real public interface; if it can't be tested that way, the design needs a seam, not a backdoor |
+| Retrofitting a test onto code written first | Delete the code; rewrite from Red — a post-hoc test confirms the implementation, not the contract |
 
 ---
 

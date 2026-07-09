@@ -12,9 +12,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: agentskills.io, github/awesome-copilot tdd-guide, addyosmani/agent-skills test-driven-development (Phase 3 merge)
+  sources: agentskills.io, github/awesome-copilot tdd-guide, addyosmani/agent-skills test-driven-development (Phase 3 merge), obra/superpowers test-driven-development + testing-anti-patterns (Phase 4 merge)
   resources:
     references:
       - tdd-patterns.md
@@ -31,6 +31,7 @@ Never write production code without a failing test first (Red phase).
 Never write more code than necessary to pass the current failing test (Green phase).
 Never skip the Refactor phase — clean up code only when tests are passing.
 Never compromise on test clarity — tests are documentation.
+Code written before its test existed must be deleted, not retrofitted with a test after the fact — start over from Red.
 
 ---
 
@@ -75,6 +76,7 @@ Tell the user:
 - "Test the framework" is the #1 agent mistake. Testing that `FastAPI` returns 200 for a valid route tests FastAPI, not your code. Test the business logic the route calls, not the HTTP plumbing.
 - Agents write one giant test per feature instead of many small tests. Each test should verify exactly one behavior. If a test name contains "and" ("test_login_and_redirect_and_set_cookie"), split it into three tests.
 - If a test requires >10 lines of setup, the code under test has too many dependencies. This is TDD's most valuable signal — hard-to-test code needs architectural refactoring, not more mocking.
+- Never assert against a mock's own behavior (it always "passes"), and never add test-only methods/hooks to production classes — see `references/tdd-patterns.md` Anti-patterns table.
 
 ---
 
@@ -154,6 +156,7 @@ Ready for: code review
 | "Too simple to test" | Simple code grows; tests document expected behavior. |
 | "I tested it manually" | Manual checks don't guard the next change. |
 | "Let me run tests again to be sure" | Re-run only after code changes — identical re-runs add nothing. |
+| "I already wrote this, I'll just add a test for it" | Delete it and rewrite from Red — a test written against existing code confirms the code, not the contract. |
 
 ## Red Flags
 
@@ -174,8 +177,8 @@ Ready for: code review
 Read `references/examples.md` for full worked examples.
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added delete-not-retrofit enforcement + mock/test-only-method anti-pattern citation (agent-loom Phase 4, obra/superpowers)
 
 
 ## Impact Report

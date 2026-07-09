@@ -11,9 +11,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.1"
+  version: "1.2"
   category: project-specific
-  sources: addyosmani/agent-skills incremental-implementation (11/12, 2026-05-29)
+  sources: addyosmani/agent-skills incremental-implementation (11/12, 2026-05-29), obra/superpowers verification-before-completion + executing-plans (Phase 4 merge)
   resources:
     references:
       - examples.md
@@ -49,11 +49,11 @@ Run the project's test command. Run build/typecheck/lint if the change could aff
 
 ### Step 4 — Commit and pick next slice
 
-Commit with a descriptive message (`git-workflow-and-versioning`). Repeat Steps 2–4 until the task is done.
+Commit with a descriptive message (`git-workflow-and-versioning`). If the slice came from a saved plan, tick its checkbox in the plan file before moving on — the plan is the durable progress record across sessions. Repeat Steps 2–4 until the task is done.
 
 ### Step 5 — End-to-end check
 
-Full test suite, build clean, feature matches spec/plan. Report slices completed and commits made.
+Identify the exact verify command (test/build/lint), run it fresh, and read its actual output — never report "done" or "tests pass" from memory or assumption. Full test suite, build clean, feature matches spec/plan. Report slices completed and commits made.
 
 ---
 
@@ -85,6 +85,7 @@ Full test suite, build clean, feature matches spec/plan. Report slices completed
 | "Too small to commit" | Small commits are free; giant commits are expensive to revert. |
 | "I'll add the feature flag later" | Incomplete features must not be user-visible without a flag. |
 | "Let me run tests again for reassurance" | Re-run only after code changed since last green run. |
+| "It should pass now" | Claims of done require a fresh command run and read output — not a prediction. |
 
 ---
 
@@ -137,8 +138,8 @@ Next slice: list tasks.
 - Slice boundary unclear — spans unrelated subsystems
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added evidence-before-claims verify gate + plan-checkbox ticking (agent-loom Phase 4, obra/superpowers)
 
 
 ## Impact Report

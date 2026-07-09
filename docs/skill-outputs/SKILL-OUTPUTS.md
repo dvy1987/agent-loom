@@ -287,3 +287,12 @@ No skills modified. No checkpoints invoked (this is a docs artefact, not a produ
 | 2026-07-08 | improve-skills (TARGETED) | implementation-plan v1.3, problem-to-plan v1.2, dynamic-routing v1.1 | Phase 2 wiring: model: tier column, TODO tier tags, Escalate-model-tier route |
 | 2026-07-08 | library-skill | docs/SKILL-INDEX.md, README.md, AGENTS.md, .cursor/rules/ | Synced model-selection; 123 skills total |
 | 2026-07-08 | generate-changelog | docs/changelogs/2026-07-08-agent-loom-upgrade-phase2-model-selection.md | MINOR: Phase 2 model-selection changelog |
+| 2026-07-09 | learn-from-repo | (research only) | obra/superpowers: credibility 11/12 PASS; secure-* scan of 12 fetched SKILL.md files — SAFE; pairwise comparison against 8 agent-loom targets |
+| 2026-07-09 | improve-skills (TARGETED) | debug-and-fix v1.4, test-driven-development v1.3, incremental-implementation v1.2, code-review-crsp v1.3, implementation-plan v1.4, git-workflow-and-versioning v1.2 | Phase 4 superpowers merge: 3-strike architecture gate, delete-not-retrofit TDD enforcement, evidence-before-claims verify gate, two-pass review order, task right-sizing + plan self-review, branch-finishing confirm-before-destroy flow |
+| 2026-07-09 | improve-skills (TARGETED) | test-driven-development/references/tdd-patterns.md | Added 3 anti-pattern rows (mock's-own-behavior, test-only methods, retrofit-not-delete) |
+| 2026-07-09 | secure-skill (sweep) | (audit only) | Post-application sweep on all 6 edited SKILL.md + tdd-patterns.md — 0 findings across injection/exfiltration/credentials/escalation/supply-chain/obfuscation/hidden-content/DoS. VERDICT: SAFE |
+| 2026-07-09 | library-skill | docs/SKILL-INDEX.md | Last-updated bumped to 2026-07-09; no call-graph edit needed (no new triggers/outputs/calls introduced) |
+| 2026-07-09 | generate-changelog | docs/changelogs/2026-07-09-agent-loom-upgrade-phase4-superpowers-merge.md | MINOR: Phase 4 superpowers craft-merge changelog |
+| 2026-07-09 | memory-capture | docs/memory/current-state.md | 25th deliverable: Phase 4 complete, uncommitted; debug-and-fix + implementation-plan at 200-line ceiling |
+| 2026-07-09 | memory-capture | docs/memory/project-index.md | 4 new rows: superseded 24th state, Phase 4 changelog/state/handoff |
+| 2026-07-09 | memory-handoff | docs/memory/agent-handoffs.md | Phase 4 complete handoff; dirty tree; knowledge-graph shrink-guard note (not forced) |

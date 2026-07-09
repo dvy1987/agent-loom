@@ -12,9 +12,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: code-review-skill-builtin, addyosmani/agent-skills code-review-and-quality (Phase 3 merge)
+  sources: code-review-skill-builtin, addyosmani/agent-skills code-review-and-quality (Phase 3 merge), obra/superpowers requesting-code-review + receiving-code-review (Phase 4 merge)
   resources:
     references:
       - examples.md
@@ -57,7 +57,7 @@ Ask ONE clarifying question if scope is ambiguous: "Which changes should I revie
 
 ### Step 3 — Evaluate Against Five Axes
 
-Read `references/review-conventions.md` for axis questions, prefix table, change sizing, and dead-code hygiene.
+Review in two passes: **Pass 1 — spec compliance** (does it do what was asked, nothing more, nothing less); **Pass 2 — code quality** (the five axes below). Read `references/review-conventions.md` for axis questions, prefix table, change sizing, and dead-code hygiene.
 
 | Axis | What to look for |
 |------|-----------------|
@@ -90,6 +90,7 @@ If no issues found, state that explicitly.
 ### Step 5 — Offer to Fix
 
 If issues were found, ask: "Would you like me to fix any of these? Reply with the numbers to fix."
+Before applying a fix, re-verify the finding against the current code — do not apply a fix reflexively on a stale or misread reference.
 
 **Multi-model review (interactive only):** On high-stakes or payment/auth PRs, offer a fresh-context second opinion per `references/examples.md` Example 8; skip silently in CI/non-interactive runs.
 
@@ -186,8 +187,8 @@ Want me to fix any of these? Reply with the numbers.
 - Findings lack severity and concrete remediation
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added two-pass review order (spec compliance, then quality axes) + pre-fix re-verification rule (agent-loom Phase 4, obra/superpowers)
 
 
 ## Impact Report
