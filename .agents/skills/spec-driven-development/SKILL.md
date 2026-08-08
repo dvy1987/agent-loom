@@ -13,9 +13,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: GitHub Spec Kit, AWS Kiro, agentskills.io, addyosmani/agent-skills spec-driven-development (Phase 3 merge)
+  sources: GitHub Spec Kit, AWS Kiro, agentskills.io, addyosmani/agent-skills spec-driven-development (Phase 3 merge), SDD×TDD unification (agent-loom Phase 5)
   resources:
     references:
       - examples.md
@@ -31,6 +31,7 @@ Never write artifacts directly — always delegate to the leaf skill.
 Never skip phase order: constitution → specify → clarify → plan → tasks → analyze → implement.
 Never run `/implement` without a passing `/analyze`.
 Never run `/plan` without an Approved feature spec.
+Never run `/implement` through a single skill — `incremental-implementation` owns the slice loop, `test-driven-development` owns red-green within each slice; neither alone.
 Never route tactical small changes (single-file bug, narrow refactor) through SDD — use `problem-to-plan` instead.
 
 ---
@@ -45,7 +46,7 @@ Never route tactical small changes (single-file bug, narrow refactor) through SD
 | `/plan`        | turn approved spec into a phased plan   | `implementation-plan` (consumes feature-spec)       |
 | `/tasks`       | derive agent-pickable tasks             | `implementation-plan` (tasks-only mode)             |
 | `/analyze`     | hard readiness gate                     | `spec-crosscheck`                                   |
-| `/implement`   | execute the plan                        | `test-driven-development` (or direct execution)     |
+| `/implement`   | execute the plan                        | `incremental-implementation` + `test-driven-development` (red-green per slice) |
 
 ---
 
@@ -79,6 +80,7 @@ Invoke the routed leaf skill. Pass:
 - The feature slug
 - Paths to upstream artifacts
 - The mode parameter where relevant
+- For `/implement`: the spec's AC list — each slice starts Red from that AC's failing-test skeleton (`feature-spec` schema → Test Skeletons)
 
 Do not duplicate the leaf skill's work — once delegated, the leaf is in charge until it returns.
 
@@ -95,7 +97,7 @@ After the leaf returns, summarize what was produced and offer the next slash com
 - For tactical small changes (bug fix, narrow refactor), DO NOT route through SDD. Route to `problem-to-plan`. SDD overhead is for feature-sized work.
 - **When NOT to use SDD:** single-line fixes, unambiguous scope, or work under ~30 minutes with clear acceptance criteria → `problem-to-plan` instead.
 - A repo can have many feature-specs in flight. Use the slug to tie spec ↔ plan ↔ tasks ↔ crosscheck. Don't mix slugs across phases.
-- `/implement` defaults to `test-driven-development` for test-first work; route to `incremental-implementation` when the plan spans multiple files and the user needs slice discipline (often invoke both: slices + TDD per slice).
+- `/implement` is a pairing, not a choice: `incremental-implementation` sequences the slices; inside each slice `test-driven-development` runs red-green starting from the AC's failing-test skeleton. A slice is done only when its AC's test passes. (Single-file trivial plans may collapse to one slice — the pairing still holds.)
 - Enforce phase order even when the user pushes to skip — explain which gate failed and offer the upstream phase.
 
 ---
@@ -146,8 +148,8 @@ Starting at `/specify`. Routing to `feature-spec` (mode=specify).
 - Child skill skipped for explicit slash command route
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- /implement now enforces incremental-implementation + test-driven-development together, red-green per slice from AC skeletons (agent-loom Phase 5, SDD×TDD)
 
 
 ## Impact Report

@@ -13,9 +13,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables
+  sources: GitHub Spec Kit /analyze, AWS Kiro spec validation, agentskills.io, addyosmani/agent-skills anti-rationalization tables, SDD×TDD unification (agent-loom Phase 5)
   resources:
     references:
       - examples.md
@@ -64,6 +64,7 @@ Each check produces PASS, WARN, or FAIL with `file:line` evidence.
 **Check C — Spec → Plan traceability**
 - Every `FR-N` from spec has at least one task in plan that references it (e.g., "implements FR-2")
 - Every `NFR-N` has at least one task or DoD criterion that references it
+- Every `AC-FR-N.M` has a named test target — a test carrying the AC ID in a task's DoD, or an emitted failing-test skeleton (`feature-spec` schema → Test Skeletons); an AC nothing will test = FAIL
 - Missing references = FAIL
 
 **Check D — Plan → Spec traceability (no extra behavior)**
@@ -96,7 +97,7 @@ Date: YYYY-MM-DD | Verdict: PASS | FAIL
 |----|-------|---------|----------|
 | A  | Spec readiness | PASS/FAIL | <file:line> |
 | B  | Constitution coverage | PASS/FAIL | <rule IDs missing> |
-| C  | Spec→Plan traceability | PASS/FAIL | <FRs without tasks> |
+| C  | Spec→Plan traceability | PASS/FAIL | <FRs without tasks / ACs without tests> |
 | D  | Plan→Spec traceability | PASS/FAIL | <tasks without refs> |
 | E  | Task quality | PASS/FAIL | <tasks without DoD> |
 | F  | Out-of-Scope adherence | PASS/FAIL | <violating tasks> |
@@ -110,7 +111,7 @@ Date: YYYY-MM-DD | Verdict: PASS | FAIL
 - [ ] <action 2>
 
 ## If verdict = PASS
-Implementation may begin. Recommended next: `test-driven-development`.
+Implementation may begin. Next: `/implement` — `incremental-implementation` + `test-driven-development`, red-green per slice from AC skeletons.
 ```
 
 ### Step 4 — Save, log, present
@@ -191,8 +192,8 @@ Saved to `docs/reviews/2026-05-02-magic-link-spec-crosscheck.md`.
 - Approved status assumed while Needs Clarification remains
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Check C extended with AC↔test traceability (named test per AC-FR-N.M) (agent-loom Phase 5, SDD×TDD)
 
 
 ## Impact Report

@@ -14,9 +14,9 @@ description: >
 license: MIT
 metadata:
   author: dvy1987
-  version: "1.2"
+  version: "1.3"
   category: project-specific
-  sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition)
+  sources: GitHub Spec Kit, AWS Kiro specs-first, agentskills.io, addyosmani/agent-skills interview-me (HYPOTHESIS + CONFIDENCE % stop condition), SDD×TDD unification (agent-loom Phase 5)
   resources:
     references:
       - feature-spec-schema.md
@@ -63,7 +63,7 @@ Read `references/feature-spec-schema.md` for the full template. Required section
 - User Scenarios (US-1, US-2, …)
 - Functional Requirements (FR-1, FR-2, …)
 - Non-Functional Requirements (NFR-1, NFR-2, …)
-- Acceptance Criteria (AC-FR-1.1 in Given/When/Then form)
+- Acceptance Criteria (AC-FR-1.1 in Given/When/Then form — written so each AC converts mechanically to a failing-test skeleton: Given→arrange, When→act, Then→assert; see `references/feature-spec-schema.md` → Test Skeletons)
 - Edge Cases (minimum 3)
 - Out of Scope
 - Constitution Waivers (only if any rule is intentionally not satisfied)
@@ -90,7 +90,7 @@ Append to `docs/skill-outputs/SKILL-OUTPUTS.md`:
 ```
 
 Tell the user:
-> "Feature spec saved (status: <status>). <N> clarifications remain — run me in clarify mode to resolve them, or invoke `spec-driven-development /clarify`."
+> "Feature spec saved (status: <status>). <N> clarifications remain — run me in clarify mode to resolve them, or invoke `spec-driven-development /clarify`. Once Approved, ask me to emit failing-test skeletons from the ACs — `/implement` starts red from them."
 
 ### Step 6 — Memory Checkpoint (Mandatory)
 Per `memory/SKILL.md` → Mandatory Auto-Trigger Checkpoints (event: feature-spec written), invoke `memory-capture` with spec slug, status, and key requirements/constraints for next-agent continuity.
@@ -136,7 +136,7 @@ Re-save to the same path. Append:
 ## Gotchas
 
 - "WHAT not HOW" is the bright line. If you catch yourself writing "use Postgres" or "in `services/auth.ts`" — stop. That belongs in `implementation-plan`.
-- Acceptance criteria must be testable as written. "Login works" fails. "Given valid credentials, When user submits, Then JWT is returned within 500ms" passes.
+- Acceptance criteria must be testable as written. "Login works" fails. "Given valid credentials, When user submits, Then JWT is returned within 500ms" passes. Litmus: if an AC cannot become a failing-test skeleton as written, it is not done.
 - Edge cases are not nice-to-have — they're how `spec-crosscheck` detects missing tasks. Brainstorm at least 3.
 - `Out of Scope` must be specific — strongest anti-scope-creep tool.
 - Constitution waivers need explicit `## Constitution Waivers` with rule ID + rationale.
@@ -191,8 +191,8 @@ Run `/clarify` next.
 - Needs Clarification list left non-empty at approval
 
 ## Prune Log
-Last pruned: 2026-07-04
-- No changes — citation audit passed; content current (improve-skills full pass 2026-07-04)
+Last pruned: 2026-07-09
+- Added AC→failing-test-skeleton contract (Given→arrange, When→act, Then→assert) + schema Test Skeletons section (agent-loom Phase 5, SDD×TDD)
 
 
 ## Impact Report

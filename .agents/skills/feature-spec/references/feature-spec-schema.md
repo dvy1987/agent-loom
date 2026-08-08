@@ -110,11 +110,43 @@ Approved      → CL list empty, user confirmed; implementation-plan can consume
 
 ---
 
+## Test Skeletons from Acceptance Criteria
+
+Every AC is written so it converts mechanically to a failing test — this is the SDD×TDD seam. Emit skeletons when the spec reaches `Approved` (on request, or when `spec-driven-development /implement` starts).
+
+**Mapping rules:**
+
+| AC part | Test part |
+|---------|-----------|
+| **Given** <preconditions> | Arrange — fixtures, seeded state, mocks at boundaries only |
+| **When** <action> | Act — one call/interaction, mirroring the user-visible action |
+| **Then** <outcome + threshold> | Assert — observable outcome; thresholds become explicit assertions |
+
+**Conventions:**
+
+- One skeleton per AC. Test name carries the AC ID so `spec-crosscheck` can trace it: `test_AC_FR_1_1_expired_token_rejected` / `it('AC-FR-1.1: rejects expired token')`.
+- The skeleton body arranges and acts, then asserts against the contract — it MUST fail on current code (Red). No implementation, no `skip`, no empty assertion that vacuously passes.
+- Skeletons are handed to `test-driven-development` as the Red phase starting point; `incremental-implementation` picks which AC's skeleton each slice turns green.
+- Global NFR ACs (latency, error-rate) become threshold assertions or a named perf/integration test — still carrying the AC ID.
+
+**Example** (from AC-FR-1.1 "Given a magic link older than 15 minutes, When the user clicks it, Then the API returns 410 and no session is created"):
+
+```python
+def test_AC_FR_1_1_expired_link_returns_410_and_no_session():
+    link = seed_magic_link(age_minutes=16)          # Given
+    response = client.get(link.url)                 # When
+    assert response.status_code == 410              # Then
+    assert session_store.count() == 0
+```
+
+---
+
 ## Cross-References (read by other skills)
 
 - The `constitution` field in frontmatter is read by `spec-crosscheck` to verify rule coverage.
 - The `slug` is reused by `implementation-plan` to name the plan file (e.g., `docs/plans/<slug>-plan.md`).
 - FR/NFR IDs are referenced by tasks in the plan ("T-3 implements FR-2").
+- AC IDs are carried into test names by the Test Skeletons above; `spec-crosscheck` Check C reads them for AC↔test traceability.
 - The `Out of Scope` list is enforced by `spec-crosscheck` Check F.
 - The `Constitution Waivers` section is enforced by `spec-crosscheck` Check B.
 
